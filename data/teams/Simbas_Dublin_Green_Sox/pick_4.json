@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "corbin_carroll",
+    "name": "Corbin Carroll",
+    "position": "OF",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 27.0,
+    "projected_obp": 0.349,
+    "projected_runs": 91.0,
+    "projected_rbi": 86.0,
+    "projected_stolen_bases": 33.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 7.0
+  },
+  "pick_info": {
+    "pick_number": 4,
+    "round": 1,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "OF"
+}

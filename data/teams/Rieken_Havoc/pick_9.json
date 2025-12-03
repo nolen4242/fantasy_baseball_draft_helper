@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "julio_rodriguez",
+    "name": "Julio Rodriguez",
+    "position": "OF",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 30.0,
+    "projected_obp": 0.334,
+    "projected_runs": 84.0,
+    "projected_rbi": 91.0,
+    "projected_stolen_bases": 23.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 14.5
+  },
+  "pick_info": {
+    "pick_number": 9,
+    "round": 1,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

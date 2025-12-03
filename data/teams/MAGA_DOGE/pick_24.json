@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "bryce_harper",
+    "name": "Bryce Harper",
+    "position": "1B",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 27.0,
+    "projected_obp": 0.368,
+    "projected_runs": 81.0,
+    "projected_rbi": 86.0,
+    "projected_stolen_bases": 9.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 28.0
+  },
+  "pick_info": {
+    "pick_number": 24,
+    "round": 2,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "1B"
+}

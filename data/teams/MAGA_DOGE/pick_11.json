@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "gunnar_henderson",
+    "name": "Gunnar Henderson",
+    "position": "SS",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.356,
+    "projected_runs": 88.0,
+    "projected_rbi": 87.0,
+    "projected_stolen_bases": 21.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 16.8
+  },
+  "pick_info": {
+    "pick_number": 11,
+    "round": 1,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SS"
+}

@@ -1,9 +1,11 @@
 export class UIRenderer {
-    updateDraftStatusBar(draft) {
+    updateDraftStatusBar(draft, recommendation) {
         const currentPickEl = document.getElementById('current-pick-team');
         const currentRoundEl = document.getElementById('current-pick-round');
         const nextPickEl = document.getElementById('next-pick-team');
         const progressEl = document.getElementById('draft-progress-text');
+        const recommendedPlayerEl = document.getElementById('recommended-player-name');
+        const recommendedPositionEl = document.getElementById('recommended-player-position');
         if (!currentPickEl || !currentRoundEl || !nextPickEl || !progressEl)
             return;
         // Calculate whose turn it is using Bob Uecker League draft order
@@ -66,6 +68,17 @@ export class UIRenderer {
         currentRoundEl.textContent = `Round ${round}, Pick ${pickInRound}`;
         nextPickEl.textContent = nextTeam;
         progressEl.textContent = `Pick ${pickNumber} of ${draft.total_teams * draft.roster_size}`;
+        // Update recommended player
+        if (recommendedPlayerEl && recommendedPositionEl) {
+            if (recommendation && recommendation.player) {
+                recommendedPlayerEl.textContent = recommendation.player.name;
+                recommendedPositionEl.textContent = recommendation.player.position || '-';
+            }
+            else {
+                recommendedPlayerEl.textContent = '-';
+                recommendedPositionEl.textContent = '-';
+            }
+        }
     }
     renderAvailablePlayers(players, onDraft) {
         const container = document.getElementById('available-players-list');

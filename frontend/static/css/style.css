@@ -104,7 +104,7 @@ body {
     margin: 0 auto;
 }
 
-.current-pick, .next-pick, .draft-progress {
+.current-pick, .next-pick, .recommended-player, .draft-progress {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -129,6 +129,31 @@ body {
 .round-info {
     color: #ffffff;
     font-size: 14px;
+}
+
+.recommended-player .label {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.recommended-player .player-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #32cd32;
+    padding: 5px 12px;
+    background: rgba(50, 205, 50, 0.2);
+    border: 1px solid rgba(50, 205, 50, 0.4);
+    border-radius: 6px;
+}
+
+.recommended-player .player-position-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .draft-progress {

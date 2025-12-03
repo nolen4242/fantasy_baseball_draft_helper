@@ -5,7 +5,28 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "vladimir_guerrero_jr",
+        "name": "Vladimir Guerrero Jr.",
+        "position": "1B",
+        "team": "TOR",
+        "pick_number": 12,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 32.0,
+          "projected_obp": 0.385,
+          "projected_runs": 94.0,
+          "projected_rbi": 99.0,
+          "projected_stolen_bases": 5.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -32,7 +53,28 @@
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "cristopher_sanchez",
+        "name": "Cristopher Sanchez",
+        "position": "P",
+        "team": "PHI",
+        "pick_number": 25,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 13.0,
+          "projected_quality_starts": 20.8,
+          "projected_strikeouts": 192.28,
+          "projected_era": 3.16,
+          "projected_whip": 1.1966666666666665,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -43,5 +85,50 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "vladimir_guerrero_jr",
+      "name": "Vladimir Guerrero Jr.",
+      "position": "1B",
+      "team": "TOR",
+      "pick_number": 12,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 32.0,
+        "projected_obp": 0.385,
+        "projected_runs": 94.0,
+        "projected_rbi": 99.0,
+        "projected_stolen_bases": 5.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "cristopher_sanchez",
+      "name": "Cristopher Sanchez",
+      "position": "P",
+      "team": "PHI",
+      "pick_number": 25,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 13.0,
+        "projected_quality_starts": 20.8,
+        "projected_strikeouts": 192.28,
+        "projected_era": 3.16,
+        "projected_whip": 1.1966666666666665,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

@@ -11,7 +11,28 @@
       null
     ],
     "3B": [
-      null
+      {
+        "player_id": "junior_caminero",
+        "name": "Junior Caminero",
+        "position": "3B",
+        "team": "TB",
+        "pick_number": 14,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 34.0,
+          "projected_obp": 0.33,
+          "projected_runs": 73.0,
+          "projected_rbi": 92.0,
+          "projected_stolen_bases": 5.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
       null
@@ -23,8 +44,50 @@
       null
     ],
     "OF": [
-      null,
-      null,
+      {
+        "player_id": "aaron_judge",
+        "name": "Aaron Judge",
+        "position": "OF",
+        "team": "NYY",
+        "pick_number": 1,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 43.0,
+          "projected_obp": 0.417,
+          "projected_runs": 110.0,
+          "projected_rbi": 104.0,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "juan_soto",
+        "name": "Juan Soto",
+        "position": "OF",
+        "team": "NYM",
+        "pick_number": 1,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 35.0,
+          "projected_obp": 0.413,
+          "projected_runs": 101.0,
+          "projected_rbi": 94.0,
+          "projected_stolen_bases": 20.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null
     ],
@@ -32,7 +95,28 @@
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "chris_sale",
+        "name": "Chris Sale",
+        "position": "P",
+        "team": "ATL",
+        "pick_number": 27,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 12.0,
+          "projected_quality_starts": 18.2,
+          "projected_strikeouts": 205.204,
+          "projected_era": 3.19,
+          "projected_whip": 1.2066666666666666,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -43,21 +127,20 @@
       null
     ]
   },
-  "all_players": [],
-  "overflow": [
+  "all_players": [
     {
-      "player_id": "shohei_ohtani",
-      "name": "Shohei Ohtani",
-      "position": "DH",
-      "team": "LAD",
+      "player_id": "aaron_judge",
+      "name": "Aaron Judge",
+      "position": "OF",
+      "team": "NYY",
       "pick_number": 1,
       "round": 1,
       "stats": {
         "projected_home_runs": 43.0,
-        "projected_obp": 0.38,
-        "projected_runs": 119.0,
-        "projected_rbi": 98.0,
-        "projected_stolen_bases": 22.0,
+        "projected_obp": 0.417,
+        "projected_runs": 110.0,
+        "projected_rbi": 104.0,
+        "projected_stolen_bases": 9.0,
         "projected_wins": null,
         "projected_quality_starts": null,
         "projected_strikeouts": null,
@@ -68,18 +151,18 @@
       }
     },
     {
-      "player_id": "shohei_ohtani",
-      "name": "Shohei Ohtani",
-      "position": "DH",
-      "team": "LAD",
+      "player_id": "juan_soto",
+      "name": "Juan Soto",
+      "position": "OF",
+      "team": "NYM",
       "pick_number": 1,
       "round": 1,
       "stats": {
-        "projected_home_runs": 43.0,
-        "projected_obp": 0.38,
-        "projected_runs": 119.0,
-        "projected_rbi": 98.0,
-        "projected_stolen_bases": 22.0,
+        "projected_home_runs": 35.0,
+        "projected_obp": 0.413,
+        "projected_runs": 101.0,
+        "projected_rbi": 94.0,
+        "projected_stolen_bases": 20.0,
         "projected_wins": null,
         "projected_quality_starts": null,
         "projected_strikeouts": null,
@@ -88,6 +171,51 @@
         "projected_saves": null,
         "projected_holds": null
       }
+    },
+    {
+      "player_id": "junior_caminero",
+      "name": "Junior Caminero",
+      "position": "3B",
+      "team": "TB",
+      "pick_number": 14,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 34.0,
+        "projected_obp": 0.33,
+        "projected_runs": 73.0,
+        "projected_rbi": 92.0,
+        "projected_stolen_bases": 5.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "chris_sale",
+      "name": "Chris Sale",
+      "position": "P",
+      "team": "ATL",
+      "pick_number": 27,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 12.0,
+        "projected_quality_starts": 18.2,
+        "projected_strikeouts": 205.204,
+        "projected_era": 3.19,
+        "projected_whip": 1.2066666666666666,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
     }
-  ]
+  ],
+  "overflow": []
 }

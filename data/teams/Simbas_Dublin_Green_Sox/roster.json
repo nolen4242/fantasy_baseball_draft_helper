@@ -8,7 +8,28 @@
       null
     ],
     "2B": [
-      null
+      {
+        "player_id": "ketel_marte",
+        "name": "Ketel Marte",
+        "position": "2B",
+        "team": "ARI",
+        "pick_number": 17,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 26.0,
+          "projected_obp": 0.365,
+          "projected_runs": 90.0,
+          "projected_rbi": 79.0,
+          "projected_stolen_bases": 6.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
       null
@@ -23,9 +44,72 @@
       null
     ],
     "OF": [
-      null,
-      null,
-      null,
+      {
+        "player_id": "chandler_simpson",
+        "name": "Chandler Simpson",
+        "position": "OF",
+        "team": "TB",
+        "pick_number": 4,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 2.0,
+          "projected_obp": 0.329,
+          "projected_runs": 51.0,
+          "projected_rbi": 30.0,
+          "projected_stolen_bases": 39.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "corbin_carroll",
+        "name": "Corbin Carroll",
+        "position": "OF",
+        "team": "ARI",
+        "pick_number": 4,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 27.0,
+          "projected_obp": 0.349,
+          "projected_runs": 91.0,
+          "projected_rbi": 86.0,
+          "projected_stolen_bases": 33.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "brent_rooker",
+        "name": "Brent Rooker",
+        "position": "OF",
+        "team": "ATH",
+        "pick_number": 30,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 30.0,
+          "projected_obp": 0.335,
+          "projected_runs": 82.0,
+          "projected_rbi": 90.0,
+          "projected_stolen_bases": 5.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null
     ],
     "U": [
@@ -43,5 +127,94 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "chandler_simpson",
+      "name": "Chandler Simpson",
+      "position": "OF",
+      "team": "TB",
+      "pick_number": 4,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 2.0,
+        "projected_obp": 0.329,
+        "projected_runs": 51.0,
+        "projected_rbi": 30.0,
+        "projected_stolen_bases": 39.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "corbin_carroll",
+      "name": "Corbin Carroll",
+      "position": "OF",
+      "team": "ARI",
+      "pick_number": 4,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 27.0,
+        "projected_obp": 0.349,
+        "projected_runs": 91.0,
+        "projected_rbi": 86.0,
+        "projected_stolen_bases": 33.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ketel_marte",
+      "name": "Ketel Marte",
+      "position": "2B",
+      "team": "ARI",
+      "pick_number": 17,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 26.0,
+        "projected_obp": 0.365,
+        "projected_runs": 90.0,
+        "projected_rbi": 79.0,
+        "projected_stolen_bases": 6.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "brent_rooker",
+      "name": "Brent Rooker",
+      "position": "OF",
+      "team": "ATH",
+      "pick_number": 30,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.335,
+        "projected_runs": 82.0,
+        "projected_rbi": 90.0,
+        "projected_stolen_bases": 5.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

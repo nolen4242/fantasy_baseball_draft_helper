@@ -5,7 +5,28 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "rafael_devers",
+        "name": "Rafael Devers",
+        "position": "1B",
+        "team": "SF",
+        "pick_number": 28,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 29.0,
+          "projected_obp": 0.347,
+          "projected_runs": 82.0,
+          "projected_rbi": 83.0,
+          "projected_stolen_bases": 2.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -14,7 +35,28 @@
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "elly_de_la_cruz",
+        "name": "Elly De La Cruz",
+        "position": "SS",
+        "team": "CIN",
+        "pick_number": 15,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 23.0,
+          "projected_obp": 0.342,
+          "projected_runs": 83.0,
+          "projected_rbi": 82.0,
+          "projected_stolen_bases": 38.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
       null
@@ -23,8 +65,50 @@
       null
     ],
     "OF": [
-      null,
-      null,
+      {
+        "player_id": "juan_soto",
+        "name": "Juan Soto",
+        "position": "OF",
+        "team": "NYM",
+        "pick_number": 2,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 35.0,
+          "projected_obp": 0.413,
+          "projected_runs": 101.0,
+          "projected_rbi": 94.0,
+          "projected_stolen_bases": 20.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "aaron_judge",
+        "name": "Aaron Judge",
+        "position": "OF",
+        "team": "NYY",
+        "pick_number": 2,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 43.0,
+          "projected_obp": 0.417,
+          "projected_runs": 110.0,
+          "projected_rbi": 104.0,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null
     ],
@@ -43,5 +127,94 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "juan_soto",
+      "name": "Juan Soto",
+      "position": "OF",
+      "team": "NYM",
+      "pick_number": 2,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 35.0,
+        "projected_obp": 0.413,
+        "projected_runs": 101.0,
+        "projected_rbi": 94.0,
+        "projected_stolen_bases": 20.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "aaron_judge",
+      "name": "Aaron Judge",
+      "position": "OF",
+      "team": "NYY",
+      "pick_number": 2,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 43.0,
+        "projected_obp": 0.417,
+        "projected_runs": 110.0,
+        "projected_rbi": 104.0,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "elly_de_la_cruz",
+      "name": "Elly De La Cruz",
+      "position": "SS",
+      "team": "CIN",
+      "pick_number": 15,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 23.0,
+        "projected_obp": 0.342,
+        "projected_runs": 83.0,
+        "projected_rbi": 82.0,
+        "projected_stolen_bases": 38.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "rafael_devers",
+      "name": "Rafael Devers",
+      "position": "1B",
+      "team": "SF",
+      "pick_number": 28,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 29.0,
+        "projected_obp": 0.347,
+        "projected_runs": 82.0,
+        "projected_rbi": 83.0,
+        "projected_stolen_bases": 2.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

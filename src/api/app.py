@@ -14,6 +14,7 @@ from src.services.draft_service import DraftService
 from src.services.recommendation_engine import RecommendationEngine
 from src.services.draft_order import DraftOrder
 from src.services.master_player_dict import MasterPlayerDict
+from src.services.ml_trainer import MLTrainer
 from src.models.player import Player
 from src.models.draft import DraftState
 
@@ -25,11 +26,13 @@ CORS(app)
 # Initialize services
 data_loader = DataLoader()
 draft_service = DraftService()
-recommendation_engine = RecommendationEngine(draft_service)
 master_player_dict = MasterPlayerDict()
 
 # Global state (in production, use a database)
 all_players: list[Player] = []
+
+# Initialize recommendation engine (will be updated when players are loaded)
+recommendation_engine = RecommendationEngine(draft_service, all_players)
 
 
 @app.route('/')
@@ -86,6 +89,9 @@ def load_steamer_files():
         master_player_dict.get_players_with_projections(player_type='pitchers')
     )
     
+    # Update recommendation engine with new players
+    recommendation_engine.all_players = all_players
+    
     # If no CBS data loaded yet, use Steamer directly
     if not all_players:
         all_players = hitters + pitchers
@@ -133,6 +139,9 @@ def load_cbs_data():
         master_player_dict.get_players_with_projections(player_type='batters') +
         master_player_dict.get_players_with_projections(player_type='pitchers')
     )
+    
+    # Update recommendation engine with new players
+    recommendation_engine.all_players = all_players
     
     players_with_positions = sum(1 for p in all_players if p.position)
     
@@ -347,14 +356,20 @@ def get_recommendations():
             'message': 'No active draft'
         }), 400
     
+    # Update recommendation engine with current players
+    recommendation_engine.all_players = all_players
+    
     available = draft_service.get_available_players(all_players)
     my_team = draft_service.get_my_team_players(all_players)
+    
+    use_ml = request.args.get('use_ml', 'true').lower() == 'true'
     
     recommendations = recommendation_engine.get_recommendations(
         available_players=available,
         my_team=my_team,
         draft_state=draft_service.current_draft,
-        top_n=10
+        top_n=10,
+        use_ml=use_ml
     )
     
     return jsonify({
@@ -367,6 +382,53 @@ def get_recommendations():
             for rec in recommendations
         ]
     })
+
+
+@app.route('/api/ml/train', methods=['POST'])
+def train_ml_models():
+    """Train ML models on simulated draft data."""
+    if not all_players:
+        return jsonify({
+            'success': False,
+            'message': 'No players loaded. Load CBS and Steamer data first.'
+        }), 400
+    
+    num_simulations = request.json.get('num_simulations', 1000) if request.json else 1000
+    strategies = request.json.get('strategies', ['adp', 'category', 'random']) if request.json else ['adp', 'category', 'random']
+    
+    try:
+        trainer = MLTrainer()
+        
+        # Generate training data
+        training_data = trainer.generate_training_data(
+            all_players=all_players,
+            num_simulations=num_simulations,
+            strategies=strategies
+        )
+        
+        # Train models
+        results = trainer.train_models(training_data)
+        
+        # Update recommendation engine
+        recommendation_engine.ml_trainer = trainer
+        recommendation_engine._ml_models_loaded = True
+        
+        return jsonify({
+            'success': True,
+            'message': f'Models trained on {len(training_data)} samples',
+            'train_score': results['train_score'],
+            'test_score': results['test_score'],
+            'top_features': dict(sorted(
+                results['feature_importance'].items(),
+                key=lambda x: x[1],
+                reverse=True
+            )[:10])
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Error training models: {str(e)}'
+        }), 500
 
 
 if __name__ == '__main__':

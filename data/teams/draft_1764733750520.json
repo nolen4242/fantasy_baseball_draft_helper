@@ -1,0 +1,116 @@
+{
+  "draft_id": "draft_1764733750520",
+  "league_name": "Bob Uecker League",
+  "total_teams": 13,
+  "roster_size": 21,
+  "my_team_name": "Runtime Terror",
+  "current_pick": 11,
+  "current_round": 1,
+  "picks": [
+    {
+      "pick_number": 1,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "aaron_judge",
+      "timestamp": "2025-12-02T21:49:13.253067"
+    },
+    {
+      "pick_number": 2,
+      "round": 1,
+      "team_name": "Dawg",
+      "player_id": "juan_soto",
+      "timestamp": "2025-12-02T21:49:15.886818"
+    },
+    {
+      "pick_number": 3,
+      "round": 1,
+      "team_name": "Long Balls",
+      "player_id": "corbin_carroll",
+      "timestamp": "2025-12-02T21:49:20.142295"
+    },
+    {
+      "pick_number": 4,
+      "round": 1,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "chandler_simpson",
+      "timestamp": "2025-12-02T21:50:21.321293"
+    },
+    {
+      "pick_number": 5,
+      "round": 1,
+      "team_name": "Young Guns",
+      "player_id": "fernando_tatis_jr",
+      "timestamp": "2025-12-02T21:50:25.761306"
+    },
+    {
+      "pick_number": 6,
+      "round": 1,
+      "team_name": "Gashouse Gang",
+      "player_id": "jose_ramirez",
+      "timestamp": "2025-12-02T21:50:29.883471"
+    },
+    {
+      "pick_number": 7,
+      "round": 1,
+      "team_name": "Magnum GI",
+      "player_id": "shohei_ohtani",
+      "timestamp": "2025-12-02T21:50:31.622545"
+    },
+    {
+      "pick_number": 8,
+      "round": 1,
+      "team_name": "Trex",
+      "player_id": "bobby_witt",
+      "timestamp": "2025-12-02T21:50:32.165649"
+    },
+    {
+      "pick_number": 9,
+      "round": 1,
+      "team_name": "Rieken Havoc",
+      "player_id": "ronald_acuna_jr",
+      "timestamp": "2025-12-02T21:50:33.270633"
+    },
+    {
+      "pick_number": 10,
+      "round": 1,
+      "team_name": "Guillotine",
+      "player_id": "oneil_cruz",
+      "timestamp": "2025-12-02T21:50:40.462102"
+    }
+  ],
+  "team_rosters": {
+    "Runtime Terror": [
+      "aaron_judge"
+    ],
+    "Dawg": [
+      "juan_soto"
+    ],
+    "Long Balls": [
+      "corbin_carroll"
+    ],
+    "Simba's Dublin Green Sox": [
+      "chandler_simpson"
+    ],
+    "Young Guns": [
+      "fernando_tatis_jr"
+    ],
+    "Gashouse Gang": [
+      "jose_ramirez"
+    ],
+    "Magnum GI": [
+      "shohei_ohtani"
+    ],
+    "Trex": [
+      "bobby_witt"
+    ],
+    "Rieken Havoc": [
+      "ronald_acuna_jr"
+    ],
+    "Guillotine": [
+      "oneil_cruz"
+    ],
+    "MAGA DOGE": [],
+    "Big Sticks": [],
+    "Like a Nightmare": []
+  }
+}

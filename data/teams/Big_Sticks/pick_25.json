@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "cristopher_sanchez",
+    "name": "Cristopher Sanchez",
+    "position": "P",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 13.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 192.28,
+    "projected_era": 3.16,
+    "projected_whip": 1.1966666666666665,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 29.0
+  },
+  "pick_info": {
+    "pick_number": 25,
+    "round": 2,
+    "team_name": "Big Sticks"
+  },
+  "position": "P"
+}

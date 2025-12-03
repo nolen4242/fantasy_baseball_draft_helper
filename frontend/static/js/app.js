@@ -101,7 +101,18 @@ class App {
     async refreshDraftStatus() {
         if (!this.currentDraft)
             return;
-        this.renderer.updateDraftStatusBar(this.currentDraft);
+        // Get top recommendation
+        let topRecommendation = null;
+        try {
+            const recommendations = await this.api.getRecommendations();
+            if (recommendations && recommendations.length > 0) {
+                topRecommendation = recommendations[0];
+            }
+        }
+        catch (error) {
+            console.error('Error fetching recommendations:', error);
+        }
+        this.renderer.updateDraftStatusBar(this.currentDraft, topRecommendation);
     }
     async refreshAvailablePlayers() {
         const available = await this.api.getAvailablePlayers();

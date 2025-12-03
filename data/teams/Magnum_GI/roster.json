@@ -29,7 +29,28 @@
       null
     ],
     "U": [
-      null
+      {
+        "player_id": "shohei_ohtani",
+        "name": "Shohei Ohtani",
+        "position": "DH",
+        "team": "LAD",
+        "pick_number": 7,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 43.0,
+          "projected_obp": 0.38,
+          "projected_runs": 119.0,
+          "projected_rbi": 98.0,
+          "projected_stolen_bases": 22.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
       null,
@@ -43,5 +64,118 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "shohei_ohtani",
+      "name": "Shohei Ohtani",
+      "position": "DH",
+      "team": "LAD",
+      "pick_number": 7,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 43.0,
+        "projected_obp": 0.38,
+        "projected_runs": 119.0,
+        "projected_rbi": 98.0,
+        "projected_stolen_bases": 22.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "shohei_ohtani",
+      "name": "Shohei Ohtani",
+      "position": "DH",
+      "team": "LAD",
+      "pick_number": 7,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 43.0,
+        "projected_obp": 0.38,
+        "projected_runs": 119.0,
+        "projected_rbi": 98.0,
+        "projected_stolen_bases": 22.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "yordan_alvarez",
+      "name": "Yordan Alvarez",
+      "position": "DH",
+      "team": "HOU",
+      "pick_number": 20,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.396,
+        "projected_runs": 91.0,
+        "projected_rbi": 85.0,
+        "projected_stolen_bases": 4.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ],
+  "overflow": [
+    {
+      "player_id": "shohei_ohtani",
+      "name": "Shohei Ohtani",
+      "position": "DH",
+      "team": "LAD",
+      "pick_number": 7,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 43.0,
+        "projected_obp": 0.38,
+        "projected_runs": 119.0,
+        "projected_rbi": 98.0,
+        "projected_stolen_bases": 22.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "yordan_alvarez",
+      "name": "Yordan Alvarez",
+      "position": "DH",
+      "team": "HOU",
+      "pick_number": 20,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.396,
+        "projected_runs": 91.0,
+        "projected_rbi": 85.0,
+        "projected_stolen_bases": 4.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

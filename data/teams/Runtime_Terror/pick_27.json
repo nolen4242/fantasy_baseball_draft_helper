@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "chris_sale",
+    "name": "Chris Sale",
+    "position": "P",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 12.0,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 205.204,
+    "projected_era": 3.19,
+    "projected_whip": 1.2066666666666666,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 34.0
+  },
+  "pick_info": {
+    "pick_number": 27,
+    "round": 3,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

@@ -5,7 +5,28 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "bryce_harper",
+        "name": "Bryce Harper",
+        "position": "1B",
+        "team": "PHI",
+        "pick_number": 24,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 27.0,
+          "projected_obp": 0.368,
+          "projected_runs": 81.0,
+          "projected_rbi": 86.0,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -14,7 +35,28 @@
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "gunnar_henderson",
+        "name": "Gunnar Henderson",
+        "position": "SS",
+        "team": "BAL",
+        "pick_number": 11,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 26.0,
+          "projected_obp": 0.356,
+          "projected_runs": 88.0,
+          "projected_rbi": 87.0,
+          "projected_stolen_bases": 21.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
       null
@@ -43,5 +85,50 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "gunnar_henderson",
+      "name": "Gunnar Henderson",
+      "position": "SS",
+      "team": "BAL",
+      "pick_number": 11,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 26.0,
+        "projected_obp": 0.356,
+        "projected_runs": 88.0,
+        "projected_rbi": 87.0,
+        "projected_stolen_bases": 21.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "bryce_harper",
+      "name": "Bryce Harper",
+      "position": "1B",
+      "team": "PHI",
+      "pick_number": 24,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 27.0,
+        "projected_obp": 0.368,
+        "projected_runs": 81.0,
+        "projected_rbi": 86.0,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }
