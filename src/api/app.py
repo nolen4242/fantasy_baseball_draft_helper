@@ -347,6 +347,44 @@ def revert_pick():
     }), 400
 
 
+@app.route('/api/draft/restart', methods=['POST'])
+def restart_draft():
+    """Completely restart the draft - clears all picks and resets all team rosters."""
+    from src.services.cleanup_service import CleanupService
+    
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    # Clean up all team rosters
+    cleanup = CleanupService()
+    cleanup.cleanup_all_team_rosters()
+    
+    # Reset the draft state
+    draft_id = draft_service.current_draft.draft_id
+    league_name = draft_service.current_draft.league_name
+    total_teams = draft_service.current_draft.total_teams
+    roster_size = draft_service.current_draft.roster_size
+    my_team_name = draft_service.current_draft.my_team_name
+    
+    # Create a fresh draft with the same settings
+    new_draft = draft_service.create_draft(
+        draft_id=draft_id,
+        league_name=league_name,
+        total_teams=total_teams,
+        roster_size=roster_size,
+        my_team_name=my_team_name
+    )
+    
+    return jsonify({
+        'success': True,
+        'draft': new_draft.to_dict(),
+        'message': 'Draft restarted - all picks cleared'
+    })
+
+
 @app.route('/api/recommendations', methods=['GET'])
 def get_recommendations():
     """Get AI recommendations for next pick."""

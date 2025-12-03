@@ -122,6 +122,9 @@ class RecommendationEngine:
         score = 0.0
         reasoning_parts = []
         
+        # Determine if player is a pitcher (used multiple times)
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        
         # 1. ML-based value prediction (if available)
         ml_score = 0.0
         if use_ml and self._ml_models_loaded:
@@ -142,7 +145,11 @@ class RecommendationEngine:
         position_score, pos_reasoning = self._analyze_position_scarcity(
             player, my_team, available_players, draft_state, all_team_rosters
         )
-        score += position_score * 0.25
+        # Moderate weight - ADP is important but scarcity matters too
+        if is_pitcher:
+            score += position_score * 0.1  # Slightly reduced for pitchers
+        else:
+            score += position_score * 0.2  # Moderate weight
         if pos_reasoning:
             reasoning_parts.append(pos_reasoning)
         
@@ -150,7 +157,11 @@ class RecommendationEngine:
         needs_score, needs_reasoning = self._analyze_team_needs(
             player, my_team, draft_state, available_players
         )
-        score += needs_score * 0.3
+        # Moderate weight - needs matter but ADP is still important
+        if is_pitcher:
+            score += needs_score * 0.15  # Moderate weight for pitchers
+        else:
+            score += needs_score * 0.25  # Standard weight
         if needs_reasoning:
             reasoning_parts.append(needs_reasoning)
         
@@ -159,7 +170,7 @@ class RecommendationEngine:
             player, available_players
         )
         # Scale value score to be more reasonable (divide by 10 to normalize)
-        score += (value_score / 10) * 0.2
+        score += (value_score / 10) * 0.2  # Standard weight
         if value_reasoning:
             reasoning_parts.append(value_reasoning)
         
@@ -167,7 +178,11 @@ class RecommendationEngine:
         relative_score, relative_reasoning = self._analyze_relative_advantage(
             player, my_team, all_team_rosters, draft_state, available_players
         )
-        score += relative_score * 0.25
+        # Moderate weight
+        if is_pitcher:
+            score += relative_score * 0.1  # Slightly reduced for pitchers
+        else:
+            score += relative_score * 0.2  # Moderate weight
         if relative_reasoning:
             reasoning_parts.append(relative_reasoning)
         
@@ -176,8 +191,49 @@ class RecommendationEngine:
             player, draft_state, available_players
         )
         score += adp_score
+        
+        # Extra ADP penalty for pitchers - they should stay reasonably close to ADP
+        if is_pitcher and player.adp:
+            current_pick = len(draft_state.picks) + 1
+            adp_diff = player.adp - current_pick
+            if adp_diff > 5:  # Pitcher ADP is 5+ picks away
+                extra_penalty = -50 - ((adp_diff - 5) * 10)
+                score += extra_penalty
+                reasoning_parts.append(f"Pitcher ADP penalty: {adp_diff} picks early")
+            elif adp_diff > 3:  # 3-5 picks early gets a small penalty
+                extra_penalty = -20
+                score += extra_penalty
+                reasoning_parts.append(f"Pitcher slightly early: {adp_diff} picks")
+        
         if adp_reasoning:
             reasoning_parts.append(adp_reasoning)
+        
+        # 7. Final check: If we have enough pitchers and this is a pitcher, reduce score
+        # Apply penalty earlier (at 7+ pitchers, not just 9+)
+        if is_pitcher:
+            pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
+            current_pick = len(draft_state.picks) + 1
+            
+            if pitcher_count >= 9:  # Already have enough pitchers
+                # Heavy penalty unless ADP is exceptional (way below current pick)
+                if player.adp and player.adp > current_pick + 10:
+                    score -= 200  # Even heavier penalty
+                    reasoning_parts.append("Already have enough pitchers")
+                elif player.adp and player.adp <= current_pick - 20:
+                    # Exceptional value - allow it but reduce bonus
+                    score -= 50
+                    reasoning_parts.append("Exceptional pitcher value, but roster full")
+                else:
+                    score -= 150
+                    reasoning_parts.append("Roster has enough pitchers")
+            elif pitcher_count >= 7:  # Getting close to enough
+                # Moderate penalty to discourage more pitchers
+                if player.adp and player.adp > current_pick + 5:
+                    score -= 80
+                    reasoning_parts.append("Have 7+ pitchers - prioritize hitters")
+                else:
+                    score -= 40
+                    reasoning_parts.append("Have 7+ pitchers")
         
         # Add ML score
         score += ml_score
@@ -209,37 +265,49 @@ class RecommendationEngine:
         # If we're picking way before their ADP, that's good (negative difference = good)
         # If we're picking way after their ADP, that's bad (positive difference = bad)
         
-        # Early picks (1-50): Heavily penalize players with ADP > current_pick + 20
+        # Early picks (1-50): Moderate ADP enforcement - stay reasonably close to ADP
         if current_pick <= 50:
-            if player_adp > current_pick + 20:
+            if player_adp > current_pick + 15:
                 # Way too early for this player
-                penalty = -300 - ((player_adp - current_pick) * 5)
+                penalty = -400 - ((player_adp - current_pick) * 8)
                 return penalty, f"ADP {player_adp} - WAY TOO EARLY (pick {current_pick})"
-            elif player_adp > current_pick + 10:
-                # Too early
-                penalty = -100 - ((player_adp - current_pick) * 3)
+            elif player_adp > current_pick + 8:
+                # Too early - moderate penalty
+                penalty = -150 - ((player_adp - current_pick) * 5)
                 return penalty, f"ADP {player_adp} - too early (pick {current_pick})"
+            elif player_adp > current_pick + 5:
+                # Slightly early - light penalty
+                penalty = -50 - ((player_adp - current_pick) * 5)
+                return penalty, f"ADP {player_adp} - slightly early (pick {current_pick})"
             elif player_adp < current_pick - 10:
                 # Great value - picking someone who should have gone earlier
                 bonus = 50 + ((current_pick - player_adp) * 2)
                 return bonus, f"ADP {player_adp} - great value!"
-            elif player_adp <= current_pick + 5:
-                # Reasonable range
-                return 0, f"ADP {player_adp} - reasonable"
+            elif player_adp <= current_pick + 5 and player_adp >= current_pick - 8:
+                # Reasonable range (±5 ahead, -8 behind)
+                return 0, f"ADP {player_adp} - at value"
             else:
-                # Slightly early
-                return -30, f"ADP {player_adp} - slightly early"
+                # Outside reasonable range
+                return -20, f"ADP {player_adp} - outside optimal range"
         
-        # Mid picks (51-150): Moderate penalties
+        # Mid picks (51-150): Moderate penalties - stay reasonably close to ADP
         elif current_pick <= 150:
-            if player_adp > current_pick + 30:
-                penalty = -200 - ((player_adp - current_pick) * 3)
+            if player_adp > current_pick + 20:
+                penalty = -250 - ((player_adp - current_pick) * 5)
                 return penalty, f"ADP {player_adp} - too early (pick {current_pick})"
+            elif player_adp > current_pick + 10:
+                penalty = -100 - ((player_adp - current_pick) * 4)
+                return penalty, f"ADP {player_adp} - early (pick {current_pick})"
+            elif player_adp > current_pick + 5:
+                penalty = -40 - ((player_adp - current_pick) * 3)
+                return penalty, f"ADP {player_adp} - slightly early (pick {current_pick})"
             elif player_adp < current_pick - 20:
                 bonus = 30 + ((current_pick - player_adp) * 1.5)
                 return bonus, f"ADP {player_adp} - good value"
+            elif player_adp <= current_pick + 5 and player_adp >= current_pick - 10:
+                return 0, f"ADP {player_adp} - at value"
             else:
-                return 0, f"ADP {player_adp} - reasonable"
+                return -20, f"ADP {player_adp} - outside optimal range"
         
         # Late picks (151+): Less strict
         else:
@@ -344,21 +412,25 @@ class RecommendationEngine:
         if avg_opponent_hitter_ratio < 0.8 and is_hitter:
             score += 30
             reasoning_parts.append(f"Opponents heavy on pitchers ({total_pitchers_drafted} pitchers drafted) - hitters valuable")
-        # If opponents are going heavy hitters, pitchers become more valuable
+        # If opponents are going heavy hitters, pitchers become more valuable (but very conservatively)
         elif avg_opponent_hitter_ratio > 1.5 and is_pitcher:
-            score += 40  # Increased from 20
-            reasoning_parts.append(f"Opponents heavy on hitters ({total_hitters_drafted} hitters drafted) - pitchers valuable")
+            my_pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
+            # Only give bonus if we actually need pitchers (have fewer than 5)
+            if my_pitcher_count < 5:
+                score += 15  # Further reduced from 20
+                reasoning_parts.append(f"Opponents heavy on hitters - pitchers valuable")
+            else:
+                score -= 20  # Penalty if we already have enough pitchers
+                reasoning_parts.append("Have enough pitchers despite opponent strategy")
         
-        # Early draft: If many pitchers already taken, remaining ones are more valuable
+        # Early draft: Very conservative about pitcher runs
         current_pick = len(draft_state.picks) + 1
-        if is_pitcher and current_pick <= 100:
-            if total_pitchers_drafted > 40:
-                score += 30
-                reasoning_parts.append(f"Pitcher run happening ({total_pitchers_drafted} drafted) - get value now")
-            elif total_pitchers_drafted < 20 and current_pick > 50:
-                # Few pitchers taken, might be undervalued
-                score += 25
-                reasoning_parts.append(f"Pitchers undervalued ({total_pitchers_drafted} drafted) - good time to draft")
+        my_pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
+        if is_pitcher and current_pick <= 100 and my_pitcher_count < 4:  # Only if we have < 4
+            if total_pitchers_drafted > 60:  # Even higher threshold
+                score += 15  # Reduced from 20
+                reasoning_parts.append(f"Pitcher run happening ({total_pitchers_drafted} drafted) - consider value")
+            # Remove the "undervalued" bonus - don't encourage early pitcher picks
         
         # Blocking value - prevent opponents from getting this player
         # Check which opponents need this position
@@ -486,19 +558,19 @@ class RecommendationEngine:
                 scarcity_score = 0
                 reasoning = ""
         elif is_pitcher:
-            # Pitchers: Consider how many have been drafted
-            # If many pitchers drafted, remaining ones become more valuable
-            if drafted_at_position > 50:  # Many pitchers already taken
-                scarcity_score = 100
+            # Pitchers: Very conservative scarcity scoring
+            # Pitchers are deep, so scarcity is less important
+            if drafted_at_position > 70:  # Very many pitchers already taken
+                scarcity_score = 50  # Further reduced from 70
                 reasoning = f"Pitcher scarcity: {drafted_at_position} drafted, {available_at_position} left"
-            elif drafted_at_position > 30:
-                scarcity_score = 70
+            elif drafted_at_position > 50:
+                scarcity_score = 35  # Further reduced from 50
                 reasoning = f"Pitcher: {drafted_at_position} drafted, {available_at_position} left"
-            elif scarcity_ratio < 1.0:
-                scarcity_score = 60
+            elif scarcity_ratio < 0.8:  # Only if truly scarce
+                scarcity_score = 25  # Further reduced from 40
                 reasoning = f"Pitcher: {available_at_position} left for {slots_remaining} slots"
             else:
-                scarcity_score = 40
+                scarcity_score = 15  # Further reduced from 25
                 reasoning = f"Pitcher: Deep pool"
         else:
             # Deep positions (OF) - scarcity based on remaining slots
@@ -616,29 +688,41 @@ class RecommendationEngine:
         
         if is_pitcher:
             if pitchers_needed > 0:
-                # Need pitchers - STRONG bonus (pitchers often undervalued)
-                need_score += pitchers_needed * 25  # Increased from 12
+                # Need pitchers - conservative bonus
+                need_score += pitchers_needed * 10  # Further reduced from 15
                 if pitchers_needed > my_picks_remaining / 2:
-                    need_score += 80  # Urgent need (increased from 30)
+                    need_score += 25  # Urgent need (reduced from 40)
                     reasoning_parts.append(f"URGENT: Need {pitchers_needed} more pitchers")
                 elif pitchers_needed > 4:
-                    need_score += 50  # Moderate urgency
+                    need_score += 15  # Moderate urgency (reduced from 25)
                     reasoning_parts.append(f"Need {pitchers_needed} more pitchers")
             else:
-                need_score -= 60  # Don't need more pitchers
+                need_score -= 100  # Don't need more pitchers (stronger penalty)
                 reasoning_parts.append("Have enough pitchers")
         
-        # Early draft: Ensure we get at least some pitchers
+        # Early draft: Encourage getting first pitcher in rounds 2-4 if good value
         current_pick = len(draft_state.picks) + 1
         if current_pick <= 100:
-            # In first ~100 picks, if we have fewer than 3 pitchers, prioritize them
-            if is_pitcher and pitcher_count < 3:
-                need_score += 40
-                reasoning_parts.append(f"Early draft: Building pitcher base ({pitcher_count}/9)")
-            # If we have 0 pitchers by pick 50, URGENT
-            if is_pitcher and pitcher_count == 0 and current_pick > 40:
-                need_score += 100
-                reasoning_parts.append("CRITICAL: No pitchers yet!")
+            # Rounds 2-4 (picks ~14-52): Encourage first pitcher if reasonably near ADP
+            if is_pitcher and pitcher_count == 0:
+                if current_pick >= 14 and current_pick <= 52:
+                    # Check if pitcher is at or reasonably near ADP
+                    if player.adp:
+                        adp_diff = player.adp - current_pick
+                        if adp_diff <= 5 and adp_diff >= -5:  # Within 5 picks of ADP
+                            need_score += 25  # Bonus for good value first pitcher
+                            reasoning_parts.append(f"First pitcher - good value (ADP {player.adp})")
+                        elif adp_diff > 5 and adp_diff <= 8:
+                            need_score += 10  # Small bonus if slightly early
+                            reasoning_parts.append(f"First pitcher - slightly early (ADP {player.adp})")
+                elif current_pick > 52 and current_pick <= 80:
+                    # Mid-draft: moderate bonus for first pitcher
+                    need_score += 20
+                    reasoning_parts.append("No pitchers yet - consider drafting")
+                elif current_pick > 80:
+                    # Late: stronger bonus
+                    need_score += 30
+                    reasoning_parts.append("No pitchers yet - consider drafting")
         
         # MI eligibility (need 1 MI, can be 2B or SS)
         can_fill_mi = player_pos in ['2B', 'SS']

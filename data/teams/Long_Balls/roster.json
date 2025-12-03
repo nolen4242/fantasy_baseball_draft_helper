@@ -11,28 +11,7 @@
       null
     ],
     "3B": [
-      {
-        "player_id": "manny_machado",
-        "name": "Manny Machado",
-        "position": "3B",
-        "team": "SD",
-        "pick_number": 29,
-        "round": 3,
-        "stats": {
-          "projected_home_runs": 26.0,
-          "projected_obp": 0.329,
-          "projected_runs": 75.0,
-          "projected_rbi": 85.0,
-          "projected_stolen_bases": 9.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "SS": [
       null
@@ -44,76 +23,13 @@
       null
     ],
     "OF": [
-      {
-        "player_id": "corbin_carroll",
-        "name": "Corbin Carroll",
-        "position": "OF",
-        "team": "ARI",
-        "pick_number": 3,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 27.0,
-          "projected_obp": 0.349,
-          "projected_runs": 91.0,
-          "projected_rbi": 86.0,
-          "projected_stolen_bases": 33.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      },
-      {
-        "player_id": "ronald_acuna_jr",
-        "name": "Ronald Acuna Jr.",
-        "position": "OF",
-        "team": "ATL",
-        "pick_number": 3,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 29.0,
-          "projected_obp": 0.387,
-          "projected_runs": 94.0,
-          "projected_rbi": 91.0,
-          "projected_stolen_bases": 21.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      },
+      null,
+      null,
       null,
       null
     ],
     "U": [
-      {
-        "player_id": "kyle_schwarber",
-        "name": "Kyle Schwarber",
-        "position": "DH",
-        "team": "PHI",
-        "pick_number": 16,
-        "round": 2,
-        "stats": {
-          "projected_home_runs": 38.0,
-          "projected_obp": 0.351,
-          "projected_runs": 96.0,
-          "projected_rbi": 88.0,
-          "projected_stolen_bases": 7.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "P": [
       null,
@@ -127,94 +43,5 @@
       null
     ]
   },
-  "all_players": [
-    {
-      "player_id": "corbin_carroll",
-      "name": "Corbin Carroll",
-      "position": "OF",
-      "team": "ARI",
-      "pick_number": 3,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 27.0,
-        "projected_obp": 0.349,
-        "projected_runs": 91.0,
-        "projected_rbi": 86.0,
-        "projected_stolen_bases": 33.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "ronald_acuna_jr",
-      "name": "Ronald Acuna Jr.",
-      "position": "OF",
-      "team": "ATL",
-      "pick_number": 3,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 29.0,
-        "projected_obp": 0.387,
-        "projected_runs": 94.0,
-        "projected_rbi": 91.0,
-        "projected_stolen_bases": 21.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "kyle_schwarber",
-      "name": "Kyle Schwarber",
-      "position": "DH",
-      "team": "PHI",
-      "pick_number": 16,
-      "round": 2,
-      "stats": {
-        "projected_home_runs": 38.0,
-        "projected_obp": 0.351,
-        "projected_runs": 96.0,
-        "projected_rbi": 88.0,
-        "projected_stolen_bases": 7.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "manny_machado",
-      "name": "Manny Machado",
-      "position": "3B",
-      "team": "SD",
-      "pick_number": 29,
-      "round": 3,
-      "stats": {
-        "projected_home_runs": 26.0,
-        "projected_obp": 0.329,
-        "projected_runs": 75.0,
-        "projected_rbi": 85.0,
-        "projected_stolen_bases": 9.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    }
-  ]
+  "all_players": []
 }

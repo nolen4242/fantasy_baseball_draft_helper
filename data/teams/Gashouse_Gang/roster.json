@@ -5,55 +5,13 @@
       null
     ],
     "1B": [
-      {
-        "player_id": "pete_alonso",
-        "name": "Pete Alonso",
-        "position": "1B",
-        "team": "NYM",
-        "pick_number": 19,
-        "round": 2,
-        "stats": {
-          "projected_home_runs": 34.0,
-          "projected_obp": 0.335,
-          "projected_runs": 85.0,
-          "projected_rbi": 97.0,
-          "projected_stolen_bases": 3.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "2B": [
       null
     ],
     "3B": [
-      {
-        "player_id": "jose_ramirez",
-        "name": "Jose Ramirez",
-        "position": "3B",
-        "team": "CLE",
-        "pick_number": 6,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 27.0,
-          "projected_obp": 0.348,
-          "projected_runs": 82.0,
-          "projected_rbi": 87.0,
-          "projected_stolen_bases": 30.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "SS": [
       null
@@ -62,28 +20,7 @@
       null
     ],
     "CI": [
-      {
-        "player_id": "jose_ramirez",
-        "name": "Jose Ramirez",
-        "position": "3B",
-        "team": "CLE",
-        "pick_number": 6,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 27.0,
-          "projected_obp": 0.348,
-          "projected_runs": 82.0,
-          "projected_rbi": 87.0,
-          "projected_stolen_bases": 30.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "OF": [
       null,
@@ -106,73 +43,5 @@
       null
     ]
   },
-  "all_players": [
-    {
-      "player_id": "jose_ramirez",
-      "name": "Jose Ramirez",
-      "position": "3B",
-      "team": "CLE",
-      "pick_number": 6,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 27.0,
-        "projected_obp": 0.348,
-        "projected_runs": 82.0,
-        "projected_rbi": 87.0,
-        "projected_stolen_bases": 30.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "jose_ramirez",
-      "name": "Jose Ramirez",
-      "position": "3B",
-      "team": "CLE",
-      "pick_number": 6,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 27.0,
-        "projected_obp": 0.348,
-        "projected_runs": 82.0,
-        "projected_rbi": 87.0,
-        "projected_stolen_bases": 30.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "pete_alonso",
-      "name": "Pete Alonso",
-      "position": "1B",
-      "team": "NYM",
-      "pick_number": 19,
-      "round": 2,
-      "stats": {
-        "projected_home_runs": 34.0,
-        "projected_obp": 0.335,
-        "projected_runs": 85.0,
-        "projected_rbi": 97.0,
-        "projected_stolen_bases": 3.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    }
-  ],
-  "overflow": []
+  "all_players": []
 }

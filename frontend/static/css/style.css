@@ -182,6 +182,15 @@ body {
     background: rgba(255, 255, 255, 0.3);
 }
 
+.btn-small.btn-danger {
+    background: rgba(220, 53, 69, 0.9);
+    border: 1px solid rgba(220, 53, 69, 1);
+}
+
+.btn-small.btn-danger:hover {
+    background: rgba(220, 53, 69, 1);
+}
+
 /* Main Layout */
 .main-layout {
     display: grid;

@@ -1,0 +1,175 @@
+{
+  "draft_id": "draft_1764737158846",
+  "league_name": "Bob Uecker League",
+  "total_teams": 13,
+  "roster_size": 21,
+  "my_team_name": "Runtime Terror",
+  "current_pick": 5,
+  "current_round": 2,
+  "picks": [
+    {
+      "pick_number": 1,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "aaron_judge",
+      "timestamp": "2025-12-02T22:46:09.364571"
+    },
+    {
+      "pick_number": 2,
+      "round": 1,
+      "team_name": "Dawg",
+      "player_id": "juan_soto",
+      "timestamp": "2025-12-02T22:46:10.860370"
+    },
+    {
+      "pick_number": 3,
+      "round": 1,
+      "team_name": "Long Balls",
+      "player_id": "shohei_ohtani",
+      "timestamp": "2025-12-02T22:46:12.521381"
+    },
+    {
+      "pick_number": 4,
+      "round": 1,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "bobby_witt",
+      "timestamp": "2025-12-02T22:46:13.875305"
+    },
+    {
+      "pick_number": 5,
+      "round": 1,
+      "team_name": "Young Guns",
+      "player_id": "corbin_carroll",
+      "timestamp": "2025-12-02T22:46:15.528387"
+    },
+    {
+      "pick_number": 6,
+      "round": 1,
+      "team_name": "Gashouse Gang",
+      "player_id": "ronald_acuna_jr",
+      "timestamp": "2025-12-02T22:46:17.768785"
+    },
+    {
+      "pick_number": 7,
+      "round": 1,
+      "team_name": "Magnum GI",
+      "player_id": "jose_ramirez",
+      "timestamp": "2025-12-02T22:46:19.273052"
+    },
+    {
+      "pick_number": 8,
+      "round": 1,
+      "team_name": "Trex",
+      "player_id": "fernando_tatis_jr",
+      "timestamp": "2025-12-02T22:46:21.211734"
+    },
+    {
+      "pick_number": 9,
+      "round": 1,
+      "team_name": "Rieken Havoc",
+      "player_id": "julio_rodriguez",
+      "timestamp": "2025-12-02T22:46:23.260637"
+    },
+    {
+      "pick_number": 10,
+      "round": 1,
+      "team_name": "Guillotine",
+      "player_id": "tarik_skubal",
+      "timestamp": "2025-12-02T22:46:24.666052"
+    },
+    {
+      "pick_number": 11,
+      "round": 1,
+      "team_name": "MAGA DOGE",
+      "player_id": "francisco_lindor",
+      "timestamp": "2025-12-02T22:46:26.109725"
+    },
+    {
+      "pick_number": 12,
+      "round": 1,
+      "team_name": "Big Sticks",
+      "player_id": "gunnar_henderson",
+      "timestamp": "2025-12-02T22:46:27.379124"
+    },
+    {
+      "pick_number": 13,
+      "round": 1,
+      "team_name": "Like a Nightmare",
+      "player_id": "paul_skenes",
+      "timestamp": "2025-12-02T22:46:30.085165"
+    },
+    {
+      "pick_number": 14,
+      "round": 2,
+      "team_name": "Runtime Terror",
+      "player_id": "kyle_tucker",
+      "timestamp": "2025-12-02T22:46:32.388061"
+    },
+    {
+      "pick_number": 15,
+      "round": 2,
+      "team_name": "Dawg",
+      "player_id": "elly_de_la_cruz",
+      "timestamp": "2025-12-02T22:46:34.848301"
+    },
+    {
+      "pick_number": 16,
+      "round": 2,
+      "team_name": "Long Balls",
+      "player_id": "garrett_crochet",
+      "timestamp": "2025-12-02T22:46:37.084282"
+    },
+    {
+      "pick_number": 17,
+      "round": 2,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "junior_caminero",
+      "timestamp": "2025-12-02T22:46:39.052132"
+    }
+  ],
+  "team_rosters": {
+    "Runtime Terror": [
+      "aaron_judge",
+      "kyle_tucker"
+    ],
+    "Dawg": [
+      "juan_soto",
+      "elly_de_la_cruz"
+    ],
+    "Long Balls": [
+      "shohei_ohtani",
+      "garrett_crochet"
+    ],
+    "Simba's Dublin Green Sox": [
+      "bobby_witt",
+      "junior_caminero"
+    ],
+    "Young Guns": [
+      "corbin_carroll"
+    ],
+    "Gashouse Gang": [
+      "ronald_acuna_jr"
+    ],
+    "Magnum GI": [
+      "jose_ramirez"
+    ],
+    "Trex": [
+      "fernando_tatis_jr"
+    ],
+    "Rieken Havoc": [
+      "julio_rodriguez"
+    ],
+    "Guillotine": [
+      "tarik_skubal"
+    ],
+    "MAGA DOGE": [
+      "francisco_lindor"
+    ],
+    "Big Sticks": [
+      "gunnar_henderson"
+    ],
+    "Like a Nightmare": [
+      "paul_skenes"
+    ]
+  }
+}

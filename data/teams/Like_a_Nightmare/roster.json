@@ -5,28 +5,7 @@
       null
     ],
     "1B": [
-      {
-        "player_id": "freddie_freeman",
-        "name": "Freddie Freeman",
-        "position": "1B",
-        "team": "LAD",
-        "pick_number": 26,
-        "round": 2,
-        "stats": {
-          "projected_home_runs": 24.0,
-          "projected_obp": 0.362,
-          "projected_runs": 88.0,
-          "projected_rbi": 92.0,
-          "projected_stolen_bases": 7.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "2B": [
       null
@@ -44,28 +23,7 @@
       null
     ],
     "OF": [
-      {
-        "player_id": "kyle_tucker",
-        "name": "Kyle Tucker",
-        "position": "OF",
-        "team": "CHC",
-        "pick_number": 13,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 24.0,
-          "projected_obp": 0.371,
-          "projected_runs": 83.0,
-          "projected_rbi": 74.0,
-          "projected_stolen_bases": 18.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      },
+      null,
       null,
       null,
       null
@@ -85,50 +43,5 @@
       null
     ]
   },
-  "all_players": [
-    {
-      "player_id": "kyle_tucker",
-      "name": "Kyle Tucker",
-      "position": "OF",
-      "team": "CHC",
-      "pick_number": 13,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 24.0,
-        "projected_obp": 0.371,
-        "projected_runs": 83.0,
-        "projected_rbi": 74.0,
-        "projected_stolen_bases": 18.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "freddie_freeman",
-      "name": "Freddie Freeman",
-      "position": "1B",
-      "team": "LAD",
-      "pick_number": 26,
-      "round": 2,
-      "stats": {
-        "projected_home_runs": 24.0,
-        "projected_obp": 0.362,
-        "projected_runs": 88.0,
-        "projected_rbi": 92.0,
-        "projected_stolen_bases": 7.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    }
-  ]
+  "all_players": []
 }

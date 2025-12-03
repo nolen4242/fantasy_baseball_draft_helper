@@ -14,79 +14,16 @@
       null
     ],
     "SS": [
-      {
-        "player_id": "bobby_witt",
-        "name": "Bobby Witt",
-        "position": "SS",
-        "team": "KC",
-        "pick_number": 8,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 26.0,
-          "projected_obp": 0.349,
-          "projected_runs": 97.0,
-          "projected_rbi": 86.0,
-          "projected_stolen_bases": 31.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "MI": [
-      {
-        "player_id": "bobby_witt",
-        "name": "Bobby Witt",
-        "position": "SS",
-        "team": "KC",
-        "pick_number": 8,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 26.0,
-          "projected_obp": 0.349,
-          "projected_runs": 97.0,
-          "projected_rbi": 86.0,
-          "projected_stolen_bases": 31.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "CI": [
       null
     ],
     "OF": [
-      {
-        "player_id": "jackson_chourio",
-        "name": "Jackson Chourio",
-        "position": "OF",
-        "team": "MIL",
-        "pick_number": 21,
-        "round": 2,
-        "stats": {
-          "projected_home_runs": 24.0,
-          "projected_obp": 0.319,
-          "projected_runs": 84.0,
-          "projected_rbi": 74.0,
-          "projected_stolen_bases": 22.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      },
+      null,
       null,
       null,
       null
@@ -106,72 +43,5 @@
       null
     ]
   },
-  "all_players": [
-    {
-      "player_id": "bobby_witt",
-      "name": "Bobby Witt",
-      "position": "SS",
-      "team": "KC",
-      "pick_number": 8,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 26.0,
-        "projected_obp": 0.349,
-        "projected_runs": 97.0,
-        "projected_rbi": 86.0,
-        "projected_stolen_bases": 31.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "bobby_witt",
-      "name": "Bobby Witt",
-      "position": "SS",
-      "team": "KC",
-      "pick_number": 8,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 26.0,
-        "projected_obp": 0.349,
-        "projected_runs": 97.0,
-        "projected_rbi": 86.0,
-        "projected_stolen_bases": 31.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "jackson_chourio",
-      "name": "Jackson Chourio",
-      "position": "OF",
-      "team": "MIL",
-      "pick_number": 21,
-      "round": 2,
-      "stats": {
-        "projected_home_runs": 24.0,
-        "projected_obp": 0.319,
-        "projected_runs": 84.0,
-        "projected_rbi": 74.0,
-        "projected_stolen_bases": 22.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    }
-  ]
+  "all_players": []
 }

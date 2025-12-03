@@ -123,5 +123,17 @@ export class ApiClient {
         }
         return data.draft;
     }
+
+    async restartDraft(): Promise<DraftState> {
+        const response = await fetch(`${API_BASE}/api/draft/restart`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message || 'Failed to restart draft');
+        }
+        return data.draft;
+    }
 }
 

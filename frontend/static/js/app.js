@@ -27,6 +27,7 @@ class App {
         // Load data buttons (optional - for manual reload)
         document.getElementById('load-cbs-btn')?.addEventListener('click', () => this.loadCBSData());
         document.getElementById('load-steamer-btn')?.addEventListener('click', () => this.loadSteamerFiles());
+        document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
         // Search and filter
         document.getElementById('player-search')?.addEventListener('input', () => this.filterPlayers());
         document.getElementById('position-filter')?.addEventListener('change', () => this.filterPlayers());
@@ -83,6 +84,21 @@ class App {
         catch (error) {
             console.error('Error loading Steamer files:', error);
             alert('Error loading Steamer files');
+        }
+    }
+    async restartDraft() {
+        if (!confirm('Are you sure you want to restart the draft? This will clear ALL picks and reset all team rosters.')) {
+            return;
+        }
+        try {
+            const draft = await this.api.restartDraft();
+            this.currentDraft = draft;
+            await this.refreshAll();
+            alert('Draft restarted successfully! All picks have been cleared.');
+        }
+        catch (error) {
+            console.error('Error restarting draft:', error);
+            alert('Error restarting draft: ' + (error instanceof Error ? error.message : 'Unknown error'));
         }
     }
     async refreshAll() {

@@ -2,28 +2,7 @@
   "team_name": "Young Guns",
   "positions": {
     "C": [
-      {
-        "player_id": "cal_raleigh",
-        "name": "Cal Raleigh",
-        "position": "C",
-        "team": "SEA",
-        "pick_number": 18,
-        "round": 2,
-        "stats": {
-          "projected_home_runs": 38.0,
-          "projected_obp": 0.331,
-          "projected_runs": 88.0,
-          "projected_rbi": 91.0,
-          "projected_stolen_bases": 8.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "1B": [
       null
@@ -35,28 +14,7 @@
       null
     ],
     "SS": [
-      {
-        "player_id": "mookie_betts",
-        "name": "Mookie Betts",
-        "position": "SS",
-        "team": "LAD",
-        "pick_number": 31,
-        "round": 3,
-        "stats": {
-          "projected_home_runs": 21.0,
-          "projected_obp": 0.355,
-          "projected_runs": 84.0,
-          "projected_rbi": 71.0,
-          "projected_stolen_bases": 8.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      }
+      null
     ],
     "MI": [
       null
@@ -65,50 +23,8 @@
       null
     ],
     "OF": [
-      {
-        "player_id": "fernando_tatis_jr",
-        "name": "Fernando Tatis Jr.",
-        "position": "OF",
-        "team": "SD",
-        "pick_number": 5,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 30.0,
-          "projected_obp": 0.36,
-          "projected_runs": 97.0,
-          "projected_rbi": 78.0,
-          "projected_stolen_bases": 24.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      },
-      {
-        "player_id": "fernando_tatis_jr",
-        "name": "Fernando Tatis Jr.",
-        "position": "OF",
-        "team": "SD",
-        "pick_number": 5,
-        "round": 1,
-        "stats": {
-          "projected_home_runs": 30.0,
-          "projected_obp": 0.36,
-          "projected_runs": 97.0,
-          "projected_rbi": 78.0,
-          "projected_stolen_bases": 24.0,
-          "projected_wins": null,
-          "projected_quality_starts": null,
-          "projected_strikeouts": null,
-          "projected_era": null,
-          "projected_whip": null,
-          "projected_saves": null,
-          "projected_holds": null
-        }
-      },
+      null,
+      null,
       null,
       null
     ],
@@ -127,94 +43,5 @@
       null
     ]
   },
-  "all_players": [
-    {
-      "player_id": "fernando_tatis_jr",
-      "name": "Fernando Tatis Jr.",
-      "position": "OF",
-      "team": "SD",
-      "pick_number": 5,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 30.0,
-        "projected_obp": 0.36,
-        "projected_runs": 97.0,
-        "projected_rbi": 78.0,
-        "projected_stolen_bases": 24.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "fernando_tatis_jr",
-      "name": "Fernando Tatis Jr.",
-      "position": "OF",
-      "team": "SD",
-      "pick_number": 5,
-      "round": 1,
-      "stats": {
-        "projected_home_runs": 30.0,
-        "projected_obp": 0.36,
-        "projected_runs": 97.0,
-        "projected_rbi": 78.0,
-        "projected_stolen_bases": 24.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "cal_raleigh",
-      "name": "Cal Raleigh",
-      "position": "C",
-      "team": "SEA",
-      "pick_number": 18,
-      "round": 2,
-      "stats": {
-        "projected_home_runs": 38.0,
-        "projected_obp": 0.331,
-        "projected_runs": 88.0,
-        "projected_rbi": 91.0,
-        "projected_stolen_bases": 8.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    },
-    {
-      "player_id": "mookie_betts",
-      "name": "Mookie Betts",
-      "position": "SS",
-      "team": "LAD",
-      "pick_number": 31,
-      "round": 3,
-      "stats": {
-        "projected_home_runs": 21.0,
-        "projected_obp": 0.355,
-        "projected_runs": 84.0,
-        "projected_rbi": 71.0,
-        "projected_stolen_bases": 8.0,
-        "projected_wins": null,
-        "projected_quality_starts": null,
-        "projected_strikeouts": null,
-        "projected_era": null,
-        "projected_whip": null,
-        "projected_saves": null,
-        "projected_holds": null
-      }
-    }
-  ]
+  "all_players": []
 }
