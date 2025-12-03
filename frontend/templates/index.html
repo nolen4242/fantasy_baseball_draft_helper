@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Baseball Draft Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Main Application -->
+    <div id="app">
+        <!-- Top Draft Status Bar -->
+        <div class="draft-status-bar">
+            <div class="draft-status-content">
+                <div class="current-pick">
+                    <span class="label">Current Pick:</span>
+                    <span id="current-pick-team" class="team-name">-</span>
+                    <span id="current-pick-round" class="round-info">Round -</span>
+                </div>
+                <div class="next-pick">
+                    <span class="label">Next Up:</span>
+                    <span id="next-pick-team" class="team-name">-</span>
+                </div>
+                <div class="draft-progress">
+                    <span id="draft-progress-text">Pick 0 of 0</span>
+                </div>
+                <div class="draft-actions">
+                    <button id="load-cbs-btn" class="btn-small" title="Reload CBS Data">Reload CBS</button>
+                    <button id="load-steamer-btn" class="btn-small" title="Reload Steamer Projections">Reload Steamer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-layout">
+            <!-- Left: Available Players -->
+            <div class="panel available-players-panel">
+                <div class="panel-header">
+                    <h2>Available Players</h2>
+                    <div class="search-controls">
+                        <input type="text" id="player-search" placeholder="Search players..." class="search-input">
+                        <select id="position-filter" class="position-filter">
+                            <option value="">All Positions</option>
+                            <option value="C">C</option>
+                            <option value="1B">1B</option>
+                            <option value="2B">2B</option>
+                            <option value="3B">3B</option>
+                            <option value="SS">SS</option>
+                            <option value="MI">MI</option>
+                            <option value="CI">CI</option>
+                            <option value="OF">OF</option>
+                            <option value="U">U</option>
+                            <option value="SP">SP</option>
+                            <option value="RP">RP</option>
+                            <option value="P">P</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="available-players-list" class="players-list"></div>
+            </div>
+
+            <!-- Center-Left: My Team -->
+            <div class="panel my-team-panel">
+                <div class="panel-header">
+                    <h2 id="my-team-name-header">My Team</h2>
+                </div>
+                <div id="my-team-roster" class="team-roster">
+                    <!-- Position slots will be generated here -->
+                </div>
+            </div>
+
+            <!-- Center-Right: Recent Picks -->
+            <div class="panel recent-picks-panel">
+                <div class="panel-header">
+                    <h2>Recent Picks</h2>
+                </div>
+                <div id="recent-picks-list" class="picks-list"></div>
+            </div>
+
+            <!-- Far Right: Other Teams -->
+            <div class="panel other-teams-panel">
+                <div class="panel-header">
+                    <h2>Other Teams</h2>
+                </div>
+                <div id="other-teams-list" class="teams-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

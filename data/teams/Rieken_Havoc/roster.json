@@ -1,0 +1,47 @@
+{
+  "team_name": "Rieken Havoc",
+  "positions": {
+    "C": [
+      null
+    ],
+    "1B": [
+      null
+    ],
+    "2B": [
+      null
+    ],
+    "3B": [
+      null
+    ],
+    "SS": [
+      null
+    ],
+    "MI": [
+      null
+    ],
+    "CI": [
+      null
+    ],
+    "OF": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "U": [
+      null
+    ],
+    "P": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "all_players": []
+}
