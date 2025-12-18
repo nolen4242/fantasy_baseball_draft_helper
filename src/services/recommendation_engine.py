@@ -113,7 +113,28 @@ class RecommendationEngine:
             if pitcher not in players_to_evaluate:
                 players_to_evaluate.append(pitcher)
         
+        # Filter out players that don't have available roster slots
+        players_with_slots = []
         for player in players_to_evaluate:
+            if self.team_service.has_available_slot_for_player(team_name, player):
+                players_with_slots.append(player)
+        
+        # If we don't have enough players with available slots, expand search
+        if len(players_with_slots) < top_n * 2:
+            # Expand to more players and filter again
+            expanded_evaluate = sorted_available[:300]  # Check top 300
+            for player in expanded_evaluate:
+                if player not in players_to_evaluate:
+                    if self.team_service.has_available_slot_for_player(team_name, player):
+                        players_with_slots.append(player)
+                        if len(players_with_slots) >= top_n * 3:  # Get at least 3x top_n options
+                            break
+        
+        # If no players have available slots, return empty recommendations
+        if not players_with_slots:
+            return []
+        
+        for player in players_with_slots:
             score, reasoning = self._calculate_player_value(
                 player, team_players, available_players, draft_state, all_team_rosters, use_ml, team_name
             )

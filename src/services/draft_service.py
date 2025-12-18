@@ -121,7 +121,8 @@ class DraftService:
         
         draft.add_pick(pick)
         
-        # Check if draft is now complete after this pick
+        # Re-check if draft is now complete after this pick
+        # This ensures is_complete is accurate based on position requirements
         draft.is_complete = draft.is_draft_complete()
         
         self.save_draft(draft)

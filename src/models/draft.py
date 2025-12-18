@@ -52,28 +52,56 @@ class DraftState:
     def is_draft_complete(self) -> bool:
         """
         Check if draft is complete (all teams have filled rosters AND all required positions).
-        Note: This checks total player count, but teams may still need to fill specific positions.
+        Verifies:
+        1. All teams have roster_size players (21)
+        2. All teams have all required positions filled
+        3. Total picks equals total_teams * roster_size
         """
-        # Check total picks - should be total_teams * roster_size
-        total_expected_picks = self.total_teams * self.roster_size
-        if len(self.picks) >= total_expected_picks:
-            # Even if we have enough picks, allow drafting to continue if teams need positions
-            # The draft can be "complete" but still allow position-filling picks
-            return True
+        from src.services.team_service import TeamService
+        from src.services.draft_order import DraftOrder
         
-        # Also verify all teams have reached roster size (double-check)
+        # First check: Total picks should equal total_teams * roster_size
+        total_expected_picks = self.total_teams * self.roster_size
+        if len(self.picks) < total_expected_picks:
+            return False
+        
+        # Second check: All teams should have roster_size players
         if self.team_rosters:
             for team_name, player_ids in self.team_rosters.items():
                 if len(player_ids) < self.roster_size:
                     return False
-            # If we get here, all teams are full
-            return True
         
-        return False
+        # Third check: All teams have all required positions filled
+        team_service = TeamService()
+        required_positions = TeamService.POSITION_REQUIREMENTS
+        all_teams = DraftOrder.get_all_teams()
+        
+        for team_name in all_teams:
+            # Get team roster
+            roster = team_service.get_team_roster(team_name)
+            if not roster or 'positions' not in roster:
+                return False  # Team doesn't have a roster structure
+            
+            positions = roster['positions']
+            
+            # Check each required position (excluding BENCH as it's optional)
+            for pos, required_count in required_positions.items():
+                if pos == 'BENCH':  # Skip bench - it's optional
+                    continue
+                
+                # Count filled slots for this position
+                filled_count = sum(1 for slot in positions.get(pos, []) if slot is not None)
+                
+                if filled_count < required_count:
+                    return False  # Team is missing required position
+        
+        # All checks passed - draft is complete
+        return True
     
     def to_dict(self):
         """Convert draft state to dictionary."""
-        # Update is_complete status
+        # Always re-check completion status before returning
+        # This ensures is_complete reflects current position requirements
         self.is_complete = self.is_draft_complete()
         
         return {
