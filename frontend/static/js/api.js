@@ -58,7 +58,10 @@ export class ApiClient {
             body: JSON.stringify({ player_id: playerId, team_name: teamName })
         });
         const data = await response.json();
-        return data.draft;
+        if (!data.success) {
+            throw new Error(data.message || 'Failed to make pick');
+        }
+        return { ...data.draft, is_complete: data.draft_complete || false };
     }
     async getAvailablePlayers() {
         const response = await fetch(`${API_BASE}/api/draft/available`);
@@ -68,7 +71,29 @@ export class ApiClient {
     async getMyTeam() {
         const response = await fetch(`${API_BASE}/api/draft/my-team`);
         const data = await response.json();
-        return data.players || [];
+        return {
+            players: data.players || [],
+            roster: data.roster || null
+        };
+    }
+    async movePlayerPosition(playerId, fromPosition, fromIndex, toPosition, toIndex, teamName) {
+        const response = await fetch(`${API_BASE}/api/draft/move-player`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                player_id: playerId,
+                from_position: fromPosition,
+                from_index: fromIndex,
+                to_position: toPosition,
+                to_index: toIndex,
+                team_name: teamName
+            })
+        });
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message || 'Failed to move player');
+        }
+        return data;
     }
     async getTeam(teamName) {
         const response = await fetch(`${API_BASE}/api/draft/team/${encodeURIComponent(teamName)}`);
@@ -102,6 +127,30 @@ export class ApiClient {
             throw new Error(data.message || 'Failed to restart draft');
         }
         return data.draft;
+    }
+    async toggleAutoDraft(enabled) {
+        const response = await fetch(`${API_BASE}/api/draft/auto-draft/toggle`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enabled })
+        });
+        return response.json();
+    }
+    async getAutoDraftStatus() {
+        const response = await fetch(`${API_BASE}/api/draft/auto-draft/status`);
+        return response.json();
+    }
+    async makeAutoDraftPick(teamName) {
+        const response = await fetch(`${API_BASE}/api/draft/auto-draft/pick`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ team_name: teamName })
+        });
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message || 'Failed to make auto-draft pick');
+        }
+        return data;
     }
 }
 //# sourceMappingURL=api.js.map

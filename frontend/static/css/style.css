@@ -191,6 +191,26 @@ body {
     background: rgba(220, 53, 69, 1);
 }
 
+.btn-small.btn-auto-draft {
+    background: rgba(255, 193, 7, 0.3);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    font-weight: 700;
+}
+
+.btn-small.btn-auto-draft:hover {
+    background: rgba(255, 193, 7, 0.5);
+}
+
+.btn-small.btn-auto-draft.btn-active {
+    background: rgba(40, 167, 69, 0.9);
+    border: 1px solid rgba(40, 167, 69, 1);
+    color: white;
+}
+
+.btn-small.btn-auto-draft.btn-active:hover {
+    background: rgba(40, 167, 69, 1);
+}
+
 /* Main Layout */
 .main-layout {
     display: grid;
@@ -345,6 +365,17 @@ body {
     background: #003366;
 }
 
+.draft-btn-disabled {
+    background: #cccccc !important;
+    color: #666666 !important;
+    cursor: not-allowed !important;
+    border-color: #cccccc !important;
+}
+
+.draft-btn-disabled:hover {
+    background: #cccccc !important;
+}
+
 /* My Team Panel */
 .my-team-panel {
     overflow-y: auto;
@@ -402,6 +433,32 @@ body {
 .position-slot.filled {
     background: rgba(0, 31, 63, 0.05);
     border: 1px solid #001f3f;
+}
+
+/* Drag and Drop Styles */
+.position-slot.draggable {
+    cursor: move;
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.position-slot.draggable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 31, 63, 0.3);
+}
+
+.position-slot.draggable:active {
+    cursor: grabbing;
+}
+
+.position-slot.droppable {
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.position-slot.droppable.drag-over {
+    background: rgba(50, 205, 50, 0.2);
+    border: 2px solid #32cd32;
+    border-style: dashed;
 }
 
 .slot-player-name {

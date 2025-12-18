@@ -21,6 +21,7 @@ class DraftService:
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.current_draft: Optional[DraftState] = None
         self.team_service = TeamService()
+        self.auto_draft_enabled: bool = False  # Auto-draft toggle state
     
     def create_draft(
         self,
@@ -85,6 +86,31 @@ class DraftService:
         if draft is None:
             return False
         
+        # Check if this team's roster is already full
+        team_roster_size = len(draft.team_rosters.get(team_name, []))
+        if team_roster_size >= draft.roster_size:
+            # Even if roster is full, allow drafting if required positions aren't filled
+            # Check if team has unfilled required positions
+            from src.services.team_service import TeamService
+            team_service = TeamService()
+            roster = team_service.get_team_roster(team_name)
+            if roster and 'positions' in roster:
+                # Check if any required position is empty
+                required_positions = TeamService.POSITION_REQUIREMENTS
+                for pos, required_count in required_positions.items():
+                    if pos == 'BENCH':  # Skip bench - it's optional
+                        continue
+                    filled_count = sum(1 for slot in roster['positions'].get(pos, []) if slot is not None)
+                    if filled_count < required_count:
+                        # Team has unfilled required position - allow drafting
+                        break
+                else:
+                    # All required positions are filled - team is truly full
+                    return False
+            else:
+                # Can't check positions, but roster size is full - don't allow more picks
+                return False
+        
         # Create pick
         pick = DraftPick(
             pick_number=len(draft.picks) + 1,
@@ -94,6 +120,10 @@ class DraftService:
         )
         
         draft.add_pick(pick)
+        
+        # Check if draft is now complete after this pick
+        draft.is_complete = draft.is_draft_complete()
+        
         self.save_draft(draft)
         
         # Save to team folder if we have player data
@@ -201,4 +231,12 @@ class DraftService:
         self.save_draft(draft)
         
         return True
+    
+    def set_auto_draft(self, enabled: bool):
+        """Enable or disable auto-draft mode."""
+        self.auto_draft_enabled = enabled
+    
+    def is_auto_draft_enabled(self) -> bool:
+        """Check if auto-draft is enabled."""
+        return self.auto_draft_enabled
 

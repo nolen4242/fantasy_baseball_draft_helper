@@ -43,6 +43,7 @@ export interface DraftState {
     current_round: number;
     picks: DraftPick[];
     team_rosters: { [teamName: string]: string[] };
+    is_complete?: boolean;
 }
 
 export interface Recommendation {
@@ -54,5 +55,19 @@ export interface Recommendation {
 export interface TeamRoster {
     teamName: string;
     players: Player[];
+}
+
+export interface RosterPosition {
+    [position: string]: (PlayerEntry | null)[];
+}
+
+export interface PlayerEntry {
+    player_id: string;
+    name: string;
+    position: string;
+    team: string;
+    pick_number?: number;
+    round?: number;
+    stats?: any;
 }
 

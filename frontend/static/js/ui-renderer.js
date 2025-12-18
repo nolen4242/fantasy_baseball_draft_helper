@@ -1,4 +1,8 @@
+import { ApiClient } from './api.js';
 export class UIRenderer {
+    constructor(api) {
+        this.api = api || new ApiClient();
+    }
     updateDraftStatusBar(draft, recommendation) {
         const currentPickEl = document.getElementById('current-pick-team');
         const currentRoundEl = document.getElementById('current-pick-round');
@@ -8,6 +12,10 @@ export class UIRenderer {
         const recommendedPositionEl = document.getElementById('recommended-player-position');
         if (!currentPickEl || !currentRoundEl || !nextPickEl || !progressEl)
             return;
+        // Check if draft is complete
+        const isComplete = draft.is_complete || false;
+        const totalPicks = draft.total_teams * draft.roster_size;
+        const picksMade = draft.picks.length;
         // Calculate whose turn it is using Bob Uecker League draft order
         const pickNumber = draft.picks.length + 1;
         const round = Math.floor((pickNumber - 1) / draft.total_teams) + 1;
@@ -64,13 +72,29 @@ export class UIRenderer {
                 nextTeam = teamOrder[nextPickInRound - 1];
             }
         }
-        currentPickEl.textContent = currentTeam;
-        currentRoundEl.textContent = `Round ${round}, Pick ${pickInRound}`;
-        nextPickEl.textContent = nextTeam;
-        progressEl.textContent = `Pick ${pickNumber} of ${draft.total_teams * draft.roster_size}`;
+        if (isComplete) {
+            currentPickEl.textContent = 'DRAFT COMPLETE';
+            currentRoundEl.textContent = `All ${totalPicks} picks made`;
+            nextPickEl.textContent = '-';
+            progressEl.textContent = `Draft Complete: ${picksMade}/${totalPicks} picks`;
+            progressEl.style.color = '#32cd32';
+            progressEl.style.fontWeight = '700';
+        }
+        else {
+            currentPickEl.textContent = currentTeam;
+            currentRoundEl.textContent = `Round ${round}, Pick ${pickInRound}`;
+            nextPickEl.textContent = nextTeam;
+            progressEl.textContent = `Pick ${pickNumber} of ${totalPicks}`;
+            progressEl.style.color = '';
+            progressEl.style.fontWeight = '';
+        }
         // Update recommended player
         if (recommendedPlayerEl && recommendedPositionEl) {
-            if (recommendation && recommendation.player) {
+            if (isComplete) {
+                recommendedPlayerEl.textContent = 'Draft Complete';
+                recommendedPositionEl.textContent = '-';
+            }
+            else if (recommendation && recommendation.player) {
                 recommendedPlayerEl.textContent = recommendation.player.name;
                 recommendedPositionEl.textContent = recommendation.player.position || '-';
             }
@@ -80,10 +104,14 @@ export class UIRenderer {
             }
         }
     }
-    renderAvailablePlayers(players, onDraft) {
+    renderAvailablePlayers(players, onDraft, draftComplete = false) {
         const container = document.getElementById('available-players-list');
         if (!container)
             return;
+        if (draftComplete) {
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #32cd32; font-weight: 700;">Draft Complete - All Roster Spots Filled</div>';
+            return;
+        }
         const searchTerm = document.getElementById('player-search')?.value.toLowerCase() || '';
         const positionFilter = document.getElementById('position-filter')?.value || '';
         const filtered = players.filter(p => {
@@ -92,11 +120,13 @@ export class UIRenderer {
             const matchesPosition = !positionFilter || p.position === positionFilter;
             return matchesSearch && matchesPosition;
         });
-        container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft)).join('');
+        container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete)).join('');
     }
-    renderPlayerCard(player, onDraft) {
+    renderPlayerCard(player, onDraft, draftComplete = false) {
         const stats = this.getPlayerStats(player);
         const adpDisplay = player.adp ? `<span class="adp-badge">ADP: ${player.adp.toFixed(1)}</span>` : '';
+        const draftButtonDisabled = draftComplete ? 'disabled' : '';
+        const draftButtonClass = draftComplete ? 'draft-btn draft-btn-disabled' : 'draft-btn';
         return `
             <div class="player-card" data-player-id="${player.player_id}">
                 <div class="player-header">
@@ -108,18 +138,18 @@ export class UIRenderer {
                 </div>
                 <div class="player-team">${player.team}</div>
                 <div class="player-stats">${stats}</div>
-                <button class="draft-btn" onclick="window.draftPlayer('${player.player_id}')">Draft</button>
+                <button class="${draftButtonClass}" onclick="window.draftPlayer('${player.player_id}')" ${draftButtonDisabled}>${draftComplete ? 'Draft Complete' : 'Draft'}</button>
             </div>
         `;
     }
-    renderMyTeam(teamName, players, draft) {
+    renderMyTeam(teamName, players, draft, roster = null) {
         const header = document.getElementById('my-team-name-header');
         const container = document.getElementById('my-team-roster');
         if (!container)
             return;
         if (header)
             header.textContent = teamName;
-        // Bob Uecker League positions: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P
+        // Bob Uecker League positions: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
         const positions = [
             { pos: 'C', count: 1 },
             { pos: '1B', count: 1 },
@@ -130,30 +160,157 @@ export class UIRenderer {
             { pos: 'CI', count: 1 },
             { pos: 'OF', count: 4 },
             { pos: 'U', count: 1 },
-            { pos: 'P', count: 9 }
+            { pos: 'P', count: 9 },
+            { pos: 'BENCH', count: 1 }
         ];
         let html = '<div class="position-slots">';
+        // Use roster structure if available, otherwise fall back to old logic
+        const rosterPositions = roster?.positions || {};
+        const hasRosterData = roster && Object.keys(rosterPositions).length > 0;
+        // If no roster data, build a simple mapping from players
+        let playerPositionMap = {};
+        if (!hasRosterData && players.length > 0) {
+            // Fallback: group players by their primary position
+            for (const player of players) {
+                const pos = player.position;
+                if (!playerPositionMap[pos]) {
+                    playerPositionMap[pos] = [];
+                }
+                playerPositionMap[pos].push(player);
+            }
+        }
         for (const { pos, count } of positions) {
             html += `<div class="position-group">
                 <div class="position-label">${pos} (${count})</div>
                 <div class="position-slots-container" data-position="${pos}">`;
-            const positionPlayers = players.filter(p => this.playerFillsPosition(p, pos));
+            const positionSlots = rosterPositions[pos] || [];
             for (let i = 0; i < count; i++) {
-                const player = positionPlayers[i];
-                if (player) {
-                    html += `<div class="position-slot filled">
-                        <div class="slot-player-name">${player.name}</div>
-                        <div class="slot-player-team">${player.team}</div>
+                const slotPlayer = positionSlots[i];
+                if (slotPlayer && slotPlayer.player_id) {
+                    // Player is assigned to this slot from roster
+                    html += `<div class="position-slot filled draggable" 
+                        draggable="true"
+                        data-player-id="${slotPlayer.player_id}"
+                        data-position="${pos}"
+                        data-index="${i}">
+                        <div class="slot-player-name">${slotPlayer.name}</div>
+                        <div class="slot-player-team">${slotPlayer.team}</div>
                     </div>`;
                 }
+                else if (!hasRosterData) {
+                    // Fallback: show players by position if roster not available
+                    const posPlayers = playerPositionMap[pos] || [];
+                    const player = posPlayers[i];
+                    if (player && this.playerFillsPosition(player, pos)) {
+                        html += `<div class="position-slot filled draggable" 
+                            draggable="true"
+                            data-player-id="${player.player_id}"
+                            data-position="${pos}"
+                            data-index="${i}">
+                            <div class="slot-player-name">${player.name}</div>
+                            <div class="slot-player-team">${player.team}</div>
+                        </div>`;
+                    }
+                    else {
+                        // Empty slot - can be drop target
+                        html += `<div class="position-slot empty droppable" 
+                            data-position="${pos}"
+                            data-index="${i}">Empty</div>`;
+                    }
+                }
                 else {
-                    html += `<div class="position-slot empty">Empty</div>`;
+                    // Empty slot - can be drop target
+                    html += `<div class="position-slot empty droppable" 
+                        data-position="${pos}"
+                        data-index="${i}">Empty</div>`;
                 }
             }
             html += `</div></div>`;
         }
         html += '</div>';
         container.innerHTML = html;
+        // Set up drag and drop
+        this.setupDragAndDrop(container, draft.my_team_name);
+    }
+    setupDragAndDrop(container, teamName) {
+        let draggedElement = null;
+        let draggedData = null;
+        // Get all draggable and droppable elements
+        const draggables = container.querySelectorAll('.draggable');
+        const droppables = container.querySelectorAll('.droppable');
+        // Drag start
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', (e) => {
+                const dragEvent = e;
+                const target = dragEvent.target;
+                draggedElement = target;
+                draggedData = {
+                    playerId: target.dataset.playerId || '',
+                    position: target.dataset.position || '',
+                    index: parseInt(target.dataset.index || '0')
+                };
+                target.style.opacity = '0.5';
+                if (dragEvent.dataTransfer) {
+                    dragEvent.dataTransfer.effectAllowed = 'move';
+                }
+            });
+        });
+        // Drag end
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragend', (e) => {
+                if (draggedElement) {
+                    draggedElement.style.opacity = '1';
+                    draggedElement = null;
+                }
+                // Remove drag-over class from all droppables
+                droppables.forEach(drop => drop.classList.remove('drag-over'));
+            });
+        });
+        // Drag over - allow drop
+        droppables.forEach(droppable => {
+            droppable.addEventListener('dragover', (e) => {
+                const dragEvent = e;
+                dragEvent.preventDefault();
+                if (draggedData) {
+                    if (dragEvent.dataTransfer) {
+                        dragEvent.dataTransfer.dropEffect = 'move';
+                    }
+                    droppable.classList.add('drag-over');
+                }
+            });
+        });
+        // Drag leave
+        droppables.forEach(droppable => {
+            droppable.addEventListener('dragleave', (e) => {
+                droppable.classList.remove('drag-over');
+            });
+        });
+        // Drop
+        droppables.forEach(droppable => {
+            droppable.addEventListener('drop', async (e) => {
+                const dragEvent = e;
+                dragEvent.preventDefault();
+                const droppableEl = droppable;
+                droppableEl.classList.remove('drag-over');
+                if (draggedData) {
+                    const toPosition = droppableEl.dataset.position || '';
+                    const toIndex = parseInt(droppableEl.dataset.index || '0');
+                    // Call API to move player
+                    try {
+                        await this.api.movePlayerPosition(draggedData.playerId, draggedData.position, draggedData.index, toPosition, toIndex, teamName);
+                        // Trigger custom event to refresh
+                        window.dispatchEvent(new CustomEvent('playerMoved', {
+                            detail: { teamName }
+                        }));
+                    }
+                    catch (error) {
+                        console.error('Error moving player:', error);
+                        alert('Failed to move player: ' + (error instanceof Error ? error.message : 'Unknown error'));
+                    }
+                }
+                draggedData = null;
+            });
+        });
     }
     playerFillsPosition(player, position) {
         if (position === 'MI')

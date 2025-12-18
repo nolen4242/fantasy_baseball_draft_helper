@@ -9,14 +9,20 @@ class App {
     private draftManager: DraftManager;
     private allPlayers: Player[] = [];
     private currentDraft: DraftState | null = null;
+    private autoDraftEnabled: boolean = false;
 
     constructor() {
         this.api = new ApiClient();
-        this.renderer = new UIRenderer();
+        this.renderer = new UIRenderer(this.api);
         this.draftManager = new DraftManager(this.api, this.renderer);
         this.initializeEventListeners();
         this.exposeGlobalMethods();
         this.loadInitialState();
+        
+        // Listen for player move events
+        window.addEventListener('playerMoved', () => {
+            this.refreshMyTeam();
+        });
     }
 
     private exposeGlobalMethods(): void {
@@ -37,6 +43,7 @@ class App {
         document.getElementById('load-cbs-btn')?.addEventListener('click', () => this.loadCBSData());
         document.getElementById('load-steamer-btn')?.addEventListener('click', () => this.loadSteamerFiles());
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
+        document.getElementById('auto-draft-toggle-btn')?.addEventListener('click', () => this.toggleAutoDraft());
         
         // Search and filter
         document.getElementById('player-search')?.addEventListener('input', () => this.filterPlayers());
@@ -68,6 +75,16 @@ class App {
             });
         }
         this.currentDraft = draft;
+        
+        // Load auto-draft status
+        try {
+            const status = await this.api.getAutoDraftStatus();
+            this.autoDraftEnabled = status.auto_draft_enabled;
+            this.updateAutoDraftButton();
+        } catch (error) {
+            console.error('Error loading auto-draft status:', error);
+        }
+        
         await this.refreshAll();
         this.showApp();
     }
@@ -145,17 +162,138 @@ class App {
         }
         
         this.renderer.updateDraftStatusBar(this.currentDraft, topRecommendation);
+        
+        // Check if auto-draft should trigger
+        if (this.autoDraftEnabled) {
+            await this.checkAndTriggerAutoDraft();
+        }
+    }
+    
+    private async checkAndTriggerAutoDraft(): Promise<void> {
+        if (!this.currentDraft) return;
+        
+        // Don't auto-draft if draft is complete
+        if (this.currentDraft.is_complete) {
+            return;
+        }
+        
+        // Determine whose turn it is
+        const pickNumber = this.currentDraft.picks.length + 1;
+        const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
+        const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
+        
+        // Bob Uecker League: Rounds 1-5 no snake, Round 6+ snakes
+        const teamOrder = [
+            "Runtime Terror",
+            "Dawg",
+            "Long Balls",
+            "Simba's Dublin Green Sox",
+            "Young Guns",
+            "Gashouse Gang",
+            "Magnum GI",
+            "Trex",
+            "Rieken Havoc",
+            "Guillotine",
+            "MAGA DOGE",
+            "Big Sticks",
+            "Like a Nightmare"
+        ];
+        
+        let currentTeam: string;
+        if (round <= 5) {
+            currentTeam = teamOrder[pickInRound - 1];
+        } else {
+            const snakeRound = round - 5;
+            const isOddSnakeRound = snakeRound % 2 === 1;
+            if (isOddSnakeRound) {
+                currentTeam = teamOrder[this.currentDraft.total_teams - pickInRound];
+            } else {
+                currentTeam = teamOrder[pickInRound - 1];
+            }
+        }
+        
+        // Only auto-draft if it's not the user's team
+        if (currentTeam !== this.currentDraft.my_team_name) {
+            try {
+                // Check if this team's roster is full
+                const teamRosterSize = this.currentDraft.team_rosters[currentTeam]?.length || 0;
+                if (teamRosterSize >= this.currentDraft.roster_size) {
+                    // Team roster is full, skip auto-draft
+                    return;
+                }
+                
+                console.log(`Auto-drafting for ${currentTeam}...`);
+                const result = await this.api.makeAutoDraftPick(currentTeam);
+                this.currentDraft = result.draft;
+                console.log(`Auto-drafted ${result.picked_player.name} for ${currentTeam}. Reasoning: ${result.reasoning}`);
+                
+                // Check if draft is now complete
+                if (result.draft_complete) {
+                    console.log('Draft Complete! All roster spots filled.');
+                }
+                
+                // Refresh everything after auto-draft
+                await this.refreshAll();
+                
+                // If draft not complete, continue auto-drafting
+                if (!result.draft_complete && this.autoDraftEnabled) {
+                    setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
+                }
+            } catch (error) {
+                console.error('Error making auto-draft pick:', error);
+                // If error is about roster being full or draft complete, that's okay
+                const errorMessage = error instanceof Error ? error.message : '';
+                if (!errorMessage.includes('full') && !errorMessage.includes('complete')) {
+                    // Only log unexpected errors
+                }
+            }
+        }
+    }
+    
+    private async toggleAutoDraft(): Promise<void> {
+        try {
+            const newState = !this.autoDraftEnabled;
+            const result = await this.api.toggleAutoDraft(newState);
+            this.autoDraftEnabled = result.auto_draft_enabled;
+            this.updateAutoDraftButton();
+            
+            if (this.autoDraftEnabled) {
+                // Check if we should immediately trigger auto-draft
+                await this.checkAndTriggerAutoDraft();
+            }
+        } catch (error) {
+            console.error('Error toggling auto-draft:', error);
+            alert('Error toggling auto-draft');
+        }
+    }
+    
+    private updateAutoDraftButton(): void {
+        const btn = document.getElementById('auto-draft-toggle-btn');
+        if (btn) {
+            btn.textContent = `Auto-Draft: ${this.autoDraftEnabled ? 'ON' : 'OFF'}`;
+            if (this.autoDraftEnabled) {
+                btn.classList.add('btn-active');
+            } else {
+                btn.classList.remove('btn-active');
+            }
+        }
     }
 
     private async refreshAvailablePlayers(): Promise<void> {
         const available = await this.api.getAvailablePlayers();
-        this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player));
+        const draftComplete = this.currentDraft?.is_complete || false;
+        this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player), draftComplete);
     }
 
     private async refreshMyTeam(): Promise<void> {
         if (!this.currentDraft) return;
-        const myTeam = await this.api.getMyTeam();
-        this.renderer.renderMyTeam(this.currentDraft.my_team_name, myTeam, this.currentDraft);
+        const result = await this.api.getMyTeam();
+        this.renderer.renderMyTeam(
+            this.currentDraft.my_team_name, 
+            result.players, 
+            this.currentDraft,
+            result.roster
+        );
     }
 
     private async refreshRecentPicks(): Promise<void> {
@@ -209,12 +347,29 @@ class App {
             return;
         }
 
+        // Note: We allow drafting even if draft is marked complete, as long as required positions aren't filled
+        // The backend will check if the team can actually draft more players
+
         try {
-            this.currentDraft = await this.api.makePick(player.player_id, this.currentDraft.my_team_name);
+            const result = await this.api.makePick(player.player_id, this.currentDraft.my_team_name);
+            this.currentDraft = result;
+            
+            // Check if draft is now complete
+            if (result.is_complete) {
+                alert('Draft Complete! All roster spots have been filled.');
+            }
+            
             await this.refreshAll();
+            
+            // After user picks, check if auto-draft should trigger for next team
+            if (this.autoDraftEnabled && !result.is_complete) {
+                // Small delay to ensure state is updated
+                setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
+            }
         } catch (error) {
             console.error('Error drafting player:', error);
-            alert('Error drafting player');
+            const errorMessage = error instanceof Error ? error.message : 'Error drafting player';
+            alert(errorMessage);
         }
     }
 

@@ -21,7 +21,8 @@ class TeamService:
         'CI': 1,  # Corner Infielder (1B or 3B)
         'OF': 4,  # Outfielders
         'U': 1,   # Utility (any offensive position)
-        'P': 9    # Pitchers (any combination of SP/RP)
+        'P': 9,   # Pitchers (any combination of SP/RP)
+        'BENCH': 1  # Bench/Reserve (any player - hitter or pitcher)
     }
     
     def __init__(self, teams_dir: str = None):
@@ -89,12 +90,15 @@ class TeamService:
         if player_pos not in ['SP', 'RP', 'P']:
             eligible.append('U')
         
+        # Bench can be any player (hitter or pitcher)
+        eligible.append('BENCH')
+        
         return eligible
     
     def _find_empty_slot(self, positions: Dict, eligible_positions: List[str]) -> Optional[tuple]:
         """Find the first empty slot in eligible positions."""
-        # Priority order: specific positions first, then flexible
-        priority_order = ['C', '1B', '2B', '3B', 'SS', 'OF', 'P', 'MI', 'CI', 'U']
+        # Priority order: specific positions first, then flexible, then bench
+        priority_order = ['C', '1B', '2B', '3B', 'SS', 'OF', 'P', 'MI', 'CI', 'U', 'BENCH']
         
         for pos in priority_order:
             if pos in eligible_positions and pos in positions:
@@ -149,6 +153,24 @@ class TeamService:
             }
         }
         
+        # Check if player already exists in roster (prevent duplicates)
+        existing_player_ids = set()
+        for pos_list in roster['positions'].values():
+            for slot in pos_list:
+                if slot and slot.get('player_id'):
+                    existing_player_ids.add(slot['player_id'])
+        
+        # Check all_players for duplicates too
+        if 'all_players' in roster:
+            for p in roster['all_players']:
+                if p and p.get('player_id'):
+                    existing_player_ids.add(p['player_id'])
+        
+        # Only add if player doesn't already exist
+        if player.player_id in existing_player_ids:
+            # Player already exists - don't add duplicate
+            return
+        
         # Add to all_players list (for backwards compatibility)
         if 'all_players' not in roster:
             roster['all_players'] = []
@@ -167,9 +189,77 @@ class TeamService:
                 roster['overflow'] = []
             roster['overflow'].append(player_entry)
         
+        # Save updated roster (always save, regardless of slot found or not)
+        with open(roster_file, 'w', encoding='utf-8') as f:
+            json.dump(roster, f, indent=2)
+    
+    def move_player_position(
+        self,
+        team_name: str,
+        player_id: str,
+        from_position: str,
+        from_index: int,
+        to_position: str,
+        to_index: int
+    ) -> bool:
+        """
+        Move a player from one position slot to another.
+        
+        Args:
+            team_name: Team name
+            player_id: Player ID to move
+            from_position: Source position (e.g., 'OF')
+            from_index: Source slot index (0-based)
+            to_position: Target position (e.g., 'U')
+            to_index: Target slot index (0-based)
+        
+        Returns:
+            True if move was successful, False otherwise
+        """
+        team_folder_name = DraftOrder.sanitize_team_name(team_name)
+        team_dir = self.teams_dir / team_folder_name
+        roster_file = team_dir / "roster.json"
+        
+        if not roster_file.exists():
+            return False
+        
+        with open(roster_file, 'r', encoding='utf-8') as f:
+            roster = json.load(f)
+        
+        # Ensure positions structure exists
+        if 'positions' not in roster:
+            roster['positions'] = self._get_empty_position_structure()
+        
+        positions = roster['positions']
+        
+        # Validate positions exist
+        if from_position not in positions or to_position not in positions:
+            return False
+        
+        # Validate indices
+        if (from_index < 0 or from_index >= len(positions[from_position]) or
+            to_index < 0 or to_index >= len(positions[to_position])):
+            return False
+        
+        # Get the player from source position
+        source_slot = positions[from_position][from_index]
+        if not source_slot or source_slot.get('player_id') != player_id:
+            return False
+        
+        # Check if target slot is empty
+        target_slot = positions[to_position][to_index]
+        if target_slot is not None:
+            return False  # Target slot must be empty
+        
+        # Move the player
+        positions[from_position][from_index] = None
+        positions[to_position][to_index] = source_slot
+        
         # Save updated roster
         with open(roster_file, 'w', encoding='utf-8') as f:
             json.dump(roster, f, indent=2)
+        
+        return True
     
     def get_team_roster(self, team_name: str) -> Dict:
         """Get a team's roster with position structure."""
@@ -230,6 +320,54 @@ class TeamService:
             }
             with open(roster_file, 'w', encoding='utf-8') as f:
                 json.dump(roster, f, indent=2)
+    
+    def cleanup_duplicate_players(self, team_name: str):
+        """
+        Remove duplicate player entries from a team's roster.
+        Keeps the first occurrence of each player and removes duplicates.
+        """
+        team_folder_name = DraftOrder.sanitize_team_name(team_name)
+        team_dir = self.teams_dir / team_folder_name
+        roster_file = team_dir / "roster.json"
+        
+        if not roster_file.exists():
+            return
+        
+        with open(roster_file, 'r', encoding='utf-8') as f:
+            roster = json.load(f)
+        
+        if 'positions' not in roster:
+            return
+        
+        # Track which players we've seen
+        seen_player_ids = set()
+        positions = roster['positions']
+        
+        # Clean up position slots - remove duplicates
+        for pos, slots in positions.items():
+            for i, slot in enumerate(slots):
+                if slot and slot.get('player_id'):
+                    player_id = slot['player_id']
+                    if player_id in seen_player_ids:
+                        # Duplicate found - remove it
+                        positions[pos][i] = None
+                    else:
+                        seen_player_ids.add(player_id)
+        
+        # Clean up all_players list - keep only unique players
+        if 'all_players' in roster:
+            seen_in_all = set()
+            unique_players = []
+            for player in roster['all_players']:
+                player_id = player.get('player_id')
+                if player_id and player_id not in seen_in_all:
+                    unique_players.append(player)
+                    seen_in_all.add(player_id)
+            roster['all_players'] = unique_players
+        
+        # Save cleaned roster
+        with open(roster_file, 'w', encoding='utf-8') as f:
+            json.dump(roster, f, indent=2)
     
     def remove_team_pick(self, team_name: str, pick_number: int):
         """Remove a pick from a team's roster."""

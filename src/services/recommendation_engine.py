@@ -45,6 +45,42 @@ class RecommendationEngine:
         - score: recommendation score
         - reasoning: explanation for the recommendation
         """
+        return self.get_recommendations_for_team(
+            available_players=available_players,
+            team_players=my_team,
+            draft_state=draft_state,
+            team_name=draft_state.my_team_name,
+            top_n=top_n,
+            use_ml=use_ml
+        )
+    
+    def get_recommendations_for_team(
+        self,
+        available_players: List[Player],
+        team_players: List[Player],
+        draft_state: DraftState,
+        team_name: str,
+        top_n: int = 5,
+        use_ml: bool = True
+    ) -> List[Dict]:
+        """
+        Get top N draft recommendations for a specific team.
+        RECALCULATES EVERY TIME based on current draft state - recommendations
+        update dynamically as picks are made.
+        
+        Args:
+            available_players: List of available players (should be filtered to undrafted)
+            team_players: Current roster for the team
+            draft_state: Current draft state (includes all picks made so far)
+            team_name: Name of the team to get recommendations for
+            top_n: Number of recommendations to return
+            use_ml: Whether to use ML models (if available)
+        
+        Returns list of dicts with:
+        - player: Player object
+        - score: recommendation score
+        - reasoning: explanation for the recommendation
+        """
         if not available_players:
             return []
         
@@ -79,7 +115,7 @@ class RecommendationEngine:
         
         for player in players_to_evaluate:
             score, reasoning = self._calculate_player_value(
-                player, my_team, available_players, draft_state, all_team_rosters, use_ml
+                player, team_players, available_players, draft_state, all_team_rosters, use_ml, team_name
             )
             recommendations.append({
                 'player': player,
@@ -112,13 +148,20 @@ class RecommendationEngine:
         available_players: List[Player],
         draft_state: DraftState,
         all_team_rosters: Dict[str, List[Player]],
-        use_ml: bool = True
+        use_ml: bool = True,
+        team_name: Optional[str] = None
     ) -> Tuple[float, str]:
         """
         Calculate a value score for a player.
         
+        Args:
+            team_name: Optional team name. If None, uses draft_state.my_team_name
+        
         Returns (score, reasoning)
         """
+        if team_name is None:
+            team_name = draft_state.my_team_name
+        
         score = 0.0
         reasoning_parts = []
         
@@ -176,7 +219,7 @@ class RecommendationEngine:
         
         # 5. Relative advantage (vs opponents, considers strategies)
         relative_score, relative_reasoning = self._analyze_relative_advantage(
-            player, my_team, all_team_rosters, draft_state, available_players
+            player, my_team, all_team_rosters, draft_state, available_players, team_name
         )
         # Moderate weight
         if is_pitcher:
@@ -326,12 +369,16 @@ class RecommendationEngine:
         my_team: List[Player],
         all_team_rosters: Dict[str, List[Player]],
         draft_state: DraftState,
-        available_players: List[Player]
+        available_players: List[Player],
+        team_name: Optional[str] = None
     ) -> Tuple[float, str]:
         """
         Analyze how much this player helps you vs. opponents.
         Considers opponent strategies and adapts recommendations.
         """
+        if team_name is None:
+            team_name = draft_state.my_team_name
+        
         score = 0.0
         reasoning_parts = []
         
@@ -358,8 +405,8 @@ class RecommendationEngine:
         opponent_totals = {}
         opponent_strategies = {}  # Track if opponents are going heavy hitter/pitcher
         
-        for team_name, roster in all_team_rosters.items():
-            if team_name == draft_state.my_team_name:
+        for other_team_name, roster in all_team_rosters.items():
+            if other_team_name == team_name:
                 continue
             totals = self.standings_calculator._calculate_team_totals(roster)
             opponent_totals[team_name] = totals
@@ -437,8 +484,8 @@ class RecommendationEngine:
         position_needed_by_opponents = 0
         critical_opponents = []
         
-        for team_name, roster in all_team_rosters.items():
-            if team_name == draft_state.my_team_name:
+        for other_team_name, roster in all_team_rosters.items():
+            if other_team_name == team_name:
                 continue
             
             # Count how many players opponent has at this position
@@ -451,7 +498,7 @@ class RecommendationEngine:
             
             if opponent_count < required and opponent_count < my_count:
                 position_needed_by_opponents += 1
-                critical_opponents.append(team_name)
+                critical_opponents.append(other_team_name)
         
         if position_needed_by_opponents > 0:
             block_score = position_needed_by_opponents * 15
@@ -608,13 +655,14 @@ class RecommendationEngine:
         Prevents redundant picks and considers dynamic roster state.
         """
         # Bob Uecker League position requirements:
-        # 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P
+        # 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
         position_requirements = {
             'C': 1, '1B': 1, '2B': 1, '3B': 1, 'SS': 1,
             'MI': 1,  # Middle Infielder (2B or SS)
             'CI': 1,  # Corner Infielder (1B or 3B)
             'OF': 4, 'U': 1,  # Utility (any offensive position)
-            'SP': 9, 'RP': 9, 'P': 9  # Any combination of pitchers
+            'SP': 9, 'RP': 9, 'P': 9,  # Any combination of pitchers
+            'BENCH': 1  # Bench/Reserve (any player)
         }
         
         # Count current players at each position on my team

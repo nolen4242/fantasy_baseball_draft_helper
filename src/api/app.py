@@ -242,6 +242,7 @@ def make_pick():
     """Make a draft pick."""
     data = request.json
     player_id = data['player_id']
+    requested_team_name = data.get('team_name')  # Team name from request (for manual picks)
     
     # Determine which team should pick based on draft order
     if not draft_service.current_draft:
@@ -251,10 +252,49 @@ def make_pick():
         }), 400
     
     pick_number = len(draft_service.current_draft.picks) + 1
-    team_name = DraftOrder.get_team_for_pick(pick_number, draft_service.current_draft.total_teams)
+    draft_order_team = DraftOrder.get_team_for_pick(pick_number, draft_service.current_draft.total_teams)
+    
+    # Use requested team name if provided (for manual picks), otherwise use draft order
+    team_name = requested_team_name if requested_team_name else draft_order_team
+    
+    # Check if this team's roster is already full
+    team_roster_size = len(draft_service.current_draft.team_rosters.get(team_name, []))
+    if team_roster_size >= draft_service.current_draft.roster_size:
+        # Even if roster is full, allow drafting if required positions aren't filled
+        from src.services.team_service import TeamService
+        team_service = TeamService()
+        roster = team_service.get_team_roster(team_name)
+        if roster and 'positions' in roster:
+            # Check if any required position is empty
+            required_positions = TeamService.POSITION_REQUIREMENTS
+            has_unfilled_position = False
+            for pos, required_count in required_positions.items():
+                if pos == 'BENCH':  # Skip bench - it's optional
+                    continue
+                filled_count = sum(1 for slot in roster['positions'].get(pos, []) if slot is not None)
+                if filled_count < required_count:
+                    has_unfilled_position = True
+                    break
+            
+            if not has_unfilled_position:
+                return jsonify({
+                    'success': False,
+                    'message': f'{team_name} roster is full and all required positions are filled'
+                }), 400
+        else:
+            return jsonify({
+                'success': False,
+                'message': f'{team_name} roster is full ({team_roster_size}/{draft_service.current_draft.roster_size} players)'
+            }), 400
     
     # Find the player object
     player = next((p for p in all_players if p.player_id == player_id), None)
+    
+    if not player:
+        return jsonify({
+            'success': False,
+            'message': 'Player not found'
+        }), 404
     
     success = draft_service.draft_player(
         player_id=player_id,
@@ -262,13 +302,16 @@ def make_pick():
         player=player
     )
     if success:
+        draft_dict = draft_service.current_draft.to_dict()
         return jsonify({
             'success': True,
-            'draft': draft_service.current_draft.to_dict()
+            'draft': draft_dict,
+            'draft_complete': draft_dict.get('is_complete', False)
         })
+    
     return jsonify({
         'success': False,
-        'message': 'Failed to make pick'
+        'message': 'Failed to make pick - roster may be full or draft complete'
     }), 400
 
 
@@ -288,10 +331,21 @@ def get_available_players():
 
 @app.route('/api/draft/my-team', methods=['GET'])
 def get_my_team():
-    """Get my team's players."""
+    """Get my team's players and roster structure."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'players': [],
+            'roster': None
+        }), 404
+    
     my_team = draft_service.get_my_team_players(all_players)
+    from src.services.team_service import TeamService
+    team_service = TeamService()
+    roster = team_service.get_team_roster(draft_service.current_draft.my_team_name)
+    
     return jsonify({
-        'players': [p.to_dict() for p in my_team]
+        'players': [p.to_dict() for p in my_team],
+        'roster': roster
     })
 
 
@@ -313,6 +367,102 @@ def get_team_roster(team_name):
     return jsonify({
         'roster': roster
     })
+
+
+@app.route('/api/draft/cleanup-duplicates', methods=['POST'])
+def cleanup_duplicate_players():
+    """Clean up duplicate player entries in a team's roster."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    data = request.json or {}
+    team_name = data.get('team_name', draft_service.current_draft.my_team_name)
+    
+    from src.services.team_service import TeamService
+    team_service = TeamService()
+    
+    try:
+        team_service.cleanup_duplicate_players(team_name)
+        roster = team_service.get_team_roster(team_name)
+        return jsonify({
+            'success': True,
+            'roster': roster,
+            'message': f'Cleaned up duplicate players for {team_name}'
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Error cleaning up duplicates: {str(e)}'
+        }), 500
+
+
+@app.route('/api/draft/move-player', methods=['POST'])
+def move_player_position():
+    """Move a player from one position slot to another."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    data = request.json
+    player_id = data.get('player_id')
+    from_position = data.get('from_position')
+    from_index = data.get('from_index')
+    to_position = data.get('to_position')
+    to_index = data.get('to_index')
+    team_name = data.get('team_name', draft_service.current_draft.my_team_name)
+    
+    if not all([player_id, from_position is not None, from_index is not None, 
+                to_position is not None, to_index is not None]):
+        return jsonify({
+            'success': False,
+            'message': 'Missing required parameters'
+        }), 400
+    
+    from src.services.team_service import TeamService
+    team_service = TeamService()
+    
+    # Get the player
+    player = next((p for p in all_players if p.player_id == player_id), None)
+    if not player:
+        return jsonify({
+            'success': False,
+            'message': 'Player not found'
+        }), 404
+    
+    # Check if player is eligible for target position
+    eligible_positions = team_service._determine_eligible_positions(player)
+    if to_position not in eligible_positions:
+        return jsonify({
+            'success': False,
+            'message': f'Player is not eligible for {to_position} position'
+        }), 400
+    
+    # Move the player
+    success = team_service.move_player_position(
+        team_name=team_name,
+        player_id=player_id,
+        from_position=from_position,
+        from_index=from_index,
+        to_position=to_position,
+        to_index=to_index
+    )
+    
+    if success:
+        roster = team_service.get_team_roster(team_name)
+        return jsonify({
+            'success': True,
+            'roster': roster
+        })
+    
+    return jsonify({
+        'success': False,
+        'message': 'Failed to move player'
+    }), 400
 
 
 @app.route('/api/draft/revert', methods=['POST'])
@@ -420,6 +570,122 @@ def get_recommendations():
             for rec in recommendations
         ]
     })
+
+
+@app.route('/api/draft/auto-draft/toggle', methods=['POST'])
+def toggle_auto_draft():
+    """Toggle auto-draft mode on/off."""
+    data = request.json or {}
+    enabled = data.get('enabled', False)
+    
+    draft_service.set_auto_draft(enabled)
+    
+    return jsonify({
+        'success': True,
+        'auto_draft_enabled': draft_service.is_auto_draft_enabled(),
+        'message': f'Auto-draft {"enabled" if enabled else "disabled"}'
+    })
+
+
+@app.route('/api/draft/auto-draft/status', methods=['GET'])
+def get_auto_draft_status():
+    """Get current auto-draft status."""
+    return jsonify({
+        'auto_draft_enabled': draft_service.is_auto_draft_enabled()
+    })
+
+
+@app.route('/api/draft/auto-draft/pick', methods=['POST'])
+def make_auto_draft_pick():
+    """Make an auto-draft pick for a team using AI recommendations."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    # Check if draft is already complete
+    if draft_service.current_draft.is_draft_complete():
+        return jsonify({
+            'success': False,
+            'message': 'Draft is complete - all roster spots are filled'
+        }), 400
+    
+    data = request.json or {}
+    team_name = data.get('team_name')
+    
+    if not team_name:
+        return jsonify({
+            'success': False,
+            'message': 'team_name is required'
+        }), 400
+    
+    # Don't auto-draft for the user's team
+    if team_name == draft_service.current_draft.my_team_name:
+        return jsonify({
+            'success': False,
+            'message': 'Cannot auto-draft for your own team'
+        }), 400
+    
+    # Check if this team's roster is already full
+    team_roster_size = len(draft_service.current_draft.team_rosters.get(team_name, []))
+    if team_roster_size >= draft_service.current_draft.roster_size:
+        return jsonify({
+            'success': False,
+            'message': f'{team_name} roster is full'
+        }), 400
+    
+    # Get available players
+    available = draft_service.get_available_players(all_players)
+    if not available:
+        return jsonify({
+            'success': False,
+            'message': 'No available players'
+        }), 400
+    
+    # Get the team's current roster
+    team_players = draft_service.get_team_players(all_players, team_name)
+    
+    # Get AI recommendation for this team
+    use_ml = request.args.get('use_ml', 'true').lower() == 'true'
+    recommendations = recommendation_engine.get_recommendations_for_team(
+        available_players=available,
+        team_players=team_players,
+        draft_state=draft_service.current_draft,
+        team_name=team_name,
+        top_n=1,
+        use_ml=use_ml
+    )
+    
+    if not recommendations:
+        return jsonify({
+            'success': False,
+            'message': 'No recommendations available'
+        }), 400
+    
+    # Draft the top recommended player
+    recommended_player = recommendations[0]['player']
+    
+    success = draft_service.draft_player(
+        player_id=recommended_player.player_id,
+        team_name=team_name,
+        player=recommended_player
+    )
+    
+    if success:
+        draft_dict = draft_service.current_draft.to_dict()
+        return jsonify({
+            'success': True,
+            'draft': draft_dict,
+            'picked_player': recommended_player.to_dict(),
+            'reasoning': recommendations[0]['reasoning'],
+            'draft_complete': draft_dict.get('is_complete', False)
+        })
+    
+    return jsonify({
+        'success': False,
+        'message': 'Failed to make auto-draft pick - roster may be full or draft complete'
+    }), 400
 
 
 @app.route('/api/ml/train', methods=['POST'])
