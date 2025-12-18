@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 import os
 import sys
+import random
 from pathlib import Path
 
 # Add project root to path
@@ -668,30 +669,77 @@ def make_auto_draft_pick():
     # Get the team's current roster
     team_players = draft_service.get_team_players(all_players, team_name)
     
-    # Get AI recommendation for this team
+    # Get current pick number
+    current_pick = len(draft_service.current_draft.picks) + 1
+    
+    # Filter available players to those within 15 picks of ADP or current pick
+    adp_range_players = []
+    for player in available:
+        if player.adp is not None:
+            # Player has ADP - check if within 15 picks
+            if abs(player.adp - current_pick) <= 15:
+                adp_range_players.append(player)
+        else:
+            # No ADP - include if we're in later rounds (pick > 200) or if it's a reasonable late pick
+            if current_pick > 200:
+                adp_range_players.append(player)
+    
+    # If no players in ADP range, use all available players
+    if not adp_range_players:
+        adp_range_players = available
+    
+    # Get AI recommendations for this team (get top 10 to have a good pool)
     use_ml = request.args.get('use_ml', 'true').lower() == 'true'
     recommendations = recommendation_engine.get_recommendations_for_team(
         available_players=available,
         team_players=team_players,
         draft_state=draft_service.current_draft,
         team_name=team_name,
-        top_n=1,
+        top_n=10,
         use_ml=use_ml
     )
     
-    if not recommendations:
+    # Create a weighted pool of players
+    # AI recommended players get higher weight (3x), others get 1x
+    weighted_pool = []
+    
+    # Add AI recommended players with higher weight
+    ai_recommended_ids = {rec['player'].player_id for rec in recommendations}
+    for player in adp_range_players:
+        # Check if player has available slot
+        from src.services.team_service import TeamService
+        team_service = TeamService()
+        if not team_service.has_available_slot_for_player(team_name, player):
+            continue  # Skip players that can't be placed
+        
+        if player.player_id in ai_recommended_ids:
+            # AI recommended - add 3 times for higher chance
+            weighted_pool.extend([player] * 3)
+        else:
+            # Not AI recommended - add once
+            weighted_pool.append(player)
+    
+    if not weighted_pool:
         return jsonify({
             'success': False,
-            'message': 'No recommendations available'
+            'message': 'No suitable players available within ADP range'
         }), 400
     
-    # Draft the top recommended player
-    recommended_player = recommendations[0]['player']
+    # Randomly select from weighted pool
+    selected_player = random.choice(weighted_pool)
+    
+    # Find which recommendation this was (if any)
+    recommended_player = selected_player
+    reasoning = "Random selection from ADP range"
+    for rec in recommendations:
+        if rec['player'].player_id == selected_player.player_id:
+            reasoning = rec['reasoning']
+            break
     
     success = draft_service.draft_player(
-        player_id=recommended_player.player_id,
+        player_id=selected_player.player_id,
         team_name=team_name,
-        player=recommended_player
+        player=selected_player
     )
     
     if success:
@@ -699,8 +747,8 @@ def make_auto_draft_pick():
         return jsonify({
             'success': True,
             'draft': draft_dict,
-            'picked_player': recommended_player.to_dict(),
-            'reasoning': recommendations[0]['reasoning'],
+            'picked_player': selected_player.to_dict(),
+            'reasoning': reasoning,
             'draft_complete': draft_dict.get('is_complete', False)
         })
     
