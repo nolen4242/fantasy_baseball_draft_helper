@@ -23,8 +23,10 @@
                 </div>
                 <div class="recommended-player">
                     <span class="label">Recommended:</span>
-                    <span id="recommended-player-name" class="player-name">-</span>
-                    <span id="recommended-player-position" class="player-position-badge">-</span>
+                    <button id="recommended-player-btn" class="recommended-player-btn" title="Click to view detailed analysis">
+                        <span id="recommended-player-name" class="player-name">-</span>
+                        <span id="recommended-player-position" class="player-position-badge">-</span>
+                    </button>
                 </div>
                 <div class="draft-progress">
                     <span id="draft-progress-text">Pick 0 of 0</span>
@@ -90,6 +92,17 @@
                     <h2>Other Teams</h2>
                 </div>
                 <div id="other-teams-list" class="teams-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation Analysis Modal -->
+    <div id="recommendation-modal" class="modal" style="display: none;">
+        <div class="modal-content recommendation-modal-content">
+            <span class="close-modal" id="close-recommendation-modal">&times;</span>
+            <h2 id="recommendation-modal-title">Player Analysis</h2>
+            <div id="recommendation-modal-body" class="recommendation-analysis">
+                <!-- Detailed analysis will be inserted here -->
             </div>
         </div>
     </div>

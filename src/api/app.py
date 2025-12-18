@@ -141,6 +141,15 @@ def load_cbs_data():
         master_player_dict.get_players_with_projections(player_type='pitchers')
     )
     
+    # Calculate and store custom ADP (league-specific) for all players
+    if all_players:
+        master_player_dict.calculate_and_store_custom_adp(all_players)
+        # Reload players to get custom ADP
+        all_players = (
+            master_player_dict.get_players_with_projections(player_type='batters') +
+            master_player_dict.get_players_with_projections(player_type='pitchers')
+        )
+    
     # Update recommendation engine with new players
     recommendation_engine.all_players = all_players
     

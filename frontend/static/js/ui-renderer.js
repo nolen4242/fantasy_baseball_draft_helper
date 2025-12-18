@@ -88,19 +88,26 @@ export class UIRenderer {
             progressEl.style.color = '';
             progressEl.style.fontWeight = '';
         }
-        // Update recommended player
-        if (recommendedPlayerEl && recommendedPositionEl) {
+        // Update recommended player button
+        const recommendedPlayerBtn = document.getElementById('recommended-player-btn');
+        if (recommendedPlayerBtn && recommendedPlayerEl && recommendedPositionEl) {
             if (isComplete) {
                 recommendedPlayerEl.textContent = 'Draft Complete';
                 recommendedPositionEl.textContent = '-';
+                recommendedPlayerBtn.setAttribute('disabled', 'true');
+                recommendedPlayerBtn.style.cursor = 'not-allowed';
             }
             else if (recommendation && recommendation.player) {
                 recommendedPlayerEl.textContent = recommendation.player.name;
                 recommendedPositionEl.textContent = recommendation.player.position || '-';
+                recommendedPlayerBtn.removeAttribute('disabled');
+                recommendedPlayerBtn.style.cursor = 'pointer';
             }
             else {
                 recommendedPlayerEl.textContent = '-';
                 recommendedPositionEl.textContent = '-';
+                recommendedPlayerBtn.setAttribute('disabled', 'true');
+                recommendedPlayerBtn.style.cursor = 'not-allowed';
             }
         }
     }

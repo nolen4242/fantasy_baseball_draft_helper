@@ -189,6 +189,18 @@ class RecommendationEngine:
         # Determine if player is a pitcher (used multiple times)
         is_pitcher = player.position in ['SP', 'RP', 'P']
         
+        # === 50% CUSTOM ADP (from player dict) ===
+        # Custom ADP is league-specific and heavily weighted
+        custom_adp_score, custom_adp_reasoning = self._analyze_custom_adp_value(
+            player, draft_state, available_players
+        )
+        score += custom_adp_score * 0.5  # 50% weight
+        if custom_adp_reasoning:
+            reasoning_parts.append(custom_adp_reasoning)
+        
+        # === 50% OTHER FACTORS (comparative advantage, risk, scarcity, etc.) ===
+        other_factors_score = 0.0
+        
         # 1. ML-based value prediction (if available)
         ml_score = 0.0
         if use_ml and self._ml_models_loaded:
@@ -209,52 +221,35 @@ class RecommendationEngine:
         position_score, pos_reasoning = self._analyze_position_scarcity(
             player, my_team, available_players, draft_state, all_team_rosters
         )
-        # Moderate weight - ADP is important but scarcity matters too
-        if is_pitcher:
-            score += position_score * 0.1  # Slightly reduced for pitchers
-        else:
-            score += position_score * 0.2  # Moderate weight
-        if pos_reasoning:
-            reasoning_parts.append(pos_reasoning)
+        other_factors_score += position_score * 0.15  # 15% of other factors
         
         # 3. Team needs analysis (prevents redundant picks, balances hitters/pitchers)
         needs_score, needs_reasoning = self._analyze_team_needs(
             player, my_team, draft_state, available_players
         )
-        # Moderate weight - needs matter but ADP is still important
-        if is_pitcher:
-            score += needs_score * 0.15  # Moderate weight for pitchers
-        else:
-            score += needs_score * 0.25  # Standard weight
-        if needs_reasoning:
-            reasoning_parts.append(needs_reasoning)
+        other_factors_score += needs_score * 0.20  # 20% of other factors
         
-        # 4. Projected value analysis
-        value_score, value_reasoning = self._analyze_projected_value(
-            player, available_players
-        )
-        # Scale value score to be more reasonable (divide by 10 to normalize)
-        score += (value_score / 10) * 0.2  # Standard weight
-        if value_reasoning:
-            reasoning_parts.append(value_reasoning)
-        
-        # 5. Relative advantage (vs opponents, considers strategies)
+        # 4. Comparative advantage (vs opponents)
         relative_score, relative_reasoning = self._analyze_relative_advantage(
             player, my_team, all_team_rosters, draft_state, available_players, team_name
         )
-        # Moderate weight
-        if is_pitcher:
-            score += relative_score * 0.1  # Slightly reduced for pitchers
-        else:
-            score += relative_score * 0.2  # Moderate weight
-        if relative_reasoning:
-            reasoning_parts.append(relative_reasoning)
+        other_factors_score += relative_score * 0.25  # 25% of other factors
         
-        # 6. ADP-based value adjustment (CRITICAL: penalize high ADP players early)
-        adp_score, adp_reasoning = self._analyze_adp_value(
-            player, draft_state, available_players
+        # 5. Risk assessment (injury, age, sample size)
+        risk_score, risk_reasoning = self._analyze_risk_factors(player)
+        other_factors_score += risk_score * 0.15  # 15% of other factors
+        
+        # 6. Projected value analysis (backup/additional signal)
+        value_score, value_reasoning = self._analyze_projected_value(
+            player, available_players
         )
-        score += adp_score
+        other_factors_score += (value_score / 10) * 0.10  # 10% of other factors
+        
+        # 7. ML score (if available)
+        other_factors_score += ml_score * 0.15  # 15% of other factors
+        
+        # Add other factors with 50% weight
+        score += other_factors_score * 0.5  # 50% weight
         
         # Extra ADP penalty for pitchers - they should stay reasonably close to ADP
         if is_pitcher and player.adp:
@@ -269,10 +264,7 @@ class RecommendationEngine:
                 score += extra_penalty
                 reasoning_parts.append(f"Pitcher slightly early: {adp_diff} picks")
         
-        if adp_reasoning:
-            reasoning_parts.append(adp_reasoning)
-        
-        # 7. Final check: If we have enough pitchers and this is a pitcher, reduce score
+        # Final check: If we have enough pitchers and this is a pitcher, reduce score
         # Apply penalty earlier (at 7+ pitchers, not just 9+)
         if is_pitcher:
             pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
@@ -302,9 +294,349 @@ class RecommendationEngine:
         # Add ML score
         score += ml_score
         
-        reasoning = " | ".join(reasoning_parts) if reasoning_parts else "Solid pick"
+        # Build comprehensive reasoning
+        reasoning = self._build_detailed_reasoning(
+            player, my_team, all_team_rosters, draft_state, team_name,
+            custom_adp_reasoning, pos_reasoning, needs_reasoning, 
+            relative_reasoning, risk_reasoning, value_reasoning
+        )
         
         return score, reasoning
+    
+    def _build_detailed_reasoning(
+        self,
+        player: Player,
+        my_team: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        draft_state: DraftState,
+        team_name: str,
+        custom_adp_reasoning: str,
+        pos_reasoning: str,
+        needs_reasoning: str,
+        relative_reasoning: str,
+        risk_reasoning: str,
+        value_reasoning: str
+    ) -> str:
+        """
+        Build comprehensive, detailed reasoning for why this player is recommended.
+        """
+        reasoning_sections = []
+        
+        # 1. Custom ADP Analysis (Primary Signal)
+        if custom_adp_reasoning:
+            reasoning_sections.append(f"📊 ADP Analysis: {custom_adp_reasoning}")
+        
+        # 2. Risk Assessment
+        if risk_reasoning:
+            risk_level = "LOW RISK" if "low risk" in risk_reasoning.lower() else "MODERATE RISK" if "moderate" in risk_reasoning.lower() else "HIGH RISK" if "high" in risk_reasoning.lower() or "injured" in risk_reasoning.lower() else "STANDARD RISK"
+            reasoning_sections.append(f"⚠️ Risk Assessment: {risk_level} - {risk_reasoning}")
+        else:
+            reasoning_sections.append("⚠️ Risk Assessment: LOW RISK - No significant risk factors identified")
+        
+        # 3. Position Scarcity Analysis
+        if pos_reasoning:
+            reasoning_sections.append(f"🎯 Position Scarcity: {pos_reasoning}")
+        else:
+            # Analyze position scarcity manually for detailed explanation
+            player_pos = player.position
+            drafted_at_pos = sum(
+                1 for roster in all_team_rosters.values()
+                for p in roster
+                if p.position == player_pos
+            )
+            available_at_pos = sum(1 for p in self.all_players if p.position == player_pos and not p.drafted)
+            
+            # Check if other teams are stacked at this position
+            teams_with_position = sum(
+                1 for roster in all_team_rosters.values()
+                if any(p.position == player_pos for p in roster)
+            )
+            total_teams = len(all_team_rosters) + 1  # +1 for my team
+            
+            if teams_with_position >= total_teams * 0.7:  # 70%+ of teams have this position
+                reasoning_sections.append(f"🎯 Position Scarcity: Other teams are STACKED at {player_pos} ({teams_with_position}/{total_teams} teams have it). We're drafting other positions to gain comparative advantage.")
+            else:
+                reasoning_sections.append(f"🎯 Position Scarcity: {player_pos} is still available. {available_at_pos} quality players remaining at this position.")
+        
+        # 4. Category Needs Analysis
+        category_analysis = self._analyze_category_needs_detailed(player, my_team, all_team_rosters, team_name)
+        if category_analysis:
+            reasoning_sections.append(f"📈 Category Needs: {category_analysis}")
+        
+        # 5. Team Needs
+        if needs_reasoning:
+            reasoning_sections.append(f"✅ Team Needs: {needs_reasoning}")
+        
+        # 6. Comparative Advantage
+        if relative_reasoning:
+            reasoning_sections.append(f"🏆 Comparative Advantage: {relative_reasoning}")
+        else:
+            # Provide detailed comparative advantage analysis
+            comp_adv = self._get_comparative_advantage_details(player, my_team, all_team_rosters, team_name)
+            if comp_adv:
+                reasoning_sections.append(f"🏆 Comparative Advantage: {comp_adv}")
+        
+        # 7. Projected Value
+        if value_reasoning:
+            reasoning_sections.append(f"💎 Projected Value: {value_reasoning}")
+        
+        # Combine all sections
+        if reasoning_sections:
+            return "\n\n".join(reasoning_sections)
+        else:
+            return "Solid pick based on overall value and team needs."
+    
+    def _analyze_category_needs_detailed(
+        self,
+        player: Player,
+        my_team: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        team_name: str
+    ) -> str:
+        """Provide detailed analysis of which categories this player helps with."""
+        my_totals = self.standings_calculator._calculate_team_totals(my_team)
+        projected_roster = my_team + [player]
+        projected_totals = self.standings_calculator._calculate_team_totals(projected_roster)
+        
+        category_improvements = []
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        
+        if is_pitcher:
+            # Pitching categories
+            if player.projected_strikeouts:
+                k_improvement = projected_totals['K'] - my_totals['K']
+                if k_improvement > 0:
+                    category_improvements.append(f"Strikeouts: +{k_improvement:.0f} (need to increase K count)")
+            
+            if player.projected_wins or player.projected_quality_starts:
+                wqs_improvement = (projected_totals['W'] + projected_totals['QS']) - (my_totals['W'] + my_totals['QS'])
+                if wqs_improvement > 0:
+                    category_improvements.append(f"Wins+QS: +{wqs_improvement:.1f}")
+            
+            if player.projected_saves or player.projected_holds:
+                sholds_improvement = projected_totals['SV'] + (projected_totals['HD'] * 0.5) - (my_totals['SV'] + (my_totals['HD'] * 0.5))
+                if sholds_improvement > 0:
+                    category_improvements.append(f"Saves+Holds: +{sholds_improvement:.1f}")
+            
+            if player.projected_era:
+                era_improvement = my_totals['ERA'] - projected_totals['ERA']  # Lower is better
+                if era_improvement > 0:
+                    category_improvements.append(f"ERA: Improves by {era_improvement:.2f} (lower is better)")
+            
+            if player.projected_whip:
+                whip_improvement = my_totals['WHIP'] - projected_totals['WHIP']  # Lower is better
+                if whip_improvement > 0:
+                    category_improvements.append(f"WHIP: Improves by {whip_improvement:.3f} (lower is better)")
+        else:
+            # Batting categories
+            if player.projected_home_runs:
+                hr_improvement = projected_totals['HR'] - my_totals['HR']
+                if hr_improvement > 0:
+                    category_improvements.append(f"Home Runs: +{hr_improvement:.0f} (need to increase HR count)")
+            
+            if player.projected_runs:
+                r_improvement = projected_totals['R'] - my_totals['R']
+                if r_improvement > 0:
+                    category_improvements.append(f"Runs: +{r_improvement:.0f}")
+            
+            if player.projected_rbi:
+                rbi_improvement = projected_totals['RBI'] - my_totals['RBI']
+                if rbi_improvement > 0:
+                    category_improvements.append(f"RBI: +{rbi_improvement:.0f}")
+            
+            if player.projected_stolen_bases:
+                sb_improvement = projected_totals['SB'] - my_totals['SB']
+                if sb_improvement > 0:
+                    category_improvements.append(f"Stolen Bases: +{sb_improvement:.0f} (need to increase SB count)")
+            
+            if player.projected_obp:
+                obp_improvement = projected_totals['OBP'] - my_totals['OBP']
+                if obp_improvement > 0:
+                    category_improvements.append(f"OBP: +{obp_improvement:.3f} (need to increase OBP)")
+        
+        if category_improvements:
+            return " | ".join(category_improvements)
+        else:
+            return "Provides balanced contributions across multiple categories"
+    
+    def _get_comparative_advantage_details(
+        self,
+        player: Player,
+        my_team: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        team_name: str
+    ) -> str:
+        """Get detailed comparative advantage analysis."""
+        my_totals = self.standings_calculator._calculate_team_totals(my_team)
+        projected_roster = my_team + [player]
+        projected_totals = self.standings_calculator._calculate_team_totals(projected_roster)
+        
+        advantages = []
+        
+        # Check each category
+        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'K', 'SV', 'HD']:
+            my_value = my_totals[category]
+            projected_value = projected_totals[category]
+            improvement = projected_value - my_value
+            
+            if improvement > 0:
+                # Count opponents ahead of us
+                opponents_ahead = sum(
+                    1 for other_team_name, roster in all_team_rosters.items()
+                    if other_team_name != team_name
+                    for opp_totals in [self.standings_calculator._calculate_team_totals(roster)]
+                    if opp_totals[category] > my_value
+                )
+                
+                if opponents_ahead > 0:
+                    advantages.append(f"This player helps us catch up in {category} (+{improvement:.1f}), passing {opponents_ahead} opponent(s)")
+        
+        # Check position strategy
+        my_hitters = sum(1 for p in my_team if p.position not in ['SP', 'RP', 'P'])
+        my_pitchers = len(my_team) - my_hitters
+        
+        avg_opponent_hitters = np.mean([
+            sum(1 for p in roster if p.position not in ['SP', 'RP', 'P'])
+            for roster in all_team_rosters.values()
+        ]) if all_team_rosters else 0
+        
+        is_hitter = player.position not in ['SP', 'RP', 'P']
+        if is_hitter and my_hitters < avg_opponent_hitters:
+            advantages.append(f"Opponents are stacking hitters ({avg_opponent_hitters:.1f} avg), we need to balance with {my_hitters} hitters")
+        elif not is_hitter and my_pitchers < 9:
+            advantages.append(f"Building pitching depth ({my_pitchers}/9 pitchers) to gain advantage")
+        
+        if advantages:
+            return " | ".join(advantages)
+        else:
+            return "Provides solid value relative to opponents"
+    
+    def _analyze_custom_adp_value(
+        self,
+        player: Player,
+        draft_state: DraftState,
+        available_players: List[Player]
+    ) -> Tuple[float, str]:
+        """
+        Analyze custom ADP value (league-specific ADP from player dict).
+        This is the PRIMARY signal (50% weight) - heavily penalize high custom ADP players.
+        """
+        current_pick = len(draft_state.picks) + 1
+        
+        # Use custom ADP if available (from player dict), fall back to regular ADP
+        # Custom ADP is stored in the adp field if it was calculated
+        player_adp = player.adp  # This should be custom ADP if calculated
+        
+        if player_adp is None:
+            # No ADP - significant penalty for custom ADP (it's the primary signal)
+            return -100, "No custom ADP data"
+        
+        # Calculate ADP difference (how far off are we?)
+        adp_difference = current_pick - player_adp
+        
+        # If we're picking way before their ADP, that's good (negative difference = good)
+        # If we're picking way after their ADP, that's bad (positive difference = bad)
+        
+        # Early picks (1-50): Strong ADP enforcement
+        if current_pick <= 50:
+            if player_adp > current_pick + 15:
+                # Way too early for this player
+                penalty = -500 - ((player_adp - current_pick) * 10)
+                return penalty, f"Custom ADP {player_adp:.1f} - WAY TOO EARLY (pick {current_pick})"
+            elif player_adp > current_pick + 8:
+                # Too early - strong penalty
+                penalty = -200 - ((player_adp - current_pick) * 8)
+                return penalty, f"Custom ADP {player_adp:.1f} - too early (pick {current_pick})"
+            elif player_adp > current_pick + 5:
+                # Slightly early - moderate penalty
+                penalty = -80 - ((player_adp - current_pick) * 6)
+                return penalty, f"Custom ADP {player_adp:.1f} - slightly early (pick {current_pick})"
+            elif player_adp < current_pick - 10:
+                # Great value - picking someone who should have gone earlier
+                bonus = 100 + ((current_pick - player_adp) * 3)
+                return bonus, f"Custom ADP {player_adp:.1f} - excellent value!"
+            elif player_adp <= current_pick + 5 and player_adp >= current_pick - 8:
+                # Reasonable range (±5 ahead, -8 behind)
+                return 0, f"Custom ADP {player_adp:.1f} - at value"
+            else:
+                # Outside reasonable range
+                return -30, f"Custom ADP {player_adp:.1f} - outside optimal range"
+        
+        # Mid picks (51-150): Moderate penalties
+        elif current_pick <= 150:
+            if player_adp > current_pick + 25:
+                penalty = -300 - ((player_adp - current_pick) * 5)
+                return penalty, f"Custom ADP {player_adp:.1f} - too early (pick {current_pick})"
+            elif player_adp < current_pick - 15:
+                bonus = 80 + ((current_pick - player_adp) * 2)
+                return bonus, f"Custom ADP {player_adp:.1f} - good value!"
+            elif player_adp <= current_pick + 10 and player_adp >= current_pick - 10:
+                return 0, f"Custom ADP {player_adp:.1f} - reasonable"
+            else:
+                return -20, f"Custom ADP {player_adp:.1f} - outside range"
+        
+        # Late picks (151+): Lighter penalties, more flexibility
+        else:
+            if player_adp > current_pick + 40:
+                penalty = -100 - ((player_adp - current_pick) * 2)
+                return penalty, f"Custom ADP {player_adp:.1f} - early (pick {current_pick})"
+            elif player_adp < current_pick - 20:
+                bonus = 50 + ((current_pick - player_adp) * 1)
+                return bonus, f"Custom ADP {player_adp:.1f} - value pick"
+            else:
+                return 0, f"Custom ADP {player_adp:.1f} - acceptable"
+    
+    def _analyze_risk_factors(self, player: Player) -> Tuple[float, str]:
+        """
+        Analyze risk factors: injury risk, age decline, sample size confidence.
+        Returns (score, reasoning) where negative score = higher risk.
+        """
+        risk_score = 0.0
+        risk_factors = []
+        
+        # Injury risk (0-1, higher = more risk)
+        if player.injury_risk_score:
+            if player.injury_risk_score > 0.7:
+                risk_score -= 50
+                risk_factors.append("high injury risk")
+            elif player.injury_risk_score > 0.4:
+                risk_score -= 25
+                risk_factors.append("moderate injury risk")
+        
+        # Current injury
+        if player.current_injury:
+            risk_score -= 75
+            risk_factors.append(f"currently injured: {player.current_injury}")
+        
+        # Sample size confidence (0-1, lower = less confidence/prospect)
+        if player.sample_size_confidence:
+            if player.sample_size_confidence < 0.4:
+                risk_score -= 30
+                risk_factors.append("low sample size (prospect)")
+            elif player.sample_size_confidence < 0.6:
+                risk_score -= 15
+                risk_factors.append("limited sample size")
+        
+        # Age decline
+        if player.age_decline_factor:
+            if player.age_decline_factor < 0.85:
+                risk_score -= 20
+                risk_factors.append("age-related decline")
+            elif player.age_decline_factor < 0.95:
+                risk_score -= 10
+                risk_factors.append("slight age decline")
+        
+        # Positive factors
+        if player.contract_year:
+            risk_score += 10
+            risk_factors.append("contract year (motivation)")
+        
+        if player.sample_size_confidence and player.sample_size_confidence > 0.8:
+            risk_score += 10
+            risk_factors.append("proven track record")
+        
+        reasoning = ", ".join(risk_factors) if risk_factors else "low risk"
+        return risk_score, reasoning
     
     def _analyze_adp_value(
         self,
@@ -313,11 +645,10 @@ class RecommendationEngine:
         available_players: List[Player]
     ) -> Tuple[float, str]:
         """
-        Analyze ADP value - heavily penalize high ADP players when picking early.
-        This prevents recommending players way above their ADP.
+        DEPRECATED: Use _analyze_custom_adp_value instead.
+        Kept for backward compatibility.
         """
-        current_pick = len(draft_state.picks) + 1
-        player_adp = player.adp
+        return self._analyze_custom_adp_value(player, draft_state, available_players)
         
         if player_adp is None:
             # No ADP - slight penalty, but not huge

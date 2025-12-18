@@ -3,6 +3,7 @@ import { UIRenderer } from './ui-renderer.js';
 import { DraftManager } from './draft-manager.js';
 class App {
     constructor() {
+        this.currentRecommendation = null;
         this.allPlayers = [];
         this.currentDraft = null;
         this.autoDraftEnabled = false;
@@ -22,6 +23,36 @@ class App {
         window.showTeamDetails = (teamName) => this.showTeamDetails(teamName);
         window.revertPick = (pickNumber) => this.revertPick(pickNumber);
     }
+    showRecommendationAnalysis() {
+        if (!this.currentRecommendation) {
+            return;
+        }
+        const modal = document.getElementById('recommendation-modal');
+        const modalTitle = document.getElementById('recommendation-modal-title');
+        const modalBody = document.getElementById('recommendation-modal-body');
+        if (!modal || !modalTitle || !modalBody)
+            return;
+        // Set title
+        modalTitle.textContent = `${this.currentRecommendation.player.name} - Detailed Analysis`;
+        // Format reasoning with line breaks
+        const reasoning = this.currentRecommendation.reasoning || 'No analysis available.';
+        const formattedReasoning = reasoning.split('\n\n').map(section => {
+            // Check if section has emoji prefix (like 📊, ⚠️, etc.)
+            if (section.match(/^[📊⚠️🎯📈✅🏆💎]/)) {
+                return `<div class="analysis-section">${section}</div>`;
+            }
+            return `<div class="analysis-section">${section}</div>`;
+        }).join('');
+        modalBody.innerHTML = formattedReasoning;
+        // Show modal
+        modal.style.display = 'block';
+    }
+    closeRecommendationModal() {
+        const modal = document.getElementById('recommendation-modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
     async draftPlayerById(playerId) {
         const player = this.allPlayers.find(p => p.player_id === playerId);
         if (player) {
@@ -34,6 +65,15 @@ class App {
         document.getElementById('load-steamer-btn')?.addEventListener('click', () => this.loadSteamerFiles());
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
         document.getElementById('auto-draft-toggle-btn')?.addEventListener('click', () => this.toggleAutoDraft());
+        // Recommended player button - show analysis modal
+        document.getElementById('recommended-player-btn')?.addEventListener('click', () => this.showRecommendationAnalysis());
+        // Close modal buttons
+        document.getElementById('close-recommendation-modal')?.addEventListener('click', () => this.closeRecommendationModal());
+        document.getElementById('recommendation-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'recommendation-modal') {
+                this.closeRecommendationModal();
+            }
+        });
         // Search and filter
         document.getElementById('player-search')?.addEventListener('input', () => this.filterPlayers());
         document.getElementById('position-filter')?.addEventListener('change', () => this.filterPlayers());
@@ -143,10 +183,15 @@ class App {
             const recommendations = await this.api.getRecommendations();
             if (recommendations && recommendations.length > 0) {
                 topRecommendation = recommendations[0];
+                this.currentRecommendation = topRecommendation; // Store for modal
+            }
+            else {
+                this.currentRecommendation = null;
             }
         }
         catch (error) {
             console.error('Error fetching recommendations:', error);
+            this.currentRecommendation = null;
         }
         this.renderer.updateDraftStatusBar(this.currentDraft, topRecommendation);
         // Check if auto-draft should trigger

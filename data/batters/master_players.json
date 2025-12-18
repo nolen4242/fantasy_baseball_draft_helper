@@ -21,7 +21,8 @@
       "age": null,
       "player_id": "shohei_ohtani"
     },
-    "adp": 1.5
+    "adp": 1.5,
+    "custom_adp": 287.0
   },
   "aaron judge": {
     "name": "Aaron Judge",
@@ -45,7 +46,8 @@
       "age": null,
       "player_id": "aaron_judge"
     },
-    "adp": 1.5
+    "adp": 1.5,
+    "custom_adp": 2.0
   },
   "juan soto": {
     "name": "Juan Soto",
@@ -69,7 +71,8 @@
       "age": null,
       "player_id": "juan_soto"
     },
-    "adp": 3.3
+    "adp": 3.3,
+    "custom_adp": 1.0
   },
   "bobby witt": {
     "name": "Bobby Witt Jr.",
@@ -93,7 +96,8 @@
       "age": null,
       "player_id": "bobby_witt"
     },
-    "adp": 5.3
+    "adp": 5.3,
+    "custom_adp": 5.0
   },
   "jose ramirez": {
     "name": "Jose Ramirez",
@@ -117,7 +121,8 @@
       "age": null,
       "player_id": "jose_ramirez"
     },
-    "adp": 8.3
+    "adp": 8.3,
+    "custom_adp": 7.0
   },
   "francisco lindor": {
     "name": "Francisco Lindor",
@@ -141,7 +146,8 @@
       "age": null,
       "player_id": "francisco_lindor"
     },
-    "adp": 16.0
+    "adp": 16.0,
+    "custom_adp": 11.0
   },
   "kyle schwarber": {
     "name": "Kyle Schwarber",
@@ -165,7 +171,8 @@
       "age": null,
       "player_id": "kyle_schwarber"
     },
-    "adp": 20.0
+    "adp": 20.0,
+    "custom_adp": 13.0
   },
   "corbin carroll": {
     "name": "Corbin Carroll",
@@ -189,7 +196,8 @@
       "age": null,
       "player_id": "corbin_carroll"
     },
-    "adp": 7.0
+    "adp": 7.0,
+    "custom_adp": 3.0
   },
   "julio rodriguez": {
     "name": "Julio Rodriguez",
@@ -213,7 +221,8 @@
       "age": null,
       "player_id": "julio_rodriguez"
     },
-    "adp": 14.5
+    "adp": 14.5,
+    "custom_adp": 9.0
   },
   "elly de la cruz": {
     "name": "Elly De La Cruz",
@@ -237,7 +246,8 @@
       "age": null,
       "player_id": "elly_de_la_cruz"
     },
-    "adp": 19.3
+    "adp": 19.3,
+    "custom_adp": 4.0
   },
   "cal raleigh": {
     "name": "Cal Raleigh",
@@ -261,7 +271,8 @@
       "age": null,
       "player_id": "cal_raleigh"
     },
-    "adp": 21.8
+    "adp": 21.8,
+    "custom_adp": 15.0
   },
   "trea turner": {
     "name": "Trea Turner",
@@ -285,7 +296,8 @@
       "age": null,
       "player_id": "trea_turner"
     },
-    "adp": 48.5
+    "adp": 48.5,
+    "custom_adp": 26.0
   },
   "gunnar henderson": {
     "name": "Gunnar Henderson",
@@ -309,7 +321,8 @@
       "age": null,
       "player_id": "gunnar_henderson"
     },
-    "adp": 16.8
+    "adp": 16.8,
+    "custom_adp": 10.0
   },
   "matt olson": {
     "name": "Matt Olson",
@@ -333,7 +346,8 @@
       "age": null,
       "player_id": "matt_olson"
     },
-    "adp": 26.5
+    "adp": 26.5,
+    "custom_adp": 32.0
   },
   "freddie freeman": {
     "name": "Freddie Freeman",
@@ -357,7 +371,8 @@
       "age": null,
       "player_id": "freddie_freeman"
     },
-    "adp": 30.0
+    "adp": 30.0,
+    "custom_adp": 28.0
   },
   "pete alonso": {
     "name": "Pete Alonso",
@@ -381,7 +396,8 @@
       "age": null,
       "player_id": "pete_alonso"
     },
-    "adp": 22.8
+    "adp": 22.8,
+    "custom_adp": 29.0
   },
   "nick kurtz": {
     "name": "Nick Kurtz",
@@ -405,7 +421,8 @@
       "age": null,
       "player_id": "nick_kurtz"
     },
-    "adp": 26.8
+    "adp": 26.8,
+    "custom_adp": 42.0
   },
   "vladimir guerrero": {
     "name": "Vladimir Guerrero Jr.",
@@ -429,7 +446,8 @@
       "age": null,
       "player_id": "vladimir_guerrero_jr"
     },
-    "adp": 18.5
+    "adp": 18.5,
+    "custom_adp": 12.0
   },
   "josh naylor": {
     "name": "Josh Naylor",
@@ -453,7 +471,8 @@
       "age": null,
       "player_id": "josh_naylor"
     },
-    "adp": 57.3
+    "adp": 57.3,
+    "custom_adp": 36.0
   },
   "manny machado": {
     "name": "Manny Machado",
@@ -477,7 +496,8 @@
       "age": null,
       "player_id": "manny_machado"
     },
-    "adp": 35.5
+    "adp": 35.5,
+    "custom_adp": 43.0
   },
   "fernando tatis": {
     "name": "Fernando Tatis Jr.",
@@ -501,7 +521,8 @@
       "age": null,
       "player_id": "fernando_tatis_jr"
     },
-    "adp": 11.3
+    "adp": 11.3,
+    "custom_adp": 8.0
   },
   "george springer": {
     "name": "George Springer",
@@ -525,7 +546,8 @@
       "age": null,
       "player_id": "george_springer"
     },
-    "adp": 69.8
+    "adp": 69.8,
+    "custom_adp": 25.0
   },
   "cody bellinger": {
     "name": "Cody Bellinger",
@@ -549,7 +571,8 @@
       "age": null,
       "player_id": "cody_bellinger"
     },
-    "adp": 61.0
+    "adp": 61.0,
+    "custom_adp": 51.0
   },
   "brent rooker": {
     "name": "Brent Rooker",
@@ -573,7 +596,8 @@
       "age": null,
       "player_id": "brent_rooker"
     },
-    "adp": 42.0
+    "adp": 42.0,
+    "custom_adp": 35.0
   },
   "mookie betts": {
     "name": "Mookie Betts",
@@ -597,7 +621,8 @@
       "age": null,
       "player_id": "mookie_betts"
     },
-    "adp": 43.3
+    "adp": 43.3,
+    "custom_adp": 48.0
   },
   "rafael devers": {
     "name": "Rafael Devers",
@@ -621,7 +646,8 @@
       "age": null,
       "player_id": "rafael_devers"
     },
-    "adp": 34.5
+    "adp": 34.5,
+    "custom_adp": 46.0
   },
   "ketel marte": {
     "name": "Ketel Marte",
@@ -645,7 +671,8 @@
       "age": null,
       "player_id": "ketel_marte"
     },
-    "adp": 21.0
+    "adp": 21.0,
+    "custom_adp": 30.0
   },
   "eugenio suarez": {
     "name": "Eugenio Suarez",
@@ -669,7 +696,8 @@
       "age": null,
       "player_id": "eugenio_suarez"
     },
-    "adp": 95.8
+    "adp": 95.8,
+    "custom_adp": 70.0
   },
   "kyle tucker": {
     "name": "Kyle Tucker",
@@ -693,7 +721,8 @@
       "age": null,
       "player_id": "kyle_tucker"
     },
-    "adp": 18.5
+    "adp": 18.5,
+    "custom_adp": 14.0
   },
   "jazz chisholm 2b,3b": {
     "name": "Jazz Chisholm 2B,3B",
@@ -705,7 +734,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "jazz_chisholm_2b,3b"
-    }
+    },
+    "custom_adp": 556.0
   },
   "jackson chourio": {
     "name": "Jackson Chourio",
@@ -729,7 +759,8 @@
       "age": null,
       "player_id": "jackson_chourio"
     },
-    "adp": 25.0
+    "adp": 25.0,
+    "custom_adp": 17.0
   },
   "christian yelich": {
     "name": "Christian Yelich",
@@ -753,7 +784,8 @@
       "age": null,
       "player_id": "christian_yelich"
     },
-    "adp": 153.8
+    "adp": 153.8,
+    "custom_adp": 76.0
   },
   "cj abrams": {
     "name": "C.J. Abrams",
@@ -777,7 +809,8 @@
       "age": null,
       "player_id": "cj_abrams"
     },
-    "adp": 82.3
+    "adp": 82.3,
+    "custom_adp": 18.0
   },
   "jarren duran": {
     "name": "Jarren Duran",
@@ -801,7 +834,8 @@
       "age": null,
       "player_id": "jarren_duran"
     },
-    "adp": 68.3
+    "adp": 68.3,
+    "custom_adp": 34.0
   },
   "randy arozarena": {
     "name": "Randy Arozarena",
@@ -825,7 +859,8 @@
       "age": null,
       "player_id": "randy_arozarena"
     },
-    "adp": 89.8
+    "adp": 89.8,
+    "custom_adp": 20.0
   },
   "willy adames": {
     "name": "Willy Adames",
@@ -849,7 +884,8 @@
       "age": null,
       "player_id": "willy_adames"
     },
-    "adp": 100.8
+    "adp": 100.8,
+    "custom_adp": 50.0
   },
   "nico hoerner": {
     "name": "Nico Hoerner",
@@ -873,7 +909,8 @@
       "age": null,
       "player_id": "nico_hoerner"
     },
-    "adp": 115.5
+    "adp": 115.5,
+    "custom_adp": 39.0
   },
   "bryce harper": {
     "name": "Bryce Harper",
@@ -897,7 +934,8 @@
       "age": null,
       "player_id": "bryce_harper"
     },
-    "adp": 28.0
+    "adp": 28.0,
+    "custom_adp": 22.0
   },
   "jose altuve 2b,of": {
     "name": "Jose Altuve 2B,OF",
@@ -909,7 +947,8 @@
       "team": "HOU",
       "age": null,
       "player_id": "jose_altuve_2b,of"
-    }
+    },
+    "custom_adp": 557.0
   },
   "brandon nimmo": {
     "name": "Brandon Nimmo",
@@ -933,7 +972,8 @@
       "age": null,
       "player_id": "brandon_nimmo"
     },
-    "adp": 105.0
+    "adp": 105.0,
+    "custom_adp": 45.0
   },
   "ronald acuna": {
     "name": "Ronald Acuna Jr.",
@@ -957,7 +997,8 @@
       "age": null,
       "player_id": "ronald_acuna_jr"
     },
-    "adp": 6.8
+    "adp": 6.8,
+    "custom_adp": 6.0
   },
   "brice turang": {
     "name": "Brice Turang",
@@ -981,7 +1022,8 @@
       "age": null,
       "player_id": "brice_turang"
     },
-    "adp": 89.0
+    "adp": 89.0,
+    "custom_adp": 27.0
   },
   "teoscar hernandez": {
     "name": "Teoscar Hernandez",
@@ -1005,7 +1047,8 @@
       "age": null,
       "player_id": "teoscar_hernandez"
     },
-    "adp": 102.3
+    "adp": 102.3,
+    "custom_adp": 72.0
   },
   "seiya suzuki": {
     "name": "Seiya Suzuki",
@@ -1029,7 +1072,8 @@
       "age": null,
       "player_id": "seiya_suzuki"
     },
-    "adp": 72.5
+    "adp": 72.5,
+    "custom_adp": 52.0
   },
   "byron buxton": {
     "name": "Byron Buxton",
@@ -1053,7 +1097,8 @@
       "age": null,
       "player_id": "byron_buxton"
     },
-    "adp": 97.3
+    "adp": 97.3,
+    "custom_adp": 47.0
   },
   "wander franco": {
     "name": "Wander Franco",
@@ -1065,7 +1110,8 @@
       "team": "TB",
       "age": null,
       "player_id": "wander_franco"
-    }
+    },
+    "custom_adp": 558.0
   },
   "william contreras": {
     "name": "William Contreras",
@@ -1089,7 +1135,8 @@
       "age": null,
       "player_id": "william_contreras"
     },
-    "adp": 71.0
+    "adp": 71.0,
+    "custom_adp": 57.0
   },
   "riley greene": {
     "name": "Riley Greene",
@@ -1113,7 +1160,8 @@
       "age": null,
       "player_id": "riley_greene"
     },
-    "adp": 51.3
+    "adp": 51.3,
+    "custom_adp": 68.0
   },
   "yandy diaz": {
     "name": "Yandy Diaz",
@@ -1137,7 +1185,8 @@
       "age": null,
       "player_id": "yandy_diaz"
     },
-    "adp": 83.8
+    "adp": 83.8,
+    "custom_adp": 55.0
   },
   "marcell ozuna": {
     "name": "Marcell Ozuna",
@@ -1161,7 +1210,8 @@
       "age": null,
       "player_id": "marcell_ozuna"
     },
-    "adp": 229.0
+    "adp": 229.0,
+    "custom_adp": 120.0
   },
   "geraldo perdomo": {
     "name": "Geraldo Perdomo",
@@ -1185,7 +1235,8 @@
       "age": null,
       "player_id": "geraldo_perdomo"
     },
-    "adp": 89.5
+    "adp": 89.5,
+    "custom_adp": 40.0
   },
   "dansby swanson": {
     "name": "Dansby Swanson",
@@ -1209,7 +1260,8 @@
       "age": null,
       "player_id": "dansby_swanson"
     },
-    "adp": 166.0
+    "adp": 166.0,
+    "custom_adp": 102.0
   },
   "ian happ": {
     "name": "Ian Happ",
@@ -1233,7 +1285,8 @@
       "age": null,
       "player_id": "ian_happ"
     },
-    "adp": 122.8
+    "adp": 122.8,
+    "custom_adp": 59.0
   },
   "maikel garcia": {
     "name": "Maikel Garcia",
@@ -1257,7 +1310,8 @@
       "age": null,
       "player_id": "maikel_garcia"
     },
-    "adp": 91.8
+    "adp": 91.8,
+    "custom_adp": 24.0
   },
   "james wood": {
     "name": "James Wood",
@@ -1281,7 +1335,8 @@
       "age": null,
       "player_id": "james_wood"
     },
-    "adp": 50.3
+    "adp": 50.3,
+    "custom_adp": 37.0
   },
   "zachary neto": {
     "name": "Zachary Neto",
@@ -1293,7 +1348,8 @@
       "team": "LAA",
       "age": null,
       "player_id": "zachary_neto"
-    }
+    },
+    "custom_adp": 559.0
   },
   "christian walker": {
     "name": "Christian Walker",
@@ -1317,7 +1373,8 @@
       "age": null,
       "player_id": "christian_walker"
     },
-    "adp": 154.0
+    "adp": 154.0,
+    "custom_adp": 101.0
   },
   "jeremy pena": {
     "name": "Jeremy Pena",
@@ -1341,7 +1398,8 @@
       "age": null,
       "player_id": "jeremy_pena"
     },
-    "adp": 90.3
+    "adp": 90.3,
+    "custom_adp": 49.0
   },
   "wyatt langford": {
     "name": "Wyatt Langford",
@@ -1365,7 +1423,8 @@
       "age": null,
       "player_id": "wyatt_langford"
     },
-    "adp": 51.5
+    "adp": 51.5,
+    "custom_adp": 21.0
   },
   "bryson stott": {
     "name": "Bryson Stott",
@@ -1389,7 +1448,8 @@
       "age": null,
       "player_id": "bryson_stott"
     },
-    "adp": 185.8
+    "adp": 185.8,
+    "custom_adp": 41.0
   },
   "taylor ward": {
     "name": "Taylor Ward",
@@ -1413,7 +1473,8 @@
       "age": null,
       "player_id": "taylor_ward"
     },
-    "adp": 126.8
+    "adp": 126.8,
+    "custom_adp": 61.0
   },
   "adolis garcia": {
     "name": "Adolis Garcia",
@@ -1437,7 +1498,8 @@
       "age": null,
       "player_id": "adolis_garcia"
     },
-    "adp": 247.0
+    "adp": 247.0,
+    "custom_adp": 117.0
   },
   "spencer steer": {
     "name": "Spencer Steer",
@@ -1461,7 +1523,8 @@
       "age": null,
       "player_id": "spencer_steer"
     },
-    "adp": 173.5
+    "adp": 173.5,
+    "custom_adp": 75.0
   },
   "nick castellanos": {
     "name": "Nick Castellanos",
@@ -1474,7 +1537,8 @@
       "age": null,
       "player_id": "nick_castellanos"
     },
-    "adp": 224.5
+    "adp": 224.5,
+    "custom_adp": 560.0
   },
   "marcus semien": {
     "name": "Marcus Semien",
@@ -1498,7 +1562,8 @@
       "age": null,
       "player_id": "marcus_semien"
     },
-    "adp": 169.5
+    "adp": 169.5,
+    "custom_adp": 54.0
   },
   "andy pages": {
     "name": "Andy Pages",
@@ -1522,7 +1587,8 @@
       "age": null,
       "player_id": "andy_pages"
     },
-    "adp": 145.8
+    "adp": 145.8,
+    "custom_adp": 97.0
   },
   "corey seager": {
     "name": "Corey Seager",
@@ -1546,7 +1612,8 @@
       "age": null,
       "player_id": "corey_seager"
     },
-    "adp": 68.8
+    "adp": 68.8,
+    "custom_adp": 64.0
   },
   "pete crow armstrong": {
     "name": "Pete Crow-Armstrong",
@@ -1570,7 +1637,8 @@
       "age": null,
       "player_id": "pete_crow-armstrong"
     },
-    "adp": 57.5
+    "adp": 57.5,
+    "custom_adp": 33.0
   },
   "steven kwan": {
     "name": "Steven Kwan",
@@ -1594,7 +1662,8 @@
       "age": null,
       "player_id": "steven_kwan"
     },
-    "adp": 131.5
+    "adp": 131.5,
+    "custom_adp": 60.0
   },
   "bryan reynolds": {
     "name": "Bryan Reynolds",
@@ -1618,7 +1687,8 @@
       "age": null,
       "player_id": "bryan_reynolds"
     },
-    "adp": 150.5
+    "adp": 150.5,
+    "custom_adp": 96.0
   },
   "jackson merrill": {
     "name": "Jackson Merrill",
@@ -1642,7 +1712,8 @@
       "age": null,
       "player_id": "jackson_merrill"
     },
-    "adp": 69.0
+    "adp": 69.0,
+    "custom_adp": 69.0
   },
   "salvador perez c,1b": {
     "name": "Salvador Perez C,1B",
@@ -1654,7 +1725,8 @@
       "team": "KC",
       "age": null,
       "player_id": "salvador_perez_c,1b"
-    }
+    },
+    "custom_adp": 561.0
   },
   "ozzie albies": {
     "name": "Ozzie Albies",
@@ -1678,7 +1750,8 @@
       "age": null,
       "player_id": "ozzie_albies"
     },
-    "adp": 131.3
+    "adp": 131.3,
+    "custom_adp": 98.0
   },
   "shea langeliers": {
     "name": "Shea Langeliers",
@@ -1702,7 +1775,8 @@
       "age": null,
       "player_id": "shea_langeliers"
     },
-    "adp": 113.0
+    "adp": 113.0,
+    "custom_adp": 77.0
   },
   "alex bregman": {
     "name": "Alex Bregman",
@@ -1726,7 +1800,8 @@
       "age": null,
       "player_id": "alex_bregman"
     },
-    "adp": 61.5
+    "adp": 61.5,
+    "custom_adp": 62.0
   },
   "vinnie pasquantino": {
     "name": "Vinnie Pasquantino",
@@ -1750,7 +1825,8 @@
       "age": null,
       "player_id": "vinnie_pasquantino"
     },
-    "adp": 76.8
+    "adp": 76.8,
+    "custom_adp": 82.0
   },
   "michael harris": {
     "name": "Michael Harris II",
@@ -1774,7 +1850,8 @@
       "age": null,
       "player_id": "michael_harris"
     },
-    "adp": 119.0
+    "adp": 119.0,
+    "custom_adp": 63.0
   },
   "matt chapman": {
     "name": "Matt Chapman",
@@ -1798,7 +1875,8 @@
       "age": null,
       "player_id": "matt_chapman"
     },
-    "adp": 122.0
+    "adp": 122.0,
+    "custom_adp": 58.0
   },
   "gleyber torres": {
     "name": "Gleyber Torres",
@@ -1822,7 +1900,8 @@
       "age": null,
       "player_id": "gleyber_torres"
     },
-    "adp": 152.3
+    "adp": 152.3,
+    "custom_adp": 79.0
   },
   "brandon lowe": {
     "name": "Brandon Lowe",
@@ -1846,7 +1925,8 @@
       "age": null,
       "player_id": "brandon_lowe"
     },
-    "adp": 176.0
+    "adp": 176.0,
+    "custom_adp": 109.0
   },
   "lourdes gurriel": {
     "name": "Lourdes Gurriel Jr.",
@@ -1869,7 +1949,8 @@
       "team": "ARI",
       "age": null,
       "player_id": "lourdes_gurriel"
-    }
+    },
+    "custom_adp": 262.0
   },
   "agustin ramirez": {
     "name": "Agustin Ramirez",
@@ -1893,7 +1974,8 @@
       "age": null,
       "player_id": "agustin_ramirez"
     },
-    "adp": 143.3
+    "adp": 143.3,
+    "custom_adp": 103.0
   },
   "luis arraez": {
     "name": "Luis Arraez",
@@ -1917,7 +1999,8 @@
       "age": null,
       "player_id": "luis_arraez"
     },
-    "adp": 199.0
+    "adp": 199.0,
+    "custom_adp": 128.0
   },
   "luis robert": {
     "name": "Luis Robert Jr.",
@@ -1941,7 +2024,8 @@
       "age": null,
       "player_id": "luis_robert"
     },
-    "adp": 166.5
+    "adp": 166.5,
+    "custom_adp": 38.0
   },
   "luis garcia": {
     "name": "Luis Garc\u00eda Jr.",
@@ -1965,7 +2049,8 @@
       "age": null,
       "player_id": "luis_garcia"
     },
-    "adp": 211.8
+    "adp": 211.8,
+    "custom_adp": 105.0
   },
   "anthony volpe": {
     "name": "Anthony Volpe",
@@ -1989,7 +2074,8 @@
       "age": null,
       "player_id": "anthony_volpe"
     },
-    "adp": 253.3
+    "adp": 253.3,
+    "custom_adp": 86.0
   },
   "chandler simpson": {
     "name": "Chandler Simpson",
@@ -2013,7 +2099,8 @@
       "age": null,
       "player_id": "chandler_simpson"
     },
-    "adp": 146.0
+    "adp": 146.0,
+    "custom_adp": 44.0
   },
   "brenton doyle": {
     "name": "Brenton Doyle",
@@ -2037,7 +2124,8 @@
       "age": null,
       "player_id": "brenton_doyle"
     },
-    "adp": 201.3
+    "adp": 201.3,
+    "custom_adp": 95.0
   },
   "bo bichette": {
     "name": "Bo Bichette",
@@ -2061,7 +2149,8 @@
       "age": null,
       "player_id": "bo_bichette"
     },
-    "adp": 74.0
+    "adp": 74.0,
+    "custom_adp": 85.0
   },
   "paul goldschmidt": {
     "name": "Paul Goldschmidt",
@@ -2085,7 +2174,8 @@
       "age": null,
       "player_id": "paul_goldschmidt"
     },
-    "adp": 337.3
+    "adp": 337.3,
+    "custom_adp": 178.0
   },
   "cedric mullins": {
     "name": "Cedric Mullins",
@@ -2109,7 +2199,8 @@
       "age": null,
       "player_id": "cedric_mullins"
     },
-    "adp": 310.0
+    "adp": 310.0,
+    "custom_adp": 138.0
   },
   "will smith": {
     "name": "Will Smith",
@@ -2133,7 +2224,8 @@
       "age": null,
       "player_id": "will_smith"
     },
-    "adp": 125.8
+    "adp": 125.8,
+    "custom_adp": 111.0
   },
   "alec bohm": {
     "name": "Alec Bohm",
@@ -2157,7 +2249,8 @@
       "age": null,
       "player_id": "alec_bohm"
     },
-    "adp": 205.8
+    "adp": 205.8,
+    "custom_adp": 150.0
   },
   "michael busch": {
     "name": "Michael Busch",
@@ -2181,7 +2274,8 @@
       "age": null,
       "player_id": "michael_busch"
     },
-    "adp": 112.3
+    "adp": 112.3,
+    "custom_adp": 87.0
   },
   "xander bogaerts": {
     "name": "Xander Bogaerts",
@@ -2205,7 +2299,8 @@
       "age": null,
       "player_id": "xander_bogaerts"
     },
-    "adp": 212.3
+    "adp": 212.3,
+    "custom_adp": 91.0
   },
   "austin riley": {
     "name": "Austin Riley",
@@ -2229,7 +2324,8 @@
       "age": null,
       "player_id": "austin_riley"
     },
-    "adp": 55.0
+    "adp": 55.0,
+    "custom_adp": 66.0
   },
   "drake baldwin": {
     "name": "Drake Baldwin",
@@ -2253,7 +2349,8 @@
       "age": null,
       "player_id": "drake_baldwin"
     },
-    "adp": 133.5
+    "adp": 133.5,
+    "custom_adp": 132.0
   },
   "spencer torkelson": {
     "name": "Spencer Torkelson",
@@ -2277,7 +2374,8 @@
       "age": null,
       "player_id": "spencer_torkelson"
     },
-    "adp": 151.3
+    "adp": 151.3,
+    "custom_adp": 100.0
   },
   "yainer diaz": {
     "name": "Yainer Diaz",
@@ -2301,7 +2399,8 @@
       "age": null,
       "player_id": "yainer_diaz"
     },
-    "adp": 185.3
+    "adp": 185.3,
+    "custom_adp": 207.0
   },
   "oneil cruz": {
     "name": "Oneil Cruz",
@@ -2325,7 +2424,8 @@
       "age": null,
       "player_id": "oneil_cruz"
     },
-    "adp": 102.3
+    "adp": 102.3,
+    "custom_adp": 19.0
   },
   "tj friedl": {
     "name": "TJ Friedl",
@@ -2349,7 +2449,8 @@
       "age": null,
       "player_id": "tj_friedl"
     },
-    "adp": 214.0
+    "adp": 214.0,
+    "custom_adp": 104.0
   },
   "otto lopez 2b,ss": {
     "name": "Otto Lopez 2B,SS",
@@ -2361,7 +2462,8 @@
       "team": "MIA",
       "age": null,
       "player_id": "otto_lopez_2b,ss"
-    }
+    },
+    "custom_adp": 562.0
   },
   "alec burleson 1b,of": {
     "name": "Alec Burleson 1B,OF",
@@ -2373,7 +2475,8 @@
       "team": "STL",
       "age": null,
       "player_id": "alec_burleson_1b,of"
-    }
+    },
+    "custom_adp": 563.0
   },
   "jose caballero 2b,3b,ss,of": {
     "name": "Jose Caballero 2B,3B,SS,OF",
@@ -2385,7 +2488,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "jose_caballero_2b,3b,ss,of"
-    }
+    },
+    "custom_adp": 564.0
   },
   "jd martinez": {
     "name": "J.D. Martinez",
@@ -2397,7 +2501,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "jd_martinez"
-    }
+    },
+    "custom_adp": 565.0
   },
   "junior caminero": {
     "name": "Junior Caminero",
@@ -2421,7 +2526,8 @@
       "age": null,
       "player_id": "junior_caminero"
     },
-    "adp": 19.0
+    "adp": 19.0,
+    "custom_adp": 31.0
   },
   "lawrence butler": {
     "name": "Lawrence Butler",
@@ -2445,7 +2551,8 @@
       "age": null,
       "player_id": "lawrence_butler"
     },
-    "adp": 158.0
+    "adp": 158.0,
+    "custom_adp": 71.0
   },
   "matt mclain": {
     "name": "Matt McLain",
@@ -2469,7 +2576,8 @@
       "age": null,
       "player_id": "matt_mclain"
     },
-    "adp": 209.0
+    "adp": 209.0,
+    "custom_adp": 129.0
   },
   "jurickson profar": {
     "name": "Jurickson Profar",
@@ -2493,7 +2601,8 @@
       "age": null,
       "player_id": "jurickson_profar"
     },
-    "adp": 125.5
+    "adp": 125.5,
+    "custom_adp": 53.0
   },
   "trevor story": {
     "name": "Trevor Story",
@@ -2517,7 +2626,8 @@
       "age": null,
       "player_id": "trevor_story"
     },
-    "adp": 172.0
+    "adp": 172.0,
+    "custom_adp": 119.0
   },
   "yordan alvarez": {
     "name": "Yordan Alvarez",
@@ -2541,7 +2651,8 @@
       "age": null,
       "player_id": "yordan_alvarez"
     },
-    "adp": 24.0
+    "adp": 24.0,
+    "custom_adp": 16.0
   },
   "ceddanne rafaela 2b,of": {
     "name": "Ceddanne Rafaela 2B,OF",
@@ -2553,7 +2664,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "ceddanne_rafaela_2b,of"
-    }
+    },
+    "custom_adp": 566.0
   },
   "nate lowe": {
     "name": "Nate Lowe",
@@ -2565,7 +2677,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "nate_lowe"
-    }
+    },
+    "custom_adp": 567.0
   },
   "willson contreras": {
     "name": "Willson Contreras",
@@ -2589,7 +2702,8 @@
       "age": null,
       "player_id": "willson_contreras"
     },
-    "adp": 215.7
+    "adp": 215.7,
+    "custom_adp": 154.0
   },
   "kerry carpenter": {
     "name": "Kerry Carpenter",
@@ -2613,7 +2727,8 @@
       "age": null,
       "player_id": "kerry_carpenter"
     },
-    "adp": 233.0
+    "adp": 233.0,
+    "custom_adp": 168.0
   },
   "ryan ohearn 1b,of": {
     "name": "Ryan O'Hearn 1B,OF",
@@ -2625,7 +2740,8 @@
       "team": "SD",
       "age": null,
       "player_id": "ryan_ohearn_1b,of"
-    }
+    },
+    "custom_adp": 568.0
   },
   "caleb durbin": {
     "name": "Caleb Durbin",
@@ -2649,7 +2765,8 @@
       "age": null,
       "player_id": "caleb_durbin"
     },
-    "adp": 225.3
+    "adp": 225.3,
+    "custom_adp": 89.0
   },
   "jo adell": {
     "name": "Jo Adell",
@@ -2673,7 +2790,8 @@
       "age": null,
       "player_id": "jo_adell"
     },
-    "adp": 151.5
+    "adp": 151.5,
+    "custom_adp": 84.0
   },
   "isaac paredes": {
     "name": "Isaac Paredes",
@@ -2697,7 +2815,8 @@
       "age": null,
       "player_id": "isaac_paredes"
     },
-    "adp": 197.3
+    "adp": 197.3,
+    "custom_adp": 151.0
   },
   "ramon laureano": {
     "name": "Ramon Laureano",
@@ -2721,7 +2840,8 @@
       "age": null,
       "player_id": "ramon_laureano"
     },
-    "adp": 275.7
+    "adp": 275.7,
+    "custom_adp": 156.0
   },
   "mickey moniak": {
     "name": "Mickey Moniak",
@@ -2745,7 +2865,8 @@
       "age": null,
       "player_id": "mickey_moniak"
     },
-    "adp": 251.8
+    "adp": 251.8,
+    "custom_adp": 144.0
   },
   "jake burger": {
     "name": "Jake Burger",
@@ -2769,7 +2890,8 @@
       "age": null,
       "player_id": "jake_burger"
     },
-    "adp": 232.3
+    "adp": 232.3,
+    "custom_adp": 133.0
   },
   "harrison bader": {
     "name": "Harrison Bader",
@@ -2793,7 +2915,8 @@
       "age": null,
       "player_id": "harrison_bader"
     },
-    "adp": 312.0
+    "adp": 312.0,
+    "custom_adp": 166.0
   },
   "brandon marsh": {
     "name": "Brandon Marsh",
@@ -2817,7 +2940,8 @@
       "age": null,
       "player_id": "brandon_marsh"
     },
-    "adp": 313.3
+    "adp": 313.3,
+    "custom_adp": 158.0
   },
   "joshua lowe": {
     "name": "Joshua Lowe",
@@ -2829,7 +2953,8 @@
       "team": "TB",
       "age": null,
       "player_id": "joshua_lowe"
-    }
+    },
+    "custom_adp": 569.0
   },
   "sal frelick": {
     "name": "Sal Frelick",
@@ -2853,7 +2978,8 @@
       "age": null,
       "player_id": "sal_frelick"
     },
-    "adp": 229.0
+    "adp": 229.0,
+    "custom_adp": 134.0
   },
   "jorge polanco": {
     "name": "Jorge Polanco",
@@ -2877,7 +3003,8 @@
       "age": null,
       "player_id": "jorge_polanco"
     },
-    "adp": 234.8
+    "adp": 234.8,
+    "custom_adp": 121.0
   },
   "max muncy": {
     "name": "Max Muncy",
@@ -2901,7 +3028,8 @@
       "age": null,
       "player_id": "max_muncy"
     },
-    "adp": 274.0
+    "adp": 274.0,
+    "custom_adp": 346.0
   },
   "heliot ramos": {
     "name": "Heliot Ramos",
@@ -2925,7 +3053,8 @@
       "age": null,
       "player_id": "heliot_ramos"
     },
-    "adp": 185.0
+    "adp": 185.0,
+    "custom_adp": 107.0
   },
   "nolan arenado": {
     "name": "Nolan Arenado",
@@ -2949,7 +3078,8 @@
       "age": null,
       "player_id": "nolan_arenado"
     },
-    "adp": 316.3
+    "adp": 316.3,
+    "custom_adp": 203.0
   },
   "ezequiel tovar": {
     "name": "Ezequiel Tovar",
@@ -2973,7 +3103,8 @@
       "age": null,
       "player_id": "ezequiel_tovar"
     },
-    "adp": 177.3
+    "adp": 177.3,
+    "custom_adp": 67.0
   },
   "jesus sanchez": {
     "name": "Jesus Sanchez",
@@ -2997,7 +3128,8 @@
       "age": null,
       "player_id": "jesus_sanchez"
     },
-    "adp": 325.0
+    "adp": 325.0,
+    "custom_adp": 222.0
   },
   "brendan donovan": {
     "name": "Brendan Donovan",
@@ -3021,7 +3153,8 @@
       "age": null,
       "player_id": "brendan_donovan"
     },
-    "adp": 223.8
+    "adp": 223.8,
+    "custom_adp": 115.0
   },
   "jake mangum": {
     "name": "Jake Mangum",
@@ -3045,7 +3178,8 @@
       "age": null,
       "player_id": "jake_mangum"
     },
-    "adp": 373.0
+    "adp": 373.0,
+    "custom_adp": 413.0
   },
   "trent grisham": {
     "name": "Trent Grisham",
@@ -3069,7 +3203,8 @@
       "age": null,
       "player_id": "trent_grisham"
     },
-    "adp": 250.8
+    "adp": 250.8,
+    "custom_adp": 110.0
   },
   "ryan mcmahon": {
     "name": "Ryan McMahon",
@@ -3093,7 +3228,8 @@
       "age": null,
       "player_id": "ryan_mcmahon"
     },
-    "adp": 386.0
+    "adp": 386.0,
+    "custom_adp": 211.0
   },
   "josh bell": {
     "name": "Josh Bell",
@@ -3117,7 +3253,8 @@
       "age": null,
       "player_id": "josh_bell"
     },
-    "adp": 285.0
+    "adp": 285.0,
+    "custom_adp": 147.0
   },
   "jt realmuto": {
     "name": "J.T. Realmuto",
@@ -3141,7 +3278,8 @@
       "age": null,
       "player_id": "jt_realmuto"
     },
-    "adp": 238.7
+    "adp": 238.7,
+    "custom_adp": 239.0
   },
   "giancarlo stanton": {
     "name": "Giancarlo Stanton",
@@ -3165,7 +3303,8 @@
       "age": null,
       "player_id": "giancarlo_stanton"
     },
-    "adp": 267.0
+    "adp": 267.0,
+    "custom_adp": 169.0
   },
   "carlos santana": {
     "name": "Carlos Santana",
@@ -3177,7 +3316,8 @@
       "team": "CHC",
       "age": null,
       "player_id": "carlos_santana"
-    }
+    },
+    "custom_adp": 570.0
   },
   "willi castro 2b,3b,of": {
     "name": "Willi Castro 2B,3B,OF",
@@ -3189,7 +3329,8 @@
       "team": "CHC",
       "age": null,
       "player_id": "willi_castro_2b,3b,of"
-    }
+    },
+    "custom_adp": 571.0
   },
   "jp crawford": {
     "name": "J.P. Crawford",
@@ -3213,7 +3354,8 @@
       "age": null,
       "player_id": "jp_crawford"
     },
-    "adp": 260.3
+    "adp": 260.3,
+    "custom_adp": 190.0
   },
   "xavier edwards 2b,ss": {
     "name": "Xavier Edwards 2B,SS",
@@ -3225,7 +3367,8 @@
       "team": "MIA",
       "age": null,
       "player_id": "xavier_edwards_2b,ss"
-    }
+    },
+    "custom_adp": 572.0
   },
   "andres gimenez": {
     "name": "Andres Gimenez",
@@ -3249,7 +3392,8 @@
       "age": null,
       "player_id": "andres_gimenez"
     },
-    "adp": 243.0
+    "adp": 243.0,
+    "custom_adp": 92.0
   },
   "daulton varsho": {
     "name": "Daulton Varsho",
@@ -3273,7 +3417,8 @@
       "age": null,
       "player_id": "daulton_varsho"
     },
-    "adp": 214.8
+    "adp": 214.8,
+    "custom_adp": 124.0
   },
   "andrew benintendi": {
     "name": "Andrew Benintendi",
@@ -3297,7 +3442,8 @@
       "age": null,
       "player_id": "andrew_benintendi"
     },
-    "adp": 312.7
+    "adp": 312.7,
+    "custom_adp": 206.0
   },
   "hunter goodman": {
     "name": "Hunter Goodman",
@@ -3321,7 +3467,8 @@
       "age": null,
       "player_id": "hunter_goodman"
     },
-    "adp": 127.0
+    "adp": 127.0,
+    "custom_adp": 108.0
   },
   "carlos correa 3b,ss": {
     "name": "Carlos Correa 3B,SS",
@@ -3333,7 +3480,8 @@
       "team": "HOU",
       "age": null,
       "player_id": "carlos_correa_3b,ss"
-    }
+    },
+    "custom_adp": 573.0
   },
   "jonathan india 2b,3b,of": {
     "name": "Jonathan India 2B,3B,OF",
@@ -3345,7 +3493,8 @@
       "team": "KC",
       "age": null,
       "player_id": "jonathan_india_2b,3b,of"
-    }
+    },
+    "custom_adp": 574.0
   },
   "matt shaw": {
     "name": "Matt Shaw",
@@ -3369,7 +3518,8 @@
       "age": null,
       "player_id": "matt_shaw"
     },
-    "adp": 246.5
+    "adp": 246.5,
+    "custom_adp": 74.0
   },
   "jake cronenworth": {
     "name": "Jake Cronenworth",
@@ -3393,7 +3543,8 @@
       "age": null,
       "player_id": "jake_cronenworth"
     },
-    "adp": 299.0
+    "adp": 299.0,
+    "custom_adp": 171.0
   },
   "andrew vaughn": {
     "name": "Andrew Vaughn",
@@ -3417,7 +3568,8 @@
       "age": null,
       "player_id": "andrew_vaughn"
     },
-    "adp": 242.5
+    "adp": 242.5,
+    "custom_adp": 173.0
   },
   "anthony santander": {
     "name": "Anthony Santander",
@@ -3441,7 +3593,8 @@
       "age": null,
       "player_id": "anthony_santander"
     },
-    "adp": 180.5
+    "adp": 180.5,
+    "custom_adp": 99.0
   },
   "wilyer abreu": {
     "name": "Wilyer Abreu",
@@ -3465,7 +3618,8 @@
       "age": null,
       "player_id": "wilyer_abreu"
     },
-    "adp": 223.3
+    "adp": 223.3,
+    "custom_adp": 116.0
   },
   "tyler soderstrom 1b,of": {
     "name": "Tyler Soderstrom 1B,OF",
@@ -3477,7 +3631,8 @@
       "team": "ATH",
       "age": null,
       "player_id": "tyler_soderstrom_1b,of"
-    }
+    },
+    "custom_adp": 575.0
   },
   "daylen lile": {
     "name": "Daylen Lile",
@@ -3501,7 +3656,8 @@
       "age": null,
       "player_id": "daylen_lile"
     },
-    "adp": 216.8
+    "adp": 216.8,
+    "custom_adp": 136.0
   },
   "mike yastrzemski": {
     "name": "Mike Yastrzemski",
@@ -3525,7 +3681,8 @@
       "age": null,
       "player_id": "mike_yastrzemski"
     },
-    "adp": 487.0
+    "adp": 487.0,
+    "custom_adp": 188.0
   },
   "whit merrifield": {
     "name": "Whit Merrifield",
@@ -3537,7 +3694,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "whit_merrifield"
-    }
+    },
+    "custom_adp": 576.0
   },
   "austin hays": {
     "name": "Austin Hays",
@@ -3550,7 +3708,8 @@
       "age": null,
       "player_id": "austin_hays"
     },
-    "adp": 358.0
+    "adp": 358.0,
+    "custom_adp": 577.0
   },
   "colt keith 2b,3b": {
     "name": "Colt Keith 2B,3B",
@@ -3562,7 +3721,8 @@
       "team": "DET",
       "age": null,
       "player_id": "colt_keith_2b,3b"
-    }
+    },
+    "custom_adp": 578.0
   },
   "zach mckinstry 3b,ss,of": {
     "name": "Zach McKinstry 3B,SS,OF",
@@ -3574,7 +3734,8 @@
       "team": "DET",
       "age": null,
       "player_id": "zach_mckinstry_3b,ss,of"
-    }
+    },
+    "custom_adp": 579.0
   },
   "ben rice c,1b": {
     "name": "Ben Rice C,1B",
@@ -3586,7 +3747,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "ben_rice_c,1b"
-    }
+    },
+    "custom_adp": 580.0
   },
   "trevor larnach": {
     "name": "Trevor Larnach",
@@ -3610,7 +3772,8 @@
       "age": null,
       "player_id": "trevor_larnach"
     },
-    "adp": 314.7
+    "adp": 314.7,
+    "custom_adp": 189.0
   },
   "mike trout": {
     "name": "Mike Trout",
@@ -3634,7 +3797,8 @@
       "age": null,
       "player_id": "mike_trout"
     },
-    "adp": 207.5
+    "adp": 207.5,
+    "custom_adp": 126.0
   },
   "colson montgomery": {
     "name": "Colson Montgomery",
@@ -3658,7 +3822,8 @@
       "age": null,
       "player_id": "colson_montgomery"
     },
-    "adp": 182.8
+    "adp": 182.8,
+    "custom_adp": 127.0
   },
   "masyn winn": {
     "name": "Masyn Winn",
@@ -3682,7 +3847,8 @@
       "age": null,
       "player_id": "masyn_winn"
     },
-    "adp": 182.3
+    "adp": 182.3,
+    "custom_adp": 81.0
   },
   "luis rengifo 2b,3b": {
     "name": "Luis Rengifo 2B,3B",
@@ -3694,7 +3860,8 @@
       "team": "LAA",
       "age": null,
       "player_id": "luis_rengifo_2b,3b"
-    }
+    },
+    "custom_adp": 581.0
   },
   "jorge soler": {
     "name": "Jorge Soler",
@@ -3718,7 +3885,8 @@
       "age": null,
       "player_id": "jorge_soler"
     },
-    "adp": 457.0
+    "adp": 457.0,
+    "custom_adp": 162.0
   },
   "ernie clement 2b,3b,ss": {
     "name": "Ernie Clement 2B,3B,SS",
@@ -3730,7 +3898,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "ernie_clement_2b,3b,ss"
-    }
+    },
+    "custom_adp": 582.0
   },
   "lane thomas": {
     "name": "Lane Thomas",
@@ -3754,7 +3923,8 @@
       "age": null,
       "player_id": "lane_thomas"
     },
-    "adp": 465.0
+    "adp": 465.0,
+    "custom_adp": 114.0
   },
   "brandon belt": {
     "name": "Brandon Belt",
@@ -3766,7 +3936,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "brandon_belt"
-    }
+    },
+    "custom_adp": 583.0
   },
   "lars nootbaar": {
     "name": "Lars Nootbaar",
@@ -3790,7 +3961,8 @@
       "age": null,
       "player_id": "lars_nootbaar"
     },
-    "adp": 300.3
+    "adp": 300.3,
+    "custom_adp": 152.0
   },
   "andrew mccutchen": {
     "name": "Andrew McCutchen",
@@ -3802,7 +3974,8 @@
       "team": "PIT",
       "age": null,
       "player_id": "andrew_mccutchen"
-    }
+    },
+    "custom_adp": 584.0
   },
   "josh h smith 1b,3b,ss": {
     "name": "Josh H. Smith 1B,3B,SS",
@@ -3814,7 +3987,8 @@
       "team": "TEX",
       "age": null,
       "player_id": "josh_h_smith_1b,3b,ss"
-    }
+    },
+    "custom_adp": 585.0
   },
   "jordan westburg": {
     "name": "Jordan Westburg",
@@ -3838,7 +4012,8 @@
       "age": null,
       "player_id": "jordan_westburg"
     },
-    "adp": 129.0
+    "adp": 129.0,
+    "custom_adp": 80.0
   },
   "max kepler": {
     "name": "Max Kepler",
@@ -3862,7 +4037,8 @@
       "age": null,
       "player_id": "max_kepler"
     },
-    "adp": 544.0
+    "adp": 544.0,
+    "custom_adp": 304.0
   },
   "tommy pham": {
     "name": "Tommy Pham",
@@ -3885,7 +4061,8 @@
       "team": "PIT",
       "age": null,
       "player_id": "tommy_pham"
-    }
+    },
+    "custom_adp": 275.0
   },
   "jackson holliday": {
     "name": "Jackson Holliday",
@@ -3909,7 +4086,8 @@
       "age": null,
       "player_id": "jackson_holliday"
     },
-    "adp": 145.0
+    "adp": 145.0,
+    "custom_adp": 90.0
   },
   "ryan jeffers": {
     "name": "Ryan Jeffers",
@@ -3933,7 +4111,8 @@
       "age": null,
       "player_id": "ryan_jeffers"
     },
-    "adp": 262.0
+    "adp": 262.0,
+    "custom_adp": 170.0
   },
   "jeff mcneil 2b,of": {
     "name": "Jeff McNeil 2B,OF",
@@ -3945,7 +4124,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "jeff_mcneil_2b,of"
-    }
+    },
+    "custom_adp": 586.0
   },
   "nolan schanuel": {
     "name": "Nolan Schanuel",
@@ -3969,7 +4149,8 @@
       "age": null,
       "player_id": "nolan_schanuel"
     },
-    "adp": 206.8
+    "adp": 206.8,
+    "custom_adp": 88.0
   },
   "mark vientos": {
     "name": "Mark Vientos",
@@ -3993,7 +4174,8 @@
       "age": null,
       "player_id": "mark_vientos"
     },
-    "adp": 145.8
+    "adp": 145.8,
+    "custom_adp": 78.0
   },
   "adley rutschman": {
     "name": "Adley Rutschman",
@@ -4017,7 +4199,8 @@
       "age": null,
       "player_id": "adley_rutschman"
     },
-    "adp": 147.0
+    "adp": 147.0,
+    "custom_adp": 135.0
   },
   "tyler stephenson": {
     "name": "Tyler Stephenson",
@@ -4041,7 +4224,8 @@
       "age": null,
       "player_id": "tyler_stephenson"
     },
-    "adp": 239.0
+    "adp": 239.0,
+    "custom_adp": 308.0
   },
   "josh jung": {
     "name": "Josh Jung",
@@ -4065,7 +4249,8 @@
       "age": null,
       "player_id": "josh_jung"
     },
-    "adp": 286.0
+    "adp": 286.0,
+    "custom_adp": 229.0
   },
   "addison barger 3b,of": {
     "name": "Addison Barger 3B,OF",
@@ -4077,7 +4262,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "addison_barger_3b,of"
-    }
+    },
+    "custom_adp": 587.0
   },
   "jordan beck": {
     "name": "Jordan Beck",
@@ -4101,7 +4287,8 @@
       "age": null,
       "player_id": "jordan_beck"
     },
-    "adp": 265.3
+    "adp": 265.3,
+    "custom_adp": 131.0
   },
   "ivan herrera": {
     "name": "Ivan Herrera",
@@ -4125,7 +4312,8 @@
       "age": null,
       "player_id": "ivan_herrera"
     },
-    "adp": 170.0
+    "adp": 170.0,
+    "custom_adp": 93.0
   },
   "ha seong kim": {
     "name": "Ha-seong Kim",
@@ -4149,7 +4337,8 @@
       "age": null,
       "player_id": "ha-seong_kim"
     },
-    "adp": 255.3
+    "adp": 255.3,
+    "custom_adp": 94.0
   },
   "christopher morel": {
     "name": "Christopher Morel",
@@ -4173,7 +4362,8 @@
       "age": null,
       "player_id": "christopher_morel"
     },
-    "adp": 542.0
+    "adp": 542.0,
+    "custom_adp": 328.0
   },
   "cam smith": {
     "name": "Cam Smith",
@@ -4197,7 +4387,8 @@
       "age": null,
       "player_id": "cam_smith"
     },
-    "adp": 289.0
+    "adp": 289.0,
+    "custom_adp": 301.0
   },
   "royce lewis": {
     "name": "Royce Lewis",
@@ -4221,7 +4412,8 @@
       "age": null,
       "player_id": "royce_lewis"
     },
-    "adp": 194.8
+    "adp": 194.8,
+    "custom_adp": 106.0
   },
   "ryan mountcastle": {
     "name": "Ryan Mountcastle",
@@ -4245,7 +4437,8 @@
       "age": null,
       "player_id": "ryan_mountcastle"
     },
-    "adp": 499.0
+    "adp": 499.0,
+    "custom_adp": 360.0
   },
   "isiah kiner falefa 3b,ss": {
     "name": "Isiah Kiner-Falefa 3B,SS",
@@ -4257,7 +4450,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "isiah_kiner-falefa_3b,ss"
-    }
+    },
+    "custom_adp": 588.0
   },
   "jacob wilson": {
     "name": "Jacob Wilson",
@@ -4281,7 +4475,8 @@
       "age": null,
       "player_id": "jacob_wilson"
     },
-    "adp": 144.3
+    "adp": 144.3,
+    "custom_adp": 160.0
   },
   "nolan gorman 2b,3b": {
     "name": "Nolan Gorman 2B,3B",
@@ -4293,7 +4488,8 @@
       "team": "STL",
       "age": null,
       "player_id": "nolan_gorman_2b,3b"
-    }
+    },
+    "custom_adp": 589.0
   },
   "lenyn sosa 1b,2b": {
     "name": "Lenyn Sosa 1B,2B",
@@ -4305,7 +4501,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "lenyn_sosa_1b,2b"
-    }
+    },
+    "custom_adp": 590.0
   },
   "wenceel perez": {
     "name": "Wenceel Perez",
@@ -4329,7 +4526,8 @@
       "age": null,
       "player_id": "wenceel_perez"
     },
-    "adp": 367.0
+    "adp": 367.0,
+    "custom_adp": 200.0
   },
   "alejandro kirk": {
     "name": "Alejandro Kirk",
@@ -4353,7 +4551,8 @@
       "age": null,
       "player_id": "alejandro_kirk"
     },
-    "adp": 193.0
+    "adp": 193.0,
+    "custom_adp": 161.0
   },
   "rhys hoskins": {
     "name": "Rhys Hoskins",
@@ -4377,7 +4576,8 @@
       "age": null,
       "player_id": "rhys_hoskins"
     },
-    "adp": 429.0
+    "adp": 429.0,
+    "custom_adp": 213.0
   },
   "jake meyers": {
     "name": "Jake Meyers",
@@ -4401,7 +4601,8 @@
       "age": null,
       "player_id": "jake_meyers"
     },
-    "adp": 507.0
+    "adp": 507.0,
+    "custom_adp": 271.0
   },
   "starling marte": {
     "name": "Starling Marte",
@@ -4424,7 +4625,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "starling_marte"
-    }
+    },
+    "custom_adp": 364.0
   },
   "gavin sheets": {
     "name": "Gavin Sheets",
@@ -4448,7 +4650,8 @@
       "age": null,
       "player_id": "gavin_sheets"
     },
-    "adp": 356.0
+    "adp": 356.0,
+    "custom_adp": 237.0
   },
   "colton cowser": {
     "name": "Colton Cowser",
@@ -4472,7 +4675,8 @@
       "age": null,
       "player_id": "colton_cowser"
     },
-    "adp": 255.0
+    "adp": 255.0,
+    "custom_adp": 123.0
   },
   "gavin lux": {
     "name": "Gavin Lux",
@@ -4496,7 +4700,8 @@
       "age": null,
       "player_id": "gavin_lux"
     },
-    "adp": 535.0
+    "adp": 535.0,
+    "custom_adp": 321.0
   },
   "ty france": {
     "name": "Ty France",
@@ -4519,7 +4724,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "ty_france"
-    }
+    },
+    "custom_adp": 359.0
   },
   "harold ramirez": {
     "name": "Harold Ramirez",
@@ -4531,7 +4737,8 @@
       "team": "WAS",
       "age": null,
       "player_id": "harold_ramirez"
-    }
+    },
+    "custom_adp": 591.0
   },
   "austin wells": {
     "name": "Austin Wells",
@@ -4555,7 +4762,8 @@
       "age": null,
       "player_id": "austin_wells"
     },
-    "adp": 225.0
+    "adp": 225.0,
+    "custom_adp": 194.0
   },
   "javier baez 3b,ss,of": {
     "name": "Javier Baez 3B,SS,OF",
@@ -4567,7 +4775,8 @@
       "team": "DET",
       "age": null,
       "player_id": "javier_baez_3b,ss,of"
-    }
+    },
+    "custom_adp": 592.0
   },
   "kebryan hayes": {
     "name": "Ke'Bryan Hayes",
@@ -4591,7 +4800,8 @@
       "age": null,
       "player_id": "kebryan_hayes"
     },
-    "adp": 409.0
+    "adp": 409.0,
+    "custom_adp": 217.0
   },
   "tommy edman 2b,of": {
     "name": "Tommy Edman 2B,OF",
@@ -4603,7 +4813,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "tommy_edman_2b,of"
-    }
+    },
+    "custom_adp": 593.0
   },
   "roman anthony": {
     "name": "Roman Anthony",
@@ -4627,7 +4838,8 @@
       "age": null,
       "player_id": "roman_anthony"
     },
-    "adp": 64.3
+    "adp": 64.3,
+    "custom_adp": 83.0
   },
   "jung hoo lee": {
     "name": "Jung Hoo Lee",
@@ -4651,7 +4863,8 @@
       "age": null,
       "player_id": "jung_hoo_lee"
     },
-    "adp": 260.3
+    "adp": 260.3,
+    "custom_adp": 159.0
   },
   "kyle manzardo": {
     "name": "Kyle Manzardo",
@@ -4675,7 +4888,8 @@
       "age": null,
       "player_id": "kyle_manzardo"
     },
-    "adp": 216.3
+    "adp": 216.3,
+    "custom_adp": 137.0
   },
   "wilmer flores": {
     "name": "Wilmer Flores",
@@ -4687,7 +4901,8 @@
       "team": "SF",
       "age": null,
       "player_id": "wilmer_flores"
-    }
+    },
+    "custom_adp": 594.0
   },
   "jj bleday": {
     "name": "J.J. Bleday",
@@ -4711,7 +4926,8 @@
       "age": null,
       "player_id": "jj_bleday"
     },
-    "adp": 564.0
+    "adp": 564.0,
+    "custom_adp": 349.0
   },
   "michael conforto": {
     "name": "Michael Conforto",
@@ -4734,7 +4950,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "michael_conforto"
-    }
+    },
+    "custom_adp": 383.0
   },
   "kyle stowers": {
     "name": "Kyle Stowers",
@@ -4758,7 +4975,8 @@
       "age": null,
       "player_id": "kyle_stowers"
     },
-    "adp": 138.5
+    "adp": 138.5,
+    "custom_adp": 122.0
   },
   "matt wallner": {
     "name": "Matt Wallner",
@@ -4782,7 +5000,8 @@
       "age": null,
       "player_id": "matt_wallner"
     },
-    "adp": 283.0
+    "adp": 283.0,
+    "custom_adp": 139.0
   },
   "jonah heim": {
     "name": "Jonah Heim",
@@ -4806,7 +5025,8 @@
       "age": null,
       "player_id": "jonah_heim"
     },
-    "adp": 369.0
+    "adp": 369.0,
+    "custom_adp": 437.0
   },
   "masataka yoshida": {
     "name": "Masataka Yoshida",
@@ -4830,7 +5050,8 @@
       "age": null,
       "player_id": "masataka_yoshida"
     },
-    "adp": 552.0
+    "adp": 552.0,
+    "custom_adp": 322.0
   },
   "chase meidroth 2b,ss": {
     "name": "Chase Meidroth 2B,SS",
@@ -4842,7 +5063,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "chase_meidroth_2b,ss"
-    }
+    },
+    "custom_adp": 595.0
   },
   "will benson": {
     "name": "Will Benson",
@@ -4865,7 +5087,8 @@
       "team": "CIN",
       "age": null,
       "player_id": "will_benson"
-    }
+    },
+    "custom_adp": 255.0
   },
   "romy gonzalez 1b,2b": {
     "name": "Romy Gonzalez 1B,2B",
@@ -4877,7 +5100,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "romy_gonzalez_1b,2b"
-    }
+    },
+    "custom_adp": 596.0
   },
   "logan ohoppe": {
     "name": "Logan O'Hoppe",
@@ -4901,7 +5125,8 @@
       "age": null,
       "player_id": "logan_ohoppe"
     },
-    "adp": 248.0
+    "adp": 248.0,
+    "custom_adp": 268.0
   },
   "joey meneses": {
     "name": "Joey Meneses",
@@ -4913,7 +5138,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "joey_meneses"
-    }
+    },
+    "custom_adp": 597.0
   },
   "jake fraley": {
     "name": "Jake Fraley",
@@ -4936,7 +5162,8 @@
       "team": "TB",
       "age": null,
       "player_id": "jake_fraley"
-    }
+    },
+    "custom_adp": 347.0
   },
   "joseph ortiz": {
     "name": "Joseph Ortiz",
@@ -4948,7 +5175,8 @@
       "team": "MIL",
       "age": null,
       "player_id": "joseph_ortiz"
-    }
+    },
+    "custom_adp": 598.0
   },
   "gabriel moreno": {
     "name": "Gabriel Moreno",
@@ -4972,7 +5200,8 @@
       "age": null,
       "player_id": "gabriel_moreno"
     },
-    "adp": 233.8
+    "adp": 233.8,
+    "custom_adp": 185.0
   },
   "jakob marsee": {
     "name": "Jakob Marsee",
@@ -4996,7 +5225,8 @@
       "age": null,
       "player_id": "jakob_marsee"
     },
-    "adp": 157.3
+    "adp": 157.3,
+    "custom_adp": 23.0
   },
   "mauricio dubon 2b,3b,ss,of": {
     "name": "Mauricio Dubon 2B,3B,SS,OF",
@@ -5008,7 +5238,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "mauricio_dubon_2b,3b,ss,of"
-    }
+    },
+    "custom_adp": 599.0
   },
   "heriberto hernandez": {
     "name": "Heriberto Hernandez",
@@ -5021,7 +5252,8 @@
       "age": null,
       "player_id": "heriberto_hernandez"
     },
-    "adp": 458.0
+    "adp": 458.0,
+    "custom_adp": 600.0
   },
   "mike moustakas": {
     "name": "Mike Moustakas",
@@ -5033,7 +5265,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "mike_moustakas"
-    }
+    },
+    "custom_adp": 601.0
   },
   "jacob young": {
     "name": "Jacob Young",
@@ -5056,7 +5289,8 @@
       "team": "WAS",
       "age": null,
       "player_id": "jacob_young"
-    }
+    },
+    "custom_adp": 226.0
   },
   "joc pederson": {
     "name": "Joc Pederson",
@@ -5080,7 +5314,8 @@
       "age": null,
       "player_id": "joc_pederson"
     },
-    "adp": 513.0
+    "adp": 513.0,
+    "custom_adp": 172.0
   },
   "leody taveras": {
     "name": "Leody Taveras",
@@ -5103,7 +5338,8 @@
       "team": "SEA",
       "age": null,
       "player_id": "leody_taveras"
-    }
+    },
+    "custom_adp": 433.0
   },
   "mike tauchman": {
     "name": "Mike Tauchman",
@@ -5126,7 +5362,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "mike_tauchman"
-    }
+    },
+    "custom_adp": 330.0
   },
   "tyler oneill": {
     "name": "Tyler O'Neill",
@@ -5150,7 +5387,8 @@
       "age": null,
       "player_id": "tyler_oneill"
     },
-    "adp": 384.0
+    "adp": 384.0,
+    "custom_adp": 225.0
   },
   "dylan moore 2b,of": {
     "name": "Dylan Moore 2B,OF",
@@ -5162,7 +5400,8 @@
       "team": "TEX",
       "age": null,
       "player_id": "dylan_moore_2b,of"
-    }
+    },
+    "custom_adp": 602.0
   },
   "luke raley 1b,of": {
     "name": "Luke Raley 1B,OF",
@@ -5174,7 +5413,8 @@
       "team": "SEA",
       "age": null,
       "player_id": "luke_raley_1b,of"
-    }
+    },
+    "custom_adp": 603.0
   },
   "adam frazier 2b,of": {
     "name": "Adam Frazier 2B,OF",
@@ -5186,7 +5426,8 @@
       "team": "KC",
       "age": null,
       "player_id": "adam_frazier_2b,of"
-    }
+    },
+    "custom_adp": 604.0
   },
   "justin turner": {
     "name": "Justin Turner",
@@ -5198,7 +5439,8 @@
       "team": "CHC",
       "age": null,
       "player_id": "justin_turner"
-    }
+    },
+    "custom_adp": 605.0
   },
   "rowdy tellez": {
     "name": "Rowdy Tellez",
@@ -5210,7 +5452,8 @@
       "team": "TEX",
       "age": null,
       "player_id": "rowdy_tellez"
-    }
+    },
+    "custom_adp": 606.0
   },
   "jake mccarthy": {
     "name": "Jake McCarthy",
@@ -5233,7 +5476,8 @@
       "team": "ARI",
       "age": null,
       "player_id": "jake_mccarthy"
-    }
+    },
+    "custom_adp": 365.0
   },
   "tyler freeman": {
     "name": "Tyler Freeman",
@@ -5257,7 +5501,8 @@
       "age": null,
       "player_id": "tyler_freeman"
     },
-    "adp": 481.0
+    "adp": 481.0,
+    "custom_adp": 141.0
   },
   "jonathan aranda": {
     "name": "Jonathan Aranda",
@@ -5281,7 +5526,8 @@
       "age": null,
       "player_id": "jonathan_aranda"
     },
-    "adp": 175.0
+    "adp": 175.0,
+    "custom_adp": 145.0
   },
   "francisco alvarez": {
     "name": "Francisco Alvarez",
@@ -5305,7 +5551,8 @@
       "age": null,
       "player_id": "francisco_alvarez"
     },
-    "adp": 253.0
+    "adp": 253.0,
+    "custom_adp": 165.0
   },
   "victor scott": {
     "name": "Victor Scott II",
@@ -5329,7 +5576,8 @@
       "age": null,
       "player_id": "victor_scott_ii"
     },
-    "adp": 340.0
+    "adp": 340.0,
+    "custom_adp": 113.0
   },
   "miguel vargas 1b,3b": {
     "name": "Miguel Vargas 1B,3B",
@@ -5341,7 +5589,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "miguel_vargas_1b,3b"
-    }
+    },
+    "custom_adp": 607.0
   },
   "noelvi marte 3b,of": {
     "name": "Noelvi Marte 3B,OF",
@@ -5353,7 +5602,8 @@
       "team": "CIN",
       "age": null,
       "player_id": "noelvi_marte_3b,of"
-    }
+    },
+    "custom_adp": 608.0
   },
   "spencer horwitz": {
     "name": "Spencer Horwitz",
@@ -5377,7 +5627,8 @@
       "age": null,
       "player_id": "spencer_horwitz"
     },
-    "adp": 272.3
+    "adp": 272.3,
+    "custom_adp": 186.0
   },
   "brett baty 2b,3b": {
     "name": "Brett Baty 2B,3B",
@@ -5389,7 +5640,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "brett_baty_2b,3b"
-    }
+    },
+    "custom_adp": 609.0
   },
   "david peralta": {
     "name": "David Peralta",
@@ -5401,7 +5653,8 @@
       "team": "SD",
       "age": null,
       "player_id": "david_peralta"
-    }
+    },
+    "custom_adp": 610.0
   },
   "isaac collins": {
     "name": "Isaac Collins",
@@ -5425,7 +5678,8 @@
       "age": null,
       "player_id": "isaac_collins"
     },
-    "adp": 380.0
+    "adp": 380.0,
+    "custom_adp": 295.0
   },
   "luke keaschall": {
     "name": "Luke Keaschall",
@@ -5449,7 +5703,8 @@
       "age": null,
       "player_id": "luke_keaschall"
     },
-    "adp": 155.0
+    "adp": 155.0,
+    "custom_adp": 65.0
   },
   "kyle teel": {
     "name": "Kyle Teel",
@@ -5473,7 +5728,8 @@
       "age": null,
       "player_id": "kyle_teel"
     },
-    "adp": 218.3
+    "adp": 218.3,
+    "custom_adp": 202.0
   },
   "kyle isbel": {
     "name": "Kyle Isbel",
@@ -5496,7 +5752,8 @@
       "team": "KC",
       "age": null,
       "player_id": "kyle_isbel"
-    }
+    },
+    "custom_adp": 242.0
   },
   "brooks lee 2b,3b,ss": {
     "name": "Brooks Lee 2B,3B,SS",
@@ -5508,7 +5765,8 @@
       "team": "MIN",
       "age": null,
       "player_id": "brooks_lee_2b,3b,ss"
-    }
+    },
+    "custom_adp": 611.0
   },
   "edmundo sosa 2b,3b": {
     "name": "Edmundo Sosa 2B,3B",
@@ -5520,7 +5778,8 @@
       "team": "PHI",
       "age": null,
       "player_id": "edmundo_sosa_2b,3b"
-    }
+    },
+    "custom_adp": 612.0
   },
   "nolan jones": {
     "name": "Nolan Jones",
@@ -5532,7 +5791,8 @@
       "team": "CLE",
       "age": null,
       "player_id": "nolan_jones"
-    }
+    },
+    "custom_adp": 613.0
   },
   "randal grichuk": {
     "name": "Randal Grichuk",
@@ -5555,7 +5815,8 @@
       "team": "KC",
       "age": null,
       "player_id": "randal_grichuk"
-    }
+    },
+    "custom_adp": 434.0
   },
   "ramon urias 2b,3b": {
     "name": "Ramon Urias 2B,3B",
@@ -5567,7 +5828,8 @@
       "team": "HOU",
       "age": null,
       "player_id": "ramon_urias_2b,3b"
-    }
+    },
+    "custom_adp": 614.0
   },
   "jasson dominguez": {
     "name": "Jasson Dominguez",
@@ -5591,7 +5853,8 @@
       "age": null,
       "player_id": "jasson_dominguez"
     },
-    "adp": 205.5
+    "adp": 205.5,
+    "custom_adp": 73.0
   },
   "eloy jimenez": {
     "name": "Eloy Jimenez",
@@ -5603,7 +5866,8 @@
       "team": "TB",
       "age": null,
       "player_id": "eloy_jimenez"
-    }
+    },
+    "custom_adp": 615.0
   },
   "miguel andujar 3b,of": {
     "name": "Miguel Andujar 3B,OF",
@@ -5615,7 +5879,8 @@
       "team": "CIN",
       "age": null,
       "player_id": "miguel_andujar_3b,of"
-    }
+    },
+    "custom_adp": 616.0
   },
   "cj cron": {
     "name": "C.J. Cron",
@@ -5627,7 +5892,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "cj_cron"
-    }
+    },
+    "custom_adp": 617.0
   },
   "kyle higashioka": {
     "name": "Kyle Higashioka",
@@ -5651,7 +5917,8 @@
       "age": null,
       "player_id": "kyle_higashioka"
     },
-    "adp": 488.0
+    "adp": 488.0,
+    "custom_adp": 420.0
   },
   "carson kelly": {
     "name": "Carson Kelly",
@@ -5675,7 +5942,8 @@
       "age": null,
       "player_id": "carson_kelly"
     },
-    "adp": 306.0
+    "adp": 306.0,
+    "custom_adp": 315.0
   },
   "amed rosario": {
     "name": "Amed Rosario",
@@ -5698,7 +5966,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "amed_rosario"
-    }
+    },
+    "custom_adp": 387.0
   },
   "miguel rojas 2b,3b,ss": {
     "name": "Miguel Rojas 2B,3B,SS",
@@ -5710,7 +5979,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "miguel_rojas_2b,3b,ss"
-    }
+    },
+    "custom_adp": 618.0
   },
   "sean murphy": {
     "name": "Sean Murphy",
@@ -5734,7 +6004,8 @@
       "age": null,
       "player_id": "sean_murphy"
     },
-    "adp": 327.0
+    "adp": 327.0,
+    "custom_adp": 221.0
   },
   "david hamilton": {
     "name": "David Hamilton",
@@ -5746,7 +6017,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "david_hamilton"
-    }
+    },
+    "custom_adp": 619.0
   },
   "patrick bailey": {
     "name": "Patrick Bailey",
@@ -5770,7 +6042,8 @@
       "age": null,
       "player_id": "patrick_bailey"
     },
-    "adp": 345.0
+    "adp": 345.0,
+    "custom_adp": 388.0
   },
   "jared triolo 1b,3b,ss": {
     "name": "Jared Triolo 1B,3B,SS",
@@ -5782,7 +6055,8 @@
       "team": "PIT",
       "age": null,
       "player_id": "jared_triolo_1b,3b,ss"
-    }
+    },
+    "custom_adp": 620.0
   },
   "bo naylor": {
     "name": "Bo Naylor",
@@ -5806,7 +6080,8 @@
       "age": null,
       "player_id": "bo_naylor"
     },
-    "adp": 293.0
+    "adp": 293.0,
+    "custom_adp": 209.0
   },
   "rob refsnyder": {
     "name": "Rob Refsnyder",
@@ -5829,7 +6104,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "rob_refsnyder"
-    }
+    },
+    "custom_adp": 415.0
   },
   "dillon dingler": {
     "name": "Dillon Dingler",
@@ -5853,7 +6129,8 @@
       "age": null,
       "player_id": "dillon_dingler"
     },
-    "adp": 249.0
+    "adp": 249.0,
+    "custom_adp": 385.0
   },
   "adam duvall": {
     "name": "Adam Duvall",
@@ -5865,7 +6142,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "adam_duvall"
-    }
+    },
+    "custom_adp": 621.0
   },
   "connor norby": {
     "name": "Connor Norby",
@@ -5889,7 +6167,8 @@
       "age": null,
       "player_id": "connor_norby"
     },
-    "adp": 328.0
+    "adp": 328.0,
+    "custom_adp": 182.0
   },
   "victor caratini": {
     "name": "Victor Caratini",
@@ -5913,7 +6192,8 @@
       "age": null,
       "player_id": "victor_caratini"
     },
-    "adp": 403.0
+    "adp": 403.0,
+    "custom_adp": 403.0
   },
   "michael taylor": {
     "name": "Michael Taylor",
@@ -5925,7 +6205,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "michael_taylor"
-    }
+    },
+    "custom_adp": 622.0
   },
   "kevin kiermaier": {
     "name": "Kevin Kiermaier",
@@ -5937,7 +6218,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "kevin_kiermaier"
-    }
+    },
+    "custom_adp": 623.0
   },
   "matt vierling": {
     "name": "Matt Vierling",
@@ -5961,7 +6243,8 @@
       "age": null,
       "player_id": "matt_vierling"
     },
-    "adp": 561.0
+    "adp": 561.0,
+    "custom_adp": 422.0
   },
   "tyrone taylor": {
     "name": "Tyrone Taylor",
@@ -5984,7 +6267,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "tyrone_taylor"
-    }
+    },
+    "custom_adp": 327.0
   },
   "jake bauers 1b,of": {
     "name": "Jake Bauers 1B,OF",
@@ -5996,7 +6280,8 @@
       "team": "MIL",
       "age": null,
       "player_id": "jake_bauers_1b,of"
-    }
+    },
+    "custom_adp": 624.0
   },
   "alek thomas": {
     "name": "Alek Thomas",
@@ -6020,7 +6305,8 @@
       "age": null,
       "player_id": "alek_thomas"
     },
-    "adp": 551.0
+    "adp": 551.0,
+    "custom_adp": 370.0
   },
   "liam hicks c,1b": {
     "name": "Liam Hicks C,1B",
@@ -6032,7 +6318,8 @@
       "team": "MIA",
       "age": null,
       "player_id": "liam_hicks_c,1b"
-    }
+    },
+    "custom_adp": 625.0
   },
   "alex verdugo": {
     "name": "Alex Verdugo",
@@ -6044,7 +6331,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "alex_verdugo"
-    }
+    },
+    "custom_adp": 626.0
   },
   "enrique hernandez 1b,3b,of": {
     "name": "Enrique Hernandez 1B,3B,OF",
@@ -6056,7 +6344,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "enrique_hernandez_1b,3b,of"
-    }
+    },
+    "custom_adp": 627.0
   },
   "jordan walker": {
     "name": "Jordan Walker",
@@ -6080,7 +6369,8 @@
       "age": null,
       "player_id": "jordan_walker"
     },
-    "adp": 401.0
+    "adp": 401.0,
+    "custom_adp": 298.0
   },
   "brandon drury": {
     "name": "Brandon Drury",
@@ -6092,7 +6382,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "brandon_drury"
-    }
+    },
+    "custom_adp": 628.0
   },
   "paul dejong": {
     "name": "Paul DeJong",
@@ -6104,7 +6395,8 @@
       "team": "WAS",
       "age": null,
       "player_id": "paul_dejong"
-    }
+    },
+    "custom_adp": 629.0
   },
   "taylor walls": {
     "name": "Taylor Walls",
@@ -6127,7 +6419,8 @@
       "team": "TB",
       "age": null,
       "player_id": "taylor_walls"
-    }
+    },
+    "custom_adp": 332.0
   },
   "davis schneider 2b,of": {
     "name": "Davis Schneider 2B,OF",
@@ -6139,7 +6432,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "davis_schneider_2b,of"
-    }
+    },
+    "custom_adp": 630.0
   },
   "johan rojas": {
     "name": "Johan Rojas",
@@ -6162,7 +6456,8 @@
       "team": "PHI",
       "age": null,
       "player_id": "johan_rojas"
-    }
+    },
+    "custom_adp": 379.0
   },
   "thairo estrada": {
     "name": "Thairo Estrada",
@@ -6185,7 +6480,8 @@
       "team": "COL",
       "age": null,
       "player_id": "thairo_estrada"
-    }
+    },
+    "custom_adp": 398.0
   },
   "dominic smith": {
     "name": "Dominic Smith",
@@ -6197,7 +6493,8 @@
       "team": "SF",
       "age": null,
       "player_id": "dominic_smith"
-    }
+    },
+    "custom_adp": 631.0
   },
   "angel martinez 2b,of": {
     "name": "Angel Martinez 2B,OF",
@@ -6209,7 +6506,8 @@
       "team": "CLE",
       "age": null,
       "player_id": "angel_martinez_2b,of"
-    }
+    },
+    "custom_adp": 632.0
   },
   "anthony rizzo": {
     "name": "Anthony Rizzo",
@@ -6221,7 +6519,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "anthony_rizzo"
-    }
+    },
+    "custom_adp": 633.0
   },
   "zack gelof": {
     "name": "Zack Gelof",
@@ -6245,7 +6544,8 @@
       "age": null,
       "player_id": "zack_gelof"
     },
-    "adp": 454.0
+    "adp": 454.0,
+    "custom_adp": 223.0
   },
   "mitch garver": {
     "name": "Mitch Garver",
@@ -6268,7 +6568,8 @@
       "team": "SEA",
       "age": null,
       "player_id": "mitch_garver"
-    }
+    },
+    "custom_adp": 428.0
   },
   "elias diaz": {
     "name": "Elias Diaz",
@@ -6280,7 +6581,8 @@
       "team": "SD",
       "age": null,
       "player_id": "elias_diaz"
-    }
+    },
+    "custom_adp": 634.0
   },
   "keibert ruiz": {
     "name": "Keibert Ruiz",
@@ -6304,7 +6606,8 @@
       "age": null,
       "player_id": "keibert_ruiz"
     },
-    "adp": 342.0
+    "adp": 342.0,
+    "custom_adp": 355.0
   },
   "bryan de la cruz": {
     "name": "Bryan De La Cruz",
@@ -6316,7 +6619,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "bryan_de_la_cruz"
-    }
+    },
+    "custom_adp": 635.0
   },
   "michael toglia": {
     "name": "Michael Toglia",
@@ -6328,7 +6632,8 @@
       "team": "COL",
       "age": null,
       "player_id": "michael_toglia"
-    }
+    },
+    "custom_adp": 636.0
   },
   "eric wagaman 1b,of": {
     "name": "Eric Wagaman 1B,OF",
@@ -6340,7 +6645,8 @@
       "team": "MIA",
       "age": null,
       "player_id": "eric_wagaman_1b,of"
-    }
+    },
+    "custom_adp": 637.0
   },
   "dylan crews": {
     "name": "Dylan Crews",
@@ -6364,7 +6670,8 @@
       "age": null,
       "player_id": "dylan_crews"
     },
-    "adp": 189.0
+    "adp": 189.0,
+    "custom_adp": 56.0
   },
   "edward olivares": {
     "name": "Edward Olivares",
@@ -6376,7 +6683,8 @@
       "team": "PIT",
       "age": null,
       "player_id": "edward_olivares"
-    }
+    },
+    "custom_adp": 638.0
   },
   "danny jansen": {
     "name": "Danny Jansen",
@@ -6400,7 +6708,8 @@
       "age": null,
       "player_id": "danny_jansen"
     },
-    "adp": 533.0
+    "adp": 533.0,
+    "custom_adp": 363.0
   },
   "blake perkins": {
     "name": "Blake Perkins",
@@ -6423,7 +6732,8 @@
       "team": "MIL",
       "age": null,
       "player_id": "blake_perkins"
-    }
+    },
+    "custom_adp": 417.0
   },
   "jose iglesias 2b,3b,ss": {
     "name": "Jose Iglesias 2B,3B,SS",
@@ -6435,7 +6745,8 @@
       "team": "SD",
       "age": null,
       "player_id": "jose_iglesias_2b,3b,ss"
-    }
+    },
+    "custom_adp": 639.0
   },
   "jeimer candelario": {
     "name": "Jeimer Candelario",
@@ -6447,7 +6758,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "jeimer_candelario"
-    }
+    },
+    "custom_adp": 640.0
   },
   "patrick wisdom": {
     "name": "Patrick Wisdom",
@@ -6459,7 +6771,8 @@
       "team": "CHC",
       "age": null,
       "player_id": "patrick_wisdom"
-    }
+    },
+    "custom_adp": 641.0
   },
   "myles straw": {
     "name": "Myles Straw",
@@ -6471,7 +6784,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "myles_straw"
-    }
+    },
+    "custom_adp": 642.0
   },
   "kody clemens 1b,2b,of": {
     "name": "Kody Clemens 1B,2B,OF",
@@ -6483,7 +6797,8 @@
       "team": "MIN",
       "age": null,
       "player_id": "kody_clemens_1b,2b,of"
-    }
+    },
+    "custom_adp": 643.0
   },
   "daniel schneemann 2b,3b,of": {
     "name": "Daniel Schneemann 2B,3B,OF",
@@ -6495,7 +6810,8 @@
       "team": "CLE",
       "age": null,
       "player_id": "daniel_schneemann_2b,3b,of"
-    }
+    },
+    "custom_adp": 644.0
   },
   "michael massey": {
     "name": "Michael Massey",
@@ -6518,7 +6834,8 @@
       "team": "KC",
       "age": null,
       "player_id": "michael_massey"
-    }
+    },
+    "custom_adp": 408.0
   },
   "gabriel arias 2b,ss": {
     "name": "Gabriel Arias 2B,SS",
@@ -6530,7 +6847,8 @@
       "team": "CLE",
       "age": null,
       "player_id": "gabriel_arias_2b,ss"
-    }
+    },
+    "custom_adp": 645.0
   },
   "nathan lukes": {
     "name": "Nathan Lukes",
@@ -6554,7 +6872,8 @@
       "age": null,
       "player_id": "nathan_lukes"
     },
-    "adp": 415.0
+    "adp": 415.0,
+    "custom_adp": 288.0
   },
   "pedro pages": {
     "name": "Pedro Pages",
@@ -6578,7 +6897,8 @@
       "age": null,
       "player_id": "pedro_pages"
     },
-    "adp": 489.0
+    "adp": 489.0,
+    "custom_adp": 430.0
   },
   "pavin smith": {
     "name": "Pavin Smith",
@@ -6602,7 +6922,8 @@
       "age": null,
       "player_id": "pavin_smith"
     },
-    "adp": 483.0
+    "adp": 483.0,
+    "custom_adp": 264.0
   },
   "nelson velazquez": {
     "name": "Nelson Velazquez",
@@ -6614,7 +6935,8 @@
       "team": "KC",
       "age": null,
       "player_id": "nelson_velazquez"
-    }
+    },
+    "custom_adp": 646.0
   },
   "joey votto": {
     "name": "Joey Votto",
@@ -6626,7 +6948,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "joey_votto"
-    }
+    },
+    "custom_adp": 647.0
   },
   "victor robles": {
     "name": "Victor Robles",
@@ -6650,7 +6973,8 @@
       "age": null,
       "player_id": "victor_robles"
     },
-    "adp": 308.0
+    "adp": 308.0,
+    "custom_adp": 241.0
   },
   "alex call": {
     "name": "Alex Call",
@@ -6673,7 +6997,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "alex_call"
-    }
+    },
+    "custom_adp": 406.0
   },
   "edgar quero": {
     "name": "Edgar Quero",
@@ -6697,7 +7022,8 @@
       "age": null,
       "player_id": "edgar_quero"
     },
-    "adp": 285.0
+    "adp": 285.0,
+    "custom_adp": 318.0
   },
   "nick gonzales": {
     "name": "Nick Gonzales",
@@ -6721,7 +7047,8 @@
       "age": null,
       "player_id": "nick_gonzales"
     },
-    "adp": 347.0
+    "adp": 347.0,
+    "custom_adp": 261.0
   },
   "carlos narvaez": {
     "name": "Carlos Narvaez",
@@ -6745,7 +7072,8 @@
       "age": null,
       "player_id": "carlos_narvaez"
     },
-    "adp": 261.0
+    "adp": 261.0,
+    "custom_adp": 303.0
   },
   "brayan rocchio 2b,ss": {
     "name": "Brayan Rocchio 2B,SS",
@@ -6757,7 +7085,8 @@
       "team": "CLE",
       "age": null,
       "player_id": "brayan_rocchio_2b,ss"
-    }
+    },
+    "custom_adp": 648.0
   },
   "tyler fitzgerald": {
     "name": "Tyler Fitzgerald",
@@ -6780,7 +7109,8 @@
       "team": "SF",
       "age": null,
       "player_id": "tyler_fitzgerald"
-    }
+    },
+    "custom_adp": 483.0
   },
   "freddy fermin": {
     "name": "Freddy Fermin",
@@ -6804,7 +7134,8 @@
       "age": null,
       "player_id": "freddy_fermin"
     },
-    "adp": 352.0
+    "adp": 352.0,
+    "custom_adp": 336.0
   },
   "connor wong": {
     "name": "Connor Wong",
@@ -6827,7 +7158,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "connor_wong"
-    }
+    },
+    "custom_adp": 425.0
   },
   "tyler tolbert": {
     "name": "Tyler Tolbert",
@@ -6839,7 +7171,8 @@
       "team": "KC",
       "age": null,
       "player_id": "tyler_tolbert"
-    }
+    },
+    "custom_adp": 649.0
   },
   "dominic canzone": {
     "name": "Dominic Canzone",
@@ -6863,7 +7196,8 @@
       "age": null,
       "player_id": "dominic_canzone"
     },
-    "adp": 320.7
+    "adp": 320.7,
+    "custom_adp": 270.0
   },
   "jake cave": {
     "name": "Jake Cave",
@@ -6875,7 +7209,8 @@
       "team": "COL",
       "age": null,
       "player_id": "jake_cave"
-    }
+    },
+    "custom_adp": 650.0
   },
   "jose siri": {
     "name": "Jose Siri",
@@ -6887,7 +7222,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "jose_siri"
-    }
+    },
+    "custom_adp": 651.0
   },
   "hye seong kim": {
     "name": "Hye Seong Kim",
@@ -6899,7 +7235,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "hye_seong_kim"
-    }
+    },
+    "custom_adp": 652.0
   },
   "jorge mateo": {
     "name": "Jorge Mateo",
@@ -6922,7 +7259,8 @@
       "team": "BAL",
       "age": null,
       "player_id": "jorge_mateo"
-    }
+    },
+    "custom_adp": 395.0
   },
   "chas mccormick": {
     "name": "Chas McCormick",
@@ -6934,7 +7272,8 @@
       "team": "HOU",
       "age": null,
       "player_id": "chas_mccormick"
-    }
+    },
+    "custom_adp": 653.0
   },
   "orlando arcia 2b,3b,ss": {
     "name": "Orlando Arcia 2B,3B,SS",
@@ -6946,7 +7285,8 @@
       "team": "COL",
       "age": null,
       "player_id": "orlando_arcia_2b,3b,ss"
-    }
+    },
+    "custom_adp": 654.0
   },
   "mitch haniger": {
     "name": "Mitch Haniger",
@@ -6958,7 +7298,8 @@
       "team": "SEA",
       "age": null,
       "player_id": "mitch_haniger"
-    }
+    },
+    "custom_adp": 655.0
   },
   "nick senzel": {
     "name": "Nick Senzel",
@@ -6970,7 +7311,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "nick_senzel"
-    }
+    },
+    "custom_adp": 656.0
   },
   "cavan biggio": {
     "name": "Cavan Biggio",
@@ -6982,7 +7324,8 @@
       "team": "KC",
       "age": null,
       "player_id": "cavan_biggio"
-    }
+    },
+    "custom_adp": 657.0
   },
   "jack suwinski": {
     "name": "Jack Suwinski",
@@ -7005,7 +7348,8 @@
       "team": "PIT",
       "age": null,
       "player_id": "jack_suwinski"
-    }
+    },
+    "custom_adp": 163.0
   },
   "andy ibanez": {
     "name": "Andy Ibanez",
@@ -7028,7 +7372,8 @@
       "team": "DET",
       "age": null,
       "player_id": "andy_ibanez"
-    }
+    },
+    "custom_adp": 476.0
   },
   "brooks baldwin": {
     "name": "Brooks Baldwin",
@@ -7052,7 +7397,8 @@
       "age": null,
       "player_id": "brooks_baldwin"
     },
-    "adp": 474.0
+    "adp": 474.0,
+    "custom_adp": 282.0
   },
   "jarred kelenic": {
     "name": "Jarred Kelenic",
@@ -7064,7 +7410,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "jarred_kelenic"
-    }
+    },
+    "custom_adp": 658.0
   },
   "kyle farmer": {
     "name": "Kyle Farmer",
@@ -7076,7 +7423,8 @@
       "team": "COL",
       "age": null,
       "player_id": "kyle_farmer"
-    }
+    },
+    "custom_adp": 659.0
   },
   "david fry": {
     "name": "David Fry",
@@ -7088,7 +7436,8 @@
       "team": "CLE",
       "age": null,
       "player_id": "david_fry"
-    }
+    },
+    "custom_adp": 660.0
   },
   "dane myers": {
     "name": "Dane Myers",
@@ -7100,7 +7449,8 @@
       "team": "MIA",
       "age": null,
       "player_id": "dane_myers"
-    }
+    },
+    "custom_adp": 661.0
   },
   "otto kemp": {
     "name": "Otto Kemp",
@@ -7113,7 +7463,8 @@
       "age": null,
       "player_id": "otto_kemp"
     },
-    "adp": 549.0
+    "adp": 549.0,
+    "custom_adp": 662.0
   },
   "lamonte wade 1b,of": {
     "name": "LaMonte Wade 1B,OF",
@@ -7125,7 +7476,8 @@
       "team": "LAA",
       "age": null,
       "player_id": "lamonte_wade_1b,of"
-    }
+    },
+    "custom_adp": 663.0
   },
   "jesse winker": {
     "name": "Jesse Winker",
@@ -7148,7 +7500,8 @@
       "team": "NYM",
       "age": null,
       "player_id": "jesse_winker"
-    }
+    },
+    "custom_adp": 216.0
   },
   "yasmani grandal": {
     "name": "Yasmani Grandal",
@@ -7160,7 +7513,8 @@
       "team": "PIT",
       "age": null,
       "player_id": "yasmani_grandal"
-    }
+    },
+    "custom_adp": 664.0
   },
   "joey gallo": {
     "name": "Joey Gallo",
@@ -7172,7 +7526,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "joey_gallo"
-    }
+    },
+    "custom_adp": 665.0
   },
   "triston casas": {
     "name": "Triston Casas",
@@ -7196,7 +7551,8 @@
       "age": null,
       "player_id": "triston_casas"
     },
-    "adp": 299.0
+    "adp": 299.0,
+    "custom_adp": 155.0
   },
   "jose abreu": {
     "name": "Jose Abreu",
@@ -7208,7 +7564,8 @@
       "team": "HOU",
       "age": null,
       "player_id": "jose_abreu"
-    }
+    },
+    "custom_adp": 666.0
   },
   "casey schmitt 2b,3b": {
     "name": "Casey Schmitt 2B,3B",
@@ -7220,7 +7577,8 @@
       "team": "SF",
       "age": null,
       "player_id": "casey_schmitt_2b,3b"
-    }
+    },
+    "custom_adp": 667.0
   },
   "evan carter": {
     "name": "Evan Carter",
@@ -7244,7 +7602,8 @@
       "age": null,
       "player_id": "evan_carter"
     },
-    "adp": 336.0
+    "adp": 336.0,
+    "custom_adp": 142.0
   },
   "yoan moncada": {
     "name": "Yoan Moncada",
@@ -7267,7 +7626,8 @@
       "team": "LAA",
       "age": null,
       "player_id": "yoan_moncada"
-    }
+    },
+    "custom_adp": 382.0
   },
   "robbie grossman": {
     "name": "Robbie Grossman",
@@ -7279,7 +7639,8 @@
       "team": "KC",
       "age": null,
       "player_id": "robbie_grossman"
-    }
+    },
+    "custom_adp": 668.0
   },
   "gary sanchez": {
     "name": "Gary Sanchez",
@@ -7302,7 +7663,8 @@
       "team": "BAL",
       "age": null,
       "player_id": "gary_sanchez"
-    }
+    },
+    "custom_adp": 418.0
   },
   "mark canha": {
     "name": "Mark Canha",
@@ -7314,7 +7676,8 @@
       "team": "KC",
       "age": null,
       "player_id": "mark_canha"
-    }
+    },
+    "custom_adp": 669.0
   },
   "donovan solano": {
     "name": "Donovan Solano",
@@ -7326,7 +7689,8 @@
       "team": "TEX",
       "age": null,
       "player_id": "donovan_solano"
-    }
+    },
+    "custom_adp": 670.0
   },
   "evan longoria": {
     "name": "Evan Longoria",
@@ -7338,7 +7702,8 @@
       "team": "ARI",
       "age": null,
       "player_id": "evan_longoria"
-    }
+    },
+    "custom_adp": 671.0
   },
   "ezequiel duran 1b,ss": {
     "name": "Ezequiel Duran 1B,SS",
@@ -7350,7 +7715,8 @@
       "team": "TEX",
       "age": null,
       "player_id": "ezequiel_duran_1b,ss"
-    }
+    },
+    "custom_adp": 672.0
   },
   "travis darnaud": {
     "name": "Travis d'Arnaud",
@@ -7373,7 +7739,8 @@
       "team": "LAA",
       "age": null,
       "player_id": "travis_darnaud"
-    }
+    },
+    "custom_adp": 524.0
   },
   "max schuemann 2b,3b,ss": {
     "name": "Max Schuemann 2B,3B,SS",
@@ -7385,7 +7752,8 @@
       "team": "ATH",
       "age": null,
       "player_id": "max_schuemann_2b,3b,ss"
-    }
+    },
+    "custom_adp": 673.0
   },
   "austin martin": {
     "name": "Austin Martin",
@@ -7409,7 +7777,8 @@
       "age": null,
       "player_id": "austin_martin"
     },
-    "adp": 470.0
+    "adp": 470.0,
+    "custom_adp": 250.0
   },
   "eduardo escobar": {
     "name": "Eduardo Escobar",
@@ -7421,7 +7790,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "eduardo_escobar"
-    }
+    },
+    "custom_adp": 674.0
   },
   "raimel tapia": {
     "name": "Raimel Tapia",
@@ -7433,7 +7803,8 @@
       "team": "TB",
       "age": null,
       "player_id": "raimel_tapia"
-    }
+    },
+    "custom_adp": 675.0
   },
   "ben williamson": {
     "name": "Ben Williamson",
@@ -7456,7 +7827,8 @@
       "team": "SEA",
       "age": null,
       "player_id": "ben_williamson"
-    }
+    },
+    "custom_adp": 416.0
   },
   "esteury ruiz": {
     "name": "Esteury Ruiz",
@@ -7479,7 +7851,8 @@
       "team": "LAD",
       "age": null,
       "player_id": "esteury_ruiz"
-    }
+    },
+    "custom_adp": 431.0
   },
   "blaze alexander": {
     "name": "Blaze Alexander",
@@ -7503,7 +7876,8 @@
       "age": null,
       "player_id": "blaze_alexander"
     },
-    "adp": 546.0
+    "adp": 546.0,
+    "custom_adp": 251.0
   },
   "tim tawa 1b,2b,of": {
     "name": "Tim Tawa 1B,2B,OF",
@@ -7515,7 +7889,8 @@
       "team": "ARI",
       "age": null,
       "player_id": "tim_tawa_1b,2b,of"
-    }
+    },
+    "custom_adp": 676.0
   },
   "dairon blanco": {
     "name": "Dairon Blanco",
@@ -7527,7 +7902,8 @@
       "team": "KC",
       "age": null,
       "player_id": "dairon_blanco"
-    }
+    },
+    "custom_adp": 677.0
   },
   "christian bethancourt": {
     "name": "Christian Bethancourt",
@@ -7539,7 +7915,8 @@
       "team": "TOR",
       "age": null,
       "player_id": "christian_bethancourt"
-    }
+    },
+    "custom_adp": 678.0
   },
   "brendan rodgers": {
     "name": "Brendan Rodgers",
@@ -7551,7 +7928,8 @@
       "team": "HOU",
       "age": null,
       "player_id": "brendan_rodgers"
-    }
+    },
+    "custom_adp": 679.0
   },
   "eli white": {
     "name": "Eli White",
@@ -7563,7 +7941,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "eli_white"
-    }
+    },
+    "custom_adp": 680.0
   },
   "christian koss 2b,ss": {
     "name": "Christian Koss 2B,SS",
@@ -7575,7 +7954,8 @@
       "team": "SF",
       "age": null,
       "player_id": "christian_koss_2b,ss"
-    }
+    },
+    "custom_adp": 681.0
   },
   "brady house": {
     "name": "Brady House",
@@ -7599,7 +7979,8 @@
       "age": null,
       "player_id": "brady_house"
     },
-    "adp": 497.0
+    "adp": 497.0,
+    "custom_adp": 300.0
   },
   "alex kirilloff": {
     "name": "Alex Kirilloff",
@@ -7611,7 +7992,8 @@
       "team": "MIN",
       "age": null,
       "player_id": "alex_kirilloff"
-    }
+    },
+    "custom_adp": 682.0
   },
   "elehuris montero": {
     "name": "Elehuris Montero",
@@ -7623,7 +8005,8 @@
       "team": "COL",
       "age": null,
       "player_id": "elehuris_montero"
-    }
+    },
+    "custom_adp": 683.0
   },
   "james outman": {
     "name": "James Outman",
@@ -7646,7 +8029,8 @@
       "team": "MIN",
       "age": null,
       "player_id": "james_outman"
-    }
+    },
+    "custom_adp": 421.0
   },
   "abraham toro": {
     "name": "Abraham Toro",
@@ -7658,7 +8042,8 @@
       "team": "BOS",
       "age": null,
       "player_id": "abraham_toro"
-    }
+    },
+    "custom_adp": 684.0
   },
   "joey bart": {
     "name": "Joey Bart",
@@ -7682,7 +8067,8 @@
       "age": null,
       "player_id": "joey_bart"
     },
-    "adp": 500.0
+    "adp": 500.0,
+    "custom_adp": 411.0
   },
   "jason heyward": {
     "name": "Jason Heyward",
@@ -7694,7 +8080,8 @@
       "team": "SD",
       "age": null,
       "player_id": "jason_heyward"
-    }
+    },
+    "custom_adp": 685.0
   },
   "santiago espinal": {
     "name": "Santiago Espinal",
@@ -7717,7 +8104,8 @@
       "team": "CIN",
       "age": null,
       "player_id": "santiago_espinal"
-    }
+    },
+    "custom_adp": 457.0
   },
   "hunter renfroe": {
     "name": "Hunter Renfroe",
@@ -7729,7 +8117,8 @@
       "team": "KC",
       "age": null,
       "player_id": "hunter_renfroe"
-    }
+    },
+    "custom_adp": 686.0
   },
   "javier sanoja 2b,3b,of": {
     "name": "Javier Sanoja 2B,3B,OF",
@@ -7741,7 +8130,8 @@
       "team": "MIA",
       "age": null,
       "player_id": "javier_sanoja_2b,3b,of"
-    }
+    },
+    "custom_adp": 687.0
   },
   "chris taylor": {
     "name": "Chris Taylor",
@@ -7753,7 +8143,8 @@
       "team": "LAA",
       "age": null,
       "player_id": "chris_taylor"
-    }
+    },
+    "custom_adp": 688.0
   },
   "jake rogers": {
     "name": "Jake Rogers",
@@ -7776,7 +8167,8 @@
       "team": "DET",
       "age": null,
       "player_id": "jake_rogers"
-    }
+    },
+    "custom_adp": 482.0
   },
   "parker meadows": {
     "name": "Parker Meadows",
@@ -7800,7 +8192,8 @@
       "age": null,
       "player_id": "parker_meadows"
     },
-    "adp": 365.0
+    "adp": 365.0,
+    "custom_adp": 174.0
   },
   "oswaldo cabrera": {
     "name": "Oswaldo Cabrera",
@@ -7823,7 +8216,8 @@
       "team": "NYY",
       "age": null,
       "player_id": "oswaldo_cabrera"
-    }
+    },
+    "custom_adp": 410.0
   },
   "josh rojas 2b,3b": {
     "name": "Josh Rojas 2B,3B",
@@ -7835,7 +8229,8 @@
       "team": "CHW",
       "age": null,
       "player_id": "josh_rojas_2b,3b"
-    }
+    },
+    "custom_adp": 689.0
   },
   "garrett cooper": {
     "name": "Garrett Cooper",
@@ -7847,7 +8242,8 @@
       "team": "ATL",
       "age": null,
       "player_id": "garrett_cooper"
-    }
+    },
+    "custom_adp": 690.0
   },
   "mj melendez": {
     "name": "MJ Melendez",
@@ -7859,7 +8255,8 @@
       "team": "KC",
       "age": null,
       "player_id": "mj_melendez"
-    }
+    },
+    "custom_adp": 691.0
   },
   "edouard julien 1b,2b": {
     "name": "Edouard Julien 1B,2B",
@@ -7871,7 +8268,8 @@
       "team": "MIN",
       "age": null,
       "player_id": "edouard_julien_1b,2b"
-    }
+    },
+    "custom_adp": 692.0
   },
   "trey mancini": {
     "name": "Trey Mancini",
@@ -7883,7 +8281,8 @@
       "team": "ARI",
       "age": null,
       "player_id": "trey_mancini"
-    }
+    },
+    "custom_adp": 693.0
   },
   "eddie rosario": {
     "name": "Eddie Rosario",
@@ -7895,7 +8294,8 @@
       "team": "MIL",
       "age": null,
       "player_id": "eddie_rosario"
-    }
+    },
+    "custom_adp": 694.0
   },
   "zach neto": {
     "name": "Zach Neto",

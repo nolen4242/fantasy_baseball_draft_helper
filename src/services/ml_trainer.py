@@ -1,19 +1,22 @@
-"""ML model training for draft recommendations."""
+"""ML model training for draft recommendations using player data features only."""
 import pickle
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from src.models.player import Player
-from src.services.draft_simulator import DraftSimulator
 from src.services.standings_calculator import StandingsCalculator
 
 
 class MLTrainer:
-    """Trains ML models on simulated draft data."""
+    """
+    Trains ML models on player data features only.
+    NO DRAFT DATA (historical or simulated) is used.
+    Model learns to predict player value based on statistical features.
+    """
     
     def __init__(self, models_dir: str = None):
         if models_dir is None:
@@ -28,160 +31,194 @@ class MLTrainer:
     def generate_training_data(
         self,
         all_players: List[Player],
-        num_simulations: int = 1000,
-        strategies: List[str] = None
+        league_thresholds: Optional[Dict[str, float]] = None
     ) -> pd.DataFrame:
         """
-        Generate training data by simulating drafts.
+        Generate training data from player features only.
+        NO DRAFT DATA (historical or simulated) is used.
+        
+        The model learns to predict player value based on:
+        - Statistical features (projections, advanced metrics, Statcast)
+        - Risk factors (injury, age, sample size)
+        - Context (ADP, park factors, news sentiment)
+        
+        Target variable: Composite player value score based on league categories.
         
         Args:
-            all_players: All available players
-            num_simulations: Number of drafts to simulate
-            strategies: List of strategies to use (e.g., ['adp', 'category', 'random'])
+            all_players: All available players (with merged data from all sources)
+            league_thresholds: Stats needed to win each category (for value calculation)
         
         Returns:
-            DataFrame with features and target (final rank)
+            DataFrame with features and target (player value score)
         """
-        if strategies is None:
-            strategies = ['adp', 'category', 'random']
-        
-        simulator = DraftSimulator(all_players)
         calculator = StandingsCalculator()
-        
         training_data = []
         
-        print(f"Generating {num_simulations} simulated drafts...")
+        print(f"Generating training data from {len(all_players)} players...")
+        print("Using player data features only - NO DRAFT DATA")
         
-        for sim_num in range(num_simulations):
-            if (sim_num + 1) % 100 == 0:
-                print(f"  Completed {sim_num + 1}/{num_simulations} simulations...")
+        # Calculate player value scores based on league categories
+        for player in all_players:
+            if not player:
+                continue
             
-            # Pick a random strategy
-            strategy = np.random.choice(strategies)
+            # Extract player features
+            features = self._extract_player_features(player)
             
-            # Simulate draft
-            draft_result = simulator.simulate_draft(strategy=strategy)
-            team_rosters = draft_result['team_rosters']
-            pick_history = draft_result['pick_history']
+            # Calculate target: composite player value score
+            # Based on how much this player contributes to league-winning categories
+            value_score = self._calculate_player_value_score(player, league_thresholds)
             
-            # Calculate standings
-            standings = calculator.calculate_standings(team_rosters)
-            
-            # Extract features for each pick
-            for pick in pick_history:
-                team_name = pick['team_name']
-                player_id = pick['player_id']
-                
-                # Find the player
-                player = next((p for p in all_players if p.player_id == player_id), None)
-                if not player:
-                    continue
-                
-                # Get team state at time of pick
-                pick_number = pick['pick_number']
-                round_num = pick['round']
-                
-                # Get roster before this pick
-                roster_before = [
-                    p for p in pick_history
-                    if p['team_name'] == team_name and p['pick_number'] < pick_number
-                ]
-                roster_players = [
-                    next((p for p in all_players if p.player_id == r['player_id']), None)
-                    for r in roster_before
-                ]
-                roster_players = [p for p in roster_players if p is not None]
-                
-                # Calculate features
-                features = self._extract_features(
-                    player, roster_players, all_players, pick_number, round_num, team_rosters
-                )
-                
-                # Get target (final rank of the team)
-                final_rank = standings['final_rankings'].index(team_name) + 1
-                
-                training_data.append({
-                    **features,
-                    'target_final_rank': final_rank
-                })
+            training_data.append({
+                **features,
+                'target_player_value': value_score
+            })
         
-        print(f"Generated {len(training_data)} training samples")
+        print(f"Generated {len(training_data)} training samples from player data")
         return pd.DataFrame(training_data)
     
-    def _extract_features(
-        self,
-        player: Player,
-        roster_before: List[Player],
-        all_players: List[Player],
-        pick_number: int,
-        round_num: int,
-        all_rosters: Dict[str, List[Player]]
-    ) -> Dict:
-        """Extract features for a player pick."""
-        # Player stats
-        features = {
-            'player_adp': player.adp or 999,
-            'player_hr': player.projected_home_runs or 0,
-            'player_obp': player.projected_obp or 0,
-            'player_r': player.projected_runs or 0,
-            'player_rbi': player.projected_rbi or 0,
-            'player_sb': player.projected_stolen_bases or 0,
-            'player_w': player.projected_wins or 0,
-            'player_qs': player.projected_quality_starts or 0,
-            'player_k': player.projected_strikeouts or 0,
-            'player_sv': player.projected_saves or 0,
-            'player_hd': player.projected_holds or 0,
-            'player_era': player.projected_era or 5.0,
-            'player_whip': player.projected_whip or 1.5,
-            'is_hitter': 1 if player.position not in ['SP', 'RP', 'P'] else 0,
-            'is_pitcher': 1 if player.position in ['SP', 'RP', 'P'] else 0,
-        }
+    def _extract_player_features(self, player: Player) -> Dict[str, float]:
+        """Extract features from player data only (no draft context)."""
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        is_hitter = not is_pitcher
         
-        # Draft context
-        features['pick_number'] = pick_number
-        features['round'] = round_num
-        features['picks_remaining'] = (13 * 21) - pick_number
+        features = {}
         
-        # Team state
-        features['roster_size'] = len(roster_before)
-        features['hitters_on_roster'] = sum(1 for p in roster_before if p.position not in ['SP', 'RP', 'P'])
-        features['pitchers_on_roster'] = sum(1 for p in roster_before if p.position in ['SP', 'RP', 'P'])
+        # === Statistical Features ===
+        if is_hitter:
+            features['hr'] = player.projected_home_runs or 0
+            features['r'] = player.projected_runs or 0
+            features['rbi'] = player.projected_rbi or 0
+            features['sb'] = player.projected_stolen_bases or 0
+            features['obp'] = player.projected_obp or 0.3
+        else:
+            features['w'] = player.projected_wins or 0
+            features['k'] = player.projected_strikeouts or 0
+            features['era'] = player.projected_era or 5.0
+            features['whip'] = player.projected_whip or 1.5
+            features['sv'] = player.projected_saves or 0
+            features['hd'] = player.projected_holds or 0
+            features['qs'] = player.projected_quality_starts or 0
         
-        # Position need
-        position_counts = {}
-        for pos in ['C', '1B', '2B', '3B', 'SS', 'OF', 'SP', 'RP', 'P']:
-            position_counts[pos] = sum(1 for p in roster_before if p.position == pos)
+        # === Advanced Metrics ===
+        if is_hitter:
+            features['wrc_plus'] = player.br_wrc_plus or 100
+            features['ops_plus'] = player.br_ops_plus or 100
+            features['war'] = player.br_war or 0
+        else:
+            features['era_plus'] = player.br_era_plus or 100
+            features['fip'] = player.br_fip or 4.0
+            features['xfip'] = player.br_xfip or 4.0
+            features['war'] = player.br_war or 0
         
-        features['needs_' + player.position.lower()] = 1 if position_counts.get(player.position, 0) == 0 else 0
+        # === Statcast Features ===
+        if is_hitter:
+            features['exit_velocity'] = player.savant_exit_velocity or 0
+            features['barrel_rate'] = player.savant_barrel_rate or 0
+            features['hard_hit_rate'] = player.savant_hard_hit_rate or 0
+            features['xba'] = player.savant_xba or 0
+            features['xwoba'] = player.savant_xwoba or 0
+            features['sprint_speed'] = player.savant_sprint_speed or 0
+        else:
+            features['spin_rate'] = player.savant_spin_rate or 0
+            features['velocity'] = player.savant_velocity or 0
         
-        # Category totals before pick
-        calculator = StandingsCalculator()
-        totals_before = calculator._calculate_team_totals(roster_before)
-        features['current_hr'] = totals_before['HR']
-        features['current_obp'] = totals_before['OBP']
-        features['current_r'] = totals_before['R']
-        features['current_rbi'] = totals_before['RBI']
-        features['current_sb'] = totals_before['SB']
-        features['current_w'] = totals_before['W']
-        features['current_qs'] = totals_before['QS']
-        features['current_k'] = totals_before['K']
-        features['current_sv'] = totals_before['SV']
-        features['current_hd'] = totals_before['HD']
-        features['current_era'] = totals_before['ERA']
-        features['current_whip'] = totals_before['WHIP']
+        # === Projection System Features (Multiple Systems) ===
+        if is_hitter:
+            # Average across projection systems
+            proj_hr = [p for p in [
+                player.projected_home_runs, player.br_proj_hr,
+                player.fg_steamer_hr, player.fg_zips_hr, player.fg_thebat_hr, player.fg_atc_hr
+            ] if p is not None]
+            features['avg_proj_hr'] = np.mean(proj_hr) if proj_hr else 0
+            features['proj_std_hr'] = np.std(proj_hr) if len(proj_hr) > 1 else 0
+        else:
+            proj_era = [p for p in [
+                player.projected_era, player.br_proj_era,
+                player.fg_steamer_era, player.fg_zips_era, player.fg_atc_era
+            ] if p is not None]
+            features['avg_proj_era'] = np.mean(proj_era) if proj_era else 5.0
+            features['proj_std_era'] = np.std(proj_era) if len(proj_era) > 1 else 0
         
-        # Positional scarcity
-        available_at_position = sum(1 for p in all_players if p.position == player.position)
-        features['position_scarcity'] = available_at_position / len(all_players) if all_players else 0
+        # === Risk Features ===
+        features['injury_risk'] = player.injury_risk_score or 0.0
+        features['sample_size_confidence'] = player.sample_size_confidence or 0.5
+        features['age_decline'] = player.age_decline_factor or 1.0
+        features['age'] = player.age or 27
+        features['news_sentiment'] = player.news_sentiment or 0.0
+        features['contract_year'] = 1.0 if player.contract_year else 0.0
+        features['current_injury'] = 1.0 if player.current_injury else 0.0
+        
+        # === Context Features ===
+        features['adp'] = player.nfbc_adp or player.adp or 999
+        features['park_factor_offense'] = player.park_factor_offense or 1.0
+        features['park_factor_hr'] = player.park_factor_hr or 1.0
+        features['bb_forecaster'] = player.bb_forecaster_prediction or 0.0
+        
+        # === Position ===
+        features['is_hitter'] = 1.0 if is_hitter else 0.0
+        features['is_pitcher'] = 1.0 if is_pitcher else 0.0
         
         return features
+    
+    def _calculate_player_value_score(
+        self,
+        player: Player,
+        league_thresholds: Optional[Dict[str, float]]
+    ) -> float:
+        """
+        Calculate composite player value score based on league categories.
+        Higher score = more valuable player.
+        """
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        value = 0.0
+        
+        if is_pitcher:
+            # Pitching categories: W, K, ERA, WHIP, SV, HD
+            # Positive categories (higher is better)
+            value += (player.projected_wins or 0) * 2.0
+            value += (player.projected_strikeouts or 0) * 0.25
+            value += (player.projected_saves or 0) * 3.0
+            value += (player.projected_holds or 0) * 1.5
+            value += (player.projected_quality_starts or 0) * 2.0
+            
+            # Negative categories (lower is better) - invert
+            if player.projected_era:
+                value += max(0, (5.0 - player.projected_era) * 15)
+            if player.projected_whip:
+                value += max(0, (1.5 - player.projected_whip) * 30)
+        else:
+            # Batting categories: HR, R, RBI, SB, OBP
+            value += (player.projected_home_runs or 0) * 2.5
+            value += (player.projected_runs or 0) * 0.6
+            value += (player.projected_rbi or 0) * 0.6
+            value += (player.projected_stolen_bases or 0) * 3.5
+            if player.projected_obp:
+                value += (player.projected_obp - 0.300) * 500
+        
+        # Apply risk adjustments
+        risk_multiplier = 1.0
+        risk_multiplier *= (1.0 - (player.injury_risk_score or 0.0) * 0.3)  # Reduce value by up to 30% for injury risk
+        risk_multiplier *= (player.sample_size_confidence or 0.5)  # Reduce value for low confidence
+        risk_multiplier *= (player.age_decline_factor or 1.0)  # Age decline
+        
+        # Apply park factor adjustments
+        if is_pitcher:
+            park_multiplier = player.park_factor_pitching or 1.0
+        else:
+            park_multiplier = player.park_factor_offense or 1.0
+        
+        value = value * risk_multiplier * park_multiplier
+        
+        return value
+    
     
     def train_models(self, training_data: pd.DataFrame):
         """Train ML models on training data."""
         # Separate features and target
-        feature_cols = [col for col in training_data.columns if col != 'target_final_rank']
+        feature_cols = [col for col in training_data.columns if col != 'target_player_value']
         X = training_data[feature_cols].values
-        y = training_data['target_final_rank'].values
+        y = training_data['target_player_value'].values
         
         # Scale features
         X_scaled = self.scaler.fit_transform(X)
@@ -249,30 +286,30 @@ class MLTrainer:
     def predict_player_value(
         self,
         player: Player,
-        roster_before: List[Player],
-        all_players: List[Player],
-        pick_number: int,
-        round_num: int,
-        all_rosters: Dict[str, List[Player]]
+        roster_before: Optional[List[Player]] = None,
+        all_players: Optional[List[Player]] = None,
+        pick_number: Optional[int] = None,
+        round_num: Optional[int] = None,
+        all_rosters: Optional[Dict[str, List[Player]]] = None
     ) -> float:
-        """Predict how much a player will improve final rank."""
+        """
+        Predict player value score based on player data features only.
+        NO DRAFT CONTEXT is used - purely based on player statistics and features.
+        """
         if self.value_model is None:
             if not self.load_models():
                 return 0.0
         
-        # Extract features
-        features = self._extract_features(
-            player, roster_before, all_players, pick_number, round_num, all_rosters
-        )
+        # Extract player features (no draft context needed)
+        features = self._extract_player_features(player)
         
         # Convert to array and scale
         feature_cols = list(features.keys())
         X = np.array([[features[col] for col in feature_cols]])
         X_scaled = self.scaler.transform(X)
         
-        # Predict (lower rank = better, so we negate)
-        predicted_rank = self.value_model.predict(X_scaled)[0]
+        # Predict player value (higher is better)
+        predicted_value = self.value_model.predict(X_scaled)[0]
         
-        # Return value (negative because lower rank is better)
-        return -predicted_rank
+        return predicted_value
 

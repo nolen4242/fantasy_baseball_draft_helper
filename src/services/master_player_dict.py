@@ -4,6 +4,7 @@ import csv
 from pathlib import Path
 from typing import Dict, List, Optional
 from src.models.player import Player
+from src.services.custom_adp_calculator import CustomADPCalculator
 
 
 class MasterPlayerDict:
@@ -210,6 +211,44 @@ class MasterPlayerDict:
         # Apply custom ADP overrides for specific players/positions
         self._apply_adp_overrides()
     
+    def calculate_and_store_custom_adp(self, players: List[Player]):
+        """
+        Calculate custom ADP based on Bob Uecker League format and store in master dict.
+        This ADP is league-specific and based on player value in the exact league categories.
+        
+        Args:
+            players: List of all players with projections
+        """
+        calculator = CustomADPCalculator()
+        custom_adp_rankings = calculator.calculate_custom_adp(players)
+        
+        # Store custom ADP in master dictionaries
+        for player_type in ['batters', 'pitchers']:
+            master_dict = self.load_master_dict(player_type)
+            updated = False
+            
+            for normalized_name, player_data in master_dict.items():
+                # Find matching player
+                player_id = player_data.get('cbs_data', {}).get('player_id')
+                if not player_id:
+                    # Try to match by name
+                    player_name = player_data.get('name', '')
+                    matching_player = next(
+                        (p for p in players if self.normalize_player_name(p.name) == normalized_name),
+                        None
+                    )
+                    if matching_player:
+                        player_id = matching_player.player_id
+                
+                if player_id and player_id in custom_adp_rankings:
+                    player_data['custom_adp'] = custom_adp_rankings[player_id]
+                    updated = True
+            
+            if updated:
+                self.save_master_dict(master_dict, player_type)
+        
+        print(f"Calculated and stored custom ADP for {len(custom_adp_rankings)} players")
+    
     def _apply_adp_overrides(self):
         """Apply custom ADP overrides for specific players."""
         # Custom ADP overrides: (normalized_name, player_type, adp_value)
@@ -247,8 +286,9 @@ class MasterPlayerDict:
             projections = player_data.get('projections', {})
             steamer = projections.get('steamer', {})
             
-            # Get ADP if available
-            adp = player_data.get('adp')
+            # Get ADP if available (prefer custom ADP, fall back to regular ADP)
+            custom_adp = player_data.get('custom_adp')
+            adp = custom_adp if custom_adp is not None else player_data.get('adp')
             
             # Merge data: CBS base + Steamer projections
             # Only use relevant stats based on player type
