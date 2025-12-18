@@ -102,18 +102,23 @@ class App {
         }
     }
     async restartDraft() {
-        if (!confirm('Are you sure you want to restart the draft? This will clear ALL picks and reset all team rosters.')) {
+        if (!confirm('Are you sure you want to clear all rosters? This will remove ALL players from ALL teams and reset all roster spots.')) {
             return;
         }
         try {
-            const draft = await this.api.restartDraft();
-            this.currentDraft = draft;
+            const result = await this.api.restartDraft();
+            if (result.draft) {
+                this.currentDraft = result.draft;
+            }
+            else {
+                this.currentDraft = null;
+            }
             await this.refreshAll();
-            alert('Draft restarted successfully! All picks have been cleared.');
+            alert(result.message || 'All team rosters cleared successfully!');
         }
         catch (error) {
             console.error('Error restarting draft:', error);
-            alert('Error restarting draft: ' + (error instanceof Error ? error.message : 'Unknown error'));
+            alert('Error clearing rosters: ' + (error instanceof Error ? error.message : 'Unknown error'));
         }
     }
     async refreshAll() {
@@ -312,7 +317,9 @@ class App {
         // Note: We allow drafting even if draft is marked complete, as long as required positions aren't filled
         // The backend will check if the team can actually draft more players
         try {
-            const result = await this.api.makePick(player.player_id, this.currentDraft.my_team_name);
+            // If no draft exists, the backend will auto-create one
+            const teamName = this.currentDraft?.my_team_name || 'Runtime Terror';
+            const result = await this.api.makePick(player.player_id, teamName);
             this.currentDraft = result;
             // Check if draft is now complete
             if (result.is_complete) {

@@ -95,6 +95,33 @@ class TeamService:
         
         return eligible
     
+    def has_available_slot_for_player(self, team_name: str, player: Player) -> bool:
+        """
+        Check if there's an available slot for a player based on their eligible positions.
+        
+        Args:
+            team_name: Team name
+            player: Player to check
+            
+        Returns:
+            True if there's at least one empty slot in any eligible position, False otherwise
+        """
+        roster = self.get_team_roster(team_name)
+        if not roster or 'positions' not in roster:
+            return True  # If no roster, assume slot is available
+        
+        eligible_positions = self._determine_eligible_positions(player)
+        positions = roster['positions']
+        
+        # Check if there's at least one empty slot in any eligible position
+        for pos in eligible_positions:
+            if pos in positions:
+                for slot in positions[pos]:
+                    if slot is None:
+                        return True  # Found an empty slot
+        
+        return False  # All eligible slots are filled
+    
     def _find_empty_slot(self, positions: Dict, eligible_positions: List[str]) -> Optional[tuple]:
         """Find the first empty slot in eligible positions."""
         # Priority order: specific positions first, then flexible, then bench

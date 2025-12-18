@@ -239,17 +239,23 @@ def get_current_draft():
 
 @app.route('/api/draft/pick', methods=['POST'])
 def make_pick():
-    """Make a draft pick."""
+    """Make a draft pick. Auto-creates a draft if one doesn't exist."""
     data = request.json
     player_id = data['player_id']
     requested_team_name = data.get('team_name')  # Team name from request (for manual picks)
     
-    # Determine which team should pick based on draft order
+    # Auto-create a draft if one doesn't exist
     if not draft_service.current_draft:
-        return jsonify({
-            'success': False,
-            'message': 'No active draft'
-        }), 400
+        # Create a default draft
+        import time
+        default_team_name = requested_team_name if requested_team_name else 'Runtime Terror'
+        draft = draft_service.create_draft(
+            draft_id=f"draft_{int(time.time())}",
+            league_name='Bob Uecker League',
+            total_teams=13,
+            roster_size=21,
+            my_team_name=default_team_name
+        )
     
     pick_number = len(draft_service.current_draft.picks) + 1
     draft_order_team = DraftOrder.get_team_for_pick(pick_number, draft_service.current_draft.total_teams)
@@ -295,6 +301,18 @@ def make_pick():
             'success': False,
             'message': 'Player not found'
         }), 404
+    
+    # Check if there's an available slot for this player's eligible positions
+    from src.services.team_service import TeamService
+    team_service = TeamService()
+    
+    if not team_service.has_available_slot_for_player(team_name, player):
+        eligible_positions = team_service._determine_eligible_positions(player)
+        eligible_str = ', '.join(eligible_positions)
+        return jsonify({
+            'success': False,
+            'message': f'Cannot draft {player.name} - all eligible position slots are filled ({eligible_str})'
+        }), 400
     
     success = draft_service.draft_player(
         player_id=player_id,
@@ -499,40 +517,44 @@ def revert_pick():
 
 @app.route('/api/draft/restart', methods=['POST'])
 def restart_draft():
-    """Completely restart the draft - clears all picks and resets all team rosters."""
+    """Completely restart the draft - clears all picks and resets all team rosters.
+    Works regardless of whether there's an active draft or not."""
     from src.services.cleanup_service import CleanupService
+    from src.services.draft_order import DraftOrder
     
-    if not draft_service.current_draft:
-        return jsonify({
-            'success': False,
-            'message': 'No active draft'
-        }), 400
-    
-    # Clean up all team rosters
+    # Clean up all team rosters (always do this, even if no active draft)
     cleanup = CleanupService()
     cleanup.cleanup_all_team_rosters()
     
-    # Reset the draft state
-    draft_id = draft_service.current_draft.draft_id
-    league_name = draft_service.current_draft.league_name
-    total_teams = draft_service.current_draft.total_teams
-    roster_size = draft_service.current_draft.roster_size
-    my_team_name = draft_service.current_draft.my_team_name
-    
-    # Create a fresh draft with the same settings
-    new_draft = draft_service.create_draft(
-        draft_id=draft_id,
-        league_name=league_name,
-        total_teams=total_teams,
-        roster_size=roster_size,
-        my_team_name=my_team_name
-    )
-    
-    return jsonify({
-        'success': True,
-        'draft': new_draft.to_dict(),
-        'message': 'Draft restarted - all picks cleared'
-    })
+    # If there's an active draft, restart it with the same settings
+    if draft_service.current_draft:
+        draft_id = draft_service.current_draft.draft_id
+        league_name = draft_service.current_draft.league_name
+        total_teams = draft_service.current_draft.total_teams
+        roster_size = draft_service.current_draft.roster_size
+        my_team_name = draft_service.current_draft.my_team_name
+        
+        # Create a fresh draft with the same settings
+        new_draft = draft_service.create_draft(
+            draft_id=draft_id,
+            league_name=league_name,
+            total_teams=total_teams,
+            roster_size=roster_size,
+            my_team_name=my_team_name
+        )
+        
+        return jsonify({
+            'success': True,
+            'draft': new_draft.to_dict(),
+            'message': 'Draft restarted - all picks and rosters cleared'
+        })
+    else:
+        # No active draft, but we still cleared all rosters
+        return jsonify({
+            'success': True,
+            'draft': None,
+            'message': 'All team rosters cleared (no active draft to restart)'
+        })
 
 
 @app.route('/api/recommendations', methods=['GET'])

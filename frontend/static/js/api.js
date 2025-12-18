@@ -61,7 +61,9 @@ export class ApiClient {
         if (!data.success) {
             throw new Error(data.message || 'Failed to make pick');
         }
-        return { ...data.draft, is_complete: data.draft_complete || false };
+        // Return the draft with is_complete flag
+        const draft = data.draft || {};
+        return { ...draft, is_complete: data.draft_complete || draft.is_complete || false };
     }
     async getAvailablePlayers() {
         const response = await fetch(`${API_BASE}/api/draft/available`);
@@ -126,7 +128,11 @@ export class ApiClient {
         if (!data.success) {
             throw new Error(data.message || 'Failed to restart draft');
         }
-        return data.draft;
+        return {
+            success: data.success,
+            draft: data.draft || undefined,
+            message: data.message || 'Draft restarted successfully'
+        };
     }
     async toggleAutoDraft(enabled) {
         const response = await fetch(`${API_BASE}/api/draft/auto-draft/toggle`, {

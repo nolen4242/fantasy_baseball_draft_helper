@@ -36,32 +36,31 @@ class CleanupService:
         Clean up a specific team's roster.
         
         Removes all pick files and resets roster.json to empty structure.
+        Creates roster.json if it doesn't exist.
         """
         from src.services.team_service import TeamService
+        import json
         
         team_service = TeamService()
         team_folder_name = DraftOrder.sanitize_team_name(team_name)
         team_dir = self.teams_dir / team_folder_name
         
-        if not team_dir.exists():
-            return
+        # Create team directory if it doesn't exist
+        team_dir.mkdir(parents=True, exist_ok=True)
         
         # Remove all pick files
         for pick_file in team_dir.glob("pick_*.json"):
             pick_file.unlink()
         
-        # Reset roster.json to empty structure
+        # Reset roster.json to empty structure (create if doesn't exist)
         roster_file = team_dir / "roster.json"
-        if roster_file.exists():
-            # Get empty position structure from TeamService
-            empty_roster = {
-                'team_name': team_name,
-                'positions': team_service._get_empty_position_structure(),
-                'all_players': []
-            }
-            import json
-            with open(roster_file, 'w', encoding='utf-8') as f:
-                json.dump(empty_roster, f, indent=2)
+        empty_roster = {
+            'team_name': team_name,
+            'positions': team_service._get_empty_position_structure(),
+            'all_players': []
+        }
+        with open(roster_file, 'w', encoding='utf-8') as f:
+            json.dump(empty_roster, f, indent=2)
     
     def cleanup_all_drafts(self, keep_latest: bool = False):
         """

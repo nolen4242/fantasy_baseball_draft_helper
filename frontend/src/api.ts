@@ -87,7 +87,9 @@ export class ApiClient {
         if (!data.success) {
             throw new Error(data.message || 'Failed to make pick');
         }
-        return { ...data.draft, is_complete: data.draft_complete || false };
+        // Return the draft with is_complete flag
+        const draft = data.draft || {};
+        return { ...draft, is_complete: data.draft_complete || draft.is_complete || false };
     }
 
     async getAvailablePlayers(): Promise<Player[]> {
@@ -157,7 +159,7 @@ export class ApiClient {
         return data.draft;
     }
 
-    async restartDraft(): Promise<DraftState> {
+    async restartDraft(): Promise<{ success: boolean; draft?: DraftState; message: string }> {
         const response = await fetch(`${API_BASE}/api/draft/restart`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
@@ -166,7 +168,11 @@ export class ApiClient {
         if (!data.success) {
             throw new Error(data.message || 'Failed to restart draft');
         }
-        return data.draft;
+        return {
+            success: data.success,
+            draft: data.draft || undefined,
+            message: data.message || 'Draft restarted successfully'
+        };
     }
 
     async toggleAutoDraft(enabled: boolean): Promise<{ success: boolean; auto_draft_enabled: boolean }> {
