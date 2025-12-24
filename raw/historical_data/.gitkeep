@@ -1,0 +1,12 @@
+# Historical data folder
+# Organized by data source for raw historical data
+# - cbs_winners/: Historical CBS league winners (rosters, category totals)
+# - baseball_reference/: Historical player stats
+# - baseball_savant/: Historical Statcast data
+# - fangraphs/: Historical Fangraphs data
+# - rotowire/: Historical news/injury data
+# - nfbc/: Historical ADP data
+# - bb_forecaster/: Historical projections
+# - adp/: Historical ADP from various sources
+# - park_factors/: Historical park factor data
+

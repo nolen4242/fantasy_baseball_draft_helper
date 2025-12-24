@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "71a1b6bb-c5e7-4023-9253-5401fd2f57f5",
+    "name": "Chase Burns",
+    "position": "P",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 12.65,
+    "projected_strikeouts": 152.31333333333336,
+    "projected_era": 3.73,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 121.57
+  },
+  "pick_info": {
+    "pick_number": 117,
+    "round": 9,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "P"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "80df358f-4c3e-4ead-8622-c4e72c31788b",
+    "name": "Tyler Glasnow",
+    "position": "P",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 14.3,
+    "projected_strikeouts": 171.8476,
+    "projected_era": 3.59,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 107.49
+  },
+  "pick_info": {
+    "pick_number": 107,
+    "round": 9,
+    "team_name": "Long Balls"
+  },
+  "position": "P"
+}

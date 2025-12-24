@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ef32d0f6-440c-433d-9e46-a9f4c1810c7c",
+    "name": "Josh Hader",
+    "position": "P",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 90.2,
+    "projected_era": 3.29,
+    "projected_whip": null,
+    "projected_saves": 32.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 62.73
+  },
+  "pick_info": {
+    "pick_number": 63,
+    "round": 5,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "P"
+}

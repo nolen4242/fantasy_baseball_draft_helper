@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ca027c1a-892e-4133-96cf-a94ae6f55cff",
+    "name": "Freddie Freeman",
+    "position": "1B",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": 23.999999999999996,
+    "projected_obp": 0.362,
+    "projected_runs": 87.3,
+    "projected_rbi": 90.6,
+    "projected_stolen_bases": 7.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 65.02
+  },
+  "pick_info": {
+    "pick_number": 65,
+    "round": 5,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "1B"
+}

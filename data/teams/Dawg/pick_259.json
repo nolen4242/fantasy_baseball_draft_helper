@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "507feb27-1614-415e-b9d7-9baf8c5f3d72",
+    "name": "Luis Arraez",
+    "position": "1B",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": 7.0,
+    "projected_obp": 0.345,
+    "projected_runs": 73.1,
+    "projected_rbi": 56.099999999999994,
+    "projected_stolen_bases": 9.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 274.9
+  },
+  "pick_info": {
+    "pick_number": 259,
+    "round": 20,
+    "team_name": "Dawg"
+  },
+  "position": "1B"
+}

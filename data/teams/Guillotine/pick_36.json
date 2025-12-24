@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "c7e1c0c1-28fd-46cc-88a3-295309a66db3",
+    "name": "Manny Machado",
+    "position": "3B",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": 28.099999999999998,
+    "projected_obp": 0.329,
+    "projected_runs": 79.9,
+    "projected_rbi": 90.6,
+    "projected_stolen_bases": 9.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 36.97
+  },
+  "pick_info": {
+    "pick_number": 36,
+    "round": 3,
+    "team_name": "Guillotine"
+  },
+  "position": "3B"
+}

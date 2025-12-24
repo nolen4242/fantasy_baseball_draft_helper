@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "e1984fd2-73f6-4f12-8395-a15a83419669",
+    "name": "Taylor Ward",
+    "position": "OF",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 26.099999999999998,
+    "projected_obp": 0.328,
+    "projected_runs": 78.6,
+    "projected_rbi": 81.3,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 162.78
+  },
+  "pick_info": {
+    "pick_number": 141,
+    "round": 11,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "OF"
+}

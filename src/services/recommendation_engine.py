@@ -20,6 +20,10 @@ class RecommendationEngine:
         self.all_players = all_players or []
         self._ml_models_loaded = False
     
+        # Caching for performance
+        self._cache = {}  # Cache key: (player_id, draft_state_hash) -> score
+        self._cache_draft_state_hash = None
+    
     def get_recommendations(
         self,
         available_players: List[Player],
@@ -116,7 +120,13 @@ class RecommendationEngine:
         # Filter out players that don't have available roster slots
         players_with_slots = []
         for player in players_to_evaluate:
-            if self.team_service.has_available_slot_for_player(team_name, player):
+            try:
+                has_slot = self.team_service.has_available_slot_for_player(team_name, player)
+                if has_slot:
+                    players_with_slots.append(player)
+            except Exception as e:
+                print(f"ERROR checking slot for {player.name}: {e}")
+                # Continue anyway - assume slot is available if check fails
                 players_with_slots.append(player)
         
         # If we don't have enough players with available slots, expand search
@@ -125,19 +135,45 @@ class RecommendationEngine:
             expanded_evaluate = sorted_available[:300]  # Check top 300
             for player in expanded_evaluate:
                 if player not in players_to_evaluate:
-                    if self.team_service.has_available_slot_for_player(team_name, player):
+                    try:
+                        if self.team_service.has_available_slot_for_player(team_name, player):
+                            players_with_slots.append(player)
+                            if len(players_with_slots) >= top_n * 3:  # Get at least 3x top_n options
+                                break
+                    except Exception as e:
+                        print(f"ERROR checking slot for {player.name} (expanded): {e}")
+                        # Continue anyway
                         players_with_slots.append(player)
-                        if len(players_with_slots) >= top_n * 3:  # Get at least 3x top_n options
+                        if len(players_with_slots) >= top_n * 3:
                             break
         
         # If no players have available slots, return empty recommendations
         if not players_with_slots:
+            print(f"WARNING: No players with available slots found for {team_name}. Evaluated {len(players_to_evaluate)} players.")
             return []
         
+        # Generate draft state hash for caching
+        draft_state_hash = self._get_draft_state_hash(draft_state)
+        
+        # Check if we need to clear cache (draft state changed)
+        if draft_state_hash != self._cache_draft_state_hash:
+            self._cache.clear()
+            self._cache_draft_state_hash = draft_state_hash
+        
+        # Calculate scores with caching
         for player in players_with_slots:
-            score, reasoning = self._calculate_player_value(
-                player, team_players, available_players, draft_state, all_team_rosters, use_ml, team_name
-            )
+            cache_key = (player.player_id, draft_state_hash)
+            
+            # Check cache first
+            if cache_key in self._cache:
+                score, reasoning = self._cache[cache_key]
+            else:
+                score, reasoning = self._calculate_player_value(
+                    player, team_players, available_players, draft_state, all_team_rosters, use_ml, team_name
+                )
+                # Cache the result
+                self._cache[cache_key] = (score, reasoning)
+            
             recommendations.append({
                 'player': player,
                 'score': score,
@@ -146,6 +182,22 @@ class RecommendationEngine:
         
         # Sort by score (highest first)
         recommendations.sort(key=lambda x: x['score'], reverse=True)
+        
+        # Apply lookahead simulation to top candidates
+        if len(recommendations) >= top_n:
+            top_candidates = recommendations[:top_n * 2]  # Consider top 2x for lookahead
+            lookahead_scores = self._simulate_lookahead(
+                top_candidates, team_players, available_players, draft_state, all_team_rosters, team_name
+            )
+            
+            # Adjust scores based on lookahead
+            for rec in recommendations:
+                if rec['player'].player_id in lookahead_scores:
+                    rec['score'] += lookahead_scores[rec['player'].player_id] * 0.1  # 10% weight on lookahead
+                    rec['reasoning'] += f" | Lookahead: {lookahead_scores[rec['player'].player_id]:+.1f}"
+            
+            # Re-sort after lookahead adjustment
+            recommendations.sort(key=lambda x: x['score'], reverse=True)
         
         return recommendations[:top_n]
     
@@ -161,6 +213,196 @@ class RecommendationEngine:
             all_rosters[team_name] = players
         
         return all_rosters
+    
+    def _get_draft_state_hash(self, draft_state: DraftState) -> str:
+        """Generate hash of draft state for caching."""
+        import hashlib
+        # Hash based on picks made (player IDs and order)
+        picks_str = ",".join([f"{p.player_id}:{p.team_name}" for p in draft_state.picks[-50:]])  # Last 50 picks
+        return hashlib.md5(picks_str.encode()).hexdigest()[:16]
+    
+    def _simulate_lookahead(
+        self,
+        candidates: List[Dict],
+        my_team: List[Player],
+        available_players: List[Player],
+        draft_state: DraftState,
+        all_team_rosters: Dict[str, List[Player]],
+        team_name: str
+    ) -> Dict[str, float]:
+        """
+        Simulate next few picks to see which player gives best future position.
+        Returns dict of player_id -> lookahead score.
+        """
+        lookahead_scores = {}
+        
+        # Simulate next 3-5 picks
+        num_simulations = min(5, len(available_players) // 10)  # Don't simulate too far ahead
+        
+        for candidate in candidates[:10]:  # Only lookahead on top 10 candidates
+            player = candidate['player']
+            lookahead_score = 0.0
+            
+            # Simulate drafting this player
+            simulated_my_team = my_team + [player]
+            simulated_available = [p for p in available_players if p.player_id != player.player_id]
+            
+            # Simulate next few picks by opponents (they'll likely take best ADP)
+            simulated_available_sorted = sorted(
+                simulated_available,
+                key=lambda p: (p.adp is None, p.adp or float('inf'))
+            )
+            
+            # Simulate opponents taking top ADP players
+            picks_until_my_turn = 12  # 13 teams - 1 (me) = 12 picks until my next turn
+            simulated_drafted = simulated_available_sorted[:picks_until_my_turn]
+            simulated_remaining = simulated_available_sorted[picks_until_my_turn:]
+            
+            # After simulation, what's my best option?
+            if simulated_remaining:
+                # Get recommendations for simulated state
+                simulated_draft_state = draft_state  # Use current state (simplified)
+                best_next_option_score = 0.0
+                
+                # Evaluate top 5 remaining players
+                for next_player in simulated_remaining[:5]:
+                    next_score, _ = self._calculate_player_value(
+                        next_player, simulated_my_team, simulated_remaining,
+                        simulated_draft_state, all_team_rosters, True, team_name
+                    )
+                    best_next_option_score = max(best_next_option_score, next_score)
+                
+                # Lookahead score = how good is my next pick after this one?
+                lookahead_score = best_next_option_score * 0.3  # 30% weight on future position
+            
+            lookahead_scores[player.player_id] = lookahead_score
+        
+        return lookahead_scores
+    
+    def _predict_opponent_picks(
+        self,
+        available_players: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        draft_state: DraftState,
+        num_picks: int = 12
+    ) -> List[Player]:
+        """
+        Predict what opponents will draft in next few picks.
+        Uses ADP + their team needs.
+        """
+        predicted_picks = []
+        sorted_available = sorted(
+            available_players,
+            key=lambda p: (p.adp is None, p.adp or float('inf'))
+        )
+        
+        # Simple prediction: opponents take best ADP available
+        # Could be improved with opponent-specific modeling
+        for i, player in enumerate(sorted_available[:num_picks]):
+            # Check if player fits opponent needs (simplified)
+            # For now, just use ADP
+            predicted_picks.append(player)
+        
+        return predicted_picks
+    
+    def _optimize_category_targets(
+        self,
+        my_team: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        draft_state: DraftState
+    ) -> Dict[str, float]:
+        """
+        Determine which categories to target based on current standings.
+        Returns dict of category -> target priority (0-1).
+        """
+        # Calculate current projected standings
+        my_totals = self.standings_calculator._calculate_team_totals(my_team)
+        
+        # Calculate opponent totals
+        opponent_totals_list = []
+        for team_name, roster in all_team_rosters.items():
+            totals = self.standings_calculator._calculate_team_totals(roster)
+            opponent_totals_list.append(totals)
+        
+        # Determine category priorities
+        category_priorities = {}
+        
+        # Bob Uecker League categories
+        batting_cats = ['HR', 'OBP', 'R', 'RBI', 'SB']
+        pitching_cats = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']
+        
+        for category in batting_cats + pitching_cats:
+            my_value = my_totals.get(category, 0)
+            
+            # Compare to opponents
+            opponent_values = [totals.get(category, 0) for totals in opponent_totals_list]
+            if opponent_values:
+                avg_opponent = sum(opponent_values) / len(opponent_values)
+                median_opponent = sorted(opponent_values)[len(opponent_values) // 2]
+                
+                # Priority based on how far behind we are
+                if category in ['ERA', 'WHIP']:  # Lower is better
+                    if median_opponent == 0:
+                        # No opponent data yet - use default priority
+                        category_priorities[category] = 0.5
+                    elif my_value > median_opponent:
+                        # We're worse (higher ERA/WHIP) - high priority
+                        category_priorities[category] = min(1.0, (my_value - median_opponent) / median_opponent)
+                    else:
+                        category_priorities[category] = 0.3  # We're good, low priority
+                else:  # Higher is better
+                    if median_opponent == 0:
+                        # No opponent data yet - use default priority
+                        category_priorities[category] = 0.5
+                    elif my_value < median_opponent:
+                        # We're behind - high priority
+                        category_priorities[category] = min(1.0, (median_opponent - my_value) / max(1, median_opponent))
+                    else:
+                        category_priorities[category] = 0.3  # We're ahead, low priority
+        
+        return category_priorities
+    
+    def _calculate_category_target_score(
+        self,
+        player: Player,
+        my_team: List[Player],
+        category_priorities: Dict[str, float]
+    ) -> float:
+        """
+        Calculate score based on how well player helps target categories.
+        """
+        score = 0.0
+        
+        # Calculate player's category contributions
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        
+        if is_pitcher:
+            # Pitching categories
+            if player.projected_strikeouts:
+                score += player.projected_strikeouts * 0.1 * category_priorities.get('K', 0.5)
+            if player.projected_era:
+                # Lower ERA is better, so invert
+                era_contribution = max(0, (5.0 - player.projected_era) / 5.0)
+                score += era_contribution * 50 * category_priorities.get('ERA', 0.5)
+            if player.projected_wins:
+                score += player.projected_wins * 2.0 * category_priorities.get('WQS', 0.5)
+            if player.projected_quality_starts:
+                score += player.projected_quality_starts * 2.0 * category_priorities.get('WQS', 0.5)
+        else:
+            # Batting categories
+            if player.projected_home_runs:
+                score += player.projected_home_runs * 2.5 * category_priorities.get('HR', 0.5)
+            if player.projected_runs:
+                score += player.projected_runs * 0.6 * category_priorities.get('R', 0.5)
+            if player.projected_rbi:
+                score += player.projected_rbi * 0.6 * category_priorities.get('RBI', 0.5)
+            if player.projected_stolen_bases:
+                score += player.projected_stolen_bases * 3.5 * category_priorities.get('SB', 0.5)
+            if player.projected_obp:
+                obp_contribution = max(0, (player.projected_obp - 0.300) * 500)
+                score += obp_contribution * category_priorities.get('OBP', 0.5)
+        
+        return score
     
     def _calculate_player_value(
         self,
@@ -201,7 +443,12 @@ class RecommendationEngine:
         # === 50% OTHER FACTORS (comparative advantage, risk, scarcity, etc.) ===
         other_factors_score = 0.0
         
-        # 1. ML-based value prediction (if available)
+        # 0. Category-specific optimization (target winning categories)
+        category_priorities = self._optimize_category_targets(my_team, all_team_rosters, draft_state)
+        category_score = self._calculate_category_target_score(player, my_team, category_priorities)
+        other_factors_score += category_score * 0.10  # 10% weight on category targeting
+        
+        # 1. ML-based value prediction (if available) - now with draft context
         ml_score = 0.0
         if use_ml and self._ml_models_loaded:
             try:
@@ -344,7 +591,7 @@ class RecommendationEngine:
                 for p in roster
                 if p.position == player_pos
             )
-            available_at_pos = sum(1 for p in self.all_players if p.position == player_pos and not p.drafted)
+            available_at_pos = sum(1 for p in self.all_players if p.position == player_pos and not getattr(p, 'drafted', False))
             
             # Check if other teams are stacked at this position
             teams_with_position = sum(
@@ -753,24 +1000,32 @@ class RecommendationEngine:
                 obp_improvement = my_projected_totals['OBP'] - my_totals['OBP']
                 category_improvements['OBP'] = obp_improvement
         
-        # Calculate opponent category totals and strategies
+        # Calculate opponent category totals and strategies (improved modeling)
         opponent_totals = {}
         opponent_strategies = {}  # Track if opponents are going heavy hitter/pitcher
+        opponent_category_strengths = {}  # Track what categories opponents are strong in
         
         for other_team_name, roster in all_team_rosters.items():
             if other_team_name == team_name:
                 continue
             totals = self.standings_calculator._calculate_team_totals(roster)
-            opponent_totals[team_name] = totals
+            opponent_totals[other_team_name] = totals
             
             # Analyze opponent strategy
             opponent_hitters = sum(1 for p in roster if p.position not in ['SP', 'RP', 'P'])
             opponent_pitchers = len(roster) - opponent_hitters
-            opponent_strategies[team_name] = {
+            opponent_strategies[other_team_name] = {
                 'hitters': opponent_hitters,
                 'pitchers': opponent_pitchers,
                 'ratio': opponent_hitters / max(1, opponent_pitchers)
             }
+            
+            # Identify opponent category strengths
+            category_strengths = {}
+            for category in ['HR', 'R', 'RBI', 'SB', 'OBP', 'K', 'WQS', 'SHOLDS']:
+                if category in totals:
+                    category_strengths[category] = totals[category]
+            opponent_category_strengths[other_team_name] = category_strengths
         
         # Find categories where I'm behind and this player helps
         for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV', 'HD']:
@@ -995,6 +1250,30 @@ class RecommendationEngine:
         
         return scarcity_score, reasoning
     
+    def _get_team_pitching_ip(self, roster: List[Player]) -> float:
+        """Calculate total projected innings pitched for a roster."""
+        total_ip = 0.0
+        pitchers = [p for p in roster if p.position in ['SP', 'RP', 'P']]
+        
+        for pitcher in pitchers:
+            pitcher_ip = pitcher.projected_innings_pitched
+            if pitcher_ip is None:
+                # Estimate from QS
+                if pitcher.projected_quality_starts:
+                    pitcher_ip = pitcher.projected_quality_starts * 6.5
+                elif pitcher.projected_saves:
+                    pitcher_ip = pitcher.projected_saves * 1.0
+                elif hasattr(pitcher, 'br_innings_pitched') and pitcher.br_innings_pitched:
+                    pitcher_ip = pitcher.br_innings_pitched
+                else:
+                    if pitcher.position == 'SP':
+                        pitcher_ip = 150.0
+                    else:
+                        pitcher_ip = 60.0
+            total_ip += pitcher_ip or 0
+        
+        return total_ip
+    
     def _analyze_team_needs(
         self,
         player: Player,
@@ -1005,6 +1284,7 @@ class RecommendationEngine:
         """
         Analyze if this player fills a team need - Bob Uecker League rules.
         Prevents redundant picks and considers dynamic roster state.
+        Includes IP minimum/maximum considerations.
         """
         # Bob Uecker League position requirements:
         # 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
@@ -1087,18 +1367,67 @@ class RecommendationEngine:
                 reasoning_parts.append("Have enough hitters")
         
         if is_pitcher:
+            # Check IP minimum/maximum requirements
+            current_ip = self._get_team_pitching_ip(my_team)
+            IP_MIN = 1000.0
+            IP_MAX = 1400.0
+            
+            # Estimate this pitcher's IP
+            pitcher_ip = player.projected_innings_pitched
+            if pitcher_ip is None:
+                if player.projected_quality_starts:
+                    pitcher_ip = player.projected_quality_starts * 6.5
+                elif player.projected_saves:
+                    pitcher_ip = player.projected_saves * 1.0
+                elif hasattr(player, 'br_innings_pitched') and player.br_innings_pitched:
+                    pitcher_ip = player.br_innings_pitched
+                else:
+                    if player.position == 'SP':
+                        pitcher_ip = 150.0
+                    else:
+                        pitcher_ip = 60.0
+            
+            projected_total_ip = current_ip + (pitcher_ip or 0)
+            
+            # IP-based scoring
+            if current_ip < IP_MIN:
+                # Below minimum - need IP urgently
+                ip_deficit = IP_MIN - current_ip
+                if ip_deficit > 0:
+                    # Bonus for helping reach minimum
+                    ip_contribution = min(pitcher_ip or 0, ip_deficit)
+                    need_score += (ip_contribution / IP_MIN) * 150  # Up to 150 points
+                    reasoning_parts.append(f"Need IP to reach minimum ({current_ip:.0f}/{IP_MIN:.0f})")
+            elif projected_total_ip > IP_MAX:
+                # Would exceed maximum - penalty
+                excess = projected_total_ip - IP_MAX
+                penalty = min(200, excess * 2)  # Penalty based on excess
+                need_score -= penalty
+                reasoning_parts.append(f"Would exceed IP max ({projected_total_ip:.0f} > {IP_MAX:.0f})")
+            elif current_ip < IP_MAX * 0.9:
+                # In good range but not at max yet
+                if pitchers_needed > 0:
+                    need_score += pitchers_needed * 10
+                    reasoning_parts.append(f"Building IP depth ({current_ip:.0f} IP)")
+            
+            # Also consider pitcher count
             if pitchers_needed > 0:
                 # Need pitchers - conservative bonus
-                need_score += pitchers_needed * 10  # Further reduced from 15
+                need_score += pitchers_needed * 10
                 if pitchers_needed > my_picks_remaining / 2:
-                    need_score += 25  # Urgent need (reduced from 40)
+                    need_score += 25
                     reasoning_parts.append(f"URGENT: Need {pitchers_needed} more pitchers")
                 elif pitchers_needed > 4:
-                    need_score += 15  # Moderate urgency (reduced from 25)
+                    need_score += 15
                     reasoning_parts.append(f"Need {pitchers_needed} more pitchers")
             else:
-                need_score -= 100  # Don't need more pitchers (stronger penalty)
-                reasoning_parts.append("Have enough pitchers")
+                # Have enough pitchers, but check if we need IP
+                if current_ip < IP_MIN:
+                    # Still need IP even if we have enough pitchers
+                    pass  # Already handled above
+                else:
+                    need_score -= 100  # Don't need more pitchers
+                    reasoning_parts.append("Have enough pitchers")
         
         # Early draft: Encourage getting first pitcher in rounds 2-4 if good value
         current_pick = len(draft_state.picks) + 1

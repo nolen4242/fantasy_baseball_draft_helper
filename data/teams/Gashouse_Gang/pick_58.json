@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b442fac9-274e-4a6c-b1d3-38decb99c48e",
+    "name": "David Bednar",
+    "position": "P",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 78.72222222222223,
+    "projected_era": 3.3,
+    "projected_whip": null,
+    "projected_saves": 33.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 58.6
+  },
+  "pick_info": {
+    "pick_number": 58,
+    "round": 5,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "P"
+}

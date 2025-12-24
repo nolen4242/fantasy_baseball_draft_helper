@@ -5,6 +5,9 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from src.models.player import Player
 from src.services.custom_adp_calculator import CustomADPCalculator
+from src.services.cbs_data_loader import CBSDataLoader
+from src.services.data_cleaner import DataCleaner
+from src.services.player_matcher import PlayerMatcher
 
 
 class MasterPlayerDict:
@@ -248,6 +251,119 @@ class MasterPlayerDict:
                 self.save_master_dict(master_dict, player_type)
         
         print(f"Calculated and stored custom ADP for {len(custom_adp_rankings)} players")
+    
+    def load_cbs_data_from_raw(self) -> Dict:
+        """
+        Load CBS data from raw folder and create master player dict.
+        Handles duplicates and position eligibility.
+        
+        Returns:
+            Dict with:
+            - players: List of Player objects
+            - cleaning_report: Data cleaning report
+            - match_report: Cross-database match report (if other sources exist)
+        """
+        # Load CBS data
+        cbs_loader = CBSDataLoader()
+        cbs_players = cbs_loader.load_all_cbs_players()
+        
+        print(f"\nLoaded {len(cbs_players)} unique CBS players")
+        
+        # Clean and validate
+        data_cleaner = DataCleaner()
+        cleaning_result = data_cleaner.clean_and_validate_players(cbs_players)
+        
+        cleaned_players = cleaning_result['cleaned_players']
+        issues = cleaning_result['issues']
+        statistics = cleaning_result['statistics']
+        
+        # Print cleaning report
+        print(f"\n=== Data Cleaning Report ===")
+        print(f"Total players: {statistics['total_players']}")
+        print(f"Complete data: {statistics['players_with_complete_data']}")
+        print(f"Missing data: {statistics['players_with_missing_data']}")
+        print(f"Invalid data: {statistics['players_with_invalid_data']}")
+        print(f"Duplicates found: {statistics['duplicates_found']}")
+        
+        if issues:
+            print(f"\nIssues found: {len(issues)}")
+            for issue in issues[:10]:  # Show first 10
+                print(f"  - {issue['type']}: {issue['message']}")
+            if len(issues) > 10:
+                print(f"  ... and {len(issues) - 10} more issues")
+        
+        # Store in master dict
+        for player in cleaned_players:
+            normalized_name = self.normalize_player_name(player.name)
+            
+            # Determine player type
+            player_type = "pitchers" if player.position in ['SP', 'RP', 'P'] else "batters"
+            
+            # Load or create master dict
+            master_dict = self.load_master_dict(player_type)
+            
+            if normalized_name not in master_dict:
+                master_dict[normalized_name] = {
+                    'name': player.name,
+                    'normalized_name': normalized_name,
+                    'projections': {},
+                    'cbs_data': {}
+                }
+            
+            # Store CBS data (source of truth for availability)
+            master_dict[normalized_name]['cbs_data'] = {
+                'name': player.name,
+                'position': player.position,
+                'position_eligibility': getattr(player, 'position_eligibility', [player.position]),
+                'team': player.team,
+                'age': player.age,
+                'player_id': player.player_id,
+                'projected_home_runs': player.projected_home_runs,
+                'projected_obp': player.projected_obp,
+                'projected_runs': player.projected_runs,
+                'projected_rbi': player.projected_rbi,
+                'projected_stolen_bases': player.projected_stolen_bases,
+                'projected_wins': player.projected_wins,
+                'projected_quality_starts': player.projected_quality_starts,
+                'projected_strikeouts': player.projected_strikeouts,
+                'projected_era': player.projected_era,
+                'projected_whip': player.projected_whip,
+                'projected_saves': player.projected_saves,
+                'projected_holds': player.projected_holds,
+                'drafted': player.drafted,
+                'drafted_by_team': player.drafted_by_team,
+            }
+            
+            # Update primary name from CBS (CBS is authoritative)
+            master_dict[normalized_name]['name'] = player.name
+        
+        # Save master dicts
+        batters_dict = {k: v for k, v in master_dict.items() if v.get('cbs_data', {}).get('position') not in ['SP', 'RP', 'P']}
+        pitchers_dict = {k: v for k, v in master_dict.items() if v.get('cbs_data', {}).get('position') in ['SP', 'RP', 'P']}
+        
+        self.save_master_dict(batters_dict, 'batters')
+        self.save_master_dict(pitchers_dict, 'pitchers')
+        
+        print(f"\nStored {len(batters_dict)} batters and {len(pitchers_dict)} pitchers in master dict")
+        
+        # Check for cross-database matches (if other sources exist)
+        match_report = {}
+        existing_players = self.get_players_with_projections('batters') + self.get_players_with_projections('pitchers')
+        if existing_players:
+            players_by_source = {
+                'cbs': cleaned_players,
+                'existing': existing_players
+            }
+            match_report = data_cleaner.find_cross_database_matches(players_by_source)
+        
+        return {
+            'players': cleaned_players,
+            'cleaning_report': {
+                'issues': issues,
+                'statistics': statistics
+            },
+            'match_report': match_report
+        }
     
     def _apply_adp_overrides(self):
         """Apply custom ADP overrides for specific players."""

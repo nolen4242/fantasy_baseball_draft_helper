@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "cf95ce48-7a7d-4507-922f-65e03f48b724",
+    "name": "Nathan Eovaldi",
+    "position": "P",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 15.950000000000001,
+    "projected_strikeouts": 171.61386666666667,
+    "projected_era": 3.6000000000000005,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 165.37
+  },
+  "pick_info": {
+    "pick_number": 191,
+    "round": 15,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "P"
+}

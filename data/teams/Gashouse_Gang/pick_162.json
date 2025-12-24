@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "0fd8cdac-2391-4c61-a0e2-e6c97980b7e4",
+    "name": "Daulton Varsho",
+    "position": "OF",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 24.799999999999997,
+    "projected_obp": 0.294,
+    "projected_runs": 68.4,
+    "projected_rbi": 77.8,
+    "projected_stolen_bases": 7.3999999999999995,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 208.76
+  },
+  "pick_info": {
+    "pick_number": 162,
+    "round": 13,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "OF"
+}

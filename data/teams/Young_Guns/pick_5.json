@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "8f7eb5eb-21bf-4d65-94c9-f1357082ea7c",
+    "name": "Jose Ramirez",
+    "position": "3B",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": 29.1,
+    "projected_obp": 0.348,
+    "projected_runs": 90.0,
+    "projected_rbi": 94.69999999999999,
+    "projected_stolen_bases": 32.8,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 5.08
+  },
+  "pick_info": {
+    "pick_number": 5,
+    "round": 1,
+    "team_name": "Young Guns"
+  },
+  "position": "3B"
+}

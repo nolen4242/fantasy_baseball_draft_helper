@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "800ad3a5-9fc6-4441-9b96-2ffed1fb03c6",
+    "name": "Spencer Torkelson",
+    "position": "1B",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": 26.099999999999998,
+    "projected_obp": 0.32,
+    "projected_runs": 74.3,
+    "projected_rbi": 79.3,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 187.73
+  },
+  "pick_info": {
+    "pick_number": 152,
+    "round": 12,
+    "team_name": "Young Guns"
+  },
+  "position": "1B"
+}

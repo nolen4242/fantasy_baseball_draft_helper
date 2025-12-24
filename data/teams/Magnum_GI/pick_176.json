@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ba63f621-47db-4364-8f64-28566f2a727c",
+    "name": "Matt Shaw",
+    "position": "3B",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": 18.5,
+    "projected_obp": 0.322,
+    "projected_runs": 69.6,
+    "projected_rbi": 64.9,
+    "projected_stolen_bases": 21.499999999999996,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 191.69
+  },
+  "pick_info": {
+    "pick_number": 176,
+    "round": 14,
+    "team_name": "Magnum GI"
+  },
+  "position": "3B"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "db02247c-821a-4557-b953-8c3c879b4932",
+    "name": "Mookie Betts",
+    "position": "SS",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": 23.099999999999998,
+    "projected_obp": 0.355,
+    "projected_runs": 92.39999999999999,
+    "projected_rbi": 78.0,
+    "projected_stolen_bases": 8.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 47.49
+  },
+  "pick_info": {
+    "pick_number": 43,
+    "round": 4,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "SS"
+}

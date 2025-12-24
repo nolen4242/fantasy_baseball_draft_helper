@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "a61848ae-5570-42d6-8b51-4c63f29e4d37",
+    "name": "Aroldis Chapman",
+    "position": "P",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 2.9999999999999996,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 86.52444444444444,
+    "projected_era": 3.0,
+    "projected_whip": null,
+    "projected_saves": 31.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 57.23
+  },
+  "pick_info": {
+    "pick_number": 56,
+    "round": 5,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "P"
+}

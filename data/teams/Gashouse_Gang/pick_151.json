@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1fd7b6bd-2e11-43d9-bc69-bdcd23e04496",
+    "name": "Matt Chapman",
+    "position": "3B",
+    "team": "SF",
+    "age": null,
+    "projected_home_runs": 24.1,
+    "projected_obp": 0.33,
+    "projected_runs": 77.3,
+    "projected_rbi": 83.0,
+    "projected_stolen_bases": 9.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 172.03
+  },
+  "pick_info": {
+    "pick_number": 151,
+    "round": 12,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "3B"
+}

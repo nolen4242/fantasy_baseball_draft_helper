@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "45bb7ba5-0430-4b46-8293-7ac3c27023f7",
+    "name": "Bubba Chandler",
+    "position": "P",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 11.700000000000001,
+    "projected_strikeouts": 147.99196666666666,
+    "projected_era": 4.3,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 160.84
+  },
+  "pick_info": {
+    "pick_number": 210,
+    "round": 17,
+    "team_name": "Dawg"
+  },
+  "position": "P"
+}

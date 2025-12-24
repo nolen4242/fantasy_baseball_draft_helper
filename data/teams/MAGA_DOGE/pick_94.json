@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "4be6f413-8422-4bc0-8574-f0d7ce3c063d",
+    "name": "Seiya Suzuki",
+    "position": "OF",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": 25.4,
+    "projected_obp": 0.335,
+    "projected_runs": 78.2,
+    "projected_rbi": 84.19999999999999,
+    "projected_stolen_bases": 7.699999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 93.61
+  },
+  "pick_info": {
+    "pick_number": 94,
+    "round": 8,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "OF"
+}

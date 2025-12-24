@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "73badda0-1ec7-4626-b8e3-5dbe200846f3",
+    "name": "Will Smith",
+    "position": "C",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": 18.7,
+    "projected_obp": 0.348,
+    "projected_runs": 63.099999999999994,
+    "projected_rbi": 66.1,
+    "projected_stolen_bases": 2.9999999999999996,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 104.52
+  },
+  "pick_info": {
+    "pick_number": 135,
+    "round": 11,
+    "team_name": "Young Guns"
+  },
+  "position": "C"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "6ad87d10-66e3-4584-abc6-1795d1fc7ec7",
+    "name": "Jakob Marsee",
+    "position": "OF",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": 12.7,
+    "projected_obp": 0.33,
+    "projected_runs": 73.5,
+    "projected_rbi": 48.099999999999994,
+    "projected_stolen_bases": 35.1,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 149.31
+  },
+  "pick_info": {
+    "pick_number": 142,
+    "round": 11,
+    "team_name": "Big Sticks"
+  },
+  "position": "OF"
+}

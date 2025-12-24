@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "45973942-a9f8-4f46-bc10-6bd64602e1ee",
+    "name": "Mike Trout",
+    "position": "OF",
+    "team": "LAA",
+    "age": null,
+    "projected_home_runs": 24.9,
+    "projected_obp": 0.341,
+    "projected_runs": 67.0,
+    "projected_rbi": 69.69999999999999,
+    "projected_stolen_bases": 3.6999999999999997,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 195.2
+  },
+  "pick_info": {
+    "pick_number": 167,
+    "round": 13,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "OF"
+}

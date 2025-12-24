@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "9babedce-682d-43a0-89b2-af89ae6d327c",
+    "name": "Giancarlo Stanton",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 27.199999999999996,
+    "projected_obp": 0.307,
+    "projected_runs": 57.39999999999999,
+    "projected_rbi": 70.5,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 257.6
+  },
+  "pick_info": {
+    "pick_number": 213,
+    "round": 17,
+    "team_name": "Young Guns"
+  },
+  "position": "OF"
+}

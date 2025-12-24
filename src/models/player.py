@@ -27,6 +27,7 @@ class Player:
     projected_whip: Optional[float] = None
     projected_saves: Optional[float] = None
     projected_holds: Optional[float] = None
+    projected_innings_pitched: Optional[float] = None  # IP - needed for minimum/maximum calculations
     
     # Draft status
     drafted: bool = False

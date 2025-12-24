@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b668bd5c-2097-40d6-a4cf-5f08b1c39d79",
+    "name": "Dylan Crews",
+    "position": "OF",
+    "team": "WAS",
+    "age": null,
+    "projected_home_runs": 19.1,
+    "projected_obp": 0.307,
+    "projected_runs": 65.3,
+    "projected_rbi": 69.3,
+    "projected_stolen_bases": 23.8,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 165.0
+  },
+  "pick_info": {
+    "pick_number": 148,
+    "round": 12,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

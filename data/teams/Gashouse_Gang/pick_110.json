@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "f5c317ae-505c-4486-b97d-ec26eaade270",
+    "name": "Michael Busch",
+    "position": "1B",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": 25.799999999999997,
+    "projected_obp": 0.332,
+    "projected_runs": 78.1,
+    "projected_rbi": 69.69999999999999,
+    "projected_stolen_bases": 3.6999999999999997,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 110.59
+  },
+  "pick_info": {
+    "pick_number": 110,
+    "round": 9,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "1B"
+}

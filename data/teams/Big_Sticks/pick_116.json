@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "48a21b46-e372-4f0a-877b-2da7314fc84f",
+    "name": "Jeff Hoffman",
+    "position": "P",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 2.9999999999999996,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 76.16000000000001,
+    "projected_era": 3.46,
+    "projected_whip": null,
+    "projected_saves": 26.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 119.92
+  },
+  "pick_info": {
+    "pick_number": 116,
+    "round": 9,
+    "team_name": "Big Sticks"
+  },
+  "position": "P"
+}

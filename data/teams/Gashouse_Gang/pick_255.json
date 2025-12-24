@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b46b7f01-e415-4d5c-8c77-52df5944d659",
+    "name": "Connelly Early",
+    "position": "P",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 5.5,
+    "projected_strikeouts": 65.90453333333333,
+    "projected_era": 3.71,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 212.32
+  },
+  "pick_info": {
+    "pick_number": 255,
+    "round": 20,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "P"
+}

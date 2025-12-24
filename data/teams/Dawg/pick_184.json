@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "2287f8de-a55d-453b-8f60-fac9019b78b1",
+    "name": "Francisco Alvarez",
+    "position": "C",
+    "team": "NYM",
+    "age": null,
+    "projected_home_runs": 22.099999999999998,
+    "projected_obp": 0.32,
+    "projected_runs": 55.3,
+    "projected_rbi": 62.3,
+    "projected_stolen_bases": 1.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 187.73
+  },
+  "pick_info": {
+    "pick_number": 184,
+    "round": 15,
+    "team_name": "Dawg"
+  },
+  "position": "C"
+}

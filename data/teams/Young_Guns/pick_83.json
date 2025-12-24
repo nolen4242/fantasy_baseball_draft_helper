@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "582f17e2-e793-4985-8687-17e350f6e640",
+    "name": "Oneil Cruz",
+    "position": "OF",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": 21.4,
+    "projected_obp": 0.323,
+    "projected_runs": 64.9,
+    "projected_rbi": 63.89999999999999,
+    "projected_stolen_bases": 26.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 87.47
+  },
+  "pick_info": {
+    "pick_number": 83,
+    "round": 7,
+    "team_name": "Young Guns"
+  },
+  "position": "OF"
+}

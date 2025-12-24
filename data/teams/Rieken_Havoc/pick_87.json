@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "faf36dbb-60f5-47b0-b327-faf6d2fbde6a",
+    "name": "Maikel Garcia",
+    "position": "3B",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": 13.7,
+    "projected_obp": 0.338,
+    "projected_runs": 85.2,
+    "projected_rbi": 64.5,
+    "projected_stolen_bases": 27.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 90.13
+  },
+  "pick_info": {
+    "pick_number": 87,
+    "round": 7,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "3B"
+}

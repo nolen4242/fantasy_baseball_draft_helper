@@ -1,234 +1,329 @@
-# Data Architecture for AI Training
+# Data Architecture - Complete Guide
 
-## Data Directory Structure
+## Overview
 
+All raw data goes into `raw/` folder, then gets processed, merged, and cleaned into `data/` folder. The architecture is organized by **DATA TYPE**, not vendor. Each data type can have multiple sources merged together.
+
+## Core Principle: One Master File
+
+**For the app**: Use ONE master file with everything merged  
+**For processing**: Keep sources separate by data type for debugging/flexibility  
+**Best of both worlds**: Simple for app, flexible for data pipeline
+
+## Directory Structure
+
+### Raw Data (`raw/`)
+
+#### Current Season Data
 ```
-data/
-├── sources/                          # Raw data from external sources
-│   ├── baseball_reference/
-│   │   ├── standard_stats/          # Counting stats (R, RBI, HR, etc.)
-│   │   │   ├── batters_2024.csv
-│   │   │   ├── pitchers_2024.csv
-│   │   │   └── historical/          # Previous years
-│   │   ├── advanced_stats/          # wRC+, ERA+, OPS+, etc.
-│   │   │   ├── batters_2024.csv
-│   │   │   └── pitchers_2024.csv
-│   │   └── projections/             # BBRef conservative projections
-│   │       ├── batters_2025.csv
-│   │       └── pitchers_2025.csv
-│   ├── baseball_savant/
-│   │   ├── statcast/                # Statcast data
-│   │   │   ├── batters_2024.csv
-│   │   │   └── pitchers_2024.csv
-│   │   ├── park_factors/            # Park factor data
-│   │   │   └── park_factors_2024.csv
-│   │   └── historical/              # Historical Statcast data
-│   ├── fangraphs/
-│   │   ├── projections/             # Multiple projection systems
-│   │   │   ├── steamer_batters_2025.csv
-│   │   │   ├── steamer_pitchers_2025.csv
-│   │   │   ├── zips_batters_2025.csv
-│   │   │   ├── zips_pitchers_2025.csv
-│   │   │   ├── thebat_batters_2025.csv
-│   │   │   └── atc_batters_2025.csv
-│   │   └── historical/             # Historical Fangraphs data
-│   ├── bb_forecaster/
-│   │   └── predictions_2025.csv
-│   ├── rotowire/
-│   │   ├── news/                    # Player news, qualitative data
-│   │   │   └── player_news_2025.json
-│   │   └── injuries/
-│   │       ├── injury_history.csv
-│   │       └── current_injuries.json
-│   ├── nfbc/
-│   │   ├── adp/                     # Professional ADP data
-│   │   │   └── nfbc_adp_2025.csv
-│   │   └── draft_history/          # Historical draft results
-│   │       └── nfbc_drafts_2024.json
-│   └── cbs/
-│       ├── position_eligibility/    # Position eligibility data
-│       │   └── positions_2025.csv
-│       ├── historical_drafts/      # Historical draft data
-│       │   └── cbs_drafts_2024.json
-│       └── league_thresholds/      # Stats needed to win league
-│           └── winning_thresholds_2024.json
+raw/
+├── cbs_catchers_2025_stats.csv    # Position eligibility + current projections
+├── cbs_1b_2025_stats.csv
+├── cbs_2b_2025_stats.csv
+├── cbs_3b_2025_stats.csv
+├── cbs_ss_2025_stats.csv
+├── cbs_of_2025_stats.csv
+└── cbs_pitchers_2025_stats.csv
+```
+
+#### Historical Data (`raw/historical_data/`)
+```
+raw/historical_data/
+├── historical_stats/        # Past player stats (from multiple sources)
+│   ├── bbref_2024_stats.csv
+│   ├── fangraphs_2024_stats.csv
+│   ├── savant_2024_statcast.csv
+│   └── ...
 │
-├── processed/                       # Processed and merged data
-│   ├── master_players.json         # Unified player database
-│   ├── player_features.json        # Engineered features for ML
-│   └── training_data/              # Prepared training datasets
-│       └── training_features.csv
+├── projections/            # Historical projections (from multiple sources)
+│   ├── steamer_2024.csv
+│   ├── zips_2024.csv
+│   ├── the_bat_2024.csv
+│   └── ...
 │
-├── models/                          # Trained ML models
-│   ├── value_model.pkl
-│   ├── risk_model.pkl
-│   └── feature_scaler.pkl
+├── park_factors/           # Park factor data (from multiple sources)
+│   ├── savant_2024_park_factors.csv
+│   ├── fangraphs_2024_park_factors.csv
+│   └── ...
 │
-└── batters/                         # Legacy (keep for compatibility)
+├── player_info/            # News, injuries, contracts (from multiple sources)
+│   ├── rotowire_2024_injuries.csv
+│   ├── rotowire_2024_news.csv
+│   ├── cbs_2024_news.csv
+│   └── ...
+│
+├── adp/                    # ADP data (from multiple sources)
+│   ├── nfbc_2024_adp.csv
+│   ├── cbs_2024_adp.csv
+│   ├── espn_2024_adp.csv
+│   └── ...
+│
+└── cbs_winners/           # CBS league winners (historical)
+    ├── 2024_winners.csv
+    ├── 2023_winners.csv
     └── ...
 ```
 
-## Data Source Specifications
+### Processed Data (`data/`)
 
-### Baseball Reference
-**Standard Stats (batters):**
-- R, RBI, HR, SB, H, 2B, 3B, BB, SO, AVG, OBP, SLG, OPS
-- MVPs, All-Star appearances, Gold Gloves
+#### Sources (`data/sources/`) - By Data Type
+**Purpose**: Processed data by type (for debugging/reference only)  
+**Note**: App doesn't use these - they're for processing pipeline
 
-**Standard Stats (pitchers):**
-- W, L, SV, IP, H, R, ER, BB, SO, ERA, WHIP
-- Cy Young awards, All-Star appearances
+```
+data/sources/
+├── position_eligibility/    # Player positions (from CBS, etc.)
+│   ├── players.json        # All players with position eligibility
+│   └── metadata.json
+│
+├── historical_stats/        # Past performance (from BBRef, Fangraphs, Savant)
+│   ├── players.json        # All players with historical stats
+│   └── metadata.json
+│
+├── projections/            # Projections (from Steamer, ZiPS, THE BAT, etc.)
+│   ├── players.json        # All players with projections
+│   └── metadata.json
+│
+├── park_factors/           # Park factors (from Savant, Fangraphs)
+│   ├── parks.json          # All parks with factors
+│   └── metadata.json
+│
+├── player_info/            # News, injuries, contracts (from Rotowire, CBS, etc.)
+│   ├── players.json        # All players with news/injury data
+│   └── metadata.json
+│
+└── adp/                    # ADP data (from NFBC, CBS, ESPN, etc.)
+    ├── players.json        # All players with ADP
+    └── metadata.json
+```
 
-**Advanced Stats:**
-- wRC+, OPS+, ERA+, FIP, xFIP, WAR
-- Park-adjusted metrics
+#### Master Players (`data/master_players/`)
+**Purpose**: ONE FILE per player type with everything merged  
+**Note**: This is what the app uses - single source of truth
 
-**Projections:**
-- Conservative BBRef projection system
+```
+data/master_players/
+├── hitters.json            # All hitter data merged
+│   └── Contains: position, historical stats, projections, ADP, risk, news, park factors, etc.
+│
+├── pitchers.json           # All pitcher data merged
+│   └── Contains: position, historical stats, projections, ADP, risk, news, park factors, etc.
+│
+└── metadata.json           # Version, last updated, sources used
+```
 
-### Baseball Savant
-**Statcast Data:**
-- Exit velocity, launch angle, barrel rate
-- Hard hit %, xBA, xSLG, xwOBA
-- Spin rate, pitch movement, velocity
-- Sprint speed, defensive metrics
+#### League Analysis (`data/league_analysis/`)
+**Purpose**: Analysis of what it takes to win  
+**Note**: Completely separate from master player dict - this is league-level analysis
 
-**Park Factors:**
-- Offensive park factors
-- Pitching park factors
-- Home run factors
+```
+data/league_analysis/
+├── cbs_winners.json        # Historical winning teams (from raw/historical_data/cbs_winners/)
+│   └── Contains: rosters, category totals, draft positions
+│
+├── category_thresholds.json # What it takes to win each category
+│   └── Example: "HR: 350+ to win, 300+ to compete"
+│
+└── optimal_rosters.json     # Ideal category balance
+    └── Example: "Winning teams have X HR, Y SB, Z K, etc."
+```
 
-### Fangraphs
-**Projection Systems:**
-- Steamer
-- ZiPS
-- THE BAT
-- ATC (Average of multiple systems)
+#### Teams (`data/teams/`)
+**Purpose**: Draft tracking (KEEP - untouched)
 
-### BB Forecaster
-- Prediction market data
-- Consensus predictions
+```
+data/teams/
+├── Runtime_Terror/
+│   └── roster.json
+├── draft_*.json
+└── ...
+```
 
-### Rotowire
-**News Data (JSON):**
-- Player news, updates
-- Contract signings
-- Prospect call-ups
-- Personal factors (family, motivation)
+## Data Types
 
-**Injury Data:**
-- Historical injury records
-- Current injury status
-- Injury risk scores
-- Recovery timelines
+### 1. Position Eligibility
+- **Sources**: CBS (primary), Baseball Reference, Fangraphs
+- **Contains**: Name, position, position eligibility, team
+- **Purpose**: Foundation for all player matching
 
-### NFBC
-**ADP Data:**
-- Professional draft ADP
-- High-stakes league data
-- Positional ADP
+### 2. Historical Stats
+- **Sources**: Baseball Reference, Fangraphs, Baseball Savant
+- **Contains**: Past 3-5 years of stats (standard, advanced, Statcast)
+- **Purpose**: Performance trends, aging curves
 
-**Draft History:**
-- Historical draft results
-- When players were taken
-- Position scarcity patterns
+### 3. Projections
+- **Sources**: Steamer, ZiPS, THE BAT, ATC, BB Forecaster
+- **Contains**: Projected stats for current season
+- **Purpose**: Primary input for value calculations
 
-### CBS
-**Position Eligibility:**
-- Multi-position eligibility
-- Games played at each position
+### 4. Park Factors
+- **Sources**: Baseball Savant, Fangraphs
+- **Contains**: HR factor, run factor, etc. for each ballpark
+- **Purpose**: Adjust projections based on home park
 
-**Historical Drafts:**
-- When players were drafted
-- Position scarcity impact
-- Value per pick
+### 5. Player Info
+- **Sources**: Rotowire, CBS, news aggregators
+- **Contains**: Injuries, news, trades, contracts
+- **Purpose**: Risk assessment, opportunity identification
 
-**League Thresholds:**
-- Stats needed to win each category
-- Category targets (HR, R, RBI, SB, ERA, WHIP, etc.)
+### 6. ADP
+- **Sources**: NFBC, CBS, ESPN, Yahoo
+- **Contains**: Average draft position from multiple sources
+- **Purpose**: Market value, draft strategy
 
-## Feature Engineering Strategy
+### 7. CBS Winners (Separate - League Analysis)
+- **Source**: CBS league data from prior years
+- **Contains**: Winning team rosters, category totals
+- **Purpose**: Determine winning thresholds, optimal category balance
+- **Note**: NOT merged into master player dict - processed separately into league_analysis/
 
-### Player-Level Features
-1. **Statistical Features**
-   - Standard stats (R, RBI, HR, etc.)
-   - Advanced stats (wRC+, ERA+, etc.)
-   - Statcast metrics (exit velocity, spin rate, etc.)
-   - Multiple projection systems (Steamer, ZiPS, etc.)
+## Data Flow
 
-2. **Risk Features**
-   - Injury history score
-   - Age and decline curve
-   - Sample size confidence (prospects vs veterans)
-   - Contract year motivation
+```
+1. Raw Data (by type)
+   raw/cbs_*.csv → Position eligibility + current projections
+   raw/historical_data/historical_stats/*.csv → Historical stats
+   raw/historical_data/projections/*.csv → Projections
+   raw/historical_data/cbs_winners/*.csv → CBS winners
 
-3. **Context Features**
-   - Park factors (home park)
-   - Team context (lineup position, role)
-   - News sentiment (positive/negative)
+2. Process by Type
+   raw/ → Process → data/sources/position_eligibility/players.json
+   raw/historical_data/historical_stats/* → Process → data/sources/historical_stats/players.json
+   raw/historical_data/projections/* → Process → data/sources/projections/players.json
 
-4. **Draft Context Features**
-   - ADP (NFBC professional)
-   - Historical draft position
-   - Position scarcity score
+3. Merge into Master (Player Data Only)
+   data/sources/position_eligibility/* → Match & Merge → data/master_players/hitters.json
+   data/sources/historical_stats/* → Match & Merge → data/master_players/hitters.json
+   data/sources/projections/* → Match & Merge → data/master_players/hitters.json
+   data/sources/adp/* → Match & Merge → data/master_players/hitters.json
+   data/sources/player_info/* → Match & Merge → data/master_players/hitters.json
+   data/sources/park_factors/* → Match & Merge → data/master_players/hitters.json
 
-### Team-Level Features
-1. **Current Roster State**
-   - Category totals
-   - Position needs
-   - Hitter/pitcher balance
+4. Process League Analysis (Separate from Player Data)
+   raw/historical_data/cbs_winners/* → Process → data/league_analysis/cbs_winners.json
+   data/league_analysis/cbs_winners.json → Analyze → data/league_analysis/category_thresholds.json
+   data/league_analysis/cbs_winners.json → Analyze → data/league_analysis/optimal_rosters.json
 
-2. **Opponent Analysis**
-   - Opponent category totals
-   - Opponent position needs
-   - Competitive gaps
+5. App Uses Data
+   App reads: data/master_players/hitters.json (player data)
+   App reads: data/master_players/pitchers.json (player data)
+   App reads: data/league_analysis/*.json (league analysis - separate)
+```
 
-3. **Draft Context**
-   - Current pick number
-   - Round number
-   - Picks remaining
-   - ADP relevance (decreases after round 15)
+## Master File Structure
 
-### Comparative Advantage Features
-1. **Category Gaps**
-   - How much this player closes gaps vs opponents
-   - Category improvement potential
+```json
+{
+  "metadata": {
+    "version": "2025.1",
+    "last_updated": "2025-01-XX",
+    "sources": ["cbs", "bbref", "fangraphs", "savant", "steamer", "zips"],
+    "player_count": 2000
+  },
+  "players": [
+    {
+      "unified_id": "unified_aaron_judge",
+      "name": "Aaron Judge",
+      "normalized_name": "aaron judge",
+      
+      // Position & Team (from position_eligibility)
+      "position": "OF",
+      "position_eligibility": ["OF"],
+      "team": "NYY",
+      "park": "Yankee Stadium",
+      "park_factors": { "hr_factor": 1.15 },
+      
+      // Historical Stats (from historical_stats)
+      "historical_stats": {
+        "2024": { "hr": 62, "rbi": 131, "wrc_plus": 174 },
+        "2023": { "hr": 37, "rbi": 75, "wrc_plus": 174 }
+      },
+      
+      // Projections (from projections) - MERGED
+      "projections": {
+        "steamer": { "hr": 53, "rbi": 114 },
+        "zips": { "hr": 50, "rbi": 110 },
+        "consensus": { "hr": 52, "rbi": 112 }  // Weighted average
+      },
+      
+      // ADP (from adp) - MERGED
+      "adp": {
+        "nfbc": 1.2,
+        "cbs": 1.5,
+        "composite": 1.35
+      },
+      "custom_adp": 1.5,  // League-specific
+      
+      // Risk & News (from player_info)
+      "risk": {
+        "injury_risk": "moderate",
+        "recent_injuries": [...]
+      },
+      "news": [
+        { "date": "2025-01-15", "type": "trade", "content": "..." }
+      ],
+      
+      // Derived Metrics (calculated)
+      "value_score": 95.5,
+      "risk_adjusted_value": 92.3
+    }
+  ]
+}
+```
 
-2. **Position Scarcity**
-   - Available players at position
-   - Remaining slots needed
-   - Elite players remaining
+## Key Features
 
-3. **Value Per Pick**
-   - Historical value at this pick number
-   - Position scarcity value
-   - ADP deviation value
+### 1. Multi-Position Player Handling
+- Players can appear in multiple position files (e.g., "Ben Rice C,1B")
+- System automatically merges duplicates and tracks all position eligibility
 
-## Training Data Approach
+### 2. Intelligent Name Matching
+- Handles name variations (Nate vs Nathan, Mike vs Michael, etc.)
+- Normalizes names (removes accents, suffixes, punctuation)
+- Uses fuzzy matching for cross-database matching
+- Confidence scoring (0.0 to 1.0) for match quality
 
-Instead of simulated drafts, use:
-1. **Historical Draft Data** (NFBC, CBS)
-   - Real draft results
-   - Final standings
-   - What picks led to wins
+### 3. Data Cleaning & Validation
+- Validates required fields
+- Checks for outliers (unusual stat values)
+- Calculates data completeness scores
+- Flags data quality issues
 
-2. **Feature Engineering**
-   - Extract features for each historical pick
-   - Calculate final team rank
-   - Train on real outcomes
+### 4. Cross-Database Matching
+- Finds potential matches across different data sources
+- Auto-confirms high-confidence matches (>= 0.95)
+- Requires confirmation for medium-confidence matches (0.85-0.95)
+- Stores confirmed and pending matches
 
-3. **Target Variable**
-   - Final league rank (1-13)
-   - Category wins
-   - Total points
+## File Naming Conventions
 
-## Recommendation Logic Updates
+### Raw Files
+- `{source}_{year}_{type}.csv`
+- Example: `bbref_2024_stats.csv`, `steamer_2024_projections.csv`
 
-1. **Early Rounds (1-15):** Heavy ADP weighting
-2. **Mid Rounds (16-20):** Balance ADP, needs, scarcity
-3. **Late Rounds (21+):** Focus on needs, ignore ADP
+### Processed Source Files
+- `players.json` - Player data of this type
+- `metadata.json` - Source metadata
 
-4. **Position Scarcity:** Dynamic based on remaining players
-5. **Comparative Advantage:** Maximize category gains vs opponents
-6. **Risk Assessment:** Factor in injury risk, age, sample size
+### Master Files
+- `hitters.json` - All hitter data merged (all types)
+- `pitchers.json` - All pitcher data merged (all types)
+- `metadata.json` - Master metadata
 
+## Benefits
+
+1. ✅ **Single Call**: App reads one master file
+2. ✅ **Fast**: One file I/O, no merging at runtime
+3. ✅ **Simple**: One structure, easy to understand
+4. ✅ **Debuggable**: Can still check individual sources if needed
+5. ✅ **Maintainable**: Clear separation: raw → sources → master
+6. ✅ **Flexible**: Can reprocess individual sources
+7. ✅ **Source Attribution**: Master file includes source info
+
+## Implementation Status
+
+- ✅ Directory structure created
+- ⏳ CBS data loader (raw/ → sources/position_eligibility/)
+- ⏳ CBS winners analyzer (raw/historical_data/cbs_winners/ → league_analysis/)
+- ⏳ Master merger (sources/* → master_players/)
+- ⏳ Category threshold calculator (from winners data)

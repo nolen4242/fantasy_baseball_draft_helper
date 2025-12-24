@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "dcb2d718-73e7-4d7a-911c-ab45c8c6b357",
+    "name": "Bryce Harper",
+    "position": "1B",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 29.1,
+    "projected_obp": 0.368,
+    "projected_runs": 89.29999999999998,
+    "projected_rbi": 93.29999999999998,
+    "projected_stolen_bases": 9.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 49.54
+  },
+  "pick_info": {
+    "pick_number": 46,
+    "round": 4,
+    "team_name": "Magnum GI"
+  },
+  "position": "1B"
+}

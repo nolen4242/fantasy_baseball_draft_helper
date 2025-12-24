@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
+    "name": "Aaron Judge",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 44.4,
+    "projected_obp": 0.417,
+    "projected_runs": 114.19999999999999,
+    "projected_rbi": 108.2,
+    "projected_stolen_bases": 9.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 1.91
+  },
+  "pick_info": {
+    "pick_number": 2,
+    "round": 1,
+    "team_name": "Dawg"
+  },
+  "position": "OF"
+}

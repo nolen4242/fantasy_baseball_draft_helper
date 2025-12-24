@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "61a5a589-04b4-46f4-9db5-72a7ca0a294d",
+    "name": "Jasson Dominguez",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 16.8,
+    "projected_obp": 0.331,
+    "projected_runs": 63.199999999999996,
+    "projected_rbi": 61.199999999999996,
+    "projected_stolen_bases": 23.2,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 200.05
+  },
+  "pick_info": {
+    "pick_number": 177,
+    "round": 14,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "OF"
+}

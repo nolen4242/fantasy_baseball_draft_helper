@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "bc08fc90-ef18-449f-b023-07dd624fff41",
+    "name": "Christian Walker",
+    "position": "1B",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 27.499999999999996,
+    "projected_obp": 0.305,
+    "projected_runs": 70.69999999999999,
+    "projected_rbi": 79.8,
+    "projected_stolen_bases": 3.6999999999999997,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 188.49
+  },
+  "pick_info": {
+    "pick_number": 154,
+    "round": 12,
+    "team_name": "Long Balls"
+  },
+  "position": "1B"
+}

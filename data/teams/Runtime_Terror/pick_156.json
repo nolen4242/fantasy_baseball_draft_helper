@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "d53ea405-5889-4ffd-9024-f16a21473c18",
+    "name": "Steven Kwan",
+    "position": "OF",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": 12.399999999999999,
+    "projected_obp": 0.35,
+    "projected_runs": 84.0,
+    "projected_rbi": 55.199999999999996,
+    "projected_stolen_bases": 18.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 165.03
+  },
+  "pick_info": {
+    "pick_number": 156,
+    "round": 12,
+    "team_name": "Runtime Terror"
+  },
+  "position": "OF"
+}

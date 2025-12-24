@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "7cb445f5-264a-487e-85b1-4ce181932442",
+    "name": "Josh Naylor",
+    "position": "1B",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 24.4,
+    "projected_obp": 0.33,
+    "projected_runs": 75.2,
+    "projected_rbi": 84.9,
+    "projected_stolen_bases": 15.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 69.08
+  },
+  "pick_info": {
+    "pick_number": 68,
+    "round": 6,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "1B"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "75c8445e-c70b-42e1-9ebe-1d294c8f70a5",
+    "name": "Edward Cabrera",
+    "position": "P",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 11.700000000000001,
+    "projected_strikeouts": 149.29456666666667,
+    "projected_era": 4.03,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 197.98
+  },
+  "pick_info": {
+    "pick_number": 236,
+    "round": 19,
+    "team_name": "Dawg"
+  },
+  "position": "P"
+}

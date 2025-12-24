@@ -2,49 +2,953 @@
   "team_name": "Simba's Dublin Green Sox",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "af926b82-9fbe-45be-8730-6099a02ab34b",
+        "name": "Cal Raleigh",
+        "position": "C",
+        "team": "SEA",
+        "pick_number": 17,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 38.699999999999996,
+          "projected_obp": 0.331,
+          "projected_runs": 90.1,
+          "projected_rbi": 92.8,
+          "projected_stolen_bases": 8.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
-      null
+      {
+        "player_id": "3112feb5-8de9-4ef8-8369-1c001356b254",
+        "name": "Kyle Manzardo",
+        "position": "1B",
+        "team": "CLE",
+        "pick_number": 205,
+        "round": 16,
+        "stats": {
+          "projected_home_runs": 25.2,
+          "projected_obp": 0.322,
+          "projected_runs": 67.6,
+          "projected_rbi": 76.0,
+          "projected_stolen_bases": 2.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
-      null
+      {
+        "player_id": "c6be2b7d-7956-46b2-985d-b0c5d928a0f1",
+        "name": "Nico Hoerner",
+        "position": "2B",
+        "team": "CHC",
+        "pick_number": 108,
+        "round": 9,
+        "stats": {
+          "projected_home_runs": 9.0,
+          "projected_obp": 0.339,
+          "projected_runs": 78.2,
+          "projected_rbi": 62.5,
+          "projected_stolen_bases": 26.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
-      null
+      {
+        "player_id": "81c284f7-f6af-4fda-bf71-e3f68b4aaab3",
+        "name": "Isaac Paredes",
+        "position": "3B",
+        "team": "HOU",
+        "pick_number": 231,
+        "round": 18,
+        "stats": {
+          "projected_home_runs": 19.4,
+          "projected_obp": 0.348,
+          "projected_runs": 58.2,
+          "projected_rbi": 58.5,
+          "projected_stolen_bases": 1.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
-      null
+      {
+        "player_id": "db02247c-821a-4557-b953-8c3c879b4932",
+        "name": "Mookie Betts",
+        "position": "SS",
+        "team": "LAD",
+        "pick_number": 43,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 23.099999999999998,
+          "projected_obp": 0.355,
+          "projected_runs": 92.39999999999999,
+          "projected_rbi": 78.0,
+          "projected_stolen_bases": 8.7,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "7f13f716-6ff9-419b-9f0c-b7d4f0fee8b9",
+        "name": "Masyn Winn",
+        "position": "SS",
+        "team": "STL",
+        "pick_number": 186,
+        "round": 15,
+        "stats": {
+          "projected_home_runs": 16.0,
+          "projected_obp": 0.319,
+          "projected_runs": 71.7,
+          "projected_rbi": 68.69999999999999,
+          "projected_stolen_bases": 11.999999999999998,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
-      null
+      {
+        "player_id": "2f5251ee-cf6e-43d6-91e1-fcbbb6ee52ec",
+        "name": "Carlos Correa",
+        "position": "3B",
+        "team": "HOU",
+        "pick_number": 257,
+        "round": 20,
+        "stats": {
+          "projected_home_runs": 17.4,
+          "projected_obp": 0.338,
+          "projected_runs": 66.0,
+          "projected_rbi": 69.69999999999999,
+          "projected_stolen_bases": 1.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "OF": [
-      null,
-      null,
-      null,
-      null
+      {
+        "player_id": "38cc66a3-4c1a-4cff-b6dc-df20aaf4bec4",
+        "name": "Juan Soto",
+        "position": "OF",
+        "team": "NYM",
+        "pick_number": 4,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 37.099999999999994,
+          "projected_obp": 0.413,
+          "projected_runs": 107.99999999999999,
+          "projected_rbi": 99.6,
+          "projected_stolen_bases": 21.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "5e6ff3d7-c2e8-46e7-8cd6-4311aafe82f8",
+        "name": "Jurickson Profar",
+        "position": "OF",
+        "team": "ATL",
+        "pick_number": 153,
+        "round": 12,
+        "stats": {
+          "projected_home_runs": 18.7,
+          "projected_obp": 0.349,
+          "projected_runs": 80.2,
+          "projected_rbi": 73.5,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "60b99f0f-42ca-4f2a-960a-82adb192e92c",
+        "name": "Bryan Reynolds",
+        "position": "OF",
+        "team": "PIT",
+        "pick_number": 160,
+        "round": 13,
+        "stats": {
+          "projected_home_runs": 20.7,
+          "projected_obp": 0.325,
+          "projected_runs": 75.2,
+          "projected_rbi": 77.19999999999999,
+          "projected_stolen_bases": 5.699999999999999,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "e1e5b09a-6184-4b85-bff1-8be8a77c37a0",
+        "name": "Kerry Carpenter",
+        "position": "OF",
+        "team": "DET",
+        "pick_number": 179,
+        "round": 14,
+        "stats": {
+          "projected_home_runs": 22.799999999999997,
+          "projected_obp": 0.311,
+          "projected_runs": 59.99999999999999,
+          "projected_rbi": 67.69999999999999,
+          "projected_stolen_bases": 2.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "U": [
-      null
+      {
+        "player_id": "85cfee38-6aa5-4712-9ca1-0e75d22fb6df",
+        "name": "Agustin Ramirez",
+        "position": "C",
+        "team": "MIA",
+        "pick_number": 75,
+        "round": 6,
+        "stats": {
+          "projected_home_runs": 20.099999999999998,
+          "projected_obp": 0.312,
+          "projected_runs": 61.0,
+          "projected_rbi": 68.4,
+          "projected_stolen_bases": 12.399999999999999,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      {
+        "player_id": "41d5275f-e694-49b4-9d64-b4cc60c3b9bd",
+        "name": "Hunter Brown",
+        "position": "P",
+        "team": "HOU",
+        "pick_number": 30,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.999999999999998,
+          "projected_quality_starts": 17.05,
+          "projected_strikeouts": 199.78021666666666,
+          "projected_era": 3.63,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "a61848ae-5570-42d6-8b51-4c63f29e4d37",
+        "name": "Aroldis Chapman",
+        "position": "P",
+        "team": "BOS",
+        "pick_number": 56,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 2.9999999999999996,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 86.52444444444444,
+          "projected_era": 3.0,
+          "projected_whip": null,
+          "projected_saves": 31.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "033268c6-b086-4d50-9418-eb5addb8a4c5",
+        "name": "Carlos Estevez",
+        "position": "P",
+        "team": "KC",
+        "pick_number": 82,
+        "round": 7,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 2.9999999999999996,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 60.73888888888889,
+          "projected_era": 4.29,
+          "projected_whip": null,
+          "projected_saves": 31.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "c519404b-37c1-4509-b574-b776ed867a04",
+        "name": "Sonny Gray",
+        "position": "P",
+        "team": "BOS",
+        "pick_number": 127,
+        "round": 10,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.999999999999998,
+          "projected_quality_starts": 17.05,
+          "projected_strikeouts": 189.48329999999999,
+          "projected_era": 3.6800000000000006,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "140f4574-2331-41d7-8f66-868f3fc3938e",
+        "name": "Michael King",
+        "position": "P",
+        "team": "SD",
+        "pick_number": 134,
+        "round": 11,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 17.05,
+          "projected_strikeouts": 182.16306666666665,
+          "projected_era": 3.79,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "28a6eaf4-c013-44dc-8213-5b69de38be9d",
+        "name": "MacKenzie Gore",
+        "position": "P",
+        "team": "WAS",
+        "pick_number": 212,
+        "round": 17,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 17.05,
+          "projected_strikeouts": 193.09675555555557,
+          "projected_era": 3.76,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "5e5045d5-a61b-419c-af8b-3ec4dd411202",
+        "name": "Dennis Santana",
+        "position": "P",
+        "team": "PIT",
+        "pick_number": 238,
+        "round": 19,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 2.9999999999999996,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 63.617777777777775,
+          "projected_era": 4.02,
+          "projected_whip": null,
+          "projected_saves": 26.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "ecc1c77b-71d7-45f5-a9d7-12074579f3be",
+        "name": "Joe Musgrove",
+        "position": "P",
+        "team": "SD",
+        "pick_number": 264,
+        "round": 21,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.0,
+          "projected_quality_starts": 15.400000000000002,
+          "projected_strikeouts": 150.34333333333333,
+          "projected_era": 3.9,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null
     ],
     "BENCH": [
-      null
+      {
+        "player_id": "d6a9f3cb-6663-43b6-9610-9bdfb814cd89",
+        "name": "Salvador Perez",
+        "position": "C",
+        "team": "KC",
+        "pick_number": 101,
+        "round": 8,
+        "stats": {
+          "projected_home_runs": 26.4,
+          "projected_obp": 0.302,
+          "projected_runs": 72.5,
+          "projected_rbi": 87.89999999999999,
+          "projected_stolen_bases": 0.7,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "38cc66a3-4c1a-4cff-b6dc-df20aaf4bec4",
+      "name": "Juan Soto",
+      "position": "OF",
+      "team": "NYM",
+      "pick_number": 4,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 37.099999999999994,
+        "projected_obp": 0.413,
+        "projected_runs": 107.99999999999999,
+        "projected_rbi": 99.6,
+        "projected_stolen_bases": 21.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "af926b82-9fbe-45be-8730-6099a02ab34b",
+      "name": "Cal Raleigh",
+      "position": "C",
+      "team": "SEA",
+      "pick_number": 17,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 38.699999999999996,
+        "projected_obp": 0.331,
+        "projected_runs": 90.1,
+        "projected_rbi": 92.8,
+        "projected_stolen_bases": 8.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "41d5275f-e694-49b4-9d64-b4cc60c3b9bd",
+      "name": "Hunter Brown",
+      "position": "P",
+      "team": "HOU",
+      "pick_number": 30,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.999999999999998,
+        "projected_quality_starts": 17.05,
+        "projected_strikeouts": 199.78021666666666,
+        "projected_era": 3.63,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "db02247c-821a-4557-b953-8c3c879b4932",
+      "name": "Mookie Betts",
+      "position": "SS",
+      "team": "LAD",
+      "pick_number": 43,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 23.099999999999998,
+        "projected_obp": 0.355,
+        "projected_runs": 92.39999999999999,
+        "projected_rbi": 78.0,
+        "projected_stolen_bases": 8.7,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "a61848ae-5570-42d6-8b51-4c63f29e4d37",
+      "name": "Aroldis Chapman",
+      "position": "P",
+      "team": "BOS",
+      "pick_number": 56,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 2.9999999999999996,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 86.52444444444444,
+        "projected_era": 3.0,
+        "projected_whip": null,
+        "projected_saves": 31.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "85cfee38-6aa5-4712-9ca1-0e75d22fb6df",
+      "name": "Agustin Ramirez",
+      "position": "C",
+      "team": "MIA",
+      "pick_number": 75,
+      "round": 6,
+      "stats": {
+        "projected_home_runs": 20.099999999999998,
+        "projected_obp": 0.312,
+        "projected_runs": 61.0,
+        "projected_rbi": 68.4,
+        "projected_stolen_bases": 12.399999999999999,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "033268c6-b086-4d50-9418-eb5addb8a4c5",
+      "name": "Carlos Estevez",
+      "position": "P",
+      "team": "KC",
+      "pick_number": 82,
+      "round": 7,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 2.9999999999999996,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 60.73888888888889,
+        "projected_era": 4.29,
+        "projected_whip": null,
+        "projected_saves": 31.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "d6a9f3cb-6663-43b6-9610-9bdfb814cd89",
+      "name": "Salvador Perez",
+      "position": "C",
+      "team": "KC",
+      "pick_number": 101,
+      "round": 8,
+      "stats": {
+        "projected_home_runs": 26.4,
+        "projected_obp": 0.302,
+        "projected_runs": 72.5,
+        "projected_rbi": 87.89999999999999,
+        "projected_stolen_bases": 0.7,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "c6be2b7d-7956-46b2-985d-b0c5d928a0f1",
+      "name": "Nico Hoerner",
+      "position": "2B",
+      "team": "CHC",
+      "pick_number": 108,
+      "round": 9,
+      "stats": {
+        "projected_home_runs": 9.0,
+        "projected_obp": 0.339,
+        "projected_runs": 78.2,
+        "projected_rbi": 62.5,
+        "projected_stolen_bases": 26.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "c519404b-37c1-4509-b574-b776ed867a04",
+      "name": "Sonny Gray",
+      "position": "P",
+      "team": "BOS",
+      "pick_number": 127,
+      "round": 10,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.999999999999998,
+        "projected_quality_starts": 17.05,
+        "projected_strikeouts": 189.48329999999999,
+        "projected_era": 3.6800000000000006,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "140f4574-2331-41d7-8f66-868f3fc3938e",
+      "name": "Michael King",
+      "position": "P",
+      "team": "SD",
+      "pick_number": 134,
+      "round": 11,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 17.05,
+        "projected_strikeouts": 182.16306666666665,
+        "projected_era": 3.79,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "5e6ff3d7-c2e8-46e7-8cd6-4311aafe82f8",
+      "name": "Jurickson Profar",
+      "position": "OF",
+      "team": "ATL",
+      "pick_number": 153,
+      "round": 12,
+      "stats": {
+        "projected_home_runs": 18.7,
+        "projected_obp": 0.349,
+        "projected_runs": 80.2,
+        "projected_rbi": 73.5,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "60b99f0f-42ca-4f2a-960a-82adb192e92c",
+      "name": "Bryan Reynolds",
+      "position": "OF",
+      "team": "PIT",
+      "pick_number": 160,
+      "round": 13,
+      "stats": {
+        "projected_home_runs": 20.7,
+        "projected_obp": 0.325,
+        "projected_runs": 75.2,
+        "projected_rbi": 77.19999999999999,
+        "projected_stolen_bases": 5.699999999999999,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "e1e5b09a-6184-4b85-bff1-8be8a77c37a0",
+      "name": "Kerry Carpenter",
+      "position": "OF",
+      "team": "DET",
+      "pick_number": 179,
+      "round": 14,
+      "stats": {
+        "projected_home_runs": 22.799999999999997,
+        "projected_obp": 0.311,
+        "projected_runs": 59.99999999999999,
+        "projected_rbi": 67.69999999999999,
+        "projected_stolen_bases": 2.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "7f13f716-6ff9-419b-9f0c-b7d4f0fee8b9",
+      "name": "Masyn Winn",
+      "position": "SS",
+      "team": "STL",
+      "pick_number": 186,
+      "round": 15,
+      "stats": {
+        "projected_home_runs": 16.0,
+        "projected_obp": 0.319,
+        "projected_runs": 71.7,
+        "projected_rbi": 68.69999999999999,
+        "projected_stolen_bases": 11.999999999999998,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "3112feb5-8de9-4ef8-8369-1c001356b254",
+      "name": "Kyle Manzardo",
+      "position": "1B",
+      "team": "CLE",
+      "pick_number": 205,
+      "round": 16,
+      "stats": {
+        "projected_home_runs": 25.2,
+        "projected_obp": 0.322,
+        "projected_runs": 67.6,
+        "projected_rbi": 76.0,
+        "projected_stolen_bases": 2.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "28a6eaf4-c013-44dc-8213-5b69de38be9d",
+      "name": "MacKenzie Gore",
+      "position": "P",
+      "team": "WAS",
+      "pick_number": 212,
+      "round": 17,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 17.05,
+        "projected_strikeouts": 193.09675555555557,
+        "projected_era": 3.76,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "81c284f7-f6af-4fda-bf71-e3f68b4aaab3",
+      "name": "Isaac Paredes",
+      "position": "3B",
+      "team": "HOU",
+      "pick_number": 231,
+      "round": 18,
+      "stats": {
+        "projected_home_runs": 19.4,
+        "projected_obp": 0.348,
+        "projected_runs": 58.2,
+        "projected_rbi": 58.5,
+        "projected_stolen_bases": 1.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "5e5045d5-a61b-419c-af8b-3ec4dd411202",
+      "name": "Dennis Santana",
+      "position": "P",
+      "team": "PIT",
+      "pick_number": 238,
+      "round": 19,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 2.9999999999999996,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 63.617777777777775,
+        "projected_era": 4.02,
+        "projected_whip": null,
+        "projected_saves": 26.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "2f5251ee-cf6e-43d6-91e1-fcbbb6ee52ec",
+      "name": "Carlos Correa",
+      "position": "3B",
+      "team": "HOU",
+      "pick_number": 257,
+      "round": 20,
+      "stats": {
+        "projected_home_runs": 17.4,
+        "projected_obp": 0.338,
+        "projected_runs": 66.0,
+        "projected_rbi": 69.69999999999999,
+        "projected_stolen_bases": 1.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ecc1c77b-71d7-45f5-a9d7-12074579f3be",
+      "name": "Joe Musgrove",
+      "position": "P",
+      "team": "SD",
+      "pick_number": 264,
+      "round": 21,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.0,
+        "projected_quality_starts": 15.400000000000002,
+        "projected_strikeouts": 150.34333333333333,
+        "projected_era": 3.9,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

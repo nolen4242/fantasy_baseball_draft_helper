@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "0d1268f6-3676-44d5-928e-e065434d9585",
+    "name": "Jordan Westburg",
+    "position": "3B",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 24.4,
+    "projected_obp": 0.321,
+    "projected_runs": 80.3,
+    "projected_rbi": 77.6,
+    "projected_stolen_bases": 5.699999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 135.35
+  },
+  "pick_info": {
+    "pick_number": 139,
+    "round": 11,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "3B"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "fa298a09-de2d-46ab-84b7-62ef912812d4",
+    "name": "Trent Grisham",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 23.099999999999998,
+    "projected_obp": 0.327,
+    "projected_runs": 73.0,
+    "projected_rbi": 58.599999999999994,
+    "projected_stolen_bases": 5.699999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 252.04
+  },
+  "pick_info": {
+    "pick_number": 195,
+    "round": 15,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "OF"
+}

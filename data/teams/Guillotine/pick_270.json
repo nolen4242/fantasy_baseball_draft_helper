@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "89cd4685-a7cd-4429-a41a-d61c476ec1fc",
+    "name": "Konnor Griffin",
+    "position": "SS",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": 8.7,
+    "projected_obp": 0.319,
+    "projected_runs": 41.3,
+    "projected_rbi": 39.3,
+    "projected_stolen_bases": 15.799999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 291.26
+  },
+  "pick_info": {
+    "pick_number": 270,
+    "round": 21,
+    "team_name": "Guillotine"
+  },
+  "position": "SS"
+}

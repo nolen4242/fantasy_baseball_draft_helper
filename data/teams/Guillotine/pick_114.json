@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b5a19bfc-8b42-4041-bbbd-7745db4e7d9f",
+    "name": "Brandon Woodruff",
+    "position": "P",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 15.400000000000002,
+    "projected_strikeouts": 168.2384,
+    "projected_era": 3.84,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 118.81
+  },
+  "pick_info": {
+    "pick_number": 114,
+    "round": 9,
+    "team_name": "Guillotine"
+  },
+  "position": "P"
+}

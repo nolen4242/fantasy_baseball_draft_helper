@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b4cb160a-28dc-4a1d-a7fa-c4d4d25d223d",
+    "name": "Xavier Edwards",
+    "position": "2B",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": 5.0,
+    "projected_obp": 0.351,
+    "projected_runs": 72.6,
+    "projected_rbi": 48.5,
+    "projected_stolen_bases": 27.099999999999998,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 180.7
+  },
+  "pick_info": {
+    "pick_number": 229,
+    "round": 18,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "2B"
+}

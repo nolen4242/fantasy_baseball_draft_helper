@@ -15,6 +15,7 @@ from src.services.draft_service import DraftService
 from src.services.recommendation_engine import RecommendationEngine
 from src.services.draft_order import DraftOrder
 from src.services.master_player_dict import MasterPlayerDict
+from src.services.master_player_dict_loader import MasterPlayerDictLoader
 from src.services.ml_trainer import MLTrainer
 from src.models.player import Player
 from src.models.draft import DraftState
@@ -24,16 +25,77 @@ app = Flask(__name__,
             static_folder=str(project_root / 'frontend' / 'static'))
 CORS(app)
 
+# Global error handlers to ensure all errors return JSON
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        'success': False,
+        'error': 'Not found',
+        'message': 'The requested resource was not found'
+    }), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    import traceback
+    return jsonify({
+        'success': False,
+        'error': 'Internal server error',
+        'message': str(error) if error else 'An internal error occurred',
+        'traceback': traceback.format_exc() if app.debug else None
+    }), 500
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    import traceback
+    return jsonify({
+        'success': False,
+        'error': type(e).__name__,
+        'message': str(e),
+        'traceback': traceback.format_exc() if app.debug else None
+    }), 500
+
 # Initialize services
 data_loader = DataLoader()
 draft_service = DraftService()
 master_player_dict = MasterPlayerDict()
+master_player_dict_loader = MasterPlayerDictLoader()
 
 # Global state (in production, use a database)
 all_players: list[Player] = []
 
 # Initialize recommendation engine (will be updated when players are loaded)
 recommendation_engine = RecommendationEngine(draft_service, all_players)
+
+# Auto-load players from master dictionary on startup
+def _auto_load_players():
+    """Auto-load players from master dictionary on startup."""
+    global all_players
+    try:
+        all_players = master_player_dict_loader.load_all_players()
+        recommendation_engine.all_players = all_players
+        print(f"✅ Auto-loaded {len(all_players)} players from master player dictionary")
+    except Exception as e:
+        print(f"⚠️  Could not auto-load players: {e}")
+        print("   Players will be loaded on first API call to /api/players")
+
+# Try to load on startup
+_auto_load_players()
+
+# Clear players on startup if data was cleaned (no master dict files exist)
+def _check_and_clear_players():
+    """Clear players if data directory was cleaned."""
+    try:
+        batters_file = master_player_dict.batters_master_file
+        pitchers_file = master_player_dict.pitchers_master_file
+        if not batters_file.exists() and not pitchers_file.exists():
+            global all_players
+            all_players = []
+            print("Data directory was cleaned - players list cleared. Load data from raw/ folder.")
+    except:
+        pass
+
+# Check on module load
+_check_and_clear_players()
 
 
 @app.route('/')
@@ -116,6 +178,48 @@ def load_steamer_files():
     })
 
 
+@app.route('/api/players/load-cbs-raw', methods=['POST'])
+def load_cbs_data_from_raw():
+    """Load CBS data from raw folder and create master player dict."""
+    global all_players
+    
+    try:
+        # Load CBS data from raw folder
+        result = master_player_dict.load_cbs_data_from_raw()
+        
+        players = result['players']
+        cleaning_report = result['cleaning_report']
+        match_report = result.get('match_report', {})
+        
+        # Get players with merged data
+        all_players = (
+            master_player_dict.get_players_with_projections(player_type='batters') +
+            master_player_dict.get_players_with_projections(player_type='pitchers')
+        )
+        
+        # Update recommendation engine
+        recommendation_engine.all_players = all_players
+        
+        # Calculate custom ADP (handled inside load_cbs_data_from_raw)
+        # No need to call separately - it's already done in the method
+        
+        return jsonify({
+            'success': True,
+            'count': len(all_players),
+            'players_loaded': len(players),
+            'cleaning_report': cleaning_report,
+            'match_report': match_report,
+            'message': f'Loaded {len(players)} CBS players. {len(all_players)} total players in system.'
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'traceback': traceback.format_exc()
+        }), 500
+
+
 @app.route('/api/players/load-cbs', methods=['POST'])
 def load_cbs_data():
     """Load CBS data (source of truth for available players) and merge with projections."""
@@ -170,16 +274,27 @@ def get_players():
     """Get all players from master dictionary (CBS base + merged projections), sorted by ADP."""
     global all_players
     
-    # Try to get players from master dictionary if available
-    try:
-        merged_players = (
-            master_player_dict.get_players_with_projections(player_type='batters') +
-            master_player_dict.get_players_with_projections(player_type='pitchers')
-        )
-        if merged_players:
-            all_players = merged_players
-    except:
-        pass  # Fall back to all_players if master dict not available
+    # If no players loaded, try loading from master player dict
+    if not all_players:
+        try:
+            all_players = master_player_dict_loader.load_all_players()
+            recommendation_engine.all_players = all_players
+            print(f"Auto-loaded {len(all_players)} players from master player dictionary")
+        except Exception as e:
+            print(f"Error loading from master player dict: {e}")
+            return jsonify({
+                'players': [],
+                'count': 0,
+                'message': 'No players loaded. Please load data first.'
+            })
+    
+    # If still no players, return empty list
+    if not all_players:
+        return jsonify({
+            'players': [],
+            'count': 0,
+            'message': 'No players loaded. Data directory was cleaned. Please load data from raw/ folder using the new pipeline.'
+        })
     
     # Sort by ADP (lower is better, None values go to end)
     sorted_players = sorted(
@@ -188,7 +303,9 @@ def get_players():
     )
     
     return jsonify({
-        'players': [p.to_dict() for p in sorted_players]
+        'players': [p.to_dict() for p in sorted_players],
+        'count': len(sorted_players),
+        'message': f'Loaded {len(sorted_players)} players from master dictionary'
     })
 
 
@@ -576,195 +693,349 @@ def get_recommendations():
             'message': 'No active draft'
         }), 400
     
-    # Update recommendation engine with current players
-    recommendation_engine.all_players = all_players
-    
-    available = draft_service.get_available_players(all_players)
-    my_team = draft_service.get_my_team_players(all_players)
-    
-    use_ml = request.args.get('use_ml', 'true').lower() == 'true'
-    
-    recommendations = recommendation_engine.get_recommendations(
-        available_players=available,
-        my_team=my_team,
-        draft_state=draft_service.current_draft,
-        top_n=10,
-        use_ml=use_ml
-    )
-    
-    return jsonify({
-        'recommendations': [
-            {
-                'player': rec['player'].to_dict(),
-                'score': rec['score'],
-                'reasoning': rec['reasoning']
-            }
-            for rec in recommendations
-        ]
-    })
+    try:
+        # Update recommendation engine with current players
+        recommendation_engine.all_players = all_players
+        
+        available = draft_service.get_available_players(all_players)
+        my_team = draft_service.get_my_team_players(all_players)
+        
+        print(f"DEBUG: Available players: {len(available)}, My team: {len(my_team)}")
+        
+        use_ml = request.args.get('use_ml', 'true').lower() == 'true'
+        
+        recommendations = recommendation_engine.get_recommendations(
+            available_players=available,
+            my_team=my_team,
+            draft_state=draft_service.current_draft,
+            top_n=10,
+            use_ml=use_ml
+        )
+        
+        print(f"DEBUG: Got {len(recommendations)} recommendations")
+        
+        return jsonify({
+            'recommendations': [
+                {
+                    'player': rec['player'].to_dict(),
+                    'score': rec['score'],
+                    'reasoning': rec['reasoning']
+                }
+                for rec in recommendations
+            ]
+        })
+    except Exception as e:
+        import traceback
+        error_msg = str(e)
+        traceback_str = traceback.format_exc()
+        print(f"ERROR in get_recommendations: {error_msg}")
+        print(traceback_str)
+        return jsonify({
+            'success': False,
+            'error': error_msg,
+            'traceback': traceback_str,
+            'recommendations': []
+        }), 500
 
 
 @app.route('/api/draft/auto-draft/toggle', methods=['POST'])
 def toggle_auto_draft():
     """Toggle auto-draft mode on/off."""
-    data = request.json or {}
-    enabled = data.get('enabled', False)
-    
-    draft_service.set_auto_draft(enabled)
-    
-    return jsonify({
-        'success': True,
-        'auto_draft_enabled': draft_service.is_auto_draft_enabled(),
-        'message': f'Auto-draft {"enabled" if enabled else "disabled"}'
-    })
+    try:
+        data = request.json or {}
+        enabled = data.get('enabled', False)
+        
+        draft_service.set_auto_draft(enabled)
+        
+        return jsonify({
+            'success': True,
+            'auto_draft_enabled': draft_service.is_auto_draft_enabled(),
+            'message': f'Auto-draft {"enabled" if enabled else "disabled"}'
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
 
 
 @app.route('/api/draft/auto-draft/status', methods=['GET'])
 def get_auto_draft_status():
     """Get current auto-draft status."""
-    return jsonify({
-        'auto_draft_enabled': draft_service.is_auto_draft_enabled()
-    })
+    try:
+        return jsonify({
+            'auto_draft_enabled': draft_service.is_auto_draft_enabled()
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
 
 
 @app.route('/api/draft/auto-draft/pick', methods=['POST'])
 def make_auto_draft_pick():
     """Make an auto-draft pick for a team using AI recommendations."""
+    try:
+        if not draft_service.current_draft:
+            return jsonify({
+                'success': False,
+                'message': 'No active draft'
+            }), 400
+        
+        # Check if draft is already complete
+        if draft_service.current_draft.is_draft_complete():
+            return jsonify({
+                'success': False,
+                'message': 'Draft is complete - all roster spots are filled'
+            }), 400
+        
+        data = request.json or {}
+        team_name = data.get('team_name')
+        
+        if not team_name:
+            return jsonify({
+                'success': False,
+                'message': 'team_name is required'
+            }), 400
+        
+        # Don't auto-draft for the user's team
+        if team_name == draft_service.current_draft.my_team_name:
+            return jsonify({
+                'success': False,
+                'message': 'Cannot auto-draft for your own team'
+            }), 400
+        
+        # Check if this team's roster is already full
+        team_roster_size = len(draft_service.current_draft.team_rosters.get(team_name, []))
+        if team_roster_size >= draft_service.current_draft.roster_size:
+            return jsonify({
+                'success': False,
+                'message': f'{team_name} roster is full'
+            }), 400
+        
+        # Get available players
+        available = draft_service.get_available_players(all_players)
+        if not available:
+            return jsonify({
+                'success': False,
+                'message': 'No available players'
+            }), 400
+        
+        # Get the team's current roster
+        team_players = draft_service.get_team_players(all_players, team_name)
+        
+        # Get current pick number and round
+        current_pick = len(draft_service.current_draft.picks) + 1
+        current_round = draft_service.current_draft.current_round
+        
+        from src.services.team_service import TeamService
+        team_service = TeamService()
+        
+        if current_round <= 4:
+            # ROUNDS 1-4: Pick within 5 ADP of current pick
+            # Strict ADP adherence - only consider players within 5 picks of their ADP
+            eligible_players = []
+            for player in available:
+                if not team_service.has_available_slot_for_player(team_name, player):
+                    continue
+                
+                if player.adp is not None:
+                    adp_diff = abs(current_pick - player.adp)
+                    # Only include players within 5 picks of their ADP
+                    if adp_diff <= 5:
+                        eligible_players.append(player)
+                # Players without ADP are excluded in early rounds
+            
+            if not eligible_players:
+                return jsonify({
+                    'success': False,
+                    'message': f'No players available within 5 ADP range for pick {current_pick}'
+                }), 400
+            
+            # Sort by ADP (closest to current pick first, then lowest ADP)
+            eligible_players.sort(key=lambda p: (abs(current_pick - (p.adp or float('inf'))), p.adp or float('inf')))
+            
+            # Pick the best match (closest to current pick)
+            selected_player = eligible_players[0]
+            reasoning = f"Round {current_round} - Within 5 ADP: {selected_player.name} (ADP {selected_player.adp:.1f} at pick {current_pick})"
+        
+        elif current_round <= 10:
+            # ROUNDS 5-10: Pick within 10 ADP of current pick
+            # Moderate ADP adherence - consider players within 10 picks of their ADP
+            eligible_players = []
+            for player in available:
+                if not team_service.has_available_slot_for_player(team_name, player):
+                    continue
+                
+                if player.adp is not None:
+                    adp_diff = abs(current_pick - player.adp)
+                    # Include players within 10 picks of their ADP
+                    if adp_diff <= 10:
+                        eligible_players.append(player)
+                # Players without ADP are excluded in middle rounds
+            
+            if not eligible_players:
+                return jsonify({
+                    'success': False,
+                    'message': f'No players available within 10 ADP range for pick {current_pick}'
+                }), 400
+            
+            # Sort by ADP (closest to current pick first, then lowest ADP)
+            eligible_players.sort(key=lambda p: (abs(current_pick - (p.adp or float('inf'))), p.adp or float('inf')))
+            
+            # Pick the best match (closest to current pick)
+            selected_player = eligible_players[0]
+            reasoning = f"Round {current_round} - Within 10 ADP: {selected_player.name} (ADP {selected_player.adp:.1f} at pick {current_pick})"
+        
+        else:
+            # ROUNDS 11+: Full AI recommendation engine
+            # Let AI make the decision based on team needs, position scarcity, etc.
+            use_ml = request.args.get('use_ml', 'true').lower() == 'true'
+            recommendations = recommendation_engine.get_recommendations_for_team(
+                available_players=available,
+                team_players=team_players,
+                draft_state=draft_service.current_draft,
+                team_name=team_name,
+                top_n=10,
+                use_ml=use_ml
+            )
+            
+            if not recommendations:
+                return jsonify({
+                    'success': False,
+                    'message': 'No AI recommendations available'
+                }), 400
+            
+            # Filter recommendations to only players that can fit
+            valid_recommendations = []
+            for rec in recommendations:
+                player = rec['player']
+                if team_service.has_available_slot_for_player(team_name, player):
+                    valid_recommendations.append(rec)
+            
+            if not valid_recommendations:
+                return jsonify({
+                    'success': False,
+                    'message': 'No recommended players can fit on roster'
+                }), 400
+            
+            # Select from top 3 AI recommendations (weighted by score)
+            top_3 = valid_recommendations[:3]
+            # Create weighted pool based on recommendation scores
+            weighted_pool = []
+            max_score = max(rec['score'] for rec in top_3) if top_3 else 1
+            for rec in top_3:
+                # Weight by score (higher score = more likely to be picked)
+                weight = max(1, int(rec['score'] / max(1, max_score / 3)))
+                weighted_pool.extend([rec['player']] * weight)
+            
+            selected_player = random.choice(weighted_pool)
+            # Get reasoning from the recommendation
+            reasoning = "Round 11+ - AI recommendation"
+            for rec in valid_recommendations:
+                if rec['player'].player_id == selected_player.player_id:
+                    reasoning = f"Round {current_round} - AI: {rec['reasoning'][:150]}"
+                    break
+        
+        # Draft the selected player
+        success = draft_service.draft_player(
+            player_id=selected_player.player_id,
+            team_name=team_name,
+            player=selected_player
+        )
+        
+        if success:
+            draft_dict = draft_service.current_draft.to_dict()
+            return jsonify({
+                'success': True,
+                'draft': draft_dict,
+                'picked_player': selected_player.to_dict(),
+                'reasoning': reasoning,
+                'draft_complete': draft_dict.get('is_complete', False)
+            })
+        
+        return jsonify({
+            'success': False,
+            'message': 'Failed to make auto-draft pick - roster may be full or draft complete'
+        }), 400
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/standings', methods=['GET'])
+def get_standings():
+    """Get projected standings based on current draft rosters."""
     if not draft_service.current_draft:
         return jsonify({
             'success': False,
             'message': 'No active draft'
         }), 400
     
-    # Check if draft is already complete
-    if draft_service.current_draft.is_draft_complete():
-        return jsonify({
-            'success': False,
-            'message': 'Draft is complete - all roster spots are filled'
-        }), 400
-    
-    data = request.json or {}
-    team_name = data.get('team_name')
-    
-    if not team_name:
-        return jsonify({
-            'success': False,
-            'message': 'team_name is required'
-        }), 400
-    
-    # Don't auto-draft for the user's team
-    if team_name == draft_service.current_draft.my_team_name:
-        return jsonify({
-            'success': False,
-            'message': 'Cannot auto-draft for your own team'
-        }), 400
-    
-    # Check if this team's roster is already full
-    team_roster_size = len(draft_service.current_draft.team_rosters.get(team_name, []))
-    if team_roster_size >= draft_service.current_draft.roster_size:
-        return jsonify({
-            'success': False,
-            'message': f'{team_name} roster is full'
-        }), 400
-    
-    # Get available players
-    available = draft_service.get_available_players(all_players)
-    if not available:
-        return jsonify({
-            'success': False,
-            'message': 'No available players'
-        }), 400
-    
-    # Get the team's current roster
-    team_players = draft_service.get_team_players(all_players, team_name)
-    
-    # Get current pick number
-    current_pick = len(draft_service.current_draft.picks) + 1
-    
-    # Filter available players to those within 15 picks of ADP or current pick
-    adp_range_players = []
-    for player in available:
-        if player.adp is not None:
-            # Player has ADP - check if within 15 picks
-            if abs(player.adp - current_pick) <= 15:
-                adp_range_players.append(player)
-        else:
-            # No ADP - include if we're in later rounds (pick > 200) or if it's a reasonable late pick
-            if current_pick > 200:
-                adp_range_players.append(player)
-    
-    # If no players in ADP range, use all available players
-    if not adp_range_players:
-        adp_range_players = available
-    
-    # Get AI recommendations for this team (get top 10 to have a good pool)
-    use_ml = request.args.get('use_ml', 'true').lower() == 'true'
-    recommendations = recommendation_engine.get_recommendations_for_team(
-        available_players=available,
-        team_players=team_players,
-        draft_state=draft_service.current_draft,
-        team_name=team_name,
-        top_n=10,
-        use_ml=use_ml
-    )
-    
-    # Create a weighted pool of players
-    # AI recommended players get higher weight (3x), others get 1x
-    weighted_pool = []
-    
-    # Add AI recommended players with higher weight
-    ai_recommended_ids = {rec['player'].player_id for rec in recommendations}
-    for player in adp_range_players:
-        # Check if player has available slot
+    try:
+        from src.services.standings_calculator import StandingsCalculator
         from src.services.team_service import TeamService
-        team_service = TeamService()
-        if not team_service.has_available_slot_for_player(team_name, player):
-            continue  # Skip players that can't be placed
         
-        if player.player_id in ai_recommended_ids:
-            # AI recommended - add 3 times for higher chance
-            weighted_pool.extend([player] * 3)
-        else:
-            # Not AI recommended - add once
-            weighted_pool.append(player)
-    
-    if not weighted_pool:
-        return jsonify({
-            'success': False,
-            'message': 'No suitable players available within ADP range'
-        }), 400
-    
-    # Randomly select from weighted pool
-    selected_player = random.choice(weighted_pool)
-    
-    # Find which recommendation this was (if any)
-    recommended_player = selected_player
-    reasoning = "Random selection from ADP range"
-    for rec in recommendations:
-        if rec['player'].player_id == selected_player.player_id:
-            reasoning = rec['reasoning']
-            break
-    
-    success = draft_service.draft_player(
-        player_id=selected_player.player_id,
-        team_name=team_name,
-        player=selected_player
-    )
-    
-    if success:
-        draft_dict = draft_service.current_draft.to_dict()
+        standings_calc = StandingsCalculator()
+        team_service = TeamService()
+        
+        # Get all team rosters as Player objects
+        team_rosters = {}
+        for team_name in draft_service.current_draft.team_rosters.keys():
+            team_players = draft_service.get_team_players(all_players, team_name)
+            team_rosters[team_name] = team_players
+        
+        # Calculate standings
+        standings = standings_calc.calculate_standings(team_rosters)
+        
+        # Format standings for frontend
+        formatted_standings = []
+        for rank, team_name in enumerate(standings['final_rankings'], 1):
+            team_data = {
+                'rank': rank,
+                'team_name': team_name,
+                'total_points': standings['total_points'][team_name],
+                'category_totals': standings['category_totals'][team_name],
+                'category_ranks': {}
+            }
+            
+            # Add rank for each category
+            for category in standings_calc.BATTING_CATEGORIES + standings_calc.PITCHING_CATEGORIES:
+                team_data['category_ranks'][category] = standings_calc._get_team_rank(
+                    team_name, category, standings['category_rankings']
+                )
+            
+            formatted_standings.append(team_data)
+        
         return jsonify({
             'success': True,
-            'draft': draft_dict,
-            'picked_player': selected_player.to_dict(),
-            'reasoning': reasoning,
-            'draft_complete': draft_dict.get('is_complete', False)
+            'standings': formatted_standings,
+            'category_rankings': standings['category_rankings'],
+            'categories': {
+                'batting': standings_calc.BATTING_CATEGORIES,
+                'pitching': standings_calc.PITCHING_CATEGORIES
+            }
         })
-    
-    return jsonify({
-        'success': False,
-        'message': 'Failed to make auto-draft pick - roster may be full or draft complete'
-    }), 400
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
 
 
 @app.route('/api/ml/train', methods=['POST'])

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b8256625-e79c-49d1-8b34-15f08ef52b9a",
+    "name": "Trey Yesavage",
+    "position": "P",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 13.200000000000001,
+    "projected_strikeouts": 161.55502222222222,
+    "projected_era": 3.81,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 151.05
+  },
+  "pick_info": {
+    "pick_number": 149,
+    "round": 12,
+    "team_name": "Trex"
+  },
+  "position": "P"
+}

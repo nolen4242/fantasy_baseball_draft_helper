@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1694d555-28ff-4b7a-b348-c6a7122cf37c",
+    "name": "Luis Robert Jr.",
+    "position": "OF",
+    "team": "CHW",
+    "age": null,
+    "projected_home_runs": 21.799999999999997,
+    "projected_obp": 0.299,
+    "projected_runs": 65.39999999999999,
+    "projected_rbi": 67.39999999999999,
+    "projected_stolen_bases": 30.5,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 134.5
+  },
+  "pick_info": {
+    "pick_number": 129,
+    "round": 10,
+    "team_name": "Dawg"
+  },
+  "position": "OF"
+}

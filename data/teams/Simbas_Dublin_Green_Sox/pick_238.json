@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "5e5045d5-a61b-419c-af8b-3ec4dd411202",
+    "name": "Dennis Santana",
+    "position": "P",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 2.9999999999999996,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 63.617777777777775,
+    "projected_era": 4.02,
+    "projected_whip": null,
+    "projected_saves": 26.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 161.62
+  },
+  "pick_info": {
+    "pick_number": 238,
+    "round": 19,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "P"
+}

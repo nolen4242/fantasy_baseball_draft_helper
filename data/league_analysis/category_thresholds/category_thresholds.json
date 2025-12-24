@@ -1,0 +1,162 @@
+{
+  "HR": {
+    "to_win": 293.0,
+    "to_compete": 269.0,
+    "average": 251.52941176470588,
+    "median": 251.5,
+    "percentiles": {
+      "p10": 293.0,
+      "p25": 277.0,
+      "p50": 251.0,
+      "p75": 227.0,
+      "p90": 208.0,
+      "p95": 192.0
+    },
+    "winning_teams_average": 282.6,
+    "competitive_teams_average": 274.6
+  },
+  "OBP": {
+    "to_win": 0.3411,
+    "to_compete": 0.3344,
+    "average": 0.32865,
+    "median": 0.32889999999999997,
+    "percentiles": {
+      "p10": 0.3411,
+      "p25": 0.3351,
+      "p50": 0.3288,
+      "p75": 0.3235,
+      "p90": 0.3152,
+      "p95": 0.3126
+    },
+    "winning_teams_average": 0.3356,
+    "competitive_teams_average": 0.3342
+  },
+  "R": {
+    "to_win": 971.0,
+    "to_compete": 925.0,
+    "average": 887.5441176470588,
+    "median": 891.5,
+    "percentiles": {
+      "p10": 971.0,
+      "p25": 946.0,
+      "p50": 890.0,
+      "p75": 840.0,
+      "p90": 785.0,
+      "p95": 770.0
+    },
+    "winning_teams_average": 959.8,
+    "competitive_teams_average": 949.3
+  },
+  "RBI": {
+    "to_win": 950.0,
+    "to_compete": 896.0,
+    "average": 858.2794117647059,
+    "median": 863.5,
+    "percentiles": {
+      "p10": 950.0,
+      "p25": 909.0,
+      "p50": 863.0,
+      "p75": 807.0,
+      "p90": 746.0,
+      "p95": 702.0
+    },
+    "winning_teams_average": 926.8,
+    "competitive_teams_average": 886.1
+  },
+  "SB": {
+    "to_win": 184.0,
+    "to_compete": 154.0,
+    "average": 128.4558823529412,
+    "median": 129.0,
+    "percentiles": {
+      "p10": 184.0,
+      "p25": 159.0,
+      "p50": 128.0,
+      "p75": 93.0,
+      "p90": 77.0,
+      "p95": 70.0
+    },
+    "winning_teams_average": 146.6,
+    "competitive_teams_average": 143.5
+  },
+  "ERA": {
+    "to_win": 3.376,
+    "to_compete": 3.588,
+    "average": 3.7851176470588235,
+    "median": 3.691,
+    "percentiles": {
+      "p10": 3.376,
+      "p25": 3.555,
+      "p50": 3.698,
+      "p75": 3.991,
+      "p90": 4.376,
+      "p95": 4.524
+    },
+    "winning_teams_average": 3.4788,
+    "competitive_teams_average": 3.5963
+  },
+  "K": {
+    "to_win": 1384.0,
+    "to_compete": 1302.0,
+    "average": 1255.6764705882354,
+    "median": 1255.0,
+    "percentiles": {
+      "p10": 1384.0,
+      "p25": 1321.0,
+      "p50": 1253.0,
+      "p75": 1195.0,
+      "p90": 1110.0,
+      "p95": 1072.0
+    },
+    "winning_teams_average": 1345.4,
+    "competitive_teams_average": 1328.6
+  },
+  "S": {
+    "to_win": 81.0,
+    "to_compete": 72.0,
+    "average": 59.30909090909091,
+    "median": 62.0,
+    "percentiles": {
+      "p10": 81.0,
+      "p25": 75.0,
+      "p50": 62.0,
+      "p75": 44.0,
+      "p90": 38.0,
+      "p95": 13.0
+    },
+    "winning_teams_average": 70.75,
+    "competitive_teams_average": 68.25
+  },
+  "WHIP": {
+    "to_win": 1.1231,
+    "to_compete": 1.159,
+    "average": 1.1997735294117646,
+    "median": 1.19825,
+    "percentiles": {
+      "p10": 1.1231,
+      "p25": 1.1564,
+      "p50": 1.2017,
+      "p75": 1.2402,
+      "p90": 1.2876,
+      "p95": 1.303
+    },
+    "winning_teams_average": 1.15592,
+    "competitive_teams_average": 1.17888
+  },
+  "WQS": {
+    "to_win": 190.0,
+    "to_compete": 181.0,
+    "average": 164.36764705882354,
+    "median": 169.0,
+    "percentiles": {
+      "p10": 190.0,
+      "p25": 182.0,
+      "p50": 169.0,
+      "p75": 149.0,
+      "p90": 131.0,
+      "p95": 122.0
+    },
+    "winning_teams_average": 179.4,
+    "competitive_teams_average": 182.5
+  }
+}

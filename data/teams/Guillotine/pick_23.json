@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "559f4f9d-3a81-4f0a-b837-c1368b59fb82",
+    "name": "Kyle Schwarber",
+    "position": "U",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 42.099999999999994,
+    "projected_obp": 0.353,
+    "projected_runs": 103.29999999999998,
+    "projected_rbi": 95.6,
+    "projected_stolen_bases": 6.699999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 24.42
+  },
+  "pick_info": {
+    "pick_number": 23,
+    "round": 2,
+    "team_name": "Guillotine"
+  },
+  "position": "U"
+}

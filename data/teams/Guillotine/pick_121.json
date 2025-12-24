@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "3bef7854-583e-4a1e-b18d-f2c260e2ac33",
+    "name": "Kyle Stowers",
+    "position": "OF",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": 23.8,
+    "projected_obp": 0.321,
+    "projected_runs": 68.8,
+    "projected_rbi": 74.5,
+    "projected_stolen_bases": 4.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 128.2
+  },
+  "pick_info": {
+    "pick_number": 121,
+    "round": 10,
+    "team_name": "Guillotine"
+  },
+  "position": "OF"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b2a025a5-7a45-4406-a3d1-82a51ca4ab52",
+    "name": "Austin Wells",
+    "position": "C",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 19.799999999999997,
+    "projected_obp": 0.302,
+    "projected_runs": 56.4,
+    "projected_rbi": 59.099999999999994,
+    "projected_stolen_bases": 5.699999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 232.27
+  },
+  "pick_info": {
+    "pick_number": 197,
+    "round": 16,
+    "team_name": "Big Sticks"
+  },
+  "position": "C"
+}

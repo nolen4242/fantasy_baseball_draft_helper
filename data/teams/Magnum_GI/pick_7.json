@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1cae2ca6-dec4-4551-b064-026be358ff65",
+    "name": "Corbin Carroll",
+    "position": "OF",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 28.4,
+    "projected_obp": 0.349,
+    "projected_runs": 96.6,
+    "projected_rbi": 90.89999999999999,
+    "projected_stolen_bases": 34.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 7.85
+  },
+  "pick_info": {
+    "pick_number": 7,
+    "round": 1,
+    "team_name": "Magnum GI"
+  },
+  "position": "OF"
+}

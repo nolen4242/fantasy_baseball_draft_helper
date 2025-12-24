@@ -1,0 +1,31 @@
+{
+  "category_priorities": {
+    "HR": 11.2,
+    "OBP": 9.8,
+    "R": 12.6,
+    "RBI": 11.6,
+    "SB": 10.6,
+    "ERA": 10.4,
+    "K": 10.6,
+    "S": 10.75,
+    "WHIP": 10.4,
+    "WQS": 10.4
+  },
+  "high_priority": [
+    "R"
+  ],
+  "medium_priority": [
+    "RBI",
+    "HR",
+    "S",
+    "SB",
+    "K",
+    "ERA",
+    "WHIP",
+    "WQS",
+    "OBP"
+  ],
+  "low_priority": [],
+  "description": "Winning teams average 108.8 total points",
+  "winning_teams_count": 5
+}

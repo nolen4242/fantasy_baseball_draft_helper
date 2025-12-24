@@ -1,0 +1,13 @@
+{
+  "source": "cbs",
+  "load_date": "2025-12-19T13:17:31.924344",
+  "player_count": 7641,
+  "description": "Historical stats data from CBS (2021-2024)",
+  "years_included": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

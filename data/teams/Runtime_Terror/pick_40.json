@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "4cd7d255-e171-4604-8beb-8925e0c165e5",
+    "name": "Jacob deGrom",
+    "position": "P",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.999999999999998,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 213.8647111111111,
+    "projected_era": 3.4800000000000004,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 43.64
+  },
+  "pick_info": {
+    "pick_number": 40,
+    "round": 4,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

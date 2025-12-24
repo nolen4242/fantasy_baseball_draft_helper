@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "e2f45691-7973-42ea-a026-798560c8a5ae",
+    "name": "Addison Barger",
+    "position": "3B",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 19.1,
+    "projected_obp": 0.319,
+    "projected_runs": 59.0,
+    "projected_rbi": 63.7,
+    "projected_stolen_bases": 3.6999999999999997,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 185.96
+  },
+  "pick_info": {
+    "pick_number": 227,
+    "round": 18,
+    "team_name": "Trex"
+  },
+  "position": "3B"
+}

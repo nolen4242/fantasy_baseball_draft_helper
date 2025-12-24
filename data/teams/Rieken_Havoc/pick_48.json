@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ad1068e7-9ffc-4713-b9e0-35797603e40a",
+    "name": "Rafael Devers",
+    "position": "1B",
+    "team": "SF",
+    "age": null,
+    "projected_home_runs": 31.099999999999998,
+    "projected_obp": 0.347,
+    "projected_runs": 87.6,
+    "projected_rbi": 89.29999999999998,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 49.92
+  },
+  "pick_info": {
+    "pick_number": 48,
+    "round": 4,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "1B"
+}

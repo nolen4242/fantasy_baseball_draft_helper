@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "4d76638f-2de1-409f-bdc3-74df7481c8b1",
+    "name": "Randy Arozarena",
+    "position": "OF",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 22.4,
+    "projected_obp": 0.331,
+    "projected_runs": 86.19999999999999,
+    "projected_rbi": 70.5,
+    "projected_stolen_bases": 23.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 92.39
+  },
+  "pick_info": {
+    "pick_number": 90,
+    "round": 7,
+    "team_name": "Big Sticks"
+  },
+  "position": "OF"
+}

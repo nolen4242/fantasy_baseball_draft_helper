@@ -2,49 +2,953 @@
   "team_name": "Dawg",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "2287f8de-a55d-453b-8f60-fac9019b78b1",
+        "name": "Francisco Alvarez",
+        "position": "C",
+        "team": "NYM",
+        "pick_number": 184,
+        "round": 15,
+        "stats": {
+          "projected_home_runs": 22.099999999999998,
+          "projected_obp": 0.32,
+          "projected_runs": 55.3,
+          "projected_rbi": 62.3,
+          "projected_stolen_bases": 1.7,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
-      null
+      {
+        "player_id": "507feb27-1614-415e-b9d7-9baf8c5f3d72",
+        "name": "Luis Arraez",
+        "position": "1B",
+        "team": "SD",
+        "pick_number": 259,
+        "round": 20,
+        "stats": {
+          "projected_home_runs": 7.0,
+          "projected_obp": 0.345,
+          "projected_runs": 73.1,
+          "projected_rbi": 56.099999999999994,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
-      null
+      {
+        "player_id": "be050512-03bb-4901-9e20-be0f70d30113",
+        "name": "Bryson Stott",
+        "position": "2B",
+        "team": "PHI",
+        "pick_number": 181,
+        "round": 14,
+        "stats": {
+          "projected_home_runs": 14.4,
+          "projected_obp": 0.327,
+          "projected_runs": 67.69999999999999,
+          "projected_rbi": 64.0,
+          "projected_stolen_bases": 23.8,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
-      null
+      {
+        "player_id": "655c6207-2e20-444b-81e0-5adcd7dabbe9",
+        "name": "Royce Lewis",
+        "position": "3B",
+        "team": "MIN",
+        "pick_number": 207,
+        "round": 16,
+        "stats": {
+          "projected_home_runs": 23.5,
+          "projected_obp": 0.311,
+          "projected_runs": 63.7,
+          "projected_rbi": 72.1,
+          "projected_stolen_bases": 10.399999999999999,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
-      null
+      {
+        "player_id": "9872f926-4bcb-4ef8-a76b-eca9a13f239e",
+        "name": "Gunnar Henderson",
+        "position": "SS",
+        "team": "BAL",
+        "pick_number": 15,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 27.4,
+          "projected_obp": 0.356,
+          "projected_runs": 93.2,
+          "projected_rbi": 91.89999999999999,
+          "projected_stolen_bases": 22.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "4dfb9bc4-ebdf-4f53-bb5a-fd5ad6cc3a06",
+        "name": "Geraldo Perdomo",
+        "position": "SS",
+        "team": "ARI",
+        "pick_number": 77,
+        "round": 6,
+        "stats": {
+          "projected_home_runs": 14.1,
+          "projected_obp": 0.365,
+          "projected_runs": 88.89999999999999,
+          "projected_rbi": 63.4,
+          "projected_stolen_bases": 21.799999999999997,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
-      null
+      {
+        "player_id": "ff5d536c-2c1d-4b96-8bcc-c77ea6dc420e",
+        "name": "Alec Bohm",
+        "position": "3B",
+        "team": "PHI",
+        "pick_number": 233,
+        "round": 18,
+        "stats": {
+          "projected_home_runs": 15.399999999999999,
+          "projected_obp": 0.33,
+          "projected_runs": 67.3,
+          "projected_rbi": 74.0,
+          "projected_stolen_bases": 2.9999999999999996,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "OF": [
-      null,
-      null,
-      null,
-      null
+      {
+        "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
+        "name": "Aaron Judge",
+        "position": "OF",
+        "team": "NYY",
+        "pick_number": 2,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 44.4,
+          "projected_obp": 0.417,
+          "projected_runs": 114.19999999999999,
+          "projected_rbi": 108.2,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "e2154fa3-5912-489f-b303-9924e2345ed0",
+        "name": "James Wood",
+        "position": "OF",
+        "team": "WAS",
+        "pick_number": 28,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 27.199999999999996,
+          "projected_obp": 0.352,
+          "projected_runs": 86.6,
+          "projected_rbi": 71.5,
+          "projected_stolen_bases": 16.8,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "793b9e0e-d28f-4e84-825b-16899a923561",
+        "name": "George Springer",
+        "position": "OF",
+        "team": "TOR",
+        "pick_number": 103,
+        "round": 8,
+        "stats": {
+          "projected_home_runs": 25.3,
+          "projected_obp": 0.342,
+          "projected_runs": 85.6,
+          "projected_rbi": 71.6,
+          "projected_stolen_bases": 13.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "1694d555-28ff-4b7a-b348-c6a7122cf37c",
+        "name": "Luis Robert Jr.",
+        "position": "OF",
+        "team": "CHW",
+        "pick_number": 129,
+        "round": 10,
+        "stats": {
+          "projected_home_runs": 21.799999999999997,
+          "projected_obp": 0.299,
+          "projected_runs": 65.39999999999999,
+          "projected_rbi": 67.39999999999999,
+          "projected_stolen_bases": 30.5,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "U": [
-      null
+      {
+        "player_id": "6b57ba58-fa95-460b-89c8-48695d59ba8d",
+        "name": "Ian Happ",
+        "position": "OF",
+        "team": "CHC",
+        "pick_number": 155,
+        "round": 12,
+        "stats": {
+          "projected_home_runs": 21.7,
+          "projected_obp": 0.339,
+          "projected_runs": 80.8,
+          "projected_rbi": 74.1,
+          "projected_stolen_bases": 8.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      {
+        "player_id": "019d2884-c32c-4af5-aeb9-1e22987707d4",
+        "name": "Jhoan Duran",
+        "position": "P",
+        "team": "PHI",
+        "pick_number": 41,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.0,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 83.84444444444443,
+          "projected_era": 2.78,
+          "projected_whip": null,
+          "projected_saves": 28.999999999999996,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "17fedb3c-2071-4980-91f5-68dec20ce445",
+        "name": "Cole Ragans",
+        "position": "P",
+        "team": "KC",
+        "pick_number": 54,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.999999999999998,
+          "projected_quality_starts": 18.85,
+          "projected_strikeouts": 210.60444444444443,
+          "projected_era": 3.23,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "cf2aebd6-3f67-42df-acc6-a76842f063af",
+        "name": "Spencer Schwellenbach",
+        "position": "P",
+        "team": "ATL",
+        "pick_number": 80,
+        "round": 7,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 15.400000000000002,
+          "projected_strikeouts": 162.6446222222222,
+          "projected_era": 3.65,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "98681754-5f22-47d4-be81-4f7d1eb25502",
+        "name": "Nolan McLean",
+        "position": "P",
+        "team": "NYM",
+        "pick_number": 106,
+        "round": 9,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.0,
+          "projected_quality_starts": 15.400000000000002,
+          "projected_strikeouts": 154.12555555555554,
+          "projected_era": 3.74,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "bb6a381c-3312-4e3c-a2e1-7397513625b0",
+        "name": "Ryan Helsley",
+        "position": "P",
+        "team": "BAL",
+        "pick_number": 132,
+        "round": 11,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 2.9999999999999996,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 75.73333333333333,
+          "projected_era": 3.4699999999999998,
+          "projected_whip": null,
+          "projected_saves": 25.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "45bb7ba5-0430-4b46-8293-7ac3c27023f7",
+        "name": "Bubba Chandler",
+        "position": "P",
+        "team": "PIT",
+        "pick_number": 210,
+        "round": 17,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 9.0,
+          "projected_quality_starts": 11.700000000000001,
+          "projected_strikeouts": 147.99196666666666,
+          "projected_era": 4.3,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "75c8445e-c70b-42e1-9ebe-1d294c8f70a5",
+        "name": "Edward Cabrera",
+        "position": "P",
+        "team": "MIA",
+        "pick_number": 236,
+        "round": 19,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 8.0,
+          "projected_quality_starts": 11.700000000000001,
+          "projected_strikeouts": 149.29456666666667,
+          "projected_era": 4.03,
+          "projected_whip": null,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "7af206e5-43a2-4d61-8733-3390e3a16227",
+        "name": "Griffin Jax",
+        "position": "P",
+        "team": "TB",
+        "pick_number": 262,
+        "round": 21,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.0,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 82.18666666666667,
+          "projected_era": 3.13,
+          "projected_whip": null,
+          "projected_saves": 11.999999999999998,
+          "projected_holds": null
+        }
+      },
       null
     ],
     "BENCH": [
-      null
+      {
+        "player_id": "ffc49229-4722-4f1b-8678-dc4180f9bd25",
+        "name": "Ivan Herrera",
+        "position": "U",
+        "team": "STL",
+        "pick_number": 158,
+        "round": 13,
+        "stats": {
+          "projected_home_runs": 18.8,
+          "projected_obp": 0.361,
+          "projected_runs": 74.5,
+          "projected_rbi": 65.1,
+          "projected_stolen_bases": 8.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
+      "name": "Aaron Judge",
+      "position": "OF",
+      "team": "NYY",
+      "pick_number": 2,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 44.4,
+        "projected_obp": 0.417,
+        "projected_runs": 114.19999999999999,
+        "projected_rbi": 108.2,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "9872f926-4bcb-4ef8-a76b-eca9a13f239e",
+      "name": "Gunnar Henderson",
+      "position": "SS",
+      "team": "BAL",
+      "pick_number": 15,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 27.4,
+        "projected_obp": 0.356,
+        "projected_runs": 93.2,
+        "projected_rbi": 91.89999999999999,
+        "projected_stolen_bases": 22.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "e2154fa3-5912-489f-b303-9924e2345ed0",
+      "name": "James Wood",
+      "position": "OF",
+      "team": "WAS",
+      "pick_number": 28,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 27.199999999999996,
+        "projected_obp": 0.352,
+        "projected_runs": 86.6,
+        "projected_rbi": 71.5,
+        "projected_stolen_bases": 16.8,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "019d2884-c32c-4af5-aeb9-1e22987707d4",
+      "name": "Jhoan Duran",
+      "position": "P",
+      "team": "PHI",
+      "pick_number": 41,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.0,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 83.84444444444443,
+        "projected_era": 2.78,
+        "projected_whip": null,
+        "projected_saves": 28.999999999999996,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "17fedb3c-2071-4980-91f5-68dec20ce445",
+      "name": "Cole Ragans",
+      "position": "P",
+      "team": "KC",
+      "pick_number": 54,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.999999999999998,
+        "projected_quality_starts": 18.85,
+        "projected_strikeouts": 210.60444444444443,
+        "projected_era": 3.23,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "4dfb9bc4-ebdf-4f53-bb5a-fd5ad6cc3a06",
+      "name": "Geraldo Perdomo",
+      "position": "SS",
+      "team": "ARI",
+      "pick_number": 77,
+      "round": 6,
+      "stats": {
+        "projected_home_runs": 14.1,
+        "projected_obp": 0.365,
+        "projected_runs": 88.89999999999999,
+        "projected_rbi": 63.4,
+        "projected_stolen_bases": 21.799999999999997,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "cf2aebd6-3f67-42df-acc6-a76842f063af",
+      "name": "Spencer Schwellenbach",
+      "position": "P",
+      "team": "ATL",
+      "pick_number": 80,
+      "round": 7,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 15.400000000000002,
+        "projected_strikeouts": 162.6446222222222,
+        "projected_era": 3.65,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "793b9e0e-d28f-4e84-825b-16899a923561",
+      "name": "George Springer",
+      "position": "OF",
+      "team": "TOR",
+      "pick_number": 103,
+      "round": 8,
+      "stats": {
+        "projected_home_runs": 25.3,
+        "projected_obp": 0.342,
+        "projected_runs": 85.6,
+        "projected_rbi": 71.6,
+        "projected_stolen_bases": 13.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "98681754-5f22-47d4-be81-4f7d1eb25502",
+      "name": "Nolan McLean",
+      "position": "P",
+      "team": "NYM",
+      "pick_number": 106,
+      "round": 9,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.0,
+        "projected_quality_starts": 15.400000000000002,
+        "projected_strikeouts": 154.12555555555554,
+        "projected_era": 3.74,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "1694d555-28ff-4b7a-b348-c6a7122cf37c",
+      "name": "Luis Robert Jr.",
+      "position": "OF",
+      "team": "CHW",
+      "pick_number": 129,
+      "round": 10,
+      "stats": {
+        "projected_home_runs": 21.799999999999997,
+        "projected_obp": 0.299,
+        "projected_runs": 65.39999999999999,
+        "projected_rbi": 67.39999999999999,
+        "projected_stolen_bases": 30.5,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "bb6a381c-3312-4e3c-a2e1-7397513625b0",
+      "name": "Ryan Helsley",
+      "position": "P",
+      "team": "BAL",
+      "pick_number": 132,
+      "round": 11,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 2.9999999999999996,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 75.73333333333333,
+        "projected_era": 3.4699999999999998,
+        "projected_whip": null,
+        "projected_saves": 25.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "6b57ba58-fa95-460b-89c8-48695d59ba8d",
+      "name": "Ian Happ",
+      "position": "OF",
+      "team": "CHC",
+      "pick_number": 155,
+      "round": 12,
+      "stats": {
+        "projected_home_runs": 21.7,
+        "projected_obp": 0.339,
+        "projected_runs": 80.8,
+        "projected_rbi": 74.1,
+        "projected_stolen_bases": 8.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ffc49229-4722-4f1b-8678-dc4180f9bd25",
+      "name": "Ivan Herrera",
+      "position": "U",
+      "team": "STL",
+      "pick_number": 158,
+      "round": 13,
+      "stats": {
+        "projected_home_runs": 18.8,
+        "projected_obp": 0.361,
+        "projected_runs": 74.5,
+        "projected_rbi": 65.1,
+        "projected_stolen_bases": 8.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "be050512-03bb-4901-9e20-be0f70d30113",
+      "name": "Bryson Stott",
+      "position": "2B",
+      "team": "PHI",
+      "pick_number": 181,
+      "round": 14,
+      "stats": {
+        "projected_home_runs": 14.4,
+        "projected_obp": 0.327,
+        "projected_runs": 67.69999999999999,
+        "projected_rbi": 64.0,
+        "projected_stolen_bases": 23.8,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "2287f8de-a55d-453b-8f60-fac9019b78b1",
+      "name": "Francisco Alvarez",
+      "position": "C",
+      "team": "NYM",
+      "pick_number": 184,
+      "round": 15,
+      "stats": {
+        "projected_home_runs": 22.099999999999998,
+        "projected_obp": 0.32,
+        "projected_runs": 55.3,
+        "projected_rbi": 62.3,
+        "projected_stolen_bases": 1.7,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "655c6207-2e20-444b-81e0-5adcd7dabbe9",
+      "name": "Royce Lewis",
+      "position": "3B",
+      "team": "MIN",
+      "pick_number": 207,
+      "round": 16,
+      "stats": {
+        "projected_home_runs": 23.5,
+        "projected_obp": 0.311,
+        "projected_runs": 63.7,
+        "projected_rbi": 72.1,
+        "projected_stolen_bases": 10.399999999999999,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "45bb7ba5-0430-4b46-8293-7ac3c27023f7",
+      "name": "Bubba Chandler",
+      "position": "P",
+      "team": "PIT",
+      "pick_number": 210,
+      "round": 17,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 9.0,
+        "projected_quality_starts": 11.700000000000001,
+        "projected_strikeouts": 147.99196666666666,
+        "projected_era": 4.3,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ff5d536c-2c1d-4b96-8bcc-c77ea6dc420e",
+      "name": "Alec Bohm",
+      "position": "3B",
+      "team": "PHI",
+      "pick_number": 233,
+      "round": 18,
+      "stats": {
+        "projected_home_runs": 15.399999999999999,
+        "projected_obp": 0.33,
+        "projected_runs": 67.3,
+        "projected_rbi": 74.0,
+        "projected_stolen_bases": 2.9999999999999996,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "75c8445e-c70b-42e1-9ebe-1d294c8f70a5",
+      "name": "Edward Cabrera",
+      "position": "P",
+      "team": "MIA",
+      "pick_number": 236,
+      "round": 19,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 8.0,
+        "projected_quality_starts": 11.700000000000001,
+        "projected_strikeouts": 149.29456666666667,
+        "projected_era": 4.03,
+        "projected_whip": null,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "507feb27-1614-415e-b9d7-9baf8c5f3d72",
+      "name": "Luis Arraez",
+      "position": "1B",
+      "team": "SD",
+      "pick_number": 259,
+      "round": 20,
+      "stats": {
+        "projected_home_runs": 7.0,
+        "projected_obp": 0.345,
+        "projected_runs": 73.1,
+        "projected_rbi": 56.099999999999994,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "7af206e5-43a2-4d61-8733-3390e3a16227",
+      "name": "Griffin Jax",
+      "position": "P",
+      "team": "TB",
+      "pick_number": 262,
+      "round": 21,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.0,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 82.18666666666667,
+        "projected_era": 3.13,
+        "projected_whip": null,
+        "projected_saves": 11.999999999999998,
+        "projected_holds": null
+      }
+    }
+  ]
 }

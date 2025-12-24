@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "52e00d24-1be1-4af6-ac22-5edf6cf967dc",
+    "name": "Jose Altuve",
+    "position": "2B",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 21.4,
+    "projected_obp": 0.332,
+    "projected_runs": 79.19999999999999,
+    "projected_rbi": 76.19999999999999,
+    "projected_stolen_bases": 12.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 112.95
+  },
+  "pick_info": {
+    "pick_number": 111,
+    "round": 9,
+    "team_name": "Magnum GI"
+  },
+  "position": "2B"
+}

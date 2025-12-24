@@ -1,0 +1,4568 @@
+{
+  "winners": [
+    {
+      "rank": 1,
+      "team": "Guillotine",
+      "batting_points": 63.0,
+      "pitching_points": 58.0,
+      "total_points": 121.0,
+      "categories": {
+        "HR": {
+          "value": 268.0,
+          "points": 12.0,
+          "rank": 5
+        },
+        "OBP": {
+          "value": 0.331,
+          "points": 6.0,
+          "rank": 11
+        },
+        "R": {
+          "value": 893.0,
+          "points": 14.0,
+          "rank": 3
+        },
+        "RBI": {
+          "value": 906.0,
+          "points": 16.0,
+          "rank": 1
+        },
+        "SB": {
+          "value": 100.0,
+          "points": 15.0,
+          "rank": 2
+        },
+        "ERA": {
+          "value": 3.684,
+          "points": 10.0,
+          "rank": 7
+        },
+        "K": {
+          "value": 1437.0,
+          "points": 15.0,
+          "rank": 2
+        },
+        "S": {
+          "value": 49.0,
+          "points": 9.0,
+          "rank": 8
+        },
+        "WHIP": {
+          "value": 1.178,
+          "points": 12.0,
+          "rank": 5
+        },
+        "WQS": {
+          "value": 172.0,
+          "points": 12.0,
+          "rank": 5
+        }
+      }
+    },
+    {
+      "rank": 1,
+      "team": "Like a Nightmare",
+      "batting_points": 51.0,
+      "pitching_points": 52.5,
+      "total_points": 103.5,
+      "categories": {
+        "HR": {
+          "value": 276.0,
+          "points": 12.0,
+          "rank": 2
+        },
+        "OBP": {
+          "value": 0.3331,
+          "points": 9.0,
+          "rank": 5
+        },
+        "R": {
+          "value": 925.0,
+          "points": 11.0,
+          "rank": 3
+        },
+        "RBI": {
+          "value": 882.0,
+          "points": 12.0,
+          "rank": 2
+        },
+        "SB": {
+          "value": 104.0,
+          "points": 7.0,
+          "rank": 7
+        },
+        "ERA": {
+          "value": 3.045,
+          "points": 13.0,
+          "rank": 1
+        },
+        "K": {
+          "value": 1226.0,
+          "points": 5.0,
+          "rank": 9
+        },
+        "S": {
+          "value": 76.0,
+          "points": 12.5,
+          "rank": 1
+        },
+        "WHIP": {
+          "value": 1.1231,
+          "points": 12.0,
+          "rank": 2
+        },
+        "WQS": {
+          "value": 183.0,
+          "points": 10.0,
+          "rank": 4
+        }
+      }
+    },
+    {
+      "rank": 1,
+      "team": "Long Balls",
+      "batting_points": 60.0,
+      "pitching_points": 34.5,
+      "total_points": 94.5,
+      "categories": {
+        "HR": {
+          "value": 320.0,
+          "points": 13.0,
+          "rank": 1
+        },
+        "OBP": {
+          "value": 0.3321,
+          "points": 9.0,
+          "rank": 5
+        },
+        "R": {
+          "value": 1013.0,
+          "points": 13.0,
+          "rank": 1
+        },
+        "RBI": {
+          "value": 1046.0,
+          "points": 13.0,
+          "rank": 1
+        },
+        "SB": {
+          "value": 189.0,
+          "points": 12.0,
+          "rank": 2
+        },
+        "ERA": {
+          "value": 4.04,
+          "points": 4.0,
+          "rank": 10
+        },
+        "K": {
+          "value": 1304.0,
+          "points": 9.0,
+          "rank": 5
+        },
+        "S": {
+          "value": 81.0,
+          "points": 11.5,
+          "rank": 2
+        },
+        "WHIP": {
+          "value": 1.2767,
+          "points": 3.0,
+          "rank": 11
+        },
+        "WQS": {
+          "value": 169.0,
+          "points": 7.0,
+          "rank": 7
+        }
+      }
+    },
+    {
+      "rank": 1,
+      "team": "Like a Nightmare",
+      "batting_points": 56.0,
+      "pitching_points": 58.0,
+      "total_points": 114.0,
+      "categories": {
+        "HR": {
+          "value": 261.0,
+          "points": 9.0,
+          "rank": 5
+        },
+        "OBP": {
+          "value": 0.3381,
+          "points": 13.0,
+          "rank": 1
+        },
+        "R": {
+          "value": 981.0,
+          "points": 13.0,
+          "rank": 1
+        },
+        "RBI": {
+          "value": 877.0,
+          "points": 8.0,
+          "rank": 6
+        },
+        "SB": {
+          "value": 191.0,
+          "points": 13.0,
+          "rank": 1
+        },
+        "ERA": {
+          "value": 3.376,
+          "points": 12.0,
+          "rank": 2
+        },
+        "K": {
+          "value": 1384.0,
+          "points": 12.0,
+          "rank": 2
+        },
+        "S": {
+          "value": 77.0,
+          "points": 10.0,
+          "rank": 4
+        },
+        "WHIP": {
+          "value": 1.1115,
+          "points": 12.0,
+          "rank": 2
+        },
+        "WQS": {
+          "value": 191.0,
+          "points": 12.0,
+          "rank": 2
+        }
+      }
+    },
+    {
+      "rank": 1,
+      "team": "Rieken Havoc",
+      "batting_points": 49.0,
+      "pitching_points": 62.0,
+      "total_points": 111.0,
+      "categories": {
+        "HR": {
+          "value": 288.0,
+          "points": 10.0,
+          "rank": 4
+        },
+        "OBP": {
+          "value": 0.3437,
+          "points": 12.0,
+          "rank": 2
+        },
+        "R": {
+          "value": 987.0,
+          "points": 12.0,
+          "rank": 2
+        },
+        "RBI": {
+          "value": 923.0,
+          "points": 9.0,
+          "rank": 5
+        },
+        "SB": {
+          "value": 149.0,
+          "points": 6.0,
+          "rank": 8
+        },
+        "ERA": {
+          "value": 3.249,
+          "points": 13.0,
+          "rank": 1
+        },
+        "K": {
+          "value": 1376.0,
+          "points": 12.0,
+          "rank": 2
+        },
+        "WHIP": {
+          "value": 1.0903,
+          "points": 13.0,
+          "rank": 1
+        },
+        "WQS": {
+          "value": 182.0,
+          "points": 11.0,
+          "rank": 3
+        }
+      }
+    }
+  ],
+  "all_teams": [
+    {
+      "year": 2021,
+      "teams": [
+        {
+          "rank": 1,
+          "team": "Guillotine",
+          "batting_points": 63.0,
+          "pitching_points": 58.0,
+          "total_points": 121.0,
+          "categories": {
+            "HR": {
+              "value": 268.0,
+              "points": 12.0,
+              "rank": 5
+            },
+            "OBP": {
+              "value": 0.331,
+              "points": 6.0,
+              "rank": 11
+            },
+            "R": {
+              "value": 893.0,
+              "points": 14.0,
+              "rank": 3
+            },
+            "RBI": {
+              "value": 906.0,
+              "points": 16.0,
+              "rank": 1
+            },
+            "SB": {
+              "value": 100.0,
+              "points": 15.0,
+              "rank": 2
+            },
+            "ERA": {
+              "value": 3.684,
+              "points": 10.0,
+              "rank": 7
+            },
+            "K": {
+              "value": 1437.0,
+              "points": 15.0,
+              "rank": 2
+            },
+            "S": {
+              "value": 49.0,
+              "points": 9.0,
+              "rank": 8
+            },
+            "WHIP": {
+              "value": 1.178,
+              "points": 12.0,
+              "rank": 5
+            },
+            "WQS": {
+              "value": 172.0,
+              "points": 12.0,
+              "rank": 5
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "team": "Runtime Terror",
+          "batting_points": 61.0,
+          "pitching_points": 55.5,
+          "total_points": 116.5,
+          "categories": {
+            "HR": {
+              "value": 286.0,
+              "points": 14.0,
+              "rank": 3
+            },
+            "OBP": {
+              "value": 0.3457,
+              "points": 15.0,
+              "rank": 2
+            },
+            "R": {
+              "value": 946.0,
+              "points": 16.0,
+              "rank": 1
+            },
+            "RBI": {
+              "value": 896.0,
+              "points": 15.0,
+              "rank": 2
+            },
+            "SB": {
+              "value": 58.0,
+              "points": 1.0,
+              "rank": 16
+            },
+            "ERA": {
+              "value": 3.649,
+              "points": 13.0,
+              "rank": 4
+            },
+            "K": {
+              "value": 1408.0,
+              "points": 14.0,
+              "rank": 3
+            },
+            "S": {
+              "value": 44.0,
+              "points": 6.5,
+              "rank": 10
+            },
+            "WHIP": {
+              "value": 1.214,
+              "points": 8.0,
+              "rank": 9
+            },
+            "WQS": {
+              "value": 177.0,
+              "points": 14.0,
+              "rank": 3
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "team": "Long Balls",
+          "batting_points": 45.0,
+          "pitching_points": 71.0,
+          "total_points": 116.0,
+          "categories": {
+            "HR": {
+              "value": 246.0,
+              "points": 9.0,
+              "rank": 8
+            },
+            "OBP": {
+              "value": 0.3306,
+              "points": 5.0,
+              "rank": 12
+            },
+            "R": {
+              "value": 850.0,
+              "points": 10.0,
+              "rank": 7
+            },
+            "RBI": {
+              "value": 745.0,
+              "points": 5.0,
+              "rank": 12
+            },
+            "SB": {
+              "value": 128.0,
+              "points": 16.0,
+              "rank": 1
+            },
+            "ERA": {
+              "value": 3.564,
+              "points": 15.0,
+              "rank": 2
+            },
+            "K": {
+              "value": 1440.0,
+              "points": 16.0,
+              "rank": 1
+            },
+            "S": {
+              "value": 73.0,
+              "points": 13.0,
+              "rank": 4
+            },
+            "WHIP": {
+              "value": 1.1497,
+              "points": 14.0,
+              "rank": 3
+            },
+            "WQS": {
+              "value": 174.0,
+              "points": 13.0,
+              "rank": 4
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "team": "Like a Nightmare",
+          "batting_points": 48.0,
+          "pitching_points": 62.5,
+          "total_points": 110.5,
+          "categories": {
+            "HR": {
+              "value": 237.0,
+              "points": 8.0,
+              "rank": 9
+            },
+            "OBP": {
+              "value": 0.3443,
+              "points": 14.0,
+              "rank": 3
+            },
+            "R": {
+              "value": 816.0,
+              "points": 7.0,
+              "rank": 10
+            },
+            "RBI": {
+              "value": 793.0,
+              "points": 6.0,
+              "rank": 11
+            },
+            "SB": {
+              "value": 94.0,
+              "points": 13.0,
+              "rank": 4
+            },
+            "ERA": {
+              "value": 3.675,
+              "points": 11.0,
+              "rank": 6
+            },
+            "K": {
+              "value": 1368.0,
+              "points": 13.0,
+              "rank": 4
+            },
+            "S": {
+              "value": 62.0,
+              "points": 11.5,
+              "rank": 5
+            },
+            "WHIP": {
+              "value": 1.1948,
+              "points": 11.0,
+              "rank": 6
+            },
+            "WQS": {
+              "value": 190.0,
+              "points": 16.0,
+              "rank": 1
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "team": "Bashers",
+          "batting_points": 50.0,
+          "pitching_points": 52.0,
+          "total_points": 102.0,
+          "categories": {
+            "HR": {
+              "value": 277.0,
+              "points": 13.0,
+              "rank": 4
+            },
+            "OBP": {
+              "value": 0.3288,
+              "points": 4.0,
+              "rank": 13
+            },
+            "R": {
+              "value": 869.0,
+              "points": 12.0,
+              "rank": 5
+            },
+            "RBI": {
+              "value": 880.0,
+              "points": 14.0,
+              "rank": 3
+            },
+            "SB": {
+              "value": 82.0,
+              "points": 7.0,
+              "rank": 9
+            },
+            "ERA": {
+              "value": 3.627,
+              "points": 14.0,
+              "rank": 3
+            },
+            "K": {
+              "value": 1223.0,
+              "points": 7.0,
+              "rank": 10
+            },
+            "S": {
+              "value": 78.0,
+              "points": 16.0,
+              "rank": 1
+            },
+            "WHIP": {
+              "value": 1.208,
+              "points": 10.0,
+              "rank": 7
+            },
+            "WQS": {
+              "value": 136.0,
+              "points": 5.0,
+              "rank": 12
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "team": "Carolina Reapers",
+          "batting_points": 54.0,
+          "pitching_points": 44.0,
+          "total_points": 98.0,
+          "categories": {
+            "HR": {
+              "value": 303.0,
+              "points": 16.0,
+              "rank": 1
+            },
+            "OBP": {
+              "value": 0.336,
+              "points": 9.0,
+              "rank": 8
+            },
+            "R": {
+              "value": 868.0,
+              "points": 11.0,
+              "rank": 6
+            },
+            "RBI": {
+              "value": 842.0,
+              "points": 11.0,
+              "rank": 6
+            },
+            "SB": {
+              "value": 82.0,
+              "points": 7.0,
+              "rank": 10
+            },
+            "ERA": {
+              "value": 4.14,
+              "points": 6.0,
+              "rank": 12
+            },
+            "K": {
+              "value": 1337.0,
+              "points": 12.0,
+              "rank": 5
+            },
+            "S": {
+              "value": 13.0,
+              "points": 2.0,
+              "rank": 15
+            },
+            "WHIP": {
+              "value": 1.2131,
+              "points": 9.0,
+              "rank": 8
+            },
+            "WQS": {
+              "value": 186.0,
+              "points": 15.0,
+              "rank": 2
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "team": "Rieken Havoc",
+          "batting_points": 63.0,
+          "pitching_points": 34.0,
+          "total_points": 97.0,
+          "categories": {
+            "HR": {
+              "value": 293.0,
+              "points": 15.0,
+              "rank": 2
+            },
+            "OBP": {
+              "value": 0.3373,
+              "points": 12.0,
+              "rank": 5
+            },
+            "R": {
+              "value": 913.0,
+              "points": 15.0,
+              "rank": 2
+            },
+            "RBI": {
+              "value": 852.0,
+              "points": 12.0,
+              "rank": 5
+            },
+            "SB": {
+              "value": 87.0,
+              "points": 9.0,
+              "rank": 8
+            },
+            "ERA": {
+              "value": 4.021,
+              "points": 7.0,
+              "rank": 11
+            },
+            "K": {
+              "value": 1239.0,
+              "points": 9.0,
+              "rank": 8
+            },
+            "S": {
+              "value": 43.0,
+              "points": 4.5,
+              "rank": 12
+            },
+            "WHIP": {
+              "value": 1.2353,
+              "points": 6.0,
+              "rank": 12
+            },
+            "WQS": {
+              "value": 148.0,
+              "points": 7.5,
+              "rank": 9
+            }
+          }
+        },
+        {
+          "rank": 8,
+          "team": "Gashouse Gang",
+          "batting_points": 36.5,
+          "pitching_points": 58.0,
+          "total_points": 94.5,
+          "categories": {
+            "HR": {
+              "value": 200.0,
+              "points": 3.5,
+              "rank": 13
+            },
+            "OBP": {
+              "value": 0.3363,
+              "points": 10.0,
+              "rank": 7
+            },
+            "R": {
+              "value": 811.0,
+              "points": 6.0,
+              "rank": 11
+            },
+            "RBI": {
+              "value": 797.0,
+              "points": 7.0,
+              "rank": 10
+            },
+            "SB": {
+              "value": 89.0,
+              "points": 10.0,
+              "rank": 7
+            },
+            "ERA": {
+              "value": 3.555,
+              "points": 16.0,
+              "rank": 1
+            },
+            "K": {
+              "value": 1288.0,
+              "points": 10.0,
+              "rank": 7
+            },
+            "S": {
+              "value": 57.0,
+              "points": 10.0,
+              "rank": 7
+            },
+            "WHIP": {
+              "value": 1.1145,
+              "points": 16.0,
+              "rank": 1
+            },
+            "WQS": {
+              "value": 141.0,
+              "points": 6.0,
+              "rank": 11
+            }
+          }
+        },
+        {
+          "rank": 9,
+          "team": "Trex",
+          "batting_points": 57.0,
+          "pitching_points": 24.5,
+          "total_points": 81.5,
+          "categories": {
+            "HR": {
+              "value": 258.0,
+              "points": 11.0,
+              "rank": 6
+            },
+            "OBP": {
+              "value": 0.3356,
+              "points": 8.0,
+              "rank": 9
+            },
+            "R": {
+              "value": 872.0,
+              "points": 13.0,
+              "rank": 4
+            },
+            "RBI": {
+              "value": 863.0,
+              "points": 13.0,
+              "rank": 4
+            },
+            "SB": {
+              "value": 93.0,
+              "points": 12.0,
+              "rank": 5
+            },
+            "ERA": {
+              "value": 3.895,
+              "points": 8.0,
+              "rank": 10
+            },
+            "K": {
+              "value": 1026.0,
+              "points": 1.0,
+              "rank": 16
+            },
+            "S": {
+              "value": 44.0,
+              "points": 6.5,
+              "rank": 11
+            },
+            "WHIP": {
+              "value": 1.2231,
+              "points": 7.0,
+              "rank": 11
+            },
+            "WQS": {
+              "value": 122.0,
+              "points": 2.0,
+              "rank": 15
+            }
+          }
+        },
+        {
+          "rank": 10,
+          "team": "Magnum GI",
+          "batting_points": 21.0,
+          "pitching_points": 56.0,
+          "total_points": 77.0,
+          "categories": {
+            "HR": {
+              "value": 180.0,
+              "points": 1.0,
+              "rank": 16
+            },
+            "OBP": {
+              "value": 0.3201,
+              "points": 2.0,
+              "rank": 15
+            },
+            "R": {
+              "value": 752.0,
+              "points": 3.0,
+              "rank": 14
+            },
+            "RBI": {
+              "value": 666.0,
+              "points": 1.0,
+              "rank": 16
+            },
+            "SB": {
+              "value": 97.0,
+              "points": 14.0,
+              "rank": 3
+            },
+            "ERA": {
+              "value": 3.698,
+              "points": 9.0,
+              "rank": 8
+            },
+            "K": {
+              "value": 1323.0,
+              "points": 11.0,
+              "rank": 6
+            },
+            "S": {
+              "value": 62.0,
+              "points": 11.5,
+              "rank": 6
+            },
+            "WHIP": {
+              "value": 1.1483,
+              "points": 15.0,
+              "rank": 2
+            },
+            "WQS": {
+              "value": 153.0,
+              "points": 9.5,
+              "rank": 7
+            }
+          }
+        },
+        {
+          "rank": 11,
+          "team": "Big Sticks",
+          "batting_points": 20.0,
+          "pitching_points": 56.0,
+          "total_points": 76.0,
+          "categories": {
+            "HR": {
+              "value": 222.0,
+              "points": 6.0,
+              "rank": 11
+            },
+            "OBP": {
+              "value": 0.3175,
+              "points": 1.0,
+              "rank": 16
+            },
+            "R": {
+              "value": 742.0,
+              "points": 2.0,
+              "rank": 15
+            },
+            "RBI": {
+              "value": 702.0,
+              "points": 4.0,
+              "rank": 13
+            },
+            "SB": {
+              "value": 82.0,
+              "points": 7.0,
+              "rank": 11
+            },
+            "ERA": {
+              "value": 3.66,
+              "points": 12.0,
+              "rank": 5
+            },
+            "K": {
+              "value": 1189.0,
+              "points": 6.0,
+              "rank": 11
+            },
+            "S": {
+              "value": 75.0,
+              "points": 14.0,
+              "rank": 3
+            },
+            "WHIP": {
+              "value": 1.1559,
+              "points": 13.0,
+              "rank": 4
+            },
+            "WQS": {
+              "value": 169.0,
+              "points": 11.0,
+              "rank": 6
+            }
+          }
+        },
+        {
+          "rank": 12,
+          "team": "Simba&#39;s Dublin Green Sox",
+          "batting_points": 36.0,
+          "pitching_points": 32.5,
+          "total_points": 68.5,
+          "categories": {
+            "HR": {
+              "value": 234.0,
+              "points": 7.0,
+              "rank": 10
+            },
+            "OBP": {
+              "value": 0.3312,
+              "points": 7.0,
+              "rank": 10
+            },
+            "R": {
+              "value": 831.0,
+              "points": 9.0,
+              "rank": 8
+            },
+            "RBI": {
+              "value": 807.0,
+              "points": 8.0,
+              "rank": 9
+            },
+            "SB": {
+              "value": 77.0,
+              "points": 5.0,
+              "rank": 12
+            },
+            "ERA": {
+              "value": 4.707,
+              "points": 3.0,
+              "rank": 15
+            },
+            "K": {
+              "value": 1072.0,
+              "points": 4.0,
+              "rank": 13
+            },
+            "S": {
+              "value": 77.0,
+              "points": 15.0,
+              "rank": 2
+            },
+            "WHIP": {
+              "value": 1.3363,
+              "points": 3.0,
+              "rank": 15
+            },
+            "WQS": {
+              "value": 148.0,
+              "points": 7.5,
+              "rank": 10
+            }
+          }
+        },
+        {
+          "rank": 13,
+          "team": "Young Guns",
+          "batting_points": 39.0,
+          "pitching_points": 23.0,
+          "total_points": 62.0,
+          "categories": {
+            "HR": {
+              "value": 255.0,
+              "points": 10.0,
+              "rank": 7
+            },
+            "OBP": {
+              "value": 0.3371,
+              "points": 11.0,
+              "rank": 6
+            },
+            "R": {
+              "value": 785.0,
+              "points": 5.0,
+              "rank": 12
+            },
+            "RBI": {
+              "value": 815.0,
+              "points": 9.0,
+              "rank": 8
+            },
+            "SB": {
+              "value": 76.0,
+              "points": 4.0,
+              "rank": 13
+            },
+            "ERA": {
+              "value": 4.601,
+              "points": 4.0,
+              "rank": 14
+            },
+            "K": {
+              "value": 1225.0,
+              "points": 8.0,
+              "rank": 9
+            },
+            "S": {
+              "value": 38.0,
+              "points": 3.0,
+              "rank": 14
+            },
+            "WHIP": {
+              "value": 1.2555,
+              "points": 5.0,
+              "rank": 13
+            },
+            "WQS": {
+              "value": 129.0,
+              "points": 3.0,
+              "rank": 14
+            }
+          }
+        },
+        {
+          "rank": 14,
+          "team": "Southpaw",
+          "batting_points": 41.0,
+          "pitching_points": 14.0,
+          "total_points": 55.0,
+          "categories": {
+            "HR": {
+              "value": 209.0,
+              "points": 5.0,
+              "rank": 12
+            },
+            "OBP": {
+              "value": 0.3491,
+              "points": 16.0,
+              "rank": 1
+            },
+            "R": {
+              "value": 817.0,
+              "points": 8.0,
+              "rank": 9
+            },
+            "RBI": {
+              "value": 829.0,
+              "points": 10.0,
+              "rank": 7
+            },
+            "SB": {
+              "value": 68.0,
+              "points": 2.0,
+              "rank": 15
+            },
+            "ERA": {
+              "value": 4.948,
+              "points": 2.0,
+              "rank": 16
+            },
+            "K": {
+              "value": 1097.0,
+              "points": 5.0,
+              "rank": 12
+            },
+            "S": {
+              "value": 0.0,
+              "points": 1.0,
+              "rank": 16
+            },
+            "WHIP": {
+              "value": 1.3498,
+              "points": 2.0,
+              "rank": 16
+            },
+            "WQS": {
+              "value": 133.0,
+              "points": 4.0,
+              "rank": 13
+            }
+          }
+        },
+        {
+          "rank": 15,
+          "team": "Dawg",
+          "batting_points": 33.0,
+          "pitching_points": 11.0,
+          "total_points": 44.0,
+          "categories": {
+            "HR": {
+              "value": 192.0,
+              "points": 2.0,
+              "rank": 15
+            },
+            "OBP": {
+              "value": 0.3392,
+              "points": 13.0,
+              "rank": 4
+            },
+            "R": {
+              "value": 771.0,
+              "points": 4.0,
+              "rank": 13
+            },
+            "RBI": {
+              "value": 697.0,
+              "points": 3.0,
+              "rank": 14
+            },
+            "SB": {
+              "value": 90.0,
+              "points": 11.0,
+              "rank": 6
+            },
+            "ERA": {
+              "value": 3.873,
+              "points": 0.0,
+              "rank": 9
+            },
+            "K": {
+              "value": 1044.0,
+              "points": 2.0,
+              "rank": 15
+            },
+            "S": {
+              "value": 48.0,
+              "points": 8.0,
+              "rank": 9
+            },
+            "WHIP": {
+              "value": 1.2212,
+              "points": 0.0,
+              "rank": 10
+            },
+            "WQS": {
+              "value": 113.0,
+              "points": 1.0,
+              "rank": 16
+            }
+          }
+        },
+        {
+          "rank": 16,
+          "team": "Seventh-inning Nachos",
+          "batting_points": 12.5,
+          "pitching_points": 26.0,
+          "total_points": 38.5,
+          "categories": {
+            "HR": {
+              "value": 200.0,
+              "points": 3.5,
+              "rank": 14
+            },
+            "OBP": {
+              "value": 0.327,
+              "points": 3.0,
+              "rank": 14
+            },
+            "R": {
+              "value": 729.0,
+              "points": 1.0,
+              "rank": 16
+            },
+            "RBI": {
+              "value": 675.0,
+              "points": 2.0,
+              "rank": 15
+            },
+            "SB": {
+              "value": 70.0,
+              "points": 3.0,
+              "rank": 14
+            },
+            "ERA": {
+              "value": 4.362,
+              "points": 5.0,
+              "rank": 13
+            },
+            "K": {
+              "value": 1070.0,
+              "points": 3.0,
+              "rank": 14
+            },
+            "S": {
+              "value": 43.0,
+              "points": 4.5,
+              "rank": 13
+            },
+            "WHIP": {
+              "value": 1.2912,
+              "points": 4.0,
+              "rank": 14
+            },
+            "WQS": {
+              "value": 153.0,
+              "points": 9.5,
+              "rank": 8
+            }
+          }
+        }
+      ],
+      "winner": {
+        "rank": 1,
+        "team": "Guillotine",
+        "batting_points": 63.0,
+        "pitching_points": 58.0,
+        "total_points": 121.0,
+        "categories": {
+          "HR": {
+            "value": 268.0,
+            "points": 12.0,
+            "rank": 5
+          },
+          "OBP": {
+            "value": 0.331,
+            "points": 6.0,
+            "rank": 11
+          },
+          "R": {
+            "value": 893.0,
+            "points": 14.0,
+            "rank": 3
+          },
+          "RBI": {
+            "value": 906.0,
+            "points": 16.0,
+            "rank": 1
+          },
+          "SB": {
+            "value": 100.0,
+            "points": 15.0,
+            "rank": 2
+          },
+          "ERA": {
+            "value": 3.684,
+            "points": 10.0,
+            "rank": 7
+          },
+          "K": {
+            "value": 1437.0,
+            "points": 15.0,
+            "rank": 2
+          },
+          "S": {
+            "value": 49.0,
+            "points": 9.0,
+            "rank": 8
+          },
+          "WHIP": {
+            "value": 1.178,
+            "points": 12.0,
+            "rank": 5
+          },
+          "WQS": {
+            "value": 172.0,
+            "points": 12.0,
+            "rank": 5
+          }
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "teams": [
+        {
+          "rank": 1,
+          "team": "Like a Nightmare",
+          "batting_points": 51.0,
+          "pitching_points": 52.5,
+          "total_points": 103.5,
+          "categories": {
+            "HR": {
+              "value": 276.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "OBP": {
+              "value": 0.3331,
+              "points": 9.0,
+              "rank": 5
+            },
+            "R": {
+              "value": 925.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "RBI": {
+              "value": 882.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "SB": {
+              "value": 104.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "ERA": {
+              "value": 3.045,
+              "points": 13.0,
+              "rank": 1
+            },
+            "K": {
+              "value": 1226.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "S": {
+              "value": 76.0,
+              "points": 12.5,
+              "rank": 1
+            },
+            "WHIP": {
+              "value": 1.1231,
+              "points": 12.0,
+              "rank": 2
+            },
+            "WQS": {
+              "value": 183.0,
+              "points": 10.0,
+              "rank": 4
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "team": "Bashers",
+          "batting_points": 53.0,
+          "pitching_points": 35.0,
+          "total_points": 88.0,
+          "categories": {
+            "HR": {
+              "value": 268.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "OBP": {
+              "value": 0.3351,
+              "points": 11.0,
+              "rank": 3
+            },
+            "R": {
+              "value": 971.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "RBI": {
+              "value": 864.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "SB": {
+              "value": 107.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "ERA": {
+              "value": 3.513,
+              "points": 7.0,
+              "rank": 7
+            },
+            "K": {
+              "value": 1211.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "S": {
+              "value": 75.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "WHIP": {
+              "value": 1.2151,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WQS": {
+              "value": 194.0,
+              "points": 11.0,
+              "rank": 3
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "team": "Young Guns",
+          "batting_points": 50.5,
+          "pitching_points": 34.5,
+          "total_points": 85.0,
+          "categories": {
+            "HR": {
+              "value": 252.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "OBP": {
+              "value": 0.3346,
+              "points": 10.0,
+              "rank": 4
+            },
+            "R": {
+              "value": 926.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "RBI": {
+              "value": 839.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "SB": {
+              "value": 136.0,
+              "points": 12.5,
+              "rank": 1
+            },
+            "ERA": {
+              "value": 3.472,
+              "points": 9.0,
+              "rank": 5
+            },
+            "K": {
+              "value": 1275.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "S": {
+              "value": 44.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WHIP": {
+              "value": 1.1838,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WQS": {
+              "value": 182.0,
+              "points": 8.5,
+              "rank": 5
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "team": "Magnum GI",
+          "batting_points": 35.0,
+          "pitching_points": 44.0,
+          "total_points": 79.0,
+          "categories": {
+            "HR": {
+              "value": 243.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "OBP": {
+              "value": 0.324,
+              "points": 6.0,
+              "rank": 8
+            },
+            "R": {
+              "value": 833.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "RBI": {
+              "value": 860.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "SB": {
+              "value": 109.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "ERA": {
+              "value": 3.493,
+              "points": 8.0,
+              "rank": 6
+            },
+            "K": {
+              "value": 1238.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "S": {
+              "value": 48.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WHIP": {
+              "value": 1.1143,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WQS": {
+              "value": 198.0,
+              "points": 12.0,
+              "rank": 2
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "team": "Long Balls",
+          "batting_points": 41.5,
+          "pitching_points": 36.0,
+          "total_points": 77.5,
+          "categories": {
+            "HR": {
+              "value": 277.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "OBP": {
+              "value": 0.3143,
+              "points": 3.0,
+              "rank": 11
+            },
+            "R": {
+              "value": 890.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "RBI": {
+              "value": 871.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "SB": {
+              "value": 96.0,
+              "points": 5.5,
+              "rank": 8
+            },
+            "ERA": {
+              "value": 3.454,
+              "points": 10.0,
+              "rank": 4
+            },
+            "K": {
+              "value": 1318.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "S": {
+              "value": 66.0,
+              "points": 8.5,
+              "rank": 5
+            },
+            "WHIP": {
+              "value": 1.188,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WQS": {
+              "value": 149.0,
+              "points": 2.5,
+              "rank": 11
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "team": "Trex",
+          "batting_points": 22.0,
+          "pitching_points": 53.5,
+          "total_points": 75.5,
+          "categories": {
+            "HR": {
+              "value": 192.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "OBP": {
+              "value": 0.3282,
+              "points": 8.0,
+              "rank": 6
+            },
+            "R": {
+              "value": 874.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "RBI": {
+              "value": 801.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "SB": {
+              "value": 63.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "ERA": {
+              "value": 3.25,
+              "points": 12.0,
+              "rank": 2
+            },
+            "K": {
+              "value": 1301.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "S": {
+              "value": 58.0,
+              "points": 6.5,
+              "rank": 7
+            },
+            "WHIP": {
+              "value": 1.1239,
+              "points": 11.0,
+              "rank": 3
+            },
+            "WQS": {
+              "value": 204.0,
+              "points": 13.0,
+              "rank": 1
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "team": "Guillotine",
+          "batting_points": 24.5,
+          "pitching_points": 50.0,
+          "total_points": 74.5,
+          "categories": {
+            "HR": {
+              "value": 227.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "OBP": {
+              "value": 0.309,
+              "points": 1.0,
+              "rank": 13
+            },
+            "R": {
+              "value": 770.0,
+              "points": 1.5,
+              "rank": 12
+            },
+            "RBI": {
+              "value": 844.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "SB": {
+              "value": 113.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "ERA": {
+              "value": 3.327,
+              "points": 11.0,
+              "rank": 3
+            },
+            "K": {
+              "value": 1332.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "S": {
+              "value": 66.0,
+              "points": 8.5,
+              "rank": 6
+            },
+            "WHIP": {
+              "value": 1.1531,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WQS": {
+              "value": 182.0,
+              "points": 8.5,
+              "rank": 6
+            }
+          }
+        },
+        {
+          "rank": 8,
+          "team": "Big Sticks",
+          "batting_points": 44.0,
+          "pitching_points": 24.0,
+          "total_points": 68.0,
+          "categories": {
+            "HR": {
+              "value": 236.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "OBP": {
+              "value": 0.3262,
+              "points": 7.0,
+              "rank": 7
+            },
+            "R": {
+              "value": 924.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "RBI": {
+              "value": 861.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "SB": {
+              "value": 130.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "ERA": {
+              "value": 3.673,
+              "points": 4.0,
+              "rank": 10
+            },
+            "K": {
+              "value": 1176.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "S": {
+              "value": 72.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WHIP": {
+              "value": 1.2158,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WQS": {
+              "value": 176.0,
+              "points": 6.0,
+              "rank": 8
+            }
+          }
+        },
+        {
+          "rank": 9,
+          "team": "Simba&#39;s Dublin Green Sox",
+          "batting_points": 43.5,
+          "pitching_points": 23.0,
+          "total_points": 66.5,
+          "categories": {
+            "HR": {
+              "value": 250.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "OBP": {
+              "value": 0.313,
+              "points": 2.0,
+              "rank": 12
+            },
+            "R": {
+              "value": 869.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "RBI": {
+              "value": 930.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "SB": {
+              "value": 136.0,
+              "points": 12.5,
+              "rank": 2
+            },
+            "ERA": {
+              "value": 3.675,
+              "points": 3.0,
+              "rank": 11
+            },
+            "K": {
+              "value": 1175.0,
+              "points": 1.5,
+              "rank": 12
+            },
+            "S": {
+              "value": 58.0,
+              "points": 6.5,
+              "rank": 8
+            },
+            "WHIP": {
+              "value": 1.159,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WQS": {
+              "value": 179.0,
+              "points": 7.0,
+              "rank": 7
+            }
+          }
+        },
+        {
+          "rank": 10,
+          "team": "Dawg",
+          "batting_points": 16.0,
+          "pitching_points": 37.0,
+          "total_points": 53.0,
+          "categories": {
+            "HR": {
+              "value": 225.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "OBP": {
+              "value": 0.3161,
+              "points": 4.0,
+              "rank": 10
+            },
+            "R": {
+              "value": 792.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "RBI": {
+              "value": 790.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "SB": {
+              "value": 74.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "ERA": {
+              "value": 3.608,
+              "points": 6.0,
+              "rank": 8
+            },
+            "K": {
+              "value": 1235.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "S": {
+              "value": 76.0,
+              "points": 12.5,
+              "rank": 2
+            },
+            "WHIP": {
+              "value": 1.1246,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WQS": {
+              "value": 149.0,
+              "points": 2.5,
+              "rank": 12
+            }
+          }
+        },
+        {
+          "rank": 11,
+          "team": "Runtime Terror",
+          "batting_points": 25.0,
+          "pitching_points": 27.5,
+          "total_points": 52.5,
+          "categories": {
+            "HR": {
+              "value": 211.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "OBP": {
+              "value": 0.3353,
+              "points": 12.0,
+              "rank": 2
+            },
+            "R": {
+              "value": 840.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "RBI": {
+              "value": 786.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "SB": {
+              "value": 80.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "ERA": {
+              "value": 3.632,
+              "points": 5.0,
+              "rank": 9
+            },
+            "K": {
+              "value": 1272.0,
+              "points": 8.5,
+              "rank": 5
+            },
+            "S": {
+              "value": 43.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WHIP": {
+              "value": 1.1542,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WQS": {
+              "value": 150.0,
+              "points": 4.0,
+              "rank": 10
+            }
+          }
+        },
+        {
+          "rank": 12,
+          "team": "Rieken Havoc",
+          "batting_points": 23.5,
+          "pitching_points": 22.5,
+          "total_points": 46.0,
+          "categories": {
+            "HR": {
+              "value": 234.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "OBP": {
+              "value": 0.3236,
+              "points": 5.0,
+              "rank": 9
+            },
+            "R": {
+              "value": 845.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "RBI": {
+              "value": 733.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "SB": {
+              "value": 96.0,
+              "points": 5.5,
+              "rank": 9
+            },
+            "ERA": {
+              "value": 3.841,
+              "points": 1.0,
+              "rank": 13
+            },
+            "K": {
+              "value": 1272.0,
+              "points": 8.5,
+              "rank": 6
+            },
+            "S": {
+              "value": 39.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WHIP": {
+              "value": 1.1545,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WQS": {
+              "value": 174.0,
+              "points": 5.0,
+              "rank": 9
+            }
+          }
+        },
+        {
+          "rank": 13,
+          "team": "Gashouse Gang",
+          "batting_points": 25.5,
+          "pitching_points": 15.5,
+          "total_points": 41.0,
+          "categories": {
+            "HR": {
+              "value": 208.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "OBP": {
+              "value": 0.3365,
+              "points": 13.0,
+              "rank": 1
+            },
+            "R": {
+              "value": 770.0,
+              "points": 1.5,
+              "rank": 13
+            },
+            "RBI": {
+              "value": 826.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "SB": {
+              "value": 84.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "ERA": {
+              "value": 3.758,
+              "points": 2.0,
+              "rank": 12
+            },
+            "K": {
+              "value": 1175.0,
+              "points": 1.5,
+              "rank": 13
+            },
+            "S": {
+              "value": 54.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WHIP": {
+              "value": 1.1589,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WQS": {
+              "value": 138.0,
+              "points": 1.0,
+              "rank": 13
+            }
+          }
+        }
+      ],
+      "winner": {
+        "rank": 1,
+        "team": "Like a Nightmare",
+        "batting_points": 51.0,
+        "pitching_points": 52.5,
+        "total_points": 103.5,
+        "categories": {
+          "HR": {
+            "value": 276.0,
+            "points": 12.0,
+            "rank": 2
+          },
+          "OBP": {
+            "value": 0.3331,
+            "points": 9.0,
+            "rank": 5
+          },
+          "R": {
+            "value": 925.0,
+            "points": 11.0,
+            "rank": 3
+          },
+          "RBI": {
+            "value": 882.0,
+            "points": 12.0,
+            "rank": 2
+          },
+          "SB": {
+            "value": 104.0,
+            "points": 7.0,
+            "rank": 7
+          },
+          "ERA": {
+            "value": 3.045,
+            "points": 13.0,
+            "rank": 1
+          },
+          "K": {
+            "value": 1226.0,
+            "points": 5.0,
+            "rank": 9
+          },
+          "S": {
+            "value": 76.0,
+            "points": 12.5,
+            "rank": 1
+          },
+          "WHIP": {
+            "value": 1.1231,
+            "points": 12.0,
+            "rank": 2
+          },
+          "WQS": {
+            "value": 183.0,
+            "points": 10.0,
+            "rank": 4
+          }
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "teams": [
+        {
+          "rank": 1,
+          "team": "Long Balls",
+          "batting_points": 60.0,
+          "pitching_points": 34.5,
+          "total_points": 94.5,
+          "categories": {
+            "HR": {
+              "value": 320.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "OBP": {
+              "value": 0.3321,
+              "points": 9.0,
+              "rank": 5
+            },
+            "R": {
+              "value": 1013.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "RBI": {
+              "value": 1046.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "SB": {
+              "value": 189.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "ERA": {
+              "value": 4.04,
+              "points": 4.0,
+              "rank": 10
+            },
+            "K": {
+              "value": 1304.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "S": {
+              "value": 81.0,
+              "points": 11.5,
+              "rank": 2
+            },
+            "WHIP": {
+              "value": 1.2767,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WQS": {
+              "value": 169.0,
+              "points": 7.0,
+              "rank": 7
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "team": "Big Sticks",
+          "batting_points": 46.0,
+          "pitching_points": 47.0,
+          "total_points": 93.0,
+          "categories": {
+            "HR": {
+              "value": 286.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "OBP": {
+              "value": 0.3304,
+              "points": 7.0,
+              "rank": 7
+            },
+            "R": {
+              "value": 970.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "RBI": {
+              "value": 915.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "SB": {
+              "value": 164.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "ERA": {
+              "value": 3.724,
+              "points": 9.0,
+              "rank": 5
+            },
+            "K": {
+              "value": 1253.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "S": {
+              "value": 95.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WHIP": {
+              "value": 1.2216,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WQS": {
+              "value": 190.0,
+              "points": 13.0,
+              "rank": 1
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "team": "Guillotine",
+          "batting_points": 31.0,
+          "pitching_points": 50.0,
+          "total_points": 81.0,
+          "categories": {
+            "HR": {
+              "value": 226.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "OBP": {
+              "value": 0.3344,
+              "points": 10.0,
+              "rank": 4
+            },
+            "R": {
+              "value": 894.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "RBI": {
+              "value": 833.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "SB": {
+              "value": 190.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "ERA": {
+              "value": 3.546,
+              "points": 12.0,
+              "rank": 2
+            },
+            "K": {
+              "value": 1375.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "S": {
+              "value": 64.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WHIP": {
+              "value": 1.1577,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WQS": {
+              "value": 171.0,
+              "points": 8.0,
+              "rank": 6
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "team": "Gashouse Gang",
+          "batting_points": 44.0,
+          "pitching_points": 35.5,
+          "total_points": 79.5,
+          "categories": {
+            "HR": {
+              "value": 291.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "OBP": {
+              "value": 0.3239,
+              "points": 3.0,
+              "rank": 11
+            },
+            "R": {
+              "value": 947.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "RBI": {
+              "value": 1001.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "SB": {
+              "value": 172.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "ERA": {
+              "value": 3.552,
+              "points": 11.0,
+              "rank": 3
+            },
+            "K": {
+              "value": 1202.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "S": {
+              "value": 57.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WHIP": {
+              "value": 1.1899,
+              "points": 11.0,
+              "rank": 3
+            },
+            "WQS": {
+              "value": 173.0,
+              "points": 9.5,
+              "rank": 4
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "team": "Runtime Terror",
+          "batting_points": 48.5,
+          "pitching_points": 30.5,
+          "total_points": 79.0,
+          "categories": {
+            "HR": {
+              "value": 304.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "OBP": {
+              "value": 0.3438,
+              "points": 13.0,
+              "rank": 1
+            },
+            "R": {
+              "value": 960.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "RBI": {
+              "value": 984.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "SB": {
+              "value": 121.0,
+              "points": 2.5,
+              "rank": 11
+            },
+            "ERA": {
+              "value": 3.903,
+              "points": 6.0,
+              "rank": 7
+            },
+            "K": {
+              "value": 1330.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "S": {
+              "value": 60.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WHIP": {
+              "value": 1.2132,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WQS": {
+              "value": 151.0,
+              "points": 1.5,
+              "rank": 12
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "team": "Bashers",
+          "batting_points": 34.5,
+          "pitching_points": 44.0,
+          "total_points": 78.5,
+          "categories": {
+            "HR": {
+              "value": 234.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "OBP": {
+              "value": 0.3383,
+              "points": 11.0,
+              "rank": 3
+            },
+            "R": {
+              "value": 951.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "RBI": {
+              "value": 875.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "SB": {
+              "value": 149.0,
+              "points": 6.5,
+              "rank": 7
+            },
+            "ERA": {
+              "value": 3.351,
+              "points": 13.0,
+              "rank": 1
+            },
+            "K": {
+              "value": 1246.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "S": {
+              "value": 77.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WHIP": {
+              "value": 1.1606,
+              "points": 12.0,
+              "rank": 2
+            },
+            "WQS": {
+              "value": 161.0,
+              "points": 4.0,
+              "rank": 10
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "team": "Rieken Havoc",
+          "batting_points": 40.0,
+          "pitching_points": 35.0,
+          "total_points": 75.0,
+          "categories": {
+            "HR": {
+              "value": 257.0,
+              "points": 7.5,
+              "rank": 6
+            },
+            "OBP": {
+              "value": 0.3411,
+              "points": 12.0,
+              "rank": 2
+            },
+            "R": {
+              "value": 948.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "RBI": {
+              "value": 950.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "SB": {
+              "value": 121.0,
+              "points": 2.5,
+              "rank": 12
+            },
+            "ERA": {
+              "value": 3.708,
+              "points": 10.0,
+              "rank": 4
+            },
+            "K": {
+              "value": 1204.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "S": {
+              "value": 67.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WHIP": {
+              "value": 1.2017,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WQS": {
+              "value": 162.0,
+              "points": 5.0,
+              "rank": 9
+            }
+          }
+        },
+        {
+          "rank": 8,
+          "team": "Like a Nightmare",
+          "batting_points": 39.0,
+          "pitching_points": 32.0,
+          "total_points": 71.0,
+          "categories": {
+            "HR": {
+              "value": 254.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "OBP": {
+              "value": 0.3301,
+              "points": 6.0,
+              "rank": 8
+            },
+            "R": {
+              "value": 976.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "RBI": {
+              "value": 911.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "SB": {
+              "value": 159.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "ERA": {
+              "value": 4.019,
+              "points": 5.0,
+              "rank": 9
+            },
+            "K": {
+              "value": 1302.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "S": {
+              "value": 65.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WHIP": {
+              "value": 1.2207,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WQS": {
+              "value": 167.0,
+              "points": 6.0,
+              "rank": 8
+            }
+          }
+        },
+        {
+          "rank": 9,
+          "team": "Young Guns",
+          "batting_points": 34.0,
+          "pitching_points": 29.0,
+          "total_points": 63.0,
+          "categories": {
+            "HR": {
+              "value": 279.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "OBP": {
+              "value": 0.328,
+              "points": 4.0,
+              "rank": 10
+            },
+            "R": {
+              "value": 920.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "RBI": {
+              "value": 909.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "SB": {
+              "value": 160.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "ERA": {
+              "value": 4.524,
+              "points": 1.0,
+              "rank": 13
+            },
+            "K": {
+              "value": 1440.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "S": {
+              "value": 33.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WHIP": {
+              "value": 1.2876,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WQS": {
+              "value": 186.0,
+              "points": 12.0,
+              "rank": 2
+            }
+          }
+        },
+        {
+          "rank": 10,
+          "team": "Magnum GI",
+          "batting_points": 15.5,
+          "pitching_points": 47.0,
+          "total_points": 62.5,
+          "categories": {
+            "HR": {
+              "value": 240.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "OBP": {
+              "value": 0.3235,
+              "points": 2.0,
+              "rank": 12
+            },
+            "R": {
+              "value": 866.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "RBI": {
+              "value": 811.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "SB": {
+              "value": 149.0,
+              "points": 6.5,
+              "rank": 8
+            },
+            "ERA": {
+              "value": 3.759,
+              "points": 8.0,
+              "rank": 6
+            },
+            "K": {
+              "value": 1371.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "S": {
+              "value": 72.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WHIP": {
+              "value": 1.2175,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WQS": {
+              "value": 184.0,
+              "points": 11.0,
+              "rank": 3
+            }
+          }
+        },
+        {
+          "rank": 11,
+          "team": "Simba&#39;s Dublin Green Sox",
+          "batting_points": 16.0,
+          "pitching_points": 36.5,
+          "total_points": 52.5,
+          "categories": {
+            "HR": {
+              "value": 251.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "OBP": {
+              "value": 0.3234,
+              "points": 1.0,
+              "rank": 13
+            },
+            "R": {
+              "value": 874.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "RBI": {
+              "value": 869.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "SB": {
+              "value": 142.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "ERA": {
+              "value": 3.903,
+              "points": 7.0,
+              "rank": 8
+            },
+            "K": {
+              "value": 1211.0,
+              "points": 3.5,
+              "rank": 10
+            },
+            "S": {
+              "value": 81.0,
+              "points": 11.5,
+              "rank": 3
+            },
+            "WHIP": {
+              "value": 1.2451,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WQS": {
+              "value": 173.0,
+              "points": 9.5,
+              "rank": 5
+            }
+          }
+        },
+        {
+          "rank": 12,
+          "team": "Dawg",
+          "batting_points": 27.5,
+          "pitching_points": 18.0,
+          "total_points": 45.5,
+          "categories": {
+            "HR": {
+              "value": 257.0,
+              "points": 7.5,
+              "rank": 7
+            },
+            "OBP": {
+              "value": 0.329,
+              "points": 5.0,
+              "rank": 9
+            },
+            "R": {
+              "value": 901.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "RBI": {
+              "value": 936.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "SB": {
+              "value": 107.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "ERA": {
+              "value": 4.392,
+              "points": 2.0,
+              "rank": 12
+            },
+            "K": {
+              "value": 1211.0,
+              "points": 3.5,
+              "rank": 11
+            },
+            "S": {
+              "value": 66.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WHIP": {
+              "value": 1.267,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WQS": {
+              "value": 151.0,
+              "points": 1.5,
+              "rank": 13
+            }
+          }
+        },
+        {
+          "rank": 13,
+          "team": "Trex",
+          "batting_points": 19.0,
+          "pitching_points": 16.0,
+          "total_points": 35.0,
+          "categories": {
+            "HR": {
+              "value": 217.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "OBP": {
+              "value": 0.3305,
+              "points": 8.0,
+              "rank": 6
+            },
+            "R": {
+              "value": 896.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "RBI": {
+              "value": 780.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "SB": {
+              "value": 147.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "ERA": {
+              "value": 4.376,
+              "points": 3.0,
+              "rank": 11
+            },
+            "K": {
+              "value": 1295.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "S": {
+              "value": 43.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WHIP": {
+              "value": 1.3262,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WQS": {
+              "value": 157.0,
+              "points": 3.0,
+              "rank": 11
+            }
+          }
+        }
+      ],
+      "winner": {
+        "rank": 1,
+        "team": "Long Balls",
+        "batting_points": 60.0,
+        "pitching_points": 34.5,
+        "total_points": 94.5,
+        "categories": {
+          "HR": {
+            "value": 320.0,
+            "points": 13.0,
+            "rank": 1
+          },
+          "OBP": {
+            "value": 0.3321,
+            "points": 9.0,
+            "rank": 5
+          },
+          "R": {
+            "value": 1013.0,
+            "points": 13.0,
+            "rank": 1
+          },
+          "RBI": {
+            "value": 1046.0,
+            "points": 13.0,
+            "rank": 1
+          },
+          "SB": {
+            "value": 189.0,
+            "points": 12.0,
+            "rank": 2
+          },
+          "ERA": {
+            "value": 4.04,
+            "points": 4.0,
+            "rank": 10
+          },
+          "K": {
+            "value": 1304.0,
+            "points": 9.0,
+            "rank": 5
+          },
+          "S": {
+            "value": 81.0,
+            "points": 11.5,
+            "rank": 2
+          },
+          "WHIP": {
+            "value": 1.2767,
+            "points": 3.0,
+            "rank": 11
+          },
+          "WQS": {
+            "value": 169.0,
+            "points": 7.0,
+            "rank": 7
+          }
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "teams": [
+        {
+          "rank": 1,
+          "team": "Like a Nightmare",
+          "batting_points": 56.0,
+          "pitching_points": 58.0,
+          "total_points": 114.0,
+          "categories": {
+            "HR": {
+              "value": 261.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "OBP": {
+              "value": 0.3381,
+              "points": 13.0,
+              "rank": 1
+            },
+            "R": {
+              "value": 981.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "RBI": {
+              "value": 877.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "SB": {
+              "value": 191.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "ERA": {
+              "value": 3.376,
+              "points": 12.0,
+              "rank": 2
+            },
+            "K": {
+              "value": 1384.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "S": {
+              "value": 77.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WHIP": {
+              "value": 1.1115,
+              "points": 12.0,
+              "rank": 2
+            },
+            "WQS": {
+              "value": 191.0,
+              "points": 12.0,
+              "rank": 2
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "team": "Guillotine",
+          "batting_points": 50.0,
+          "pitching_points": 57.5,
+          "total_points": 107.5,
+          "categories": {
+            "HR": {
+              "value": 285.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "OBP": {
+              "value": 0.3322,
+              "points": 10.0,
+              "rank": 4
+            },
+            "R": {
+              "value": 968.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "RBI": {
+              "value": 875.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "SB": {
+              "value": 184.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "ERA": {
+              "value": 3.588,
+              "points": 9.0,
+              "rank": 5
+            },
+            "K": {
+              "value": 1394.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "S": {
+              "value": 87.0,
+              "points": 11.5,
+              "rank": 2
+            },
+            "WHIP": {
+              "value": 1.1285,
+              "points": 11.0,
+              "rank": 3
+            },
+            "WQS": {
+              "value": 193.0,
+              "points": 13.0,
+              "rank": 1
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "team": "Big Sticks",
+          "batting_points": 55.5,
+          "pitching_points": 40.0,
+          "total_points": 95.5,
+          "categories": {
+            "HR": {
+              "value": 318.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "OBP": {
+              "value": 0.3344,
+              "points": 12.0,
+              "rank": 2
+            },
+            "R": {
+              "value": 971.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "RBI": {
+              "value": 1043.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "SB": {
+              "value": 158.0,
+              "points": 6.5,
+              "rank": 7
+            },
+            "ERA": {
+              "value": 3.626,
+              "points": 8.0,
+              "rank": 6
+            },
+            "K": {
+              "value": 1294.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "S": {
+              "value": 64.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WHIP": {
+              "value": 1.1511,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WQS": {
+              "value": 181.0,
+              "points": 7.0,
+              "rank": 7
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "team": "Gashouse Gang",
+          "batting_points": 40.0,
+          "pitching_points": 43.0,
+          "total_points": 83.0,
+          "categories": {
+            "HR": {
+              "value": 243.0,
+              "points": 5.5,
+              "rank": 8
+            },
+            "OBP": {
+              "value": 0.3323,
+              "points": 11.0,
+              "rank": 3
+            },
+            "R": {
+              "value": 880.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "RBI": {
+              "value": 930.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "SB": {
+              "value": 158.0,
+              "points": 6.5,
+              "rank": 8
+            },
+            "ERA": {
+              "value": 3.334,
+              "points": 13.0,
+              "rank": 1
+            },
+            "K": {
+              "value": 1260.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "S": {
+              "value": 31.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WHIP": {
+              "value": 1.1066,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WQS": {
+              "value": 184.0,
+              "points": 9.0,
+              "rank": 5
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "team": "Simba's Dublin Green Sox",
+          "batting_points": 51.0,
+          "pitching_points": 23.5,
+          "total_points": 74.5,
+          "categories": {
+            "HR": {
+              "value": 271.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "OBP": {
+              "value": 0.3253,
+              "points": 7.0,
+              "rank": 7
+            },
+            "R": {
+              "value": 973.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "RBI": {
+              "value": 934.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "SB": {
+              "value": 170.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "ERA": {
+              "value": 3.714,
+              "points": 7.0,
+              "rank": 7
+            },
+            "K": {
+              "value": 1082.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "S": {
+              "value": 87.0,
+              "points": 11.5,
+              "rank": 3
+            },
+            "WHIP": {
+              "value": 1.2417,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WQS": {
+              "value": 122.0,
+              "points": 1.0,
+              "rank": 13
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "team": "Long Balls",
+          "batting_points": 38.0,
+          "pitching_points": 36.0,
+          "total_points": 74.0,
+          "categories": {
+            "HR": {
+              "value": 258.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "OBP": {
+              "value": 0.3074,
+              "points": 2.0,
+              "rank": 12
+            },
+            "R": {
+              "value": 914.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "RBI": {
+              "value": 929.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "SB": {
+              "value": 182.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "ERA": {
+              "value": 3.751,
+              "points": 5.0,
+              "rank": 9
+            },
+            "K": {
+              "value": 1370.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "S": {
+              "value": 61.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WHIP": {
+              "value": 1.1595,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WQS": {
+              "value": 166.0,
+              "points": 5.0,
+              "rank": 9
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "team": "Rieken Havoc",
+          "batting_points": 37.0,
+          "pitching_points": 30.0,
+          "total_points": 67.0,
+          "categories": {
+            "HR": {
+              "value": 264.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "OBP": {
+              "value": 0.3234,
+              "points": 5.0,
+              "rank": 9
+            },
+            "R": {
+              "value": 863.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "RBI": {
+              "value": 849.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "SB": {
+              "value": 189.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "ERA": {
+              "value": 3.719,
+              "points": 6.0,
+              "rank": 8
+            },
+            "K": {
+              "value": 1175.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "S": {
+              "value": 57.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WHIP": {
+              "value": 1.168,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WQS": {
+              "value": 182.0,
+              "points": 8.0,
+              "rank": 6
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "team": "Bashers",
+          "batting_points": 36.0,
+          "pitching_points": 31.0,
+          "total_points": 67.0,
+          "categories": {
+            "HR": {
+              "value": 255.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "OBP": {
+              "value": 0.3242,
+              "points": 6.0,
+              "rank": 8
+            },
+            "R": {
+              "value": 949.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "RBI": {
+              "value": 882.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "SB": {
+              "value": 149.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "ERA": {
+              "value": 3.883,
+              "points": 3.0,
+              "rank": 11
+            },
+            "K": {
+              "value": 1297.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "S": {
+              "value": 70.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WHIP": {
+              "value": 1.1851,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WQS": {
+              "value": 158.0,
+              "points": 4.0,
+              "rank": 10
+            }
+          }
+        },
+        {
+          "rank": 9,
+          "team": "Young Guns",
+          "batting_points": 29.0,
+          "pitching_points": 32.0,
+          "total_points": 61.0,
+          "categories": {
+            "HR": {
+              "value": 223.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "OBP": {
+              "value": 0.3285,
+              "points": 8.0,
+              "rank": 6
+            },
+            "R": {
+              "value": 881.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "RBI": {
+              "value": 769.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "SB": {
+              "value": 160.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "ERA": {
+              "value": 3.829,
+              "points": 4.0,
+              "rank": 10
+            },
+            "K": {
+              "value": 1321.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "S": {
+              "value": 68.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WHIP": {
+              "value": 1.2407,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WQS": {
+              "value": 167.0,
+              "points": 6.0,
+              "rank": 8
+            }
+          }
+        },
+        {
+          "rank": 10,
+          "team": "Runtime Terror",
+          "batting_points": 21.5,
+          "pitching_points": 36.0,
+          "total_points": 57.5,
+          "categories": {
+            "HR": {
+              "value": 243.0,
+              "points": 5.5,
+              "rank": 9
+            },
+            "OBP": {
+              "value": 0.3152,
+              "points": 3.0,
+              "rank": 11
+            },
+            "R": {
+              "value": 868.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "RBI": {
+              "value": 820.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "SB": {
+              "value": 128.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "ERA": {
+              "value": 3.482,
+              "points": 11.0,
+              "rank": 3
+            },
+            "K": {
+              "value": 1283.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "S": {
+              "value": 51.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WHIP": {
+              "value": 1.2046,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WQS": {
+              "value": 187.0,
+              "points": 10.0,
+              "rank": 4
+            }
+          }
+        },
+        {
+          "rank": 11,
+          "team": "Dawg",
+          "batting_points": 7.0,
+          "pitching_points": 37.0,
+          "total_points": 44.0,
+          "categories": {
+            "HR": {
+              "value": 208.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "OBP": {
+              "value": 0.3064,
+              "points": 1.0,
+              "rank": 13
+            },
+            "R": {
+              "value": 796.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "RBI": {
+              "value": 756.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "SB": {
+              "value": 110.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "ERA": {
+              "value": 3.555,
+              "points": 10.0,
+              "rank": 4
+            },
+            "K": {
+              "value": 1195.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "S": {
+              "value": 100.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WHIP": {
+              "value": 1.1792,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WQS": {
+              "value": 157.0,
+              "points": 3.0,
+              "rank": 11
+            }
+          }
+        },
+        {
+          "rank": 12,
+          "team": "Trex",
+          "batting_points": 18.0,
+          "pitching_points": 21.0,
+          "total_points": 39.0,
+          "categories": {
+            "HR": {
+              "value": 183.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "OBP": {
+              "value": 0.3301,
+              "points": 9.0,
+              "rank": 5
+            },
+            "R": {
+              "value": 843.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "RBI": {
+              "value": 746.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "SB": {
+              "value": 141.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "ERA": {
+              "value": 4.067,
+              "points": 2.0,
+              "rank": 12
+            },
+            "K": {
+              "value": 1240.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "S": {
+              "value": 13.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WHIP": {
+              "value": 1.2939,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WQS": {
+              "value": 189.0,
+              "points": 11.0,
+              "rank": 3
+            }
+          }
+        },
+        {
+          "rank": 13,
+          "team": "Magnum GI",
+          "batting_points": 16.0,
+          "pitching_points": 10.0,
+          "total_points": 26.0,
+          "categories": {
+            "HR": {
+              "value": 237.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "OBP": {
+              "value": 0.3167,
+              "points": 4.0,
+              "rank": 10
+            },
+            "R": {
+              "value": 823.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "RBI": {
+              "value": 805.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "SB": {
+              "value": 124.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "ERA": {
+              "value": 4.421,
+              "points": 1.0,
+              "rank": 13
+            },
+            "K": {
+              "value": 1125.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "S": {
+              "value": 54.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WHIP": {
+              "value": 1.303,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WQS": {
+              "value": 131.0,
+              "points": 2.0,
+              "rank": 12
+            }
+          }
+        }
+      ],
+      "winner": {
+        "rank": 1,
+        "team": "Like a Nightmare",
+        "batting_points": 56.0,
+        "pitching_points": 58.0,
+        "total_points": 114.0,
+        "categories": {
+          "HR": {
+            "value": 261.0,
+            "points": 9.0,
+            "rank": 5
+          },
+          "OBP": {
+            "value": 0.3381,
+            "points": 13.0,
+            "rank": 1
+          },
+          "R": {
+            "value": 981.0,
+            "points": 13.0,
+            "rank": 1
+          },
+          "RBI": {
+            "value": 877.0,
+            "points": 8.0,
+            "rank": 6
+          },
+          "SB": {
+            "value": 191.0,
+            "points": 13.0,
+            "rank": 1
+          },
+          "ERA": {
+            "value": 3.376,
+            "points": 12.0,
+            "rank": 2
+          },
+          "K": {
+            "value": 1384.0,
+            "points": 12.0,
+            "rank": 2
+          },
+          "S": {
+            "value": 77.0,
+            "points": 10.0,
+            "rank": 4
+          },
+          "WHIP": {
+            "value": 1.1115,
+            "points": 12.0,
+            "rank": 2
+          },
+          "WQS": {
+            "value": 191.0,
+            "points": 12.0,
+            "rank": 2
+          }
+        }
+      }
+    },
+    {
+      "year": 2025,
+      "teams": [
+        {
+          "rank": 1,
+          "team": "Rieken Havoc",
+          "batting_points": 49.0,
+          "pitching_points": 62.0,
+          "total_points": 111.0,
+          "categories": {
+            "HR": {
+              "value": 288.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "OBP": {
+              "value": 0.3437,
+              "points": 12.0,
+              "rank": 2
+            },
+            "R": {
+              "value": 987.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "RBI": {
+              "value": 923.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "SB": {
+              "value": 149.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "ERA": {
+              "value": 3.249,
+              "points": 13.0,
+              "rank": 1
+            },
+            "K": {
+              "value": 1376.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "WHIP": {
+              "value": 1.0903,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WQS": {
+              "value": 182.0,
+              "points": 11.0,
+              "rank": 3
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "team": "Guillotine",
+          "batting_points": 40.0,
+          "pitching_points": 49.0,
+          "total_points": 89.0,
+          "categories": {
+            "HR": {
+              "value": 286.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "OBP": {
+              "value": 0.3158,
+              "points": 2.0,
+              "rank": 12
+            },
+            "R": {
+              "value": 959.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "RBI": {
+              "value": 901.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "SB": {
+              "value": 176.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "ERA": {
+              "value": 3.478,
+              "points": 11.0,
+              "rank": 3
+            },
+            "K": {
+              "value": 1398.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "WHIP": {
+              "value": 1.1624,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WQS": {
+              "value": 189.0,
+              "points": 12.0,
+              "rank": 2
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "team": "MAGA DOGE",
+          "batting_points": 52.0,
+          "pitching_points": 34.0,
+          "total_points": 86.0,
+          "categories": {
+            "HR": {
+              "value": 293.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "OBP": {
+              "value": 0.3488,
+              "points": 13.0,
+              "rank": 1
+            },
+            "R": {
+              "value": 1038.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "RBI": {
+              "value": 950.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "SB": {
+              "value": 134.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "ERA": {
+              "value": 3.803,
+              "points": 5.0,
+              "rank": 9
+            },
+            "K": {
+              "value": 1238.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WHIP": {
+              "value": 1.2049,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WQS": {
+              "value": 174.0,
+              "points": 9.0,
+              "rank": 5
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "team": "Big Sticks",
+          "batting_points": 34.0,
+          "pitching_points": 48.0,
+          "total_points": 82.0,
+          "categories": {
+            "HR": {
+              "value": 292.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "OBP": {
+              "value": 0.3224,
+              "points": 4.0,
+              "rank": 10
+            },
+            "R": {
+              "value": 925.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "RBI": {
+              "value": 931.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "SB": {
+              "value": 81.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "ERA": {
+              "value": 3.614,
+              "points": 8.0,
+              "rank": 6
+            },
+            "K": {
+              "value": 1252.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "WHIP": {
+              "value": 1.1748,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WQS": {
+              "value": 190.0,
+              "points": 13.0,
+              "rank": 1
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "team": "Like a Nightmare",
+          "batting_points": 30.0,
+          "pitching_points": 51.0,
+          "total_points": 81.0,
+          "categories": {
+            "HR": {
+              "value": 235.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "OBP": {
+              "value": 0.3305,
+              "points": 11.0,
+              "rank": 3
+            },
+            "R": {
+              "value": 920.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "RBI": {
+              "value": 819.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "SB": {
+              "value": 166.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "ERA": {
+              "value": 3.437,
+              "points": 12.0,
+              "rank": 2
+            },
+            "K": {
+              "value": 1359.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "WHIP": {
+              "value": 1.1564,
+              "points": 11.0,
+              "rank": 3
+            },
+            "WQS": {
+              "value": 165.0,
+              "points": 7.0,
+              "rank": 7
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "team": "Runtime Terror",
+          "batting_points": 36.0,
+          "pitching_points": 40.0,
+          "total_points": 76.0,
+          "categories": {
+            "HR": {
+              "value": 269.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "OBP": {
+              "value": 0.3272,
+              "points": 9.0,
+              "rank": 5
+            },
+            "R": {
+              "value": 924.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "RBI": {
+              "value": 875.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "SB": {
+              "value": 154.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "ERA": {
+              "value": 3.56,
+              "points": 10.0,
+              "rank": 4
+            },
+            "K": {
+              "value": 1257.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WHIP": {
+              "value": 1.1214,
+              "points": 12.0,
+              "rank": 2
+            },
+            "WQS": {
+              "value": 152.0,
+              "points": 5.0,
+              "rank": 9
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "team": "Dawg",
+          "batting_points": 48.0,
+          "pitching_points": 26.0,
+          "total_points": 74.0,
+          "categories": {
+            "HR": {
+              "value": 311.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "OBP": {
+              "value": 0.3253,
+              "points": 6.0,
+              "rank": 8
+            },
+            "R": {
+              "value": 968.0,
+              "points": 11.0,
+              "rank": 3
+            },
+            "RBI": {
+              "value": 984.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "SB": {
+              "value": 147.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "ERA": {
+              "value": 4.041,
+              "points": 3.0,
+              "rank": 11
+            },
+            "K": {
+              "value": 1164.0,
+              "points": 3.5,
+              "rank": 10
+            },
+            "WHIP": {
+              "value": 1.2068,
+              "points": 6.0,
+              "rank": 8
+            },
+            "WQS": {
+              "value": 118.0,
+              "points": 1.5,
+              "rank": 12
+            }
+          }
+        },
+        {
+          "rank": 8,
+          "team": "Long Balls",
+          "batting_points": 43.0,
+          "pitching_points": 25.0,
+          "total_points": 68.0,
+          "categories": {
+            "HR": {
+              "value": 284.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "OBP": {
+              "value": 0.3267,
+              "points": 8.0,
+              "rank": 6
+            },
+            "R": {
+              "value": 888.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "RBI": {
+              "value": 964.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "SB": {
+              "value": 211.0,
+              "points": 12.0,
+              "rank": 2
+            },
+            "ERA": {
+              "value": 4.322,
+              "points": 2.0,
+              "rank": 12
+            },
+            "K": {
+              "value": 1277.0,
+              "points": 10.0,
+              "rank": 4
+            },
+            "WHIP": {
+              "value": 1.2782,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WQS": {
+              "value": 170.0,
+              "points": 8.0,
+              "rank": 6
+            }
+          }
+        },
+        {
+          "rank": 9,
+          "team": "Simba's Dublin Green Sox",
+          "batting_points": 31.0,
+          "pitching_points": 31.0,
+          "total_points": 62.0,
+          "categories": {
+            "HR": {
+              "value": 245.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "OBP": {
+              "value": 0.3285,
+              "points": 10.0,
+              "rank": 4
+            },
+            "R": {
+              "value": 934.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "RBI": {
+              "value": 891.0,
+              "points": 7.0,
+              "rank": 7
+            },
+            "SB": {
+              "value": 104.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "ERA": {
+              "value": 3.7,
+              "points": 6.0,
+              "rank": 8
+            },
+            "K": {
+              "value": 1155.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WHIP": {
+              "value": 1.1796,
+              "points": 8.0,
+              "rank": 6
+            },
+            "WQS": {
+              "value": 153.0,
+              "points": 6.0,
+              "rank": 8
+            }
+          }
+        },
+        {
+          "rank": 10,
+          "team": "Young Guns",
+          "batting_points": 25.0,
+          "pitching_points": 30.0,
+          "total_points": 55.0,
+          "categories": {
+            "HR": {
+              "value": 222.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "OBP": {
+              "value": 0.3247,
+              "points": 5.0,
+              "rank": 9
+            },
+            "R": {
+              "value": 901.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "RBI": {
+              "value": 844.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "SB": {
+              "value": 238.0,
+              "points": 13.0,
+              "rank": 1
+            },
+            "ERA": {
+              "value": 3.677,
+              "points": 7.0,
+              "rank": 7
+            },
+            "K": {
+              "value": 1265.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "WHIP": {
+              "value": 1.25,
+              "points": 3.0,
+              "rank": 11
+            },
+            "WQS": {
+              "value": 179.0,
+              "points": 10.0,
+              "rank": 4
+            }
+          }
+        },
+        {
+          "rank": 11,
+          "team": "Gashouse Gang",
+          "batting_points": 28.5,
+          "pitching_points": 23.5,
+          "total_points": 52.0,
+          "categories": {
+            "HR": {
+              "value": 249.0,
+              "points": 4.5,
+              "rank": 9
+            },
+            "OBP": {
+              "value": 0.3254,
+              "points": 7.0,
+              "rank": 7
+            },
+            "R": {
+              "value": 917.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "RBI": {
+              "value": 862.0,
+              "points": 3.0,
+              "rank": 11
+            },
+            "SB": {
+              "value": 160.0,
+              "points": 9.0,
+              "rank": 5
+            },
+            "ERA": {
+              "value": 3.991,
+              "points": 4.0,
+              "rank": 10
+            },
+            "K": {
+              "value": 1164.0,
+              "points": 3.5,
+              "rank": 11
+            },
+            "WHIP": {
+              "value": 1.2297,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WQS": {
+              "value": 137.0,
+              "points": 3.0,
+              "rank": 11
+            }
+          }
+        },
+        {
+          "rank": 12,
+          "team": "Magnum GI",
+          "batting_points": 15.5,
+          "pitching_points": 25.5,
+          "total_points": 41.0,
+          "categories": {
+            "HR": {
+              "value": 249.0,
+              "points": 4.5,
+              "rank": 10
+            },
+            "OBP": {
+              "value": 0.3126,
+              "points": 1.0,
+              "rank": 13
+            },
+            "R": {
+              "value": 829.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "RBI": {
+              "value": 868.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "SB": {
+              "value": 141.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "ERA": {
+              "value": 3.607,
+              "points": 9.0,
+              "rank": 5
+            },
+            "K": {
+              "value": 1215.0,
+              "points": 5.0,
+              "rank": 9
+            },
+            "WHIP": {
+              "value": 1.2402,
+              "points": 4.0,
+              "rank": 10
+            },
+            "WQS": {
+              "value": 118.0,
+              "points": 1.5,
+              "rank": 13
+            }
+          }
+        },
+        {
+          "rank": 13,
+          "team": "Trex",
+          "batting_points": 23.0,
+          "pitching_points": 10.0,
+          "total_points": 33.0,
+          "categories": {
+            "HR": {
+              "value": 257.0,
+              "points": 6.0,
+              "rank": 8
+            },
+            "OBP": {
+              "value": 0.3181,
+              "points": 3.0,
+              "rank": 11
+            },
+            "R": {
+              "value": 843.0,
+              "points": 2.0,
+              "rank": 12
+            },
+            "RBI": {
+              "value": 864.0,
+              "points": 4.0,
+              "rank": 10
+            },
+            "SB": {
+              "value": 159.0,
+              "points": 8.0,
+              "rank": 6
+            },
+            "ERA": {
+              "value": 4.367,
+              "points": 1.0,
+              "rank": 13
+            },
+            "K": {
+              "value": 1110.0,
+              "points": 1.0,
+              "rank": 13
+            },
+            "WHIP": {
+              "value": 1.274,
+              "points": 2.0,
+              "rank": 12
+            },
+            "WQS": {
+              "value": 145.0,
+              "points": 4.0,
+              "rank": 10
+            }
+          }
+        }
+      ],
+      "winner": {
+        "rank": 1,
+        "team": "Rieken Havoc",
+        "batting_points": 49.0,
+        "pitching_points": 62.0,
+        "total_points": 111.0,
+        "categories": {
+          "HR": {
+            "value": 288.0,
+            "points": 10.0,
+            "rank": 4
+          },
+          "OBP": {
+            "value": 0.3437,
+            "points": 12.0,
+            "rank": 2
+          },
+          "R": {
+            "value": 987.0,
+            "points": 12.0,
+            "rank": 2
+          },
+          "RBI": {
+            "value": 923.0,
+            "points": 9.0,
+            "rank": 5
+          },
+          "SB": {
+            "value": 149.0,
+            "points": 6.0,
+            "rank": 8
+          },
+          "ERA": {
+            "value": 3.249,
+            "points": 13.0,
+            "rank": 1
+          },
+          "K": {
+            "value": 1376.0,
+            "points": 12.0,
+            "rank": 2
+          },
+          "WHIP": {
+            "value": 1.0903,
+            "points": 13.0,
+            "rank": 1
+          },
+          "WQS": {
+            "value": 182.0,
+            "points": 11.0,
+            "rank": 3
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "total_teams": 68
+  }
+}

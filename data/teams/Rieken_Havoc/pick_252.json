@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "6502b220-1243-49ca-90e0-241408d36e71",
+    "name": "Merrill Kelly",
+    "position": "P",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 13.950000000000001,
+    "projected_strikeouts": 169.17222222222225,
+    "projected_era": 4.15,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 242.62
+  },
+  "pick_info": {
+    "pick_number": 252,
+    "round": 20,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "P"
+}

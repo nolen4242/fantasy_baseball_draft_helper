@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "4efd9622-0a80-4f9b-904e-4e5539815ea9",
+    "name": "Mason Miller",
+    "position": "P",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 104.42666666666668,
+    "projected_era": 2.38,
+    "projected_whip": null,
+    "projected_saves": 32.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 41.41
+  },
+  "pick_info": {
+    "pick_number": 39,
+    "round": 3,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "P"
+}

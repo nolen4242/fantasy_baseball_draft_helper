@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "3112feb5-8de9-4ef8-8369-1c001356b254",
+    "name": "Kyle Manzardo",
+    "position": "1B",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": 25.2,
+    "projected_obp": 0.322,
+    "projected_runs": 67.6,
+    "projected_rbi": 76.0,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 242.06
+  },
+  "pick_info": {
+    "pick_number": 205,
+    "round": 16,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "1B"
+}

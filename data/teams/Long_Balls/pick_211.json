@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "336f1e75-d110-4c66-8f30-4c2afca0d90f",
+    "name": "Mickey Moniak",
+    "position": "OF",
+    "team": "COL",
+    "age": null,
+    "projected_home_runs": 19.4,
+    "projected_obp": 0.299,
+    "projected_runs": 59.9,
+    "projected_rbi": 59.9,
+    "projected_stolen_bases": 8.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 241.45
+  },
+  "pick_info": {
+    "pick_number": 211,
+    "round": 17,
+    "team_name": "Long Balls"
+  },
+  "position": "OF"
+}

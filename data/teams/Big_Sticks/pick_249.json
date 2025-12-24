@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "7a8ce7f3-e378-453b-8b60-b4e98ead28f0",
+    "name": "Caleb Durbin",
+    "position": "3B",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": 12.1,
+    "projected_obp": 0.331,
+    "projected_runs": 62.5,
+    "projected_rbi": 60.5,
+    "projected_stolen_bases": 22.499999999999996,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 245.0
+  },
+  "pick_info": {
+    "pick_number": 249,
+    "round": 20,
+    "team_name": "Big Sticks"
+  },
+  "position": "3B"
+}

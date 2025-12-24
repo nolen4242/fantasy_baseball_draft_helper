@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "2a3422ce-79f0-4d1e-908c-db833fbedf32",
+    "name": "Hurston Waldrep",
+    "position": "P",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 11.700000000000001,
+    "projected_strikeouts": 128.83532222222223,
+    "projected_era": 4.31,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 256.05
+  },
+  "pick_info": {
+    "pick_number": 256,
+    "round": 20,
+    "team_name": "Young Guns"
+  },
+  "position": "P"
+}

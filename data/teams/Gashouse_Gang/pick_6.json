@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+    "name": "Tarik Skubal",
+    "position": "P",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 14.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 243.90426666666667,
+    "projected_era": 2.81,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 6.94
+  },
+  "pick_info": {
+    "pick_number": 6,
+    "round": 1,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "P"
+}

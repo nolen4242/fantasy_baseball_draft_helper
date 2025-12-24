@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "a20f92c4-35ba-4fc9-bd4a-dacf48a0d586",
+    "name": "Trevor Story",
+    "position": "SS",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": 20.9,
+    "projected_obp": 0.298,
+    "projected_runs": 68.8,
+    "projected_rbi": 74.2,
+    "projected_stolen_bases": 20.9,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 101.43
+  },
+  "pick_info": {
+    "pick_number": 100,
+    "round": 8,
+    "team_name": "Young Guns"
+  },
+  "position": "SS"
+}

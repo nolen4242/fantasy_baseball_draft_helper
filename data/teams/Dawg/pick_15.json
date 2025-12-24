@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "9872f926-4bcb-4ef8-a76b-eca9a13f239e",
+    "name": "Gunnar Henderson",
+    "position": "SS",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 27.4,
+    "projected_obp": 0.356,
+    "projected_runs": 93.2,
+    "projected_rbi": 91.89999999999999,
+    "projected_stolen_bases": 22.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 16.13
+  },
+  "pick_info": {
+    "pick_number": 15,
+    "round": 2,
+    "team_name": "Dawg"
+  },
+  "position": "SS"
+}

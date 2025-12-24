@@ -434,5 +434,122 @@ export class UIRenderer {
 
         return stats.map(s => `<span class="stat">${s}</span>`).join('');
     }
+    
+    renderStandings(standingsData: {
+        success: boolean;
+        standings: Array<{
+            rank: number;
+            team_name: string;
+            total_points: number;
+            category_totals: Record<string, number>;
+            category_ranks: Record<string, number>;
+        }>;
+        category_rankings: Record<string, string[]>;
+        categories: {
+            batting: string[];
+            pitching: string[];
+        };
+    }): void {
+        console.log('Rendering standings:', standingsData);
+        
+        // Create or get standings container
+        let standingsContainer = document.getElementById('standings-container');
+        if (!standingsContainer) {
+            standingsContainer = document.createElement('div');
+            standingsContainer.id = 'standings-container';
+            standingsContainer.className = 'standings-container';
+            document.body.appendChild(standingsContainer);
+        }
+        
+        if (!standingsData.standings || standingsData.standings.length === 0) {
+            standingsContainer.innerHTML = `
+                <div class="standings-header">
+                    <h2>📊 Projected Standings</h2>
+                    <button id="close-standings-btn" class="btn-small">Close</button>
+                </div>
+                <div style="padding: 20px; color: white;">
+                    <p>No standings data available. Make sure the draft has started and teams have players.</p>
+                </div>
+            `;
+            standingsContainer.style.display = 'block';
+            document.getElementById('close-standings-btn')?.addEventListener('click', () => {
+                standingsContainer.style.display = 'none';
+            });
+            return;
+        }
+        
+        const battingCats = standingsData.categories.batting;
+        const pitchingCats = standingsData.categories.pitching;
+        const allCats = [...battingCats, ...pitchingCats];
+        
+        // Build standings HTML
+        let html = `
+            <div class="standings-header">
+                <h2>📊 Projected Standings</h2>
+                <button id="close-standings-btn" class="btn-small">Close</button>
+            </div>
+            <div class="standings-table-wrapper">
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            ${allCats.map(cat => `<th>${cat}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        for (const team of standingsData.standings) {
+            const rankClass = team.rank <= 3 ? 'top-rank' : '';
+            html += `
+                <tr class="${rankClass}">
+                    <td class="rank-cell">${team.rank}</td>
+                    <td class="team-name-cell">${team.team_name}</td>
+                    <td class="points-cell"><strong>${team.total_points}</strong></td>
+            `;
+            
+            // Add category data
+            for (const cat of allCats) {
+                const total = team.category_totals[cat] || 0;
+                const rank = team.category_ranks[cat] || 0;
+                const isLowerBetter = cat === 'ERA' || cat === 'WHIP';
+                const rankClass = rank === 1 ? 'rank-1' : rank <= 3 ? 'rank-top-3' : '';
+                
+                let displayValue = '';
+                if (cat === 'OBP') {
+                    displayValue = total.toFixed(3);
+                } else if (cat === 'ERA' || cat === 'WHIP') {
+                    displayValue = total.toFixed(2);
+                } else {
+                    displayValue = total.toFixed(1);
+                }
+                
+                html += `
+                    <td class="category-cell ${rankClass}" title="Rank: ${rank}">
+                        <div class="category-value">${displayValue}</div>
+                        <div class="category-rank">(${rank})</div>
+                    </td>
+                `;
+            }
+            
+            html += `</tr>`;
+        }
+        
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+        
+        standingsContainer.innerHTML = html;
+        standingsContainer.style.display = 'block';
+        
+        // Add close button handler
+        document.getElementById('close-standings-btn')?.addEventListener('click', () => {
+            standingsContainer.style.display = 'none';
+        });
+    }
 }
 

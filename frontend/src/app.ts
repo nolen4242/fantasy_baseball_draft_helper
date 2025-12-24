@@ -77,11 +77,25 @@ class App {
     }
 
     private initializeEventListeners(): void {
-        // Load data buttons (optional - for manual reload)
-        document.getElementById('load-cbs-btn')?.addEventListener('click', () => this.loadCBSData());
-        document.getElementById('load-steamer-btn')?.addEventListener('click', () => this.loadSteamerFiles());
+        // Draft action buttons
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
-        document.getElementById('auto-draft-toggle-btn')?.addEventListener('click', () => this.toggleAutoDraft());
+        document.getElementById('view-standings-btn')?.addEventListener('click', () => this.showStandings());
+        
+        // Auto-draft toggle button
+        const autoDraftBtn = document.getElementById('auto-draft-toggle-btn');
+        if (autoDraftBtn) {
+            console.log('Auto-draft button found, setting up event listener');
+            // Make sure button is not disabled
+            autoDraftBtn.removeAttribute('disabled');
+            autoDraftBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Auto-draft button clicked!');
+                this.toggleAutoDraft();
+            });
+        } else {
+            console.error('Auto-draft button not found!');
+        }
         
         // Recommended player button - show analysis modal
         document.getElementById('recommended-player-btn')?.addEventListener('click', () => this.showRecommendationAnalysis());
@@ -100,15 +114,13 @@ class App {
     }
 
     private async loadInitialState(): Promise<void> {
-        // Auto-load data on startup
+        // Load players from master dictionary (auto-loaded on backend)
         try {
-            // Load CBS data first (source of truth for available players)
-            await this.api.loadCBSData();
-            // Then load Steamer projections (merges into master dictionary)
-            await this.api.loadSteamerFiles();
+            this.allPlayers = await this.api.getAllPlayers();
+            console.log(`✅ Loaded ${this.allPlayers.length} players from master dictionary`);
         } catch (error) {
-            console.error('Error auto-loading data:', error);
-            // Continue anyway - user can manually reload if needed
+            console.error('Error loading players:', error);
+            // Continue anyway - players may load on next API call
         }
 
         // Try to load existing draft, or auto-create one
@@ -128,14 +140,41 @@ class App {
         // Load auto-draft status
         try {
             const status = await this.api.getAutoDraftStatus();
+            console.log('Loaded auto-draft status:', status);
             this.autoDraftEnabled = status.auto_draft_enabled;
+            console.log('Setting autoDraftEnabled to:', this.autoDraftEnabled);
             this.updateAutoDraftButton();
         } catch (error) {
             console.error('Error loading auto-draft status:', error);
+            // Default to false if status can't be loaded
+            this.autoDraftEnabled = false;
+            this.updateAutoDraftButton();
         }
         
         await this.refreshAll();
         this.showApp();
+        
+        // If draft is complete, show standings
+        if (this.currentDraft?.is_complete) {
+            await this.showStandings();
+        }
+    }
+    
+    private async showStandings(): Promise<void> {
+        try {
+            console.log('Loading standings...');
+            const standingsData = await this.api.getStandings();
+            console.log('Standings data received:', standingsData);
+            if (standingsData.success && standingsData.standings) {
+                this.renderer.renderStandings(standingsData);
+            } else {
+                alert('Failed to load standings. Make sure the draft has started and teams have players.');
+            }
+        } catch (error) {
+            console.error('Error loading standings:', error);
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            alert('Error loading standings: ' + errorMessage);
+        }
     }
 
     private async loadCBSData(): Promise<void> {
@@ -269,6 +308,8 @@ class App {
             }
         }
         
+        console.log(`Current team: ${currentTeam}, My team: ${this.currentDraft.my_team_name}, Auto-draft enabled: ${this.autoDraftEnabled}`);
+        
         // Only auto-draft if it's not the user's team
         if (currentTeam !== this.currentDraft.my_team_name) {
             try {
@@ -276,13 +317,14 @@ class App {
                 const teamRosterSize = this.currentDraft.team_rosters[currentTeam]?.length || 0;
                 if (teamRosterSize >= this.currentDraft.roster_size) {
                     // Team roster is full, skip auto-draft
+                    console.log(`Skipping auto-draft for ${currentTeam} - roster is full (${teamRosterSize}/${this.currentDraft.roster_size})`);
                     return;
                 }
                 
                 console.log(`Auto-drafting for ${currentTeam}...`);
                 const result = await this.api.makeAutoDraftPick(currentTeam);
                 this.currentDraft = result.draft;
-                console.log(`Auto-drafted ${result.picked_player.name} for ${currentTeam}. Reasoning: ${result.reasoning}`);
+                console.log(`✅ Auto-drafted ${result.picked_player.name} for ${currentTeam}. Reasoning: ${result.reasoning}`);
                 
                 // Check if draft is now complete
                 if (result.draft_complete) {
@@ -298,41 +340,56 @@ class App {
                 }
             } catch (error) {
                 console.error('Error making auto-draft pick:', error);
-                // If error is about roster being full or draft complete, that's okay
                 const errorMessage = error instanceof Error ? error.message : '';
+                console.error('Error details:', errorMessage);
+                // If error is about roster being full or draft complete, that's okay
                 if (!errorMessage.includes('full') && !errorMessage.includes('complete')) {
-                    // Only log unexpected errors
+                    // Log unexpected errors
+                    alert(`Auto-draft error: ${errorMessage}`);
                 }
             }
+        } else {
+            console.log(`Skipping auto-draft - it's ${this.currentDraft.my_team_name}'s turn (user's team)`);
         }
     }
     
     private async toggleAutoDraft(): Promise<void> {
         try {
+            console.log('Toggle auto-draft clicked, current state:', this.autoDraftEnabled);
             const newState = !this.autoDraftEnabled;
+            console.log('Setting auto-draft to:', newState);
             const result = await this.api.toggleAutoDraft(newState);
+            console.log('Toggle result:', result);
             this.autoDraftEnabled = result.auto_draft_enabled;
             this.updateAutoDraftButton();
             
             if (this.autoDraftEnabled) {
                 // Check if we should immediately trigger auto-draft
+                console.log('Auto-draft enabled, triggering check...');
                 await this.checkAndTriggerAutoDraft();
+            } else {
+                console.log('Auto-draft disabled');
             }
         } catch (error) {
             console.error('Error toggling auto-draft:', error);
-            alert('Error toggling auto-draft');
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            alert(`Error toggling auto-draft: ${errorMessage}`);
         }
     }
     
     private updateAutoDraftButton(): void {
         const btn = document.getElementById('auto-draft-toggle-btn');
         if (btn) {
-            btn.textContent = `Auto-Draft: ${this.autoDraftEnabled ? 'ON' : 'OFF'}`;
+            const text = `Auto-Draft: ${this.autoDraftEnabled ? 'ON' : 'OFF'}`;
+            btn.textContent = text;
+            console.log('Updated auto-draft button text to:', text);
             if (this.autoDraftEnabled) {
                 btn.classList.add('btn-active');
             } else {
                 btn.classList.remove('btn-active');
             }
+        } else {
+            console.error('Auto-draft button not found when trying to update!');
         }
     }
 
@@ -415,7 +472,8 @@ class App {
             
             // Check if draft is now complete
             if (result.is_complete) {
-                alert('Draft Complete! All roster spots have been filled.');
+                console.log('Draft Complete! Showing standings...');
+                await this.showStandings();
             }
             
             await this.refreshAll();

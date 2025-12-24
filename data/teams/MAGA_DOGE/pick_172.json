@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "f472e602-b821-439c-bd39-61481541f681",
+    "name": "Willson Contreras",
+    "position": "1B",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": 23.2,
+    "projected_obp": 0.338,
+    "projected_runs": 71.9,
+    "projected_rbi": 75.6,
+    "projected_stolen_bases": 4.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 209.69
+  },
+  "pick_info": {
+    "pick_number": 172,
+    "round": 14,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "1B"
+}

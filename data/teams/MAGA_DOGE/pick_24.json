@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "eab6e586-694f-4e46-9f0d-a715dfbba440",
+    "name": "Trea Turner",
+    "position": "SS",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 18.7,
+    "projected_obp": 0.332,
+    "projected_runs": 88.5,
+    "projected_rbi": 67.8,
+    "projected_stolen_bases": 27.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 27.24
+  },
+  "pick_info": {
+    "pick_number": 24,
+    "round": 2,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SS"
+}

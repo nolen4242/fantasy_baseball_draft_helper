@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "8a13d2ae-9431-43f5-bc41-8de47dbff4dc",
+    "name": "Ketel Marte",
+    "position": "2B",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 27.4,
+    "projected_obp": 0.365,
+    "projected_runs": 94.19999999999999,
+    "projected_rbi": 82.5,
+    "projected_stolen_bases": 5.999999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 35.13
+  },
+  "pick_info": {
+    "pick_number": 34,
+    "round": 3,
+    "team_name": "Trex"
+  },
+  "position": "2B"
+}

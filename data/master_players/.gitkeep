@@ -1,0 +1,6 @@
+# Master player dictionaries
+# ONE FILE per player type with everything merged
+# - hitters.json: All hitter data (position, stats, projections, ADP, risk, etc.)
+# - pitchers.json: All pitcher data (position, stats, projections, ADP, risk, etc.)
+# - metadata.json: Version info, last updated, sources used
+

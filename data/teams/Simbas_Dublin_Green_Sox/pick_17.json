@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "af926b82-9fbe-45be-8730-6099a02ab34b",
+    "name": "Cal Raleigh",
+    "position": "C",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 38.699999999999996,
+    "projected_obp": 0.331,
+    "projected_runs": 90.1,
+    "projected_rbi": 92.8,
+    "projected_stolen_bases": 8.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 17.48
+  },
+  "pick_info": {
+    "pick_number": 17,
+    "round": 2,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "C"
+}

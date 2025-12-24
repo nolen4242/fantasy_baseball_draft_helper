@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "43ab0ddf-a134-4607-82f1-3457938b8226",
+    "name": "Jung Hoo Lee",
+    "position": "OF",
+    "team": "SF",
+    "age": null,
+    "projected_home_runs": 10.399999999999999,
+    "projected_obp": 0.335,
+    "projected_runs": 69.8,
+    "projected_rbi": 53.699999999999996,
+    "projected_stolen_bases": 10.399999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 289.55
+  },
+  "pick_info": {
+    "pick_number": 221,
+    "round": 17,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "OF"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1a9d5c65-fd86-4d70-9fec-6194d8f41b85",
+    "name": "Shohei Ohtani",
+    "position": "P",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 14.950000000000001,
+    "projected_strikeouts": 136.24,
+    "projected_era": 3.4400000000000004,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 1.25
+  },
+  "pick_info": {
+    "pick_number": 1,
+    "round": 1,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

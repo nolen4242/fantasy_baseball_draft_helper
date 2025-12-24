@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1bae8ceb-ae3b-403c-a352-252f329cb1bb",
+    "name": "Jack Leiter",
+    "position": "P",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 13.05,
+    "projected_strikeouts": 155.96995555555554,
+    "projected_era": 4.46,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 262.24
+  },
+  "pick_info": {
+    "pick_number": 261,
+    "round": 21,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

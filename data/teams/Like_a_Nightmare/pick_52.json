@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "d7ca3bcd-21be-4ec7-9567-656d2422aaba",
+    "name": "William Contreras",
+    "position": "C",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": 20.7,
+    "projected_obp": 0.359,
+    "projected_runs": 76.1,
+    "projected_rbi": 76.8,
+    "projected_stolen_bases": 5.999999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 54.87
+  },
+  "pick_info": {
+    "pick_number": 52,
+    "round": 4,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "C"
+}

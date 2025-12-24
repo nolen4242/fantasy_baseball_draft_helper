@@ -1,0 +1,13 @@
+{
+  "source": "baseball_savant",
+  "load_date": "2025-12-19T14:57:44.525034",
+  "player_count": 826,
+  "years_processed": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "description": "Baseball Savant Statcast data - intermediate format"
+}

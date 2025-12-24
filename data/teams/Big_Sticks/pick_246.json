@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "0fd3d18c-7c0b-4e32-8a0f-000b1fafafcd",
+    "name": "Ernie Clement",
+    "position": "2B",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 11.799999999999999,
+    "projected_obp": 0.313,
+    "projected_runs": 64.3,
+    "projected_rbi": 66.0,
+    "projected_stolen_bases": 8.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 324.8
+  },
+  "pick_info": {
+    "pick_number": 246,
+    "round": 19,
+    "team_name": "Big Sticks"
+  },
+  "position": "2B"
+}

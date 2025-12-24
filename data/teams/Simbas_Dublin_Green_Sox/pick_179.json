@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "e1e5b09a-6184-4b85-bff1-8be8a77c37a0",
+    "name": "Kerry Carpenter",
+    "position": "OF",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": 22.799999999999997,
+    "projected_obp": 0.311,
+    "projected_runs": 59.99999999999999,
+    "projected_rbi": 67.69999999999999,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 211.69
+  },
+  "pick_info": {
+    "pick_number": 179,
+    "round": 14,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "OF"
+}

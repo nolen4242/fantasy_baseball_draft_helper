@@ -1,0 +1,10 @@
+# League Analysis Data
+# Completely separate from master player dict
+# - cbs_winners.json: Historical winning teams from CBS leagues
+# - category_thresholds.json: What it takes to win each category
+# - optimal_rosters.json: Ideal category balance for winning
+# 
+# This data is used to determine:
+# - How many HR, RBI, R, SB, OBP needed to win
+# - How many K, ERA, SHOLDS, WHIP, WQS needed to win
+# - Optimal roster construction strategies

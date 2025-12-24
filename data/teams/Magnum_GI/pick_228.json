@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1a044420-2b75-45a6-b7f2-44b60bed7f14",
+    "name": "Matt Wallner",
+    "position": "OF",
+    "team": "MIN",
+    "age": null,
+    "projected_home_runs": 22.4,
+    "projected_obp": 0.33,
+    "projected_runs": 61.19999999999999,
+    "projected_rbi": 65.89999999999999,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 370.43
+  },
+  "pick_info": {
+    "pick_number": 228,
+    "round": 18,
+    "team_name": "Magnum GI"
+  },
+  "position": "OF"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "9661c8ee-5cd5-4c2e-82cc-c955ef27a0b9",
+    "name": "Freddy Peralta",
+    "position": "P",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 17.05,
+    "projected_strikeouts": 199.83626666666666,
+    "projected_era": 3.91,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 62.34
+  },
+  "pick_info": {
+    "pick_number": 61,
+    "round": 5,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "P"
+}

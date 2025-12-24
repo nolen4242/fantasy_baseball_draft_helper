@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "0370cec4-1ad1-414b-8199-80a6b6d15fb4",
+    "name": "TJ Friedl",
+    "position": "OF",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 16.099999999999998,
+    "projected_obp": 0.34,
+    "projected_runs": 75.8,
+    "projected_rbi": 54.99999999999999,
+    "projected_stolen_bases": 11.399999999999999,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 264.58
+  },
+  "pick_info": {
+    "pick_number": 214,
+    "round": 17,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "OF"
+}

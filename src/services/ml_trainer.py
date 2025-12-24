@@ -26,6 +26,7 @@ class MLTrainer:
         self.models_dir.mkdir(parents=True, exist_ok=True)
         
         self.value_model = None
+        self.gradient_boosting_model = None  # Ensemble model
         self.scaler = StandardScaler()
     
     def generate_training_data(
@@ -84,7 +85,7 @@ class MLTrainer:
         
         features = {}
         
-        # === Statistical Features ===
+        # === Projections (Steamer + DepthChart average) ===
         if is_hitter:
             features['hr'] = player.projected_home_runs or 0
             features['r'] = player.projected_runs or 0
@@ -92,26 +93,18 @@ class MLTrainer:
             features['sb'] = player.projected_stolen_bases or 0
             features['obp'] = player.projected_obp or 0.3
         else:
-            features['w'] = player.projected_wins or 0
             features['k'] = player.projected_strikeouts or 0
             features['era'] = player.projected_era or 5.0
             features['whip'] = player.projected_whip or 1.5
+            features['w'] = player.projected_wins or 0
             features['sv'] = player.projected_saves or 0
-            features['hd'] = player.projected_holds or 0
-            features['qs'] = player.projected_quality_starts or 0
         
-        # === Advanced Metrics ===
-        if is_hitter:
-            features['wrc_plus'] = player.br_wrc_plus or 100
-            features['ops_plus'] = player.br_ops_plus or 100
-            features['war'] = player.br_war or 0
-        else:
-            features['era_plus'] = player.br_era_plus or 100
-            features['fip'] = player.br_fip or 4.0
-            features['xfip'] = player.br_xfip or 4.0
-            features['war'] = player.br_war or 0
+        # === Historical Stats (3-year average: 2022-2024) ===
+        # Extract from _master_dict_data if available
+        historical_features = self._extract_historical_features(player)
+        features.update(historical_features)
         
-        # === Statcast Features ===
+        # === Statcast Features (from latest year) ===
         if is_hitter:
             features['exit_velocity'] = player.savant_exit_velocity or 0
             features['barrel_rate'] = player.savant_barrel_rate or 0
@@ -123,41 +116,136 @@ class MLTrainer:
             features['spin_rate'] = player.savant_spin_rate or 0
             features['velocity'] = player.savant_velocity or 0
         
-        # === Projection System Features (Multiple Systems) ===
-        if is_hitter:
-            # Average across projection systems
-            proj_hr = [p for p in [
-                player.projected_home_runs, player.br_proj_hr,
-                player.fg_steamer_hr, player.fg_zips_hr, player.fg_thebat_hr, player.fg_atc_hr
-            ] if p is not None]
-            features['avg_proj_hr'] = np.mean(proj_hr) if proj_hr else 0
-            features['proj_std_hr'] = np.std(proj_hr) if len(proj_hr) > 1 else 0
-        else:
-            proj_era = [p for p in [
-                player.projected_era, player.br_proj_era,
-                player.fg_steamer_era, player.fg_zips_era, player.fg_atc_era
-            ] if p is not None]
-            features['avg_proj_era'] = np.mean(proj_era) if proj_era else 5.0
-            features['proj_std_era'] = np.std(proj_era) if len(proj_era) > 1 else 0
+        # === Projection Consensus ===
+        # If we have Steamer + DepthChart, calculate consensus
+        if hasattr(player, '_master_dict_data'):
+            proj_data = player._master_dict_data.get('projections', {}).get('2025', {})
+            steamer = proj_data.get('steamer', {})
+            depthchart = proj_data.get('depthchart', {})
+            
+            if is_hitter:
+                proj_hr = [v for v in [steamer.get('home_runs'), depthchart.get('home_runs')] if v is not None]
+                features['avg_proj_hr'] = np.mean(proj_hr) if proj_hr else features['hr']
+                features['proj_std_hr'] = np.std(proj_hr) if len(proj_hr) > 1 else 0
+            else:
+                proj_era = [v for v in [steamer.get('era'), depthchart.get('era')] if v is not None]
+                features['avg_proj_era'] = np.mean(proj_era) if proj_era else features['era']
+                features['proj_std_era'] = np.std(proj_era) if len(proj_era) > 1 else 0
         
-        # === Risk Features ===
-        features['injury_risk'] = player.injury_risk_score or 0.0
-        features['sample_size_confidence'] = player.sample_size_confidence or 0.5
-        features['age_decline'] = player.age_decline_factor or 1.0
-        features['age'] = player.age or 27
-        features['news_sentiment'] = player.news_sentiment or 0.0
-        features['contract_year'] = 1.0 if player.contract_year else 0.0
-        features['current_injury'] = 1.0 if player.current_injury else 0.0
+        # === Park Factors ===
+        features['park_factor'] = player.park_factor_offense or 100
+        features['park_factor_hr'] = player.park_factor_hr or 100
         
-        # === Context Features ===
-        features['adp'] = player.nfbc_adp or player.adp or 999
-        features['park_factor_offense'] = player.park_factor_offense or 1.0
-        features['park_factor_hr'] = player.park_factor_hr or 1.0
-        features['bb_forecaster'] = player.bb_forecaster_prediction or 0.0
+        # === Risk Features (inferred from historical data) ===
+        risk_features = self._extract_risk_features(player)
+        features.update(risk_features)
+        
+        # === ADP ===
+        features['adp'] = player.adp or 999
         
         # === Position ===
         features['is_hitter'] = 1.0 if is_hitter else 0.0
         features['is_pitcher'] = 1.0 if is_pitcher else 0.0
+        
+        return features
+    
+    def _extract_historical_features(self, player: Player) -> Dict[str, float]:
+        """Extract historical stats features (3-year averages, trends)."""
+        features = {}
+        
+        if not hasattr(player, '_master_dict_data'):
+            return features
+        
+        historical_stats = player._master_dict_data.get('historical_stats', {})
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        
+        # Get 2022-2024 stats (3-year window)
+        years = ['2022', '2023', '2024']
+        stats_by_year = {}
+        
+        for year in years:
+            if year in historical_stats:
+                year_data = historical_stats[year]
+                stats = year_data.get('stats', {})
+                if stats:
+                    stats_by_year[year] = stats
+        
+        if not stats_by_year:
+            return features
+        
+        # Calculate 3-year averages
+        if is_pitcher:
+            strikeouts = [s.get('strikeouts', 0) for s in stats_by_year.values() if s.get('strikeouts')]
+            era = [s.get('era', 5.0) for s in stats_by_year.values() if s.get('era')]
+            whip = [s.get('whip', 1.5) for s in stats_by_year.values() if s.get('whip')]
+            
+            features['hist_avg_k'] = np.mean(strikeouts) if strikeouts else 0
+            features['hist_avg_era'] = np.mean(era) if era else 5.0
+            features['hist_avg_whip'] = np.mean(whip) if whip else 1.5
+            features['hist_consistency_era'] = 1.0 / (np.std(era) + 0.1) if len(era) > 1 else 0.5
+        else:
+            hr = [s.get('home_runs', 0) for s in stats_by_year.values() if s.get('home_runs')]
+            runs = [s.get('runs', 0) for s in stats_by_year.values() if s.get('runs')]
+            rbi = [s.get('rbi', 0) for s in stats_by_year.values() if s.get('rbi')]
+            sb = [s.get('stolen_bases', 0) for s in stats_by_year.values() if s.get('stolen_bases')]
+            obp = [s.get('on_base_percentage', 0.3) for s in stats_by_year.values() if s.get('on_base_percentage')]
+            
+            features['hist_avg_hr'] = np.mean(hr) if hr else 0
+            features['hist_avg_r'] = np.mean(runs) if runs else 0
+            features['hist_avg_rbi'] = np.mean(rbi) if rbi else 0
+            features['hist_avg_sb'] = np.mean(sb) if sb else 0
+            features['hist_avg_obp'] = np.mean(obp) if obp else 0.3
+            features['hist_consistency_hr'] = 1.0 / (np.std(hr) + 0.1) if len(hr) > 1 else 0.5
+        
+        # Trend analysis (improving vs declining)
+        if len(stats_by_year) >= 2:
+            if is_pitcher and 'hist_avg_k' in features:
+                # Compare 2024 to 2022-2023 average
+                recent_k = stats_by_year.get('2024', {}).get('strikeouts', 0)
+                older_avg = np.mean([s.get('strikeouts', 0) for y, s in stats_by_year.items() if y != '2024'])
+                features['trend_k'] = (recent_k - older_avg) / (older_avg + 1) if older_avg > 0 else 0
+            elif not is_pitcher and 'hist_avg_hr' in features:
+                recent_hr = stats_by_year.get('2024', {}).get('home_runs', 0)
+                older_avg = np.mean([s.get('home_runs', 0) for y, s in stats_by_year.items() if y != '2024'])
+                features['trend_hr'] = (recent_hr - older_avg) / (older_avg + 1) if older_avg > 0 else 0
+        
+        return features
+    
+    def _extract_risk_features(self, player: Player) -> Dict[str, float]:
+        """Extract risk features from historical data."""
+        features = {
+            'injury_risk': 0.0,
+            'sample_size_confidence': 0.5,
+            'age': 27.0,
+            'years_of_data': 0.0
+        }
+        
+        if not hasattr(player, '_master_dict_data'):
+            return features
+        
+        historical_stats = player._master_dict_data.get('historical_stats', {})
+        
+        # Count years with data
+        years_with_data = [y for y in historical_stats.keys() if y.isdigit()]
+        features['years_of_data'] = len(years_with_data)
+        features['sample_size_confidence'] = min(1.0, len(years_with_data) / 5.0)  # 5 years = full confidence
+        
+        # Check for gaps in data (potential injuries)
+        if len(years_with_data) >= 2:
+            years_int = sorted([int(y) for y in years_with_data])
+            gaps = [years_int[i+1] - years_int[i] for i in range(len(years_int)-1)]
+            if any(gap > 1 for gap in gaps):
+                features['injury_risk'] = 0.3  # Data gap suggests injury
+        
+        # Age (if available in historical stats)
+        # We don't have age in master dict yet, so default
+        features['age'] = player.age or 27.0
+        
+        # Age decline factor (older players = higher risk)
+        if features['age'] >= 32:
+            features['age_decline'] = 1.0 - ((features['age'] - 32) * 0.05)
+        else:
+            features['age_decline'] = 1.0
         
         return features
     
@@ -214,7 +302,7 @@ class MLTrainer:
     
     
     def train_models(self, training_data: pd.DataFrame):
-        """Train ML models on training data."""
+        """Train ensemble ML models on training data."""
         # Separate features and target
         feature_cols = [col for col in training_data.columns if col != 'target_player_value']
         X = training_data[feature_cols].values
@@ -239,28 +327,61 @@ class MLTrainer:
         )
         self.value_model.fit(X_train, y_train)
         
-        # Evaluate
-        train_score = self.value_model.score(X_train, y_train)
-        test_score = self.value_model.score(X_test, y_test)
+        # Train Gradient Boosting (ensemble)
+        print("Training Gradient Boosting model...")
+        self.gradient_boosting_model = GradientBoostingRegressor(
+            n_estimators=100,
+            max_depth=5,
+            learning_rate=0.1,
+            random_state=42
+        )
+        self.gradient_boosting_model.fit(X_train, y_train)
         
-        print(f"Random Forest - Train R²: {train_score:.4f}, Test R²: {test_score:.4f}")
+        # Evaluate both models
+        rf_train_score = self.value_model.score(X_train, y_train)
+        rf_test_score = self.value_model.score(X_test, y_test)
+        gb_train_score = self.gradient_boosting_model.score(X_train, y_train)
+        gb_test_score = self.gradient_boosting_model.score(X_test, y_test)
+        
+        # Ensemble prediction (weighted average: 60% RF, 40% GB)
+        ensemble_train_pred = (self.value_model.predict(X_train) * 0.6 + 
+                              self.gradient_boosting_model.predict(X_train) * 0.4)
+        ensemble_test_pred = (self.value_model.predict(X_test) * 0.6 + 
+                             self.gradient_boosting_model.predict(X_test) * 0.4)
+        
+        from sklearn.metrics import r2_score
+        ensemble_train_score = r2_score(y_train, ensemble_train_pred)
+        ensemble_test_score = r2_score(y_test, ensemble_test_pred)
+        
+        print(f"Random Forest - Train R²: {rf_train_score:.4f}, Test R²: {rf_test_score:.4f}")
+        print(f"Gradient Boosting - Train R²: {gb_train_score:.4f}, Test R²: {gb_test_score:.4f}")
+        print(f"Ensemble (60% RF, 40% GB) - Train R²: {ensemble_train_score:.4f}, Test R²: {ensemble_test_score:.4f}")
         
         # Save models
         self._save_models()
         
         return {
-            'train_score': train_score,
-            'test_score': test_score,
+            'rf_train_score': rf_train_score,
+            'rf_test_score': rf_test_score,
+            'gb_train_score': gb_train_score,
+            'gb_test_score': gb_test_score,
+            'ensemble_train_score': ensemble_train_score,
+            'ensemble_test_score': ensemble_test_score,
             'feature_importance': dict(zip(feature_cols, self.value_model.feature_importances_))
         }
     
     def _save_models(self):
         """Save trained models to disk."""
         model_file = self.models_dir / "value_model.pkl"
+        gb_model_file = self.models_dir / "gradient_boosting_model.pkl"
         scaler_file = self.models_dir / "scaler.pkl"
         
         with open(model_file, 'wb') as f:
             pickle.dump(self.value_model, f)
+        
+        if self.gradient_boosting_model:
+            with open(gb_model_file, 'wb') as f:
+                pickle.dump(self.gradient_boosting_model, f)
         
         with open(scaler_file, 'wb') as f:
             pickle.dump(self.scaler, f)
@@ -270,6 +391,7 @@ class MLTrainer:
     def load_models(self) -> bool:
         """Load trained models from disk."""
         model_file = self.models_dir / "value_model.pkl"
+        gb_model_file = self.models_dir / "gradient_boosting_model.pkl"
         scaler_file = self.models_dir / "scaler.pkl"
         
         if not model_file.exists() or not scaler_file.exists():
@@ -277,6 +399,10 @@ class MLTrainer:
         
         with open(model_file, 'rb') as f:
             self.value_model = pickle.load(f)
+        
+        if gb_model_file.exists():
+            with open(gb_model_file, 'rb') as f:
+                self.gradient_boosting_model = pickle.load(f)
         
         with open(scaler_file, 'rb') as f:
             self.scaler = pickle.load(f)
@@ -293,23 +419,55 @@ class MLTrainer:
         all_rosters: Optional[Dict[str, List[Player]]] = None
     ) -> float:
         """
-        Predict player value score based on player data features only.
-        NO DRAFT CONTEXT is used - purely based on player statistics and features.
+        Predict player value score using ensemble model.
+        Now includes draft context features if available.
         """
         if self.value_model is None:
             if not self.load_models():
                 return 0.0
         
-        # Extract player features (no draft context needed)
+        # Extract player features
         features = self._extract_player_features(player)
+        
+        # Add draft context features if available
+        if pick_number is not None:
+            features['pick_number'] = pick_number
+            features['round'] = round_num or (pick_number // 13) + 1 if pick_number else 1
+            features['pick_in_round'] = (pick_number % 13) if pick_number else 1
+            
+            # Position scarcity at this point in draft
+            if all_players and all_rosters:
+                player_pos = player.position
+                drafted_at_pos = sum(
+                    1 for roster in all_rosters.values()
+                    for p in roster
+                    if p.position == player_pos
+                )
+                available_at_pos = sum(
+                    1 for p in all_players
+                    if p.position == player_pos and not p.drafted
+                )
+                features['position_scarcity'] = drafted_at_pos / max(1, drafted_at_pos + available_at_pos)
+            else:
+                features['position_scarcity'] = 0.0
+        else:
+            features['pick_number'] = 0
+            features['round'] = 0
+            features['pick_in_round'] = 0
+            features['position_scarcity'] = 0.0
         
         # Convert to array and scale
         feature_cols = list(features.keys())
         X = np.array([[features[col] for col in feature_cols]])
         X_scaled = self.scaler.transform(X)
         
-        # Predict player value (higher is better)
-        predicted_value = self.value_model.predict(X_scaled)[0]
+        # Ensemble prediction (60% RandomForest, 40% GradientBoosting)
+        rf_pred = self.value_model.predict(X_scaled)[0]
+        if self.gradient_boosting_model:
+            gb_pred = self.gradient_boosting_model.predict(X_scaled)[0]
+            predicted_value = rf_pred * 0.6 + gb_pred * 0.4
+        else:
+            predicted_value = rf_pred
         
         return predicted_value
 

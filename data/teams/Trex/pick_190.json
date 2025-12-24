@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "aa30fb25-6f73-46dc-babe-f1761ef764cf",
+    "name": "Ramon Laureano",
+    "position": "OF",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": 19.799999999999997,
+    "projected_obp": 0.307,
+    "projected_runs": 60.8,
+    "projected_rbi": 68.19999999999999,
+    "projected_stolen_bases": 8.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 229.84
+  },
+  "pick_info": {
+    "pick_number": 190,
+    "round": 15,
+    "team_name": "Trex"
+  },
+  "position": "OF"
+}

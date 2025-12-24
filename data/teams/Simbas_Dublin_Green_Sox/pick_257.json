@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "2f5251ee-cf6e-43d6-91e1-fcbbb6ee52ec",
+    "name": "Carlos Correa",
+    "position": "3B",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 17.4,
+    "projected_obp": 0.338,
+    "projected_runs": 66.0,
+    "projected_rbi": 69.69999999999999,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 277.3
+  },
+  "pick_info": {
+    "pick_number": 257,
+    "round": 20,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "3B"
+}

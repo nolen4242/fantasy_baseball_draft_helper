@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "8c7182e0-2ce3-415a-8b24-1dcc62e53a90",
+    "name": "Troy Melton",
+    "position": "P",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.0,
+    "projected_quality_starts": 8.1,
+    "projected_strikeouts": 110.55617777777778,
+    "projected_era": 4.22,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 279.83
+  },
+  "pick_info": {
+    "pick_number": 274,
+    "round": 22,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

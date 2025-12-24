@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ab47c484-120b-4844-8438-4e0c7f1ccfa7",
+    "name": "Nick Kurtz",
+    "position": "1B",
+    "team": "ATH",
+    "age": null,
+    "projected_home_runs": 36.599999999999994,
+    "projected_obp": 0.353,
+    "projected_runs": 91.29999999999998,
+    "projected_rbi": 83.6,
+    "projected_stolen_bases": 4.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 17.7
+  },
+  "pick_info": {
+    "pick_number": 18,
+    "round": 2,
+    "team_name": "Young Guns"
+  },
+  "position": "1B"
+}

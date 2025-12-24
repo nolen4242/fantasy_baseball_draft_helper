@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "4923ebd6-7b76-41fd-886e-c91086d6dd9a",
+    "name": "Marcus Semien",
+    "position": "2B",
+    "team": "NYM",
+    "age": null,
+    "projected_home_runs": 21.299999999999997,
+    "projected_obp": 0.314,
+    "projected_runs": 81.2,
+    "projected_rbi": 71.89999999999999,
+    "projected_stolen_bases": 9.3,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 260.07
+  },
+  "pick_info": {
+    "pick_number": 222,
+    "round": 18,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "2B"
+}

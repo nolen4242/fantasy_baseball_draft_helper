@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "d9b566ba-9abb-4059-a995-bc57d9c03ceb",
+    "name": "Jarren Duran",
+    "position": "OF",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": 15.7,
+    "projected_obp": 0.325,
+    "projected_runs": 80.1,
+    "projected_rbi": 63.099999999999994,
+    "projected_stolen_bases": 20.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 71.13
+  },
+  "pick_info": {
+    "pick_number": 71,
+    "round": 6,
+    "team_name": "Trex"
+  },
+  "position": "OF"
+}

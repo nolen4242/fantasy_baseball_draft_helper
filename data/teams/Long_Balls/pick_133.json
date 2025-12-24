@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "d7545980-d2fc-4621-945b-4f62e5556728",
+    "name": "Emmet Sheehan",
+    "position": "P",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 9.9,
+    "projected_strikeouts": 136.13333333333333,
+    "projected_era": 3.88,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 137.87
+  },
+  "pick_info": {
+    "pick_number": 133,
+    "round": 11,
+    "team_name": "Long Balls"
+  },
+  "position": "P"
+}

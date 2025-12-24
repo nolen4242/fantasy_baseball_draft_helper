@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "793b9e0e-d28f-4e84-825b-16899a923561",
+    "name": "George Springer",
+    "position": "OF",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 25.3,
+    "projected_obp": 0.342,
+    "projected_runs": 85.6,
+    "projected_rbi": 71.6,
+    "projected_stolen_bases": 13.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 104.48
+  },
+  "pick_info": {
+    "pick_number": 103,
+    "round": 8,
+    "team_name": "Dawg"
+  },
+  "position": "OF"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "393b3abd-23f4-4ec2-af85-a1e167630607",
+    "name": "Max Fried",
+    "position": "P",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 13.0,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 178.53305555555556,
+    "projected_era": 3.34,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 57.31
+  },
+  "pick_info": {
+    "pick_number": 59,
+    "round": 5,
+    "team_name": "Magnum GI"
+  },
+  "position": "P"
+}

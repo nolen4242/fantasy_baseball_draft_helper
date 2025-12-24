@@ -1,0 +1,197 @@
+OverallBy Period
+    
+    Year2026202520242023202220212020201920182017201620152014Bob Uecker Imaginary Baseball League 's Overall Standings Rank,Team,Batting,Pitching,Total,Dif,Behind
+1,Guillotine,63.0,58.0,121.0,1.0,0.0
+2,Runtime Terror,61.0,55.5,116.5,4.0,4.5
+3,Long Balls,45.0,71.0,116.0,-2.5,5.0
+4,Like a Nightmare,48.0,62.5,110.5,4.5,10.5
+5,Bashers,50.0,52.0,102.0,1.0,19.0
+6,Carolina Reapers,54.0,44.0,98.0,-4.5,23.0
+7,Rieken Havoc,63.0,34.0,97.0,3.0,24.0
+8,Gashouse Gang,36.5,58.0,94.5,-3.5,26.5
+9,Trex,57.0,24.5,81.5,6.5,39.5
+10,Magnum GI,21.0,56.0,77.0,-3.5,44.0
+11,Big Sticks,20.0,56.0,76.0,1.5,45.0
+12,Simba&#39;s Dublin Green Sox,36.0,32.5,68.5,0.0,52.5
+13,Young Guns,39.0,23.0,62.0,7.0,59.0
+14,Southpaw,41.0,14.0,55.0,0.5,66.0
+15,Dawg,33.0,11.0,44.0,-20.0,77.0
+16,Seventh-inning Nachos,12.5,26.0,38.5,3.0,82.5
+Batting Breakdown,,,
+Team,HR,Pts,Dif
+Carolina Reapers,303,16,0
+Rieken Havoc,293,15,0
+Runtime Terror,286,14,0
+Bashers,277,13,0
+Guillotine,268,12,0
+Trex,258,11,0
+Young Guns,255,10,0
+Long Balls,246,9,0
+Like a Nightmare,237,8,1
+Simba&#39;s Dublin Green Sox,234,7,-1
+Big Sticks,222,6,0
+Southpaw,209,5,0
+Gashouse Gang,200,3.5,-0.5
+Seventh-inning Nachos,200,3.5,0.5
+Dawg,192,2,0
+Magnum GI,180,1,0
+Team,OBP,Pts,Dif
+Southpaw,0.3491,16,0
+Runtime Terror,0.3457,15,0
+Like a Nightmare,0.3443,14,0
+Dawg,0.3392,13,0
+Rieken Havoc,0.3373,12,1
+Young Guns,0.3371,11,2
+Gashouse Gang,0.3363,10,0
+Carolina Reapers,0.3360,9,-3
+Trex,0.3356,8,0
+Simba&#39;s Dublin Green Sox,0.3312,7,0
+Guillotine,0.3310,6,1
+Long Balls,0.3306,5,-1
+Bashers,0.3288,4,0
+Seventh-inning Nachos,0.3270,3,0
+Magnum GI,0.3201,2,0
+Big Sticks,0.3175,1,0
+Team,R,Pts,Dif
+Runtime Terror,946,16,0
+Rieken Havoc,913,15,0
+Guillotine,893,14,0
+Trex,872,13,2
+Bashers,869,12,0
+Carolina Reapers,868,11,-2
+Long Balls,850,10,0
+Simba&#39;s Dublin Green Sox,831,9,0
+Southpaw,817,8,0
+Like a Nightmare,816,7,1
+Gashouse Gang,811,6,-1
+Young Guns,785,5,1
+Dawg,771,4,-1
+Magnum GI,752,3,0
+Big Sticks,742,2,0
+Seventh-inning Nachos,729,1,0
+Team,RBI,Pts,Dif
+Guillotine,906,16,0
+Runtime Terror,896,15,0
+Bashers,880,14,0
+Trex,863,13,0
+Rieken Havoc,852,12,1
+Carolina Reapers,842,11,-1
+Southpaw,829,10,0
+Young Guns,815,9,2
+Simba&#39;s Dublin Green Sox,807,8,-1
+Gashouse Gang,797,7,-1
+Like a Nightmare,793,6,0
+Long Balls,745,5,0
+Big Sticks,702,4,1
+Dawg,697,3,-1
+Seventh-inning Nachos,675,2,1
+Magnum GI,666,1,-1
+Team,SB,Pts,Dif
+Long Balls,128,16,0
+Guillotine,100,15,0
+Magnum GI,97,14,0.5
+Like a Nightmare,94,13,-0.5
+Trex,93,12,2.5
+Dawg,90,11,0
+Gashouse Gang,89,10,-2
+Rieken Havoc,87,9,-0.5
+Bashers,82,7,-1
+Carolina Reapers,82,7,0
+Big Sticks,82,7,1
+Simba&#39;s Dublin Green Sox,77,5,0
+Young Guns,76,4,0
+Seventh-inning Nachos,70,3,0.5
+Southpaw,68,2,-0.5
+Runtime Terror,58,1,0
+Pitching Breakdown,,,
+Team,ERA,Pts,Dif
+Gashouse Gang,3.555,16,1
+Long Balls,3.564,15,-1
+Bashers,3.627,14,0
+Runtime Terror,3.649,13,1
+Big Sticks,3.660,12,-1
+Like a Nightmare,3.675,11,2
+Guillotine,3.684,10,0
+Magnum GI,3.698,9,-2
+Trex,3.895,8,1
+Rieken Havoc,4.021,7,1
+Carolina Reapers,4.140,6,1
+Seventh-inning Nachos,4.362,5,1
+Young Guns,4.601,4,1
+Simba&#39;s Dublin Green Sox,4.707,3,1
+Southpaw,4.948,2,1
+Dawg,3.873,0,-8
+Team,K,Pts,Dif
+Long Balls,1440,16,0
+Guillotine,1437,15,0
+Runtime Terror,1408,14,0
+Like a Nightmare,1368,13,0
+Carolina Reapers,1337,12,0
+Magnum GI,1323,11,0
+Gashouse Gang,1288,10,0
+Rieken Havoc,1239,9,0
+Young Guns,1225,8,0
+Bashers,1223,7,0
+Big Sticks,1189,6,0
+Southpaw,1097,5,0
+Simba&#39;s Dublin Green Sox,1072,4,1
+Seventh-inning Nachos,1070,3,-1
+Dawg,1044,2,0
+Trex,1026,1,0
+Team,S,Pts,Dif
+Bashers,78,16,0
+Simba&#39;s Dublin Green Sox,77,15,0
+Big Sticks,75,14,0.5
+Long Balls,73,13,-0.5
+Like a Nightmare,62,11.5,0.5
+Magnum GI,62,11.5,-0.5
+Gashouse Gang,57,10,0
+Guillotine,49,9,0
+Dawg,48,8,0
+Runtime Terror,44,6.5,1
+Trex,44,6.5,1
+Rieken Havoc,43,4.5,-1
+Seventh-inning Nachos,43,4.5,-1
+Young Guns,38,3,0
+Carolina Reapers,13,2,0
+Southpaw,0,1,0
+Team,WHIP,Pts,Dif
+Gashouse Gang,1.1145,16,0
+Magnum GI,1.1483,15,0
+Long Balls,1.1497,14,0
+Big Sticks,1.1559,13,0
+Guillotine,1.1780,12,0
+Like a Nightmare,1.1948,11,0
+Bashers,1.2080,10,1
+Carolina Reapers,1.2131,9,1
+Runtime Terror,1.2140,8,2
+Trex,1.2231,7,0
+Rieken Havoc,1.2353,6,1
+Young Guns,1.2555,5,1
+Seventh-inning Nachos,1.2912,4,1
+Simba&#39;s Dublin Green Sox,1.3363,3,1
+Southpaw,1.3498,2,1
+Dawg,1.2212,0,-10
+Team,WQS,Pts,Dif
+Like a Nightmare,190,16,0.5
+Carolina Reapers,186,15,-0.5
+Runtime Terror,177,14,0
+Long Balls,174,13,0
+Guillotine,172,12,0
+Big Sticks,169,11,0
+Magnum GI,153,9.5,-0.5
+Seventh-inning Nachos,153,9.5,1
+Rieken Havoc,148,7.5,0.5
+Simba&#39;s Dublin Green Sox,148,7.5,-1
+Gashouse Gang,141,6,0
+Bashers,136,5,1
+Southpaw,133,4,-1
+Young Guns,129,3,0
+Trex,122,2,0
+Dawg,113,1,0
+    
+  
+    
+    
+    
+    

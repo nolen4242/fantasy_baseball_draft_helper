@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "e370b832-787b-4cc6-9fed-7b9087cdeabd",
+    "name": "Samuel Basallo",
+    "position": "C",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 17.5,
+    "projected_obp": 0.308,
+    "projected_runs": 51.49999999999999,
+    "projected_rbi": 53.199999999999996,
+    "projected_stolen_bases": 3.6999999999999997,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 165.58
+  },
+  "pick_info": {
+    "pick_number": 189,
+    "round": 15,
+    "team_name": "Magnum GI"
+  },
+  "position": "C"
+}

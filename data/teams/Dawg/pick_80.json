@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "cf2aebd6-3f67-42df-acc6-a76842f063af",
+    "name": "Spencer Schwellenbach",
+    "position": "P",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 15.400000000000002,
+    "projected_strikeouts": 162.6446222222222,
+    "projected_era": 3.65,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 81.37
+  },
+  "pick_info": {
+    "pick_number": 80,
+    "round": 7,
+    "team_name": "Dawg"
+  },
+  "position": "P"
+}

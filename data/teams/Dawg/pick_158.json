@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ffc49229-4722-4f1b-8678-dc4180f9bd25",
+    "name": "Ivan Herrera",
+    "position": "U",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": 18.8,
+    "projected_obp": 0.361,
+    "projected_runs": 74.5,
+    "projected_rbi": 65.1,
+    "projected_stolen_bases": 8.4,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 191.13
+  },
+  "pick_info": {
+    "pick_number": 158,
+    "round": 13,
+    "team_name": "Dawg"
+  },
+  "position": "U"
+}

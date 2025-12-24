@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "51f72a1b-7fc5-403d-9f9d-8ad2dac60c83",
+    "name": "Otto Lopez",
+    "position": "2B",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": 11.399999999999999,
+    "projected_obp": 0.326,
+    "projected_runs": 59.099999999999994,
+    "projected_rbi": 60.099999999999994,
+    "projected_stolen_bases": 16.099999999999998,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 226.33
+  },
+  "pick_info": {
+    "pick_number": 200,
+    "round": 16,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "2B"
+}

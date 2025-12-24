@@ -135,28 +135,82 @@ export class ApiClient {
         };
     }
     async toggleAutoDraft(enabled) {
-        const response = await fetch(`${API_BASE}/api/draft/auto-draft/toggle`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ enabled })
-        });
-        return response.json();
+        try {
+            const response = await fetch(`${API_BASE}/api/draft/auto-draft/toggle`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ enabled })
+            });
+            // Check if response is actually JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response received:', text.substring(0, 200));
+                throw new Error(`Server returned ${response.status}: Expected JSON but got ${contentType}`);
+            }
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ message: 'Failed to toggle auto-draft' }));
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        }
+        catch (error) {
+            console.error('Error in toggleAutoDraft:', error);
+            throw error;
+        }
     }
     async getAutoDraftStatus() {
-        const response = await fetch(`${API_BASE}/api/draft/auto-draft/status`);
-        return response.json();
+        try {
+            const response = await fetch(`${API_BASE}/api/draft/auto-draft/status`);
+            // Check if response is actually JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response received:', text.substring(0, 200));
+                throw new Error(`Server returned ${response.status}: Expected JSON but got ${contentType}`);
+            }
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ message: 'Failed to get auto-draft status' }));
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        }
+        catch (error) {
+            console.error('Error in getAutoDraftStatus:', error);
+            throw error;
+        }
     }
     async makeAutoDraftPick(teamName) {
-        const response = await fetch(`${API_BASE}/api/draft/auto-draft/pick`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ team_name: teamName })
-        });
-        const data = await response.json();
-        if (!data.success) {
-            throw new Error(data.message || 'Failed to make auto-draft pick');
+        try {
+            const response = await fetch(`${API_BASE}/api/draft/auto-draft/pick`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ team_name: teamName })
+            });
+            // Check if response is actually JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response received:', text.substring(0, 200));
+                throw new Error(`Server returned ${response.status}: Expected JSON but got ${contentType}`);
+            }
+            const data = await response.json();
+            if (!data.success) {
+                throw new Error(data.message || 'Failed to make auto-draft pick');
+            }
+            return data;
         }
-        return data;
+        catch (error) {
+            console.error('Error in makeAutoDraftPick:', error);
+            throw error;
+        }
+    }
+    async getStandings() {
+        const response = await fetch(`${API_BASE}/api/standings`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
     }
 }
 //# sourceMappingURL=api.js.map

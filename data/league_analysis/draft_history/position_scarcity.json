@@ -1,0 +1,74 @@
+{
+  "C": {
+    "average_round": 14.75,
+    "median_round": 16,
+    "first_round": 2,
+    "last_round": 22,
+    "total_picks": 64,
+    "scarcity_round": 20
+  },
+  "1B": {
+    "average_round": 10.213740458015268,
+    "median_round": 10,
+    "first_round": 1,
+    "last_round": 22,
+    "total_picks": 131,
+    "scarcity_round": 16
+  },
+  "2B": {
+    "average_round": 11.283783783783784,
+    "median_round": 12,
+    "first_round": 2,
+    "last_round": 21,
+    "total_picks": 74,
+    "scarcity_round": 17
+  },
+  "3B": {
+    "average_round": 10.612903225806452,
+    "median_round": 11,
+    "first_round": 1,
+    "last_round": 22,
+    "total_picks": 93,
+    "scarcity_round": 15
+  },
+  "SS": {
+    "average_round": 7.771084337349397,
+    "median_round": 6,
+    "first_round": 1,
+    "last_round": 22,
+    "total_picks": 83,
+    "scarcity_round": 12
+  },
+  "OF": {
+    "average_round": 10.778625954198473,
+    "median_round": 11,
+    "first_round": 1,
+    "last_round": 22,
+    "total_picks": 262,
+    "scarcity_round": 16
+  },
+  "SP": {
+    "average_round": 13.133333333333333,
+    "median_round": 14,
+    "first_round": 3,
+    "last_round": 20,
+    "total_picks": 15,
+    "scarcity_round": 18
+  },
+  "RP": {
+    "average_round": 16.76923076923077,
+    "median_round": 16,
+    "first_round": 12,
+    "last_round": 21,
+    "total_picks": 13,
+    "scarcity_round": 19
+  },
+  "P": {
+    "average_round": 11.855737704918033,
+    "median_round": 12,
+    "first_round": 1,
+    "last_round": 22,
+    "total_picks": 610,
+    "scarcity_round": 17
+  }
+}

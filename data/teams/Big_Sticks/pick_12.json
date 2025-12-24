@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+    "name": "Paul Skenes",
+    "position": "P",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 13.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 238.7,
+    "projected_era": 2.92,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 10.41
+  },
+  "pick_info": {
+    "pick_number": 12,
+    "round": 1,
+    "team_name": "Big Sticks"
+  },
+  "position": "P"
+}

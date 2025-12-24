@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "8b669de7-a201-4e27-9552-00f44c35a73e",
+    "name": "Pete Alonso",
+    "position": "1B",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 36.4,
+    "projected_obp": 0.337,
+    "projected_runs": 91.19999999999999,
+    "projected_rbi": 105.19999999999999,
+    "projected_stolen_bases": 2.9999999999999996,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 28.16
+  },
+  "pick_info": {
+    "pick_number": 25,
+    "round": 2,
+    "team_name": "Big Sticks"
+  },
+  "position": "1B"
+}

@@ -1,0 +1,351 @@
+{
+  "by_round": {
+    "1": {
+      "total_picks": 68,
+      "positions": {
+        "OF": 24,
+        "P": 12,
+        "SS": 14,
+        "DH": 5,
+        "3B": 4,
+        "1B": 9
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "2": {
+      "total_picks": 68,
+      "positions": {
+        "P": 20,
+        "OF": 9,
+        "SS": 12,
+        "3B": 7,
+        "DH": 4,
+        "2B": 2,
+        "1B": 12,
+        "U": 1,
+        "C": 1
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "3": {
+      "total_picks": 68,
+      "positions": {
+        "P": 25,
+        "1B": 7,
+        "OF": 12,
+        "2B": 7,
+        "SP": 2,
+        "SS": 6,
+        "DH": 5,
+        "U": 2,
+        "3B": 2
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "4": {
+      "total_picks": 68,
+      "positions": {
+        "SS": 5,
+        "P": 27,
+        "1B": 5,
+        "3B": 5,
+        "OF": 13,
+        "DH": 2,
+        "2B": 4,
+        "U": 4,
+        "C": 3
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "5": {
+      "total_picks": 68,
+      "positions": {
+        "P": 33,
+        "2B": 5,
+        "3B": 3,
+        "C": 1,
+        "U": 3,
+        "OF": 12,
+        "DH": 4,
+        "1B": 4,
+        "SS": 3
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "6": {
+      "total_picks": 68,
+      "positions": {
+        "OF": 13,
+        "3B": 6,
+        "DH": 2,
+        "U": 3,
+        "P": 32,
+        "1B": 4,
+        "SP": 1,
+        "C": 1,
+        "SS": 4,
+        "2B": 2
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "7": {
+      "total_picks": 68,
+      "positions": {
+        "1B": 7,
+        "OF": 9,
+        "P": 26,
+        "3B": 6,
+        "U": 2,
+        "2B": 4,
+        "C": 5,
+        "DH": 5,
+        "SS": 4
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "8": {
+      "total_picks": 68,
+      "positions": {
+        "P": 30,
+        "SS": 6,
+        "OF": 12,
+        "DH": 3,
+        "1B": 6,
+        "U": 4,
+        "2B": 2,
+        "3B": 2,
+        "C": 3
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "9": {
+      "total_picks": 68,
+      "positions": {
+        "3B": 3,
+        "OF": 11,
+        "P": 33,
+        "U": 4,
+        "1B": 7,
+        "C": 1,
+        "DH": 4,
+        "SS": 2,
+        "2B": 3
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "10": {
+      "total_picks": 68,
+      "positions": {
+        "U": 4,
+        "2B": 3,
+        "OF": 8,
+        "3B": 8,
+        "P": 26,
+        "DH": 3,
+        "1B": 12,
+        "SS": 2,
+        "SP": 1,
+        "C": 1
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "11": {
+      "total_picks": 68,
+      "positions": {
+        "P": 33,
+        "DH": 4,
+        "SP": 2,
+        "OF": 12,
+        "1B": 6,
+        "SS": 3,
+        "C": 2,
+        "3B": 3,
+        "2B": 3
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "12": {
+      "total_picks": 68,
+      "positions": {
+        "P": 26,
+        "OF": 18,
+        "1B": 6,
+        "C": 3,
+        "3B": 2,
+        "RP": 1,
+        "2B": 7,
+        "SP": 1,
+        "U": 2,
+        "SS": 2
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "13": {
+      "total_picks": 68,
+      "positions": {
+        "3B": 8,
+        "P": 32,
+        "OF": 11,
+        "DH": 1,
+        "1B": 4,
+        "2B": 6,
+        "C": 2,
+        "U": 2,
+        "SS": 2
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "14": {
+      "total_picks": 68,
+      "positions": {
+        "P": 28,
+        "U": 5,
+        "DH": 3,
+        "RP": 2,
+        "3B": 8,
+        "SP": 1,
+        "1B": 5,
+        "SS": 3,
+        "OF": 11,
+        "C": 1,
+        "2B": 1
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "15": {
+      "total_picks": 68,
+      "positions": {
+        "P": 25,
+        "2B": 5,
+        "RP": 2,
+        "OF": 17,
+        "C": 3,
+        "DH": 4,
+        "U": 2,
+        "3B": 6,
+        "1B": 4
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "16": {
+      "total_picks": 68,
+      "positions": {
+        "C": 7,
+        "P": 30,
+        "RP": 2,
+        "OF": 12,
+        "SP": 1,
+        "U": 4,
+        "1B": 5,
+        "3B": 5,
+        "SS": 1,
+        "2B": 1
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "17": {
+      "total_picks": 68,
+      "positions": {
+        "P": 29,
+        "RP": 1,
+        "OF": 9,
+        "C": 7,
+        "1B": 5,
+        "3B": 4,
+        "U": 4,
+        "SP": 1,
+        "DH": 3,
+        "2B": 5
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "18": {
+      "total_picks": 68,
+      "positions": {
+        "OF": 13,
+        "P": 32,
+        "RP": 1,
+        "DH": 2,
+        "SP": 2,
+        "1B": 4,
+        "C": 3,
+        "3B": 2,
+        "U": 3,
+        "2B": 2,
+        "SS": 4
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "19": {
+      "total_picks": 68,
+      "positions": {
+        "P": 30,
+        "1B": 8,
+        "OF": 11,
+        "2B": 6,
+        "3B": 4,
+        "SP": 2,
+        "SS": 2,
+        "RP": 1,
+        "DH": 2,
+        "C": 1,
+        "U": 1
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "20": {
+      "total_picks": 68,
+      "positions": {
+        "P": 35,
+        "C": 7,
+        "U": 4,
+        "2B": 5,
+        "RP": 1,
+        "SS": 4,
+        "SP": 1,
+        "DH": 1,
+        "3B": 2,
+        "OF": 5,
+        "1B": 3
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "21": {
+      "total_picks": 68,
+      "positions": {
+        "P": 28,
+        "RP": 2,
+        "2B": 1,
+        "DH": 3,
+        "OF": 10,
+        "1B": 5,
+        "U": 4,
+        "C": 10,
+        "SS": 3,
+        "3B": 2
+      },
+      "average_pick_number": 7.352941176470588
+    },
+    "22": {
+      "total_picks": 39,
+      "positions": {
+        "P": 18,
+        "3B": 1,
+        "OF": 10,
+        "C": 2,
+        "1B": 3,
+        "U": 4,
+        "SS": 1
+      },
+      "average_pick_number": 7.0
+    }
+  },
+  "total_rounds_analyzed": 22,
+  "years_included": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "1dc3c12d-43a1-4c7c-9acf-68ea36549fd4",
+    "name": "Spencer Steer",
+    "position": "1B",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 20.7,
+    "projected_obp": 0.324,
+    "projected_runs": 69.1,
+    "projected_rbi": 73.8,
+    "projected_stolen_bases": 9.7,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 237.03
+  },
+  "pick_info": {
+    "pick_number": 208,
+    "round": 16,
+    "team_name": "Runtime Terror"
+  },
+  "position": "1B"
+}

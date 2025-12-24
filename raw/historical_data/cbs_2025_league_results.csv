@@ -1,0 +1,164 @@
+OverallBy Period
+    
+    Year2026202520242023202220212020201920182017201620152014Bob Uecker Imaginary Baseball League 's Overall Standings Rank,Team,Batting,Pitching,Total,Dif,Behind
+1,Rieken Havoc,49.0,62.0,111.0,2.0,0.0
+2,Guillotine,40.0,49.0,89.0,-2.0,22.0
+3,MAGA DOGE ,52.0,34.0,86.0,0.0,25.0
+4,Big Sticks,34.0,48.0,82.0,3.0,29.0
+5,Like a Nightmare,30.0,51.0,81.0,-3.0,30.0
+6,Runtime Terror,36.0,40.0,76.0,4.0,35.0
+7,Dawg,48.0,26.0,74.0,0.5,37.0
+8,Long Balls,43.0,25.0,68.0,-2.5,43.0
+9,Simba's Dublin Green Sox,31.0,31.0,62.0,5.0,49.0
+10,Young Guns,25.0,30.0,55.0,-7.5,56.0
+11,Gashouse Gang,28.5,23.5,52.0,-4.5,59.0
+12,Magnum GI,15.5,25.5,41.0,4.0,70.0
+13,Trex,23.0,10.0,33.0,1.0,78.0
+Batting Breakdown,,,
+Team,HR,Pts,Dif
+Dawg,311,13,0
+MAGA DOGE ,293,12,0
+Big Sticks,292,11,2
+Rieken Havoc,288,10,2
+Guillotine,286,9,-1.5
+Long Balls,284,8,-2.5
+Runtime Terror,269,7,0
+Trex,257,6,0
+Gashouse Gang,249,4.5,-0.5
+Magnum GI,249,4.5,0.5
+Simba's Dublin Green Sox,245,3,0
+Like a Nightmare,235,2,0
+Young Guns,222,1,0
+Team,OBP,Pts,Dif
+MAGA DOGE ,0.3488,13,0
+Rieken Havoc,0.3437,12,0
+Like a Nightmare,0.3305,11,0
+Simba's Dublin Green Sox,0.3285,10,3
+Runtime Terror,0.3272,9,1
+Long Balls,0.3267,8,-1
+Gashouse Gang,0.3254,7,1
+Dawg,0.3253,6,1
+Young Guns,0.3247,5,-5
+Big Sticks,0.3224,4,0
+Trex,0.3181,3,0
+Guillotine,0.3158,2,0
+Magnum GI,0.3126,1,0
+Team,R,Pts,Dif
+MAGA DOGE ,1038,13,0
+Rieken Havoc,987,12,0
+Dawg,968,11,0.5
+Guillotine,959,10,-0.5
+Simba's Dublin Green Sox,934,9,2
+Big Sticks,925,8,2
+Runtime Terror,924,7,2
+Like a Nightmare,920,6,-2
+Gashouse Gang,917,5,-4
+Young Guns,901,4,0
+Long Balls,888,3,0
+Trex,843,2,0
+Magnum GI,829,1,0
+Team,RBI,Pts,Dif
+Dawg,984,13,0
+Long Balls,964,12,0
+MAGA DOGE ,950,11,0
+Big Sticks,931,10,0
+Rieken Havoc,923,9,0
+Guillotine,901,8,0
+Simba's Dublin Green Sox,891,7,0
+Runtime Terror,875,6,0
+Magnum GI,868,5,1
+Trex,864,4,1.5
+Gashouse Gang,862,3,-2
+Young Guns,844,2,-0.5
+Like a Nightmare,819,1,0
+Team,SB,Pts,Dif
+Young Guns,238,13,0
+Long Balls,211,12,0
+Guillotine,176,11,0
+Like a Nightmare,166,10,0
+Gashouse Gang,160,9,0.5
+Trex,159,8,-0.5
+Runtime Terror,154,7,0
+Rieken Havoc,149,6,0
+Dawg,147,5,0
+Magnum GI,141,4,0
+MAGA DOGE ,134,3,0
+Simba's Dublin Green Sox,104,2,0
+Big Sticks,81,1,0
+Pitching Breakdown,,,
+Team,ERA,Pts,Dif
+Rieken Havoc,3.249,13,0
+Like a Nightmare,3.437,12,0
+Guillotine,3.478,11,0
+Runtime Terror,3.560,10,0
+Magnum GI,3.607,9,1
+Big Sticks,3.614,8,-1
+Young Guns,3.677,7,0
+Simba's Dublin Green Sox,3.700,6,0
+MAGA DOGE ,3.803,5,0
+Gashouse Gang,3.991,4,0
+Dawg,4.041,3,0
+Long Balls,4.322,2,0
+Trex,4.367,1,0
+Team,K,Pts,Dif
+Guillotine,1398,13,0
+Rieken Havoc,1376,12,0
+Like a Nightmare,1359,11,0
+Long Balls,1277,10,1
+Young Guns,1265,9,-1
+Runtime Terror,1257,8,1
+Big Sticks,1252,7,-1
+MAGA DOGE ,1238,6,0
+Magnum GI,1215,5,0
+Dawg,1164,3.5,-0.5
+Gashouse Gang,1164,3.5,0.5
+Simba's Dublin Green Sox,1155,2,0
+Trex,1110,1,0
+Team,SHOLDS,Pts,Dif
+Rieken Havoc,101,13,0
+Dawg,99,12,0
+Big Sticks,95,11,1
+Like a Nightmare,93.5,10,-1
+Simba's Dublin Green Sox,86.5,9,0
+Gashouse Gang,76.5,8,0
+MAGA DOGE ,76,7,0
+Magnum GI,70.5,6,0
+Runtime Terror,64.5,5,0
+Long Balls,64,4,0
+Guillotine,60,3,0
+Trex,55.5,2,0
+Young Guns,52,1,0
+Team,WHIP,Pts,Dif
+Rieken Havoc,1.0903,13,0
+Runtime Terror,1.1214,12,0
+Like a Nightmare,1.1564,11,0
+Guillotine,1.1624,10,0
+Big Sticks,1.1748,9,0
+Simba's Dublin Green Sox,1.1796,8,0
+MAGA DOGE ,1.2049,7,0
+Dawg,1.2068,6,0
+Gashouse Gang,1.2297,5,0
+Magnum GI,1.2402,4,1
+Young Guns,1.2500,3,-1
+Trex,1.2740,2,0
+Long Balls,1.2782,1,0
+Team,WQS,Pts,Dif
+Big Sticks,190,13,0
+Guillotine,189,12,0
+Rieken Havoc,182,11,0
+Young Guns,179,10,0
+MAGA DOGE ,174,9,0
+Long Balls,170,8,0
+Like a Nightmare,165,7,0
+Simba's Dublin Green Sox,153,6,0
+Runtime Terror,152,5,0
+Trex,145,4,0
+Gashouse Gang,137,3,0
+Dawg,118,1.5,-0.5
+Magnum GI,118,1.5,0.5
+    
+  
+    
+    
+    
+    

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "f005248a-c3aa-46c4-8051-c13c8af85835",
+    "name": "Yoshinobu Yamamoto",
+    "position": "P",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 169.2656777777778,
+    "projected_era": 3.4299999999999997,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 23.63
+  },
+  "pick_info": {
+    "pick_number": 22,
+    "round": 2,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "P"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "f320d47d-6c4a-43a1-9d78-2194ad4593a0",
+    "name": "Jesus Luzardo",
+    "position": "P",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.999999999999998,
+    "projected_quality_starts": 17.05,
+    "projected_strikeouts": 198.8988888888889,
+    "projected_era": 3.57,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 85.31
+  },
+  "pick_info": {
+    "pick_number": 79,
+    "round": 7,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

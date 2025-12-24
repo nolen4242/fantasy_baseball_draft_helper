@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "b11b0365-d312-47f5-b373-2526e9608fcf",
+    "name": "Munetaka Murakami",
+    "position": "3B",
+    "team": "",
+    "age": null,
+    "projected_home_runs": 31.4,
+    "projected_obp": 0.333,
+    "projected_runs": 72.19999999999999,
+    "projected_rbi": 79.19999999999999,
+    "projected_stolen_bases": 9.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 231.55
+  },
+  "pick_info": {
+    "pick_number": 201,
+    "round": 16,
+    "team_name": "Trex"
+  },
+  "position": "3B"
+}

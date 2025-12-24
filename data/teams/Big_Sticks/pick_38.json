@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "7b4e27e5-8657-4164-a0db-62e0f339d6c5",
+    "name": "Yordan Alvarez",
+    "position": "U",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 30.7,
+    "projected_obp": 0.397,
+    "projected_runs": 90.69999999999999,
+    "projected_rbi": 84.69999999999999,
+    "projected_stolen_bases": 4.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 39.81
+  },
+  "pick_info": {
+    "pick_number": 38,
+    "round": 3,
+    "team_name": "Big Sticks"
+  },
+  "position": "U"
+}

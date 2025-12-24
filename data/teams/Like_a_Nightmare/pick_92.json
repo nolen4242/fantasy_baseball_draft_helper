@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "a8a3d155-c150-4ae2-b00d-aece6675fbe5",
+    "name": "Nick Pivetta",
+    "position": "P",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.999999999999998,
+    "projected_quality_starts": 17.6,
+    "projected_strikeouts": 211.31633333333335,
+    "projected_era": 3.96,
+    "projected_whip": null,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 92.55
+  },
+  "pick_info": {
+    "pick_number": 92,
+    "round": 8,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "P"
+}
