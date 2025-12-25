@@ -714,15 +714,27 @@ def get_recommendations():
         
         print(f"DEBUG: Got {len(recommendations)} recommendations")
         
-        return jsonify({
-            'recommendations': [
-                {
+        if len(recommendations) == 0:
+            print("WARNING: No recommendations returned! This might indicate:")
+            print("  - All players have negative scores")
+            print("  - ML model failed to load")
+            print("  - No available players with roster slots")
+        
+        recommendations_data = []
+        for rec in recommendations:
+            try:
+                recommendations_data.append({
                     'player': rec['player'].to_dict(),
                     'score': rec['score'],
                     'reasoning': rec['reasoning']
-                }
-                for rec in recommendations
-            ]
+                })
+            except Exception as e:
+                print(f"ERROR converting recommendation to dict: {e}")
+                print(f"  Recommendation: {rec}")
+                continue
+        
+        return jsonify({
+            'recommendations': recommendations_data
         })
     except Exception as e:
         import traceback
@@ -1040,48 +1052,64 @@ def get_standings():
 
 @app.route('/api/ml/train', methods=['POST'])
 def train_ml_models():
-    """Train ML models on simulated draft data."""
+    """Train ML models on player data features."""
     if not all_players:
         return jsonify({
             'success': False,
-            'message': 'No players loaded. Load CBS and Steamer data first.'
+            'message': 'No players loaded. Load players from master dictionary first.'
         }), 400
-    
-    num_simulations = request.json.get('num_simulations', 1000) if request.json else 1000
-    strategies = request.json.get('strategies', ['adp', 'category', 'random']) if request.json else ['adp', 'category', 'random']
     
     try:
         trainer = MLTrainer()
         
-        # Generate training data
+        # Generate training data from player features
+        print("Generating training data...")
         training_data = trainer.generate_training_data(
             all_players=all_players,
-            num_simulations=num_simulations,
-            strategies=strategies
+            league_thresholds=None  # Will use defaults
         )
         
+        if training_data.empty:
+            return jsonify({
+                'success': False,
+                'message': 'No training data generated. Check player data quality.'
+            }), 400
+        
         # Train models
+        print("Training models...")
         results = trainer.train_models(training_data)
         
-        # Update recommendation engine
+        # Update recommendation engine to use new models
         recommendation_engine.ml_trainer = trainer
         recommendation_engine._ml_models_loaded = True
         
+        # Get top features
+        top_features = dict(sorted(
+            results['feature_importance'].items(),
+            key=lambda x: x[1],
+            reverse=True
+        )[:10])
+        
         return jsonify({
             'success': True,
-            'message': f'Models trained on {len(training_data)} samples',
-            'train_score': results['train_score'],
-            'test_score': results['test_score'],
-            'top_features': dict(sorted(
-                results['feature_importance'].items(),
-                key=lambda x: x[1],
-                reverse=True
-            )[:10])
+            'message': f'Models trained successfully on {len(training_data)} player samples',
+            'samples': len(training_data),
+            'features': len(training_data.columns) - 1,
+            'rf_train_score': results['rf_train_score'],
+            'rf_test_score': results['rf_test_score'],
+            'gb_train_score': results['gb_train_score'],
+            'gb_test_score': results['gb_test_score'],
+            'ensemble_train_score': results['ensemble_train_score'],
+            'ensemble_test_score': results['ensemble_test_score'],
+            'top_features': top_features,
+            'models_dir': str(trainer.models_dir)
         })
     except Exception as e:
+        import traceback
         return jsonify({
             'success': False,
-            'message': f'Error training models: {str(e)}'
+            'message': f'Error training models: {str(e)}',
+            'traceback': traceback.format_exc() if app.debug else None
         }), 500
 
 

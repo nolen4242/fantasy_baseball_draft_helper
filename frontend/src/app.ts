@@ -177,6 +177,56 @@ class App {
         }
     }
 
+    private async trainMLModels(): Promise<void> {
+        // Confirm before training (takes time)
+        const confirmed = confirm(
+            'Train AI Models?\n\n' +
+            'This will analyze all player data to improve draft recommendations.\n' +
+            '• Takes 1-2 minutes\n' +
+            '• Only needed once (or when player data is updated)\n' +
+            '• Models are saved and used automatically\n\n' +
+            'Click OK to start training.'
+        );
+        
+        if (!confirmed) {
+            return;
+        }
+
+        const btn = document.getElementById('train-ml-btn');
+        if (btn) {
+            btn.textContent = 'Training AI...';
+            btn.setAttribute('disabled', 'true');
+        }
+
+        try {
+            console.log('Training ML models...');
+            const result = await this.api.trainMLModels();
+            
+            if (result.success) {
+                let message = `✅ AI Models Trained Successfully!\n\n`;
+                message += `Analyzed ${result.samples} players with ${result.features} features\n\n`;
+                message += `Model Accuracy:\n`;
+                message += `  • Test Accuracy: ${((result.ensemble_test_score || 0) * 100).toFixed(1)}%\n\n`;
+                message += `The AI will now use these models to improve recommendations!\n\n`;
+                message += `(Models are saved and will be used automatically)`;
+                
+                alert(message);
+                console.log('ML models trained:', result);
+            } else {
+                alert('Failed to train models: ' + (result.message || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Error training ML models:', error);
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            alert('Error training AI models: ' + errorMessage);
+        } finally {
+            if (btn) {
+                btn.textContent = 'Train AI Models';
+                btn.removeAttribute('disabled');
+            }
+        }
+    }
+
     private async loadCBSData(): Promise<void> {
         try {
             const result = await this.api.loadCBSData();

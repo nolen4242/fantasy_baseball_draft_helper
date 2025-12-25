@@ -39,8 +39,24 @@ class MasterPlayerDictLoader:
             if player:
                 players.append(player)
         
+        # Apply IP constraint to all QS values (post-processing)
+        for player in players:
+            if player.projected_quality_starts and player.projected_innings_pitched:
+                max_qs_from_ip = player.projected_innings_pitched / 6.0
+                if player.projected_quality_starts > max_qs_from_ip:
+                    player.projected_quality_starts = max_qs_from_ip
+        
         print(f"Loaded {len(players)} players from master player dictionary")
         return players
+    
+    def _apply_qs_ip_constraint(self, qs: Optional[float], ip: Optional[float]) -> Optional[float]:
+        """Apply IP constraint to QS (each QS requires at least 6 IP)."""
+        if qs is None:
+            return None
+        if ip is None or ip <= 0:
+            return qs
+        max_qs_from_ip = ip / 6.0
+        return min(qs, max_qs_from_ip)
     
     def _convert_to_player(self, player_data: dict) -> Optional[Player]:
         """Convert master player dict entry to Player object."""
@@ -80,12 +96,39 @@ class MasterPlayerDictLoader:
                     'steamer': steamer.get('era'),
                     'depthchart': depthchart.get('era')
                 })
-                # WHIP not directly in projections, calculate from components if available
-                # For now, use ERA as proxy or leave None
+                # WHIP: Try to get from projections, or calculate from components
                 projected_whip = calculate_weighted_projection('whip', {
                     'steamer': steamer.get('whip'),
                     'depthchart': depthchart.get('whip')
-                })  # Will be None if not available
+                })
+                
+                # If WHIP not available, calculate from walks and IP
+                if projected_whip is None:
+                    # Get walks and IP from either source
+                    walks_steamer = steamer.get('walks')
+                    walks_depthchart = depthchart.get('walks')
+                    walks = walks_steamer or walks_depthchart
+                    
+                    ip_steamer = steamer.get('innings_pitched')
+                    ip_depthchart = depthchart.get('innings_pitched')
+                    ip = ip_steamer or ip_depthchart
+                    
+                    if walks is not None and ip is not None and ip > 0:
+                        # Estimate hits from league-average H/9 rate
+                        league_avg_h_per_9 = 8.7
+                        # Use BABIP if available to refine estimate
+                        babip_steamer = steamer.get('babip')
+                        babip_depthchart = depthchart.get('babip')
+                        babip = babip_steamer or babip_depthchart
+                        
+                        if babip:
+                            babip_factor = babip / 0.300  # Normalize to league avg BABIP
+                            estimated_h_per_9 = league_avg_h_per_9 * babip_factor
+                        else:
+                            estimated_h_per_9 = league_avg_h_per_9
+                        
+                        estimated_hits = (estimated_h_per_9 * ip) / 9.0
+                        projected_whip = (walks + estimated_hits) / ip
                 projected_wins = calculate_weighted_projection('wins', {
                     'steamer': steamer.get('wins'),
                     'depthchart': depthchart.get('wins')
@@ -101,9 +144,45 @@ class MasterPlayerDictLoader:
                         'steamer': steamer.get('quality_starts'),
                         'depthchart': depthchart.get('quality_starts')
                     })
+                    # Cap at realistic maximum (23 QS - even elite pitchers rarely exceed this)
+                    if projected_quality_starts:
+                        projected_quality_starts = min(projected_quality_starts, 23)
+                        
+                        # CRITICAL: Also cap based on IP (each QS requires at least 6 IP)
+                        projected_ip = depthchart.get('innings_pitched') or steamer.get('innings_pitched')
+                        if projected_ip and projected_ip > 0:
+                            max_qs_from_ip = projected_ip / 6.0
+                            projected_quality_starts = min(projected_quality_starts, max_qs_from_ip)
                 else:
-                    # Fallback: use DepthChart GS if available
-                    projected_quality_starts = depthchart.get('quality_starts') or steamer.get('quality_starts')
+                    # Fallback: estimate from GS with realistic rates
+                    gs = depthchart.get('games_started') or steamer.get('games_started')
+                    era = depthchart.get('era') or steamer.get('era') or 4.0
+                    if gs:
+                        # More realistic QS rates based on actual data
+                        if era < 3.00:
+                            projected_quality_starts = min(gs * 0.65, 23)  # Elite: 65%, cap at 23
+                        elif era < 3.50:
+                            projected_quality_starts = min(gs * 0.58, 22)  # Very good: 58%, cap at 22
+                        elif era < 4.00:
+                            projected_quality_starts = min(gs * 0.50, 20)  # Good: 50%, cap at 20
+                        elif era < 4.50:
+                            projected_quality_starts = min(gs * 0.45, 18)  # Average: 45%, cap at 18
+                        else:
+                            projected_quality_starts = min(gs * 0.38, 16)  # Below average: 38%, cap at 16
+                        
+                        # CRITICAL: Cap QS based on IP (each QS requires at least 6 IP)
+                        projected_ip = depthchart.get('innings_pitched') or steamer.get('innings_pitched')
+                        if projected_ip and projected_ip > 0:
+                            max_qs_from_ip = projected_ip / 6.0  # Each QS requires at least 6 IP
+                            projected_quality_starts = min(projected_quality_starts, max_qs_from_ip)
+                    else:
+                        projected_quality_starts = steamer.get('quality_starts')
+                        # Still apply IP cap if we have IP data
+                        if projected_quality_starts:
+                            projected_ip = depthchart.get('innings_pitched') or steamer.get('innings_pitched')
+                            if projected_ip and projected_ip > 0:
+                                max_qs_from_ip = projected_ip / 6.0
+                                projected_quality_starts = min(projected_quality_starts, max_qs_from_ip)
             else:
                 # Batting projections - use weighted averages
                 projected_home_runs = calculate_weighted_projection('home_runs', {
@@ -160,7 +239,10 @@ class MasterPlayerDictLoader:
                 projected_whip=projected_whip if is_pitcher else None,
                 projected_wins=projected_wins if is_pitcher else None,
                 projected_saves=projected_saves if is_pitcher else None,
-                projected_quality_starts=projected_quality_starts if is_pitcher else None,
+                projected_quality_starts=self._apply_qs_ip_constraint(
+                    projected_quality_starts, 
+                    depthchart.get('innings_pitched') or steamer.get('innings_pitched')
+                ) if is_pitcher else None,
                 
                 # Statcast metrics
                 savant_exit_velocity=statcast.get('exit_velocity_avg'),

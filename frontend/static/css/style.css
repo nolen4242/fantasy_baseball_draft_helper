@@ -401,6 +401,22 @@ body {
     color: white;
 }
 
+.btn-small.btn-ml {
+    background: #6f42c1;
+    color: white;
+}
+
+.btn-small.btn-ml:hover {
+    background: #5a32a3;
+    color: white;
+}
+
+.btn-small.btn-ml:disabled {
+    background: #999;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 /* Main Layout */
 .main-layout {
     display: grid;

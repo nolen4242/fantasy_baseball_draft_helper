@@ -186,14 +186,15 @@ class StandingsCalculator:
     def _rank_teams_by_category(self, category: str, category_totals: Dict[str, Dict[str, float]]) -> List[str]:
         """Rank teams by a category.
         
-        For ERA/WHIP: Teams below IP minimum get worst rank (tied for last).
-        Lower ERA/WHIP = better rank (higher points).
+        For ALL PITCHING categories: Teams below IP minimum get worst rank (tied for last).
+        For ERA/WHIP: Lower = better rank (higher points).
         For other categories: Higher = better rank (higher points).
         """
         IP_MIN = 1000.0
+        PITCHING_CATEGORIES = ['ERA', 'WHIP', 'K', 'SHOLDS', 'WQS']
         
-        # For ERA and WHIP, handle IP minimum requirement
-        if category in ['ERA', 'WHIP']:
+        # For ALL pitching categories, handle IP minimum requirement
+        if category in PITCHING_CATEGORIES:
             # Separate teams into those meeting IP minimum and those below
             teams_meeting_min = []
             teams_below_min = []
@@ -204,8 +205,13 @@ class StandingsCalculator:
                 else:
                     teams_meeting_min.append((team, totals[category]))
             
-            # Rank teams meeting minimum (lower is better for ERA/WHIP)
-            teams_meeting_min.sort(key=lambda x: x[1])  # Sort by value, ascending (lower = better)
+            # For ERA/WHIP: lower is better (sort ascending)
+            # For other pitching categories: higher is better (sort descending)
+            if category in ['ERA', 'WHIP']:
+                teams_meeting_min.sort(key=lambda x: x[1])  # Sort ascending (lower = better)
+            else:
+                teams_meeting_min.sort(key=lambda x: x[1], reverse=True)  # Sort descending (higher = better)
+            
             ranked_meeting = [team for team, _ in teams_meeting_min]
             
             # Teams below minimum all get worst rank (tied for last)
@@ -215,7 +221,7 @@ class StandingsCalculator:
             # Combine: teams meeting minimum first (ranked), then teams below minimum (all tied for worst)
             return ranked_meeting + ranked_below
         else:
-            # For other categories, higher is better
+            # For batting categories, higher is better
             team_values = {
                 team: totals[category]
                 for team, totals in category_totals.items()
@@ -249,37 +255,64 @@ class StandingsCalculator:
         if not rankings:
             return {}
         
+        IP_MIN = 1000.0
+        PITCHING_CATEGORIES = ['ERA', 'WHIP', 'K', 'SHOLDS', 'WQS']
+        
         # Get values for all teams
         team_values = {
             team: category_totals[team][category]
             for team in rankings
         }
         
-        # Group teams by value to identify ties
+        # Separate teams by IP minimum for pitching categories
+        teams_meeting_min = []
+        teams_below_min = []
+        
+        if category in PITCHING_CATEGORIES:
+            for team in rankings:
+                ip = category_totals[team].get('IP', 0)
+                if ip < IP_MIN:
+                    teams_below_min.append(team)
+                else:
+                    teams_meeting_min.append(team)
+        else:
+            teams_meeting_min = rankings
+        
+        # Group teams by value to identify ties (only for teams meeting minimum)
+        # Round values to avoid floating point precision issues
         value_to_teams = {}
-        for team in rankings:
+        for team in teams_meeting_min:
             value = team_values[team]
-            if value not in value_to_teams:
-                value_to_teams[value] = []
-            value_to_teams[value].append(team)
+            # Round to avoid floating point issues (use 2 decimal places for ERA/WHIP, 1 for others)
+            if category in ['ERA', 'WHIP']:
+                rounded_value = round(value, 2)
+            else:
+                rounded_value = round(value, 1)
+            
+            if rounded_value not in value_to_teams:
+                value_to_teams[rounded_value] = []
+            value_to_teams[rounded_value].append(team)
         
         # Determine if lower or higher is better
         is_lower_better = category in ['ERA', 'WHIP']
         
-        # Sort unique values
+        # Sort unique values (best first)
+        # For ERA/WHIP: ascending (lowest first = best)
+        # For others: descending (highest first = best)
         unique_values = sorted(value_to_teams.keys(), reverse=not is_lower_better)
         
         # Assign points
         points = {}
         current_rank = 1
         
+        # Assign points to teams meeting minimum (ranked by value)
         for value in unique_values:
             tied_teams = value_to_teams[value]
             num_tied = len(tied_teams)
             
             # Calculate points for tied teams
             # If teams are tied at rank N, they share points for ranks N through N+num_tied-1
-            # Points formula: num_teams - rank + 1
+            # Points formula: num_teams - rank + 1 (rank 1 = 13 points, rank 13 = 1 point)
             # Sum points for all ranks in the tie, then divide by number of tied teams
             points_sum = 0
             for rank in range(current_rank, current_rank + num_tied):
@@ -293,6 +326,10 @@ class StandingsCalculator:
                 points[team] = points_per_team
             
             current_rank += num_tied
+        
+        # Teams below IP minimum all get 1 point (worst) in pitching categories
+        for team in teams_below_min:
+            points[team] = 1.0
         
         return points
     

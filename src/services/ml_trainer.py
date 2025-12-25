@@ -28,6 +28,7 @@ class MLTrainer:
         self.value_model = None
         self.gradient_boosting_model = None  # Ensemble model
         self.scaler = StandardScaler()
+        self.feature_columns = None  # Store feature column order from training
     
     def generate_training_data(
         self,
@@ -65,6 +66,18 @@ class MLTrainer:
             
             # Extract player features
             features = self._extract_player_features(player)
+            
+            # Add contextual features (set to 0 during training - no draft context available)
+            # These will be populated during prediction with actual draft context
+            features['pick_number'] = 0
+            features['round'] = 0
+            features['pick_in_round'] = 0
+            features['position_scarcity'] = 0.0
+            features['team_needs_score'] = 0.0
+            features['position_scarcity_score'] = 0.0
+            features['category_targeting_score'] = 0.0
+            features['comparative_advantage_score'] = 0.0
+            features['risk_score'] = 0.0  # Risk is already in _extract_player_features, but add for consistency
             
             # Calculate target: composite player value score
             # Based on how much this player contributes to league-winning categories
@@ -305,8 +318,19 @@ class MLTrainer:
         """Train ensemble ML models on training data."""
         # Separate features and target
         feature_cols = [col for col in training_data.columns if col != 'target_player_value']
-        X = training_data[feature_cols].values
+        self.feature_columns = feature_cols  # Store for prediction
+        X = training_data[feature_cols].copy()
         y = training_data['target_player_value'].values
+        
+        # Handle NaN values - fill with median for numeric columns, 0 for others
+        for col in X.columns:
+            if X[col].dtype in ['float64', 'int64']:
+                X[col] = X[col].fillna(X[col].median() if not X[col].isna().all() else 0)
+            else:
+                X[col] = X[col].fillna(0)
+        
+        # Convert to numpy array
+        X = X.values
         
         # Scale features
         X_scaled = self.scaler.fit_transform(X)
@@ -375,6 +399,7 @@ class MLTrainer:
         model_file = self.models_dir / "value_model.pkl"
         gb_model_file = self.models_dir / "gradient_boosting_model.pkl"
         scaler_file = self.models_dir / "scaler.pkl"
+        feature_cols_file = self.models_dir / "feature_columns.pkl"
         
         with open(model_file, 'wb') as f:
             pickle.dump(self.value_model, f)
@@ -385,6 +410,11 @@ class MLTrainer:
         
         with open(scaler_file, 'wb') as f:
             pickle.dump(self.scaler, f)
+        
+        # Save feature columns for consistent prediction
+        if self.feature_columns:
+            with open(feature_cols_file, 'wb') as f:
+                pickle.dump(self.feature_columns, f)
         
         print(f"Models saved to {self.models_dir}")
     
@@ -407,6 +437,14 @@ class MLTrainer:
         with open(scaler_file, 'rb') as f:
             self.scaler = pickle.load(f)
         
+        # Try to load feature columns if available
+        feature_cols_file = self.models_dir / "feature_columns.pkl"
+        if feature_cols_file.exists():
+            with open(feature_cols_file, 'rb') as f:
+                self.feature_columns = pickle.load(f)
+        else:
+            print("WARNING: feature_columns.pkl not found. Feature order may not match training.")
+        
         return True
     
     def predict_player_value(
@@ -416,49 +454,126 @@ class MLTrainer:
         all_players: Optional[List[Player]] = None,
         pick_number: Optional[int] = None,
         round_num: Optional[int] = None,
-        all_rosters: Optional[Dict[str, List[Player]]] = None
+        all_rosters: Optional[Dict[str, List[Player]]] = None,
+        recommendation_engine: Optional[object] = None,
+        draft_state: Optional[object] = None,
+        team_name: Optional[str] = None
     ) -> float:
         """
         Predict player value score using ensemble model.
-        Now includes draft context features if available.
+        Includes ALL contextual factors: team needs, position scarcity, category targeting, 
+        comparative advantage, risk - all baked into the ML model.
         """
         if self.value_model is None:
             if not self.load_models():
                 return 0.0
         
-        # Extract player features
+        # Extract base player features
         features = self._extract_player_features(player)
         
-        # Add draft context features if available
-        if pick_number is not None:
-            features['pick_number'] = pick_number
-            features['round'] = round_num or (pick_number // 13) + 1 if pick_number else 1
-            features['pick_in_round'] = (pick_number % 13) if pick_number else 1
-            
-            # Position scarcity at this point in draft
-            if all_players and all_rosters:
-                player_pos = player.position
-                drafted_at_pos = sum(
-                    1 for roster in all_rosters.values()
-                    for p in roster
-                    if p.position == player_pos
-                )
-                available_at_pos = sum(
-                    1 for p in all_players
-                    if p.position == player_pos and not p.drafted
-                )
-                features['position_scarcity'] = drafted_at_pos / max(1, drafted_at_pos + available_at_pos)
-            else:
-                features['position_scarcity'] = 0.0
+        # Add draft context features (always include, use 0 if not available)
+        features['pick_number'] = pick_number or 0
+        features['round'] = round_num or (pick_number // 13) + 1 if pick_number else 0
+        features['pick_in_round'] = (pick_number % 13) if pick_number else 0
+        
+        # Position scarcity at this point in draft
+        if all_players and all_rosters:
+            player_pos = player.position
+            drafted_at_pos = sum(
+                1 for roster in all_rosters.values()
+                for p in roster
+                if p.position == player_pos
+            )
+            available_at_pos = sum(
+                1 for p in all_players
+                if p.position == player_pos and not p.drafted
+            )
+            features['position_scarcity'] = drafted_at_pos / max(1, drafted_at_pos + available_at_pos)
         else:
-            features['pick_number'] = 0
-            features['round'] = 0
-            features['pick_in_round'] = 0
             features['position_scarcity'] = 0.0
         
-        # Convert to array and scale
-        feature_cols = list(features.keys())
-        X = np.array([[features[col] for col in feature_cols]])
+        # Add contextual factors (team needs, comparative advantage, category priorities, risk)
+        # These are baked into the ML model - the model learns how to weight them
+        if recommendation_engine and roster_before and draft_state and team_name:
+            # Team needs score (normalized)
+            try:
+                needs_score, _ = recommendation_engine._analyze_team_needs(
+                    player, roster_before, draft_state, all_players or []
+                )
+                features['team_needs_score'] = needs_score / 100.0  # Normalize to 0-1 range
+            except:
+                features['team_needs_score'] = 0.0
+            
+            # Position scarcity score (normalized)
+            try:
+                pos_score, _ = recommendation_engine._analyze_position_scarcity(
+                    player, roster_before, all_players or [], draft_state, all_rosters or {}
+                )
+                features['position_scarcity_score'] = pos_score / 100.0  # Normalize
+            except:
+                features['position_scarcity_score'] = 0.0
+            
+            # Category targeting score (normalized)
+            try:
+                category_priorities = recommendation_engine._optimize_category_targets(
+                    roster_before, all_rosters or {}, draft_state
+                )
+                category_score = recommendation_engine._calculate_category_target_score(
+                    player, roster_before, category_priorities
+                )
+                features['category_targeting_score'] = category_score / 1000.0  # Normalize
+            except:
+                features['category_targeting_score'] = 0.0
+            
+            # Comparative advantage score (normalized)
+            try:
+                relative_score, _ = recommendation_engine._analyze_relative_advantage(
+                    player, roster_before, all_rosters or {}, draft_state, all_players or [], team_name
+                )
+                features['comparative_advantage_score'] = relative_score / 100.0  # Normalize
+            except:
+                features['comparative_advantage_score'] = 0.0
+            
+            # Risk score (normalized)
+            try:
+                risk_score, _ = recommendation_engine._analyze_risk_factors(player)
+                features['risk_score'] = risk_score / 100.0  # Normalize
+            except:
+                features['risk_score'] = 0.0
+        else:
+            # Default values when context not available (will be 0 during training)
+            features['team_needs_score'] = 0.0
+            features['position_scarcity_score'] = 0.0
+            features['category_targeting_score'] = 0.0
+            features['comparative_advantage_score'] = 0.0
+            features['risk_score'] = 0.0
+        
+        # Note: During training, these contextual features will be 0 (no draft context).
+        # During prediction, they'll have real values. The model learns to use them when available.
+        
+        # Convert to array and scale using the same feature order as training
+        if self.feature_columns is None:
+            # Fallback: use current features (might cause mismatch)
+            feature_cols = list(features.keys())
+            print(f"WARNING: No feature columns stored from training. Using {len(feature_cols)} features.")
+        else:
+            feature_cols = self.feature_columns
+        
+        # Ensure all required features are present, fill missing ones with 0
+        X_values = []
+        for col in feature_cols:
+            if col in features:
+                X_values.append(features[col])
+            else:
+                X_values.append(0.0)  # Default value for missing features
+                print(f"WARNING: Missing feature '{col}' in prediction, using 0.0")
+        
+        X = np.array([X_values])
+        
+        if X.shape[1] != len(feature_cols):
+            print(f"ERROR: Feature count mismatch. Expected {len(feature_cols)}, got {X.shape[1]}")
+            return 0.0
+        
         X_scaled = self.scaler.transform(X)
         
         # Ensemble prediction (60% RandomForest, 40% GradientBoosting)

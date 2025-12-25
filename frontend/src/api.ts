@@ -141,9 +141,21 @@ export class ApiClient {
     }
 
     async getRecommendations(): Promise<Recommendation[]> {
-        const response = await fetch(`${API_BASE}/api/recommendations`);
-        const data = await response.json();
-        return data.recommendations || [];
+        try {
+            const response = await fetch(`${API_BASE}/api/recommendations`);
+            if (!response.ok) {
+                console.error('Recommendations API error:', response.status, response.statusText);
+                return [];
+            }
+            const data = await response.json();
+            console.log('Recommendations API response:', data);
+            const recommendations = data.recommendations || [];
+            console.log(`Got ${recommendations.length} recommendations`);
+            return recommendations;
+        } catch (error) {
+            console.error('Error fetching recommendations:', error);
+            return [];
+        }
     }
 
     async revertPick(pickNumber: number): Promise<DraftState> {
@@ -279,6 +291,41 @@ export class ApiClient {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+        return response.json();
+    }
+
+    async trainMLModels(): Promise<{
+        success: boolean;
+        message: string;
+        samples?: number;
+        features?: number;
+        rf_train_score?: number;
+        rf_test_score?: number;
+        gb_train_score?: number;
+        gb_test_score?: number;
+        ensemble_train_score?: number;
+        ensemble_test_score?: number;
+        top_features?: Record<string, number>;
+        models_dir?: string;
+    }> {
+        const response = await fetch(`${API_BASE}/api/ml/train`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+        
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text();
+            throw new Error(`Expected JSON but got ${contentType}: ${text.substring(0, 200)}`);
+        }
+        
         return response.json();
     }
 }

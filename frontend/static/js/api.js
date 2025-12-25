@@ -212,5 +212,23 @@ export class ApiClient {
         }
         return response.json();
     }
+    async trainMLModels() {
+        const response = await fetch(`${API_BASE}/api/ml/train`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text();
+            throw new Error(`Expected JSON but got ${contentType}: ${text.substring(0, 200)}`);
+        }
+        return response.json();
+    }
 }
 //# sourceMappingURL=api.js.map

@@ -183,6 +183,14 @@ class RecommendationEngine:
         # Sort by score (highest first)
         recommendations.sort(key=lambda x: x['score'], reverse=True)
         
+        # Debug: Print score ranges
+        if recommendations:
+            scores = [r['score'] for r in recommendations]
+            top_3_names = [f"{r['player'].name}: {r['score']:.1f}" for r in recommendations[:3]]
+            print(f"DEBUG: Recommendation scores - Min: {min(scores):.1f}, Max: {max(scores):.1f}, Top 3: {top_3_names}")
+        else:
+            print("DEBUG: No recommendations generated - all players may have been filtered out or have negative scores")
+        
         # Apply lookahead simulation to top candidates
         if len(recommendations) >= top_n:
             top_candidates = recommendations[:top_n * 2]  # Consider top 2x for lookahead
@@ -314,9 +322,16 @@ class RecommendationEngine:
         """
         Determine which categories to target based on current standings.
         Returns dict of category -> target priority (0-1).
+        
+        CRITICAL: Teams below 1000 IP get 1 point (worst) in ALL pitching categories.
+        This makes IP accumulation the highest priority for pitching teams below minimum.
         """
+        IP_MIN = 1000.0
+        
         # Calculate current projected standings
         my_totals = self.standings_calculator._calculate_team_totals(my_team)
+        my_ip = my_totals.get('IP', 0)
+        below_ip_minimum = my_ip < IP_MIN
         
         # Calculate opponent totals
         opponent_totals_list = []
@@ -334,6 +349,16 @@ class RecommendationEngine:
         for category in batting_cats + pitching_cats:
             my_value = my_totals.get(category, 0)
             
+            # IMPORTANT: If below IP minimum, pitching categories are less valuable
+            # (we'll get 1 point = worst in all of them), but this shouldn't override
+            # everything - we still need to balance with getting good players
+            if category in pitching_cats and below_ip_minimum:
+                # High priority but not maximum - encourage IP accumulation without
+                # completely overriding value considerations
+                # We'll handle IP needs separately in team needs analysis
+                category_priorities[category] = 0.75  # High priority but not absolute
+                continue
+            
             # Compare to opponents
             opponent_values = [totals.get(category, 0) for totals in opponent_totals_list]
             if opponent_values:
@@ -347,7 +372,8 @@ class RecommendationEngine:
                         category_priorities[category] = 0.5
                     elif my_value > median_opponent:
                         # We're worse (higher ERA/WHIP) - high priority
-                        category_priorities[category] = min(1.0, (my_value - median_opponent) / median_opponent)
+                        # Lower ERA/WHIP = better = more points
+                        category_priorities[category] = min(1.0, (my_value - median_opponent) / max(0.1, median_opponent))
                     else:
                         category_priorities[category] = 0.3  # We're good, low priority
                 else:  # Higher is better
@@ -370,24 +396,55 @@ class RecommendationEngine:
     ) -> float:
         """
         Calculate score based on how well player helps target categories.
+        
+        CRITICAL: For pitchers, lower ERA/WHIP = better = more points.
+        Also accounts for IP minimum requirement.
         """
         score = 0.0
+        
+        # Check IP status for pitching categories
+        IP_MIN = 1000.0
+        my_totals = self.standings_calculator._calculate_team_totals(my_team)
+        my_ip = my_totals.get('IP', 0)
+        below_ip_minimum = my_ip < IP_MIN
         
         # Calculate player's category contributions
         is_pitcher = player.position in ['SP', 'RP', 'P']
         
         if is_pitcher:
+            # CRITICAL: If below IP minimum, ALL pitching category contributions are meaningless
+            # (we'll get 1 point = worst regardless). But we still want to accumulate IP,
+            # so the IP contribution is handled in _analyze_team_needs, not here.
+            # Here we focus on category improvements assuming we'll meet IP minimum.
+            
             # Pitching categories
             if player.projected_strikeouts:
                 score += player.projected_strikeouts * 0.1 * category_priorities.get('K', 0.5)
+            
+            # ERA: Lower is better (lower ERA = more points in standings)
+            # So a pitcher with 3.00 ERA is better than one with 4.00 ERA
             if player.projected_era:
-                # Lower ERA is better, so invert
-                era_contribution = max(0, (5.0 - player.projected_era) / 5.0)
+                # Lower ERA = better, so we reward lower ERA more
+                # Scale: 2.00 ERA = best (100%), 5.00 ERA = worst (0%)
+                era_contribution = max(0, (5.0 - player.projected_era) / 3.0)  # Normalized 0-1
                 score += era_contribution * 50 * category_priorities.get('ERA', 0.5)
+            
+            # WHIP: Lower is better (lower WHIP = more points in standings)
+            if player.projected_whip:
+                # Lower WHIP = better, so we reward lower WHIP more
+                # Scale: 0.90 WHIP = best (100%), 1.50 WHIP = worst (0%)
+                whip_contribution = max(0, (1.50 - player.projected_whip) / 0.60)  # Normalized 0-1
+                score += whip_contribution * 50 * category_priorities.get('WHIP', 0.5)
+            
             if player.projected_wins:
                 score += player.projected_wins * 2.0 * category_priorities.get('WQS', 0.5)
             if player.projected_quality_starts:
                 score += player.projected_quality_starts * 2.0 * category_priorities.get('WQS', 0.5)
+            if player.projected_saves:
+                score += player.projected_saves * 3.0 * category_priorities.get('SHOLDS', 0.5)
+            if player.projected_holds:
+                # SHOLDS = Saves + (Holds * 0.5)
+                score += (player.projected_holds * 0.5) * 1.5 * category_priorities.get('SHOLDS', 0.5)
         else:
             # Batting categories
             if player.projected_home_runs:
@@ -431,72 +488,98 @@ class RecommendationEngine:
         # Determine if player is a pitcher (used multiple times)
         is_pitcher = player.position in ['SP', 'RP', 'P']
         
-        # === 50% CUSTOM ADP (from player dict) ===
-        # Custom ADP is league-specific and heavily weighted
-        custom_adp_score, custom_adp_reasoning = self._analyze_custom_adp_value(
-            player, draft_state, available_players
-        )
-        score += custom_adp_score * 0.5  # 50% weight
-        if custom_adp_reasoning:
-            reasoning_parts.append(custom_adp_reasoning)
+        # === 100% ML-BASED VALUE PREDICTION ===
+        # The ML model uses ALL features including contextual factors (team needs, position scarcity,
+        # category targeting, comparative advantage, risk) - ALL baked into one AI decision
+        # Try to load ML models if not already loaded
+        if use_ml and not self._ml_models_loaded:
+            self._ml_models_loaded = self.ml_trainer.load_models()
         
-        # === 50% OTHER FACTORS (comparative advantage, risk, scarcity, etc.) ===
-        other_factors_score = 0.0
-        
-        # 0. Category-specific optimization (target winning categories)
-        category_priorities = self._optimize_category_targets(my_team, all_team_rosters, draft_state)
-        category_score = self._calculate_category_target_score(player, my_team, category_priorities)
-        other_factors_score += category_score * 0.10  # 10% weight on category targeting
-        
-        # 1. ML-based value prediction (if available) - now with draft context
+        ml_value = None
         ml_score = 0.0
         if use_ml and self._ml_models_loaded:
             try:
                 pick_number = len(draft_state.picks) + 1
                 round_num = draft_state.current_round
+                # Pass recommendation_engine so ML can calculate ALL contextual factors
+                # Team needs, position scarcity, category targeting, comparative advantage, risk
+                # All baked into the ML model - 100% AI decision
                 ml_value = self.ml_trainer.predict_player_value(
-                    player, my_team, available_players, pick_number, round_num, all_team_rosters
+                    player, my_team, available_players, pick_number, round_num, all_team_rosters,
+                    recommendation_engine=self,
+                    draft_state=draft_state,
+                    team_name=team_name
                 )
-                ml_score = ml_value * 10  # Scale ML prediction
-                if ml_score > 0:
-                    reasoning_parts.append(f"ML value: {ml_score:.1f}")
+                # Scale ML prediction to match score range (ML predicts value, we need score)
+                # ML value is typically 0-100, scale to 0-1000 for scoring
+                ml_score = ml_value * 10
+                score = ml_score  # 100% ML model - ALL contextual factors baked in
             except Exception as e:
                 # Fall back to rule-based if ML fails
-                pass
+                print(f"ML prediction failed for {player.name}: {e}")
+                import traceback
+                traceback.print_exc()
+                ml_value = None
         
-        # 2. Position scarcity analysis (dynamic, considers what's been drafted)
-        position_score, pos_reasoning = self._analyze_position_scarcity(
-            player, my_team, available_players, draft_state, all_team_rosters
+        # === FALLBACK: RULE-BASED SCORING (only if ML not available) ===
+        if ml_value is None:
+            # Use ADP + contextual factors as fallback
+            custom_adp_score, custom_adp_reasoning = self._analyze_custom_adp_value(
+                player, draft_state, available_players
+            )
+            score += custom_adp_score * 0.50  # 50% weight on ADP when ML not available
+            
+            contextual_score = 0.0
+            # 1. Team needs analysis
+            needs_score, needs_reasoning = self._analyze_team_needs(
+                player, my_team, draft_state, available_players
+            )
+            contextual_score += needs_score * 0.30
+            
+            # 2. Position scarcity analysis
+            position_score, pos_reasoning = self._analyze_position_scarcity(
+                player, my_team, available_players, draft_state, all_team_rosters
+            )
+            contextual_score += position_score * 0.25
+            
+            # 3. Category-specific optimization
+            category_priorities = self._optimize_category_targets(my_team, all_team_rosters, draft_state)
+            category_score = self._calculate_category_target_score(player, my_team, category_priorities)
+            contextual_score += category_score * 0.20
+            
+            # 4. Comparative advantage
+            relative_score, relative_reasoning = self._analyze_relative_advantage(
+                player, my_team, all_team_rosters, draft_state, available_players, team_name
+            )
+            contextual_score += relative_score * 0.15
+            
+            # 5. Risk assessment
+            risk_score, risk_reasoning = self._analyze_risk_factors(player)
+            contextual_score += risk_score * 0.10
+            
+            score += contextual_score * 0.50  # 50% contextual when ML not available
+        
+        # Get reasoning components for display (even when using ML)
+        custom_adp_score, custom_adp_reasoning = self._analyze_custom_adp_value(
+            player, draft_state, available_players
         )
-        other_factors_score += position_score * 0.15  # 15% of other factors
-        
-        # 3. Team needs analysis (prevents redundant picks, balances hitters/pitchers)
         needs_score, needs_reasoning = self._analyze_team_needs(
             player, my_team, draft_state, available_players
         )
-        other_factors_score += needs_score * 0.20  # 20% of other factors
-        
-        # 4. Comparative advantage (vs opponents)
+        position_score, pos_reasoning = self._analyze_position_scarcity(
+            player, my_team, available_players, draft_state, all_team_rosters
+        )
         relative_score, relative_reasoning = self._analyze_relative_advantage(
             player, my_team, all_team_rosters, draft_state, available_players, team_name
         )
-        other_factors_score += relative_score * 0.25  # 25% of other factors
-        
-        # 5. Risk assessment (injury, age, sample size)
         risk_score, risk_reasoning = self._analyze_risk_factors(player)
-        other_factors_score += risk_score * 0.15  # 15% of other factors
-        
-        # 6. Projected value analysis (backup/additional signal)
         value_score, value_reasoning = self._analyze_projected_value(
             player, available_players
         )
-        other_factors_score += (value_score / 10) * 0.10  # 10% of other factors
         
-        # 7. ML score (if available)
-        other_factors_score += ml_score * 0.15  # 15% of other factors
-        
-        # Add other factors with 50% weight
-        score += other_factors_score * 0.5  # 50% weight
+        # Store for reasoning display
+        if custom_adp_reasoning:
+            reasoning_parts.append(custom_adp_reasoning)
         
         # Extra ADP penalty for pitchers - they should stay reasonably close to ADP
         if is_pitcher and player.adp:
@@ -538,14 +621,15 @@ class RecommendationEngine:
                     score -= 40
                     reasoning_parts.append("Have 7+ pitchers")
         
-        # Add ML score
-        score += ml_score
+        # ML value is already calculated above, no need to recalculate
         
-        # Build comprehensive reasoning
+        # ML value is already calculated above with all contextual factors baked in
+        
+        # Build comprehensive reasoning (concise paragraph format)
         reasoning = self._build_detailed_reasoning(
             player, my_team, all_team_rosters, draft_state, team_name,
             custom_adp_reasoning, pos_reasoning, needs_reasoning, 
-            relative_reasoning, risk_reasoning, value_reasoning
+            relative_reasoning, risk_reasoning, value_reasoning, ml_value
         )
         
         return score, reasoning
@@ -562,76 +646,91 @@ class RecommendationEngine:
         needs_reasoning: str,
         relative_reasoning: str,
         risk_reasoning: str,
-        value_reasoning: str
+        value_reasoning: str,
+        ml_value: Optional[float] = None
     ) -> str:
         """
-        Build comprehensive, detailed reasoning for why this player is recommended.
+        Build concise paragraph reasoning for why this player is recommended.
+        Incorporates ML model insights when available.
         """
-        reasoning_sections = []
+        sentences = []
         
-        # 1. Custom ADP Analysis (Primary Signal)
-        if custom_adp_reasoning:
-            reasoning_sections.append(f"📊 ADP Analysis: {custom_adp_reasoning}")
-        
-        # 2. Risk Assessment
-        if risk_reasoning:
-            risk_level = "LOW RISK" if "low risk" in risk_reasoning.lower() else "MODERATE RISK" if "moderate" in risk_reasoning.lower() else "HIGH RISK" if "high" in risk_reasoning.lower() or "injured" in risk_reasoning.lower() else "STANDARD RISK"
-            reasoning_sections.append(f"⚠️ Risk Assessment: {risk_level} - {risk_reasoning}")
-        else:
-            reasoning_sections.append("⚠️ Risk Assessment: LOW RISK - No significant risk factors identified")
-        
-        # 3. Position Scarcity Analysis
-        if pos_reasoning:
-            reasoning_sections.append(f"🎯 Position Scarcity: {pos_reasoning}")
-        else:
-            # Analyze position scarcity manually for detailed explanation
-            player_pos = player.position
-            drafted_at_pos = sum(
-                1 for roster in all_team_rosters.values()
-                for p in roster
-                if p.position == player_pos
-            )
-            available_at_pos = sum(1 for p in self.all_players if p.position == player_pos and not getattr(p, 'drafted', False))
-            
-            # Check if other teams are stacked at this position
-            teams_with_position = sum(
-                1 for roster in all_team_rosters.values()
-                if any(p.position == player_pos for p in roster)
-            )
-            total_teams = len(all_team_rosters) + 1  # +1 for my team
-            
-            if teams_with_position >= total_teams * 0.7:  # 70%+ of teams have this position
-                reasoning_sections.append(f"🎯 Position Scarcity: Other teams are STACKED at {player_pos} ({teams_with_position}/{total_teams} teams have it). We're drafting other positions to gain comparative advantage.")
+        # Start with ML model insight if available (ALL contextual factors baked into AI)
+        if ml_value is not None and ml_value > 0:
+            if ml_value > 50:
+                sentences.append(f"Our AI model (analyzing 44+ features including team needs, position scarcity, category targeting, comparative advantage, and risk factors) rates {player.name} as an elite value pick for your specific draft situation,")
+            elif ml_value > 25:
+                sentences.append(f"Our AI model (analyzing 44+ features including team needs, position scarcity, category targeting, comparative advantage, and risk factors) indicates {player.name} offers strong value for your specific draft situation,")
             else:
-                reasoning_sections.append(f"🎯 Position Scarcity: {player_pos} is still available. {available_at_pos} quality players remaining at this position.")
+                sentences.append(f"Our AI model (analyzing 44+ features including team needs, position scarcity, category targeting, comparative advantage, and risk factors) suggests {player.name} is a solid pick for your specific draft situation,")
+        elif ml_value is None:
+            # ML model not available - mention it's rule-based
+            sentences.append(f"Based on rule-based analysis (ML model not available), {player.name} appears to be a good fit,")
         
-        # 4. Category Needs Analysis
+        # ADP context
+        if custom_adp_reasoning:
+            if "excellent value" in custom_adp_reasoning.lower() or "good value" in custom_adp_reasoning.lower():
+                adp_info = custom_adp_reasoning.split(" - ")[-1] if " - " in custom_adp_reasoning else custom_adp_reasoning
+                if not sentences:
+                    sentences.append(f"{player.name} is available at {adp_info.lower()},")
+                else:
+                    sentences.append(f"and he's available at {adp_info.lower()}.")
+            elif "at value" in custom_adp_reasoning.lower():
+                adp_info = custom_adp_reasoning.split(" - ")[-1] if " - " in custom_adp_reasoning else custom_adp_reasoning
+                if not sentences:
+                    sentences.append(f"{player.name} is being drafted {adp_info.lower()},")
+                else:
+                    sentences.append(f"he's being drafted {adp_info.lower()}.")
+            elif "too early" not in custom_adp_reasoning.lower():
+                adp_info = custom_adp_reasoning.split(" - ")[-1] if " - " in custom_adp_reasoning else custom_adp_reasoning
+                if not sentences:
+                    sentences.append(f"{player.name} has {adp_info.lower()},")
+                else:
+                    sentences.append(f"with {adp_info.lower()}.")
+        
+        # Position and team needs (most important context)
+        if needs_reasoning:
+            # Extract key info from needs reasoning
+            needs_parts = needs_reasoning.split(" | ")
+            key_needs = []
+            for part in needs_parts[:2]:  # Take first 2 needs
+                if "Fills" in part or "Need" in part or "Building" in part:
+                    # Clean up the text
+                    clean_part = part.replace("Fills ", "").replace("Need ", "").replace("Building ", "")
+                    key_needs.append(clean_part.lower())
+            if key_needs:
+                if not sentences:
+                    sentences.append(f"{player.name} " + " and ".join(key_needs) + ".")
+                else:
+                    sentences.append(" ".join(key_needs) + ".")
+        
+        # Category contributions (if significant)
         category_analysis = self._analyze_category_needs_detailed(player, my_team, all_team_rosters, team_name)
         if category_analysis:
-            reasoning_sections.append(f"📈 Category Needs: {category_analysis}")
+            # Extract top 1-2 category improvements
+            category_parts = category_analysis.split(" | ")
+            top_categories = category_parts[:2]  # Top 2 categories
+            if top_categories:
+                cat_summary = ", ".join([c.split(":")[0] if ":" in c else c for c in top_categories]).lower()
+                sentences.append(f"He helps with {cat_summary}.")
         
-        # 5. Team Needs
-        if needs_reasoning:
-            reasoning_sections.append(f"✅ Team Needs: {needs_reasoning}")
+        # Risk assessment (only if significant)
+        if risk_reasoning and ("high risk" in risk_reasoning.lower() or "injured" in risk_reasoning.lower()):
+            sentences.append(f"Note: {risk_reasoning.lower()}.")
         
-        # 6. Comparative Advantage
-        if relative_reasoning:
-            reasoning_sections.append(f"🏆 Comparative Advantage: {relative_reasoning}")
+        # Position scarcity (only if relevant - not "deep pool")
+        if pos_reasoning and "deep pool" not in pos_reasoning.lower() and "scarce" in pos_reasoning.lower():
+            pos_summary = pos_reasoning.split(":")[-1].strip() if ":" in pos_reasoning else pos_reasoning
+            sentences.append(f"Position context: {pos_summary.lower()}.")
+        
+        # Build final paragraph
+        if sentences:
+            reasoning = " ".join(sentences)
+            # Capitalize first letter
+            reasoning = reasoning[0].upper() + reasoning[1:] if len(reasoning) > 1 else reasoning
+            return reasoning
         else:
-            # Provide detailed comparative advantage analysis
-            comp_adv = self._get_comparative_advantage_details(player, my_team, all_team_rosters, team_name)
-            if comp_adv:
-                reasoning_sections.append(f"🏆 Comparative Advantage: {comp_adv}")
-        
-        # 7. Projected Value
-        if value_reasoning:
-            reasoning_sections.append(f"💎 Projected Value: {value_reasoning}")
-        
-        # Combine all sections
-        if reasoning_sections:
-            return "\n\n".join(reasoning_sections)
-        else:
-            return "Solid pick based on overall value and team needs."
+            return f"{player.name} represents good value based on current draft state and team needs."
     
     def _analyze_category_needs_detailed(
         self,
@@ -1346,10 +1445,27 @@ class RecommendationEngine:
         # Calculate how many picks remain
         picks_remaining = (draft_state.total_teams * draft_state.roster_size) - len(draft_state.picks)
         my_picks_remaining = draft_state.roster_size - len(my_team)
+        current_round = draft_state.current_round
         
         # Calculate ideal hitter/pitcher balance
         hitters_needed = total_hitters_needed - hitter_count
         pitchers_needed = total_pitchers_needed - pitcher_count
+        
+        # CRITICAL: Ensure pitchers are drafted throughout the draft, not just at the end
+        # Aim to have at least 1 pitcher by round 4, 2-3 by round 7, etc.
+        ideal_pitcher_pace = [
+            (4, 1),   # By round 4, should have 1 pitcher
+            (7, 3),   # By round 7, should have 3 pitchers
+            (10, 5),  # By round 10, should have 5 pitchers
+            (15, 7),  # By round 15, should have 7 pitchers
+        ]
+        
+        # Check if we're behind pace on pitchers
+        behind_pace = False
+        for target_round, target_pitchers in ideal_pitcher_pace:
+            if current_round >= target_round and pitcher_count < target_pitchers:
+                behind_pace = True
+                break
         
         # If we're way off balance, prioritize correcting it
         # CRITICAL: Need to balance hitters and pitchers throughout draft
@@ -1390,13 +1506,14 @@ class RecommendationEngine:
             projected_total_ip = current_ip + (pitcher_ip or 0)
             
             # IP-based scoring
+            # IMPORTANT: IP accumulation is a consideration, not the only factor
             if current_ip < IP_MIN:
-                # Below minimum - need IP urgently
+                # Below minimum - need IP (but balanced with value)
                 ip_deficit = IP_MIN - current_ip
                 if ip_deficit > 0:
-                    # Bonus for helping reach minimum
+                    # Moderate bonus for helping reach minimum (not overriding value)
                     ip_contribution = min(pitcher_ip or 0, ip_deficit)
-                    need_score += (ip_contribution / IP_MIN) * 150  # Up to 150 points
+                    need_score += (ip_contribution / IP_MIN) * 80  # Moderate bonus (was 150)
                     reasoning_parts.append(f"Need IP to reach minimum ({current_ip:.0f}/{IP_MIN:.0f})")
             elif projected_total_ip > IP_MAX:
                 # Would exceed maximum - penalty
@@ -1410,16 +1527,31 @@ class RecommendationEngine:
                     need_score += pitchers_needed * 10
                     reasoning_parts.append(f"Building IP depth ({current_ip:.0f} IP)")
             
+            # CRITICAL: Ensure pitchers are drafted throughout draft, not just at the end
+            if behind_pace and pitcher_count == 0:
+                # Very behind pace - no pitchers yet but should have some
+                need_score += 60  # Strong bonus to get first pitcher
+                reasoning_parts.append(f"Behind pace - should have pitcher by round {current_round}")
+            elif behind_pace:
+                # Behind pace but have some pitchers
+                need_score += 40  # Moderate bonus
+                reasoning_parts.append(f"Behind pace on pitchers ({pitcher_count} by round {current_round})")
+            
             # Also consider pitcher count
             if pitchers_needed > 0:
-                # Need pitchers - conservative bonus
-                need_score += pitchers_needed * 10
+                # Need pitchers - bonus based on need and pace
+                base_bonus = pitchers_needed * 15  # Increased from 10
+                need_score += base_bonus
                 if pitchers_needed > my_picks_remaining / 2:
-                    need_score += 25
+                    need_score += 30  # Urgent need
                     reasoning_parts.append(f"URGENT: Need {pitchers_needed} more pitchers")
                 elif pitchers_needed > 4:
-                    need_score += 15
+                    need_score += 20  # Moderate urgency
                     reasoning_parts.append(f"Need {pitchers_needed} more pitchers")
+                elif current_round <= 10 and pitcher_count < 3:
+                    # Early draft - encourage pitcher picks to build IP early
+                    need_score += 25
+                    reasoning_parts.append(f"Early draft - building pitcher depth")
             else:
                 # Have enough pitchers, but check if we need IP
                 if current_ip < IP_MIN:

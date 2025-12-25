@@ -144,8 +144,36 @@ class DataLoader:
                         # Use GS (games started) as rough proxy for QS
                         gs = self._safe_float(normalized_row.get('gs') or normalized_row.get('games_started') or normalized_row.get('app'))
                         if gs is not None:
-                            # Rough estimate: ~60-70% of GS are QS
-                            projected_quality_starts = gs * 0.65
+                            # More realistic QS rates based on actual data:
+                            # Elite pitchers: ~60-65%, Good: ~50-55%, Average: ~45%, Poor: ~35%
+                            # Default to 50% (more conservative), and cap at realistic max
+                            projected_quality_starts = min(gs * 0.50, 22)  # Cap at 22 QS (realistic max)
+                            
+                            # Adjust based on ERA if available (better ERA = higher QS rate)
+                            era = self._safe_float(normalized_row.get('projected_era') or normalized_row.get('era'))
+                            if era is not None:
+                                if era < 3.00:
+                                    projected_quality_starts = min(gs * 0.65, 23)  # Elite: up to 65%, cap at 23
+                                elif era < 3.50:
+                                    projected_quality_starts = min(gs * 0.58, 22)  # Very good: 58%, cap at 22
+                                elif era < 4.00:
+                                    projected_quality_starts = min(gs * 0.50, 20)  # Good: 50%, cap at 20
+                                elif era < 4.50:
+                                    projected_quality_starts = min(gs * 0.45, 18)  # Average: 45%, cap at 18
+                                else:
+                                    projected_quality_starts = min(gs * 0.38, 16)  # Below average: 38%, cap at 16
+                            
+                            # CRITICAL: Cap QS based on IP (each QS requires at least 6 IP)
+                            # A pitcher with 50 IP can't have more than 50/6 = 8 QS
+                            projected_ip = self._safe_float(
+                                normalized_row.get('projected_innings_pitched') or 
+                                normalized_row.get('ip') or 
+                                normalized_row.get('inns') or 
+                                normalized_row.get('innings_pitched')
+                            )
+                            if projected_ip is not None and projected_ip > 0:
+                                max_qs_from_ip = projected_ip / 6.0  # Each QS requires at least 6 IP
+                                projected_quality_starts = min(projected_quality_starts, max_qs_from_ip)
                     
                     # Calculate total strikeouts from K/9 and IP if needed
                     projected_strikeouts = self._safe_float(

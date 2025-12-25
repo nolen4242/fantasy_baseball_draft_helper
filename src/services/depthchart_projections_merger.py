@@ -166,6 +166,27 @@ class DepthChartProjectionsMerger:
             if fip is not None:
                 projections['fip'] = fip
             
+            # Calculate WHIP from components: WHIP = (BB + H) / IP
+            # We have walks from BB/9, but need to estimate hits
+            if 'walks' in projections and 'innings_pitched' in projections:
+                walks = projections['walks']
+                ip = projections['innings_pitched']
+                if ip and ip > 0:
+                    # Estimate hits from league-average H/9 rate (~8.5-9.0 H/9)
+                    # Use BABIP if available to refine estimate, otherwise use league average
+                    league_avg_h_per_9 = 8.7  # Typical league average
+                    if 'babip' in projections and projections['babip']:
+                        # Adjust H/9 based on BABIP (higher BABIP = more hits)
+                        babip = projections['babip']
+                        # Normalize BABIP effect (league avg BABIP ~0.300)
+                        babip_factor = babip / 0.300
+                        estimated_h_per_9 = league_avg_h_per_9 * babip_factor
+                    else:
+                        estimated_h_per_9 = league_avg_h_per_9
+                    
+                    estimated_hits = (estimated_h_per_9 * ip) / 9.0
+                    projections['whip'] = (walks + estimated_hits) / ip
+            
             # Advanced stats
             advanced_stats = {
                 'BABIP': 'babip',
@@ -183,16 +204,27 @@ class DepthChartProjectionsMerger:
                     if value is not None:
                         projections[our_key] = value
             
-            # Calculate quality starts (estimate: GS * 0.6 for good pitchers, 0.4 for average)
+            # Calculate quality starts (more realistic rates, capped at realistic max)
             if 'games_started' in projections:
                 gs = projections['games_started']
-                # Rough estimate: better ERA = more QS
-                if 'era' in projections and projections['era'] < 3.5:
-                    projections['quality_starts'] = gs * 0.65
-                elif 'era' in projections and projections['era'] < 4.0:
-                    projections['quality_starts'] = gs * 0.55
+                era = projections.get('era', 4.0)
+                # More realistic QS rates based on actual data (elite pitchers cap at ~23 QS)
+                if era < 3.00:
+                    projections['quality_starts'] = min(gs * 0.65, 23)  # Elite: 65%, cap at 23
+                elif era < 3.50:
+                    projections['quality_starts'] = min(gs * 0.58, 22)  # Very good: 58%, cap at 22
+                elif era < 4.00:
+                    projections['quality_starts'] = min(gs * 0.50, 20)  # Good: 50%, cap at 20
+                elif era < 4.50:
+                    projections['quality_starts'] = min(gs * 0.45, 18)  # Average: 45%, cap at 18
                 else:
-                    projections['quality_starts'] = gs * 0.45
+                    projections['quality_starts'] = min(gs * 0.38, 16)  # Below average: 38%, cap at 16
+                
+                # CRITICAL: Cap QS based on IP (each QS requires at least 6 IP)
+                # A pitcher with 50 IP can't have more than 50/6 = 8 QS
+                if 'innings_pitched' in projections and projections['innings_pitched']:
+                    max_qs_from_ip = projections['innings_pitched'] / 6.0
+                    projections['quality_starts'] = min(projections['quality_starts'], max_qs_from_ip)
             
         else:
             # Batter stats
