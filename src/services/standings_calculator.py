@@ -35,17 +35,25 @@ class StandingsCalculator:
             rankings = self._rank_teams_by_category(category, category_totals)
             category_rankings[category] = rankings
         
-        # Calculate total points (roto scoring: rank 1 = max points, rank 13 = 1 point)
-        # In a 13-team league: 1st = 13 points, 2nd = 12 points, ..., 13th = 1 point
+        # Calculate total points (roto scoring: lowest = 1 point, highest = 13 points)
+        # For ties, points are split between tied teams
+        # In a 13-team league: lowest = 1 point, highest = 13 points
         num_teams = len(team_rosters)
         total_points = {}
+        
+        # Calculate points for each category with tie handling
+        category_points = {}  # Dict[category, Dict[team_name, points]]
+        for category in self.BATTING_CATEGORIES + self.PITCHING_CATEGORIES:
+            category_points[category] = self._calculate_category_points(
+                category, category_totals, category_rankings, num_teams
+            )
+        
+        # Sum up points across all categories
         for team_name in team_rosters.keys():
-            # Sum up roto points (higher rank = more points)
-            roto_points = sum(
-                num_teams - self._get_team_rank(team_name, category, category_rankings) + 1
+            total_points[team_name] = sum(
+                category_points[category].get(team_name, 0)
                 for category in self.BATTING_CATEGORIES + self.PITCHING_CATEGORIES
             )
-            total_points[team_name] = roto_points
         
         # Final rankings (higher total points = better)
         final_rankings = sorted(
@@ -176,10 +184,11 @@ class StandingsCalculator:
         return totals
     
     def _rank_teams_by_category(self, category: str, category_totals: Dict[str, Dict[str, float]]) -> List[str]:
-        """Rank teams by a category (higher is better, except ERA/WHIP).
+        """Rank teams by a category.
         
-        For ERA/WHIP: Teams below IP minimum get worst rank (13th in 13-team league).
-        Otherwise, lower ERA/WHIP = better rank.
+        For ERA/WHIP: Teams below IP minimum get worst rank (tied for last).
+        Lower ERA/WHIP = better rank (higher points).
+        For other categories: Higher = better rank (higher points).
         """
         IP_MIN = 1000.0
         
@@ -219,6 +228,73 @@ class StandingsCalculator:
             )
             
             return ranked
+    
+    def _calculate_category_points(
+        self,
+        category: str,
+        category_totals: Dict[str, Dict[str, float]],
+        category_rankings: Dict[str, List[str]],
+        num_teams: int
+    ) -> Dict[str, float]:
+        """
+        Calculate roto points for a category with tie handling.
+        
+        Lowest value = 1 point, highest value = 13 points.
+        For ties, points are split between tied teams.
+        
+        For ERA/WHIP: lowest value = 13 points (best), highest = 1 point (worst)
+        For other categories: highest value = 13 points (best), lowest = 1 point (worst)
+        """
+        rankings = category_rankings.get(category, [])
+        if not rankings:
+            return {}
+        
+        # Get values for all teams
+        team_values = {
+            team: category_totals[team][category]
+            for team in rankings
+        }
+        
+        # Group teams by value to identify ties
+        value_to_teams = {}
+        for team in rankings:
+            value = team_values[team]
+            if value not in value_to_teams:
+                value_to_teams[value] = []
+            value_to_teams[value].append(team)
+        
+        # Determine if lower or higher is better
+        is_lower_better = category in ['ERA', 'WHIP']
+        
+        # Sort unique values
+        unique_values = sorted(value_to_teams.keys(), reverse=not is_lower_better)
+        
+        # Assign points
+        points = {}
+        current_rank = 1
+        
+        for value in unique_values:
+            tied_teams = value_to_teams[value]
+            num_tied = len(tied_teams)
+            
+            # Calculate points for tied teams
+            # If teams are tied at rank N, they share points for ranks N through N+num_tied-1
+            # Points formula: num_teams - rank + 1
+            # Sum points for all ranks in the tie, then divide by number of tied teams
+            points_sum = 0
+            for rank in range(current_rank, current_rank + num_tied):
+                rank_points = num_teams - rank + 1
+                points_sum += rank_points
+            
+            points_per_team = points_sum / num_tied
+            
+            # Assign points to all tied teams
+            for team in tied_teams:
+                points[team] = points_per_team
+            
+            current_rank += num_tied
+        
+        return points
     
     def _get_team_rank(self, team_name: str, category: str, category_rankings: Dict[str, List[str]]) -> int:
         """Get a team's rank in a category (1 = best)."""
