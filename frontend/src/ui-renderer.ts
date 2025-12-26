@@ -27,7 +27,7 @@ export class UIRenderer {
         const round = Math.floor((pickNumber - 1) / draft.total_teams) + 1;
         const pickInRound = ((pickNumber - 1) % draft.total_teams) + 1;
         
-        // Bob Uecker League: Rounds 1-5 no snake, Round 6+ snakes
+        // Bob Uecker League: Rounds 1-4 no snake, Round 5+ snakes
         const teamOrder = [
             "Runtime Terror",
             "Dawg",
@@ -37,26 +37,26 @@ export class UIRenderer {
             "Gashouse Gang",
             "Magnum GI",
             "Trex",
-            "Rieken Havoc",
-            "Guillotine",
-            "MAGA DOGE",
+            "Like a Nightmare",
             "Big Sticks",
-            "Like a Nightmare"
+            "MAGA DOGE",
+            "Guillotine",
+            "Rieken Havoc"
         ];
         
         let currentTeam: string;
-        if (round <= 5) {
-            // Rounds 1-5: standard order
+        if (round <= 4) {
+            // Rounds 1-4: standard order (NO snake)
             currentTeam = teamOrder[pickInRound - 1];
         } else {
-            // Round 6+: snake draft
-            const snakeRound = round - 5; // Round 6 is snake round 1
+            // Round 5+: snake draft
+            const snakeRound = round - 4; // Round 5 is snake round 1
             const isOddSnakeRound = snakeRound % 2 === 1;
             if (isOddSnakeRound) {
-                // Odd snake rounds: reverse order
+                // Odd snake rounds (5, 7, 9, etc.): reverse order
                 currentTeam = teamOrder[draft.total_teams - pickInRound];
             } else {
-                // Even snake rounds: normal order
+                // Even snake rounds (6, 8, 10, etc.): normal order
                 currentTeam = teamOrder[pickInRound - 1];
             }
         }
@@ -67,10 +67,10 @@ export class UIRenderer {
         const nextPickInRound = ((nextPickNumber - 1) % draft.total_teams) + 1;
         
         let nextTeam: string;
-        if (nextRound <= 5) {
+        if (nextRound <= 4) {
             nextTeam = teamOrder[nextPickInRound - 1];
         } else {
-            const nextSnakeRound = nextRound - 5;
+            const nextSnakeRound = nextRound - 4;
             const isNextOddSnakeRound = nextSnakeRound % 2 === 1;
             if (isNextOddSnakeRound) {
                 nextTeam = teamOrder[draft.total_teams - nextPickInRound];
@@ -443,6 +443,7 @@ export class UIRenderer {
             total_points: number;
             category_totals: Record<string, number>;
             category_ranks: Record<string, number>;
+            category_points?: Record<string, number>;  // Add category_points
         }>;
         category_rankings: Record<string, string[]>;
         categories: {
@@ -514,6 +515,7 @@ export class UIRenderer {
             for (const cat of allCats) {
                 const total = team.category_totals[cat] || 0;
                 const rank = team.category_ranks[cat] || 0;
+                const points = team.category_points?.[cat] || 0;  // Get points instead of rank
                 const isLowerBetter = cat === 'ERA' || cat === 'WHIP';
                 const rankClass = rank === 1 ? 'rank-1' : rank <= 3 ? 'rank-top-3' : '';
                 
@@ -527,9 +529,9 @@ export class UIRenderer {
                 }
                 
                 html += `
-                    <td class="category-cell ${rankClass}" title="Rank: ${rank}">
+                    <td class="category-cell ${rankClass}" title="Rank: ${rank}, Points: ${points}">
                         <div class="category-value">${displayValue}</div>
-                        <div class="category-rank">(${rank})</div>
+                        <div class="category-rank">(${points})</div>
                     </td>
                 `;
             }

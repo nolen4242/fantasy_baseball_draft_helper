@@ -111,6 +111,13 @@ class DraftService:
                 # Can't check positions, but roster size is full - don't allow more picks
                 return False
         
+        # Check if player is already drafted (prevent duplicate picks)
+        drafted_player_ids = draft.get_drafted_players()
+        if player_id in drafted_player_ids:
+            # Player already drafted - don't add duplicate pick
+            print(f"WARNING: Player {player_id} already drafted - skipping duplicate pick")
+            return False
+        
         # Create pick
         pick = DraftPick(
             pick_number=len(draft.picks) + 1,

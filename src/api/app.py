@@ -702,7 +702,10 @@ def get_recommendations():
         
         print(f"DEBUG: Available players: {len(available)}, My team: {len(my_team)}")
         
-        use_ml = request.args.get('use_ml', 'true').lower() == 'true'
+        # Use ML model with contextual features - the model was trained on historical drafts
+        # with contextual features (team needs, position scarcity, category targeting, etc.)
+        # The model learns to predict player value based on both statistical features AND draft context
+        use_ml = True  # Use ML model trained with contextual features
         
         recommendations = recommendation_engine.get_recommendations(
             available_players=available,
@@ -907,54 +910,32 @@ def make_auto_draft_pick():
             reasoning = f"Round {current_round} - Within 10 ADP: {selected_player.name} (ADP {selected_player.adp:.1f} at pick {current_pick})"
         
         else:
-            # ROUNDS 11+: Full AI recommendation engine
-            # Let AI make the decision based on team needs, position scarcity, etc.
-            use_ml = request.args.get('use_ml', 'true').lower() == 'true'
-            recommendations = recommendation_engine.get_recommendations_for_team(
-                available_players=available,
-                team_players=team_players,
-                draft_state=draft_service.current_draft,
-                team_name=team_name,
-                top_n=10,
-                use_ml=use_ml
-            )
+            # ROUNDS 11+: Simple ADP-based picking (NO recommendation engine for speed)
+            # Just pick the best available player by ADP who fits the roster
+            eligible_players = []
+            for player in available:
+                if not team_service.has_available_slot_for_player(team_name, player):
+                    continue
+                
+                # For rounds 11+, accept players with any ADP (including None)
+                # Prioritize players with ADP, but also allow players without ADP
+                eligible_players.append(player)
             
-            if not recommendations:
+            if not eligible_players:
                 return jsonify({
                     'success': False,
-                    'message': 'No AI recommendations available'
+                    'message': f'No players available that can fit on {team_name} roster'
                 }), 400
             
-            # Filter recommendations to only players that can fit
-            valid_recommendations = []
-            for rec in recommendations:
-                player = rec['player']
-                if team_service.has_available_slot_for_player(team_name, player):
-                    valid_recommendations.append(rec)
+            # Sort by ADP (lower is better, None values go to end)
+            eligible_players.sort(key=lambda p: (p.adp is None, p.adp or float('inf')))
             
-            if not valid_recommendations:
-                return jsonify({
-                    'success': False,
-                    'message': 'No recommended players can fit on roster'
-                }), 400
-            
-            # Select from top 3 AI recommendations (weighted by score)
-            top_3 = valid_recommendations[:3]
-            # Create weighted pool based on recommendation scores
-            weighted_pool = []
-            max_score = max(rec['score'] for rec in top_3) if top_3 else 1
-            for rec in top_3:
-                # Weight by score (higher score = more likely to be picked)
-                weight = max(1, int(rec['score'] / max(1, max_score / 3)))
-                weighted_pool.extend([rec['player']] * weight)
-            
-            selected_player = random.choice(weighted_pool)
-            # Get reasoning from the recommendation
-            reasoning = "Round 11+ - AI recommendation"
-            for rec in valid_recommendations:
-                if rec['player'].player_id == selected_player.player_id:
-                    reasoning = f"Round {current_round} - AI: {rec['reasoning'][:150]}"
-                    break
+            # Pick the best available player by ADP
+            selected_player = eligible_players[0]
+            if selected_player.adp:
+                reasoning = f"Round {current_round} - Best available by ADP: {selected_player.name} (ADP {selected_player.adp:.1f})"
+            else:
+                reasoning = f"Round {current_round} - Best available: {selected_player.name}"
         
         # Draft the selected player
         success = draft_service.draft_player(
@@ -1020,14 +1001,21 @@ def get_standings():
                 'team_name': team_name,
                 'total_points': standings['total_points'][team_name],
                 'category_totals': standings['category_totals'][team_name],
-                'category_ranks': {}
+                'category_ranks': {},
+                'category_points': {}  # Add category points
             }
             
-            # Add rank for each category
+            # Add rank and points for each category
             for category in standings_calc.BATTING_CATEGORIES + standings_calc.PITCHING_CATEGORIES:
                 team_data['category_ranks'][category] = standings_calc._get_team_rank(
                     team_name, category, standings['category_rankings']
                 )
+                # Get points for this category
+                category_points = standings.get('category_points', {})
+                if category in category_points:
+                    team_data['category_points'][category] = category_points[category].get(team_name, 0)
+                else:
+                    team_data['category_points'][category] = 0
             
             formatted_standings.append(team_data)
         
@@ -1035,6 +1023,7 @@ def get_standings():
             'success': True,
             'standings': formatted_standings,
             'category_rankings': standings['category_rankings'],
+            'category_points': standings.get('category_points', {}),  # Include category_points in response
             'categories': {
                 'batting': standings_calc.BATTING_CATEGORIES,
                 'pitching': standings_calc.PITCHING_CATEGORIES

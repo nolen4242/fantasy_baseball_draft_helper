@@ -57,6 +57,15 @@ export interface TeamRoster {
     players: Player[];
 }
 
+export interface StandingsTeam {
+    rank: number;
+    team_name: string;
+    total_points: number;
+    category_totals: Record<string, number>;
+    category_ranks: Record<string, number>;
+    category_points?: Record<string, number>;  // Add category_points
+}
+
 export interface RosterPosition {
     [position: string]: (PlayerEntry | null)[];
 }

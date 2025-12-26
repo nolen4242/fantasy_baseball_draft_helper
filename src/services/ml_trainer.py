@@ -92,25 +92,31 @@ class MLTrainer:
         return pd.DataFrame(training_data)
     
     def _extract_player_features(self, player: Player) -> Dict[str, float]:
-        """Extract features from player data only (no draft context)."""
+        """Extract features from player data only (no draft context).
+        
+        IMPORTANT: Include ALL features (both hitter and pitcher) for all players.
+        Missing features are set to 0. This ensures the ML model receives the expected feature set.
+        """
         is_pitcher = player.position in ['SP', 'RP', 'P']
         is_hitter = not is_pitcher
         
         features = {}
         
         # === Projections (Steamer + DepthChart average) ===
-        if is_hitter:
-            features['hr'] = player.projected_home_runs or 0
-            features['r'] = player.projected_runs or 0
-            features['rbi'] = player.projected_rbi or 0
-            features['sb'] = player.projected_stolen_bases or 0
-            features['obp'] = player.projected_obp or 0.3
-        else:
-            features['k'] = player.projected_strikeouts or 0
-            features['era'] = player.projected_era or 5.0
-            features['whip'] = player.projected_whip or 1.5
-            features['w'] = player.projected_wins or 0
-            features['sv'] = player.projected_saves or 0
+        # Include BOTH hitter and pitcher features for all players (missing = 0)
+        # Hitter features
+        features['hr'] = player.projected_home_runs or 0 if is_hitter else 0
+        features['r'] = player.projected_runs or 0 if is_hitter else 0
+        features['rbi'] = player.projected_rbi or 0 if is_hitter else 0
+        features['sb'] = player.projected_stolen_bases or 0 if is_hitter else 0
+        features['obp'] = player.projected_obp or 0.3 if is_hitter else 0
+        
+        # Pitcher features
+        features['k'] = player.projected_strikeouts or 0 if is_pitcher else 0
+        features['era'] = player.projected_era or 5.0 if is_pitcher else 0
+        features['whip'] = player.projected_whip or 1.5 if is_pitcher else 0
+        features['w'] = player.projected_wins or 0 if is_pitcher else 0
+        features['sv'] = player.projected_saves or 0 if is_pitcher else 0
         
         # === Historical Stats (3-year average: 2022-2024) ===
         # Extract from _master_dict_data if available
@@ -118,16 +124,18 @@ class MLTrainer:
         features.update(historical_features)
         
         # === Statcast Features (from latest year) ===
-        if is_hitter:
-            features['exit_velocity'] = player.savant_exit_velocity or 0
-            features['barrel_rate'] = player.savant_barrel_rate or 0
-            features['hard_hit_rate'] = player.savant_hard_hit_rate or 0
-            features['xba'] = player.savant_xba or 0
-            features['xwoba'] = player.savant_xwoba or 0
-            features['sprint_speed'] = player.savant_sprint_speed or 0
-        else:
-            features['spin_rate'] = player.savant_spin_rate or 0
-            features['velocity'] = player.savant_velocity or 0
+        # Include BOTH hitter and pitcher Statcast features (missing = 0)
+        # Hitter Statcast features
+        features['exit_velocity'] = player.savant_exit_velocity or 0 if is_hitter else 0
+        features['barrel_rate'] = player.savant_barrel_rate or 0 if is_hitter else 0
+        features['hard_hit_rate'] = player.savant_hard_hit_rate or 0 if is_hitter else 0
+        features['xba'] = player.savant_xba or 0 if is_hitter else 0
+        features['xwoba'] = player.savant_xwoba or 0 if is_hitter else 0
+        features['sprint_speed'] = player.savant_sprint_speed or 0 if is_hitter else 0
+        
+        # Pitcher Statcast features
+        features['spin_rate'] = player.savant_spin_rate or 0 if is_pitcher else 0
+        features['velocity'] = player.savant_velocity or 0 if is_pitcher else 0
         
         # === Projection Consensus ===
         # If we have Steamer + DepthChart, calculate consensus
@@ -136,14 +144,30 @@ class MLTrainer:
             steamer = proj_data.get('steamer', {})
             depthchart = proj_data.get('depthchart', {})
             
+            # Include BOTH hitter and pitcher projection consensus features (missing = 0)
+            # Hitter projection consensus
             if is_hitter:
                 proj_hr = [v for v in [steamer.get('home_runs'), depthchart.get('home_runs')] if v is not None]
-                features['avg_proj_hr'] = np.mean(proj_hr) if proj_hr else features['hr']
+                features['avg_proj_hr'] = np.mean(proj_hr) if proj_hr else features.get('hr', 0)
                 features['proj_std_hr'] = np.std(proj_hr) if len(proj_hr) > 1 else 0
             else:
+                features['avg_proj_hr'] = 0
+                features['proj_std_hr'] = 0
+            
+            # Pitcher projection consensus
+            if is_pitcher:
                 proj_era = [v for v in [steamer.get('era'), depthchart.get('era')] if v is not None]
-                features['avg_proj_era'] = np.mean(proj_era) if proj_era else features['era']
+                features['avg_proj_era'] = np.mean(proj_era) if proj_era else features.get('era', 0)
                 features['proj_std_era'] = np.std(proj_era) if len(proj_era) > 1 else 0
+            else:
+                features['avg_proj_era'] = 0
+                features['proj_std_era'] = 0
+        else:
+            # No projection data available - set to 0
+            features['avg_proj_hr'] = 0
+            features['proj_std_hr'] = 0
+            features['avg_proj_era'] = 0
+            features['proj_std_era'] = 0
         
         # === Park Factors ===
         features['park_factor'] = player.park_factor_offense or 100
@@ -187,40 +211,55 @@ class MLTrainer:
             return features
         
         # Calculate 3-year averages
-        if is_pitcher:
-            strikeouts = [s.get('strikeouts', 0) for s in stats_by_year.values() if s.get('strikeouts')]
-            era = [s.get('era', 5.0) for s in stats_by_year.values() if s.get('era')]
-            whip = [s.get('whip', 1.5) for s in stats_by_year.values() if s.get('whip')]
-            
-            features['hist_avg_k'] = np.mean(strikeouts) if strikeouts else 0
-            features['hist_avg_era'] = np.mean(era) if era else 5.0
-            features['hist_avg_whip'] = np.mean(whip) if whip else 1.5
-            features['hist_consistency_era'] = 1.0 / (np.std(era) + 0.1) if len(era) > 1 else 0.5
-        else:
-            hr = [s.get('home_runs', 0) for s in stats_by_year.values() if s.get('home_runs')]
-            runs = [s.get('runs', 0) for s in stats_by_year.values() if s.get('runs')]
-            rbi = [s.get('rbi', 0) for s in stats_by_year.values() if s.get('rbi')]
-            sb = [s.get('stolen_bases', 0) for s in stats_by_year.values() if s.get('stolen_bases')]
-            obp = [s.get('on_base_percentage', 0.3) for s in stats_by_year.values() if s.get('on_base_percentage')]
-            
-            features['hist_avg_hr'] = np.mean(hr) if hr else 0
-            features['hist_avg_r'] = np.mean(runs) if runs else 0
-            features['hist_avg_rbi'] = np.mean(rbi) if rbi else 0
-            features['hist_avg_sb'] = np.mean(sb) if sb else 0
-            features['hist_avg_obp'] = np.mean(obp) if obp else 0.3
-            features['hist_consistency_hr'] = 1.0 / (np.std(hr) + 0.1) if len(hr) > 1 else 0.5
+        # Include BOTH hitter and pitcher historical features (missing = 0)
+        # This ensures the ML model receives all expected features
+        
+        # Hitter historical features (set to 0 for pitchers)
+        hr = [s.get('home_runs', 0) for s in stats_by_year.values() if s.get('home_runs')] if not is_pitcher else []
+        runs = [s.get('runs', 0) for s in stats_by_year.values() if s.get('runs')] if not is_pitcher else []
+        rbi = [s.get('rbi', 0) for s in stats_by_year.values() if s.get('rbi')] if not is_pitcher else []
+        sb = [s.get('stolen_bases', 0) for s in stats_by_year.values() if s.get('stolen_bases')] if not is_pitcher else []
+        obp = [s.get('on_base_percentage', 0.3) for s in stats_by_year.values() if s.get('on_base_percentage')] if not is_pitcher else []
+        
+        features['hist_avg_hr'] = np.mean(hr) if hr else 0
+        features['hist_avg_r'] = np.mean(runs) if runs else 0
+        features['hist_avg_rbi'] = np.mean(rbi) if rbi else 0
+        features['hist_avg_sb'] = np.mean(sb) if sb else 0
+        features['hist_avg_obp'] = np.mean(obp) if obp else 0.3
+        features['hist_consistency_hr'] = 1.0 / (np.std(hr) + 0.1) if len(hr) > 1 else 0.5
+        
+        # Pitcher historical features (set to 0 for hitters)
+        strikeouts = [s.get('strikeouts', 0) for s in stats_by_year.values() if s.get('strikeouts')] if is_pitcher else []
+        era = [s.get('era', 5.0) for s in stats_by_year.values() if s.get('era')] if is_pitcher else []
+        whip = [s.get('whip', 1.5) for s in stats_by_year.values() if s.get('whip')] if is_pitcher else []
+        
+        features['hist_avg_k'] = np.mean(strikeouts) if strikeouts else 0
+        features['hist_avg_era'] = np.mean(era) if era else 5.0
+        features['hist_avg_whip'] = np.mean(whip) if whip else 1.5
+        features['hist_consistency_era'] = 1.0 / (np.std(era) + 0.1) if len(era) > 1 else 0.5
         
         # Trend analysis (improving vs declining)
+        # Include BOTH hitter and pitcher trends (missing = 0)
         if len(stats_by_year) >= 2:
-            if is_pitcher and 'hist_avg_k' in features:
-                # Compare 2024 to 2022-2023 average
-                recent_k = stats_by_year.get('2024', {}).get('strikeouts', 0)
-                older_avg = np.mean([s.get('strikeouts', 0) for y, s in stats_by_year.items() if y != '2024'])
-                features['trend_k'] = (recent_k - older_avg) / (older_avg + 1) if older_avg > 0 else 0
-            elif not is_pitcher and 'hist_avg_hr' in features:
+            # Hitter trend (HR)
+            if not is_pitcher:
                 recent_hr = stats_by_year.get('2024', {}).get('home_runs', 0)
                 older_avg = np.mean([s.get('home_runs', 0) for y, s in stats_by_year.items() if y != '2024'])
                 features['trend_hr'] = (recent_hr - older_avg) / (older_avg + 1) if older_avg > 0 else 0
+            else:
+                features['trend_hr'] = 0
+            
+            # Pitcher trend (K)
+            if is_pitcher:
+                recent_k = stats_by_year.get('2024', {}).get('strikeouts', 0)
+                older_avg = np.mean([s.get('strikeouts', 0) for y, s in stats_by_year.items() if y != '2024'])
+                features['trend_k'] = (recent_k - older_avg) / (older_avg + 1) if older_avg > 0 else 0
+            else:
+                features['trend_k'] = 0
+        else:
+            # No trend data available
+            features['trend_hr'] = 0
+            features['trend_k'] = 0
         
         return features
     
@@ -533,6 +572,43 @@ class MLTrainer:
                 features['comparative_advantage_score'] = relative_score / 100.0  # Normalize
             except:
                 features['comparative_advantage_score'] = 0.0
+            
+            # Add standings-based features directly to ML model
+            try:
+                # Calculate current standings
+                all_rosters_for_standings = {**(all_rosters or {})}
+                if team_name and team_name not in all_rosters_for_standings:
+                    all_rosters_for_standings[team_name] = roster_before or []
+                
+                standings = recommendation_engine.standings_calculator.calculate_standings(all_rosters_for_standings)
+                category_points = standings.get('category_points', {})
+                total_points = standings.get('total_points', {})
+                
+                if team_name:
+                    my_total_points = total_points.get(team_name, 0)
+                    max_possible_points = len(all_rosters_for_standings) * 10  # 13 teams * 10 categories
+                    
+                    # Normalized total points (0-1 range)
+                    features['my_total_points_normalized'] = my_total_points / max_possible_points if max_possible_points > 0 else 0.0
+                    
+                    # Average points per category (0-1 range, normalized by max points per category)
+                    my_category_points_list = []
+                    for category in recommendation_engine.standings_calculator.BATTING_CATEGORIES + recommendation_engine.standings_calculator.PITCHING_CATEGORIES:
+                        if category in category_points:
+                            my_category_points_list.append(category_points[category].get(team_name, 0))
+                    
+                    if my_category_points_list:
+                        avg_category_points = sum(my_category_points_list) / len(my_category_points_list)
+                        max_points_per_category = len(all_rosters_for_standings)  # 13 points max per category
+                        features['avg_category_points_normalized'] = avg_category_points / max_points_per_category if max_points_per_category > 0 else 0.0
+                    else:
+                        features['avg_category_points_normalized'] = 0.0
+                else:
+                    features['my_total_points_normalized'] = 0.0
+                    features['avg_category_points_normalized'] = 0.0
+            except:
+                features['my_total_points_normalized'] = 0.0
+                features['avg_category_points_normalized'] = 0.0
             
             # Risk score (normalized)
             try:

@@ -103,9 +103,22 @@ export class ApiClient {
         return data.players || [];
     }
     async getRecommendations() {
-        const response = await fetch(`${API_BASE}/api/recommendations`);
-        const data = await response.json();
-        return data.recommendations || [];
+        try {
+            const response = await fetch(`${API_BASE}/api/recommendations`);
+            if (!response.ok) {
+                console.error('Recommendations API error:', response.status, response.statusText);
+                return [];
+            }
+            const data = await response.json();
+            console.log('Recommendations API response:', data);
+            const recommendations = data.recommendations || [];
+            console.log(`Got ${recommendations.length} recommendations`);
+            return recommendations;
+        }
+        catch (error) {
+            console.error('Error fetching recommendations:', error);
+            return [];
+        }
     }
     async revertPick(pickNumber) {
         const response = await fetch(`${API_BASE}/api/draft/revert`, {

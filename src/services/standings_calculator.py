@@ -65,6 +65,7 @@ class StandingsCalculator:
         return {
             'category_totals': category_totals,
             'category_rankings': category_rankings,
+            'category_points': category_points,  # Include category_points in return
             'total_points': total_points,
             'final_rankings': final_rankings
         }

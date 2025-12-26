@@ -30,10 +30,20 @@ class DraftState:
     
     def add_pick(self, pick: DraftPick):
         """Add a draft pick and update state."""
+        # Check for duplicate picks (same player_id)
+        existing_player_ids = {p.player_id for p in self.picks}
+        if pick.player_id in existing_player_ids:
+            # This pick is a duplicate - don't add it
+            print(f"WARNING: Duplicate pick detected for player {pick.player_id} - skipping")
+            return
+        
         self.picks.append(pick)
         if pick.team_name not in self.team_rosters:
             self.team_rosters[pick.team_name] = []
-        self.team_rosters[pick.team_name].append(pick.player_id)
+        
+        # Only add to team roster if not already there
+        if pick.player_id not in self.team_rosters[pick.team_name]:
+            self.team_rosters[pick.team_name].append(pick.player_id)
         
         # Update current pick/round
         self.current_pick += 1

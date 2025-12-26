@@ -1,0 +1,1176 @@
+{
+  "draft_id": "draft_1766709684041",
+  "league_name": "Bob Uecker League",
+  "total_teams": 13,
+  "roster_size": 21,
+  "my_team_name": "Runtime Terror",
+  "current_pick": 13,
+  "current_round": 11,
+  "picks": [
+    {
+      "pick_number": 1,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
+      "timestamp": "2025-12-25T18:41:31.817418"
+    },
+    {
+      "pick_number": 2,
+      "round": 1,
+      "team_name": "Dawg",
+      "player_id": "1a9d5c65-fd86-4d70-9fec-6194d8f41b85",
+      "timestamp": "2025-12-25T18:41:34.982144"
+    },
+    {
+      "pick_number": 3,
+      "round": 1,
+      "team_name": "Long Balls",
+      "player_id": "94f0001a-1f38-442c-9202-fe01c871b8fc",
+      "timestamp": "2025-12-25T18:41:35.220993"
+    },
+    {
+      "pick_number": 4,
+      "round": 1,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "38cc66a3-4c1a-4cff-b6dc-df20aaf4bec4",
+      "timestamp": "2025-12-25T18:41:35.401978"
+    },
+    {
+      "pick_number": 5,
+      "round": 1,
+      "team_name": "Young Guns",
+      "player_id": "8f7eb5eb-21bf-4d65-94c9-f1357082ea7c",
+      "timestamp": "2025-12-25T18:41:35.581823"
+    },
+    {
+      "pick_number": 6,
+      "round": 1,
+      "team_name": "Gashouse Gang",
+      "player_id": "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+      "timestamp": "2025-12-25T18:41:35.760422"
+    },
+    {
+      "pick_number": 7,
+      "round": 1,
+      "team_name": "Magnum GI",
+      "player_id": "1cae2ca6-dec4-4551-b064-026be358ff65",
+      "timestamp": "2025-12-25T18:41:35.942252"
+    },
+    {
+      "pick_number": 8,
+      "round": 1,
+      "team_name": "Trex",
+      "player_id": "4560b316-9f17-4ee8-9018-843c920c0740",
+      "timestamp": "2025-12-25T18:41:36.129856"
+    },
+    {
+      "pick_number": 9,
+      "round": 1,
+      "team_name": "Like a Nightmare",
+      "player_id": "2b50fae0-497b-4e74-8620-36eaaad91ff1",
+      "timestamp": "2025-12-25T18:41:36.310975"
+    },
+    {
+      "pick_number": 10,
+      "round": 1,
+      "team_name": "Big Sticks",
+      "player_id": "e42480c1-aa6e-4fc3-8fd3-6aca60e32c2d",
+      "timestamp": "2025-12-25T18:41:36.490253"
+    },
+    {
+      "pick_number": 11,
+      "round": 1,
+      "team_name": "MAGA DOGE",
+      "player_id": "d103c477-d1fe-4abd-a169-8d54b672ff27",
+      "timestamp": "2025-12-25T18:41:36.667279"
+    },
+    {
+      "pick_number": 12,
+      "round": 1,
+      "team_name": "Guillotine",
+      "player_id": "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+      "timestamp": "2025-12-25T18:41:36.843251"
+    },
+    {
+      "pick_number": 13,
+      "round": 1,
+      "team_name": "Rieken Havoc",
+      "player_id": "1553de44-7d99-4a52-a7ee-55077435d1cc",
+      "timestamp": "2025-12-25T18:41:37.025121"
+    },
+    {
+      "pick_number": 14,
+      "round": 2,
+      "team_name": "Runtime Terror",
+      "player_id": "9872f926-4bcb-4ef8-a76b-eca9a13f239e",
+      "timestamp": "2025-12-25T18:41:42.740386"
+    },
+    {
+      "pick_number": 15,
+      "round": 2,
+      "team_name": "Dawg",
+      "player_id": "5bcd9a55-7762-4ea4-a41b-a9de812440bc",
+      "timestamp": "2025-12-25T18:41:45.882279"
+    },
+    {
+      "pick_number": 16,
+      "round": 2,
+      "team_name": "Long Balls",
+      "player_id": "dca440e5-ea11-4fe9-8d92-4a9241d0b2b2",
+      "timestamp": "2025-12-25T18:41:46.153318"
+    },
+    {
+      "pick_number": 17,
+      "round": 2,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "af926b82-9fbe-45be-8730-6099a02ab34b",
+      "timestamp": "2025-12-25T18:41:46.332330"
+    },
+    {
+      "pick_number": 18,
+      "round": 2,
+      "team_name": "Young Guns",
+      "player_id": "ab47c484-120b-4844-8438-4e0c7f1ccfa7",
+      "timestamp": "2025-12-25T18:41:46.516759"
+    },
+    {
+      "pick_number": 19,
+      "round": 2,
+      "team_name": "Gashouse Gang",
+      "player_id": "8f2b321f-f8f2-46d3-8407-0c4017aee21e",
+      "timestamp": "2025-12-25T18:41:46.689342"
+    },
+    {
+      "pick_number": 20,
+      "round": 2,
+      "team_name": "Magnum GI",
+      "player_id": "50d0029f-92ce-47b1-95e4-aa37028f6969",
+      "timestamp": "2025-12-25T18:41:46.889618"
+    },
+    {
+      "pick_number": 21,
+      "round": 2,
+      "team_name": "Trex",
+      "player_id": "4772fb46-377c-4c09-86f9-5a03f8854e18",
+      "timestamp": "2025-12-25T18:41:47.059025"
+    },
+    {
+      "pick_number": 22,
+      "round": 2,
+      "team_name": "Like a Nightmare",
+      "player_id": "f005248a-c3aa-46c4-8051-c13c8af85835",
+      "timestamp": "2025-12-25T18:41:47.237755"
+    },
+    {
+      "pick_number": 23,
+      "round": 2,
+      "team_name": "Big Sticks",
+      "player_id": "559f4f9d-3a81-4f0a-b837-c1368b59fb82",
+      "timestamp": "2025-12-25T18:41:47.418147"
+    },
+    {
+      "pick_number": 24,
+      "round": 2,
+      "team_name": "MAGA DOGE",
+      "player_id": "eab6e586-694f-4e46-9f0d-a715dfbba440",
+      "timestamp": "2025-12-25T18:41:47.595365"
+    },
+    {
+      "pick_number": 25,
+      "round": 2,
+      "team_name": "Guillotine",
+      "player_id": "8b669de7-a201-4e27-9552-00f44c35a73e",
+      "timestamp": "2025-12-25T18:41:47.774530"
+    },
+    {
+      "pick_number": 26,
+      "round": 2,
+      "team_name": "Rieken Havoc",
+      "player_id": "43f221b7-4fdd-43c9-953f-11b989243364",
+      "timestamp": "2025-12-25T18:41:47.967364"
+    },
+    {
+      "pick_number": 27,
+      "round": 3,
+      "team_name": "Runtime Terror",
+      "player_id": "698c1485-0005-4e65-b3ed-d7200c3235d2",
+      "timestamp": "2025-12-25T18:41:52.972585"
+    },
+    {
+      "pick_number": 28,
+      "round": 3,
+      "team_name": "Dawg",
+      "player_id": "e2154fa3-5912-489f-b303-9924e2345ed0",
+      "timestamp": "2025-12-25T18:41:56.109574"
+    },
+    {
+      "pick_number": 29,
+      "round": 3,
+      "team_name": "Long Balls",
+      "player_id": "b13610b9-f0ed-40d3-883b-bec617889d21",
+      "timestamp": "2025-12-25T18:41:56.349981"
+    },
+    {
+      "pick_number": 30,
+      "round": 3,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "41d5275f-e694-49b4-9d64-b4cc60c3b9bd",
+      "timestamp": "2025-12-25T18:41:56.526408"
+    },
+    {
+      "pick_number": 31,
+      "round": 3,
+      "team_name": "Young Guns",
+      "player_id": "4e0820af-7642-4722-ba2c-7bdccaa2c972",
+      "timestamp": "2025-12-25T18:41:56.691274"
+    },
+    {
+      "pick_number": 32,
+      "round": 3,
+      "team_name": "Gashouse Gang",
+      "player_id": "cfa825ae-cb22-407f-95ad-a7a2c880b59b",
+      "timestamp": "2025-12-25T18:41:56.869524"
+    },
+    {
+      "pick_number": 33,
+      "round": 3,
+      "team_name": "Magnum GI",
+      "player_id": "80638fbf-6b92-4df5-a057-f23d4293592d",
+      "timestamp": "2025-12-25T18:41:57.047904"
+    },
+    {
+      "pick_number": 34,
+      "round": 3,
+      "team_name": "Trex",
+      "player_id": "8a13d2ae-9431-43f5-bc41-8de47dbff4dc",
+      "timestamp": "2025-12-25T18:41:57.226624"
+    },
+    {
+      "pick_number": 35,
+      "round": 3,
+      "team_name": "Like a Nightmare",
+      "player_id": "598c93ea-51ea-4d48-ad9a-a65d67f9b9a1",
+      "timestamp": "2025-12-25T18:41:57.410178"
+    },
+    {
+      "pick_number": 36,
+      "round": 3,
+      "team_name": "Big Sticks",
+      "player_id": "c7e1c0c1-28fd-46cc-88a3-295309a66db3",
+      "timestamp": "2025-12-25T18:41:57.591038"
+    },
+    {
+      "pick_number": 37,
+      "round": 3,
+      "team_name": "MAGA DOGE",
+      "player_id": "8a0fa827-e87c-4af8-a5c0-be6c540a81ec",
+      "timestamp": "2025-12-25T18:41:57.757684"
+    },
+    {
+      "pick_number": 38,
+      "round": 3,
+      "team_name": "Guillotine",
+      "player_id": "7b4e27e5-8657-4164-a0db-62e0f339d6c5",
+      "timestamp": "2025-12-25T18:41:57.935621"
+    },
+    {
+      "pick_number": 39,
+      "round": 3,
+      "team_name": "Rieken Havoc",
+      "player_id": "4efd9622-0a80-4f9b-904e-4e5539815ea9",
+      "timestamp": "2025-12-25T18:41:58.105466"
+    },
+    {
+      "pick_number": 40,
+      "round": 4,
+      "team_name": "Runtime Terror",
+      "player_id": "019d2884-c32c-4af5-aeb9-1e22987707d4",
+      "timestamp": "2025-12-25T18:42:05.993681"
+    },
+    {
+      "pick_number": 41,
+      "round": 4,
+      "team_name": "Dawg",
+      "player_id": "4cd7d255-e171-4604-8beb-8925e0c165e5",
+      "timestamp": "2025-12-25T18:42:09.170787"
+    },
+    {
+      "pick_number": 42,
+      "round": 4,
+      "team_name": "Long Balls",
+      "player_id": "d9ed2f08-dae3-4509-9ab5-412903206cd6",
+      "timestamp": "2025-12-25T18:42:09.432327"
+    },
+    {
+      "pick_number": 43,
+      "round": 4,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "db02247c-821a-4557-b953-8c3c879b4932",
+      "timestamp": "2025-12-25T18:42:09.605734"
+    },
+    {
+      "pick_number": 44,
+      "round": 4,
+      "team_name": "Young Guns",
+      "player_id": "e228c486-2f87-4ee1-b83c-1aa87ecc375b",
+      "timestamp": "2025-12-25T18:42:09.774851"
+    },
+    {
+      "pick_number": 45,
+      "round": 4,
+      "team_name": "Gashouse Gang",
+      "player_id": "b6c96098-4185-43b0-ae4b-b2d093c3b32a",
+      "timestamp": "2025-12-25T18:42:09.957506"
+    },
+    {
+      "pick_number": 46,
+      "round": 4,
+      "team_name": "Magnum GI",
+      "player_id": "dcb2d718-73e7-4d7a-911c-ab45c8c6b357",
+      "timestamp": "2025-12-25T18:42:10.139488"
+    },
+    {
+      "pick_number": 47,
+      "round": 4,
+      "team_name": "Trex",
+      "player_id": "57871273-0dcc-48a7-8441-d6cf5b8441c3",
+      "timestamp": "2025-12-25T18:42:10.317648"
+    },
+    {
+      "pick_number": 48,
+      "round": 4,
+      "team_name": "Like a Nightmare",
+      "player_id": "ad1068e7-9ffc-4713-b9e0-35797603e40a",
+      "timestamp": "2025-12-25T18:42:10.504051"
+    },
+    {
+      "pick_number": 49,
+      "round": 4,
+      "team_name": "Big Sticks",
+      "player_id": "cd1473bb-3f7b-4c25-9166-db0935fcb0dc",
+      "timestamp": "2025-12-25T18:42:10.681537"
+    },
+    {
+      "pick_number": 50,
+      "round": 4,
+      "team_name": "MAGA DOGE",
+      "player_id": "20889fb3-a7a6-49b2-a58d-feb9ce560ffc",
+      "timestamp": "2025-12-25T18:42:10.857266"
+    },
+    {
+      "pick_number": 51,
+      "round": 4,
+      "team_name": "Guillotine",
+      "player_id": "c2128484-a6e9-4f3e-881b-736898f8d989",
+      "timestamp": "2025-12-25T18:42:11.036850"
+    },
+    {
+      "pick_number": 52,
+      "round": 4,
+      "team_name": "Rieken Havoc",
+      "player_id": "d7ca3bcd-21be-4ec7-9567-656d2422aaba",
+      "timestamp": "2025-12-25T18:42:11.214791"
+    },
+    {
+      "pick_number": 53,
+      "round": 5,
+      "team_name": "Rieken Havoc",
+      "player_id": "17fedb3c-2071-4980-91f5-68dec20ce445",
+      "timestamp": "2025-12-25T18:42:11.393052"
+    },
+    {
+      "pick_number": 54,
+      "round": 5,
+      "team_name": "Guillotine",
+      "player_id": "2a978011-38cb-42b8-923f-d42967833b41",
+      "timestamp": "2025-12-25T18:42:11.588598"
+    },
+    {
+      "pick_number": 55,
+      "round": 5,
+      "team_name": "MAGA DOGE",
+      "player_id": "09e97dfb-c020-4f4a-a55e-4b75cd126b9e",
+      "timestamp": "2025-12-25T18:42:11.768782"
+    },
+    {
+      "pick_number": 56,
+      "round": 5,
+      "team_name": "Big Sticks",
+      "player_id": "a61848ae-5570-42d6-8b51-4c63f29e4d37",
+      "timestamp": "2025-12-25T18:42:11.951172"
+    },
+    {
+      "pick_number": 57,
+      "round": 5,
+      "team_name": "Like a Nightmare",
+      "player_id": "37c4568a-997a-429f-bb2a-e3f857b7ab22",
+      "timestamp": "2025-12-25T18:42:12.126041"
+    },
+    {
+      "pick_number": 58,
+      "round": 5,
+      "team_name": "Trex",
+      "player_id": "b442fac9-274e-4a6c-b1d3-38decb99c48e",
+      "timestamp": "2025-12-25T18:42:12.305742"
+    },
+    {
+      "pick_number": 59,
+      "round": 5,
+      "team_name": "Magnum GI",
+      "player_id": "393b3abd-23f4-4ec2-af85-a1e167630607",
+      "timestamp": "2025-12-25T18:42:12.487861"
+    },
+    {
+      "pick_number": 60,
+      "round": 5,
+      "team_name": "Gashouse Gang",
+      "player_id": "7f35f66a-8295-4243-aa26-bf0c13f78080",
+      "timestamp": "2025-12-25T18:42:12.693564"
+    },
+    {
+      "pick_number": 61,
+      "round": 5,
+      "team_name": "Young Guns",
+      "player_id": "9661c8ee-5cd5-4c2e-82cc-c955ef27a0b9",
+      "timestamp": "2025-12-25T18:42:12.876631"
+    },
+    {
+      "pick_number": 62,
+      "round": 5,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "a4ef58c3-c17d-4873-ac28-b2202a9e19ef",
+      "timestamp": "2025-12-25T18:42:13.061464"
+    },
+    {
+      "pick_number": 63,
+      "round": 5,
+      "team_name": "Long Balls",
+      "player_id": "ef32d0f6-440c-433d-9e46-a9f4c1810c7c",
+      "timestamp": "2025-12-25T18:42:13.244259"
+    },
+    {
+      "pick_number": 64,
+      "round": 5,
+      "team_name": "Dawg",
+      "player_id": "9c33ad02-5b1a-4e03-b655-f718cacd6724",
+      "timestamp": "2025-12-25T18:42:13.426628"
+    },
+    {
+      "pick_number": 65,
+      "round": 5,
+      "team_name": "Runtime Terror",
+      "player_id": "ca027c1a-892e-4133-96cf-a94ae6f55cff",
+      "timestamp": "2025-12-25T18:42:18.225899"
+    },
+    {
+      "pick_number": 66,
+      "round": 6,
+      "team_name": "Runtime Terror",
+      "player_id": "faf36dbb-60f5-47b0-b327-faf6d2fbde6a",
+      "timestamp": "2025-12-25T18:42:40.142373"
+    },
+    {
+      "pick_number": 67,
+      "round": 6,
+      "team_name": "Dawg",
+      "player_id": "d94ab9de-6e31-448e-9cf8-d842b8dbaaa6",
+      "timestamp": "2025-12-25T18:42:43.300615"
+    },
+    {
+      "pick_number": 68,
+      "round": 6,
+      "team_name": "Long Balls",
+      "player_id": "7cb445f5-264a-487e-85b1-4ce181932442",
+      "timestamp": "2025-12-25T18:42:43.547730"
+    },
+    {
+      "pick_number": 69,
+      "round": 6,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "341d3805-02a8-4663-965b-3cbbe9ec526e",
+      "timestamp": "2025-12-25T18:42:43.719234"
+    },
+    {
+      "pick_number": 70,
+      "round": 6,
+      "team_name": "Young Guns",
+      "player_id": "801557b5-8618-4c53-9723-0dbcb0f27874",
+      "timestamp": "2025-12-25T18:42:43.902331"
+    },
+    {
+      "pick_number": 71,
+      "round": 6,
+      "team_name": "Gashouse Gang",
+      "player_id": "d9b566ba-9abb-4059-a995-bc57d9c03ceb",
+      "timestamp": "2025-12-25T18:42:44.085013"
+    },
+    {
+      "pick_number": 72,
+      "round": 6,
+      "team_name": "Magnum GI",
+      "player_id": "e1dd5d6d-c929-4fa3-b703-79adbd5b14d0",
+      "timestamp": "2025-12-25T18:42:44.267939"
+    },
+    {
+      "pick_number": 73,
+      "round": 6,
+      "team_name": "Trex",
+      "player_id": "99a9c9f2-02c9-4e6d-8f49-0a60731ee5e1",
+      "timestamp": "2025-12-25T18:42:44.445242"
+    },
+    {
+      "pick_number": 74,
+      "round": 6,
+      "team_name": "Like a Nightmare",
+      "player_id": "c1f4a381-5426-4b1c-bacc-52f4e6ec2e40",
+      "timestamp": "2025-12-25T18:42:44.626883"
+    },
+    {
+      "pick_number": 75,
+      "round": 6,
+      "team_name": "Big Sticks",
+      "player_id": "85cfee38-6aa5-4712-9ca1-0e75d22fb6df",
+      "timestamp": "2025-12-25T18:42:44.806193"
+    },
+    {
+      "pick_number": 76,
+      "round": 6,
+      "team_name": "MAGA DOGE",
+      "player_id": "27d5d917-64dd-4892-b9a1-fd5d890e4b74",
+      "timestamp": "2025-12-25T18:42:44.974143"
+    },
+    {
+      "pick_number": 77,
+      "round": 6,
+      "team_name": "Guillotine",
+      "player_id": "4dfb9bc4-ebdf-4f53-bb5a-fd5ad6cc3a06",
+      "timestamp": "2025-12-25T18:42:45.139415"
+    },
+    {
+      "pick_number": 78,
+      "round": 6,
+      "team_name": "Rieken Havoc",
+      "player_id": "cf2aebd6-3f67-42df-acc6-a76842f063af",
+      "timestamp": "2025-12-25T18:42:45.303452"
+    },
+    {
+      "pick_number": 79,
+      "round": 7,
+      "team_name": "Rieken Havoc",
+      "player_id": "62f36a79-335e-415c-ab88-603a20d6579b",
+      "timestamp": "2025-12-25T18:42:45.492293"
+    },
+    {
+      "pick_number": 80,
+      "round": 7,
+      "team_name": "Guillotine",
+      "player_id": "04fd3e7b-e778-4f19-8226-ad4805fe248c",
+      "timestamp": "2025-12-25T18:42:45.704260"
+    },
+    {
+      "pick_number": 81,
+      "round": 7,
+      "team_name": "MAGA DOGE",
+      "player_id": "f320d47d-6c4a-43a1-9d78-2194ad4593a0",
+      "timestamp": "2025-12-25T18:42:45.876452"
+    },
+    {
+      "pick_number": 82,
+      "round": 7,
+      "team_name": "Big Sticks",
+      "player_id": "033268c6-b086-4d50-9418-eb5addb8a4c5",
+      "timestamp": "2025-12-25T18:42:46.052694"
+    },
+    {
+      "pick_number": 83,
+      "round": 7,
+      "team_name": "Like a Nightmare",
+      "player_id": "582f17e2-e793-4985-8687-17e350f6e640",
+      "timestamp": "2025-12-25T18:42:46.247376"
+    },
+    {
+      "pick_number": 84,
+      "round": 7,
+      "team_name": "Trex",
+      "player_id": "b4a1e6ce-f383-48d7-8572-0358498a1544",
+      "timestamp": "2025-12-25T18:42:46.428985"
+    },
+    {
+      "pick_number": 85,
+      "round": 7,
+      "team_name": "Magnum GI",
+      "player_id": "930d04ce-8669-431c-8ced-241485588865",
+      "timestamp": "2025-12-25T18:42:46.618383"
+    },
+    {
+      "pick_number": 86,
+      "round": 7,
+      "team_name": "Gashouse Gang",
+      "player_id": "0da58f58-be59-405b-9f3c-07530bb8ec73",
+      "timestamp": "2025-12-25T18:42:46.821737"
+    },
+    {
+      "pick_number": 87,
+      "round": 7,
+      "team_name": "Young Guns",
+      "player_id": "02cdabfd-b36c-4534-8480-c770afc73b53",
+      "timestamp": "2025-12-25T18:42:47.011288"
+    },
+    {
+      "pick_number": 88,
+      "round": 7,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "d2bcc12e-b0e4-4aec-a587-54cb1ecf8fea",
+      "timestamp": "2025-12-25T18:42:47.200938"
+    },
+    {
+      "pick_number": 89,
+      "round": 7,
+      "team_name": "Long Balls",
+      "player_id": "4d76638f-2de1-409f-bdc3-74df7481c8b1",
+      "timestamp": "2025-12-25T18:42:47.387706"
+    },
+    {
+      "pick_number": 90,
+      "round": 7,
+      "team_name": "Dawg",
+      "player_id": "fb4f7150-1116-48c5-8922-fa8b9856c8c5",
+      "timestamp": "2025-12-25T18:42:47.575165"
+    },
+    {
+      "pick_number": 91,
+      "round": 7,
+      "team_name": "Runtime Terror",
+      "player_id": "4be6f413-8422-4bc0-8574-f0d7ce3c063d",
+      "timestamp": "2025-12-25T18:45:43.672880"
+    },
+    {
+      "pick_number": 92,
+      "round": 8,
+      "team_name": "Runtime Terror",
+      "player_id": "446c9483-05b5-4016-90b5-dccc21839dd7",
+      "timestamp": "2025-12-25T18:45:51.242837"
+    },
+    {
+      "pick_number": 93,
+      "round": 8,
+      "team_name": "Dawg",
+      "player_id": "a725b462-6d17-4a06-8d76-f7428ad8cf0d",
+      "timestamp": "2025-12-25T18:45:54.506856"
+    },
+    {
+      "pick_number": 94,
+      "round": 8,
+      "team_name": "Long Balls",
+      "player_id": "6ef961be-e1b7-4438-9555-b84c1568a984",
+      "timestamp": "2025-12-25T18:45:54.767554"
+    },
+    {
+      "pick_number": 95,
+      "round": 8,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "9ee7d7e7-0c0c-4d7c-9f63-f7cefb105de3",
+      "timestamp": "2025-12-25T18:45:54.962599"
+    },
+    {
+      "pick_number": 96,
+      "round": 8,
+      "team_name": "Young Guns",
+      "player_id": "3bc9725d-8ab4-4dde-9223-f7cfe8a995d3",
+      "timestamp": "2025-12-25T18:45:55.152523"
+    },
+    {
+      "pick_number": 97,
+      "round": 8,
+      "team_name": "Gashouse Gang",
+      "player_id": "708358f3-6d60-4965-9941-c6df572f55c1",
+      "timestamp": "2025-12-25T18:45:55.342173"
+    },
+    {
+      "pick_number": 98,
+      "round": 8,
+      "team_name": "Magnum GI",
+      "player_id": "a20f92c4-35ba-4fc9-bd4a-dacf48a0d586",
+      "timestamp": "2025-12-25T18:45:55.527555"
+    },
+    {
+      "pick_number": 99,
+      "round": 8,
+      "team_name": "Trex",
+      "player_id": "d6a9f3cb-6663-43b6-9610-9bdfb814cd89",
+      "timestamp": "2025-12-25T18:45:55.700817"
+    },
+    {
+      "pick_number": 100,
+      "round": 8,
+      "team_name": "Like a Nightmare",
+      "player_id": "09e5c0cc-0064-4768-983a-447f9e538552",
+      "timestamp": "2025-12-25T18:45:55.892273"
+    },
+    {
+      "pick_number": 101,
+      "round": 8,
+      "team_name": "Big Sticks",
+      "player_id": "793b9e0e-d28f-4e84-825b-16899a923561",
+      "timestamp": "2025-12-25T18:45:56.081287"
+    },
+    {
+      "pick_number": 102,
+      "round": 8,
+      "team_name": "MAGA DOGE",
+      "player_id": "73badda0-1ec7-4626-b8e3-5dbe200846f3",
+      "timestamp": "2025-12-25T18:45:56.271407"
+    },
+    {
+      "pick_number": 103,
+      "round": 8,
+      "team_name": "Guillotine",
+      "player_id": "98681754-5f22-47d4-be81-4f7d1eb25502",
+      "timestamp": "2025-12-25T18:45:56.456823"
+    },
+    {
+      "pick_number": 104,
+      "round": 8,
+      "team_name": "Rieken Havoc",
+      "player_id": "80df358f-4c3e-4ead-8622-c4e72c31788b",
+      "timestamp": "2025-12-25T18:45:56.641976"
+    },
+    {
+      "pick_number": 105,
+      "round": 9,
+      "team_name": "Rieken Havoc",
+      "player_id": "c6be2b7d-7956-46b2-985d-b0c5d928a0f1",
+      "timestamp": "2025-12-25T18:45:56.827596"
+    },
+    {
+      "pick_number": 106,
+      "round": 9,
+      "team_name": "Guillotine",
+      "player_id": "db290eb7-8505-47a7-9c29-79a035b5ec87",
+      "timestamp": "2025-12-25T18:45:57.018777"
+    },
+    {
+      "pick_number": 107,
+      "round": 9,
+      "team_name": "MAGA DOGE",
+      "player_id": "f5c317ae-505c-4486-b97d-ec26eaade270",
+      "timestamp": "2025-12-25T18:45:57.210198"
+    },
+    {
+      "pick_number": 108,
+      "round": 9,
+      "team_name": "Big Sticks",
+      "player_id": "52e00d24-1be1-4af6-ac22-5edf6cf967dc",
+      "timestamp": "2025-12-25T18:45:57.402361"
+    },
+    {
+      "pick_number": 109,
+      "round": 9,
+      "team_name": "Like a Nightmare",
+      "player_id": "848673fc-3d5a-40aa-ad72-b0087174a34c",
+      "timestamp": "2025-12-25T18:45:57.598799"
+    },
+    {
+      "pick_number": 110,
+      "round": 9,
+      "team_name": "Trex",
+      "player_id": "55268858-56d5-4e69-ab82-be939ad20d69",
+      "timestamp": "2025-12-25T18:45:57.798995"
+    },
+    {
+      "pick_number": 111,
+      "round": 9,
+      "team_name": "Magnum GI",
+      "player_id": "d68fa098-ebb3-4102-921b-dfdc5b7efa73",
+      "timestamp": "2025-12-25T18:45:57.988273"
+    },
+    {
+      "pick_number": 112,
+      "round": 9,
+      "team_name": "Gashouse Gang",
+      "player_id": "b5a19bfc-8b42-4041-bbbd-7745db4e7d9f",
+      "timestamp": "2025-12-25T18:45:58.185285"
+    },
+    {
+      "pick_number": 113,
+      "round": 9,
+      "team_name": "Young Guns",
+      "player_id": "2c4e7eb9-340d-40fd-8a40-bc52cd9d3e91",
+      "timestamp": "2025-12-25T18:45:58.378259"
+    },
+    {
+      "pick_number": 114,
+      "round": 9,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "48a21b46-e372-4f0a-877b-2da7314fc84f",
+      "timestamp": "2025-12-25T18:45:58.573657"
+    },
+    {
+      "pick_number": 115,
+      "round": 9,
+      "team_name": "Long Balls",
+      "player_id": "71a1b6bb-c5e7-4023-9253-5401fd2f57f5",
+      "timestamp": "2025-12-25T18:45:58.757573"
+    },
+    {
+      "pick_number": 116,
+      "round": 9,
+      "team_name": "Dawg",
+      "player_id": "8addcdab-2cb7-47aa-b16b-a1fed37df11d",
+      "timestamp": "2025-12-25T18:45:58.941837"
+    },
+    {
+      "pick_number": 117,
+      "round": 9,
+      "team_name": "Runtime Terror",
+      "player_id": "61572f26-02f5-4def-9a31-ff7ca830719e",
+      "timestamp": "2025-12-25T18:46:05.071432"
+    },
+    {
+      "pick_number": 118,
+      "round": 10,
+      "team_name": "Runtime Terror",
+      "player_id": "cf25ebd6-e964-4e25-9cb0-2a1a3bc49f8f",
+      "timestamp": "2025-12-25T18:46:15.270375"
+    },
+    {
+      "pick_number": 119,
+      "round": 10,
+      "team_name": "Dawg",
+      "player_id": "ba250a8d-2cfe-4acc-af64-2b60ff886eae",
+      "timestamp": "2025-12-25T18:46:18.539464"
+    },
+    {
+      "pick_number": 120,
+      "round": 10,
+      "team_name": "Long Balls",
+      "player_id": "a8add2f0-7552-42a9-81ba-d917f9cc114e",
+      "timestamp": "2025-12-25T18:46:18.820306"
+    },
+    {
+      "pick_number": 121,
+      "round": 10,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "3bef7854-583e-4a1e-b18d-f2c260e2ac33",
+      "timestamp": "2025-12-25T18:46:19.021772"
+    },
+    {
+      "pick_number": 122,
+      "round": 10,
+      "team_name": "Young Guns",
+      "player_id": "44532ec7-1bba-4913-a3a9-280873386800",
+      "timestamp": "2025-12-25T18:46:19.222715"
+    },
+    {
+      "pick_number": 123,
+      "round": 10,
+      "team_name": "Gashouse Gang",
+      "player_id": "61deb657-f00c-4ac0-97cc-34a7e89becf6",
+      "timestamp": "2025-12-25T18:46:19.431959"
+    },
+    {
+      "pick_number": 124,
+      "round": 10,
+      "team_name": "Magnum GI",
+      "player_id": "afc5de25-4743-46b0-a74d-cbc66a1d75d2",
+      "timestamp": "2025-12-25T18:46:19.627189"
+    },
+    {
+      "pick_number": 125,
+      "round": 10,
+      "team_name": "Trex",
+      "player_id": "028ffa36-fff4-4ffd-9146-fdbae9e819e4",
+      "timestamp": "2025-12-25T18:46:19.824015"
+    },
+    {
+      "pick_number": 126,
+      "round": 10,
+      "team_name": "Like a Nightmare",
+      "player_id": "856da4c4-c4b7-428f-af52-586f2f722b85",
+      "timestamp": "2025-12-25T18:46:20.023425"
+    },
+    {
+      "pick_number": 127,
+      "round": 10,
+      "team_name": "Big Sticks",
+      "player_id": "c519404b-37c1-4509-b574-b776ed867a04",
+      "timestamp": "2025-12-25T18:46:20.219413"
+    },
+    {
+      "pick_number": 128,
+      "round": 10,
+      "team_name": "MAGA DOGE",
+      "player_id": "ef64fea4-baaf-47b0-be49-36d3beb04814",
+      "timestamp": "2025-12-25T18:46:20.417098"
+    },
+    {
+      "pick_number": 129,
+      "round": 10,
+      "team_name": "Guillotine",
+      "player_id": "1694d555-28ff-4b7a-b348-c6a7122cf37c",
+      "timestamp": "2025-12-25T18:46:20.599173"
+    },
+    {
+      "pick_number": 130,
+      "round": 10,
+      "team_name": "Rieken Havoc",
+      "player_id": "dc57b46c-73c0-43e2-b689-1fde7d06ffa7",
+      "timestamp": "2025-12-25T18:46:20.791899"
+    },
+    {
+      "pick_number": 131,
+      "round": 11,
+      "team_name": "Rieken Havoc",
+      "player_id": "76e02414-700f-45b5-ba9c-b6a05c7b2605",
+      "timestamp": "2025-12-25T18:46:20.981684"
+    },
+    {
+      "pick_number": 132,
+      "round": 11,
+      "team_name": "Guillotine",
+      "player_id": "a8a3d155-c150-4ae2-b00d-aece6675fbe5",
+      "timestamp": "2025-12-25T18:46:21.178822"
+    },
+    {
+      "pick_number": 133,
+      "round": 11,
+      "team_name": "MAGA DOGE",
+      "player_id": "0d1268f6-3676-44d5-928e-e065434d9585",
+      "timestamp": "2025-12-25T18:46:21.380886"
+    },
+    {
+      "pick_number": 134,
+      "round": 11,
+      "team_name": "Big Sticks",
+      "player_id": "c2b6c6b1-e817-4437-ba44-1e5710b7c23b",
+      "timestamp": "2025-12-25T18:46:21.604236"
+    },
+    {
+      "pick_number": 135,
+      "round": 11,
+      "team_name": "Like a Nightmare",
+      "player_id": "bb6a381c-3312-4e3c-a2e1-7397513625b0",
+      "timestamp": "2025-12-25T18:46:21.799593"
+    },
+    {
+      "pick_number": 136,
+      "round": 11,
+      "team_name": "Trex",
+      "player_id": "d7545980-d2fc-4621-945b-4f62e5556728",
+      "timestamp": "2025-12-25T18:46:21.999828"
+    },
+    {
+      "pick_number": 137,
+      "round": 11,
+      "team_name": "Magnum GI",
+      "player_id": "0005a11e-9bf7-428f-8dea-5f9c8726a1ad",
+      "timestamp": "2025-12-25T18:46:22.200523"
+    },
+    {
+      "pick_number": 138,
+      "round": 11,
+      "team_name": "Gashouse Gang",
+      "player_id": "140f4574-2331-41d7-8f66-868f3fc3938e",
+      "timestamp": "2025-12-25T18:46:22.402965"
+    },
+    {
+      "pick_number": 139,
+      "round": 11,
+      "team_name": "Young Guns",
+      "player_id": "49e02b51-5948-422a-900c-8c7d42c57536",
+      "timestamp": "2025-12-25T18:46:22.598766"
+    },
+    {
+      "pick_number": 140,
+      "round": 11,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "2b875ff1-944f-42d0-97f1-dc96cb266193",
+      "timestamp": "2025-12-25T18:46:22.791797"
+    },
+    {
+      "pick_number": 141,
+      "round": 11,
+      "team_name": "Long Balls",
+      "player_id": "855e4054-0960-4858-9da4-c6a6034afa5a",
+      "timestamp": "2025-12-25T18:46:22.993869"
+    },
+    {
+      "pick_number": 142,
+      "round": 11,
+      "team_name": "Dawg",
+      "player_id": "e70b6632-cfc8-4297-aa34-da526a0efccd",
+      "timestamp": "2025-12-25T18:46:23.196182"
+    }
+  ],
+  "team_rosters": {
+    "Runtime Terror": [
+      "c730240d-1b8d-487f-81b1-2bce83b207f8",
+      "9872f926-4bcb-4ef8-a76b-eca9a13f239e",
+      "698c1485-0005-4e65-b3ed-d7200c3235d2",
+      "019d2884-c32c-4af5-aeb9-1e22987707d4",
+      "ca027c1a-892e-4133-96cf-a94ae6f55cff",
+      "faf36dbb-60f5-47b0-b327-faf6d2fbde6a",
+      "4be6f413-8422-4bc0-8574-f0d7ce3c063d",
+      "446c9483-05b5-4016-90b5-dccc21839dd7",
+      "61572f26-02f5-4def-9a31-ff7ca830719e",
+      "cf25ebd6-e964-4e25-9cb0-2a1a3bc49f8f"
+    ],
+    "Dawg": [
+      "1a9d5c65-fd86-4d70-9fec-6194d8f41b85",
+      "5bcd9a55-7762-4ea4-a41b-a9de812440bc",
+      "e2154fa3-5912-489f-b303-9924e2345ed0",
+      "4cd7d255-e171-4604-8beb-8925e0c165e5",
+      "9c33ad02-5b1a-4e03-b655-f718cacd6724",
+      "d94ab9de-6e31-448e-9cf8-d842b8dbaaa6",
+      "fb4f7150-1116-48c5-8922-fa8b9856c8c5",
+      "a725b462-6d17-4a06-8d76-f7428ad8cf0d",
+      "8addcdab-2cb7-47aa-b16b-a1fed37df11d",
+      "ba250a8d-2cfe-4acc-af64-2b60ff886eae",
+      "e70b6632-cfc8-4297-aa34-da526a0efccd"
+    ],
+    "Long Balls": [
+      "94f0001a-1f38-442c-9202-fe01c871b8fc",
+      "dca440e5-ea11-4fe9-8d92-4a9241d0b2b2",
+      "b13610b9-f0ed-40d3-883b-bec617889d21",
+      "d9ed2f08-dae3-4509-9ab5-412903206cd6",
+      "ef32d0f6-440c-433d-9e46-a9f4c1810c7c",
+      "7cb445f5-264a-487e-85b1-4ce181932442",
+      "4d76638f-2de1-409f-bdc3-74df7481c8b1",
+      "6ef961be-e1b7-4438-9555-b84c1568a984",
+      "71a1b6bb-c5e7-4023-9253-5401fd2f57f5",
+      "a8add2f0-7552-42a9-81ba-d917f9cc114e",
+      "855e4054-0960-4858-9da4-c6a6034afa5a"
+    ],
+    "Simba's Dublin Green Sox": [
+      "38cc66a3-4c1a-4cff-b6dc-df20aaf4bec4",
+      "af926b82-9fbe-45be-8730-6099a02ab34b",
+      "41d5275f-e694-49b4-9d64-b4cc60c3b9bd",
+      "db02247c-821a-4557-b953-8c3c879b4932",
+      "a4ef58c3-c17d-4873-ac28-b2202a9e19ef",
+      "341d3805-02a8-4663-965b-3cbbe9ec526e",
+      "d2bcc12e-b0e4-4aec-a587-54cb1ecf8fea",
+      "9ee7d7e7-0c0c-4d7c-9f63-f7cefb105de3",
+      "48a21b46-e372-4f0a-877b-2da7314fc84f",
+      "3bef7854-583e-4a1e-b18d-f2c260e2ac33",
+      "2b875ff1-944f-42d0-97f1-dc96cb266193"
+    ],
+    "Young Guns": [
+      "8f7eb5eb-21bf-4d65-94c9-f1357082ea7c",
+      "ab47c484-120b-4844-8438-4e0c7f1ccfa7",
+      "4e0820af-7642-4722-ba2c-7bdccaa2c972",
+      "e228c486-2f87-4ee1-b83c-1aa87ecc375b",
+      "9661c8ee-5cd5-4c2e-82cc-c955ef27a0b9",
+      "801557b5-8618-4c53-9723-0dbcb0f27874",
+      "02cdabfd-b36c-4534-8480-c770afc73b53",
+      "3bc9725d-8ab4-4dde-9223-f7cfe8a995d3",
+      "2c4e7eb9-340d-40fd-8a40-bc52cd9d3e91",
+      "44532ec7-1bba-4913-a3a9-280873386800",
+      "49e02b51-5948-422a-900c-8c7d42c57536"
+    ],
+    "Gashouse Gang": [
+      "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+      "8f2b321f-f8f2-46d3-8407-0c4017aee21e",
+      "cfa825ae-cb22-407f-95ad-a7a2c880b59b",
+      "b6c96098-4185-43b0-ae4b-b2d093c3b32a",
+      "7f35f66a-8295-4243-aa26-bf0c13f78080",
+      "d9b566ba-9abb-4059-a995-bc57d9c03ceb",
+      "0da58f58-be59-405b-9f3c-07530bb8ec73",
+      "708358f3-6d60-4965-9941-c6df572f55c1",
+      "b5a19bfc-8b42-4041-bbbd-7745db4e7d9f",
+      "61deb657-f00c-4ac0-97cc-34a7e89becf6",
+      "140f4574-2331-41d7-8f66-868f3fc3938e"
+    ],
+    "Magnum GI": [
+      "1cae2ca6-dec4-4551-b064-026be358ff65",
+      "50d0029f-92ce-47b1-95e4-aa37028f6969",
+      "80638fbf-6b92-4df5-a057-f23d4293592d",
+      "dcb2d718-73e7-4d7a-911c-ab45c8c6b357",
+      "393b3abd-23f4-4ec2-af85-a1e167630607",
+      "e1dd5d6d-c929-4fa3-b703-79adbd5b14d0",
+      "930d04ce-8669-431c-8ced-241485588865",
+      "a20f92c4-35ba-4fc9-bd4a-dacf48a0d586",
+      "d68fa098-ebb3-4102-921b-dfdc5b7efa73",
+      "afc5de25-4743-46b0-a74d-cbc66a1d75d2",
+      "0005a11e-9bf7-428f-8dea-5f9c8726a1ad"
+    ],
+    "Trex": [
+      "4560b316-9f17-4ee8-9018-843c920c0740",
+      "4772fb46-377c-4c09-86f9-5a03f8854e18",
+      "8a13d2ae-9431-43f5-bc41-8de47dbff4dc",
+      "57871273-0dcc-48a7-8441-d6cf5b8441c3",
+      "b442fac9-274e-4a6c-b1d3-38decb99c48e",
+      "99a9c9f2-02c9-4e6d-8f49-0a60731ee5e1",
+      "b4a1e6ce-f383-48d7-8572-0358498a1544",
+      "d6a9f3cb-6663-43b6-9610-9bdfb814cd89",
+      "55268858-56d5-4e69-ab82-be939ad20d69",
+      "028ffa36-fff4-4ffd-9146-fdbae9e819e4",
+      "d7545980-d2fc-4621-945b-4f62e5556728"
+    ],
+    "Like a Nightmare": [
+      "2b50fae0-497b-4e74-8620-36eaaad91ff1",
+      "f005248a-c3aa-46c4-8051-c13c8af85835",
+      "598c93ea-51ea-4d48-ad9a-a65d67f9b9a1",
+      "ad1068e7-9ffc-4713-b9e0-35797603e40a",
+      "37c4568a-997a-429f-bb2a-e3f857b7ab22",
+      "c1f4a381-5426-4b1c-bacc-52f4e6ec2e40",
+      "582f17e2-e793-4985-8687-17e350f6e640",
+      "09e5c0cc-0064-4768-983a-447f9e538552",
+      "848673fc-3d5a-40aa-ad72-b0087174a34c",
+      "856da4c4-c4b7-428f-af52-586f2f722b85",
+      "bb6a381c-3312-4e3c-a2e1-7397513625b0"
+    ],
+    "Big Sticks": [
+      "e42480c1-aa6e-4fc3-8fd3-6aca60e32c2d",
+      "559f4f9d-3a81-4f0a-b837-c1368b59fb82",
+      "c7e1c0c1-28fd-46cc-88a3-295309a66db3",
+      "cd1473bb-3f7b-4c25-9166-db0935fcb0dc",
+      "a61848ae-5570-42d6-8b51-4c63f29e4d37",
+      "85cfee38-6aa5-4712-9ca1-0e75d22fb6df",
+      "033268c6-b086-4d50-9418-eb5addb8a4c5",
+      "793b9e0e-d28f-4e84-825b-16899a923561",
+      "52e00d24-1be1-4af6-ac22-5edf6cf967dc",
+      "c519404b-37c1-4509-b574-b776ed867a04",
+      "c2b6c6b1-e817-4437-ba44-1e5710b7c23b"
+    ],
+    "MAGA DOGE": [
+      "d103c477-d1fe-4abd-a169-8d54b672ff27",
+      "eab6e586-694f-4e46-9f0d-a715dfbba440",
+      "8a0fa827-e87c-4af8-a5c0-be6c540a81ec",
+      "20889fb3-a7a6-49b2-a58d-feb9ce560ffc",
+      "09e97dfb-c020-4f4a-a55e-4b75cd126b9e",
+      "27d5d917-64dd-4892-b9a1-fd5d890e4b74",
+      "f320d47d-6c4a-43a1-9d78-2194ad4593a0",
+      "73badda0-1ec7-4626-b8e3-5dbe200846f3",
+      "f5c317ae-505c-4486-b97d-ec26eaade270",
+      "ef64fea4-baaf-47b0-be49-36d3beb04814",
+      "0d1268f6-3676-44d5-928e-e065434d9585"
+    ],
+    "Guillotine": [
+      "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+      "8b669de7-a201-4e27-9552-00f44c35a73e",
+      "7b4e27e5-8657-4164-a0db-62e0f339d6c5",
+      "c2128484-a6e9-4f3e-881b-736898f8d989",
+      "2a978011-38cb-42b8-923f-d42967833b41",
+      "4dfb9bc4-ebdf-4f53-bb5a-fd5ad6cc3a06",
+      "04fd3e7b-e778-4f19-8226-ad4805fe248c",
+      "98681754-5f22-47d4-be81-4f7d1eb25502",
+      "db290eb7-8505-47a7-9c29-79a035b5ec87",
+      "1694d555-28ff-4b7a-b348-c6a7122cf37c",
+      "a8a3d155-c150-4ae2-b00d-aece6675fbe5"
+    ],
+    "Rieken Havoc": [
+      "1553de44-7d99-4a52-a7ee-55077435d1cc",
+      "43f221b7-4fdd-43c9-953f-11b989243364",
+      "4efd9622-0a80-4f9b-904e-4e5539815ea9",
+      "d7ca3bcd-21be-4ec7-9567-656d2422aaba",
+      "17fedb3c-2071-4980-91f5-68dec20ce445",
+      "cf2aebd6-3f67-42df-acc6-a76842f063af",
+      "62f36a79-335e-415c-ab88-603a20d6579b",
+      "80df358f-4c3e-4ead-8622-c4e72c31788b",
+      "c6be2b7d-7956-46b2-985d-b0c5d928a0f1",
+      "dc57b46c-73c0-43e2-b689-1fde7d06ffa7",
+      "76e02414-700f-45b5-ba9c-b6a05c7b2605"
+    ]
+  },
+  "is_complete": false
+}

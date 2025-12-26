@@ -62,7 +62,6 @@ class App {
     initializeEventListeners() {
         // Draft action buttons
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
-        document.getElementById('train-ml-btn')?.addEventListener('click', () => this.trainMLModels());
         document.getElementById('view-standings-btn')?.addEventListener('click', () => this.showStandings());
         // Auto-draft toggle button
         const autoDraftBtn = document.getElementById('auto-draft-toggle-btn');
@@ -295,7 +294,7 @@ class App {
         const pickNumber = this.currentDraft.picks.length + 1;
         const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
         const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
-        // Bob Uecker League: Rounds 1-5 no snake, Round 6+ snakes
+        // Bob Uecker League: Rounds 1-4 no snake, Round 5+ snakes
         const teamOrder = [
             "Runtime Terror",
             "Dawg",
@@ -305,18 +304,18 @@ class App {
             "Gashouse Gang",
             "Magnum GI",
             "Trex",
-            "Rieken Havoc",
-            "Guillotine",
-            "MAGA DOGE",
+            "Like a Nightmare",
             "Big Sticks",
-            "Like a Nightmare"
+            "MAGA DOGE",
+            "Guillotine",
+            "Rieken Havoc"
         ];
         let currentTeam;
-        if (round <= 5) {
+        if (round <= 4) {
             currentTeam = teamOrder[pickInRound - 1];
         }
         else {
-            const snakeRound = round - 5;
+            const snakeRound = round - 4; // Round 5 is snake round 1
             const isOddSnakeRound = snakeRound % 2 === 1;
             if (isOddSnakeRound) {
                 currentTeam = teamOrder[this.currentDraft.total_teams - pickInRound];
@@ -343,9 +342,40 @@ class App {
                 // Check if draft is now complete
                 if (result.draft_complete) {
                     console.log('Draft Complete! All roster spots filled.');
+                    // Only refresh when draft completes
+                    await this.refreshAll();
                 }
-                // Refresh everything after auto-draft
-                await this.refreshAll();
+                else {
+                    // Don't refresh after auto-draft picks - just update draft state
+                    // Only refresh when it's the user's turn or draft completes
+                    const nextPickNumber = this.currentDraft.picks.length + 1;
+                    const nextRound = Math.floor((nextPickNumber - 1) / this.currentDraft.total_teams) + 1;
+                    const nextPickInRound = ((nextPickNumber - 1) % this.currentDraft.total_teams) + 1;
+                    // Check if next pick is user's turn
+                    const teamOrder = [
+                        "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
+                        "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
+                        "Like a Nightmare", "Big Sticks", "MAGA DOGE", "Guillotine", "Rieken Havoc"
+                    ];
+                    let nextTeam;
+                    if (nextRound <= 4) {
+                        nextTeam = teamOrder[nextPickInRound - 1];
+                    }
+                    else {
+                        const nextSnakeRound = nextRound - 4;
+                        const isNextOddSnakeRound = nextSnakeRound % 2 === 1;
+                        if (isNextOddSnakeRound) {
+                            nextTeam = teamOrder[this.currentDraft.total_teams - nextPickInRound];
+                        }
+                        else {
+                            nextTeam = teamOrder[nextPickInRound - 1];
+                        }
+                    }
+                    // Only refresh if it's now the user's turn
+                    if (nextTeam === this.currentDraft.my_team_name) {
+                        await this.refreshAll();
+                    }
+                }
                 // If draft not complete, continue auto-drafting
                 if (!result.draft_complete && this.autoDraftEnabled) {
                     setTimeout(() => this.checkAndTriggerAutoDraft(), 100);

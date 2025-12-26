@@ -20,7 +20,7 @@ export class UIRenderer {
         const pickNumber = draft.picks.length + 1;
         const round = Math.floor((pickNumber - 1) / draft.total_teams) + 1;
         const pickInRound = ((pickNumber - 1) % draft.total_teams) + 1;
-        // Bob Uecker League: Rounds 1-5 no snake, Round 6+ snakes
+        // Bob Uecker League: Rounds 1-4 no snake, Round 5+ snakes
         const teamOrder = [
             "Runtime Terror",
             "Dawg",
@@ -30,27 +30,27 @@ export class UIRenderer {
             "Gashouse Gang",
             "Magnum GI",
             "Trex",
-            "Rieken Havoc",
-            "Guillotine",
-            "MAGA DOGE",
+            "Like a Nightmare",
             "Big Sticks",
-            "Like a Nightmare"
+            "MAGA DOGE",
+            "Guillotine",
+            "Rieken Havoc"
         ];
         let currentTeam;
-        if (round <= 5) {
-            // Rounds 1-5: standard order
+        if (round <= 4) {
+            // Rounds 1-4: standard order (NO snake)
             currentTeam = teamOrder[pickInRound - 1];
         }
         else {
-            // Round 6+: snake draft
-            const snakeRound = round - 5; // Round 6 is snake round 1
+            // Round 5+: snake draft
+            const snakeRound = round - 4; // Round 5 is snake round 1
             const isOddSnakeRound = snakeRound % 2 === 1;
             if (isOddSnakeRound) {
-                // Odd snake rounds: reverse order
+                // Odd snake rounds (5, 7, 9, etc.): reverse order
                 currentTeam = teamOrder[draft.total_teams - pickInRound];
             }
             else {
-                // Even snake rounds: normal order
+                // Even snake rounds (6, 8, 10, etc.): normal order
                 currentTeam = teamOrder[pickInRound - 1];
             }
         }
@@ -59,11 +59,11 @@ export class UIRenderer {
         const nextRound = Math.floor((nextPickNumber - 1) / draft.total_teams) + 1;
         const nextPickInRound = ((nextPickNumber - 1) % draft.total_teams) + 1;
         let nextTeam;
-        if (nextRound <= 5) {
+        if (nextRound <= 4) {
             nextTeam = teamOrder[nextPickInRound - 1];
         }
         else {
-            const nextSnakeRound = nextRound - 5;
+            const nextSnakeRound = nextRound - 4;
             const isNextOddSnakeRound = nextSnakeRound % 2 === 1;
             if (isNextOddSnakeRound) {
                 nextTeam = teamOrder[draft.total_teams - nextPickInRound];

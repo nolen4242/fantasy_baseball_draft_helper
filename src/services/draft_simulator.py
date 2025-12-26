@@ -36,17 +36,17 @@ class DraftSimulator:
         
         for round_num in range(1, self.roster_size + 1):
             # Determine draft order for this round
-            if round_num <= 5:
-                # Rounds 1-5: fixed order
+            if round_num <= 4:
+                # Rounds 1-4: fixed order (NO snake)
                 round_order = self.team_names.copy()
             else:
-                # Round 6+: snake draft
-                snake_round = round_num - 5
+                # Round 5+: snake draft
+                snake_round = round_num - 4  # Round 5 is snake round 1
                 if snake_round % 2 == 1:
-                    # Odd snake rounds: reverse order
+                    # Odd snake rounds (5, 7, 9, etc.): reverse order
                     round_order = list(reversed(self.team_names))
                 else:
-                    # Even snake rounds: normal order
+                    # Even snake rounds (6, 8, 10, etc.): normal order
                     round_order = self.team_names.copy()
             
             for team_name in round_order:
