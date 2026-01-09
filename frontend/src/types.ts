@@ -46,10 +46,48 @@ export interface DraftState {
     is_complete?: boolean;
 }
 
+export interface BlockingOpportunity {
+    team: string;
+    position: string;
+    urgency: number;
+    impact: string;
+}
+
+export interface VORPData {
+    score: number;
+    tier: string;
+    category_contributions: Record<string, number>;
+}
+
+export interface ScarcityTier {
+    tier: string;
+    elite_remaining: number;
+}
+
 export interface Recommendation {
     player: Player;
     score: number;
     reasoning: string;
+    vorp?: VORPData;
+    blocking?: BlockingOpportunity[];
+    scarcity_tier?: ScarcityTier;
+    category_gaps?: Record<string, number>;
+}
+
+export interface DraftBoardTeam {
+    name: string;
+    color: string;
+    player_count: number;
+    positions: Record<string, { player_id: string; name: string; position: string; adp?: number }>;
+    is_my_team: boolean;
+}
+
+export interface DraftBoard {
+    teams: DraftBoardTeam[];
+    position_slots: string[];
+    current_pick: number;
+    current_round: number;
+    my_team: string;
 }
 
 export interface TeamRoster {

@@ -1,0 +1,36 @@
+{
+  "draft_id": "test_balance3",
+  "league_name": "Bob Uecker League",
+  "total_teams": 13,
+  "roster_size": 21,
+  "my_team_name": "Runtime Terror",
+  "current_pick": 2,
+  "current_round": 1,
+  "picks": [
+    {
+      "pick_number": 1,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
+      "timestamp": "2026-01-08T21:38:17.752150"
+    }
+  ],
+  "team_rosters": {
+    "Runtime Terror": [
+      "c730240d-1b8d-487f-81b1-2bce83b207f8"
+    ],
+    "Dawg": [],
+    "Long Balls": [],
+    "Simba's Dublin Green Sox": [],
+    "Young Guns": [],
+    "Gashouse Gang": [],
+    "Magnum GI": [],
+    "Trex": [],
+    "Like a Nightmare": [],
+    "Big Sticks": [],
+    "MAGA DOGE": [],
+    "Guillotine": [],
+    "Rieken Havoc": []
+  },
+  "is_complete": false
+}

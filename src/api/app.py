@@ -463,15 +463,48 @@ def make_pick():
 @app.route('/api/draft/available', methods=['GET'])
 def get_available_players():
     """Get available (undrafted) players, sorted by ADP."""
-    available = draft_service.get_available_players(all_players)
-    # Sort by ADP (lower is better, None values go to end)
-    sorted_available = sorted(
-        available,
-        key=lambda p: (p.adp is None, p.adp or float('inf'))
-    )
-    return jsonify({
-        'players': [p.to_dict() for p in sorted_available]
-    })
+    global all_players
+    try:
+        print(f"DEBUG get_available_players: all_players count = {len(all_players)}")
+        
+        # If no players loaded, try to load them
+        if not all_players:
+            print("DEBUG: No players loaded, attempting to load from master dictionary...")
+            try:
+                all_players = master_player_dict_loader.load_all_players()
+                recommendation_engine.all_players = all_players
+                print(f"DEBUG: Loaded {len(all_players)} players from master dictionary")
+            except Exception as e:
+                print(f"DEBUG: Failed to load players: {e}")
+                import traceback
+                traceback.print_exc()
+        
+        available = draft_service.get_available_players(all_players)
+        print(f"DEBUG get_available_players: available count = {len(available)}")
+        
+        # Sort by ADP (lower is better, None values go to end)
+        sorted_available = sorted(
+            available,
+            key=lambda p: (p.adp is None, p.adp or float('inf'))
+        )
+        
+        players_dict = [p.to_dict() for p in sorted_available]
+        print(f"DEBUG get_available_players: returning {len(players_dict)} players")
+        
+        return jsonify({
+            'players': players_dict
+        })
+    except Exception as e:
+        import traceback
+        error_msg = str(e)
+        traceback_str = traceback.format_exc()
+        print(f"ERROR in get_available_players: {error_msg}")
+        print(traceback_str)
+        return jsonify({
+            'success': False,
+            'error': error_msg,
+            'players': []
+        }), 500
 
 
 @app.route('/api/draft/my-team', methods=['GET'])
@@ -726,11 +759,16 @@ def get_recommendations():
         recommendations_data = []
         for rec in recommendations:
             try:
-                recommendations_data.append({
+                rec_data = {
                     'player': rec['player'].to_dict(),
                     'score': rec['score'],
-                    'reasoning': rec['reasoning']
-                })
+                    'reasoning': rec['reasoning'],
+                    'vorp': rec.get('vorp'),
+                    'blocking': rec.get('blocking', []),
+                    'scarcity_tier': rec.get('scarcity_tier'),
+                    'category_gaps': rec.get('category_gaps')
+                }
+                recommendations_data.append(rec_data)
             except Exception as e:
                 print(f"ERROR converting recommendation to dict: {e}")
                 print(f"  Recommendation: {rec}")
@@ -745,12 +783,13 @@ def get_recommendations():
         traceback_str = traceback.format_exc()
         print(f"ERROR in get_recommendations: {error_msg}")
         print(traceback_str)
+        # Return empty recommendations instead of 500 error to prevent UI blocking
+        # The available players list should still work independently
         return jsonify({
-            'success': False,
-            'error': error_msg,
-            'traceback': traceback_str,
+            'success': True,  # Changed to True so frontend doesn't treat this as an error
+            'error': error_msg,  # Still include error for debugging
             'recommendations': []
-        }), 500
+        })
 
 
 @app.route('/api/draft/auto-draft/toggle', methods=['POST'])
@@ -964,6 +1003,93 @@ def make_auto_draft_pick():
             'success': False,
             'error': type(e).__name__,
             'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/draft/board', methods=['GET'])
+def get_draft_board():
+    """Get draft board data for all teams with color-coded positions."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    try:
+        from src.services.team_service import TeamService
+        team_service = TeamService()
+        
+        # Define team colors for visual differentiation
+        team_colors = {
+            "Runtime Terror": "#e74c3c",      # Red
+            "Dawg": "#3498db",                 # Blue
+            "Long Balls": "#2ecc71",           # Green
+            "Simba's Dublin Green Sox": "#f39c12",  # Orange
+            "Young Guns": "#9b59b6",           # Purple
+            "Gashouse Gang": "#1abc9c",        # Teal
+            "Magnum GI": "#e91e63",            # Pink
+            "Trex": "#795548",                 # Brown
+            "Like a Nightmare": "#607d8b",     # Blue Grey
+            "Big Sticks": "#ff5722",           # Deep Orange
+            "MAGA DOGE": "#ffc107",            # Amber
+            "Guillotine": "#00bcd4",           # Cyan
+            "Rieken Havoc": "#673ab7"          # Deep Purple
+        }
+        
+        # Position slots configuration (Bob Uecker League)
+        position_slots = ['C', '1B', '2B', '3B', 'SS', 'MI', 'CI', 'OF1', 'OF2', 'OF3', 'OF4', 'U', 
+                         'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9', 'BENCH']
+        
+        board_data = {
+            'teams': [],
+            'position_slots': position_slots,
+            'current_pick': len(draft_service.current_draft.picks) + 1,
+            'current_round': draft_service.current_draft.current_round,
+            'my_team': draft_service.current_draft.my_team_name
+        }
+        
+        # Get all teams and their rosters
+        for team_name in draft_service.current_draft.team_rosters.keys():
+            team_players = draft_service.get_team_players(all_players, team_name)
+            
+            # Get roster with position assignments
+            roster = team_service.get_team_roster(team_name)
+            positions = roster.get('positions', {}) if roster else {}
+            
+            # Build position map for this team
+            position_map = {}
+            for pos, slots in positions.items():
+                if isinstance(slots, list):
+                    for i, player_id in enumerate(slots):
+                        if player_id:
+                            player = next((p for p in team_players if p.player_id == player_id), None)
+                            if player:
+                                slot_key = f"{pos}{i+1}" if pos in ['OF', 'P'] else pos
+                                position_map[slot_key] = {
+                                    'player_id': player.player_id,
+                                    'name': player.name,
+                                    'position': player.position,
+                                    'adp': player.adp
+                                }
+            
+            board_data['teams'].append({
+                'name': team_name,
+                'color': team_colors.get(team_name, '#666666'),
+                'player_count': len(team_players),
+                'positions': position_map,
+                'is_my_team': team_name == draft_service.current_draft.my_team_name
+            })
+        
+        return jsonify({
+            'success': True,
+            'board': board_data
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': str(e),
             'traceback': traceback.format_exc() if app.debug else None
         }), 500
 

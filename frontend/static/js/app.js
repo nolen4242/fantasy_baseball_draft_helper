@@ -4,6 +4,7 @@ import { DraftManager } from './draft-manager.js';
 class App {
     constructor() {
         this.currentRecommendation = null;
+        this.topRecommendations = [];
         this.allPlayers = [];
         this.currentDraft = null;
         this.autoDraftEnabled = false;
@@ -34,21 +35,49 @@ class App {
             return;
         // Set title
         modalTitle.textContent = `${this.currentRecommendation.player.name} - Detailed Analysis`;
-        // Format reasoning with line breaks
-        const reasoning = this.currentRecommendation.reasoning || 'No analysis available.';
-        const formattedReasoning = reasoning.split('\n\n').map(section => {
-            // Check if section has emoji prefix (like 📊, ⚠️, etc.)
-            if (section.match(/^[📊⚠️🎯📈✅🏆💎]/)) {
+        // Use enhanced rendering if we have the new data
+        if (this.currentRecommendation.vorp || this.currentRecommendation.blocking) {
+            modalBody.innerHTML = this.renderer.renderEnhancedRecommendation(this.currentRecommendation);
+        }
+        else {
+            // Fallback to basic reasoning
+            const reasoning = this.currentRecommendation.reasoning || 'No analysis available.';
+            const formattedReasoning = reasoning.split('\n\n').map(section => {
                 return `<div class="analysis-section">${section}</div>`;
-            }
-            return `<div class="analysis-section">${section}</div>`;
-        }).join('');
-        modalBody.innerHTML = formattedReasoning;
+            }).join('');
+            modalBody.innerHTML = formattedReasoning;
+        }
         // Show modal
         modal.style.display = 'block';
     }
     closeRecommendationModal() {
         const modal = document.getElementById('recommendation-modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
+    async showDraftBoard() {
+        try {
+            const result = await this.api.getDraftBoard();
+            if (result.success && result.board) {
+                this.renderer.renderDraftBoard(result.board);
+                const modal = document.getElementById('draft-board-modal');
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            }
+            else {
+                alert('Failed to load draft board.');
+            }
+        }
+        catch (error) {
+            console.error('Error loading draft board:', error);
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            alert('Error loading draft board: ' + errorMessage);
+        }
+    }
+    closeDraftBoardModal() {
+        const modal = document.getElementById('draft-board-modal');
         if (modal) {
             modal.style.display = 'none';
         }
@@ -63,6 +92,7 @@ class App {
         // Draft action buttons
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
         document.getElementById('view-standings-btn')?.addEventListener('click', () => this.showStandings());
+        document.getElementById('view-draft-board-btn')?.addEventListener('click', () => this.showDraftBoard());
         // Auto-draft toggle button
         const autoDraftBtn = document.getElementById('auto-draft-toggle-btn');
         if (autoDraftBtn) {
@@ -86,6 +116,12 @@ class App {
         document.getElementById('recommendation-modal')?.addEventListener('click', (e) => {
             if (e.target.id === 'recommendation-modal') {
                 this.closeRecommendationModal();
+            }
+        });
+        document.getElementById('close-draft-board-modal')?.addEventListener('click', () => this.closeDraftBoardModal());
+        document.getElementById('draft-board-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'draft-board-modal') {
+                this.closeDraftBoardModal();
             }
         });
         // Search and filter
@@ -261,21 +297,24 @@ class App {
     async refreshDraftStatus() {
         if (!this.currentDraft)
             return;
-        // Get top recommendation
+        // Get top recommendations
         let topRecommendation = null;
         try {
             const recommendations = await this.api.getRecommendations();
             if (recommendations && recommendations.length > 0) {
                 topRecommendation = recommendations[0];
                 this.currentRecommendation = topRecommendation; // Store for modal
+                this.topRecommendations = recommendations.slice(0, 3); // Store top 3
             }
             else {
                 this.currentRecommendation = null;
+                this.topRecommendations = [];
             }
         }
         catch (error) {
             console.error('Error fetching recommendations:', error);
             this.currentRecommendation = null;
+            this.topRecommendations = [];
         }
         this.renderer.updateDraftStatusBar(this.currentDraft, topRecommendation);
         // Check if auto-draft should trigger
@@ -438,9 +477,21 @@ class App {
         }
     }
     async refreshAvailablePlayers() {
-        const available = await this.api.getAvailablePlayers();
-        const draftComplete = this.currentDraft?.is_complete || false;
-        this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player), draftComplete);
+        try {
+            const available = await this.api.getAvailablePlayers();
+            console.log(`refreshAvailablePlayers: Got ${available.length} players`);
+            const draftComplete = this.currentDraft?.is_complete || false;
+            this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player), draftComplete);
+            if (available.length === 0) {
+                console.warn('No available players returned. This might indicate:');
+                console.warn('  - No players loaded in the system');
+                console.warn('  - All players have been drafted');
+                console.warn('  - API error (check server logs)');
+            }
+        }
+        catch (error) {
+            console.error('Error refreshing available players:', error);
+        }
     }
     async refreshMyTeam() {
         if (!this.currentDraft)

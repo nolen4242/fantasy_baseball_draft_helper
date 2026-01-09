@@ -134,3 +134,5 @@ class HistoricalStatsConsolidator:
             'total_years': total_years_with_stats
         }
 
+
+

@@ -4,30 +4,18 @@ A local web application to help you dominate your fantasy baseball draft with AI
 
 **Configured for: Bob Uecker Imaginary Baseball League**
 - 13 teams, 21 active players per team
-- Rotisserie scoring (10 categories: HR, OBP, R, RBI, SB, ERA, K, SHOLDS, WHIP, WQS)
+- Rotisserie scoring
 - Position requirements: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P
-- Pitcher minimums: 1,000-1,400 innings pitched
 
 ## 🎯 Features
 
 - **Player Data Management**: Load and store player projections from CSV files
 - **Draft Tracking**: Track which players have been drafted to which teams
-- **My Team Management**: Keep track of your drafted players with position-based roster slots
+- **My Team Management**: Keep track of your drafted players
 - **AI Recommendations**: Get intelligent recommendations based on:
   - Position scarcity analysis
   - Team needs assessment
   - Projected statistical value
-  - IP minimum/maximum considerations
-  - Category target optimization
-- **Auto-Draft**: Automated drafting for non-user teams with tiered strategy:
-  - Rounds 1-4: Strict ADP adherence (within 5 picks)
-  - Rounds 5-10: Moderate ADP adherence (within 10 picks)
-  - Round 11+: AI recommendation engine
-- **Projected Standings**: View real-time projected standings with:
-  - Category totals and ranks for all teams
-  - Roto points calculation (higher = better)
-  - IP minimum/maximum enforcement
-  - Color-coded category leaders
 - **Real-time Updates**: See available players, recent picks, and recommendations update in real-time
 
 ## 📁 Project Structure
@@ -35,15 +23,11 @@ A local web application to help you dominate your fantasy baseball draft with AI
 ```
 fantasy_baseball_draft_helper/
 ├── data/                          # Data storage directory
-│   ├── teams/                     # Team rosters and draft picks
-│   │   └── {team_name}/          # Per-team roster and pick history
-│   ├── sources/                   # Source data files
-│   │   ├── adp/                  # Average Draft Position data
-│   │   ├── projections/          # Player projections
-│   │   ├── historical_stats/     # Historical performance data
-│   │   └── position_eligibility/ # Position eligibility data
-│   ├── league_analysis/          # League analysis and thresholds
-│   └── master_players/           # Master player dictionary
+│   ├── players/                   # Player projection CSV files
+│   │   ├── projections.csv        # Your main player data file
+│   │   └── example_projections.csv # Example file with sample data
+│   └── drafts/                    # Draft state files (auto-generated)
+│       └── {draft_id}.json        # Saved draft states
 │
 ├── src/                           # Python source code
 │   ├── models/                    # Data models
@@ -52,9 +36,7 @@ fantasy_baseball_draft_helper/
 │   ├── services/                  # Business logic
 │   │   ├── data_loader.py        # CSV loading/saving
 │   │   ├── draft_service.py      # Draft management
-│   │   ├── recommendation_engine.py # AI recommendation logic
-│   │   ├── standings_calculator.py # Rotisserie standings calculation
-│   │   └── team_service.py        # Team roster management
+│   │   └── recommendation_engine.py # AI recommendation logic
 │   └── api/                       # Web API
 │       └── app.py                # Flask application
 │
@@ -119,24 +101,19 @@ The application will start on `http://localhost:5000`
 
 ### 4. Use the Application
 
-1. **Load Players**: Players are automatically loaded from the master player dictionary
+1. **Load Players**: Enter your CSV filename and click "Load Players"
 2. **Create Draft**: Fill in your league details and click "Create/Start Draft"
-3. **Get Recommendations**: See AI suggestions in the top status bar
+3. **Get Recommendations**: Click "Refresh Recommendations" to see AI suggestions
 4. **Draft Players**: Click "Draft to My Team" on any available player
-5. **Auto-Draft**: Toggle auto-draft for other teams to simulate a full draft
-6. **View Standings**: Click "View Standings" to see projected roto standings
-7. **Track Progress**: View your team, available players, and recent picks in real-time
+5. **Track Progress**: View your team, available players, and recent picks
 
 ## 🤖 AI Recommendation Engine
 
-The recommendation engine analyzes multiple factors to provide intelligent draft suggestions:
+The recommendation engine analyzes three key factors:
 
-1. **Position Scarcity**: How rare is this position among available players?
-2. **Team Needs**: Does this player fill a position you need?
-3. **Projected Value**: How valuable are this player's projected stats?
-4. **IP Considerations**: For pitchers, factors in 1,000-1,400 IP minimum/maximum requirements
-5. **Category Targets**: Optimizes for category balance across all 10 roto categories
-6. **ADP Value**: Considers average draft position for value picks
+1. **Position Scarcity** (30% weight): How rare is this position among available players?
+2. **Team Needs** (30% weight): Does this player fill a position you need?
+3. **Projected Value** (40% weight): How valuable are this player's projected stats?
 
 Each recommendation includes:
 - A numerical score (higher is better)
@@ -148,22 +125,7 @@ Each recommendation includes:
 **Batting:** HR, OBP, R, RBI, SB  
 **Pitching:** ERA, K, SHOLDS (Saves + Holds x0.5), WHIP, WQS (Wins + Quality Starts)
 
-**Pitcher Requirements:**
-- Minimum: 1,000 innings pitched (teams below get zeros in ERA/WHIP)
-- Maximum: 1,400 innings pitched (stats capped at limit)
-
-The recommendation engine weights these categories appropriately when calculating player value and considers IP limits when evaluating pitchers.
-
-## 📊 Standings & Scoring
-
-The application calculates projected rotisserie standings based on:
-- **Category Totals**: Sum of all player projections for each category
-- **Category Rankings**: Teams ranked 1-13 in each category
-- **Roto Points**: 1st place = 13 points, 2nd = 12 points, ..., 13th = 1 point
-- **Total Points**: Sum across all 10 categories (maximum = 130 points)
-- **IP Enforcement**: Teams below 1,000 IP get worst rank in ERA/WHIP; teams above 1,400 IP have stats capped
-
-Standings automatically display when the draft is complete, or you can view them anytime using the "View Standings" button.
+The recommendation engine weights these categories appropriately when calculating player value.
 
 ## 📊 CSV File Format
 
@@ -202,9 +164,6 @@ See `data/players/example_projections.csv` for a sample format.
 - **Search & Filter**: Find players by name or filter by position
 - **Visual Feedback**: Color-coded recommendations and player cards
 - **Draft Status**: Always see current round, pick, and total picks
-- **Standings Display**: View projected roto standings with category totals and ranks
-- **Auto-Draft Toggle**: Enable/disable automated drafting for other teams
-- **Position-Based Roster**: See your team organized by position requirements
 
 ## 🔮 Future Enhancements
 

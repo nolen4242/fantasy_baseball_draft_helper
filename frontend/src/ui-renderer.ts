@@ -1,4 +1,4 @@
-import { Player, DraftState, Recommendation } from './types.js';
+import { Player, DraftState, Recommendation, DraftBoard, BlockingOpportunity, VORPData, ScarcityTier } from './types.js';
 import { ApiClient } from './api.js';
 
 export class UIRenderer {
@@ -6,6 +6,133 @@ export class UIRenderer {
     
     constructor(api?: ApiClient) {
         this.api = api || new ApiClient();
+    }
+    
+    renderDraftBoard(boardData: DraftBoard): void {
+        const container = document.getElementById('draft-board-container');
+        if (!container) return;
+        
+        const { teams, position_slots, my_team } = boardData;
+        
+        // Create grid with team column + position columns
+        const numCols = position_slots.length + 1;
+        container.style.gridTemplateColumns = `140px repeat(${position_slots.length}, minmax(80px, 1fr))`;
+        
+        let html = '';
+        
+        // Header row
+        html += '<div class="draft-board-header">';
+        html += '<div class="draft-board-header-cell team-column">Team</div>';
+        for (const slot of position_slots) {
+            const displaySlot = slot.replace(/\d+$/, ''); // Remove numbers for display
+            html += `<div class="draft-board-header-cell">${displaySlot}</div>`;
+        }
+        html += '</div>';
+        
+        // Team rows
+        for (const team of teams) {
+            html += '<div class="draft-board-row">';
+            
+            // Team name cell with color dot
+            const isMyTeam = team.is_my_team ? 'my-team' : '';
+            html += `<div class="draft-board-team-cell ${isMyTeam}">
+                <span class="team-color-dot" style="background: ${team.color}"></span>
+                <span>${team.name}</span>
+            </div>`;
+            
+            // Position cells
+            for (const slot of position_slots) {
+                const player = team.positions[slot];
+                const cellClass = player ? 'filled' : '';
+                const myTeamClass = team.is_my_team ? 'my-team' : '';
+                
+                if (player) {
+                    html += `<div class="draft-board-player-cell ${cellClass} ${myTeamClass}">
+                        <span class="draft-board-player-name" title="${player.name}">${player.name}</span>
+                        <span class="draft-board-player-pos">${player.position}</span>
+                    </div>`;
+                } else {
+                    html += `<div class="draft-board-player-cell ${myTeamClass}">-</div>`;
+                }
+            }
+            
+            html += '</div>';
+        }
+        
+        container.innerHTML = html;
+    }
+    
+    renderEnhancedRecommendation(rec: Recommendation): string {
+        let html = '';
+        
+        // Basic reasoning
+        html += `<div class="analysis-section">
+            <strong>📊 Analysis:</strong><br>
+            ${rec.reasoning}
+        </div>`;
+        
+        // VORP section
+        if (rec.vorp) {
+            const tierClass = rec.vorp.tier.replace(' ', '-');
+            html += `<div class="analysis-section vorp-section">
+                <strong>💎 Value Over Replacement:</strong>
+                <span class="vorp-tier ${tierClass}">${rec.vorp.tier}</span>
+                <span style="margin-left: 10px; color: #666;">Score: ${rec.vorp.score}</span>
+                <div style="margin-top: 8px; font-size: 12px;">`;
+            
+            for (const [cat, val] of Object.entries(rec.vorp.category_contributions)) {
+                if (val !== 0) {
+                    const sign = val > 0 ? '+' : '';
+                    const color = val > 0 ? '#2e7d32' : '#c62828';
+                    html += `<span style="margin-right: 12px; color: ${color};">${cat}: ${sign}${val}</span>`;
+                }
+            }
+            html += '</div></div>';
+        }
+        
+        // Blocking section
+        if (rec.blocking && rec.blocking.length > 0) {
+            html += `<div class="analysis-section blocking-section">
+                <strong>🚫 Blocking Opportunities:</strong>
+                <div style="margin-top: 8px;">`;
+            
+            for (const block of rec.blocking) {
+                const urgencyClass = block.urgency > 0.7 ? 'high' : block.urgency > 0.4 ? 'medium' : 'low';
+                html += `<div class="blocking-item">
+                    <span class="blocking-urgency ${urgencyClass}">${Math.round(block.urgency * 100)}%</span>
+                    <span><strong>${block.team}</strong>: ${block.impact}</span>
+                </div>`;
+            }
+            html += '</div></div>';
+        }
+        
+        // Scarcity section
+        if (rec.scarcity_tier) {
+            const tierClass = rec.scarcity_tier.tier.replace(' ', '-');
+            html += `<div class="analysis-section scarcity-section">
+                <strong>📉 Position Scarcity:</strong>
+                <span class="scarcity-tier ${tierClass}">${rec.scarcity_tier.tier}</span>
+                <span style="margin-left: 10px; color: #666;">${rec.scarcity_tier.elite_remaining} elite players remaining</span>
+            </div>`;
+        }
+        
+        // Category gaps section
+        if (rec.category_gaps && Object.keys(rec.category_gaps).length > 0) {
+            html += `<div class="analysis-section category-gaps-section">
+                <strong>📈 Category Impact:</strong>
+                <div style="margin-top: 8px;">`;
+            
+            for (const [cat, val] of Object.entries(rec.category_gaps)) {
+                if (val !== 0) {
+                    const sign = val > 0 ? '+' : '';
+                    const className = val > 0 ? 'positive' : 'negative';
+                    html += `<span class="category-gap-item ${className}">${cat}: ${sign}${val}</span>`;
+                }
+            }
+            html += '</div></div>';
+        }
+        
+        return html;
     }
     updateDraftStatusBar(draft: DraftState, recommendation?: Recommendation | null): void {
         const currentPickEl = document.getElementById('current-pick-team');
@@ -119,10 +246,21 @@ export class UIRenderer {
 
     renderAvailablePlayers(players: Player[], onDraft: (player: Player) => void, draftComplete: boolean = false): void {
         const container = document.getElementById('available-players-list');
-        if (!container) return;
+        if (!container) {
+            console.error('ERROR: available-players-list container not found!');
+            return;
+        }
+
+        console.log(`renderAvailablePlayers: Rendering ${players.length} players, draftComplete=${draftComplete}`);
 
         if (draftComplete) {
             container.innerHTML = '<div style="padding: 20px; text-align: center; color: #32cd32; font-weight: 700;">Draft Complete - All Roster Spots Filled</div>';
+            return;
+        }
+
+        if (players.length === 0) {
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #ff6b6b;">No available players found. Check console for errors.</div>';
+            console.warn('No players to render!');
             return;
         }
 
@@ -131,12 +269,18 @@ export class UIRenderer {
 
         const filtered = players.filter(p => {
             const matchesSearch = p.name.toLowerCase().includes(searchTerm) || 
-                                 p.team.toLowerCase().includes(searchTerm);
+                                 (p.team && p.team.toLowerCase().includes(searchTerm));
             const matchesPosition = !positionFilter || p.position === positionFilter;
             return matchesSearch && matchesPosition;
         });
 
-        container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete)).join('');
+        console.log(`renderAvailablePlayers: After filtering, ${filtered.length} players match search/position filters`);
+
+        if (filtered.length === 0 && (searchTerm || positionFilter)) {
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #ffa500;">No players match your search/filter criteria.</div>';
+        } else {
+            container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete)).join('');
+        }
     }
 
     private renderPlayerCard(player: Player, onDraft: (player: Player) => void, draftComplete: boolean = false): string {

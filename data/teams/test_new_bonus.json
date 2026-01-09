@@ -1,0 +1,84 @@
+{
+  "draft_id": "test_new_bonus",
+  "league_name": "Bob Uecker League",
+  "total_teams": 13,
+  "roster_size": 21,
+  "my_team_name": "Runtime Terror",
+  "current_pick": 8,
+  "current_round": 1,
+  "picks": [
+    {
+      "pick_number": 1,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
+      "timestamp": "2026-01-08T21:15:48.204248"
+    },
+    {
+      "pick_number": 2,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+      "timestamp": "2026-01-08T21:15:51.711199"
+    },
+    {
+      "pick_number": 3,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "b13610b9-f0ed-40d3-883b-bec617889d21",
+      "timestamp": "2026-01-08T21:15:55.139120"
+    },
+    {
+      "pick_number": 4,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "2a978011-38cb-42b8-923f-d42967833b41",
+      "timestamp": "2026-01-08T21:15:58.549844"
+    },
+    {
+      "pick_number": 5,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "d9ed2f08-dae3-4509-9ab5-412903206cd6",
+      "timestamp": "2026-01-08T21:16:13.013004"
+    },
+    {
+      "pick_number": 6,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+      "timestamp": "2026-01-08T21:16:16.430841"
+    },
+    {
+      "pick_number": 7,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "d103c477-d1fe-4abd-a169-8d54b672ff27",
+      "timestamp": "2026-01-08T21:16:19.918070"
+    }
+  ],
+  "team_rosters": {
+    "Runtime Terror": [
+      "c730240d-1b8d-487f-81b1-2bce83b207f8",
+      "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+      "b13610b9-f0ed-40d3-883b-bec617889d21",
+      "2a978011-38cb-42b8-923f-d42967833b41",
+      "d9ed2f08-dae3-4509-9ab5-412903206cd6",
+      "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+      "d103c477-d1fe-4abd-a169-8d54b672ff27"
+    ],
+    "Dawg": [],
+    "Long Balls": [],
+    "Simba's Dublin Green Sox": [],
+    "Young Guns": [],
+    "Gashouse Gang": [],
+    "Magnum GI": [],
+    "Trex": [],
+    "Like a Nightmare": [],
+    "Big Sticks": [],
+    "MAGA DOGE": [],
+    "Guillotine": [],
+    "Rieken Havoc": []
+  },
+  "is_complete": false
+}

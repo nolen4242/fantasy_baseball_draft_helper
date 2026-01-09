@@ -66,9 +66,22 @@ export class ApiClient {
         return { ...draft, is_complete: data.draft_complete || draft.is_complete || false };
     }
     async getAvailablePlayers() {
-        const response = await fetch(`${API_BASE}/api/draft/available`);
-        const data = await response.json();
-        return data.players || [];
+        try {
+            const response = await fetch(`${API_BASE}/api/draft/available`);
+            if (!response.ok) {
+                console.error('Error fetching available players:', response.status, response.statusText);
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Error details:', errorData);
+                return [];
+            }
+            const data = await response.json();
+            console.log(`✅ Loaded ${data.players?.length || 0} available players`);
+            return data.players || [];
+        }
+        catch (error) {
+            console.error('Error fetching available players:', error);
+            return [];
+        }
     }
     async getMyTeam() {
         const response = await fetch(`${API_BASE}/api/draft/my-team`);
@@ -240,6 +253,13 @@ export class ApiClient {
         if (!contentType || !contentType.includes('application/json')) {
             const text = await response.text();
             throw new Error(`Expected JSON but got ${contentType}: ${text.substring(0, 200)}`);
+        }
+        return response.json();
+    }
+    async getDraftBoard() {
+        const response = await fetch(`${API_BASE}/api/draft/board`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
     }

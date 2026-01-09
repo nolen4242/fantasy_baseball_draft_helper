@@ -93,9 +93,21 @@ export class ApiClient {
     }
 
     async getAvailablePlayers(): Promise<Player[]> {
-        const response = await fetch(`${API_BASE}/api/draft/available`);
-        const data = await response.json();
-        return data.players || [];
+        try {
+            const response = await fetch(`${API_BASE}/api/draft/available`);
+            if (!response.ok) {
+                console.error('Error fetching available players:', response.status, response.statusText);
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Error details:', errorData);
+                return [];
+            }
+            const data = await response.json();
+            console.log(`✅ Loaded ${data.players?.length || 0} available players`);
+            return data.players || [];
+        } catch (error) {
+            console.error('Error fetching available players:', error);
+            return [];
+        }
     }
 
     async getMyTeam(): Promise<{ players: Player[]; roster: any }> {
@@ -326,6 +338,29 @@ export class ApiClient {
             throw new Error(`Expected JSON but got ${contentType}: ${text.substring(0, 200)}`);
         }
         
+        return response.json();
+    }
+
+    async getDraftBoard(): Promise<{
+        success: boolean;
+        board: {
+            teams: Array<{
+                name: string;
+                color: string;
+                player_count: number;
+                positions: Record<string, { player_id: string; name: string; position: string; adp?: number }>;
+                is_my_team: boolean;
+            }>;
+            position_slots: string[];
+            current_pick: number;
+            current_round: number;
+            my_team: string;
+        };
+    }> {
+        const response = await fetch(`${API_BASE}/api/draft/board`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         return response.json();
     }
 }

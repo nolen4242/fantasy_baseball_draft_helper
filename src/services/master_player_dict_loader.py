@@ -219,6 +219,11 @@ class MasterPlayerDictLoader:
             # Park factors
             park_factors = player_data.get('park_factors', {}).get('2025', {})
             
+            # Get innings pitched for pitchers
+            projected_innings_pitched = None
+            if is_pitcher:
+                projected_innings_pitched = depthchart.get('innings_pitched') or steamer.get('innings_pitched')
+            
             # Create Player object
             player = Player(
                 player_id=player_id,
@@ -241,8 +246,9 @@ class MasterPlayerDictLoader:
                 projected_saves=projected_saves if is_pitcher else None,
                 projected_quality_starts=self._apply_qs_ip_constraint(
                     projected_quality_starts, 
-                    depthchart.get('innings_pitched') or steamer.get('innings_pitched')
+                    projected_innings_pitched
                 ) if is_pitcher else None,
+                projected_innings_pitched=projected_innings_pitched,
                 
                 # Statcast metrics
                 savant_exit_velocity=statcast.get('exit_velocity_avg'),

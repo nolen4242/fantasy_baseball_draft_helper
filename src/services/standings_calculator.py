@@ -1,7 +1,8 @@
 """Calculate fantasy standings from team rosters."""
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from src.models.player import Player
 import numpy as np
+import hashlib
 
 
 class StandingsCalculator:
@@ -11,7 +12,32 @@ class StandingsCalculator:
     BATTING_CATEGORIES = ['HR', 'OBP', 'R', 'RBI', 'SB']
     PITCHING_CATEGORIES = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']
     
-    def calculate_standings(self, team_rosters: Dict[str, List[Player]]) -> Dict:
+    def __init__(self):
+        # Cache for standings calculations
+        self._standings_cache: Dict[str, Dict] = {}
+        self._team_totals_cache: Dict[str, Dict[str, float]] = {}
+    
+    def _get_roster_hash(self, team_rosters: Dict[str, List[Player]]) -> str:
+        """Generate hash of team rosters for cache invalidation."""
+        roster_str = ""
+        for team in sorted(team_rosters.keys()):
+            player_ids = sorted([p.player_id for p in team_rosters[team]])
+            roster_str += f"{team}:{','.join(player_ids)};"
+        return hashlib.md5(roster_str.encode()).hexdigest()[:16]
+    
+    def get_cached_team_totals(self, roster: List[Player]) -> Dict[str, float]:
+        """Get team totals with caching."""
+        cache_key = ','.join(sorted([p.player_id for p in roster]))
+        if cache_key not in self._team_totals_cache:
+            self._team_totals_cache[cache_key] = self._calculate_team_totals(roster)
+        return self._team_totals_cache[cache_key]
+    
+    def clear_cache(self):
+        """Clear all caches."""
+        self._standings_cache.clear()
+        self._team_totals_cache.clear()
+    
+    def calculate_standings(self, team_rosters: Dict[str, List[Player]], use_cache: bool = True) -> Dict:
         """
         Calculate category standings for all teams.
         
@@ -22,11 +48,17 @@ class StandingsCalculator:
             - total_points: Dict[team_name, int] (sum of category ranks)
             - final_rankings: List[team_name] (sorted by total points, descending)
         """
+        # Check cache first
+        if use_cache:
+            cache_key = self._get_roster_hash(team_rosters)
+            if cache_key in self._standings_cache:
+                return self._standings_cache[cache_key]
+        
         category_totals = {}
         
-        # Calculate totals for each team
+        # Calculate totals for each team (using caching for individual teams)
         for team_name, roster in team_rosters.items():
-            totals = self._calculate_team_totals(roster)
+            totals = self.get_cached_team_totals(roster)
             category_totals[team_name] = totals
         
         # Calculate rankings for each category
@@ -62,13 +94,20 @@ class StandingsCalculator:
             reverse=True  # Higher points = better
         )
         
-        return {
+        result = {
             'category_totals': category_totals,
             'category_rankings': category_rankings,
             'category_points': category_points,  # Include category_points in return
             'total_points': total_points,
             'final_rankings': final_rankings
         }
+        
+        # Store in cache
+        if use_cache:
+            cache_key = self._get_roster_hash(team_rosters)
+            self._standings_cache[cache_key] = result
+        
+        return result
     
     def _calculate_team_totals(self, roster: List[Player]) -> Dict[str, float]:
         """Calculate category totals for a single team."""

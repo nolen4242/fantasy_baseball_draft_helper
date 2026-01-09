@@ -33,8 +33,9 @@
                 </div>
                 <div class="draft-actions">
                     <button id="auto-draft-toggle-btn" class="btn-small btn-auto-draft" title="Toggle Auto-Draft for Other Teams">Auto-Draft: OFF</button>
-                    <button id="view-standings-btn" class="btn-small btn-standings" title="View Projected Standings">View Standings</button>
-                    <button id="restart-draft-btn" class="btn-small btn-danger" title="Restart Draft - Clears All Picks">Restart Draft</button>
+                    <button id="view-draft-board-btn" class="btn-small btn-board" title="View Draft Board">Draft Board</button>
+                    <button id="view-standings-btn" class="btn-small btn-standings" title="View Projected Standings">Standings</button>
+                    <button id="restart-draft-btn" class="btn-small btn-danger" title="Restart Draft - Clears All Picks">Restart</button>
                 </div>
             </div>
         </div>
@@ -102,6 +103,17 @@
             <h2 id="recommendation-modal-title">Player Analysis</h2>
             <div id="recommendation-modal-body" class="recommendation-analysis">
                 <!-- Detailed analysis will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Draft Board Modal -->
+    <div id="draft-board-modal" class="modal" style="display: none;">
+        <div class="modal-content draft-board-modal-content">
+            <span class="close-modal" id="close-draft-board-modal">&times;</span>
+            <h2>Draft Board</h2>
+            <div id="draft-board-container" class="draft-board-grid">
+                <!-- Draft board will be inserted here -->
             </div>
         </div>
     </div>

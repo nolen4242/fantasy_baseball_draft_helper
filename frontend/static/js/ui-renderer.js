@@ -3,6 +3,114 @@ export class UIRenderer {
     constructor(api) {
         this.api = api || new ApiClient();
     }
+    renderDraftBoard(boardData) {
+        const container = document.getElementById('draft-board-container');
+        if (!container)
+            return;
+        const { teams, position_slots, my_team } = boardData;
+        // Create grid with team column + position columns
+        const numCols = position_slots.length + 1;
+        container.style.gridTemplateColumns = `140px repeat(${position_slots.length}, minmax(80px, 1fr))`;
+        let html = '';
+        // Header row
+        html += '<div class="draft-board-header">';
+        html += '<div class="draft-board-header-cell team-column">Team</div>';
+        for (const slot of position_slots) {
+            const displaySlot = slot.replace(/\d+$/, ''); // Remove numbers for display
+            html += `<div class="draft-board-header-cell">${displaySlot}</div>`;
+        }
+        html += '</div>';
+        // Team rows
+        for (const team of teams) {
+            html += '<div class="draft-board-row">';
+            // Team name cell with color dot
+            const isMyTeam = team.is_my_team ? 'my-team' : '';
+            html += `<div class="draft-board-team-cell ${isMyTeam}">
+                <span class="team-color-dot" style="background: ${team.color}"></span>
+                <span>${team.name}</span>
+            </div>`;
+            // Position cells
+            for (const slot of position_slots) {
+                const player = team.positions[slot];
+                const cellClass = player ? 'filled' : '';
+                const myTeamClass = team.is_my_team ? 'my-team' : '';
+                if (player) {
+                    html += `<div class="draft-board-player-cell ${cellClass} ${myTeamClass}">
+                        <span class="draft-board-player-name" title="${player.name}">${player.name}</span>
+                        <span class="draft-board-player-pos">${player.position}</span>
+                    </div>`;
+                }
+                else {
+                    html += `<div class="draft-board-player-cell ${myTeamClass}">-</div>`;
+                }
+            }
+            html += '</div>';
+        }
+        container.innerHTML = html;
+    }
+    renderEnhancedRecommendation(rec) {
+        let html = '';
+        // Basic reasoning
+        html += `<div class="analysis-section">
+            <strong>📊 Analysis:</strong><br>
+            ${rec.reasoning}
+        </div>`;
+        // VORP section
+        if (rec.vorp) {
+            const tierClass = rec.vorp.tier.replace(' ', '-');
+            html += `<div class="analysis-section vorp-section">
+                <strong>💎 Value Over Replacement:</strong>
+                <span class="vorp-tier ${tierClass}">${rec.vorp.tier}</span>
+                <span style="margin-left: 10px; color: #666;">Score: ${rec.vorp.score}</span>
+                <div style="margin-top: 8px; font-size: 12px;">`;
+            for (const [cat, val] of Object.entries(rec.vorp.category_contributions)) {
+                if (val !== 0) {
+                    const sign = val > 0 ? '+' : '';
+                    const color = val > 0 ? '#2e7d32' : '#c62828';
+                    html += `<span style="margin-right: 12px; color: ${color};">${cat}: ${sign}${val}</span>`;
+                }
+            }
+            html += '</div></div>';
+        }
+        // Blocking section
+        if (rec.blocking && rec.blocking.length > 0) {
+            html += `<div class="analysis-section blocking-section">
+                <strong>🚫 Blocking Opportunities:</strong>
+                <div style="margin-top: 8px;">`;
+            for (const block of rec.blocking) {
+                const urgencyClass = block.urgency > 0.7 ? 'high' : block.urgency > 0.4 ? 'medium' : 'low';
+                html += `<div class="blocking-item">
+                    <span class="blocking-urgency ${urgencyClass}">${Math.round(block.urgency * 100)}%</span>
+                    <span><strong>${block.team}</strong>: ${block.impact}</span>
+                </div>`;
+            }
+            html += '</div></div>';
+        }
+        // Scarcity section
+        if (rec.scarcity_tier) {
+            const tierClass = rec.scarcity_tier.tier.replace(' ', '-');
+            html += `<div class="analysis-section scarcity-section">
+                <strong>📉 Position Scarcity:</strong>
+                <span class="scarcity-tier ${tierClass}">${rec.scarcity_tier.tier}</span>
+                <span style="margin-left: 10px; color: #666;">${rec.scarcity_tier.elite_remaining} elite players remaining</span>
+            </div>`;
+        }
+        // Category gaps section
+        if (rec.category_gaps && Object.keys(rec.category_gaps).length > 0) {
+            html += `<div class="analysis-section category-gaps-section">
+                <strong>📈 Category Impact:</strong>
+                <div style="margin-top: 8px;">`;
+            for (const [cat, val] of Object.entries(rec.category_gaps)) {
+                if (val !== 0) {
+                    const sign = val > 0 ? '+' : '';
+                    const className = val > 0 ? 'positive' : 'negative';
+                    html += `<span class="category-gap-item ${className}">${cat}: ${sign}${val}</span>`;
+                }
+            }
+            html += '</div></div>';
+        }
+        return html;
+    }
     updateDraftStatusBar(draft, recommendation) {
         const currentPickEl = document.getElementById('current-pick-team');
         const currentRoundEl = document.getElementById('current-pick-round');
@@ -113,21 +221,35 @@ export class UIRenderer {
     }
     renderAvailablePlayers(players, onDraft, draftComplete = false) {
         const container = document.getElementById('available-players-list');
-        if (!container)
+        if (!container) {
+            console.error('ERROR: available-players-list container not found!');
             return;
+        }
+        console.log(`renderAvailablePlayers: Rendering ${players.length} players, draftComplete=${draftComplete}`);
         if (draftComplete) {
             container.innerHTML = '<div style="padding: 20px; text-align: center; color: #32cd32; font-weight: 700;">Draft Complete - All Roster Spots Filled</div>';
+            return;
+        }
+        if (players.length === 0) {
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #ff6b6b;">No available players found. Check console for errors.</div>';
+            console.warn('No players to render!');
             return;
         }
         const searchTerm = document.getElementById('player-search')?.value.toLowerCase() || '';
         const positionFilter = document.getElementById('position-filter')?.value || '';
         const filtered = players.filter(p => {
             const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
-                p.team.toLowerCase().includes(searchTerm);
+                (p.team && p.team.toLowerCase().includes(searchTerm));
             const matchesPosition = !positionFilter || p.position === positionFilter;
             return matchesSearch && matchesPosition;
         });
-        container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete)).join('');
+        console.log(`renderAvailablePlayers: After filtering, ${filtered.length} players match search/position filters`);
+        if (filtered.length === 0 && (searchTerm || positionFilter)) {
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #ffa500;">No players match your search/filter criteria.</div>';
+        }
+        else {
+            container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete)).join('');
+        }
     }
     renderPlayerCard(player, onDraft, draftComplete = false) {
         const stats = this.getPlayerStats(player);
@@ -467,6 +589,7 @@ export class UIRenderer {
             for (const cat of allCats) {
                 const total = team.category_totals[cat] || 0;
                 const rank = team.category_ranks[cat] || 0;
+                const points = team.category_points?.[cat] || 0; // Get points instead of rank
                 const isLowerBetter = cat === 'ERA' || cat === 'WHIP';
                 const rankClass = rank === 1 ? 'rank-1' : rank <= 3 ? 'rank-top-3' : '';
                 let displayValue = '';
@@ -480,9 +603,9 @@ export class UIRenderer {
                     displayValue = total.toFixed(1);
                 }
                 html += `
-                    <td class="category-cell ${rankClass}" title="Rank: ${rank}">
+                    <td class="category-cell ${rankClass}" title="Rank: ${rank}, Points: ${points}">
                         <div class="category-value">${displayValue}</div>
-                        <div class="category-rank">(${rank})</div>
+                        <div class="category-rank">(${points})</div>
                     </td>
                 `;
             }

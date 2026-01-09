@@ -819,3 +819,255 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #003366;
 }
+
+/* Draft Board Button */
+.btn-board {
+    background: #6c5ce7;
+    color: white;
+}
+
+.btn-board:hover {
+    background: #5b4cdb;
+}
+
+/* Draft Board Modal */
+.draft-board-modal-content {
+    max-width: 95vw;
+    width: 95vw;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.draft-board-grid {
+    display: grid;
+    gap: 2px;
+    font-size: 11px;
+    overflow-x: auto;
+}
+
+.draft-board-header {
+    display: contents;
+}
+
+.draft-board-header-cell {
+    background: #001f3f;
+    color: white;
+    padding: 8px 4px;
+    text-align: center;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    min-width: 90px;
+}
+
+.draft-board-header-cell.team-column {
+    min-width: 140px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.draft-board-row {
+    display: contents;
+}
+
+.draft-board-team-cell {
+    padding: 8px 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.team-color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.draft-board-player-cell {
+    padding: 4px;
+    text-align: center;
+    border: 1px solid #eee;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+.draft-board-player-cell.filled {
+    background: #e8f5e9;
+}
+
+.draft-board-player-cell.my-team {
+    background: #fff3e0;
+}
+
+.draft-board-player-cell.my-team.filled {
+    background: #c8e6c9;
+}
+
+.draft-board-player-name {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 85px;
+}
+
+.draft-board-player-pos {
+    color: #666;
+    font-size: 9px;
+}
+
+/* Enhanced Recommendation Styles */
+.recommendation-analysis {
+    padding: 15px;
+}
+
+.analysis-section {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #001f3f;
+}
+
+.vorp-section {
+    background: #e3f2fd;
+    border-left-color: #1976d2;
+}
+
+.vorp-tier {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.vorp-tier.Elite { background: #4caf50; color: white; }
+.vorp-tier.Above-Average { background: #8bc34a; color: white; }
+.vorp-tier.Average { background: #ffc107; color: #333; }
+.vorp-tier.Below-Average { background: #ff9800; color: white; }
+.vorp-tier.Replacement { background: #f44336; color: white; }
+
+.blocking-section {
+    background: #fce4ec;
+    border-left-color: #e91e63;
+}
+
+.blocking-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.blocking-item:last-child {
+    border-bottom: none;
+}
+
+.blocking-urgency {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.blocking-urgency.high { background: #f44336; color: white; }
+.blocking-urgency.medium { background: #ff9800; color: white; }
+.blocking-urgency.low { background: #4caf50; color: white; }
+
+.category-gaps-section {
+    background: #f3e5f5;
+    border-left-color: #9c27b0;
+}
+
+.category-gap-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    margin: 2px;
+    border-radius: 4px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.7);
+}
+
+.category-gap-item.positive { color: #2e7d32; }
+.category-gap-item.negative { color: #c62828; }
+
+.scarcity-section {
+    background: #fff8e1;
+    border-left-color: #ffa000;
+}
+
+.scarcity-tier {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.scarcity-tier.Dried-Up { background: #f44336; color: white; }
+.scarcity-tier.Critical { background: #ff5722; color: white; }
+.scarcity-tier.Scarce { background: #ff9800; color: white; }
+.scarcity-tier.Thinning { background: #ffc107; color: #333; }
+.scarcity-tier.Available { background: #4caf50; color: white; }
+
+/* Top 3 Recommendations in Status Bar */
+.top-recommendations {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.mini-rec {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.mini-rec:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.mini-rec.primary {
+    background: rgba(46, 204, 113, 0.3);
+    border: 1px solid rgba(46, 204, 113, 0.5);
+}
+
+.mini-rec-rank {
+    font-weight: 700;
+    color: #ffd700;
+    font-size: 10px;
+}
+
+.mini-rec-name {
+    font-weight: 600;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mini-rec-pos {
+    font-size: 10px;
+    padding: 1px 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+}
