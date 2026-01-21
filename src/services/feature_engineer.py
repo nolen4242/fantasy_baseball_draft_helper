@@ -19,7 +19,8 @@ class FeatureEngineer:
         all_players: List[Player],
         draft_state: DraftState,
         all_team_rosters: Dict[str, List[Player]],
-        league_thresholds: Optional[Dict[str, float]] = None
+        league_thresholds: Optional[Dict[str, float]] = None,
+        my_team_name: Optional[str] = None
     ) -> Dict[str, float]:
         """
         Extract comprehensive features for a draft pick.
@@ -31,6 +32,7 @@ class FeatureEngineer:
             draft_state: Current draft state
             all_team_rosters: All team rosters
             league_thresholds: Stats needed to win each category
+            my_team_name: Name of my team (for excluding from opponent comparisons)
         
         Returns:
             Dictionary of feature names and values
@@ -69,7 +71,7 @@ class FeatureEngineer:
         
         # === 9. Comparative Advantage Features ===
         features.update(self._extract_comparative_advantage(
-            player, my_team, all_team_rosters, league_thresholds
+            player, my_team, all_team_rosters, league_thresholds, my_team_name
         ))
         
         # === 10. ADP Features (Dynamic Weighting) ===
@@ -312,9 +314,18 @@ class FeatureEngineer:
         player: Player,
         my_team: List[Player],
         all_team_rosters: Dict[str, List[Player]],
-        league_thresholds: Optional[Dict[str, float]]
+        league_thresholds: Optional[Dict[str, float]],
+        my_team_name: Optional[str] = None
     ) -> Dict[str, float]:
-        """Extract comparative advantage features."""
+        """Extract comparative advantage features.
+        
+        Args:
+            player: Player being evaluated
+            my_team: Current roster
+            all_team_rosters: All team rosters
+            league_thresholds: Stats needed to win each category
+            my_team_name: Name of my team (for excluding from opponent comparisons)
+        """
         features = {}
         
         # Calculate my current totals
@@ -335,7 +346,7 @@ class FeatureEngineer:
                 my_value = my_totals.get(category, 0)
                 opponents_ahead = sum(
                     1 for team_name, roster in all_team_rosters.items()
-                    if team_name != 'Runtime Terror'  # TODO: get actual team name
+                    if my_team_name is None or team_name != my_team_name
                     for opp_totals in [self.standings_calculator._calculate_team_totals(roster)]
                     if opp_totals.get(category, 0) > my_value
                 )
