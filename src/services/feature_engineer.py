@@ -69,7 +69,11 @@ class FeatureEngineer:
         
         # === 9. Comparative Advantage Features ===
         features.update(self._extract_comparative_advantage(
-            player, my_team, all_team_rosters, league_thresholds
+            player,
+            my_team,
+            all_team_rosters,
+            league_thresholds,
+            my_team_name=draft_state.my_team_name
         ))
         
         # === 10. ADP Features (Dynamic Weighting) ===
@@ -312,7 +316,8 @@ class FeatureEngineer:
         player: Player,
         my_team: List[Player],
         all_team_rosters: Dict[str, List[Player]],
-        league_thresholds: Optional[Dict[str, float]]
+        league_thresholds: Optional[Dict[str, float]],
+        my_team_name: str
     ) -> Dict[str, float]:
         """Extract comparative advantage features."""
         features = {}
@@ -335,7 +340,7 @@ class FeatureEngineer:
                 my_value = my_totals.get(category, 0)
                 opponents_ahead = sum(
                     1 for team_name, roster in all_team_rosters.items()
-                    if team_name != 'Runtime Terror'  # TODO: get actual team name
+                    if team_name != my_team_name
                     for opp_totals in [self.standings_calculator._calculate_team_totals(roster)]
                     if opp_totals.get(category, 0) > my_value
                 )

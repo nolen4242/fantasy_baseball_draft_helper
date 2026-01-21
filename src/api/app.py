@@ -313,10 +313,10 @@ def get_players():
 def create_draft():
     """Create a new draft."""
     data = request.json
-    my_team_name = data.get('my_team_name', 'My Team')
     
     # Validate my_team_name is in the list of teams
     all_teams = DraftOrder.get_all_teams()
+    my_team_name = data.get('my_team_name') or all_teams[0]
     if my_team_name not in all_teams:
         # Default to first team if not specified
         my_team_name = all_teams[0]
@@ -375,7 +375,8 @@ def make_pick():
     if not draft_service.current_draft:
         # Create a default draft
         import time
-        default_team_name = requested_team_name if requested_team_name else 'Runtime Terror'
+        all_teams = DraftOrder.get_all_teams()
+        default_team_name = requested_team_name if requested_team_name in all_teams else all_teams[0]
         draft = draft_service.create_draft(
             draft_id=f"draft_{int(time.time())}",
             league_name='Bob Uecker League',
