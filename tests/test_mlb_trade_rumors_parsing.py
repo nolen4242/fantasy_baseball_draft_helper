@@ -1,12 +1,24 @@
-"""Test script to check if MLB Trade Rumors is parseable for news/transaction data."""
-import requests
-from bs4 import BeautifulSoup
+"""Integration test to check if MLB Trade Rumors is parseable.
+
+This test performs a live network request and is therefore skipped by default.
+To run it locally:
+
+    RUN_INTEGRATION_TESTS=1 python3 -m pytest -q
+"""
+import os
 import json
-from datetime import datetime
+
+import pytest
 
 
 def test_mlb_trade_rumors_parsing():
     """Test parsing MLB Trade Rumors website."""
+    if os.environ.get("RUN_INTEGRATION_TESTS") != "1":
+        pytest.skip("Skipping live network integration test (set RUN_INTEGRATION_TESTS=1 to run)")
+
+    import requests
+    from bs4 import BeautifulSoup
+
     url = "https://www.mlbtraderumors.com/"
     
     print("=" * 60)
