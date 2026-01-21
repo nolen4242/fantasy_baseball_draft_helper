@@ -1,0 +1,183 @@
+# Fantasy Baseball Draft Helper - Cursor Rules
+
+## Project Overview
+
+This is a **Fantasy Baseball Draft Helper** application designed specifically for the **Bob Uecker Imaginary Baseball League**. It provides AI-powered draft recommendations using machine learning models, standings calculations, and opponent analysis.
+
+## League Configuration
+
+- **Teams**: 13 teams, 21 active players per team
+- **Scoring**: Rotisserie (roto) scoring
+- **Position requirements**: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P
+- **Batting categories**: HR, OBP, R, RBI, SB
+- **Pitching categories**: ERA, K, SHOLDS (Saves + Holds×0.5), WHIP, WQS (Wins + Quality Starts)
+- **Pitcher minimums**: 1,000 IP minimum, 1,400 IP maximum
+
+## Tech Stack
+
+### Backend (Python 3.8+)
+- **Framework**: Flask with flask-cors
+- **Data Processing**: pandas, numpy
+- **Machine Learning**: scikit-learn
+- **Data Models**: Python dataclasses
+- **Testing**: pytest
+
+### Frontend
+- **Language**: TypeScript (compiled to JavaScript)
+- **Framework**: Vanilla JS (no framework dependencies)
+- **Build**: TypeScript compiler (tsc)
+- **Styling**: Modern CSS Grid/Flexbox
+
+### Data Storage
+- **Raw data**: CSV files in `raw/` folder
+- **Processed data**: JSON files in `data/` folder
+- **Draft states**: Auto-saved JSON files
+
+## Directory Structure
+
+```
+/workspace
+├── src/                    # Python backend source
+│   ├── api/               # Flask API endpoints (app.py)
+│   ├── models/            # Data models (Player, DraftState)
+│   └── services/          # Business logic services
+├── frontend/              # Web UI
+│   ├── src/              # TypeScript source files
+│   ├── static/           # Compiled JS and CSS
+│   └── templates/        # HTML templates
+├── data/                  # Processed data (JSON)
+│   ├── master_players/   # Merged player data (app uses this)
+│   ├── sources/          # Processed data by type
+│   ├── league_analysis/  # League-level analysis
+│   └── teams/            # Team rosters and drafts
+├── raw/                   # Raw CSV data files
+│   ├── historical_data/  # Past seasons data
+│   └── projections/      # Current projections
+├── ml/models/            # Trained ML model files (.pkl)
+├── scripts/              # Data processing scripts
+└── tests/                # pytest test files
+```
+
+## Key Patterns & Conventions
+
+### Python Code Style
+- Use **dataclasses** for data models (see `src/models/player.py`)
+- Use **type hints** throughout the codebase
+- Services follow single-responsibility principle
+- Use `Optional[T]` for nullable fields
+- Validate data in `__post_init__` methods
+
+### Player Model
+```python
+@dataclass
+class Player:
+    player_id: str
+    name: str
+    position: str  # "OF", "1B", "SP", "RP", "P"
+    team: str
+    # Batting projections: projected_home_runs, projected_obp, etc.
+    # Pitching projections: projected_wins, projected_era, etc.
+    # Savant metrics: savant_exit_velocity, savant_xwoba, etc.
+    # Draft status: drafted, drafted_by_team, draft_round, etc.
+```
+
+### API Conventions
+- All endpoints return JSON with consistent structure
+- Success: `{"success": true, "data": {...}}`
+- Error: `{"success": false, "error": "...", "message": "..."}`
+- Use proper HTTP status codes
+
+### Data Architecture
+- **Raw → Sources → Master** pipeline
+- One master file per player type (hitters.json, pitchers.json)
+- App reads from `data/master_players/` for simplicity
+- Keep sources separate in `data/sources/` for debugging
+
+## Recommendation Engine
+
+The core AI recommendation system (`src/services/recommendation_engine.py`) considers:
+
+1. **ML Model Value** - Trained on historical draft data
+2. **Standings Improvement** - How player improves roto standings
+3. **Position Scarcity** - Rarity of position among available players
+4. **Team Needs** - Unfilled roster positions
+5. **Future Availability** - Survival probability based on ADP and opponent needs
+6. **IP Accumulation** - Progress toward 1000 IP minimum (pitchers)
+7. **Roster Balance** - Hitter/pitcher balance bonuses
+
+### Key Calculations
+- **Survival Probability**: Based on ADP vs picks until next turn
+- **Opponent Modeling**: Tracks opponent roster needs
+- **VORP**: Value Over Replacement Player calculations
+
+## Testing
+
+- Tests are in `tests/` directory
+- Use pytest fixtures from `conftest.py`
+- Cleanup service runs after each test to remove test data
+- Run tests with: `python -m pytest tests/`
+
+## Important Files
+
+- `src/api/app.py` - Main Flask application with all endpoints
+- `src/services/recommendation_engine.py` - AI recommendation logic
+- `src/services/standings_calculator.py` - Roto standings calculations
+- `src/models/player.py` - Player dataclass with all fields
+- `src/models/draft.py` - Draft state model
+- `frontend/src/app.ts` - Main frontend TypeScript
+- `LEAGUE_CONFIG.md` - League rules and settings
+- `DATA_ARCHITECTURE.md` - Data pipeline documentation
+
+## Running the Application
+
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install TypeScript (for frontend development)
+npm install
+
+# Run the application
+python run.py
+# or
+python src/api/app.py
+
+# Compile TypeScript (if modifying frontend)
+npx tsc
+```
+
+## Common Tasks
+
+### Adding a New Data Source
+1. Add raw CSV to `raw/` folder
+2. Create processor in `src/services/`
+3. Update merger to integrate into master player dict
+
+### Modifying Recommendations
+1. Edit `src/services/recommendation_engine.py`
+2. Adjust weights in `get_recommendations_for_team()`
+3. Test with different draft scenarios
+
+### Adding API Endpoint
+1. Add route to `src/api/app.py`
+2. Return consistent JSON structure
+3. Update frontend `api.ts` if needed
+
+### Frontend Changes
+1. Edit TypeScript files in `frontend/src/`
+2. Run `npx tsc` to compile
+3. Refresh browser to see changes
+
+## Debugging Tips
+
+- Enable Flask debug mode for detailed errors
+- Check `data/sources/` for intermediate processed data
+- Use standings calculator to verify roto math
+- ML models are in `ml/models/` - retrain with `scripts/train_ml_models.py`
+
+## Data Quality
+
+- Players can have multiple position eligibility
+- Name matching uses fuzzy matching for cross-database merging
+- ADP from multiple sources is averaged into composite
+- Statcast metrics from Baseball Savant enhance projections
