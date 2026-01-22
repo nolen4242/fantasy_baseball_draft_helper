@@ -95,13 +95,14 @@ class TeamService:
         
         return eligible
     
-    def has_available_slot_for_player(self, team_name: str, player: Player) -> bool:
+    def has_available_slot_for_player(self, team_name: str, player: Player, exclude_bench: bool = False) -> bool:
         """
         Check if there's an available slot for a player based on their eligible positions.
         
         Args:
             team_name: Team name
             player: Player to check
+            exclude_bench: If True, don't consider BENCH slots (only recommend if non-bench slots available)
             
         Returns:
             True if there's at least one empty slot in any eligible position, False otherwise
@@ -112,6 +113,10 @@ class TeamService:
         
         eligible_positions = self._determine_eligible_positions(player)
         positions = roster['positions']
+        
+        # If exclude_bench is True, remove BENCH from eligible positions
+        if exclude_bench:
+            eligible_positions = [pos for pos in eligible_positions if pos != 'BENCH']
         
         # Check if there's at least one empty slot in any eligible position
         for pos in eligible_positions:

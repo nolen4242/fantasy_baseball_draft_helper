@@ -897,7 +897,7 @@ def make_auto_draft_pick():
             # Strict ADP adherence - only consider players within 5 picks of their ADP
             eligible_players = []
             for player in available:
-                if not team_service.has_available_slot_for_player(team_name, player):
+                if not team_service.has_available_slot_for_player(team_name, player, exclude_bench=True):
                     continue
                 
                 if player.adp is not None:
@@ -925,7 +925,7 @@ def make_auto_draft_pick():
             # Moderate ADP adherence - consider players within 10 picks of their ADP
             eligible_players = []
             for player in available:
-                if not team_service.has_available_slot_for_player(team_name, player):
+                if not team_service.has_available_slot_for_player(team_name, player, exclude_bench=True):
                     continue
                 
                 if player.adp is not None:
@@ -953,7 +953,7 @@ def make_auto_draft_pick():
             # Just pick the best available player by ADP who fits the roster
             eligible_players = []
             for player in available:
-                if not team_service.has_available_slot_for_player(team_name, player):
+                if not team_service.has_available_slot_for_player(team_name, player, exclude_bench=True):
                     continue
                 
                 # For rounds 11+, accept players with any ADP (including None)
@@ -1051,32 +1051,42 @@ def get_draft_board():
         
         # Get all teams and their rosters
         for team_name in draft_service.current_draft.team_rosters.keys():
-            team_players = draft_service.get_team_players(all_players, team_name)
-            
             # Get roster with position assignments
             roster = team_service.get_team_roster(team_name)
             positions = roster.get('positions', {}) if roster else {}
             
             # Build position map for this team
+            # positions is a dict like: {'C': [player_dict or None], 'OF': [p1, p2, p3, p4], ...}
             position_map = {}
+            
             for pos, slots in positions.items():
                 if isinstance(slots, list):
-                    for i, player_id in enumerate(slots):
-                        if player_id:
-                            player = next((p for p in team_players if p.player_id == player_id), None)
-                            if player:
-                                slot_key = f"{pos}{i+1}" if pos in ['OF', 'P'] else pos
-                                position_map[slot_key] = {
-                                    'player_id': player.player_id,
-                                    'name': player.name,
-                                    'position': player.position,
-                                    'adp': player.adp
-                                }
+                    for i, player_data in enumerate(slots):
+                        if player_data and isinstance(player_data, dict):
+                            # Position slots are stored as dicts with player info
+                            # For OF and P, use numbered slots (OF1, OF2, etc.)
+                            if pos == 'OF':
+                                slot_key = f"OF{i+1}"
+                            elif pos == 'P':
+                                slot_key = f"P{i+1}"
+                            else:
+                                slot_key = pos
+                            
+                            position_map[slot_key] = {
+                                'player_id': player_data.get('player_id'),
+                                'name': player_data.get('name'),
+                                'position': player_data.get('position'),
+                                'adp': player_data.get('adp')
+                            }
+            
+            # Count total players
+            player_count = sum(1 for slots in positions.values() if isinstance(slots, list) 
+                             for slot in slots if slot is not None)
             
             board_data['teams'].append({
                 'name': team_name,
                 'color': team_colors.get(team_name, '#666666'),
-                'player_count': len(team_players),
+                'player_count': player_count,
                 'positions': position_map,
                 'is_my_team': team_name == draft_service.current_draft.my_team_name
             })
@@ -1165,6 +1175,164 @@ def get_standings():
         }), 500
 
 
+@app.route('/api/standings/stat/<stat>', methods=['GET'])
+def get_stat_rankings(stat):
+    """Get rankings for a specific stat."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    try:
+        from src.services.standings_calculator_enhanced import StandingsCalculatorEnhanced
+        
+        standings_calc = StandingsCalculatorEnhanced()
+        
+        # Get all team rosters as Player objects
+        team_rosters = {}
+        for team_name in draft_service.current_draft.team_rosters.keys():
+            team_players = draft_service.get_team_players(all_players, team_name)
+            team_rosters[team_name] = team_players
+        
+        # Get limit from query params
+        limit = request.args.get('limit', type=int)
+        
+        # Get rankings for the stat
+        rankings = standings_calc.get_individual_stat_rankings(team_rosters, stat, limit=limit)
+        
+        return jsonify({
+            'success': True,
+            'stat': stat,
+            'rankings': rankings
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/standings/filtered', methods=['GET'])
+def get_filtered_standings():
+    """Get filtered and sorted standings."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    try:
+        from src.services.standings_calculator_enhanced import StandingsCalculatorEnhanced
+        
+        standings_calc = StandingsCalculatorEnhanced()
+        
+        # Get all team rosters as Player objects
+        team_rosters = {}
+        for team_name in draft_service.current_draft.team_rosters.keys():
+            team_players = draft_service.get_team_players(all_players, team_name)
+            team_rosters[team_name] = team_players
+        
+        # Get filter/sort params from query string
+        sort_by = request.args.get('sort_by')
+        filter_category = request.args.get('filter_category')
+        filter_min = request.args.get('filter_min', type=float)
+        filter_max = request.args.get('filter_max', type=float)
+        
+        # Get filtered standings
+        standings = standings_calc.get_filtered_standings(
+            team_rosters,
+            sort_by=sort_by,
+            filter_category=filter_category,
+            filter_min_value=filter_min,
+            filter_max_value=filter_max
+        )
+        
+        # Format standings for frontend
+        formatted_standings = []
+        for rank, team_name in enumerate(standings['final_rankings'], 1):
+            team_data = {
+                'rank': rank,
+                'team_name': team_name,
+                'total_points': standings['total_points'][team_name],
+                'category_totals': standings['category_totals'][team_name],
+                'category_ranks': {},
+                'category_points': {}
+            }
+            
+            # Add rank and points for each category
+            for category in standings_calc.BATTING_CATEGORIES + standings_calc.PITCHING_CATEGORIES:
+                team_data['category_ranks'][category] = standings_calc._get_team_rank(
+                    team_name, category, standings['category_rankings']
+                )
+                category_points = standings.get('category_points', {})
+                if category in category_points:
+                    team_data['category_points'][category] = category_points[category].get(team_name, 0)
+                else:
+                    team_data['category_points'][category] = 0
+            
+            formatted_standings.append(team_data)
+        
+        return jsonify({
+            'success': True,
+            'standings': formatted_standings,
+            'filter_applied': standings.get('filter_applied', False),
+            'sort_by': standings.get('sort_by', 'total_points'),
+            'categories': {
+                'batting': standings_calc.BATTING_CATEGORIES,
+                'pitching': standings_calc.PITCHING_CATEGORIES
+            }
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/standings/validate-pitching', methods=['GET'])
+def validate_pitching_calculations():
+    """Validate pitching calculations and return detailed breakdown."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+    
+    try:
+        from src.services.standings_calculator_enhanced import StandingsCalculatorEnhanced
+        
+        standings_calc = StandingsCalculatorEnhanced()
+        
+        # Get all team rosters as Player objects
+        team_rosters = {}
+        for team_name in draft_service.current_draft.team_rosters.keys():
+            team_players = draft_service.get_team_players(all_players, team_name)
+            team_rosters[team_name] = team_players
+        
+        # Validate pitching calculations
+        validation = standings_calc.validate_pitching_calculations(team_rosters)
+        
+        return jsonify({
+            'success': True,
+            'validation': validation
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
 @app.route('/api/ml/train', methods=['POST'])
 def train_ml_models():
     """Train ML models on player data features."""
@@ -1231,3 +1399,154 @@ def train_ml_models():
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
 
+
+# ============================================================================
+# CONFIG API ENDPOINTS
+# ============================================================================
+
+@app.route('/api/recommendations/config', methods=['GET'])
+def get_config():
+    """Get current scoring configuration."""
+    try:
+        config = recommendation_engine.get_config()
+        return jsonify({
+            'success': True,
+            'config': config.to_dict()
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/recommendations/config/profiles', methods=['GET'])
+def list_config_profiles():
+    """List all available configuration profiles."""
+    try:
+        profiles = recommendation_engine.config_manager.list_profiles()
+        return jsonify({
+            'success': True,
+            'profiles': profiles
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/recommendations/config/profile', methods=['POST'])
+def set_config_profile():
+    """Set active configuration profile."""
+    try:
+        data = request.json or {}
+        profile_name = data.get('profile_name')
+        
+        if not profile_name:
+            return jsonify({
+                'success': False,
+                'message': 'profile_name is required'
+            }), 400
+        
+        try:
+            recommendation_engine.set_config_profile(profile_name)
+            return jsonify({
+                'success': True,
+                'profile': profile_name,
+                'message': f'Switched to {profile_name} profile'
+            })
+        except ValueError as e:
+            return jsonify({
+                'success': False,
+                'message': str(e)
+            }), 404
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/recommendations/config', methods=['PATCH'])
+def update_config():
+    """Update specific configuration values."""
+    try:
+        data = request.json or {}
+        
+        if not data:
+            return jsonify({
+                'success': False,
+                'message': 'No configuration values provided'
+            }), 400
+        
+        # Validate the values before updating
+        config = recommendation_engine.get_config()
+        updated_fields = []
+        
+        for key, value in data.items():
+            if hasattr(config, key):
+                updated_fields.append(key)
+        
+        if not updated_fields:
+            return jsonify({
+                'success': False,
+                'message': 'No valid configuration fields provided'
+            }), 400
+        
+        # Update the config
+        recommendation_engine.update_config(**data)
+        
+        # Validate after update
+        errors = recommendation_engine.get_config().validate()
+        if errors:
+            return jsonify({
+                'success': False,
+                'message': 'Configuration validation failed',
+                'errors': errors
+            }), 400
+        
+        return jsonify({
+            'success': True,
+            'updated': updated_fields,
+            'message': f'Updated {len(updated_fields)} configuration value(s)'
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500
+
+
+@app.route('/api/recommendations/config/reset', methods=['POST'])
+def reset_config():
+    """Reset configuration to default profile."""
+    try:
+        recommendation_engine.config_manager.reset_to_default()
+        recommendation_engine.config = recommendation_engine.config_manager.get_current_config()
+        recommendation_engine._cache.clear()
+        
+        return jsonify({
+            'success': True,
+            'message': 'Configuration reset to default profile'
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            'success': False,
+            'error': type(e).__name__,
+            'message': str(e),
+            'traceback': traceback.format_exc() if app.debug else None
+        }), 500

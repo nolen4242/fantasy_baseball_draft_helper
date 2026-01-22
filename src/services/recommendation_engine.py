@@ -8,6 +8,8 @@ from src.services.ml_trainer import MLTrainer
 from src.services.standings_calculator import StandingsCalculator
 from src.services.team_service import TeamService
 from src.services.vorp_calculator import VORPCalculator, BlockingOpportunity
+from src.services.config_manager import ConfigManager
+from src.services.scoring_config import ScoringConfig
 
 
 class RecommendationEngine:
@@ -21,12 +23,47 @@ class RecommendationEngine:
         self.vorp_calculator = VORPCalculator()
         self.all_players = all_players or []
         self._ml_models_loaded = False
+        
+        # NEW: Configuration management
+        self.config_manager = ConfigManager()
+        self.config = self.config_manager.get_current_config()
     
         # Caching for performance
         self._cache = {}  # Cache key: (player_id, draft_state_hash) -> score
         self._cache_draft_state_hash = None
         self._opponent_needs_cache = None
         self._opponent_needs_hash = None
+    
+    def set_config_profile(self, profile_name: str):
+        """
+        Switch to a different configuration profile.
+        
+        Args:
+            profile_name: Name of the profile to load
+        """
+        self.config = self.config_manager.load_profile(profile_name)
+        self._cache.clear()  # Clear cache when config changes
+    
+    def get_config(self) -> ScoringConfig:
+        """
+        Get current configuration.
+        
+        Returns:
+            The current ScoringConfig
+        """
+        return self.config
+    
+    def update_config(self, **kwargs):
+        """
+        Update specific configuration values.
+        
+        Args:
+            **kwargs: Configuration attributes to update
+        """
+        for key, value in kwargs.items():
+            if hasattr(self.config, key):
+                setattr(self.config, key, value)
+        self._cache.clear()  # Clear cache when config changes
     
     def get_recommendations(
         self,
@@ -141,10 +178,12 @@ class RecommendationEngine:
                     players_to_evaluate.append(pitcher)
         
         # Filter out players that don't have available roster slots
+        # IMPORTANT: Exclude bench slots - only recommend players if they can fill a starting position
+        # This prevents recommending players that would only fill the bench before other positions are filled
         players_with_slots = []
         for player in players_to_evaluate:
             try:
-                has_slot = self.team_service.has_available_slot_for_player(team_name, player)
+                has_slot = self.team_service.has_available_slot_for_player(team_name, player, exclude_bench=True)
                 if has_slot:
                     players_with_slots.append(player)
             except Exception as e:
@@ -159,7 +198,7 @@ class RecommendationEngine:
             for player in expanded_evaluate:
                 if player not in players_to_evaluate:
                     try:
-                        if self.team_service.has_available_slot_for_player(team_name, player):
+                        if self.team_service.has_available_slot_for_player(team_name, player, exclude_bench=True):
                             players_with_slots.append(player)
                             if len(players_with_slots) >= top_n * 3:  # Get at least 3x top_n options
                                 break
@@ -179,15 +218,17 @@ class RecommendationEngine:
         
         # Generate draft state hash for caching
         draft_state_hash = self._get_draft_state_hash(draft_state)
+        available_hash = self._get_available_players_hash(available_players)
         
-        # Check if we need to clear cache (draft state changed)
-        if draft_state_hash != self._cache_draft_state_hash:
+        # Check if we need to clear cache (draft state or available players changed)
+        cache_state_key = f"{draft_state_hash}:{available_hash}:{team_name}"
+        if cache_state_key != self._cache_draft_state_hash:
             self._cache.clear()
-            self._cache_draft_state_hash = draft_state_hash
+            self._cache_draft_state_hash = cache_state_key
         
         # Calculate scores with caching
         for player in players_with_slots:
-            cache_key = (player.player_id, draft_state_hash)
+            cache_key = (player.player_id, cache_state_key)
             
             # Check cache first
             if cache_key in self._cache:
@@ -256,7 +297,17 @@ class RecommendationEngine:
         import hashlib
         # Hash based on picks made (player IDs and order)
         picks_str = ",".join([f"{p.player_id}:{p.team_name}" for p in draft_state.picks[-50:]])  # Last 50 picks
+        # Also include current pick number to ensure cache updates
+        picks_str += f"|pick:{len(draft_state.picks)}"
         return hashlib.md5(picks_str.encode()).hexdigest()[:16]
+    
+    def _get_available_players_hash(self, available_players: List[Player]) -> str:
+        """Generate hash of available players for caching."""
+        import hashlib
+        # Hash based on available player IDs (sorted for consistency)
+        player_ids = sorted([p.player_id for p in available_players[:100]])  # Use first 100 for performance
+        players_str = ",".join(player_ids)
+        return hashlib.md5(players_str.encode()).hexdigest()[:8]
     
     def _calculate_standings_improvement(
         self,
