@@ -306,6 +306,41 @@ export class ApiClient {
         return response.json();
     }
 
+    async getFilteredStandings(
+        stat: string,
+        order: string = 'desc',
+        minValue?: number,
+        maxValue?: number
+    ): Promise<{
+        success: boolean;
+        standings: Array<{
+            rank: number;
+            team_name: string;
+            total_points: number;
+            category_totals: Record<string, number>;
+            category_ranks: Record<string, number>;
+        }>;
+        category_rankings: Record<string, string[]>;
+        categories: {
+            batting: string[];
+            pitching: string[];
+        };
+    }> {
+        let url = `${API_BASE}/api/standings/filtered?stat=${encodeURIComponent(stat)}&order=${order}`;
+        if (minValue !== undefined) {
+            url += `&min_value=${minValue}`;
+        }
+        if (maxValue !== undefined) {
+            url += `&max_value=${maxValue}`;
+        }
+        
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    }
+
     async trainMLModels(): Promise<{
         success: boolean;
         message: string;

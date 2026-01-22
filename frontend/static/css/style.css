@@ -1071,3 +1071,64 @@ body {
     background: rgba(255,255,255,0.2);
     border-radius: 3px;
 }
+
+/* Standings Filter Controls */
+.standings-filters {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #001f3f;
+}
+
+.filter-select, .filter-input {
+    padding: 8px 12px;
+    border: 2px solid #001f3f;
+    border-radius: 4px;
+    background: white;
+    color: #1a1a2e;
+    font-size: 13px;
+    min-width: 150px;
+}
+
+.filter-input {
+    min-width: 100px;
+}
+
+.filter-select:focus, .filter-input:focus {
+    outline: none;
+    border-color: #003366;
+    box-shadow: 0 0 0 2px rgba(0, 31, 63, 0.1);
+}
+
+/* Sortable table headers */
+.standings-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.standings-table th.sortable:hover {
+    background: #003366;
+}
+
+.standings-table th.sortable::after {
+    content: ' ⇅';
+    opacity: 0.5;
+    font-size: 10px;
+}

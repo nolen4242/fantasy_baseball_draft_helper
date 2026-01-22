@@ -238,6 +238,20 @@ export class ApiClient {
         }
         return response.json();
     }
+    async getFilteredStandings(stat, order = 'desc', minValue, maxValue) {
+        let url = `${API_BASE}/api/standings/filtered?stat=${encodeURIComponent(stat)}&order=${order}`;
+        if (minValue !== undefined) {
+            url += `&min_value=${minValue}`;
+        }
+        if (maxValue !== undefined) {
+            url += `&max_value=${maxValue}`;
+        }
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    }
     async trainMLModels() {
         const response = await fetch(`${API_BASE}/api/ml/train`, {
             method: 'POST',

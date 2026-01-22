@@ -559,20 +559,51 @@ export class UIRenderer {
         const battingCats = standingsData.categories.batting;
         const pitchingCats = standingsData.categories.pitching;
         const allCats = [...battingCats, ...pitchingCats];
-        // Build standings HTML
+        // Build standings HTML with filter controls
         let html = `
             <div class="standings-header">
                 <h2>📊 Projected Standings</h2>
                 <button id="close-standings-btn" class="btn-small">Close</button>
             </div>
+            <div class="standings-filters">
+                <div class="filter-group">
+                    <label for="standings-stat-filter">Filter by Stat:</label>
+                    <select id="standings-stat-filter" class="filter-select">
+                        <option value="">All Stats</option>
+                        <optgroup label="Batting">
+                            ${battingCats.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+                        </optgroup>
+                        <optgroup label="Pitching">
+                            ${pitchingCats.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="standings-sort-order">Sort Order:</label>
+                    <select id="standings-sort-order" class="filter-select">
+                        <option value="desc">High to Low</option>
+                        <option value="asc">Low to High</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="standings-min-value">Min Value:</label>
+                    <input type="number" id="standings-min-value" class="filter-input" placeholder="Min" step="0.1">
+                </div>
+                <div class="filter-group">
+                    <label for="standings-max-value">Max Value:</label>
+                    <input type="number" id="standings-max-value" class="filter-input" placeholder="Max" step="0.1">
+                </div>
+                <button id="apply-standings-filter" class="btn-small">Apply Filter</button>
+                <button id="reset-standings-filter" class="btn-small">Reset</button>
+            </div>
             <div class="standings-table-wrapper">
                 <table class="standings-table">
                     <thead>
                         <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                            ${allCats.map(cat => `<th>${cat}</th>`).join('')}
+                            <th class="sortable" data-sort="rank">Rank</th>
+                            <th class="sortable" data-sort="team">Team</th>
+                            <th class="sortable" data-sort="points">Points</th>
+                            ${allCats.map(cat => `<th class="sortable" data-sort="${cat}">${cat}</th>`).join('')}
                         </tr>
                     </thead>
                     <tbody>
@@ -621,6 +652,113 @@ export class UIRenderer {
         // Add close button handler
         document.getElementById('close-standings-btn')?.addEventListener('click', () => {
             standingsContainer.style.display = 'none';
+        });
+        // Add filter handlers
+        this.setupStandingsFilters(standingsData);
+    }
+    setupStandingsFilters(standingsData) {
+        const applyBtn = document.getElementById('apply-standings-filter');
+        const resetBtn = document.getElementById('reset-standings-filter');
+        const statFilter = document.getElementById('standings-stat-filter');
+        const sortOrder = document.getElementById('standings-sort-order');
+        const minValue = document.getElementById('standings-min-value');
+        const maxValue = document.getElementById('standings-max-value');
+        if (!applyBtn || !resetBtn)
+            return;
+        // Apply filter
+        applyBtn.addEventListener('click', async () => {
+            const stat = statFilter?.value || '';
+            const order = sortOrder?.value || 'desc';
+            const min = minValue?.value ? parseFloat(minValue.value) : undefined;
+            const max = maxValue?.value ? parseFloat(maxValue.value) : undefined;
+            if (stat) {
+                // Filter by specific stat
+                try {
+                    const response = await this.api.getFilteredStandings(stat, order, min, max);
+                    this.renderStandings(response);
+                }
+                catch (error) {
+                    console.error('Error fetching filtered standings:', error);
+                    alert('Failed to filter standings: ' + (error instanceof Error ? error.message : 'Unknown error'));
+                }
+            }
+            else {
+                // Just sort the current data
+                this.sortStandingsTable(standingsData, 'points', order);
+            }
+        });
+        // Reset filter
+        resetBtn.addEventListener('click', async () => {
+            if (statFilter)
+                statFilter.value = '';
+            if (sortOrder)
+                sortOrder.value = 'desc';
+            if (minValue)
+                minValue.value = '';
+            if (maxValue)
+                maxValue.value = '';
+            // Reload original standings
+            try {
+                const response = await this.api.getStandings();
+                this.renderStandings(response);
+            }
+            catch (error) {
+                console.error('Error reloading standings:', error);
+            }
+        });
+        // Add click handlers for sortable headers
+        const headers = document.querySelectorAll('.standings-table th.sortable');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const sortKey = header.dataset.sort || '';
+                const currentOrder = sortOrder?.value || 'desc';
+                const newOrder = currentOrder === 'desc' ? 'asc' : 'desc';
+                if (sortOrder)
+                    sortOrder.value = newOrder;
+                if (sortKey === 'rank' || sortKey === 'team' || sortKey === 'points') {
+                    this.sortStandingsTable(standingsData, sortKey, newOrder);
+                }
+                else {
+                    // It's a category - use the filter
+                    if (statFilter)
+                        statFilter.value = sortKey;
+                    applyBtn?.click();
+                }
+            });
+        });
+    }
+    sortStandingsTable(standingsData, sortKey, order) {
+        const sorted = [...standingsData.standings];
+        sorted.sort((a, b) => {
+            let aVal, bVal;
+            if (sortKey === 'rank') {
+                aVal = a.rank;
+                bVal = b.rank;
+            }
+            else if (sortKey === 'team') {
+                aVal = a.team_name;
+                bVal = b.team_name;
+            }
+            else if (sortKey === 'points') {
+                aVal = a.total_points;
+                bVal = b.total_points;
+            }
+            else {
+                // Category
+                aVal = a.category_totals[sortKey] || 0;
+                bVal = b.category_totals[sortKey] || 0;
+            }
+            if (typeof aVal === 'string') {
+                return order === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+            }
+            else {
+                return order === 'asc' ? aVal - bVal : bVal - aVal;
+            }
+        });
+        // Re-render with sorted data
+        this.renderStandings({
+            ...standingsData,
+            standings: sorted
         });
     }
 }
