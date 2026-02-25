@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "jordan_beck",
-    "name": "Jordan Beck",
-    "position": "OF",
-    "team": "COL",
+    "player_id": "logan_henderson",
+    "name": "Logan Henderson",
+    "position": "P",
+    "team": "MIL",
     "age": null,
-    "projected_home_runs": 13.0,
-    "projected_obp": 0.311,
-    "projected_runs": 51.0,
-    "projected_rbi": 51.0,
-    "projected_stolen_bases": 13.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 6.0,
+    "projected_quality_starts": 8.450000000000001,
+    "projected_strikeouts": 97.21555555555555,
+    "projected_era": 4.08,
+    "projected_whip": 1.2433333333333332,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 265.3
+    "adp": 254.3
   },
   "pick_info": {
     "pick_number": 253,
     "round": 20,
     "team_name": "Trex"
   },
-  "position": "OF"
+  "position": "P"
 }

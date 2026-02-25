@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "zac_gallen",
-    "name": "Zac Gallen",
-    "position": "P",
-    "team": "ARI",
+    "player_id": "luis_robert",
+    "name": "Luis Robert",
+    "position": "OF",
+    "team": "CHW",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 11.0,
-    "projected_quality_starts": 20.8,
-    "projected_strikeouts": 181.54500000000002,
-    "projected_era": 4.22,
-    "projected_whip": 1.267777777777778,
-    "projected_saves": 0.0,
+    "projected_home_runs": 19.0,
+    "projected_obp": 0.299,
+    "projected_runs": 56.0,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 27.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 161.0
+    "adp": 166.5
   },
   "pick_info": {
     "pick_number": 153,
     "round": 12,
     "team_name": "Simba's Dublin Green Sox"
   },
-  "position": "P"
+  "position": "OF"
 }

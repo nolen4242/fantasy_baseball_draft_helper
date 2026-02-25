@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "brendan_donovan",
-    "name": "Brendan Donovan",
-    "position": "2B",
-    "team": "STL",
+    "player_id": "jose_soriano",
+    "name": "Jose Soriano",
+    "position": "P",
+    "team": "LAA",
     "age": null,
-    "projected_home_runs": 12.0,
-    "projected_obp": 0.353,
-    "projected_runs": 72.0,
-    "projected_rbi": 55.0,
-    "projected_stolen_bases": 6.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 164.5062222222222,
+    "projected_era": 3.65,
+    "projected_whip": 1.3688888888888888,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 223.8
+    "adp": 210.3
   },
   "pick_info": {
     "pick_number": 208,
     "round": 16,
     "team_name": "Runtime Terror"
   },
-  "position": "2B"
+  "position": "P"
 }

@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "trevor_megill",
-    "name": "Trevor Megill",
+    "player_id": "jeff_hoffman",
+    "name": "Jeff Hoffman",
     "position": "P",
-    "team": "MIL",
+    "team": "TOR",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -12,16 +12,16 @@
     "projected_stolen_bases": null,
     "projected_wins": 3.0,
     "projected_quality_starts": 0.0,
-    "projected_strikeouts": 81.76666666666667,
-    "projected_era": 3.41,
-    "projected_whip": 1.3055555555555556,
-    "projected_saves": 7.0,
+    "projected_strikeouts": 76.16000000000001,
+    "projected_era": 3.46,
+    "projected_whip": 1.3022222222222224,
+    "projected_saves": 25.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 160.0
+    "adp": 158.5
   },
   "pick_info": {
     "pick_number": 151,

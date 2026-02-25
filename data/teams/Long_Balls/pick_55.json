@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jarren_duran",
-    "name": "Jarren Duran",
+    "player_id": "george_springer",
+    "name": "George Springer",
     "position": "OF",
-    "team": "BOS",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 16.0,
-    "projected_obp": 0.325,
-    "projected_runs": 82.0,
-    "projected_rbi": 64.0,
-    "projected_stolen_bases": 21.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.342,
+    "projected_runs": 86.0,
+    "projected_rbi": 73.0,
+    "projected_stolen_bases": 13.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 68.3
+    "adp": 69.8
   },
   "pick_info": {
     "pick_number": 55,

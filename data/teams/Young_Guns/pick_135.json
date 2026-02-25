@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "andy_pages",
-    "name": "Andy Pages",
-    "position": "OF",
-    "team": "LAD",
+    "player_id": "raisel_iglesias",
+    "name": "Raisel Iglesias",
+    "position": "P",
+    "team": "ATL",
     "age": null,
-    "projected_home_runs": 21.0,
-    "projected_obp": 0.307,
-    "projected_runs": 62.0,
-    "projected_rbi": 68.0,
-    "projected_stolen_bases": 9.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 71.28000000000002,
+    "projected_era": 3.71,
+    "projected_whip": 1.2355555555555557,
+    "projected_saves": 29.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 145.8
+    "adp": 148.0
   },
   "pick_info": {
     "pick_number": 135,
     "round": 11,
     "team_name": "Young Guns"
   },
-  "position": "OF"
+  "position": "P"
 }

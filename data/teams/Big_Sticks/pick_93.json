@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "sandy_alcantara",
-    "name": "Sandy Alcantara",
-    "position": "P",
-    "team": "MIA",
+    "player_id": "teoscar_hernandez",
+    "name": "Teoscar Hernandez",
+    "position": "OF",
+    "team": "LAD",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 10.0,
-    "projected_quality_starts": 20.150000000000002,
-    "projected_strikeouts": 158.27,
-    "projected_era": 4.15,
-    "projected_whip": 1.2444444444444445,
-    "projected_saves": 0.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.309,
+    "projected_runs": 69.0,
+    "projected_rbi": 79.0,
+    "projected_stolen_bases": 6.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 106.8
+    "adp": 102.3
   },
   "pick_info": {
     "pick_number": 93,
     "round": 8,
     "team_name": "Big Sticks"
   },
-  "position": "P"
+  "position": "OF"
 }

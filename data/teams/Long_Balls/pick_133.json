@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "raisel_iglesias",
-    "name": "Raisel Iglesias",
-    "position": "P",
-    "team": "ATL",
+    "player_id": "adley_rutschman",
+    "name": "Adley Rutschman",
+    "position": "C",
+    "team": "BAL",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 3.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 71.28000000000002,
-    "projected_era": 3.71,
-    "projected_whip": 1.2355555555555557,
-    "projected_saves": 29.0,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.342,
+    "projected_runs": 64.0,
+    "projected_rbi": 61.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 148.0
+    "adp": 147.0
   },
   "pick_info": {
     "pick_number": 133,
     "round": 11,
     "team_name": "Long Balls"
   },
-  "position": "P"
+  "position": "C"
 }

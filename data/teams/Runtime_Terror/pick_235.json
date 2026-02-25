@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "devin_williams",
-    "name": "Devin Williams",
-    "position": "P",
-    "team": "NYY",
+    "player_id": "josh_bell",
+    "name": "Josh Bell",
+    "position": "1B",
+    "team": "WAS",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 4.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 81.2088888888889,
-    "projected_era": 3.14,
-    "projected_whip": 1.38,
-    "projected_saves": 32.0,
+    "projected_home_runs": 18.0,
+    "projected_obp": 0.332,
+    "projected_runs": 56.0,
+    "projected_rbi": 60.0,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 161.5
+    "adp": 285.0
   },
   "pick_info": {
     "pick_number": 235,
     "round": 19,
     "team_name": "Runtime Terror"
   },
-  "position": "P"
+  "position": "1B"
 }

@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jung_hoo_lee",
-    "name": "Jung Hoo Lee",
-    "position": "OF",
-    "team": "SF",
+    "player_id": "spencer_horwitz",
+    "name": "Spencer Horwitz",
+    "position": "1B",
+    "team": "PIT",
     "age": null,
-    "projected_home_runs": 9.0,
-    "projected_obp": 0.334,
-    "projected_runs": 59.0,
-    "projected_rbi": 46.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 11.0,
+    "projected_obp": 0.359,
+    "projected_runs": 50.0,
+    "projected_rbi": 49.0,
+    "projected_stolen_bases": 2.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 260.3
+    "adp": 272.3
   },
   "pick_info": {
     "pick_number": 262,
     "round": 21,
     "team_name": "Dawg"
   },
-  "position": "OF"
+  "position": "1B"
 }

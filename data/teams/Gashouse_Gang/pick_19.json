@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "cal_raleigh",
-    "name": "Cal Raleigh",
-    "position": "C",
-    "team": "SEA",
+    "player_id": "nick_kurtz",
+    "name": "Nick Kurtz",
+    "position": "1B",
+    "team": "ATH",
     "age": null,
-    "projected_home_runs": 38.0,
-    "projected_obp": 0.331,
-    "projected_runs": 88.0,
-    "projected_rbi": 91.0,
-    "projected_stolen_bases": 8.0,
+    "projected_home_runs": 31.0,
+    "projected_obp": 0.353,
+    "projected_runs": 78.0,
+    "projected_rbi": 71.0,
+    "projected_stolen_bases": 4.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 21.8
+    "adp": 26.8
   },
   "pick_info": {
     "pick_number": 19,
     "round": 2,
     "team_name": "Gashouse Gang"
   },
-  "position": "C"
+  "position": "1B"
 }

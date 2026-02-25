@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "ryan_walker",
-    "name": "Ryan Walker",
-    "position": "P",
-    "team": "SF",
+    "player_id": "gabriel_moreno",
+    "name": "Gabriel Moreno",
+    "position": "C",
+    "team": "ARI",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 3.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 67.97,
-    "projected_era": 3.3,
-    "projected_whip": 1.2544444444444443,
-    "projected_saves": 30.0,
+    "projected_home_runs": 10.0,
+    "projected_obp": 0.353,
+    "projected_runs": 48.0,
+    "projected_rbi": 50.0,
+    "projected_stolen_bases": 4.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 255.0
+    "adp": 233.8
   },
   "pick_info": {
     "pick_number": 248,
     "round": 20,
     "team_name": "Like a Nightmare"
   },
-  "position": "P"
+  "position": "C"
 }

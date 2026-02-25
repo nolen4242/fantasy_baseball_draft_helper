@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "vladimir_guerrero_jr",
-    "name": "Vladimir Guerrero Jr.",
-    "position": "1B",
-    "team": "TOR",
+    "player_id": "bobby_witt",
+    "name": "Bobby Witt",
+    "position": "SS",
+    "team": "KC",
     "age": null,
-    "projected_home_runs": 32.0,
-    "projected_obp": 0.385,
-    "projected_runs": 94.0,
-    "projected_rbi": 99.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.349,
+    "projected_runs": 97.0,
+    "projected_rbi": 86.0,
+    "projected_stolen_bases": 31.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 18.5
+    "adp": 5.3
   },
   "pick_info": {
     "pick_number": 11,
     "round": 1,
     "team_name": "MAGA DOGE"
   },
-  "position": "1B"
+  "position": "SS"
 }

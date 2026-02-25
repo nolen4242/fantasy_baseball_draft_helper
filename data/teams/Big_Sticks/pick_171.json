@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "dansby_swanson",
-    "name": "Dansby Swanson",
-    "position": "SS",
-    "team": "CHC",
+    "player_id": "spencer_steer",
+    "name": "Spencer Steer",
+    "position": "1B",
+    "team": "CIN",
     "age": null,
-    "projected_home_runs": 17.0,
-    "projected_obp": 0.307,
-    "projected_runs": 58.0,
-    "projected_rbi": 60.0,
-    "projected_stolen_bases": 12.0,
+    "projected_home_runs": 20.0,
+    "projected_obp": 0.324,
+    "projected_runs": 67.0,
+    "projected_rbi": 71.0,
+    "projected_stolen_bases": 9.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 166.0
+    "adp": 173.5
   },
   "pick_info": {
     "pick_number": 171,
     "round": 14,
     "team_name": "Big Sticks"
   },
-  "position": "SS"
+  "position": "1B"
 }

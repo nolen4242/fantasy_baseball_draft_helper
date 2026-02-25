@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "sal_frelick",
-    "name": "Sal Frelick",
-    "position": "OF",
-    "team": "MIL",
+    "player_id": "andres_gimenez",
+    "name": "Andres Gimenez",
+    "position": "2B",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 8.0,
-    "projected_obp": 0.337,
-    "projected_runs": 51.0,
-    "projected_rbi": 46.0,
-    "projected_stolen_bases": 13.0,
+    "projected_home_runs": 12.0,
+    "projected_obp": 0.311,
+    "projected_runs": 60.0,
+    "projected_rbi": 55.0,
+    "projected_stolen_bases": 18.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 229.0
+    "adp": 243.0
   },
   "pick_info": {
     "pick_number": 229,
     "round": 18,
     "team_name": "Gashouse Gang"
   },
-  "position": "OF"
+  "position": "2B"
 }

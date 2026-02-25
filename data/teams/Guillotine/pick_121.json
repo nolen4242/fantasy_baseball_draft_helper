@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jordan_westburg",
-    "name": "Jordan Westburg",
-    "position": "3B",
-    "team": "BAL",
+    "player_id": "steven_kwan",
+    "name": "Steven Kwan",
+    "position": "OF",
+    "team": "CLE",
     "age": null,
-    "projected_home_runs": 23.0,
-    "projected_obp": 0.321,
-    "projected_runs": 74.0,
-    "projected_rbi": 72.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": 11.0,
+    "projected_obp": 0.35,
+    "projected_runs": 77.0,
+    "projected_rbi": 51.0,
+    "projected_stolen_bases": 17.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 129.0
+    "adp": 131.5
   },
   "pick_info": {
     "pick_number": 121,
     "round": 10,
     "team_name": "Guillotine"
   },
-  "position": "3B"
+  "position": "OF"
 }

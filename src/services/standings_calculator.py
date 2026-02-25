@@ -1,138 +1,202 @@
-"""Calculate fantasy standings from team rosters."""
-from typing import List, Dict
+"""Calculate fantasy roto standings from team rosters."""
+from typing import List, Dict, Tuple
 from src.models.player import Player
-import numpy as np
 
 
 class StandingsCalculator:
-    """Calculates category standings and final rankings."""
-    
-    # Bob Uecker League categories
+    """Calculates rotisserie category standings and final rankings.
+
+    Scoring rules (Bob Uecker Imaginary Baseball League, 13 teams):
+      - 10 categories: 5 batting + 5 pitching
+      - Counting stats (highest wins): HR, R, RBI, SB, K, WQS, SHOLDS
+      - Rate stats: OBP (highest wins), ERA (lowest wins), WHIP (lowest wins)
+      - Points per category: 13 for 1st, 12 for 2nd … 1 for 13th
+      - Ties split the points equally
+      - Highest total points = league winner
+    """
+
     BATTING_CATEGORIES = ['HR', 'OBP', 'R', 'RBI', 'SB']
     PITCHING_CATEGORIES = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']
-    
+
+    # Categories where LOWER value is better
+    LOWER_IS_BETTER = {'ERA', 'WHIP'}
+
     def calculate_standings(self, team_rosters: Dict[str, List[Player]]) -> Dict:
-        """
-        Calculate category standings for all teams.
-        
-        Returns:
-            Dictionary with:
-            - category_totals: Dict[team_name, Dict[category, value]]
-            - category_rankings: Dict[category, List[team_name]] (sorted by rank)
-            - total_points: Dict[team_name, int] (sum of category ranks)
-            - final_rankings: List[team_name] (sorted by total points, descending)
-        """
-        category_totals = {}
-        
-        # Calculate totals for each team
+        """Return full roto standings with batting/pitching breakdowns."""
+        num_teams = len(team_rosters)
+        if num_teams == 0:
+            return {
+                'category_totals': {},
+                'category_points': {},
+                'category_rankings': {},
+                'batting_points': {},
+                'pitching_points': {},
+                'total_points': {},
+                'final_rankings': [],
+            }
+
+        category_totals: Dict[str, Dict[str, float]] = {}
         for team_name, roster in team_rosters.items():
-            totals = self._calculate_team_totals(roster)
-            category_totals[team_name] = totals
-        
-        # Calculate rankings for each category
-        category_rankings = {}
-        for category in self.BATTING_CATEGORIES + self.PITCHING_CATEGORIES:
-            rankings = self._rank_teams_by_category(category, category_totals)
-            category_rankings[category] = rankings
-        
-        # Calculate total points (sum of category ranks)
-        total_points = {}
-        for team_name in team_rosters.keys():
-            points = sum(
-                self._get_team_rank(team_name, category, category_rankings)
-                for category in self.BATTING_CATEGORIES + self.PITCHING_CATEGORIES
+            category_totals[team_name] = self._calculate_team_totals(roster)
+
+        all_categories = self.BATTING_CATEGORIES + self.PITCHING_CATEGORIES
+
+        # Per-category roto points (with tie handling)
+        category_points: Dict[str, Dict[str, float]] = {
+            cat: {} for cat in all_categories
+        }
+        category_rankings: Dict[str, List[str]] = {}
+
+        for cat in all_categories:
+            lower_better = cat in self.LOWER_IS_BETTER
+            pts, ranked = self._score_category(
+                cat, category_totals, num_teams, lower_better
             )
-            total_points[team_name] = points
-        
-        # Final rankings (lower total points = better, like golf)
+            category_points[cat] = pts
+            category_rankings[cat] = ranked
+
+        # Aggregate points
+        batting_points: Dict[str, float] = {}
+        pitching_points: Dict[str, float] = {}
+        total_points: Dict[str, float] = {}
+
+        for team in team_rosters:
+            bp = sum(category_points[c].get(team, 0) for c in self.BATTING_CATEGORIES)
+            pp = sum(category_points[c].get(team, 0) for c in self.PITCHING_CATEGORIES)
+            batting_points[team] = bp
+            pitching_points[team] = pp
+            total_points[team] = bp + pp
+
+        # Final rankings: highest total points first
         final_rankings = sorted(
             team_rosters.keys(),
-            key=lambda t: total_points[t]
+            key=lambda t: total_points[t],
+            reverse=True,
         )
-        
+
         return {
             'category_totals': category_totals,
+            'category_points': category_points,
             'category_rankings': category_rankings,
+            'batting_points': batting_points,
+            'pitching_points': pitching_points,
             'total_points': total_points,
-            'final_rankings': final_rankings
+            'final_rankings': final_rankings,
         }
-    
-    def _calculate_team_totals(self, roster: List[Player]) -> Dict[str, float]:
-        """Calculate category totals for a single team."""
-        totals = {
-            'HR': 0.0, 'OBP': 0.0, 'R': 0.0, 'RBI': 0.0, 'SB': 0.0,
-            'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0, 'HD': 0.0,
-            'ERA': 0.0, 'WHIP': 0.0, 'IP': 0.0
-        }
-        
-        hitters = []
-        pitchers = []
-        
-        for player in roster:
-            is_hitter = player.position not in ['SP', 'RP', 'P']
-            if is_hitter:
-                hitters.append(player)
-            else:
-                pitchers.append(player)
-        
-        # Batting categories
-        for hitter in hitters:
-            totals['HR'] += hitter.projected_home_runs or 0
-            totals['R'] += hitter.projected_runs or 0
-            totals['RBI'] += hitter.projected_rbi or 0
-            totals['SB'] += hitter.projected_stolen_bases or 0
-        
-        # OBP is averaged (weighted by plate appearances, but we'll use simple average)
-        if hitters:
-            obp_sum = sum(h.projected_obp for h in hitters if h.projected_obp)
-            totals['OBP'] = obp_sum / len(hitters) if obp_sum > 0 else 0
-        
-        # Pitching categories
-        for pitcher in pitchers:
-            totals['W'] += pitcher.projected_wins or 0
-            totals['QS'] += pitcher.projected_quality_starts or 0
-            totals['K'] += pitcher.projected_strikeouts or 0
-            totals['SV'] += pitcher.projected_saves or 0
-            totals['HD'] += pitcher.projected_holds or 0
-        
-        # WQS = Wins + Quality Starts
-        totals['WQS'] = totals['W'] + totals['QS']
-        
-        # SHOLDS = Saves + (Holds * 0.5)
-        totals['SHOLDS'] = totals['SV'] + (totals['HD'] * 0.5)
-        
-        # ERA and WHIP are averaged (weighted by innings, but we'll use simple average)
-        if pitchers:
-            era_sum = sum(p.projected_era for p in pitchers if p.projected_era)
-            whip_sum = sum(p.projected_whip for p in pitchers if p.projected_whip)
-            totals['ERA'] = era_sum / len(pitchers) if era_sum > 0 else 0
-            totals['WHIP'] = whip_sum / len(pitchers) if whip_sum > 0 else 0
-        
-        return totals
-    
-    def _rank_teams_by_category(self, category: str, category_totals: Dict[str, Dict[str, float]]) -> List[str]:
-        """Rank teams by a category (higher is better, except ERA/WHIP)."""
+
+    # ------------------------------------------------------------------
+    # Category scoring with tie handling
+    # ------------------------------------------------------------------
+
+    def _score_category(
+        self,
+        category: str,
+        category_totals: Dict[str, Dict[str, float]],
+        num_teams: int,
+        lower_is_better: bool,
+    ) -> Tuple[Dict[str, float], List[str]]:
+        """Score a single category, returning (points_dict, ranked_teams).
+
+        Ties split points: if two teams tie for 3rd in a 13-team league,
+        they each get (11 + 10) / 2 = 10.5 instead of one getting 11 and
+        the other 10.
+        """
         team_values = {
-            team: totals[category]
+            team: totals.get(category, 0.0)
             for team, totals in category_totals.items()
         }
-        
-        # For ERA and WHIP, lower is better
-        reverse = category not in ['ERA', 'WHIP']
-        
-        ranked = sorted(
+
+        # Sort: for lower-is-better, ascending; otherwise descending
+        sorted_teams = sorted(
             team_values.keys(),
             key=lambda t: team_values[t],
-            reverse=reverse
+            reverse=not lower_is_better,
         )
-        
-        return ranked
-    
-    def _get_team_rank(self, team_name: str, category: str, category_rankings: Dict[str, List[str]]) -> int:
-        """Get a team's rank in a category (1 = best)."""
+
+        points: Dict[str, float] = {}
+        i = 0
+        while i < len(sorted_teams):
+            # Find all teams tied at this value
+            current_val = team_values[sorted_teams[i]]
+            j = i
+            while j < len(sorted_teams) and team_values[sorted_teams[j]] == current_val:
+                j += 1
+            # Positions i..j-1 are tied.  They share the points for those slots.
+            # Slot i gets (num_teams - i) points, slot i+1 gets (num_teams - i - 1), etc.
+            shared_points = sum(num_teams - k for k in range(i, j)) / (j - i)
+            for k in range(i, j):
+                points[sorted_teams[k]] = shared_points
+            i = j
+
+        return points, sorted_teams
+
+    # ------------------------------------------------------------------
+    # Team stat totals
+    # ------------------------------------------------------------------
+
+    def _calculate_team_totals(self, roster: List[Player]) -> Dict[str, float]:
+        """Calculate category totals for a single team."""
+        totals: Dict[str, float] = {
+            'HR': 0.0, 'OBP': 0.0, 'R': 0.0, 'RBI': 0.0, 'SB': 0.0,
+            'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0, 'HD': 0.0,
+            'ERA': 0.0, 'WHIP': 0.0,
+        }
+
+        hitters = [p for p in roster if p.position not in ('SP', 'RP', 'P')]
+        pitchers = [p for p in roster if p.position in ('SP', 'RP', 'P')]
+
+        # -- Batting counting stats --
+        for h in hitters:
+            totals['HR'] += h.projected_home_runs or 0
+            totals['R'] += h.projected_runs or 0
+            totals['RBI'] += h.projected_rbi or 0
+            totals['SB'] += h.projected_stolen_bases or 0
+
+        # OBP: average only over hitters that have OBP data
+        obp_values = [h.projected_obp for h in hitters if h.projected_obp]
+        totals['OBP'] = sum(obp_values) / len(obp_values) if obp_values else 0.0
+
+        # -- Pitching counting stats --
+        for p in pitchers:
+            totals['W'] += p.projected_wins or 0
+            totals['QS'] += p.projected_quality_starts or 0
+            totals['K'] += p.projected_strikeouts or 0
+            totals['SV'] += p.projected_saves or 0
+            totals['HD'] += p.projected_holds or 0
+
+        totals['WQS'] = totals['W'] + totals['QS']
+        totals['SHOLDS'] = totals['SV'] + (totals['HD'] * 0.5)
+
+        # ERA / WHIP: average only over pitchers that have the data
+        era_values = [p.projected_era for p in pitchers if p.projected_era]
+        whip_values = [p.projected_whip for p in pitchers if p.projected_whip]
+        totals['ERA'] = sum(era_values) / len(era_values) if era_values else 0.0
+        totals['WHIP'] = sum(whip_values) / len(whip_values) if whip_values else 0.0
+
+        return totals
+
+    # ------------------------------------------------------------------
+    # Legacy helpers (used by recommendation engine)
+    # ------------------------------------------------------------------
+
+    def _rank_teams_by_category(
+        self, category: str, category_totals: Dict[str, Dict[str, float]]
+    ) -> List[str]:
+        """Rank teams by a category (best first)."""
+        reverse = category not in self.LOWER_IS_BETTER
+        return sorted(
+            category_totals.keys(),
+            key=lambda t: category_totals[t].get(category, 0),
+            reverse=reverse,
+        )
+
+    def _get_team_rank(
+        self, team_name: str, category: str,
+        category_rankings: Dict[str, List[str]]
+    ) -> int:
+        """Get 1-based rank (1 = best)."""
         rankings = category_rankings.get(category, [])
         try:
             return rankings.index(team_name) + 1
         except ValueError:
             return len(rankings) + 1
-

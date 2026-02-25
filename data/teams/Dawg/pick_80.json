@@ -1,21 +1,21 @@
 {
   "player": {
-    "player_id": "maikel_garcia",
-    "name": "Maikel Garcia",
-    "position": "3B",
-    "team": "KC",
+    "player_id": "kyle_bradish",
+    "name": "Kyle Bradish",
+    "position": "P",
+    "team": "BAL",
     "age": null,
-    "projected_home_runs": 13.0,
-    "projected_obp": 0.338,
-    "projected_runs": 80.0,
-    "projected_rbi": 61.0,
-    "projected_stolen_bases": 26.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 169.97644444444444,
+    "projected_era": 3.69,
+    "projected_whip": 1.2566666666666668,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
@@ -28,5 +28,5 @@
     "round": 7,
     "team_name": "Dawg"
   },
-  "position": "3B"
+  "position": "P"
 }

@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "jose_berrios",
-    "name": "Jose Berrios",
-    "position": "P",
-    "team": "TOR",
+    "player_id": "josh_jung",
+    "name": "Josh Jung",
+    "position": "3B",
+    "team": "TEX",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 9.0,
-    "projected_quality_starts": 18.2,
-    "projected_strikeouts": 134.17433333333332,
-    "projected_era": 4.52,
-    "projected_whip": 1.2544444444444443,
-    "projected_saves": 0.0,
+    "projected_home_runs": 15.0,
+    "projected_obp": 0.297,
+    "projected_runs": 46.0,
+    "projected_rbi": 53.0,
+    "projected_stolen_bases": 4.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 285.8
+    "adp": 286.0
   },
   "pick_info": {
     "pick_number": 271,
     "round": 21,
     "team_name": "MAGA DOGE"
   },
-  "position": "P"
+  "position": "3B"
 }

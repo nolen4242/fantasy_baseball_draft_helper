@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "kerry_carpenter",
-    "name": "Kerry Carpenter",
-    "position": "OF",
+    "player_id": "will_vest",
+    "name": "Will Vest",
+    "position": "P",
     "team": "DET",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.31,
-    "projected_runs": 53.0,
-    "projected_rbi": 60.0,
-    "projected_stolen_bases": 2.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 69.36,
+    "projected_era": 3.27,
+    "projected_whip": 1.2566666666666668,
+    "projected_saves": 26.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 233.0
+    "adp": 226.0
   },
   "pick_info": {
     "pick_number": 223,
     "round": 18,
     "team_name": "Big Sticks"
   },
-  "position": "OF"
+  "position": "P"
 }

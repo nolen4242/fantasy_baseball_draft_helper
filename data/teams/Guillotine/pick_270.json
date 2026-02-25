@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "jp_crawford",
-    "name": "J.P. Crawford",
-    "position": "SS",
-    "team": "SEA",
+    "player_id": "parker_messick",
+    "name": "Parker Messick",
+    "position": "P",
+    "team": "CLE",
     "age": null,
-    "projected_home_runs": 10.0,
-    "projected_obp": 0.336,
-    "projected_runs": 55.0,
-    "projected_rbi": 47.0,
-    "projected_stolen_bases": 5.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 16.900000000000002,
+    "projected_strikeouts": 130.35377777777776,
+    "projected_era": 4.05,
+    "projected_whip": 1.2877777777777777,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 260.3
+    "adp": 273.7
   },
   "pick_info": {
     "pick_number": 270,
     "round": 21,
     "team_name": "Guillotine"
   },
-  "position": "SS"
+  "position": "P"
 }

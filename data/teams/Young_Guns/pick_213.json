@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "quinn_priester",
-    "name": "Quinn Priester",
-    "position": "P",
-    "team": "MIL",
+    "player_id": "nick_castellanos",
+    "name": "Nick Castellanos",
+    "position": "OF",
+    "team": "PHI",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
     "projected_runs": null,
     "projected_rbi": null,
     "projected_stolen_bases": null,
-    "projected_wins": 10.0,
-    "projected_quality_starts": 18.85,
-    "projected_strikeouts": 137.64111111111112,
-    "projected_era": 4.14,
-    "projected_whip": 1.2877777777777777,
-    "projected_saves": 0.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 224.3
+    "adp": 224.5
   },
   "pick_info": {
     "pick_number": 213,
     "round": 17,
     "team_name": "Young Guns"
   },
-  "position": "P"
+  "position": "OF"
 }

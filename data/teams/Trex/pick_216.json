@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "marcell_ozuna",
-    "name": "Marcell Ozuna",
-    "position": "DH",
-    "team": "ATL",
+    "player_id": "caleb_durbin",
+    "name": "Caleb Durbin",
+    "position": "3B",
+    "team": "MIL",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.336,
-    "projected_runs": 60.0,
-    "projected_rbi": 64.0,
-    "projected_stolen_bases": 1.0,
+    "projected_home_runs": 10.0,
+    "projected_obp": 0.331,
+    "projected_runs": 52.0,
+    "projected_rbi": 50.0,
+    "projected_stolen_bases": 19.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 229.0
+    "adp": 225.3
   },
   "pick_info": {
     "pick_number": 216,
     "round": 17,
     "team_name": "Trex"
   },
-  "position": "DH"
+  "position": "3B"
 }

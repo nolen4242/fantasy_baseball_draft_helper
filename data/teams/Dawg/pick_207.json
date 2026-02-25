@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "shane_mcclanahan",
-    "name": "Shane McClanahan",
-    "position": "P",
-    "team": "TB",
+    "player_id": "matt_mclain",
+    "name": "Matt McLain",
+    "position": "2B",
+    "team": "CIN",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 9.0,
-    "projected_quality_starts": 15.600000000000001,
-    "projected_strikeouts": 149.19333333333333,
-    "projected_era": 3.58,
-    "projected_whip": 1.2377777777777779,
-    "projected_saves": 0.0,
+    "projected_home_runs": 13.0,
+    "projected_obp": 0.317,
+    "projected_runs": 52.0,
+    "projected_rbi": 47.0,
+    "projected_stolen_bases": 13.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 216.0
+    "adp": 209.0
   },
   "pick_info": {
     "pick_number": 207,
     "round": 16,
     "team_name": "Dawg"
   },
-  "position": "P"
+  "position": "2B"
 }

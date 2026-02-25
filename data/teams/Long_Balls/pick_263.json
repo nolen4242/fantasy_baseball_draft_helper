@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "francisco_alvarez",
-    "name": "Francisco Alvarez",
-    "position": "C",
-    "team": "NYM",
+    "player_id": "michael_wacha",
+    "name": "Michael Wacha",
+    "position": "P",
+    "team": "KC",
     "age": null,
-    "projected_home_runs": 21.0,
-    "projected_obp": 0.32,
-    "projected_runs": 51.0,
-    "projected_rbi": 57.0,
-    "projected_stolen_bases": 1.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.85,
+    "projected_strikeouts": 134.86666666666667,
+    "projected_era": 4.38,
+    "projected_whip": 1.238888888888889,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 253.0
+    "adp": 267.8
   },
   "pick_info": {
     "pick_number": 263,
     "round": 21,
     "team_name": "Long Balls"
   },
-  "position": "C"
+  "position": "P"
 }

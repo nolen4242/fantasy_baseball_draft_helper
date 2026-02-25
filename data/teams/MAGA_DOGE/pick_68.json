@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "spencer_schwellenbach",
-    "name": "Spencer Schwellenbach",
-    "position": "P",
-    "team": "ATL",
+    "player_id": "seiya_suzuki",
+    "name": "Seiya Suzuki",
+    "position": "OF",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 11.0,
-    "projected_quality_starts": 18.2,
-    "projected_strikeouts": 162.32199999999997,
-    "projected_era": 3.65,
-    "projected_whip": 1.1733333333333333,
-    "projected_saves": 0.0,
+    "projected_home_runs": 24.0,
+    "projected_obp": 0.335,
+    "projected_runs": 76.0,
+    "projected_rbi": 82.0,
+    "projected_stolen_bases": 7.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 78.5
+    "adp": 72.5
   },
   "pick_info": {
     "pick_number": 68,
     "round": 6,
     "team_name": "MAGA DOGE"
   },
-  "position": "P"
+  "position": "OF"
 }

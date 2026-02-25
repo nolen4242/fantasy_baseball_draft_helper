@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "cody_bellinger",
-    "name": "Cody Bellinger",
-    "position": "OF",
-    "team": "NYY",
+    "player_id": "austin_riley",
+    "name": "Austin Riley",
+    "position": "3B",
+    "team": "ATL",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.331,
-    "projected_runs": 74.0,
-    "projected_rbi": 80.0,
-    "projected_stolen_bases": 10.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.323,
+    "projected_runs": 77.0,
+    "projected_rbi": 84.0,
+    "projected_stolen_bases": 3.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 61.0
+    "adp": 55.0
   },
   "pick_info": {
     "pick_number": 51,
     "round": 4,
     "team_name": "Big Sticks"
   },
-  "position": "OF"
+  "position": "3B"
 }

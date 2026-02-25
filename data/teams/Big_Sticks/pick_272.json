@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "josh_bell",
-    "name": "Josh Bell",
-    "position": "1B",
-    "team": "WAS",
+    "player_id": "nick_gonzales",
+    "name": "Nick Gonzales",
+    "position": "2B",
+    "team": "PIT",
     "age": null,
-    "projected_home_runs": 18.0,
-    "projected_obp": 0.332,
-    "projected_runs": 56.0,
-    "projected_rbi": 60.0,
-    "projected_stolen_bases": 2.0,
+    "projected_home_runs": 9.0,
+    "projected_obp": 0.318,
+    "projected_runs": 49.0,
+    "projected_rbi": 51.0,
+    "projected_stolen_bases": 3.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 285.0
+    "adp": 347.0
   },
   "pick_info": {
     "pick_number": 272,
     "round": 21,
     "team_name": "Big Sticks"
   },
-  "position": "1B"
+  "position": "2B"
 }

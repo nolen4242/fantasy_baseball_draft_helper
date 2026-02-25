@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "mickey_moniak",
-    "name": "Mickey Moniak",
-    "position": "OF",
-    "team": "COL",
+    "player_id": "jt_realmuto",
+    "name": "J.T. Realmuto",
+    "position": "C",
+    "team": "PHI",
     "age": null,
-    "projected_home_runs": 18.0,
-    "projected_obp": 0.299,
-    "projected_runs": 55.0,
-    "projected_rbi": 55.0,
-    "projected_stolen_bases": 8.0,
+    "projected_home_runs": 12.0,
+    "projected_obp": 0.305,
+    "projected_runs": 46.0,
+    "projected_rbi": 49.0,
+    "projected_stolen_bases": 5.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 251.8
+    "adp": 238.7
   },
   "pick_info": {
     "pick_number": 246,
     "round": 19,
     "team_name": "Big Sticks"
   },
-  "position": "OF"
+  "position": "C"
 }

@@ -1,14 +1,14 @@
 {
   "player": {
-    "player_id": "nick_kurtz",
-    "name": "Nick Kurtz",
-    "position": "1B",
-    "team": "ATH",
+    "player_id": "yordan_alvarez",
+    "name": "Yordan Alvarez",
+    "position": "DH",
+    "team": "HOU",
     "age": null,
-    "projected_home_runs": 31.0,
-    "projected_obp": 0.353,
-    "projected_runs": 78.0,
-    "projected_rbi": 71.0,
+    "projected_home_runs": 30.0,
+    "projected_obp": 0.396,
+    "projected_runs": 91.0,
+    "projected_rbi": 85.0,
     "projected_stolen_bases": 4.0,
     "projected_wins": null,
     "projected_quality_starts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 26.8
+    "adp": 24.0
   },
   "pick_info": {
     "pick_number": 15,
     "round": 2,
     "team_name": "Dawg"
   },
-  "position": "1B"
+  "position": "DH"
 }

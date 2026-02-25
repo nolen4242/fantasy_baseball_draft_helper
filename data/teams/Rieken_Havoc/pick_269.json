@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "giancarlo_stanton",
-    "name": "Giancarlo Stanton",
-    "position": "OF",
-    "team": "NYY",
+    "player_id": "david_hamilton",
+    "name": "David Hamilton",
+    "position": "2B",
+    "team": "BOS",
     "age": null,
-    "projected_home_runs": 23.0,
-    "projected_obp": 0.306,
-    "projected_runs": 49.0,
-    "projected_rbi": 60.0,
-    "projected_stolen_bases": 1.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 267.0
+    "adp": null
   },
   "pick_info": {
     "pick_number": 269,
     "round": 21,
     "team_name": "Rieken Havoc"
   },
-  "position": "OF"
+  "position": "2B"
 }

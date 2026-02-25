@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "dylan_crews",
-    "name": "Dylan Crews",
-    "position": "OF",
-    "team": "WAS",
+    "player_id": "bryson_stott",
+    "name": "Bryson Stott",
+    "position": "2B",
+    "team": "PHI",
     "age": null,
-    "projected_home_runs": 17.0,
-    "projected_obp": 0.306,
-    "projected_runs": 58.0,
-    "projected_rbi": 62.0,
-    "projected_stolen_bases": 21.0,
+    "projected_home_runs": 14.0,
+    "projected_obp": 0.327,
+    "projected_runs": 71.0,
+    "projected_rbi": 55.0,
+    "projected_stolen_bases": 24.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 189.0
+    "adp": 185.8
   },
   "pick_info": {
     "pick_number": 175,
     "round": 14,
     "team_name": "Trex"
   },
-  "position": "OF"
+  "position": "2B"
 }

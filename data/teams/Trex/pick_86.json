@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "willy_adames",
-    "name": "Willy Adames",
+    "player_id": "jeremy_pena",
+    "name": "Jeremy Pena",
     "position": "SS",
-    "team": "SF",
+    "team": "HOU",
     "age": null,
-    "projected_home_runs": 24.0,
-    "projected_obp": 0.321,
-    "projected_runs": 77.0,
-    "projected_rbi": 73.0,
-    "projected_stolen_bases": 11.0,
+    "projected_home_runs": 18.0,
+    "projected_obp": 0.326,
+    "projected_runs": 79.0,
+    "projected_rbi": 64.0,
+    "projected_stolen_bases": 16.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 100.8
+    "adp": 90.3
   },
   "pick_info": {
     "pick_number": 86,

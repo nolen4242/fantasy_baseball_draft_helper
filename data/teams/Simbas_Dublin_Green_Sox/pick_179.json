@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "masyn_winn",
-    "name": "Masyn Winn",
+    "player_id": "colson_montgomery",
+    "name": "Colson Montgomery",
     "position": "SS",
-    "team": "STL",
+    "team": "CHW",
     "age": null,
-    "projected_home_runs": 15.0,
-    "projected_obp": 0.319,
-    "projected_runs": 71.0,
+    "projected_home_runs": 24.0,
+    "projected_obp": 0.299,
+    "projected_runs": 60.0,
     "projected_rbi": 68.0,
-    "projected_stolen_bases": 12.0,
+    "projected_stolen_bases": 3.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 182.3
+    "adp": 182.8
   },
   "pick_info": {
     "pick_number": 179,

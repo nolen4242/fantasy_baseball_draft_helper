@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "ha-seong_kim",
-    "name": "Ha-seong Kim",
-    "position": "SS",
+    "player_id": "hurston_waldrep",
+    "name": "Hurston Waldrep",
+    "position": "P",
     "team": "ATL",
     "age": null,
-    "projected_home_runs": 11.0,
-    "projected_obp": 0.332,
-    "projected_runs": 55.0,
-    "projected_rbi": 50.0,
-    "projected_stolen_bases": 17.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 137.005,
+    "projected_era": 4.32,
+    "projected_whip": 1.3888888888888888,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 255.3
+    "adp": 265.0
   },
   "pick_info": {
     "pick_number": 254,
     "round": 20,
     "team_name": "Magnum GI"
   },
-  "position": "SS"
+  "position": "P"
 }

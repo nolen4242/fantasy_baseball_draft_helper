@@ -430,7 +430,10 @@ export class UIRenderer {
 
     renderStandings(data: {
         category_totals: { [team: string]: { [cat: string]: number } };
+        category_points: { [cat: string]: { [team: string]: number } };
         category_rankings: { [cat: string]: string[] };
+        batting_points: { [team: string]: number };
+        pitching_points: { [team: string]: number };
         total_points: { [team: string]: number };
         final_rankings: string[];
     }, myTeam: string): void {
@@ -440,8 +443,12 @@ export class UIRenderer {
         const battingCats = ['HR', 'OBP', 'R', 'RBI', 'SB'];
         const pitchingCats = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS'];
         const allCats = [...battingCats, ...pitchingCats];
+        const numTeams = data.final_rankings.length;
+        const leader = data.final_rankings[0];
+        const leaderPts = data.total_points[leader] ?? 0;
 
-        let html = '<table class="standings-table"><thead><tr><th>Rank</th><th>Team</th><th>Pts</th>';
+        let html = '<table class="standings-table"><thead><tr>';
+        html += '<th>Rank</th><th>Team</th><th>Bat</th><th>Pitch</th><th>Total</th><th>Behind</th>';
         for (const cat of allCats) html += `<th>${cat}</th>`;
         html += '</tr></thead><tbody>';
 
@@ -449,12 +456,24 @@ export class UIRenderer {
             const team = data.final_rankings[i];
             const isMyTeam = team === myTeam;
             const rowClass = isMyTeam ? 'standings-row-mine' : '';
-            html += `<tr class="${rowClass}"><td>${i + 1}</td><td>${team}</td><td>${data.total_points[team]}</td>`;
+            const bat = data.batting_points[team] ?? 0;
+            const pitch = data.pitching_points[team] ?? 0;
+            const total = data.total_points[team] ?? 0;
+            const behind = i === 0 ? 0 : leaderPts - total;
+
+            html += `<tr class="${rowClass}">`;
+            html += `<td>${i + 1}</td><td>${team}</td>`;
+            html += `<td>${bat % 1 ? bat.toFixed(1) : bat}</td>`;
+            html += `<td>${pitch % 1 ? pitch.toFixed(1) : pitch}</td>`;
+            html += `<td class="standings-total">${total % 1 ? total.toFixed(1) : total}</td>`;
+            html += `<td>${behind % 1 ? behind.toFixed(1) : behind}</td>`;
+
             for (const cat of allCats) {
-                const rank = data.category_rankings[cat].indexOf(team) + 1;
-                const val = data.category_totals[team]?.[cat] ?? 0;
-                const cls = rank <= 3 ? 'cat-top' : rank >= 11 ? 'cat-bot' : '';
-                html += `<td class="${cls}" title="${val.toFixed(2)}">${rank}</td>`;
+                const pts = data.category_points[cat]?.[team] ?? 0;
+                const ptsStr = pts % 1 ? pts.toFixed(1) : String(pts);
+                const cls = pts >= numTeams - 2 ? 'cat-top' : pts <= 3 ? 'cat-bot' : '';
+                const rawVal = data.category_totals[team]?.[cat] ?? 0;
+                html += `<td class="${cls}" title="${rawVal.toFixed(3)}">${ptsStr}</td>`;
             }
             html += '</tr>';
         }

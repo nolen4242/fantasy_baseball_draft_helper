@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "bryson_stott",
-    "name": "Bryson Stott",
-    "position": "2B",
+    "player_id": "jhoan_duran",
+    "name": "Jhoan Duran",
+    "position": "P",
     "team": "PHI",
     "age": null,
-    "projected_home_runs": 14.0,
-    "projected_obp": 0.327,
-    "projected_runs": 71.0,
-    "projected_rbi": 55.0,
-    "projected_stolen_bases": 24.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 83.84444444444443,
+    "projected_era": 2.78,
+    "projected_whip": 1.2722222222222221,
+    "projected_saves": 29.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 185.8
+    "adp": 178.5
   },
   "pick_info": {
     "pick_number": 172,
     "round": 14,
     "team_name": "MAGA DOGE"
   },
-  "position": "2B"
+  "position": "P"
 }

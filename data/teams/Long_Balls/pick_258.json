@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "spencer_horwitz",
-    "name": "Spencer Horwitz",
-    "position": "1B",
-    "team": "PIT",
+    "player_id": "bryan_abreu",
+    "name": "Bryan Abreu",
+    "position": "P",
+    "team": "HOU",
     "age": null,
-    "projected_home_runs": 11.0,
-    "projected_obp": 0.359,
-    "projected_runs": 50.0,
-    "projected_rbi": 49.0,
-    "projected_stolen_bases": 2.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 88.32444444444444,
+    "projected_era": 3.24,
+    "projected_whip": 1.3511111111111112,
+    "projected_saves": 3.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 272.3
+    "adp": 270.0
   },
   "pick_info": {
     "pick_number": 258,
     "round": 20,
     "team_name": "Long Balls"
   },
-  "position": "1B"
+  "position": "P"
 }

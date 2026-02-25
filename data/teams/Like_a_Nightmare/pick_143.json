@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "luke_keaschall",
-    "name": "Luke Keaschall",
-    "position": "2B",
-    "team": "MIN",
+    "player_id": "matthew_boyd",
+    "name": "Matthew Boyd",
+    "position": "P",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 10.0,
-    "projected_obp": 0.35,
-    "projected_runs": 56.0,
-    "projected_rbi": 53.0,
-    "projected_stolen_bases": 20.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 164.58655555555555,
+    "projected_era": 3.93,
+    "projected_whip": 1.2455555555555557,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 155.0
+    "adp": 153.0
   },
   "pick_info": {
     "pick_number": 143,
     "round": 11,
     "team_name": "Like a Nightmare"
   },
-  "position": "2B"
+  "position": "P"
 }

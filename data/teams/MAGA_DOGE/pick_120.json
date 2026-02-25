@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "steven_kwan",
-    "name": "Steven Kwan",
+    "player_id": "taylor_ward",
+    "name": "Taylor Ward",
     "position": "OF",
-    "team": "CLE",
+    "team": "BAL",
     "age": null,
-    "projected_home_runs": 11.0,
-    "projected_obp": 0.35,
-    "projected_runs": 77.0,
-    "projected_rbi": 51.0,
-    "projected_stolen_bases": 17.0,
+    "projected_home_runs": 25.0,
+    "projected_obp": 0.328,
+    "projected_runs": 75.0,
+    "projected_rbi": 81.0,
+    "projected_stolen_bases": 5.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 131.5
+    "adp": 126.8
   },
   "pick_info": {
     "pick_number": 120,

@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "wyatt_langford",
-    "name": "Wyatt Langford",
+    "player_id": "pete_crow-armstrong",
+    "name": "Pete Crow-Armstrong",
     "position": "OF",
-    "team": "TEX",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.349,
-    "projected_runs": 78.0,
-    "projected_rbi": 68.0,
-    "projected_stolen_bases": 19.0,
+    "projected_home_runs": 20.0,
+    "projected_obp": 0.301,
+    "projected_runs": 59.0,
+    "projected_rbi": 64.0,
+    "projected_stolen_bases": 26.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 51.5
+    "adp": 57.5
   },
   "pick_info": {
     "pick_number": 52,

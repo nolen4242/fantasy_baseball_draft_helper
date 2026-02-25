@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "bryce_harper",
-    "name": "Bryce Harper",
-    "position": "1B",
-    "team": "PHI",
+    "player_id": "junior_caminero",
+    "name": "Junior Caminero",
+    "position": "3B",
+    "team": "TB",
     "age": null,
-    "projected_home_runs": 27.0,
-    "projected_obp": 0.368,
-    "projected_runs": 81.0,
-    "projected_rbi": 86.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 34.0,
+    "projected_obp": 0.33,
+    "projected_runs": 73.0,
+    "projected_rbi": 92.0,
+    "projected_stolen_bases": 5.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 28.0
+    "adp": 19.0
   },
   "pick_info": {
     "pick_number": 20,
     "round": 2,
     "team_name": "Magnum GI"
   },
-  "position": "1B"
+  "position": "3B"
 }

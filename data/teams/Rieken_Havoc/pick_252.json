@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "adolis_garcia",
-    "name": "Adolis Garcia",
-    "position": "OF",
-    "team": "TEX",
+    "player_id": "jp_crawford",
+    "name": "J.P. Crawford",
+    "position": "SS",
+    "team": "SEA",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.297,
-    "projected_runs": 56.0,
-    "projected_rbi": 65.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 10.0,
+    "projected_obp": 0.336,
+    "projected_runs": 55.0,
+    "projected_rbi": 47.0,
+    "projected_stolen_bases": 5.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 247.0
+    "adp": 260.3
   },
   "pick_info": {
     "pick_number": 252,
     "round": 20,
     "team_name": "Rieken Havoc"
   },
-  "position": "OF"
+  "position": "SS"
 }

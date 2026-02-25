@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "heliot_ramos",
-    "name": "Heliot Ramos",
-    "position": "OF",
-    "team": "SF",
+    "player_id": "masyn_winn",
+    "name": "Masyn Winn",
+    "position": "SS",
+    "team": "STL",
     "age": null,
-    "projected_home_runs": 19.0,
-    "projected_obp": 0.323,
-    "projected_runs": 64.0,
-    "projected_rbi": 64.0,
-    "projected_stolen_bases": 6.0,
+    "projected_home_runs": 15.0,
+    "projected_obp": 0.319,
+    "projected_runs": 71.0,
+    "projected_rbi": 68.0,
+    "projected_stolen_bases": 12.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 185.0
+    "adp": 182.3
   },
   "pick_info": {
     "pick_number": 176,
     "round": 14,
     "team_name": "Magnum GI"
   },
-  "position": "OF"
+  "position": "SS"
 }

@@ -1,21 +1,21 @@
 {
   "player": {
-    "player_id": "james_mcarthur",
-    "name": "James McArthur",
-    "position": "P",
-    "team": "KC",
+    "player_id": "patrick_wisdom",
+    "name": "Patrick Wisdom",
+    "position": "1B",
+    "team": "CHC",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
     "projected_runs": null,
     "projected_rbi": null,
     "projected_stolen_bases": null,
-    "projected_wins": 2.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 35.955555555555556,
-    "projected_era": 3.88,
-    "projected_whip": 1.2744444444444445,
-    "projected_saves": 0.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
@@ -28,5 +28,5 @@
     "round": 10,
     "team_name": "Long Balls"
   },
-  "position": "P"
+  "position": "1B"
 }

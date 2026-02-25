@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "daulton_varsho",
-    "name": "Daulton Varsho",
-    "position": "OF",
-    "team": "TOR",
+    "player_id": "shane_mcclanahan",
+    "name": "Shane McClanahan",
+    "position": "P",
+    "team": "TB",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.294,
-    "projected_runs": 60.0,
-    "projected_rbi": 68.0,
-    "projected_stolen_bases": 6.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 15.600000000000001,
+    "projected_strikeouts": 149.19333333333333,
+    "projected_era": 3.58,
+    "projected_whip": 1.2377777777777779,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 214.8
+    "adp": 216.0
   },
   "pick_info": {
     "pick_number": 203,
     "round": 16,
     "team_name": "Gashouse Gang"
   },
-  "position": "OF"
+  "position": "P"
 }

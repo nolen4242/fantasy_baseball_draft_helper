@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "matt_chapman",
-    "name": "Matt Chapman",
-    "position": "3B",
-    "team": "SF",
+    "player_id": "ian_happ",
+    "name": "Ian Happ",
+    "position": "OF",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.33,
-    "projected_runs": 71.0,
-    "projected_rbi": 76.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 21.0,
+    "projected_obp": 0.338,
+    "projected_runs": 78.0,
+    "projected_rbi": 72.0,
+    "projected_stolen_bases": 8.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 122.0
+    "adp": 122.8
   },
   "pick_info": {
     "pick_number": 105,
     "round": 9,
     "team_name": "Runtime Terror"
   },
-  "position": "3B"
+  "position": "OF"
 }

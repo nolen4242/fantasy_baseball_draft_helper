@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "chris_sale",
-    "name": "Chris Sale",
-    "position": "P",
+    "player_id": "matt_olson",
+    "name": "Matt Olson",
+    "position": "1B",
     "team": "ATL",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 12.0,
-    "projected_quality_starts": 18.2,
-    "projected_strikeouts": 205.204,
-    "projected_era": 3.19,
-    "projected_whip": 1.2066666666666666,
-    "projected_saves": 0.0,
+    "projected_home_runs": 31.0,
+    "projected_obp": 0.349,
+    "projected_runs": 93.0,
+    "projected_rbi": 90.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 34.0
+    "adp": 26.5
   },
   "pick_info": {
     "pick_number": 24,
     "round": 2,
     "team_name": "MAGA DOGE"
   },
-  "position": "P"
+  "position": "1B"
 }

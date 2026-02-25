@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "marcus_semien",
-    "name": "Marcus Semien",
-    "position": "2B",
-    "team": "NYM",
+    "player_id": "jonathan_aranda",
+    "name": "Jonathan Aranda",
+    "position": "1B",
+    "team": "TB",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.314,
-    "projected_runs": 84.0,
-    "projected_rbi": 74.0,
-    "projected_stolen_bases": 10.0,
+    "projected_home_runs": 16.0,
+    "projected_obp": 0.35,
+    "projected_runs": 54.0,
+    "projected_rbi": 56.0,
+    "projected_stolen_bases": 2.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 169.5
+    "adp": 175.0
   },
   "pick_info": {
     "pick_number": 168,
     "round": 13,
     "team_name": "Big Sticks"
   },
-  "position": "2B"
+  "position": "1B"
 }

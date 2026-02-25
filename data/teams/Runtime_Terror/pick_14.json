@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "julio_rodriguez",
-    "name": "Julio Rodriguez",
+    "player_id": "ronald_acuna_jr",
+    "name": "Ronald Acuna Jr.",
     "position": "OF",
-    "team": "SEA",
+    "team": "ATL",
     "age": null,
-    "projected_home_runs": 30.0,
-    "projected_obp": 0.334,
-    "projected_runs": 84.0,
+    "projected_home_runs": 29.0,
+    "projected_obp": 0.387,
+    "projected_runs": 94.0,
     "projected_rbi": 91.0,
-    "projected_stolen_bases": 23.0,
+    "projected_stolen_bases": 21.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 14.5
+    "adp": 6.8
   },
   "pick_info": {
     "pick_number": 14,

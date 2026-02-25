@@ -148,6 +148,8 @@ def main():
         winner = standings["final_rankings"][0]
         rt_rank = standings["final_rankings"].index(MY_TEAM) + 1
         rt_pts = standings["total_points"][MY_TEAM]
+        rt_bat = standings["batting_points"][MY_TEAM]
+        rt_pit = standings["pitching_points"][MY_TEAM]
 
         results.append({
             "draft": i,
@@ -160,10 +162,13 @@ def main():
         if winner == MY_TEAM:
             rt_wins += 1
 
-        print(f"  Winner: {winner}  |  {MY_TEAM} rank: {rt_rank}  |  Points: {rt_pts}")
+        print(f"  Winner: {winner}  |  {MY_TEAM} rank: {rt_rank}  |  Bat: {rt_bat:.1f}  Pitch: {rt_pit:.1f}  Total: {rt_pts:.1f}")
         top3 = standings["final_rankings"][:3]
         for rank, t in enumerate(top3, 1):
-            print(f"    #{rank} {t} ({standings['total_points'][t]} pts)")
+            tp = standings["total_points"][t]
+            bp = standings["batting_points"][t]
+            pp = standings["pitching_points"][t]
+            print(f"    #{rank} {t} (Bat: {bp:.1f}  Pitch: {pp:.1f}  Total: {tp:.1f})")
 
     print(f"\n{'='*60}")
     print(f"RESULTS SUMMARY ({NUM_DRAFTS} drafts)")
@@ -180,12 +185,12 @@ def main():
         print(f"  Rank {rank}: {rank_dist[rank]}x")
 
     cats = StandingsCalculator.BATTING_CATEGORIES + StandingsCalculator.PITCHING_CATEGORIES
-    print(f"\nCategory rankings (last draft):")
+    print(f"\nCategory points (last draft):")
     last = results[-1]["standings"]
     for cat in cats:
-        cat_rank = last["category_rankings"][cat].index(MY_TEAM) + 1
+        pts = last["category_points"][cat].get(MY_TEAM, 0)
         val = last["category_totals"][MY_TEAM].get(cat, 0)
-        print(f"  {cat:>6}: rank {cat_rank}/13  (value: {val:.2f})")
+        print(f"  {cat:>6}: {pts:5.1f} pts  (value: {val:.3f})")
 
 
 if __name__ == "__main__":

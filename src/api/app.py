@@ -803,7 +803,7 @@ def train_ml_models():
 
 @app.route('/api/standings', methods=['GET'])
 def get_standings():
-    """Get current standings/leaderboard based on projected stats."""
+    """Get current roto standings/leaderboard based on projected stats."""
     if not draft_service.current_draft:
         return jsonify({
             'success': False,
@@ -824,11 +824,18 @@ def get_standings():
     for team_name, totals in standings['category_totals'].items():
         serializable_totals[team_name] = {k: round(float(v), 3) for k, v in totals.items()}
 
+    serializable_cat_points = {}
+    for cat, pts in standings['category_points'].items():
+        serializable_cat_points[cat] = {t: round(float(v), 1) for t, v in pts.items()}
+
     return jsonify({
         'success': True,
         'category_totals': serializable_totals,
+        'category_points': serializable_cat_points,
         'category_rankings': standings['category_rankings'],
-        'total_points': standings['total_points'],
+        'batting_points': {t: round(float(v), 1) for t, v in standings['batting_points'].items()},
+        'pitching_points': {t: round(float(v), 1) for t, v in standings['pitching_points'].items()},
+        'total_points': {t: round(float(v), 1) for t, v in standings['total_points'].items()},
         'final_rankings': standings['final_rankings']
     })
 

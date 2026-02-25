@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "ranger_suarez",
-    "name": "Ranger Suarez",
-    "position": "P",
-    "team": "PHI",
+    "player_id": "matt_chapman",
+    "name": "Matt Chapman",
+    "position": "3B",
+    "team": "SF",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 11.0,
-    "projected_quality_starts": 18.85,
-    "projected_strikeouts": 153.80955555555556,
-    "projected_era": 3.55,
-    "projected_whip": 1.2277777777777779,
-    "projected_saves": 0.0,
+    "projected_home_runs": 22.0,
+    "projected_obp": 0.33,
+    "projected_runs": 71.0,
+    "projected_rbi": 76.0,
+    "projected_stolen_bases": 9.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 123.5
+    "adp": 122.0
   },
   "pick_info": {
     "pick_number": 109,
     "round": 9,
     "team_name": "Young Guns"
   },
-  "position": "P"
+  "position": "3B"
 }

@@ -211,7 +211,10 @@ export class ApiClient {
     async getStandings(): Promise<{
         success: boolean;
         category_totals: { [team: string]: { [cat: string]: number } };
+        category_points: { [cat: string]: { [team: string]: number } };
         category_rankings: { [cat: string]: string[] };
+        batting_points: { [team: string]: number };
+        pitching_points: { [team: string]: number };
         total_points: { [team: string]: number };
         final_rankings: string[];
     }> {
