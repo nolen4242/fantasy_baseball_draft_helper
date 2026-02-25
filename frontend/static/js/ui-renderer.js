@@ -663,40 +663,55 @@ export class UIRenderer {
         `;
         document.body.appendChild(modal);
     }
-    // ── Feature 7: Projected Standings Chart ────────
-    renderStandingsChart(data, myTeam) {
-        const container = document.getElementById('chart-content');
-        if (!container)
+    // ── Feature 7: Category Rankings Table ──────────
+    renderCategoryRankings(data, myTeam) {
+        const select = document.getElementById('category-rank-select');
+        const container = document.getElementById('cat-rank-table');
+        if (!container || !select)
             return;
-        if (!data.final_rankings || data.final_rankings.length === 0) {
-            container.innerHTML = '<p class="muted-text">Draft some players to see chart…</p>';
-            return;
-        }
-        const teams = data.final_rankings;
-        const maxPts = Math.max(...teams.map(t => data.total_points[t] || 0), 1);
-        const svgW = 800;
-        const svgH = 300;
-        const barW = Math.floor((svgW - 40) / teams.length) - 4;
-        const chartH = svgH - 50;
-        let bars = '';
-        teams.forEach((t, i) => {
-            const pts = data.total_points[t] || 0;
-            const barH = Math.max((pts / maxPts) * chartH, 2);
-            const x = 30 + i * (barW + 4);
-            const y = chartH - barH + 10;
-            const fill = t === myTeam ? 'var(--turf-green)' : 'var(--air-force-blue)';
-            const shortName = t.length > 8 ? t.substring(0, 7) + '…' : t;
-            bars += `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" fill="${fill}" rx="3"/>`;
-            bars += `<text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" font-size="9" fill="var(--text-primary)">${pts % 1 ? pts.toFixed(1) : pts}</text>`;
-            bars += `<text x="${x + barW / 2}" y="${svgH - 5}" text-anchor="middle" font-size="8" fill="var(--text-muted)" transform="rotate(-45 ${x + barW / 2} ${svgH - 5})">${shortName}</text>`;
-        });
-        container.innerHTML = `
-            <svg viewBox="0 0 ${svgW} ${svgH}" class="standings-chart-svg">
-                <line x1="28" y1="10" x2="28" y2="${chartH + 10}" stroke="var(--border-medium)" stroke-width="1"/>
-                <line x1="28" y1="${chartH + 10}" x2="${svgW}" y2="${chartH + 10}" stroke="var(--border-medium)" stroke-width="1"/>
-                ${bars}
-            </svg>
-        `;
+        const render = () => {
+            const cat = select.value;
+            const rankings = data.category_rankings[cat];
+            if (!rankings || rankings.length === 0) {
+                container.innerHTML = '<p class="muted-text">No data yet…</p>';
+                return;
+            }
+            const lowerBetter = cat === 'ERA' || cat === 'WHIP';
+            const isRate = cat === 'ERA' || cat === 'WHIP' || cat === 'OBP';
+            const isBatting = ['HR', 'OBP', 'R', 'RBI', 'SB'].includes(cat);
+            const label = isBatting ? 'Batting' : 'Pitching';
+            let html = `<div class="cat-rank-label">${label} Breakdown</div>`;
+            html += '<table class="standings-table"><thead><tr>';
+            html += `<th>Team</th><th>${cat}</th><th>Pts</th><th>Dif</th>`;
+            html += '</tr></thead><tbody>';
+            const numTeams = rankings.length;
+            for (let i = 0; i < rankings.length; i++) {
+                const team = rankings[i];
+                const rawVal = data.category_totals[team]?.[cat] ?? 0;
+                const pts = data.category_points[cat]?.[team] ?? 0;
+                let dif = 0;
+                if (i > 0) {
+                    const prevTeam = rankings[i - 1];
+                    const prevPts = data.category_points[cat]?.[prevTeam] ?? 0;
+                    dif = pts - prevPts;
+                }
+                const valStr = isRate ? rawVal.toFixed(3) : (rawVal % 1 ? rawVal.toFixed(1) : String(Math.round(rawVal)));
+                const ptsStr = pts % 1 ? pts.toFixed(1) : String(pts);
+                const difStr = dif === 0 ? '0' : (dif > 0 ? `+${dif % 1 ? dif.toFixed(1) : dif}` : `${dif % 1 ? dif.toFixed(1) : dif}`);
+                const difCls = dif > 0 ? 'cat-top' : dif < 0 ? 'cat-bot' : '';
+                const rowCls = team === myTeam ? 'standings-row-mine' : '';
+                html += `<tr class="${rowCls}">`;
+                html += `<td>${team}</td>`;
+                html += `<td>${valStr}</td>`;
+                html += `<td>${ptsStr}</td>`;
+                html += `<td class="${difCls}">${difStr}</td>`;
+                html += '</tr>';
+            }
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        };
+        select.onchange = render;
+        render();
     }
     // ── Feature 8: Trade Analyzer ───────────────────
     renderTradeAnalyzer(myTeam, teams, myPlayers, draft, allPlayers) {

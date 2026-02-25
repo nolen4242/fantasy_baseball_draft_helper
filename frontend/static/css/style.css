@@ -1502,3 +1502,19 @@ body {
 .grade-C { background: var(--air-force-blue); color: var(--text-on-dark); }
 .grade-D { background: var(--banana-cream); color: var(--text-primary); }
 .grade-F { background: #dc3545; color: var(--text-on-dark); }
+
+/* ── Category Rankings ───────────────────────────── */
+
+.cat-rank-header {
+    margin-bottom: 10px;
+}
+
+.cat-rank-label {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--deep-space-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}

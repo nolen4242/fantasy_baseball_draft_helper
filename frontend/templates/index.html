@@ -110,7 +110,7 @@
             <div class="bottom-tabs">
                 <button class="bottom-tab active" data-tab="standings">Leaderboard</button>
                 <button class="bottom-tab" data-tab="draftboard">Draft Board</button>
-                <button class="bottom-tab" data-tab="chart">Chart</button>
+                <button class="bottom-tab" data-tab="chart">Category Rankings</button>
                 <button class="bottom-tab" data-tab="trade">Trade</button>
                 <button class="bottom-tab" data-tab="recap">Recap</button>
             </div>
@@ -126,7 +126,25 @@
             </div>
             <div id="chart-panel" class="bottom-panel">
                 <div id="chart-content" class="chart-content">
-                    <p class="muted-text">Draft some players to see chart…</p>
+                    <div class="cat-rank-header">
+                        <select id="category-rank-select" class="position-filter">
+                            <optgroup label="Batting">
+                                <option value="HR" selected>HR</option>
+                                <option value="OBP">OBP</option>
+                                <option value="R">R</option>
+                                <option value="RBI">RBI</option>
+                                <option value="SB">SB</option>
+                            </optgroup>
+                            <optgroup label="Pitching">
+                                <option value="ERA">ERA</option>
+                                <option value="K">K</option>
+                                <option value="SHOLDS">SHOLDS</option>
+                                <option value="WHIP">WHIP</option>
+                                <option value="WQS">WQS</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div id="cat-rank-table"></div>
                 </div>
             </div>
             <div id="trade-panel" class="bottom-panel">

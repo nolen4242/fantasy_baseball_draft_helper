@@ -220,7 +220,7 @@ class App {
             const data = await this.api.getStandings();
             if (data.success) {
                 this.renderer.renderStandings(data, this.currentDraft.my_team_name);
-                this.renderer.renderStandingsChart(data, this.currentDraft.my_team_name);
+                this.renderer.renderCategoryRankings(data, this.currentDraft.my_team_name);
             }
         } catch (e) { /* standings panel hidden until draft progresses */ }
     }
