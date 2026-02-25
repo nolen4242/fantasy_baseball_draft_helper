@@ -32,7 +32,18 @@
                 <div class="draft-progress">
                     <span id="draft-progress-text">Pick 0 of 0</span>
                 </div>
+                <div id="win-probability-display" class="win-probability-display">
+                    <span class="label">Win Prob:</span>
+                    <div class="win-prob-bar-container"><div class="win-prob-bar" style="width:0%"></div></div>
+                    <span class="win-prob-pct">-</span>
+                </div>
                 <div class="draft-actions">
+                    <select id="strategy-select" class="strategy-select" title="Draft Strategy">
+                        <option value="balanced">Balanced</option>
+                        <option value="stars_and_scrubs">Stars &amp; Scrubs</option>
+                        <option value="pitching_heavy">Pitching Heavy</option>
+                        <option value="hitting_heavy">Hitting Heavy</option>
+                    </select>
                     <button id="auto-draft-toggle-btn" class="btn-small btn-auto-draft" title="Toggle Auto-Draft for Other Teams">Auto-Draft: OFF</button>
                     <button id="load-cbs-btn" class="btn-small" title="Reload CBS Data">Reload CBS</button>
                     <button id="load-steamer-btn" class="btn-small" title="Reload Steamer Projections">Reload Steamer</button>
@@ -96,11 +107,14 @@
             </div>
         </div>
 
-        <!-- Bottom Panels: Leaderboard + Draft Board -->
+        <!-- Bottom Panels: Leaderboard + Draft Board + Chart + Trade + Recap -->
         <div class="bottom-panels">
             <div class="bottom-tabs">
                 <button class="bottom-tab active" data-tab="standings">Leaderboard</button>
                 <button class="bottom-tab" data-tab="draftboard">Draft Board</button>
+                <button class="bottom-tab" data-tab="chart">Chart</button>
+                <button class="bottom-tab" data-tab="trade">Trade</button>
+                <button class="bottom-tab" data-tab="recap">Recap</button>
             </div>
             <div id="standings-panel" class="bottom-panel active">
                 <div id="standings-content" class="standings-content">
@@ -110,6 +124,21 @@
             <div id="draftboard-panel" class="bottom-panel">
                 <div id="draftboard-content" class="draftboard-content">
                     <p class="muted-text">Draft picks will appear here…</p>
+                </div>
+            </div>
+            <div id="chart-panel" class="bottom-panel">
+                <div id="chart-content" class="chart-content">
+                    <p class="muted-text">Draft some players to see chart…</p>
+                </div>
+            </div>
+            <div id="trade-panel" class="bottom-panel">
+                <div id="trade-content" class="trade-content">
+                    <p class="muted-text">Trade analyzer loading…</p>
+                </div>
+            </div>
+            <div id="recap-panel" class="bottom-panel">
+                <div id="recap-content" class="recap-content">
+                    <p class="muted-text">Draft recap loading…</p>
                 </div>
             </div>
         </div>

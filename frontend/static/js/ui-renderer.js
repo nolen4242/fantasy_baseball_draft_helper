@@ -3,6 +3,43 @@ export class UIRenderer {
     constructor(api) {
         this.api = api || new ApiClient();
     }
+    // ── Position Eligibility Helpers ─────────────────
+    getEligiblePositions(position) {
+        const map = {
+            'C': ['C', 'U', 'BENCH'],
+            '1B': ['1B', 'CI', 'U', 'BENCH'],
+            '2B': ['2B', 'MI', 'U', 'BENCH'],
+            '3B': ['3B', 'CI', 'U', 'BENCH'],
+            'SS': ['SS', 'MI', 'U', 'BENCH'],
+            'OF': ['OF', 'U', 'BENCH'],
+            'SP': ['P', 'BENCH'],
+            'RP': ['P', 'BENCH'],
+            'P': ['P', 'BENCH'],
+        };
+        return map[position] || [position, 'BENCH'];
+    }
+    renderEligibilityBadges(position) {
+        const eligible = this.getEligiblePositions(position);
+        return `<div class="eligibility-badges">${eligible.map(p => `<span class="elig-badge">${p}</span>`).join('')}</div>`;
+    }
+    // ── Category Need Dots ──────────────────────────
+    renderCategoryDots(player, categoryNeeds) {
+        if (!categoryNeeds || categoryNeeds.length === 0)
+            return '';
+        const isHitter = !['SP', 'RP', 'P'].includes(player.position);
+        const hitterCats = ['HR', 'OBP', 'R', 'RBI', 'SB'];
+        const pitcherCats = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS'];
+        const relevantCats = isHitter ? hitterCats : pitcherCats;
+        const dots = categoryNeeds
+            .filter(cn => relevantCats.includes(cn.category) && (cn.need === 'critical' || cn.need === 'moderate'))
+            .map(cn => {
+            const cls = cn.need === 'critical' ? 'cat-dot-critical' : 'cat-dot-moderate';
+            return `<span class="cat-dot ${cls}" title="${cn.category}: ${cn.need}">${cn.category}</span>`;
+        });
+        if (dots.length === 0)
+            return '';
+        return `<div class="category-dots">${dots.join('')}</div>`;
+    }
     updateDraftStatusBar(draft, recommendation) {
         const currentPickEl = document.getElementById('current-pick-team');
         const currentRoundEl = document.getElementById('current-pick-round');
@@ -92,19 +129,27 @@ export class UIRenderer {
         if (recommendedPlayerEl && recommendedPositionEl) {
             if (isComplete) {
                 recommendedPlayerEl.textContent = 'Draft Complete';
+                recommendedPlayerEl.style.cursor = 'default';
+                recommendedPlayerEl.onclick = null;
                 recommendedPositionEl.textContent = '-';
             }
             else if (recommendation && recommendation.player) {
                 recommendedPlayerEl.textContent = recommendation.player.name;
+                recommendedPlayerEl.style.cursor = 'pointer';
+                recommendedPlayerEl.onclick = () => {
+                    window.showPlayerDetails(recommendation.player.player_id);
+                };
                 recommendedPositionEl.textContent = recommendation.player.position || '-';
             }
             else {
                 recommendedPlayerEl.textContent = '-';
+                recommendedPlayerEl.style.cursor = 'default';
+                recommendedPlayerEl.onclick = null;
                 recommendedPositionEl.textContent = '-';
             }
         }
     }
-    renderAvailablePlayers(players, onDraft, draftComplete = false) {
+    renderAvailablePlayers(players, onDraft, draftComplete = false, categoryNeeds = null, compareSelection = []) {
         const container = document.getElementById('available-players-list');
         if (!container)
             return;
@@ -120,15 +165,18 @@ export class UIRenderer {
             const matchesPosition = !positionFilter || p.position === positionFilter;
             return matchesSearch && matchesPosition;
         });
-        container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete)).join('');
+        container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete, categoryNeeds, compareSelection)).join('');
     }
-    renderPlayerCard(player, onDraft, draftComplete = false) {
+    renderPlayerCard(player, onDraft, draftComplete = false, categoryNeeds = null, compareSelection = []) {
         const stats = this.getPlayerStats(player);
         const adpDisplay = player.adp ? `<span class="adp-badge">ADP: ${player.adp.toFixed(1)}</span>` : '';
         const draftButtonDisabled = draftComplete ? 'disabled' : '';
         const draftButtonClass = draftComplete ? 'draft-btn draft-btn-disabled' : 'draft-btn';
+        const eligBadges = this.renderEligibilityBadges(player.position);
+        const catDots = this.renderCategoryDots(player, categoryNeeds);
+        const isChecked = compareSelection.includes(player.player_id) ? 'checked' : '';
         return `
-            <div class="player-card" data-player-id="${player.player_id}">
+            <div class="player-card" data-player-id="${player.player_id}" onclick="window.showPlayerDetails('${player.player_id}')">
                 <div class="player-header">
                     <span class="player-name">${player.name}</span>
                     <div class="player-header-right">
@@ -136,9 +184,16 @@ export class UIRenderer {
                         <span class="player-position">${player.position || 'N/A'}</span>
                     </div>
                 </div>
+                ${eligBadges}
                 <div class="player-team">${player.team}</div>
+                ${catDots}
                 <div class="player-stats">${stats}</div>
-                <button class="${draftButtonClass}" onclick="window.draftPlayer('${player.player_id}')" ${draftButtonDisabled}>${draftComplete ? 'Draft Complete' : 'Draft'}</button>
+                <div class="player-card-actions">
+                    <label class="compare-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" ${isChecked} onchange="window.toggleCompare('${player.player_id}')" /> Compare
+                    </label>
+                    <button class="${draftButtonClass}" onclick="event.stopPropagation(); window.draftPlayer('${player.player_id}')" ${draftButtonDisabled}>${draftComplete ? 'Draft Complete' : 'Draft'}</button>
+                </div>
             </div>
         `;
     }
@@ -332,7 +387,10 @@ export class UIRenderer {
                 <div class="pick-header">
                     <span class="pick-round">R${pick.round}</span>
                     <span class="pick-number">#${pick.pick_number}</span>
-                    ${onRevert ? `<button class="revert-btn" onclick="window.revertPick(${pick.pick_number})" title="Revert this pick">×</button>` : ''}
+                    <div class="pick-actions">
+                        ${onRevert ? `<button class="batch-revert-btn" onclick="window.batchRevertTo(${pick.pick_number})" title="Revert all picks back to here">Revert to here</button>` : ''}
+                        ${onRevert ? `<button class="revert-btn" onclick="window.revertPick(${pick.pick_number})" title="Revert this pick">×</button>` : ''}
+                    </div>
                 </div>
                 <div class="pick-team">${pick.team_name}</div>
                 <div class="pick-player">${player ? player.name : pick.player_id}</div>
@@ -475,6 +533,299 @@ export class UIRenderer {
         }
         html += '</tbody></table></div>';
         container.innerHTML = html;
+    }
+    // ── Feature 1: Player Detail Modal ──────────────
+    renderPlayerModal(player, onDraft, draftComplete) {
+        let existing = document.getElementById('player-detail-modal');
+        if (existing)
+            existing.remove();
+        const isHitter = !['SP', 'RP', 'P'].includes(player.position);
+        const adpDisplay = player.adp ? `<span class="adp-badge">ADP: ${player.adp.toFixed(1)}</span>` : '';
+        const eligBadges = this.renderEligibilityBadges(player.position);
+        let statsHtml = '';
+        if (isHitter) {
+            statsHtml = `
+                <tr><td>HR</td><td>${player.projected_home_runs ?? '-'}</td></tr>
+                <tr><td>OBP</td><td>${player.projected_obp != null ? player.projected_obp.toFixed(3) : '-'}</td></tr>
+                <tr><td>R</td><td>${player.projected_runs ?? '-'}</td></tr>
+                <tr><td>RBI</td><td>${player.projected_rbi ?? '-'}</td></tr>
+                <tr><td>SB</td><td>${player.projected_stolen_bases ?? '-'}</td></tr>`;
+        }
+        else {
+            statsHtml = `
+                <tr><td>W</td><td>${player.projected_wins ?? '-'}</td></tr>
+                <tr><td>QS</td><td>${player.projected_quality_starts ?? '-'}</td></tr>
+                <tr><td>K</td><td>${player.projected_strikeouts ?? '-'}</td></tr>
+                <tr><td>ERA</td><td>${player.projected_era != null ? player.projected_era.toFixed(2) : '-'}</td></tr>
+                <tr><td>WHIP</td><td>${player.projected_whip != null ? player.projected_whip.toFixed(2) : '-'}</td></tr>
+                <tr><td>SV</td><td>${player.projected_saves ?? '-'}</td></tr>
+                <tr><td>HD</td><td>${player.projected_holds ?? '-'}</td></tr>`;
+        }
+        const draftBtnClass = draftComplete ? 'btn-primary draft-btn-disabled' : 'btn-primary';
+        const draftBtnDisabled = draftComplete ? 'disabled' : '';
+        const modal = document.createElement('div');
+        modal.id = 'player-detail-modal';
+        modal.className = 'modal';
+        modal.onclick = (e) => { if (e.target === modal)
+            window.closePlayerModal(); };
+        modal.innerHTML = `
+            <div class="modal-content player-modal-content">
+                <button class="modal-close-btn" onclick="window.closePlayerModal()">×</button>
+                <div class="player-modal-header">
+                    <h2>${player.name}</h2>
+                    <div class="player-modal-meta">
+                        <span class="player-position">${player.position}</span>
+                        ${adpDisplay}
+                        <span class="player-modal-team">${player.team}</span>
+                    </div>
+                    ${eligBadges}
+                </div>
+                <table class="player-modal-stats">
+                    <thead><tr><th>Stat</th><th>Projected</th></tr></thead>
+                    <tbody>${statsHtml}</tbody>
+                </table>
+                <button class="${draftBtnClass}" onclick="window.draftPlayer('${player.player_id}'); window.closePlayerModal();" ${draftBtnDisabled}>
+                    ${draftComplete ? 'Draft Complete' : `Draft ${player.name}`}
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    // ── Feature 4: Comparison Modal ─────────────────
+    renderCompareModal(players) {
+        let existing = document.getElementById('compare-modal');
+        if (existing)
+            existing.remove();
+        const allHitters = players.every(p => !['SP', 'RP', 'P'].includes(p.position));
+        const allPitchers = players.every(p => ['SP', 'RP', 'P'].includes(p.position));
+        let statDefs = [];
+        if (allHitters) {
+            statDefs = [
+                { label: 'HR', key: 'projected_home_runs' },
+                { label: 'OBP', key: 'projected_obp', format: (v) => v.toFixed(3) },
+                { label: 'R', key: 'projected_runs' },
+                { label: 'RBI', key: 'projected_rbi' },
+                { label: 'SB', key: 'projected_stolen_bases' },
+            ];
+        }
+        else if (allPitchers) {
+            statDefs = [
+                { label: 'W', key: 'projected_wins' },
+                { label: 'QS', key: 'projected_quality_starts' },
+                { label: 'K', key: 'projected_strikeouts' },
+                { label: 'ERA', key: 'projected_era', format: (v) => v.toFixed(2), lower: true },
+                { label: 'WHIP', key: 'projected_whip', format: (v) => v.toFixed(2), lower: true },
+                { label: 'SV', key: 'projected_saves' },
+                { label: 'HD', key: 'projected_holds' },
+            ];
+        }
+        else {
+            statDefs = [
+                { label: 'HR', key: 'projected_home_runs' },
+                { label: 'OBP', key: 'projected_obp', format: (v) => v.toFixed(3) },
+                { label: 'R', key: 'projected_runs' },
+                { label: 'RBI', key: 'projected_rbi' },
+                { label: 'SB', key: 'projected_stolen_bases' },
+                { label: 'W', key: 'projected_wins' },
+                { label: 'K', key: 'projected_strikeouts' },
+                { label: 'ERA', key: 'projected_era', format: (v) => v.toFixed(2), lower: true },
+                { label: 'WHIP', key: 'projected_whip', format: (v) => v.toFixed(2), lower: true },
+            ];
+        }
+        let headerCols = '<th>Stat</th>' + players.map(p => `<th>${p.name}</th>`).join('');
+        let rows = statDefs.map(sd => {
+            const vals = players.map(p => p[sd.key]);
+            const numericVals = vals.filter((v) => v != null);
+            const best = numericVals.length > 0 ? (sd.lower ? Math.min(...numericVals) : Math.max(...numericVals)) : null;
+            const cells = vals.map(v => {
+                if (v == null)
+                    return '<td>-</td>';
+                const formatted = sd.format ? sd.format(v) : String(v);
+                const isBest = best !== null && v === best;
+                return `<td class="${isBest ? 'compare-best' : ''}">${formatted}</td>`;
+            }).join('');
+            return `<tr><td>${sd.label}</td>${cells}</tr>`;
+        }).join('');
+        const modal = document.createElement('div');
+        modal.id = 'compare-modal';
+        modal.className = 'modal';
+        modal.onclick = (e) => { if (e.target === modal)
+            modal.remove(); };
+        modal.innerHTML = `
+            <div class="modal-content compare-modal-content">
+                <button class="modal-close-btn" onclick="document.getElementById('compare-modal')?.remove()">×</button>
+                <h2>Player Comparison</h2>
+                <table class="compare-table">
+                    <thead><tr>${headerCols}</tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    // ── Feature 7: Projected Standings Chart ────────
+    renderStandingsChart(data, myTeam) {
+        const container = document.getElementById('chart-content');
+        if (!container)
+            return;
+        if (!data.final_rankings || data.final_rankings.length === 0) {
+            container.innerHTML = '<p class="muted-text">Draft some players to see chart…</p>';
+            return;
+        }
+        const teams = data.final_rankings;
+        const maxPts = Math.max(...teams.map(t => data.total_points[t] || 0), 1);
+        const svgW = 800;
+        const svgH = 300;
+        const barW = Math.floor((svgW - 40) / teams.length) - 4;
+        const chartH = svgH - 50;
+        let bars = '';
+        teams.forEach((t, i) => {
+            const pts = data.total_points[t] || 0;
+            const barH = Math.max((pts / maxPts) * chartH, 2);
+            const x = 30 + i * (barW + 4);
+            const y = chartH - barH + 10;
+            const fill = t === myTeam ? 'var(--turf-green)' : 'var(--air-force-blue)';
+            const shortName = t.length > 8 ? t.substring(0, 7) + '…' : t;
+            bars += `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" fill="${fill}" rx="3"/>`;
+            bars += `<text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" font-size="9" fill="var(--text-primary)">${pts % 1 ? pts.toFixed(1) : pts}</text>`;
+            bars += `<text x="${x + barW / 2}" y="${svgH - 5}" text-anchor="middle" font-size="8" fill="var(--text-muted)" transform="rotate(-45 ${x + barW / 2} ${svgH - 5})">${shortName}</text>`;
+        });
+        container.innerHTML = `
+            <svg viewBox="0 0 ${svgW} ${svgH}" class="standings-chart-svg">
+                <line x1="28" y1="10" x2="28" y2="${chartH + 10}" stroke="var(--border-medium)" stroke-width="1"/>
+                <line x1="28" y1="${chartH + 10}" x2="${svgW}" y2="${chartH + 10}" stroke="var(--border-medium)" stroke-width="1"/>
+                ${bars}
+            </svg>
+        `;
+    }
+    // ── Feature 8: Trade Analyzer ───────────────────
+    renderTradeAnalyzer(myTeam, teams, myPlayers, draft, allPlayers) {
+        const container = document.getElementById('trade-content');
+        if (!container)
+            return;
+        const otherTeams = teams.filter(t => t !== myTeam);
+        const teamOptions = otherTeams.map(t => `<option value="${t}">${t}</option>`).join('');
+        container.innerHTML = `
+            <div class="trade-analyzer">
+                <div class="trade-teams-row">
+                    <div class="trade-team-col">
+                        <h3>${myTeam}</h3>
+                        <select id="trade-players-a" multiple class="trade-player-select">
+                            ${myPlayers.map(p => `<option value="${p.player_id}">${p.name} (${p.position})</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="trade-team-col">
+                        <h3>Trade Partner</h3>
+                        <select id="trade-team-b" class="trade-team-select" onchange="window.updateTradeBPlayers()">
+                            <option value="">Select team…</option>
+                            ${teamOptions}
+                        </select>
+                        <select id="trade-players-b" multiple class="trade-player-select">
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-primary trade-analyze-btn" onclick="window.openTradeAnalyzer()">Analyze Trade</button>
+                <div id="trade-results"></div>
+            </div>
+        `;
+    }
+    renderTradeResults(results) {
+        const container = document.getElementById('trade-results');
+        if (!container)
+            return;
+        if (!results || !results.success) {
+            container.innerHTML = '<p class="muted-text">Could not analyze trade.</p>';
+            return;
+        }
+        const before = results.before_standings || {};
+        const after = results.after_standings || {};
+        const impact = results.category_impact || {};
+        const cats = Object.keys(impact);
+        let impactRows = cats.map(cat => {
+            const ci = impact[cat];
+            return `<tr>
+                <td>${cat}</td>
+                <td>${ci.team_a_before?.toFixed(1) ?? '-'}</td>
+                <td>${ci.team_a_after?.toFixed(1) ?? '-'}</td>
+                <td>${ci.team_b_before?.toFixed(1) ?? '-'}</td>
+                <td>${ci.team_b_after?.toFixed(1) ?? '-'}</td>
+            </tr>`;
+        }).join('');
+        container.innerHTML = `
+            <div class="trade-results-content">
+                <h3>Trade Impact</h3>
+                <div class="trade-summary-row">
+                    <div class="trade-summary-col">
+                        <strong>Team A</strong>
+                        <p>Before: Rank ${before.team_a_rank ?? '-'}, ${before.team_a_points?.toFixed(1) ?? '-'} pts</p>
+                        <p>After: Rank ${after.team_a_rank ?? '-'}, ${after.team_a_points?.toFixed(1) ?? '-'} pts</p>
+                    </div>
+                    <div class="trade-summary-col">
+                        <strong>Team B</strong>
+                        <p>Before: Rank ${before.team_b_rank ?? '-'}, ${before.team_b_points?.toFixed(1) ?? '-'} pts</p>
+                        <p>After: Rank ${after.team_b_rank ?? '-'}, ${after.team_b_points?.toFixed(1) ?? '-'} pts</p>
+                    </div>
+                </div>
+                <table class="trade-impact-table">
+                    <thead><tr><th>Category</th><th>A Before</th><th>A After</th><th>B Before</th><th>B After</th></tr></thead>
+                    <tbody>${impactRows}</tbody>
+                </table>
+            </div>
+        `;
+    }
+    // ── Feature 9: Win Probability ──────────────────
+    renderWinProbability(probability) {
+        const container = document.getElementById('win-probability-display');
+        if (!container)
+            return;
+        const pct = Math.round(probability * 100);
+        const barWidth = Math.min(pct, 100);
+        container.innerHTML = `
+            <span class="label">Win Prob:</span>
+            <div class="win-prob-bar-container">
+                <div class="win-prob-bar" style="width: ${barWidth}%"></div>
+            </div>
+            <span class="win-prob-pct">${pct}%</span>
+        `;
+    }
+    // ── Feature 10: Draft Recap ─────────────────────
+    renderDraftRecap(recap) {
+        const container = document.getElementById('recap-content');
+        if (!container)
+            return;
+        if (!recap || !recap.success || !recap.teams || recap.teams.length === 0) {
+            container.innerHTML = '<p class="muted-text">No recap available yet…</p>';
+            return;
+        }
+        const teams = recap.teams;
+        let rows = teams.map(t => {
+            const bestPick = t.best_pick ? `${t.best_pick.player_name} (#${t.best_pick.pick_number})` : '-';
+            const reach = t.biggest_reach ? `${t.biggest_reach.player_name} (#${t.biggest_reach.pick_number})` : '-';
+            return `<tr>
+                <td>${t.team_name}</td>
+                <td><span class="grade-badge grade-${t.grade}">${t.grade}</span></td>
+                <td>${t.total_points % 1 ? t.total_points.toFixed(1) : t.total_points}</td>
+                <td>${t.batting_points % 1 ? t.batting_points.toFixed(1) : t.batting_points}</td>
+                <td>${t.pitching_points % 1 ? t.pitching_points.toFixed(1) : t.pitching_points}</td>
+                <td>${t.player_count}</td>
+                <td>${bestPick}</td>
+                <td>${reach}</td>
+            </tr>`;
+        }).join('');
+        container.innerHTML = `
+            <div class="recap-container">
+                <div class="recap-header">
+                    <h3>Draft Recap</h3>
+                    <button class="btn-small" onclick="window.exportRecap()">Export to Clipboard</button>
+                </div>
+                <table class="recap-table">
+                    <thead><tr>
+                        <th>Team</th><th>Grade</th><th>Total</th><th>Bat</th><th>Pitch</th><th>Players</th><th>Best Pick</th><th>Biggest Reach</th>
+                    </tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
+        `;
     }
 }
 //# sourceMappingURL=ui-renderer.js.map
