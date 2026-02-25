@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/cleanup_service.py
+# hypothesis_version: 6.141.1
+
+['all_players', 'data', 'draft_*.json', 'pick_*.json', 'positions', 'roster.json', 'team_name', 'teams', 'utf-8', 'w']

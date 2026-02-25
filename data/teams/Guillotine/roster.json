@@ -5,7 +5,28 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "8b669de7-a201-4e27-9552-00f44c35a73e",
+        "name": "Pete Alonso",
+        "position": "1B",
+        "team": "BAL",
+        "pick_number": 25,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 36.4,
+          "projected_obp": 0.337,
+          "projected_runs": 91.19999999999999,
+          "projected_rbi": 105.19999999999999,
+          "projected_stolen_bases": 2.9999999999999996,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -23,17 +44,101 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "c2128484-a6e9-4f3e-881b-736898f8d989",
+        "name": "Roman Anthony",
+        "position": "OF",
+        "team": "BOS",
+        "pick_number": 51,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 17.799999999999997,
+          "projected_obp": 0.364,
+          "projected_runs": 83.89999999999999,
+          "projected_rbi": 59.39999999999999,
+          "projected_stolen_bases": 9.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
     ],
     "U": [
-      null
+      {
+        "player_id": "7b4e27e5-8657-4164-a0db-62e0f339d6c5",
+        "name": "Yordan Alvarez",
+        "position": "U",
+        "team": "HOU",
+        "pick_number": 38,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 30.7,
+          "projected_obp": 0.397,
+          "projected_runs": 90.69999999999999,
+          "projected_rbi": 84.69999999999999,
+          "projected_stolen_bases": 4.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+        "name": "Paul Skenes",
+        "position": "P",
+        "team": "PIT",
+        "pick_number": 12,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 13.0,
+          "projected_quality_starts": 20.8,
+          "projected_strikeouts": 238.7,
+          "projected_era": 2.92,
+          "projected_whip": 1.2257777777777779,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "2a978011-38cb-42b8-923f-d42967833b41",
+        "name": "Logan Webb",
+        "position": "P",
+        "team": "SF",
+        "pick_number": 54,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 12.7,
+          "projected_quality_starts": 20.8,
+          "projected_strikeouts": 188.7025833333333,
+          "projected_era": 3.32,
+          "projected_whip": 1.2279999999999998,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "74d56618-9b73-4fdf-9cdf-b1cf56825054",
+      "name": "Paul Skenes",
+      "position": "P",
+      "team": "PIT",
+      "pick_number": 12,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 13.0,
+        "projected_quality_starts": 20.8,
+        "projected_strikeouts": 238.7,
+        "projected_era": 2.92,
+        "projected_whip": 1.2257777777777779,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "8b669de7-a201-4e27-9552-00f44c35a73e",
+      "name": "Pete Alonso",
+      "position": "1B",
+      "team": "BAL",
+      "pick_number": 25,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 36.4,
+        "projected_obp": 0.337,
+        "projected_runs": 91.19999999999999,
+        "projected_rbi": 105.19999999999999,
+        "projected_stolen_bases": 2.9999999999999996,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "7b4e27e5-8657-4164-a0db-62e0f339d6c5",
+      "name": "Yordan Alvarez",
+      "position": "U",
+      "team": "HOU",
+      "pick_number": 38,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 30.7,
+        "projected_obp": 0.397,
+        "projected_runs": 90.69999999999999,
+        "projected_rbi": 84.69999999999999,
+        "projected_stolen_bases": 4.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "c2128484-a6e9-4f3e-881b-736898f8d989",
+      "name": "Roman Anthony",
+      "position": "OF",
+      "team": "BOS",
+      "pick_number": 51,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 17.799999999999997,
+        "projected_obp": 0.364,
+        "projected_runs": 83.89999999999999,
+        "projected_rbi": 59.39999999999999,
+        "projected_stolen_bases": 9.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "2a978011-38cb-42b8-923f-d42967833b41",
+      "name": "Logan Webb",
+      "position": "P",
+      "team": "SF",
+      "pick_number": 54,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 12.7,
+        "projected_quality_starts": 20.8,
+        "projected_strikeouts": 188.7025833333333,
+        "projected_era": 3.32,
+        "projected_whip": 1.2279999999999998,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

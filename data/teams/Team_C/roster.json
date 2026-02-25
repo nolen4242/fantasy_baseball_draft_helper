@@ -1,0 +1,94 @@
+{
+  "team_name": "Team C",
+  "positions": {
+    "C": [
+      null
+    ],
+    "1B": [
+      null
+    ],
+    "2B": [
+      null
+    ],
+    "3B": [
+      null
+    ],
+    "SS": [
+      {
+        "player_id": "94f0001a-1f38-442c-9202-fe01c871b8fc",
+        "name": "Bobby Witt Jr.",
+        "position": "SS",
+        "team": "KC",
+        "pick_number": 3,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 27.4,
+          "projected_obp": 0.349,
+          "projected_runs": 101.89999999999999,
+          "projected_rbi": 90.19999999999999,
+          "projected_stolen_bases": 33.099999999999994,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
+    ],
+    "MI": [
+      null
+    ],
+    "CI": [
+      null
+    ],
+    "OF": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "U": [
+      null
+    ],
+    "P": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "BENCH": [
+      null
+    ]
+  },
+  "all_players": [
+    {
+      "player_id": "94f0001a-1f38-442c-9202-fe01c871b8fc",
+      "name": "Bobby Witt Jr.",
+      "position": "SS",
+      "team": "KC",
+      "pick_number": 3,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 27.4,
+        "projected_obp": 0.349,
+        "projected_runs": 101.89999999999999,
+        "projected_rbi": 90.19999999999999,
+        "projected_stolen_bases": 33.099999999999994,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
+}

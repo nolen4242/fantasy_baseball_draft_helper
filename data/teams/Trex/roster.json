@@ -8,16 +8,79 @@
       null
     ],
     "2B": [
-      null
+      {
+        "player_id": "4772fb46-377c-4c09-86f9-5a03f8854e18",
+        "name": "Jazz Chisholm Jr.",
+        "position": "2B",
+        "team": "NYY",
+        "pick_number": 21,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 29.1,
+          "projected_obp": 0.318,
+          "projected_runs": 78.6,
+          "projected_rbi": 82.3,
+          "projected_stolen_bases": 29.1,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "4560b316-9f17-4ee8-9018-843c920c0740",
+        "name": "Elly De La Cruz",
+        "position": "SS",
+        "team": "CIN",
+        "pick_number": 8,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 24.4,
+          "projected_obp": 0.342,
+          "projected_runs": 87.89999999999999,
+          "projected_rbi": 86.89999999999999,
+          "projected_stolen_bases": 40.1,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "8a13d2ae-9431-43f5-bc41-8de47dbff4dc",
+        "name": "Ketel Marte",
+        "position": "2B",
+        "team": "ARI",
+        "pick_number": 34,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 27.4,
+          "projected_obp": 0.365,
+          "projected_runs": 94.19999999999999,
+          "projected_rbi": 82.5,
+          "projected_stolen_bases": 5.999999999999999,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
       null
@@ -29,10 +92,52 @@
       null
     ],
     "U": [
-      null
+      {
+        "player_id": "57871273-0dcc-48a7-8441-d6cf5b8441c3",
+        "name": "CJ Abrams",
+        "position": "SS",
+        "team": "WAS",
+        "pick_number": 47,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 19.7,
+          "projected_obp": 0.315,
+          "projected_runs": 81.5,
+          "projected_rbi": 66.8,
+          "projected_stolen_bases": 29.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
+      {
+        "player_id": "b442fac9-274e-4a6c-b1d3-38decb99c48e",
+        "name": "David Bednar",
+        "position": "P",
+        "team": "NYY",
+        "pick_number": 58,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.0,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 78.72222222222223,
+          "projected_era": 3.3,
+          "projected_whip": 1.2562222222222221,
+          "projected_saves": 33.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "4560b316-9f17-4ee8-9018-843c920c0740",
+      "name": "Elly De La Cruz",
+      "position": "SS",
+      "team": "CIN",
+      "pick_number": 8,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 24.4,
+        "projected_obp": 0.342,
+        "projected_runs": 87.89999999999999,
+        "projected_rbi": 86.89999999999999,
+        "projected_stolen_bases": 40.1,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "4772fb46-377c-4c09-86f9-5a03f8854e18",
+      "name": "Jazz Chisholm Jr.",
+      "position": "2B",
+      "team": "NYY",
+      "pick_number": 21,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 29.1,
+        "projected_obp": 0.318,
+        "projected_runs": 78.6,
+        "projected_rbi": 82.3,
+        "projected_stolen_bases": 29.1,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "8a13d2ae-9431-43f5-bc41-8de47dbff4dc",
+      "name": "Ketel Marte",
+      "position": "2B",
+      "team": "ARI",
+      "pick_number": 34,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 27.4,
+        "projected_obp": 0.365,
+        "projected_runs": 94.19999999999999,
+        "projected_rbi": 82.5,
+        "projected_stolen_bases": 5.999999999999999,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "57871273-0dcc-48a7-8441-d6cf5b8441c3",
+      "name": "CJ Abrams",
+      "position": "SS",
+      "team": "WAS",
+      "pick_number": 47,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 19.7,
+        "projected_obp": 0.315,
+        "projected_runs": 81.5,
+        "projected_rbi": 66.8,
+        "projected_stolen_bases": 29.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "b442fac9-274e-4a6c-b1d3-38decb99c48e",
+      "name": "David Bednar",
+      "position": "P",
+      "team": "NYY",
+      "pick_number": 58,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.0,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 78.72222222222223,
+        "projected_era": 3.3,
+        "projected_whip": 1.2562222222222221,
+        "projected_saves": 33.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

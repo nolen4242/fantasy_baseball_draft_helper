@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/models/draft.py
+# hypothesis_version: 6.141.1
+
+['BENCH', 'current_pick', 'current_round', 'draft_id', 'is_complete', 'league_name', 'my_team_name', 'picks', 'positions', 'roster_size', 'team_rosters', 'total_teams']

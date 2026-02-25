@@ -2,7 +2,28 @@
   "team_name": "Simba's Dublin Green Sox",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "af926b82-9fbe-45be-8730-6099a02ab34b",
+        "name": "Cal Raleigh",
+        "position": "C",
+        "team": "SEA",
+        "pick_number": 17,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 38.699999999999996,
+          "projected_obp": 0.331,
+          "projected_runs": 90.1,
+          "projected_rbi": 92.8,
+          "projected_stolen_bases": 8.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
       null
@@ -23,7 +44,28 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "38cc66a3-4c1a-4cff-b6dc-df20aaf4bec4",
+        "name": "Juan Soto",
+        "position": "OF",
+        "team": "NYM",
+        "pick_number": 4,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 37.099999999999994,
+          "projected_obp": 0.413,
+          "projected_runs": 107.99999999999999,
+          "projected_rbi": 99.6,
+          "projected_stolen_bases": 21.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
@@ -32,9 +74,72 @@
       null
     ],
     "P": [
-      null,
-      null,
-      null,
+      {
+        "player_id": "41d5275f-e694-49b4-9d64-b4cc60c3b9bd",
+        "name": "Hunter Brown",
+        "position": "P",
+        "team": "HOU",
+        "pick_number": 30,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.999999999999998,
+          "projected_quality_starts": 17.05,
+          "projected_strikeouts": 199.78021666666666,
+          "projected_era": 3.63,
+          "projected_whip": 1.2977777777777777,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "d9ed2f08-dae3-4509-9ab5-412903206cd6",
+        "name": "Bryan Woo",
+        "position": "P",
+        "team": "SEA",
+        "pick_number": 43,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.999999999999998,
+          "projected_quality_starts": 17.6,
+          "projected_strikeouts": 197.82533333333333,
+          "projected_era": 3.59,
+          "projected_whip": 1.1406666666666665,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "a4ef58c3-c17d-4873-ac28-b2202a9e19ef",
+        "name": "Blake Snell",
+        "position": "P",
+        "team": "LAD",
+        "pick_number": 62,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 15.400000000000002,
+          "projected_strikeouts": 200.28413333333333,
+          "projected_era": 3.5200000000000005,
+          "projected_whip": 1.3754444444444442,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "38cc66a3-4c1a-4cff-b6dc-df20aaf4bec4",
+      "name": "Juan Soto",
+      "position": "OF",
+      "team": "NYM",
+      "pick_number": 4,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 37.099999999999994,
+        "projected_obp": 0.413,
+        "projected_runs": 107.99999999999999,
+        "projected_rbi": 99.6,
+        "projected_stolen_bases": 21.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "af926b82-9fbe-45be-8730-6099a02ab34b",
+      "name": "Cal Raleigh",
+      "position": "C",
+      "team": "SEA",
+      "pick_number": 17,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 38.699999999999996,
+        "projected_obp": 0.331,
+        "projected_runs": 90.1,
+        "projected_rbi": 92.8,
+        "projected_stolen_bases": 8.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "41d5275f-e694-49b4-9d64-b4cc60c3b9bd",
+      "name": "Hunter Brown",
+      "position": "P",
+      "team": "HOU",
+      "pick_number": 30,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.999999999999998,
+        "projected_quality_starts": 17.05,
+        "projected_strikeouts": 199.78021666666666,
+        "projected_era": 3.63,
+        "projected_whip": 1.2977777777777777,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "d9ed2f08-dae3-4509-9ab5-412903206cd6",
+      "name": "Bryan Woo",
+      "position": "P",
+      "team": "SEA",
+      "pick_number": 43,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.999999999999998,
+        "projected_quality_starts": 17.6,
+        "projected_strikeouts": 197.82533333333333,
+        "projected_era": 3.59,
+        "projected_whip": 1.1406666666666665,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "a4ef58c3-c17d-4873-ac28-b2202a9e19ef",
+      "name": "Blake Snell",
+      "position": "P",
+      "team": "LAD",
+      "pick_number": 62,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 15.400000000000002,
+        "projected_strikeouts": 200.28413333333333,
+        "projected_era": 3.5200000000000005,
+        "projected_whip": 1.3754444444444442,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

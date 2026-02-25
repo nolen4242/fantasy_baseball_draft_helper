@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/models/player.py
+# hypothesis_version: 6.141.1
+
+[0.0, 1.0, 2.0, 'P', 'RP', 'SP', 'adp', 'age', 'age_decline_factor', 'contract_year', 'current_injury', 'draft_pick', 'draft_round', 'drafted', 'drafted_by_team', 'injury_risk_score', 'name', 'name is required', 'park_factor_hr', 'park_factor_offense', 'park_factor_pitching', 'player_id', 'position', 'projected_era', 'projected_holds', 'projected_home_runs', 'projected_obp', 'projected_rbi', 'projected_runs', 'projected_saves', 'projected_strikeouts', 'projected_whip', 'projected_wins', 'savant_barrel_rate', 'savant_exit_velocity', 'savant_hard_hit_rate', 'savant_launch_angle', 'savant_spin_rate', 'savant_sprint_speed', 'savant_velocity', 'savant_xba', 'savant_xslg', 'savant_xwoba', 'team']

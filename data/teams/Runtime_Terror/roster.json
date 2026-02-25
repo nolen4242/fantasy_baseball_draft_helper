@@ -5,37 +5,19 @@
       null
     ],
     "1B": [
-      null
-    ],
-    "2B": [
-      null
-    ],
-    "3B": [
-      null
-    ],
-    "SS": [
-      null
-    ],
-    "MI": [
-      null
-    ],
-    "CI": [
-      null
-    ],
-    "OF": [
       {
-        "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
-        "name": "Aaron Judge",
-        "position": "OF",
-        "team": "NYY",
-        "pick_number": 1,
-        "round": 1,
+        "player_id": "dcb2d718-73e7-4d7a-911c-ab45c8c6b357",
+        "name": "Bryce Harper",
+        "position": "1B",
+        "team": "PHI",
+        "pick_number": 40,
+        "round": 4,
         "stats": {
-          "projected_home_runs": 44.4,
-          "projected_obp": 0.417,
-          "projected_runs": 114.19999999999999,
-          "projected_rbi": 108.2,
-          "projected_stolen_bases": 9.0,
+          "projected_home_runs": 29.1,
+          "projected_obp": 0.368,
+          "projected_runs": 89.29999999999998,
+          "projected_rbi": 93.29999999999998,
+          "projected_stolen_bases": 9.7,
           "projected_wins": null,
           "projected_quality_starts": null,
           "projected_strikeouts": null,
@@ -44,7 +26,46 @@
           "projected_saves": null,
           "projected_holds": null
         }
-      },
+      }
+    ],
+    "2B": [
+      null
+    ],
+    "3B": [
+      null
+    ],
+    "SS": [
+      {
+        "player_id": "dca440e5-ea11-4fe9-8d92-4a9241d0b2b2",
+        "name": "Francisco Lindor",
+        "position": "SS",
+        "team": "NYM",
+        "pick_number": 27,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 27.4,
+          "projected_obp": 0.337,
+          "projected_runs": 98.2,
+          "projected_rbi": 76.5,
+          "projected_stolen_bases": 23.699999999999996,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
+    ],
+    "MI": [
+      null
+    ],
+    "CI": [
+      null
+    ],
+    "OF": [
+      null,
       null,
       null,
       null
@@ -53,8 +74,50 @@
       null
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "1a9d5c65-fd86-4d70-9fec-6194d8f41b85",
+        "name": "Shohei Ohtani",
+        "position": "P",
+        "team": "LAD",
+        "pick_number": 1,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 9.0,
+          "projected_quality_starts": 14.950000000000001,
+          "projected_strikeouts": 136.24,
+          "projected_era": 3.4400000000000004,
+          "projected_whip": 1.2444444444444445,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "f005248a-c3aa-46c4-8051-c13c8af85835",
+        "name": "Yoshinobu Yamamoto",
+        "position": "P",
+        "team": "LAD",
+        "pick_number": 14,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 18.2,
+          "projected_strikeouts": 169.2656777777778,
+          "projected_era": 3.4299999999999997,
+          "projected_whip": 1.2678888888888888,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -69,18 +132,84 @@
   },
   "all_players": [
     {
-      "player_id": "c730240d-1b8d-487f-81b1-2bce83b207f8",
-      "name": "Aaron Judge",
-      "position": "OF",
-      "team": "NYY",
+      "player_id": "1a9d5c65-fd86-4d70-9fec-6194d8f41b85",
+      "name": "Shohei Ohtani",
+      "position": "P",
+      "team": "LAD",
       "pick_number": 1,
       "round": 1,
       "stats": {
-        "projected_home_runs": 44.4,
-        "projected_obp": 0.417,
-        "projected_runs": 114.19999999999999,
-        "projected_rbi": 108.2,
-        "projected_stolen_bases": 9.0,
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 9.0,
+        "projected_quality_starts": 14.950000000000001,
+        "projected_strikeouts": 136.24,
+        "projected_era": 3.4400000000000004,
+        "projected_whip": 1.2444444444444445,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "f005248a-c3aa-46c4-8051-c13c8af85835",
+      "name": "Yoshinobu Yamamoto",
+      "position": "P",
+      "team": "LAD",
+      "pick_number": 14,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 18.2,
+        "projected_strikeouts": 169.2656777777778,
+        "projected_era": 3.4299999999999997,
+        "projected_whip": 1.2678888888888888,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "dca440e5-ea11-4fe9-8d92-4a9241d0b2b2",
+      "name": "Francisco Lindor",
+      "position": "SS",
+      "team": "NYM",
+      "pick_number": 27,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 27.4,
+        "projected_obp": 0.337,
+        "projected_runs": 98.2,
+        "projected_rbi": 76.5,
+        "projected_stolen_bases": 23.699999999999996,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "dcb2d718-73e7-4d7a-911c-ab45c8c6b357",
+      "name": "Bryce Harper",
+      "position": "1B",
+      "team": "PHI",
+      "pick_number": 40,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 29.1,
+        "projected_obp": 0.368,
+        "projected_runs": 89.29999999999998,
+        "projected_rbi": 93.29999999999998,
+        "projected_stolen_bases": 9.7,
         "projected_wins": null,
         "projected_quality_starts": null,
         "projected_strikeouts": null,

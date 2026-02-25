@@ -13,15 +13,31 @@ A local web application to help you dominate your fantasy baseball draft with AI
 - **Draft Tracking**: Track which players have been drafted to which teams
 - **My Team Management**: Keep track of your drafted players
 - **AI Recommendations**: Get intelligent recommendations based on:
+  - Standings improvement (primary metric)
+  - Roster balance and IP accumulation
+  - ML model predictions
   - Position scarcity analysis
   - Team needs assessment
-  - Projected statistical value
+  - Future availability prediction
+  - Category targeting
+  - Relative advantage vs opponents
+  - Risk assessment
+- **Configurable Scoring**: Customize recommendation weights and switch between strategy profiles
+- **Transparent Scoring**: See detailed breakdowns of why each player is recommended
 - **Real-time Updates**: See available players, recent picks, and recommendations update in real-time
 
 ## 📁 Project Structure
 
 ```
 fantasy_baseball_draft_helper/
+├── config/                        # Configuration files
+│   └── scoring/                   # Scoring profile configurations
+│       ├── default.json          # Default balanced profile
+│       ├── aggressive.json       # Aggressive value-seeking
+│       ├── conservative.json     # Conservative safe picks
+│       ├── pitcher_heavy.json    # Pitcher-focused strategy
+│       └── hitter_heavy.json     # Hitter-focused strategy
+│
 ├── data/                          # Data storage directory
 │   ├── players/                   # Player projection CSV files
 │   │   ├── projections.csv        # Your main player data file
@@ -36,7 +52,10 @@ fantasy_baseball_draft_helper/
 │   ├── services/                  # Business logic
 │   │   ├── data_loader.py        # CSV loading/saving
 │   │   ├── draft_service.py      # Draft management
-│   │   └── recommendation_engine.py # AI recommendation logic
+│   │   ├── recommendation_engine.py # AI recommendation logic
+│   │   ├── scoring_config.py     # Scoring configuration management
+│   │   ├── scoring_breakdown.py  # Transparent scoring breakdowns
+│   │   └── config_manager.py     # Profile management
 │   └── api/                       # Web API
 │       └── app.py                # Flask application
 │
@@ -52,6 +71,13 @@ fantasy_baseball_draft_helper/
 ├── ml/                            # Machine learning (future expansion)
 │   ├── models/                    # Trained ML models
 │   └── training/                  # Training scripts
+│
+├── .kiro/specs/                   # Feature specifications
+│   └── recommendation-engine-improvements/
+│       ├── requirements.md        # Feature requirements
+│       ├── design.md             # Technical design
+│       ├── tasks.md              # Implementation tasks
+│       └── SCORING_GUIDE.md      # Detailed scoring documentation
 │
 ├── requirements.txt               # Python dependencies
 └── README.md                      # This file
@@ -109,16 +135,79 @@ The application will start on `http://localhost:5000`
 
 ## 🤖 AI Recommendation Engine
 
-The recommendation engine analyzes three key factors:
+The recommendation engine uses a sophisticated multi-factor scoring system to evaluate players and provide intelligent draft recommendations.
 
-1. **Position Scarcity** (30% weight): How rare is this position among available players?
-2. **Team Needs** (30% weight): Does this player fill a position you need?
-3. **Projected Value** (40% weight): How valuable are this player's projected stats?
+### Configuration & Profiles
+
+The recommendation engine is now fully configurable! You can adjust scoring weights and switch between different strategy profiles to match your draft approach.
+
+**Available Profiles:**
+- **Default**: Balanced scoring for most situations
+- **Aggressive**: Value-seeking strategy (higher ML weight, lower risk penalties)
+- **Conservative**: Safe picks prioritizing team needs (higher position needs, higher risk penalties)
+- **Pitcher Heavy**: Prioritizes pitchers and IP accumulation
+- **Hitter Heavy**: Prioritizes hitters and offensive categories
+
+**Using the Config API:**
+
+```bash
+# Get current configuration
+curl http://localhost:5000/api/recommendations/config
+
+# List available profiles
+curl http://localhost:5000/api/recommendations/config/profiles
+
+# Switch to aggressive profile
+curl -X POST http://localhost:5000/api/recommendations/config/profile \
+  -H "Content-Type: application/json" \
+  -d '{"profile_name": "aggressive"}'
+
+# Update specific weights
+curl -X PATCH http://localhost:5000/api/recommendations/config \
+  -H "Content-Type: application/json" \
+  -d '{"standings_multiplier": 35.0, "ml_multiplier": 5.0}'
+
+# Reset to default
+curl -X POST http://localhost:5000/api/recommendations/config/reset
+```
+
+**Custom Profiles:**
+
+You can create custom profiles by editing JSON files in `config/scoring/`:
+
+```json
+{
+  "profile_name": "my_custom",
+  "description": "My custom strategy",
+  "version": "1.0",
+  "standings_multiplier": 30.0,
+  "ml_multiplier": 3.0,
+  ...
+}
+```
+
+See `.kiro/specs/recommendation-engine-improvements/SCORING_GUIDE.md` for detailed explanations of all scoring factors and weights.
+
+### Core Scoring Factors
+
+1. **Standings Improvement** (30x multiplier): Calculates actual standings points gained
+2. **Roster Balance**: Ensures you meet IP minimums and fill your lineup
+3. **ML Model Prediction** (3x multiplier): Machine learning trained on historical drafts
+4. **Future Availability**: Predicts if player will be available at your next pick
+5. **Team Needs**: Identifies gaps in your roster
+6. **Position Scarcity**: Values positions running out of quality players
+7. **Category Targeting**: Prioritizes categories where you're behind
+8. **Relative Advantage**: Analyzes how player helps vs opponents
+9. **Risk Assessment**: Reduces score for injury-prone or unreliable players
 
 Each recommendation includes:
 - A numerical score (higher is better)
 - Detailed reasoning for the recommendation
 - Quick draft button
+
+**For detailed scoring explanations**, see:
+- `.kiro/specs/recommendation-engine-improvements/SCORING_GUIDE.md` - Complete scoring factor documentation
+- `.kiro/specs/recommendation-engine-improvements/design.md` - Technical architecture and design
 
 ### Bob Uecker League Scoring Categories
 
@@ -167,13 +256,15 @@ See `data/players/example_projections.csv` for a sample format.
 
 ## 🔮 Future Enhancements
 
+- ✅ **Custom scoring system configuration** - COMPLETED
+- ✅ **Transparent scoring breakdowns** - COMPLETED
 - Advanced ML models for value prediction
-- Custom scoring system configuration
 - Draft history and analytics
 - Trade suggestions
 - Multi-league support
 - Export/import draft data
 - Player comparison tools
+- UI for config management (currently API-only)
 
 ## 📝 Notes
 

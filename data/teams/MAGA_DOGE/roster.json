@@ -14,17 +14,101 @@
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "eab6e586-694f-4e46-9f0d-a715dfbba440",
+        "name": "Trea Turner",
+        "position": "SS",
+        "team": "PHI",
+        "pick_number": 24,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 18.7,
+          "projected_obp": 0.332,
+          "projected_runs": 88.5,
+          "projected_rbi": 67.8,
+          "projected_stolen_bases": 27.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "8a0fa827-e87c-4af8-a5c0-be6c540a81ec",
+        "name": "Edwin Diaz",
+        "position": "SS",
+        "team": "BOS",
+        "pick_number": 37,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
       null
     ],
     "OF": [
-      null,
-      null,
+      {
+        "player_id": "20889fb3-a7a6-49b2-a58d-feb9ce560ffc",
+        "name": "Wyatt Langford",
+        "position": "OF",
+        "team": "TEX",
+        "pick_number": 50,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 24.799999999999997,
+          "projected_obp": 0.349,
+          "projected_runs": 86.39999999999999,
+          "projected_rbi": 76.0,
+          "projected_stolen_bases": 21.099999999999998,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "09e97dfb-c020-4f4a-a55e-4b75cd126b9e",
+        "name": "Brent Rooker",
+        "position": "OF",
+        "team": "ATH",
+        "pick_number": 55,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 32.099999999999994,
+          "projected_obp": 0.335,
+          "projected_runs": 87.6,
+          "projected_rbi": 96.6,
+          "projected_stolen_bases": 5.699999999999999,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null
     ],
@@ -32,7 +116,28 @@
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "d103c477-d1fe-4abd-a169-8d54b672ff27",
+        "name": "Garrett Crochet",
+        "position": "P",
+        "team": "BOS",
+        "pick_number": 11,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 14.0,
+          "projected_quality_starts": 20.8,
+          "projected_strikeouts": 240.50022222222225,
+          "projected_era": 3.01,
+          "projected_whip": 1.2244444444444444,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "d103c477-d1fe-4abd-a169-8d54b672ff27",
+      "name": "Garrett Crochet",
+      "position": "P",
+      "team": "BOS",
+      "pick_number": 11,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 14.0,
+        "projected_quality_starts": 20.8,
+        "projected_strikeouts": 240.50022222222225,
+        "projected_era": 3.01,
+        "projected_whip": 1.2244444444444444,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "eab6e586-694f-4e46-9f0d-a715dfbba440",
+      "name": "Trea Turner",
+      "position": "SS",
+      "team": "PHI",
+      "pick_number": 24,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 18.7,
+        "projected_obp": 0.332,
+        "projected_runs": 88.5,
+        "projected_rbi": 67.8,
+        "projected_stolen_bases": 27.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "8a0fa827-e87c-4af8-a5c0-be6c540a81ec",
+      "name": "Edwin Diaz",
+      "position": "SS",
+      "team": "BOS",
+      "pick_number": 37,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "20889fb3-a7a6-49b2-a58d-feb9ce560ffc",
+      "name": "Wyatt Langford",
+      "position": "OF",
+      "team": "TEX",
+      "pick_number": 50,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 24.799999999999997,
+        "projected_obp": 0.349,
+        "projected_runs": 86.39999999999999,
+        "projected_rbi": 76.0,
+        "projected_stolen_bases": 21.099999999999998,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "09e97dfb-c020-4f4a-a55e-4b75cd126b9e",
+      "name": "Brent Rooker",
+      "position": "OF",
+      "team": "ATH",
+      "pick_number": 55,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 32.099999999999994,
+        "projected_obp": 0.335,
+        "projected_runs": 87.6,
+        "projected_rbi": 96.6,
+        "projected_stolen_bases": 5.699999999999999,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

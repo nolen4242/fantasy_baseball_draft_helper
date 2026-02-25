@@ -8,7 +8,28 @@
       null
     ],
     "2B": [
-      null
+      {
+        "player_id": "7f35f66a-8295-4243-aa26-bf0c13f78080",
+        "name": "Brice Turang",
+        "position": "2B",
+        "team": "MIL",
+        "pick_number": 60,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 14.7,
+          "projected_obp": 0.332,
+          "projected_runs": 81.19999999999999,
+          "projected_rbi": 64.8,
+          "projected_stolen_bases": 27.4,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
       null
@@ -23,7 +44,28 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "8f2b321f-f8f2-46d3-8407-0c4017aee21e",
+        "name": "Kyle Tucker",
+        "position": "OF",
+        "team": "CHC",
+        "pick_number": 19,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 27.499999999999996,
+          "projected_obp": 0.371,
+          "projected_runs": 93.5,
+          "projected_rbi": 83.1,
+          "projected_stolen_bases": 20.099999999999998,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
@@ -32,9 +74,72 @@
       null
     ],
     "P": [
-      null,
-      null,
-      null,
+      {
+        "player_id": "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+        "name": "Tarik Skubal",
+        "position": "P",
+        "team": "DET",
+        "pick_number": 6,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 14.0,
+          "projected_quality_starts": 20.8,
+          "projected_strikeouts": 243.90426666666667,
+          "projected_era": 2.81,
+          "projected_whip": 1.1489999999999998,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "cfa825ae-cb22-407f-95ad-a7a2c880b59b",
+        "name": "Chris Sale",
+        "position": "P",
+        "team": "ATL",
+        "pick_number": 32,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.999999999999998,
+          "projected_quality_starts": 18.2,
+          "projected_strikeouts": 205.65093333333334,
+          "projected_era": 3.19,
+          "projected_whip": 1.2192222222222222,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "e228c486-2f87-4ee1-b83c-1aa87ecc375b",
+        "name": "Cade Smith",
+        "position": "P",
+        "team": "CLE",
+        "pick_number": 45,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.0,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 87.96666666666667,
+          "projected_era": 2.97,
+          "projected_whip": 1.253222222222222,
+          "projected_saves": 30.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "d3cb966b-1399-4c5e-88dc-0cc892288b03",
+      "name": "Tarik Skubal",
+      "position": "P",
+      "team": "DET",
+      "pick_number": 6,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 14.0,
+        "projected_quality_starts": 20.8,
+        "projected_strikeouts": 243.90426666666667,
+        "projected_era": 2.81,
+        "projected_whip": 1.1489999999999998,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "8f2b321f-f8f2-46d3-8407-0c4017aee21e",
+      "name": "Kyle Tucker",
+      "position": "OF",
+      "team": "CHC",
+      "pick_number": 19,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 27.499999999999996,
+        "projected_obp": 0.371,
+        "projected_runs": 93.5,
+        "projected_rbi": 83.1,
+        "projected_stolen_bases": 20.099999999999998,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "cfa825ae-cb22-407f-95ad-a7a2c880b59b",
+      "name": "Chris Sale",
+      "position": "P",
+      "team": "ATL",
+      "pick_number": 32,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.999999999999998,
+        "projected_quality_starts": 18.2,
+        "projected_strikeouts": 205.65093333333334,
+        "projected_era": 3.19,
+        "projected_whip": 1.2192222222222222,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "e228c486-2f87-4ee1-b83c-1aa87ecc375b",
+      "name": "Cade Smith",
+      "position": "P",
+      "team": "CLE",
+      "pick_number": 45,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.0,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 87.96666666666667,
+        "projected_era": 2.97,
+        "projected_whip": 1.253222222222222,
+        "projected_saves": 30.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "7f35f66a-8295-4243-aa26-bf0c13f78080",
+      "name": "Brice Turang",
+      "position": "2B",
+      "team": "MIL",
+      "pick_number": 60,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 14.7,
+        "projected_obp": 0.332,
+        "projected_runs": 81.19999999999999,
+        "projected_rbi": 64.8,
+        "projected_stolen_bases": 27.4,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

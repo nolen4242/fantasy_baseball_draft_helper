@@ -2,10 +2,52 @@
   "team_name": "Like a Nightmare",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "37c4568a-997a-429f-bb2a-e3f857b7ab22",
+        "name": "Shea Langeliers",
+        "position": "C",
+        "team": "ATH",
+        "pick_number": 57,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 27.699999999999996,
+          "projected_obp": 0.311,
+          "projected_runs": 70.8,
+          "projected_rbi": 74.8,
+          "projected_stolen_bases": 5.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
-      null
+      {
+        "player_id": "ad1068e7-9ffc-4713-b9e0-35797603e40a",
+        "name": "Rafael Devers",
+        "position": "1B",
+        "team": "SF",
+        "pick_number": 48,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 31.099999999999998,
+          "projected_obp": 0.347,
+          "projected_runs": 87.6,
+          "projected_rbi": 89.29999999999998,
+          "projected_stolen_bases": 2.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -23,8 +65,50 @@
       null
     ],
     "OF": [
-      null,
-      null,
+      {
+        "player_id": "2b50fae0-497b-4e74-8620-36eaaad91ff1",
+        "name": "Ronald Acuna Jr.",
+        "position": "OF",
+        "team": "ATL",
+        "pick_number": 9,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 30.299999999999997,
+          "projected_obp": 0.388,
+          "projected_runs": 107.19999999999999,
+          "projected_rbi": 82.9,
+          "projected_stolen_bases": 23.299999999999997,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "698c1485-0005-4e65-b3ed-d7200c3235d2",
+        "name": "Jackson Chourio",
+        "position": "OF",
+        "team": "MIL",
+        "pick_number": 22,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 25.4,
+          "projected_obp": 0.319,
+          "projected_runs": 87.5,
+          "projected_rbi": 76.8,
+          "projected_stolen_bases": 22.699999999999996,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null
     ],
@@ -32,7 +116,28 @@
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "598c93ea-51ea-4d48-ad9a-a65d67f9b9a1",
+        "name": "Andres Munoz",
+        "position": "P",
+        "team": "SEA",
+        "pick_number": 35,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.0,
+          "projected_quality_starts": 0.0,
+          "projected_strikeouts": 80.92444444444445,
+          "projected_era": 2.91,
+          "projected_whip": 1.3366666666666667,
+          "projected_saves": 28.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "2b50fae0-497b-4e74-8620-36eaaad91ff1",
+      "name": "Ronald Acuna Jr.",
+      "position": "OF",
+      "team": "ATL",
+      "pick_number": 9,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 30.299999999999997,
+        "projected_obp": 0.388,
+        "projected_runs": 107.19999999999999,
+        "projected_rbi": 82.9,
+        "projected_stolen_bases": 23.299999999999997,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "698c1485-0005-4e65-b3ed-d7200c3235d2",
+      "name": "Jackson Chourio",
+      "position": "OF",
+      "team": "MIL",
+      "pick_number": 22,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 25.4,
+        "projected_obp": 0.319,
+        "projected_runs": 87.5,
+        "projected_rbi": 76.8,
+        "projected_stolen_bases": 22.699999999999996,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "598c93ea-51ea-4d48-ad9a-a65d67f9b9a1",
+      "name": "Andres Munoz",
+      "position": "P",
+      "team": "SEA",
+      "pick_number": 35,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.0,
+        "projected_quality_starts": 0.0,
+        "projected_strikeouts": 80.92444444444445,
+        "projected_era": 2.91,
+        "projected_whip": 1.3366666666666667,
+        "projected_saves": 28.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ad1068e7-9ffc-4713-b9e0-35797603e40a",
+      "name": "Rafael Devers",
+      "position": "1B",
+      "team": "SF",
+      "pick_number": 48,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 31.099999999999998,
+        "projected_obp": 0.347,
+        "projected_runs": 87.6,
+        "projected_rbi": 89.29999999999998,
+        "projected_stolen_bases": 2.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "37c4568a-997a-429f-bb2a-e3f857b7ab22",
+      "name": "Shea Langeliers",
+      "position": "C",
+      "team": "ATH",
+      "pick_number": 57,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 27.699999999999996,
+        "projected_obp": 0.311,
+        "projected_runs": 70.8,
+        "projected_rbi": 74.8,
+        "projected_stolen_bases": 5.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

@@ -5,19 +5,103 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "ab47c484-120b-4844-8438-4e0c7f1ccfa7",
+        "name": "Nick Kurtz",
+        "position": "1B",
+        "team": "ATH",
+        "pick_number": 18,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 36.599999999999994,
+          "projected_obp": 0.353,
+          "projected_runs": 91.29999999999998,
+          "projected_rbi": 83.6,
+          "projected_stolen_bases": 4.7,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
     ],
     "3B": [
-      null
+      {
+        "player_id": "8f7eb5eb-21bf-4d65-94c9-f1357082ea7c",
+        "name": "Jose Ramirez",
+        "position": "3B",
+        "team": "CLE",
+        "pick_number": 5,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 29.1,
+          "projected_obp": 0.348,
+          "projected_runs": 90.0,
+          "projected_rbi": 94.69999999999999,
+          "projected_stolen_bases": 32.8,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
-      null
+      {
+        "player_id": "4e0820af-7642-4722-ba2c-7bdccaa2c972",
+        "name": "Zach Neto",
+        "position": "SS",
+        "team": "LAA",
+        "pick_number": 31,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 28.099999999999998,
+          "projected_obp": 0.32,
+          "projected_runs": 89.29999999999998,
+          "projected_rbi": 74.9,
+          "projected_stolen_bases": 29.1,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "db02247c-821a-4557-b953-8c3c879b4932",
+        "name": "Mookie Betts",
+        "position": "SS",
+        "team": "LAD",
+        "pick_number": 44,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 23.099999999999998,
+          "projected_obp": 0.355,
+          "projected_runs": 92.39999999999999,
+          "projected_rbi": 78.0,
+          "projected_stolen_bases": 8.7,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
       null
@@ -32,7 +116,28 @@
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "9661c8ee-5cd5-4c2e-82cc-c955ef27a0b9",
+        "name": "Freddy Peralta",
+        "position": "P",
+        "team": "MIL",
+        "pick_number": 61,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 17.05,
+          "projected_strikeouts": 199.83626666666666,
+          "projected_era": 3.91,
+          "projected_whip": 1.2872222222222223,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "8f7eb5eb-21bf-4d65-94c9-f1357082ea7c",
+      "name": "Jose Ramirez",
+      "position": "3B",
+      "team": "CLE",
+      "pick_number": 5,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 29.1,
+        "projected_obp": 0.348,
+        "projected_runs": 90.0,
+        "projected_rbi": 94.69999999999999,
+        "projected_stolen_bases": 32.8,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ab47c484-120b-4844-8438-4e0c7f1ccfa7",
+      "name": "Nick Kurtz",
+      "position": "1B",
+      "team": "ATH",
+      "pick_number": 18,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 36.599999999999994,
+        "projected_obp": 0.353,
+        "projected_runs": 91.29999999999998,
+        "projected_rbi": 83.6,
+        "projected_stolen_bases": 4.7,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "4e0820af-7642-4722-ba2c-7bdccaa2c972",
+      "name": "Zach Neto",
+      "position": "SS",
+      "team": "LAA",
+      "pick_number": 31,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 28.099999999999998,
+        "projected_obp": 0.32,
+        "projected_runs": 89.29999999999998,
+        "projected_rbi": 74.9,
+        "projected_stolen_bases": 29.1,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "db02247c-821a-4557-b953-8c3c879b4932",
+      "name": "Mookie Betts",
+      "position": "SS",
+      "team": "LAD",
+      "pick_number": 44,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 23.099999999999998,
+        "projected_obp": 0.355,
+        "projected_runs": 92.39999999999999,
+        "projected_rbi": 78.0,
+        "projected_stolen_bases": 8.7,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "9661c8ee-5cd5-4c2e-82cc-c955ef27a0b9",
+      "name": "Freddy Peralta",
+      "position": "P",
+      "team": "MIL",
+      "pick_number": 61,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 17.05,
+        "projected_strikeouts": 199.83626666666666,
+        "projected_era": 3.91,
+        "projected_whip": 1.2872222222222223,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }
