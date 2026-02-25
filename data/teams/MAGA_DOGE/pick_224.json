@@ -1,21 +1,21 @@
 {
   "player": {
-    "player_id": "lenyn_sosa_1b,2b",
-    "name": "Lenyn Sosa 1B,2B",
-    "position": "OF",
-    "team": "CHW",
+    "player_id": "angel_zerpa",
+    "name": "Angel Zerpa",
+    "position": "P",
+    "team": "KC",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
     "projected_runs": null,
     "projected_rbi": null,
     "projected_stolen_bases": null,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 55.57777777777777,
+    "projected_era": 3.6,
+    "projected_whip": 1.301111111111111,
+    "projected_saves": 1.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
@@ -28,5 +28,5 @@
     "round": 18,
     "team_name": "MAGA DOGE"
   },
-  "position": "OF"
+  "position": "P"
 }

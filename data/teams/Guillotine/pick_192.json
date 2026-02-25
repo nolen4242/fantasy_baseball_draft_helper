@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "royce_lewis",
-    "name": "Royce Lewis",
-    "position": "3B",
-    "team": "MIN",
+    "player_id": "bryson_stott",
+    "name": "Bryson Stott",
+    "position": "2B",
+    "team": "PHI",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.311,
-    "projected_runs": 55.0,
-    "projected_rbi": 62.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 14.0,
+    "projected_obp": 0.327,
+    "projected_runs": 71.0,
+    "projected_rbi": 55.0,
+    "projected_stolen_bases": 24.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 194.8
+    "adp": 185.8
   },
   "pick_info": {
     "pick_number": 192,
     "round": 15,
     "team_name": "Guillotine"
   },
-  "position": "3B"
+  "position": "2B"
 }

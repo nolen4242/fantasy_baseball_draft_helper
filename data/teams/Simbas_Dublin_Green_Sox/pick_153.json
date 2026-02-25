@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "dansby_swanson",
-    "name": "Dansby Swanson",
-    "position": "SS",
-    "team": "CHC",
+    "player_id": "jack_flaherty",
+    "name": "Jack Flaherty",
+    "position": "P",
+    "team": "DET",
     "age": null,
-    "projected_home_runs": 17.0,
-    "projected_obp": 0.307,
-    "projected_runs": 58.0,
-    "projected_rbi": 60.0,
-    "projected_stolen_bases": 12.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.85,
+    "projected_strikeouts": 178.416,
+    "projected_era": 3.91,
+    "projected_whip": 1.2955555555555556,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 166.0
+    "adp": 160.0
   },
   "pick_info": {
     "pick_number": 153,
     "round": 12,
     "team_name": "Simba's Dublin Green Sox"
   },
-  "position": "SS"
+  "position": "P"
 }

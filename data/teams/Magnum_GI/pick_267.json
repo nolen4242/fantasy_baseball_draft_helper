@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "aaron_judge",
-    "name": "Aaron Judge",
-    "position": "OF",
-    "team": "NYY",
+    "player_id": "ty_france",
+    "name": "Ty France",
+    "position": "1B",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 43.0,
-    "projected_obp": 0.417,
-    "projected_runs": 110.0,
-    "projected_rbi": 104.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 8.0,
+    "projected_obp": 0.324,
+    "projected_runs": 37.0,
+    "projected_rbi": 38.0,
+    "projected_stolen_bases": 1.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 1.5
+    "adp": null
   },
   "pick_info": {
-    "pick_number": 2,
-    "round": 1,
-    "team_name": "Runtime Terror"
+    "pick_number": 267,
+    "round": 21,
+    "team_name": "Magnum GI"
   },
-  "position": "OF"
+  "position": "1B"
 }

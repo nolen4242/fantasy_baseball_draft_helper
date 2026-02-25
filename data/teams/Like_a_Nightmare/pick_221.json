@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "joey_gallo",
-    "name": "Joey Gallo",
-    "position": "1B",
-    "team": "CHW",
+    "player_id": "nick_sandlin",
+    "name": "Nick Sandlin",
+    "position": "P",
+    "team": "TOR",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -28,5 +28,5 @@
     "round": 17,
     "team_name": "Like a Nightmare"
   },
-  "position": "1B"
+  "position": "P"
 }

@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "david_hamilton",
-    "name": "David Hamilton",
-    "position": "2B",
-    "team": "BOS",
+    "player_id": "tim_herrin",
+    "name": "Tim Herrin",
+    "position": "P",
+    "team": "CLE",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -28,5 +28,5 @@
     "round": 18,
     "team_name": "Magnum GI"
   },
-  "position": "2B"
+  "position": "P"
 }

@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "tommy_pham",
-    "name": "Tommy Pham",
-    "position": "OF",
-    "team": "PIT",
+    "player_id": "michael_massey",
+    "name": "Michael Massey",
+    "position": "2B",
+    "team": "KC",
     "age": null,
     "projected_home_runs": 9.0,
-    "projected_obp": 0.317,
-    "projected_runs": 41.0,
+    "projected_obp": 0.295,
+    "projected_runs": 33.0,
     "projected_rbi": 37.0,
-    "projected_stolen_bases": 6.0,
+    "projected_stolen_bases": 2.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -28,5 +28,5 @@
     "round": 16,
     "team_name": "Gashouse Gang"
   },
-  "position": "OF"
+  "position": "2B"
 }

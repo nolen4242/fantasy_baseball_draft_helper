@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "shea_langeliers",
-    "name": "Shea Langeliers",
-    "position": "C",
-    "team": "ATH",
+    "player_id": "nico_hoerner",
+    "name": "Nico Hoerner",
+    "position": "2B",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 27.0,
-    "projected_obp": 0.311,
-    "projected_runs": 68.0,
-    "projected_rbi": 71.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": 9.0,
+    "projected_obp": 0.339,
+    "projected_runs": 74.0,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 25.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 113.0
+    "adp": 115.5
   },
   "pick_info": {
     "pick_number": 101,
     "round": 8,
     "team_name": "Simba's Dublin Green Sox"
   },
-  "position": "C"
+  "position": "2B"
 }

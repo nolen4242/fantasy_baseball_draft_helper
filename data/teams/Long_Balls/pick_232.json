@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "jose_iglesias_2b,3b,ss",
-    "name": "Jose Iglesias 2B,3B,SS",
-    "position": "OF",
-    "team": "SD",
+    "player_id": "anthony_rizzo",
+    "name": "Anthony Rizzo",
+    "position": "1B",
+    "team": "NYY",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -28,5 +28,5 @@
     "round": 18,
     "team_name": "Long Balls"
   },
-  "position": "OF"
+  "position": "1B"
 }

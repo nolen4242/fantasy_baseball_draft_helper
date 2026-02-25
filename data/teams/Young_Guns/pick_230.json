@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "amed_rosario",
-    "name": "Amed Rosario",
-    "position": "3B",
-    "team": "NYY",
+    "player_id": "trey_mancini",
+    "name": "Trey Mancini",
+    "position": "1B",
+    "team": "ARI",
     "age": null,
-    "projected_home_runs": 5.0,
-    "projected_obp": 0.311,
-    "projected_runs": 32.0,
-    "projected_rbi": 32.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -28,5 +28,5 @@
     "round": 18,
     "team_name": "Young Guns"
   },
-  "position": "3B"
+  "position": "1B"
 }

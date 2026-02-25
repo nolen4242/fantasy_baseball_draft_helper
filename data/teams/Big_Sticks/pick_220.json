@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "carlos_santana",
-    "name": "Carlos Santana",
-    "position": "1B",
-    "team": "CHC",
+    "player_id": "michael_baumann",
+    "name": "Michael Baumann",
+    "position": "P",
+    "team": "MIA",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -28,5 +28,5 @@
     "round": 17,
     "team_name": "Big Sticks"
   },
-  "position": "1B"
+  "position": "P"
 }

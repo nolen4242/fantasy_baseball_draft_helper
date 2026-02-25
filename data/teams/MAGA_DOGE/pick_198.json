@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "luis_garcia",
-    "name": "Luis Garcia",
-    "position": "2B",
-    "team": "WAS",
+    "player_id": "xander_bogaerts",
+    "name": "Xander Bogaerts",
+    "position": "SS",
+    "team": "SD",
     "age": null,
-    "projected_home_runs": 15.0,
-    "projected_obp": 0.315,
-    "projected_runs": 54.0,
-    "projected_rbi": 59.0,
-    "projected_stolen_bases": 13.0,
+    "projected_home_runs": 13.0,
+    "projected_obp": 0.334,
+    "projected_runs": 58.0,
+    "projected_rbi": 57.0,
+    "projected_stolen_bases": 14.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 211.8
+    "adp": 212.3
   },
   "pick_info": {
     "pick_number": 198,
     "round": 16,
     "team_name": "MAGA DOGE"
   },
-  "position": "2B"
+  "position": "SS"
 }

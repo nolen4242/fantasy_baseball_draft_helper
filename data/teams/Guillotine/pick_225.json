@@ -1,21 +1,21 @@
 {
   "player": {
-    "player_id": "brooks_raley",
-    "name": "Brooks Raley",
-    "position": "P",
-    "team": "NYM",
+    "player_id": "ceddanne_rafaela_2b,of",
+    "name": "Ceddanne Rafaela 2B,OF",
+    "position": "OF",
+    "team": "BOS",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
     "projected_runs": null,
     "projected_rbi": null,
     "projected_stolen_bases": null,
-    "projected_wins": 3.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 58.266666666666666,
-    "projected_era": 3.86,
-    "projected_whip": 1.318888888888889,
-    "projected_saves": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
@@ -28,5 +28,5 @@
     "round": 18,
     "team_name": "Guillotine"
   },
-  "position": "P"
+  "position": "OF"
 }

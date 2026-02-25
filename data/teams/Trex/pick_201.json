@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "jose_siri",
-    "name": "Jose Siri",
-    "position": "OF",
-    "team": "NYM",
+    "player_id": "evan_longoria",
+    "name": "Evan Longoria",
+    "position": "3B",
+    "team": "ARI",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -28,5 +28,5 @@
     "round": 16,
     "team_name": "Trex"
   },
-  "position": "OF"
+  "position": "3B"
 }

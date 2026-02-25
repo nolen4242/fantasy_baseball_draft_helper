@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "juan_soto",
-    "name": "Juan Soto",
+    "player_id": "tommy_edman_2b,of",
+    "name": "Tommy Edman 2B,OF",
     "position": "OF",
-    "team": "NYM",
+    "team": "LAD",
     "age": null,
-    "projected_home_runs": 35.0,
-    "projected_obp": 0.413,
-    "projected_runs": 101.0,
-    "projected_rbi": 94.0,
-    "projected_stolen_bases": 20.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 3.3
+    "adp": null
   },
   "pick_info": {
-    "pick_number": 3,
-    "round": 1,
-    "team_name": "Runtime Terror"
+    "pick_number": 257,
+    "round": 20,
+    "team_name": "Simba's Dublin Green Sox"
   },
   "position": "OF"
 }

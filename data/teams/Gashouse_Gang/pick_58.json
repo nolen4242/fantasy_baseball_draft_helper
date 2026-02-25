@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jackson_merrill",
-    "name": "Jackson Merrill",
+    "player_id": "george_springer",
+    "name": "George Springer",
     "position": "OF",
-    "team": "SD",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.321,
-    "projected_runs": 75.0,
-    "projected_rbi": 76.0,
-    "projected_stolen_bases": 7.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.342,
+    "projected_runs": 86.0,
+    "projected_rbi": 73.0,
+    "projected_stolen_bases": 13.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 69.0
+    "adp": 69.8
   },
   "pick_info": {
     "pick_number": 58,
