@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "marcus_semien",
-    "name": "Marcus Semien",
-    "position": "2B",
-    "team": "NYM",
+    "player_id": "luis_robert",
+    "name": "Luis Robert",
+    "position": "OF",
+    "team": "CHW",
     "age": null,
-    "projected_home_runs": 22.0,
-    "projected_obp": 0.314,
-    "projected_runs": 84.0,
-    "projected_rbi": 74.0,
-    "projected_stolen_bases": 10.0,
+    "projected_home_runs": 19.0,
+    "projected_obp": 0.299,
+    "projected_runs": 56.0,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 27.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 169.5
+    "adp": 166.5
   },
   "pick_info": {
     "pick_number": 155,
     "round": 12,
     "team_name": "Dawg"
   },
-  "position": "2B"
+  "position": "OF"
 }

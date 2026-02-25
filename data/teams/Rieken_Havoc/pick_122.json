@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "josh_hader",
-    "name": "Josh Hader",
-    "position": "P",
-    "team": "HOU",
+    "player_id": "steven_kwan",
+    "name": "Steven Kwan",
+    "position": "OF",
+    "team": "CLE",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 4.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 90.2,
-    "projected_era": 3.29,
-    "projected_whip": 1.3277777777777777,
-    "projected_saves": 32.0,
+    "projected_home_runs": 11.0,
+    "projected_obp": 0.35,
+    "projected_runs": 77.0,
+    "projected_rbi": 51.0,
+    "projected_stolen_bases": 17.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 136.5
+    "adp": 131.5
   },
   "pick_info": {
     "pick_number": 122,
     "round": 10,
     "team_name": "Rieken Havoc"
   },
-  "position": "P"
+  "position": "OF"
 }

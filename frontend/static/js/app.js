@@ -21,6 +21,19 @@ class App {
         window.draftPlayer = (playerId) => this.draftPlayerById(playerId);
         window.showTeamDetails = (teamName) => this.showTeamDetails(teamName);
         window.revertPick = (pickNumber) => this.revertPick(pickNumber);
+        window.showPlayerDetails = (playerId) => this.showPlayerDetails(playerId);
+        window.closePlayerModal = () => this.closePlayerModal();
+    }
+    showPlayerDetails(playerId) {
+        const player = this.allPlayers.find(p => p.player_id === playerId);
+        if (!player)
+            return;
+        this.renderer.renderPlayerModal(player, (p) => this.draftPlayer(p), this.currentDraft?.is_complete || false);
+    }
+    closePlayerModal() {
+        const modal = document.getElementById('player-detail-modal');
+        if (modal)
+            modal.remove();
     }
     async draftPlayerById(playerId) {
         const player = this.allPlayers.find(p => p.player_id === playerId);

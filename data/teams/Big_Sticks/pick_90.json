@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "brandon_nimmo",
-    "name": "Brandon Nimmo",
+    "player_id": "byron_buxton",
+    "name": "Byron Buxton",
     "position": "OF",
-    "team": "TEX",
+    "team": "MIN",
     "age": null,
-    "projected_home_runs": 23.0,
-    "projected_obp": 0.336,
-    "projected_runs": 85.0,
-    "projected_rbi": 71.0,
-    "projected_stolen_bases": 10.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.315,
+    "projected_runs": 71.0,
+    "projected_rbi": 63.0,
+    "projected_stolen_bases": 14.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 105.0
+    "adp": 97.3
   },
   "pick_info": {
     "pick_number": 90,

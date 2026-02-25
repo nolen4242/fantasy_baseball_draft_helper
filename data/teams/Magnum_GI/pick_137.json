@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "bryan_reynolds",
-    "name": "Bryan Reynolds",
-    "position": "OF",
-    "team": "PIT",
+    "player_id": "mark_vientos",
+    "name": "Mark Vientos",
+    "position": "3B",
+    "team": "NYM",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.325,
-    "projected_runs": 71.0,
-    "projected_rbi": 72.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": 28.0,
+    "projected_obp": 0.311,
+    "projected_runs": 72.0,
+    "projected_rbi": 85.0,
+    "projected_stolen_bases": 1.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 150.5
+    "adp": 145.8
   },
   "pick_info": {
     "pick_number": 137,
     "round": 11,
     "team_name": "Magnum GI"
   },
-  "position": "OF"
+  "position": "3B"
 }

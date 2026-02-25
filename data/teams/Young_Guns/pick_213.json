@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "nick_castellanos",
-    "name": "Nick Castellanos",
-    "position": "OF",
-    "team": "PHI",
+    "player_id": "dominic_smith",
+    "name": "Dominic Smith",
+    "position": "1B",
+    "team": "SF",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 224.5
+    "adp": null
   },
   "pick_info": {
     "pick_number": 213,
     "round": 17,
     "team_name": "Young Guns"
   },
-  "position": "OF"
+  "position": "1B"
 }

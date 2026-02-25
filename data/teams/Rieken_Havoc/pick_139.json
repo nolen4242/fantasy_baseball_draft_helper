@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "shota_imanaga",
-    "name": "Shota Imanaga",
-    "position": "P",
-    "team": "CHC",
+    "player_id": "bryan_reynolds",
+    "name": "Bryan Reynolds",
+    "position": "OF",
+    "team": "PIT",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 10.0,
-    "projected_quality_starts": 18.85,
-    "projected_strikeouts": 155.32077777777778,
-    "projected_era": 4.12,
-    "projected_whip": 1.1622222222222223,
-    "projected_saves": 0.0,
+    "projected_home_runs": 20.0,
+    "projected_obp": 0.325,
+    "projected_runs": 71.0,
+    "projected_rbi": 72.0,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 153.8
+    "adp": 150.5
   },
   "pick_info": {
     "pick_number": 139,
     "round": 11,
     "team_name": "Rieken Havoc"
   },
-  "position": "P"
+  "position": "OF"
 }

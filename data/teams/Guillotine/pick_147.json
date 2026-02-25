@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "jakob_marsee",
-    "name": "Jakob Marsee",
-    "position": "OF",
-    "team": "MIA",
+    "player_id": "bubba_chandler",
+    "name": "Bubba Chandler",
+    "position": "P",
+    "team": "PIT",
     "age": null,
-    "projected_home_runs": 12.0,
-    "projected_obp": 0.33,
-    "projected_runs": 70.0,
-    "projected_rbi": 46.0,
-    "projected_stolen_bases": 33.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 16.900000000000002,
+    "projected_strikeouts": 147.87122222222223,
+    "projected_era": 4.28,
+    "projected_whip": 1.3344444444444443,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 157.3
+    "adp": 157.5
   },
   "pick_info": {
     "pick_number": 147,
     "round": 12,
     "team_name": "Guillotine"
   },
-  "position": "OF"
+  "position": "P"
 }

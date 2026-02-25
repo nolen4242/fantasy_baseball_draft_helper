@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "dylan_crews",
-    "name": "Dylan Crews",
-    "position": "OF",
-    "team": "WAS",
+    "player_id": "luis_arraez",
+    "name": "Luis Arraez",
+    "position": "1B",
+    "team": "SD",
     "age": null,
-    "projected_home_runs": 17.0,
-    "projected_obp": 0.306,
-    "projected_runs": 58.0,
-    "projected_rbi": 62.0,
-    "projected_stolen_bases": 21.0,
+    "projected_home_runs": 7.0,
+    "projected_obp": 0.345,
+    "projected_runs": 70.0,
+    "projected_rbi": 54.0,
+    "projected_stolen_bases": 9.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 189.0
+    "adp": 199.0
   },
   "pick_info": {
     "pick_number": 184,
     "round": 15,
     "team_name": "Dawg"
   },
-  "position": "OF"
+  "position": "1B"
 }

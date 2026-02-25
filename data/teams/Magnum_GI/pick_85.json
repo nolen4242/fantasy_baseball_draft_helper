@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "eury_perez",
-    "name": "Eury Perez",
-    "position": "P",
-    "team": "MIA",
+    "player_id": "maikel_garcia",
+    "name": "Maikel Garcia",
+    "position": "3B",
+    "team": "KC",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 9.0,
-    "projected_quality_starts": 18.2,
-    "projected_strikeouts": 171.62444444444444,
-    "projected_era": 4.0,
-    "projected_whip": 1.2933333333333334,
-    "projected_saves": 0.0,
+    "projected_home_runs": 13.0,
+    "projected_obp": 0.338,
+    "projected_runs": 80.0,
+    "projected_rbi": 61.0,
+    "projected_stolen_bases": 26.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 98.3
+    "adp": 91.8
   },
   "pick_info": {
     "pick_number": 85,
     "round": 7,
     "team_name": "Magnum GI"
   },
-  "position": "P"
+  "position": "3B"
 }

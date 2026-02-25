@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "garrett_crochet",
-    "name": "Garrett Crochet",
-    "position": "P",
-    "team": "BOS",
+    "player_id": "ronald_acuna_jr",
+    "name": "Ronald Acuna Jr.",
+    "position": "OF",
+    "team": "ATL",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 14.0,
-    "projected_quality_starts": 20.8,
-    "projected_strikeouts": 238.89111111111112,
-    "projected_era": 3.01,
-    "projected_whip": 1.2022222222222223,
-    "projected_saves": 0.0,
+    "projected_home_runs": 29.0,
+    "projected_obp": 0.387,
+    "projected_runs": 94.0,
+    "projected_rbi": 91.0,
+    "projected_stolen_bases": 21.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 18.0
+    "adp": 6.8
   },
   "pick_info": {
     "pick_number": 9,
     "round": 1,
     "team_name": "Rieken Havoc"
   },
-  "position": "P"
+  "position": "OF"
 }

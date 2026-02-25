@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "willy_adames",
-    "name": "Willy Adames",
-    "position": "SS",
-    "team": "SF",
+    "player_id": "zack_wheeler",
+    "name": "Zack Wheeler",
+    "position": "P",
+    "team": "PHI",
     "age": null,
-    "projected_home_runs": 24.0,
-    "projected_obp": 0.321,
-    "projected_runs": 77.0,
-    "projected_rbi": 73.0,
-    "projected_stolen_bases": 11.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 13.65,
+    "projected_strikeouts": 144.53644444444447,
+    "projected_era": 3.2,
+    "projected_whip": 1.1944444444444444,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 100.8
+    "adp": 102.0
   },
   "pick_info": {
     "pick_number": 87,
     "round": 7,
     "team_name": "Rieken Havoc"
   },
-  "position": "SS"
+  "position": "P"
 }

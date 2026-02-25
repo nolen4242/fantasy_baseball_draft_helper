@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "matt_shaw",
-    "name": "Matt Shaw",
-    "position": "3B",
-    "team": "CHC",
+    "player_id": "jose_iglesias_2b,3b,ss",
+    "name": "Jose Iglesias 2B,3B,SS",
+    "position": "OF",
+    "team": "SD",
     "age": null,
-    "projected_home_runs": 15.0,
-    "projected_obp": 0.321,
-    "projected_runs": 57.0,
-    "projected_rbi": 53.0,
-    "projected_stolen_bases": 18.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 246.5
+    "adp": null
   },
   "pick_info": {
     "pick_number": 232,
     "round": 18,
     "team_name": "Long Balls"
   },
-  "position": "3B"
+  "position": "OF"
 }

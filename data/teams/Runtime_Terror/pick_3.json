@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "aaron_judge",
-    "name": "Aaron Judge",
+    "player_id": "juan_soto",
+    "name": "Juan Soto",
     "position": "OF",
-    "team": "NYY",
+    "team": "NYM",
     "age": null,
-    "projected_home_runs": 43.0,
-    "projected_obp": 0.417,
-    "projected_runs": 110.0,
-    "projected_rbi": 104.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 35.0,
+    "projected_obp": 0.413,
+    "projected_runs": 101.0,
+    "projected_rbi": 94.0,
+    "projected_stolen_bases": 20.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 1.5
+    "adp": 3.3
   },
   "pick_info": {
-    "pick_number": 2,
+    "pick_number": 3,
     "round": 1,
-    "team_name": "Dawg"
+    "team_name": "Runtime Terror"
   },
   "position": "OF"
 }

@@ -1002,3 +1002,98 @@ body {
     font-size: 9px;
     color: var(--text-muted);
 }
+
+/* ── Player Detail Modal ─────────────────────────── */
+
+.player-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 55, 83, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-modal {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 90%;
+    max-width: 420px;
+    padding: 28px 28px 24px;
+    position: relative;
+}
+
+.player-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+.player-modal-close:hover {
+    color: var(--text-primary);
+}
+
+.player-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.player-modal-header h2 {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--deep-space-blue);
+    margin: 0;
+}
+
+.player-modal-team {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.player-modal-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.player-modal-stats {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.player-modal-stats td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 14px;
+}
+
+.player-modal-stats td:first-child {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.player-modal-stats td:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: var(--turf-green);
+    font-size: 15px;
+}
+
+.modal-draft-btn {
+    margin-top: 4px;
+}

@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "spencer_steer",
-    "name": "Spencer Steer",
-    "position": "1B",
-    "team": "CIN",
+    "player_id": "yainer_diaz",
+    "name": "Yainer Diaz",
+    "position": "C",
+    "team": "HOU",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.324,
-    "projected_runs": 67.0,
-    "projected_rbi": 71.0,
-    "projected_stolen_bases": 9.0,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.308,
+    "projected_runs": 51.0,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 1.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 173.5
+    "adp": 185.3
   },
   "pick_info": {
     "pick_number": 171,
     "round": 14,
     "team_name": "Big Sticks"
   },
-  "position": "1B"
+  "position": "C"
 }

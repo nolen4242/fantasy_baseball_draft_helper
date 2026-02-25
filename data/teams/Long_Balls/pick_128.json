@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "patrick_wisdom",
-    "name": "Patrick Wisdom",
-    "position": "1B",
-    "team": "CHC",
+    "player_id": "tony_santillan",
+    "name": "Tony Santillan",
+    "position": "P",
+    "team": "CIN",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": null
+    "adp": 280.0
   },
   "pick_info": {
     "pick_number": 128,
     "round": 10,
     "team_name": "Long Balls"
   },
-  "position": "1B"
+  "position": "P"
 }

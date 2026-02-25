@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "dennis_santana",
-    "name": "Dennis Santana",
-    "position": "P",
-    "team": "PIT",
+    "player_id": "dylan_crews",
+    "name": "Dylan Crews",
+    "position": "OF",
+    "team": "WAS",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 3.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 63.54222222222222,
-    "projected_era": 4.01,
-    "projected_whip": 1.3088888888888888,
-    "projected_saves": 30.0,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.306,
+    "projected_runs": 58.0,
+    "projected_rbi": 62.0,
+    "projected_stolen_bases": 21.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 192.5
+    "adp": 189.0
   },
   "pick_info": {
     "pick_number": 178,
     "round": 14,
     "team_name": "Young Guns"
   },
-  "position": "P"
+  "position": "OF"
 }

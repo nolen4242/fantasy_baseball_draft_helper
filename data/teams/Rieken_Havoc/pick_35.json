@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "blake_snell",
-    "name": "Blake Snell",
-    "position": "P",
-    "team": "LAD",
+    "player_id": "brent_rooker",
+    "name": "Brent Rooker",
+    "position": "OF",
+    "team": "ATH",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 12.0,
-    "projected_quality_starts": 18.85,
-    "projected_strikeouts": 211.759,
-    "projected_era": 3.53,
-    "projected_whip": 1.3822222222222222,
-    "projected_saves": 0.0,
+    "projected_home_runs": 30.0,
+    "projected_obp": 0.335,
+    "projected_runs": 82.0,
+    "projected_rbi": 90.0,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 47.5
+    "adp": 42.0
   },
   "pick_info": {
     "pick_number": 35,
     "round": 3,
     "team_name": "Rieken Havoc"
   },
-  "position": "P"
+  "position": "OF"
 }

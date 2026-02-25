@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "sonny_gray",
-    "name": "Sonny Gray",
-    "position": "P",
-    "team": "BOS",
+    "player_id": "cj_abrams",
+    "name": "C.J. Abrams",
+    "position": "SS",
+    "team": "WAS",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 11.0,
-    "projected_quality_starts": 20.150000000000002,
-    "projected_strikeouts": 189.55133333333333,
-    "projected_era": 3.68,
-    "projected_whip": 1.2077777777777778,
-    "projected_saves": 0.0,
+    "projected_home_runs": 19.0,
+    "projected_obp": 0.315,
+    "projected_runs": 78.0,
+    "projected_rbi": 64.0,
+    "projected_stolen_bases": 28.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 84.8
+    "adp": 82.3
   },
   "pick_info": {
     "pick_number": 73,
     "round": 6,
     "team_name": "Gashouse Gang"
   },
-  "position": "P"
+  "position": "SS"
 }

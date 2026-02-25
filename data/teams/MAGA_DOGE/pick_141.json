@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "carlos_estevez",
-    "name": "Carlos Estevez",
-    "position": "P",
-    "team": "KC",
+    "player_id": "spencer_torkelson",
+    "name": "Spencer Torkelson",
+    "position": "1B",
+    "team": "DET",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 3.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 60.666666666666664,
-    "projected_era": 4.28,
-    "projected_whip": 1.3177777777777777,
-    "projected_saves": 31.0,
+    "projected_home_runs": 24.0,
+    "projected_obp": 0.32,
+    "projected_runs": 68.0,
+    "projected_rbi": 73.0,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 144.5
+    "adp": 151.3
   },
   "pick_info": {
     "pick_number": 141,
     "round": 11,
     "team_name": "MAGA DOGE"
   },
-  "position": "P"
+  "position": "1B"
 }

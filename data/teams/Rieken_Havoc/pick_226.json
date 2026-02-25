@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "kerry_carpenter",
-    "name": "Kerry Carpenter",
-    "position": "OF",
-    "team": "DET",
+    "player_id": "clayton_kershaw",
+    "name": "Clayton Kershaw",
+    "position": "P",
+    "team": "LAD",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.31,
-    "projected_runs": 53.0,
-    "projected_rbi": 60.0,
-    "projected_stolen_bases": 2.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 233.0
+    "adp": null
   },
   "pick_info": {
     "pick_number": 226,
     "round": 18,
     "team_name": "Rieken Havoc"
   },
-  "position": "OF"
+  "position": "P"
 }

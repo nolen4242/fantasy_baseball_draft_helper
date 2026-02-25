@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "anthony_santander",
-    "name": "Anthony Santander",
-    "position": "OF",
-    "team": "TOR",
+    "player_id": "trevor_story",
+    "name": "Trevor Story",
+    "position": "SS",
+    "team": "BOS",
     "age": null,
-    "projected_home_runs": 26.0,
-    "projected_obp": 0.309,
-    "projected_runs": 68.0,
-    "projected_rbi": 75.0,
-    "projected_stolen_bases": 2.0,
+    "projected_home_runs": 15.0,
+    "projected_obp": 0.298,
+    "projected_runs": 50.0,
+    "projected_rbi": 54.0,
+    "projected_stolen_bases": 15.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 180.5
+    "adp": 172.0
   },
   "pick_info": {
     "pick_number": 173,
     "round": 14,
     "team_name": "Guillotine"
   },
-  "position": "OF"
+  "position": "SS"
 }

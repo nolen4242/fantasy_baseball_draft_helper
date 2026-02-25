@@ -95,16 +95,23 @@ export class UIRenderer {
             progressEl.style.fontWeight = '';
         }
         
-        // Update recommended player
+        // Update recommended player (clickable to show details)
         if (recommendedPlayerEl && recommendedPositionEl) {
             if (isComplete) {
                 recommendedPlayerEl.textContent = 'Draft Complete';
+                recommendedPlayerEl.style.cursor = 'default';
+                recommendedPlayerEl.onclick = null;
                 recommendedPositionEl.textContent = '-';
             } else if (recommendation && recommendation.player) {
                 recommendedPlayerEl.textContent = recommendation.player.name;
+                recommendedPlayerEl.style.cursor = 'pointer';
+                const pid = recommendation.player.player_id;
+                recommendedPlayerEl.onclick = () => (window as any).showPlayerDetails(pid);
                 recommendedPositionEl.textContent = recommendation.player.position || '-';
             } else {
                 recommendedPlayerEl.textContent = '-';
+                recommendedPlayerEl.style.cursor = 'default';
+                recommendedPlayerEl.onclick = null;
                 recommendedPositionEl.textContent = '-';
             }
         }
@@ -138,7 +145,7 @@ export class UIRenderer {
         const draftButtonDisabled = draftComplete ? 'disabled' : '';
         const draftButtonClass = draftComplete ? 'draft-btn draft-btn-disabled' : 'draft-btn';
         return `
-            <div class="player-card" data-player-id="${player.player_id}">
+            <div class="player-card" data-player-id="${player.player_id}" onclick="window.showPlayerDetails('${player.player_id}')">
                 <div class="player-header">
                     <span class="player-name">${player.name}</span>
                     <div class="player-header-right">
@@ -148,7 +155,7 @@ export class UIRenderer {
                 </div>
                 <div class="player-team">${player.team}</div>
                 <div class="player-stats">${stats}</div>
-                <button class="${draftButtonClass}" onclick="window.draftPlayer('${player.player_id}')" ${draftButtonDisabled}>${draftComplete ? 'Draft Complete' : 'Draft'}</button>
+                <button class="${draftButtonClass}" onclick="event.stopPropagation(); window.draftPlayer('${player.player_id}')" ${draftButtonDisabled}>${draftComplete ? 'Draft Complete' : 'Draft'}</button>
             </div>
         `;
     }
@@ -426,6 +433,65 @@ export class UIRenderer {
         }
 
         return stats.map(s => `<span class="stat">${s}</span>`).join('');
+    }
+
+    renderPlayerModal(player: Player, onDraft: (player: Player) => void, draftComplete: boolean): void {
+        // Remove any existing modal
+        const existing = document.getElementById('player-detail-modal');
+        if (existing) existing.remove();
+
+        const isHitter = !['SP', 'RP', 'P'].includes(player.position);
+        const adpText = player.adp ? player.adp.toFixed(1) : 'N/A';
+
+        let statsHtml = '';
+        const fmt = (v: number | undefined | null, decimals = 0): string => {
+            if (v == null) return '—';
+            return decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
+        };
+
+        if (isHitter) {
+            statsHtml = `
+                <tr><td>Home Runs</td><td>${fmt(player.projected_home_runs)}</td></tr>
+                <tr><td>OBP</td><td>${fmt(player.projected_obp, 3)}</td></tr>
+                <tr><td>Runs</td><td>${fmt(player.projected_runs)}</td></tr>
+                <tr><td>RBI</td><td>${fmt(player.projected_rbi)}</td></tr>
+                <tr><td>Stolen Bases</td><td>${fmt(player.projected_stolen_bases)}</td></tr>`;
+        } else {
+            statsHtml = `
+                <tr><td>Wins</td><td>${fmt(player.projected_wins)}</td></tr>
+                <tr><td>Quality Starts</td><td>${fmt(player.projected_quality_starts, 1)}</td></tr>
+                <tr><td>Strikeouts</td><td>${fmt(player.projected_strikeouts)}</td></tr>
+                <tr><td>ERA</td><td>${fmt(player.projected_era, 2)}</td></tr>
+                <tr><td>WHIP</td><td>${fmt(player.projected_whip, 2)}</td></tr>
+                <tr><td>Saves</td><td>${fmt(player.projected_saves)}</td></tr>
+                <tr><td>Holds</td><td>${fmt(player.projected_holds)}</td></tr>`;
+        }
+
+        const draftBtnHtml = draftComplete
+            ? ''
+            : `<button class="draft-btn modal-draft-btn" onclick="event.stopPropagation(); window.closePlayerModal(); window.draftPlayer('${player.player_id}')">Draft ${player.name}</button>`;
+
+        const modal = document.createElement('div');
+        modal.id = 'player-detail-modal';
+        modal.className = 'player-modal-overlay';
+        modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        modal.innerHTML = `
+            <div class="player-modal">
+                <button class="player-modal-close" onclick="window.closePlayerModal()">×</button>
+                <div class="player-modal-header">
+                    <div>
+                        <h2>${player.name}</h2>
+                        <span class="player-modal-team">${player.team}</span>
+                    </div>
+                    <div class="player-modal-badges">
+                        <span class="player-position">${player.position}</span>
+                        <span class="adp-badge">ADP: ${adpText}</span>
+                    </div>
+                </div>
+                <table class="player-modal-stats">${statsHtml}</table>
+                ${draftBtnHtml}
+            </div>`;
+        document.body.appendChild(modal);
     }
 
     renderStandings(data: {

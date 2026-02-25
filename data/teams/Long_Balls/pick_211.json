@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "wilyer_abreu",
-    "name": "Wilyer Abreu",
-    "position": "OF",
-    "team": "BOS",
+    "player_id": "julio_urias",
+    "name": "Julio Urias",
+    "position": "P",
+    "team": "LAD",
     "age": null,
-    "projected_home_runs": 18.0,
-    "projected_obp": 0.335,
-    "projected_runs": 54.0,
-    "projected_rbi": 57.0,
-    "projected_stolen_bases": 7.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 223.3
+    "adp": null
   },
   "pick_info": {
     "pick_number": 211,
     "round": 17,
     "team_name": "Long Balls"
   },
-  "position": "OF"
+  "position": "P"
 }

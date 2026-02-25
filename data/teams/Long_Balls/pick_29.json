@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "ketel_marte",
-    "name": "Ketel Marte",
-    "position": "2B",
-    "team": "ARI",
+    "player_id": "logan_webb",
+    "name": "Logan Webb",
+    "position": "P",
+    "team": "SF",
     "age": null,
-    "projected_home_runs": 26.0,
-    "projected_obp": 0.365,
-    "projected_runs": 90.0,
-    "projected_rbi": 79.0,
-    "projected_stolen_bases": 6.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 12.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 186.93277777777774,
+    "projected_era": 3.32,
+    "projected_whip": 1.1800000000000002,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 21.0
+    "adp": 41.0
   },
   "pick_info": {
     "pick_number": 29,
     "round": 3,
     "team_name": "Long Balls"
   },
-  "position": "2B"
+  "position": "P"
 }

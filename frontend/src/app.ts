@@ -29,6 +29,19 @@ class App {
         (window as any).draftPlayer = (playerId: string) => this.draftPlayerById(playerId);
         (window as any).showTeamDetails = (teamName: string) => this.showTeamDetails(teamName);
         (window as any).revertPick = (pickNumber: number) => this.revertPick(pickNumber);
+        (window as any).showPlayerDetails = (playerId: string) => this.showPlayerDetails(playerId);
+        (window as any).closePlayerModal = () => this.closePlayerModal();
+    }
+
+    private showPlayerDetails(playerId: string): void {
+        const player = this.allPlayers.find(p => p.player_id === playerId);
+        if (!player) return;
+        this.renderer.renderPlayerModal(player, (p) => this.draftPlayer(p), this.currentDraft?.is_complete || false);
+    }
+
+    private closePlayerModal(): void {
+        const modal = document.getElementById('player-detail-modal');
+        if (modal) modal.remove();
     }
 
     private async draftPlayerById(playerId: string): Promise<void> {

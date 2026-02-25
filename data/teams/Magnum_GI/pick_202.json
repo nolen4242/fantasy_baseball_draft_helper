@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "daylen_lile",
-    "name": "Daylen Lile",
-    "position": "OF",
-    "team": "WAS",
+    "player_id": "braydon_fisher",
+    "name": "Braydon Fisher",
+    "position": "P",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 10.0,
-    "projected_obp": 0.325,
-    "projected_runs": 51.0,
-    "projected_rbi": 53.0,
-    "projected_stolen_bases": 12.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 67.44222222222221,
+    "projected_era": 4.05,
+    "projected_whip": 1.3755555555555554,
+    "projected_saves": 2.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 216.8
+    "adp": null
   },
   "pick_info": {
     "pick_number": 202,
     "round": 16,
     "team_name": "Magnum GI"
   },
-  "position": "OF"
+  "position": "P"
 }

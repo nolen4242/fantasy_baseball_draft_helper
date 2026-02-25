@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "shea_langeliers",
-    "name": "Shea Langeliers",
-    "position": "C",
-    "team": "ATH",
+    "player_id": "michael_busch",
+    "name": "Michael Busch",
+    "position": "1B",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 27.0,
-    "projected_obp": 0.311,
-    "projected_runs": 68.0,
-    "projected_rbi": 71.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": 24.0,
+    "projected_obp": 0.333,
+    "projected_runs": 72.0,
+    "projected_rbi": 65.0,
+    "projected_stolen_bases": 3.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 113.0
+    "adp": 112.3
   },
   "pick_info": {
     "pick_number": 99,
     "round": 8,
     "team_name": "Gashouse Gang"
   },
-  "position": "C"
+  "position": "1B"
 }

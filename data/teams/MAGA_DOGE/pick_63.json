@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jarren_duran",
-    "name": "Jarren Duran",
-    "position": "OF",
-    "team": "BOS",
+    "player_id": "bo_bichette",
+    "name": "Bo Bichette",
+    "position": "SS",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 16.0,
-    "projected_obp": 0.325,
-    "projected_runs": 82.0,
-    "projected_rbi": 64.0,
-    "projected_stolen_bases": 21.0,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.341,
+    "projected_runs": 75.0,
+    "projected_rbi": 70.0,
+    "projected_stolen_bases": 6.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 68.3
+    "adp": 74.0
   },
   "pick_info": {
     "pick_number": 63,
     "round": 5,
     "team_name": "MAGA DOGE"
   },
-  "position": "OF"
+  "position": "SS"
 }

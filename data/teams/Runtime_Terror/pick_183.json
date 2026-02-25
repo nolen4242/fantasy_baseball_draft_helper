@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "mark_vientos",
-    "name": "Mark Vientos",
-    "position": "3B",
-    "team": "NYM",
+    "player_id": "edward_cabrera",
+    "name": "Edward Cabrera",
+    "position": "P",
+    "team": "MIA",
     "age": null,
-    "projected_home_runs": 28.0,
-    "projected_obp": 0.311,
-    "projected_runs": 72.0,
-    "projected_rbi": 85.0,
-    "projected_stolen_bases": 1.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 16.900000000000002,
+    "projected_strikeouts": 149.5207777777778,
+    "projected_era": 4.03,
+    "projected_whip": 1.348888888888889,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 145.8
+    "adp": 184.0
   },
   "pick_info": {
     "pick_number": 183,
     "round": 15,
     "team_name": "Runtime Terror"
   },
-  "position": "3B"
+  "position": "P"
 }

@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jake_burger",
-    "name": "Jake Burger",
+    "player_id": "joey_gallo",
+    "name": "Joey Gallo",
     "position": "1B",
-    "team": "TEX",
+    "team": "CHW",
     "age": null,
-    "projected_home_runs": 24.0,
-    "projected_obp": 0.298,
-    "projected_runs": 59.0,
-    "projected_rbi": 69.0,
-    "projected_stolen_bases": 2.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 232.3
+    "adp": null
   },
   "pick_info": {
     "pick_number": 221,

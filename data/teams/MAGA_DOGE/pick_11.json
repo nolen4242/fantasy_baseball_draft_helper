@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "bobby_witt",
-    "name": "Bobby Witt",
-    "position": "SS",
-    "team": "KC",
+    "player_id": "tarik_skubal",
+    "name": "Tarik Skubal",
+    "position": "P",
+    "team": "DET",
     "age": null,
-    "projected_home_runs": 26.0,
-    "projected_obp": 0.349,
-    "projected_runs": 97.0,
-    "projected_rbi": 86.0,
-    "projected_stolen_bases": 31.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 14.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 241.69599999999997,
+    "projected_era": 2.81,
+    "projected_whip": 1.1622222222222223,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 5.3
+    "adp": 11.8
   },
   "pick_info": {
     "pick_number": 11,
     "round": 1,
     "team_name": "MAGA DOGE"
   },
-  "position": "SS"
+  "position": "P"
 }

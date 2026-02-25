@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "yordan_alvarez",
-    "name": "Yordan Alvarez",
-    "position": "DH",
-    "team": "HOU",
+    "player_id": "vladimir_guerrero_jr",
+    "name": "Vladimir Guerrero Jr.",
+    "position": "1B",
+    "team": "TOR",
     "age": null,
-    "projected_home_runs": 30.0,
-    "projected_obp": 0.396,
-    "projected_runs": 91.0,
-    "projected_rbi": 85.0,
-    "projected_stolen_bases": 4.0,
+    "projected_home_runs": 32.0,
+    "projected_obp": 0.385,
+    "projected_runs": 94.0,
+    "projected_rbi": 99.0,
+    "projected_stolen_bases": 5.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 24.0
+    "adp": 18.5
   },
   "pick_info": {
     "pick_number": 15,
     "round": 2,
     "team_name": "Dawg"
   },
-  "position": "DH"
+  "position": "1B"
 }

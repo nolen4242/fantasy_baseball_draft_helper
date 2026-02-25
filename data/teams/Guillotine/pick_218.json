@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "mitch_keller",
-    "name": "Mitch Keller",
+    "player_id": "shane_mcclanahan",
+    "name": "Shane McClanahan",
     "position": "P",
-    "team": "PIT",
+    "team": "TB",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -11,17 +11,17 @@
     "projected_rbi": null,
     "projected_stolen_bases": null,
     "projected_wins": 9.0,
-    "projected_quality_starts": 20.150000000000002,
-    "projected_strikeouts": 154.90844444444443,
-    "projected_era": 4.33,
-    "projected_whip": 1.248888888888889,
+    "projected_quality_starts": 15.600000000000001,
+    "projected_strikeouts": 149.19333333333333,
+    "projected_era": 3.58,
+    "projected_whip": 1.2377777777777779,
     "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 231.3
+    "adp": 216.0
   },
   "pick_info": {
     "pick_number": 218,

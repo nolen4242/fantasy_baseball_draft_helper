@@ -1,9 +1,9 @@
 {
   "player": {
-    "player_id": "pablo_lopez",
-    "name": "Pablo Lopez",
+    "player_id": "logan_gilbert",
+    "name": "Logan Gilbert",
     "position": "P",
-    "team": "MIN",
+    "team": "SEA",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
@@ -11,17 +11,17 @@
     "projected_rbi": null,
     "projected_stolen_bases": null,
     "projected_wins": 11.0,
-    "projected_quality_starts": 20.150000000000002,
-    "projected_strikeouts": 181.19111111111113,
-    "projected_era": 3.8,
-    "projected_whip": 1.2022222222222223,
+    "projected_quality_starts": 18.85,
+    "projected_strikeouts": 181.4181111111111,
+    "projected_era": 3.39,
+    "projected_whip": 1.1777777777777778,
     "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 89.3
+    "adp": 53.3
   },
   "pick_info": {
     "pick_number": 78,

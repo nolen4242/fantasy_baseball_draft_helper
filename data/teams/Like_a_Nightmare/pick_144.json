@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "andy_pages",
-    "name": "Andy Pages",
-    "position": "OF",
-    "team": "LAD",
+    "player_id": "matthew_boyd",
+    "name": "Matthew Boyd",
+    "position": "P",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 21.0,
-    "projected_obp": 0.307,
-    "projected_runs": 62.0,
-    "projected_rbi": 68.0,
-    "projected_stolen_bases": 9.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 164.58655555555555,
+    "projected_era": 3.93,
+    "projected_whip": 1.2455555555555557,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 145.8
+    "adp": 153.0
   },
   "pick_info": {
     "pick_number": 144,
     "round": 12,
     "team_name": "Like a Nightmare"
   },
-  "position": "OF"
+  "position": "P"
 }

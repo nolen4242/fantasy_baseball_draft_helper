@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "kyle_schwarber",
-    "name": "Kyle Schwarber",
-    "position": "DH",
-    "team": "PHI",
+    "player_id": "ketel_marte",
+    "name": "Ketel Marte",
+    "position": "2B",
+    "team": "ARI",
     "age": null,
-    "projected_home_runs": 38.0,
-    "projected_obp": 0.351,
-    "projected_runs": 96.0,
-    "projected_rbi": 88.0,
-    "projected_stolen_bases": 7.0,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.365,
+    "projected_runs": 90.0,
+    "projected_rbi": 79.0,
+    "projected_stolen_bases": 6.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 20.0
+    "adp": 21.0
   },
   "pick_info": {
     "pick_number": 12,
     "round": 1,
     "team_name": "Big Sticks"
   },
-  "position": "DH"
+  "position": "2B"
 }

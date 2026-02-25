@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "bryce_miller",
-    "name": "Bryce Miller",
-    "position": "P",
-    "team": "SEA",
+    "player_id": "david_peralta",
+    "name": "David Peralta",
+    "position": "OF",
+    "team": "SD",
     "age": null,
     "projected_home_runs": null,
     "projected_obp": null,
     "projected_runs": null,
     "projected_rbi": null,
     "projected_stolen_bases": null,
-    "projected_wins": 8.0,
-    "projected_quality_starts": 16.900000000000002,
-    "projected_strikeouts": 127.19999999999999,
-    "projected_era": 4.19,
-    "projected_whip": 1.2466666666666668,
-    "projected_saves": 0.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 215.0
+    "adp": null
   },
   "pick_info": {
     "pick_number": 206,
     "round": 16,
     "team_name": "Long Balls"
   },
-  "position": "P"
+  "position": "OF"
 }

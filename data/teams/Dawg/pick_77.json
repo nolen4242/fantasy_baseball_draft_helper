@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "william_contreras",
-    "name": "William Contreras",
-    "position": "C",
-    "team": "MIL",
+    "player_id": "jeremy_pena",
+    "name": "Jeremy Pena",
+    "position": "SS",
+    "team": "HOU",
     "age": null,
-    "projected_home_runs": 20.0,
-    "projected_obp": 0.359,
-    "projected_runs": 75.0,
-    "projected_rbi": 75.0,
-    "projected_stolen_bases": 6.0,
+    "projected_home_runs": 18.0,
+    "projected_obp": 0.326,
+    "projected_runs": 79.0,
+    "projected_rbi": 64.0,
+    "projected_stolen_bases": 16.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 71.0
+    "adp": 90.3
   },
   "pick_info": {
     "pick_number": 77,
     "round": 6,
     "team_name": "Dawg"
   },
-  "position": "C"
+  "position": "SS"
 }

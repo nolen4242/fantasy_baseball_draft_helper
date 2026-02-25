@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "wyatt_langford",
-    "name": "Wyatt Langford",
-    "position": "OF",
-    "team": "TEX",
+    "player_id": "josh_naylor",
+    "name": "Josh Naylor",
+    "position": "1B",
+    "team": "SEA",
     "age": null,
     "projected_home_runs": 22.0,
-    "projected_obp": 0.349,
-    "projected_runs": 78.0,
-    "projected_rbi": 68.0,
-    "projected_stolen_bases": 19.0,
+    "projected_obp": 0.33,
+    "projected_runs": 71.0,
+    "projected_rbi": 80.0,
+    "projected_stolen_bases": 15.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 51.5
+    "adp": 57.3
   },
   "pick_info": {
     "pick_number": 43,
     "round": 4,
     "team_name": "Simba's Dublin Green Sox"
   },
-  "position": "OF"
+  "position": "1B"
 }

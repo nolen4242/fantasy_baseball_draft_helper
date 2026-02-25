@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "brenton_doyle",
-    "name": "Brenton Doyle",
-    "position": "OF",
-    "team": "COL",
+    "player_id": "daniel_palencia",
+    "name": "Daniel Palencia",
+    "position": "P",
+    "team": "CHC",
     "age": null,
-    "projected_home_runs": 16.0,
-    "projected_obp": 0.296,
-    "projected_runs": 56.0,
-    "projected_rbi": 58.0,
-    "projected_stolen_bases": 17.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 74.89111111111112,
+    "projected_era": 3.61,
+    "projected_whip": 1.3544444444444443,
+    "projected_saves": 32.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 201.3
+    "adp": 192.0
   },
   "pick_info": {
     "pick_number": 187,
     "round": 15,
     "team_name": "Young Guns"
   },
-  "position": "OF"
+  "position": "P"
 }

@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "emmet_sheehan",
-    "name": "Emmet Sheehan",
-    "position": "P",
-    "team": "LAD",
+    "player_id": "lawrence_butler",
+    "name": "Lawrence Butler",
+    "position": "OF",
+    "team": "ATH",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 7.0,
-    "projected_quality_starts": 10.4,
-    "projected_strikeouts": 131.22777777777776,
-    "projected_era": 3.85,
-    "projected_whip": 1.2888888888888888,
-    "projected_saves": 0.0,
+    "projected_home_runs": 19.0,
+    "projected_obp": 0.313,
+    "projected_runs": 60.0,
+    "projected_rbi": 57.0,
+    "projected_stolen_bases": 16.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 167.3
+    "adp": 158.0
   },
   "pick_info": {
     "pick_number": 167,
     "round": 13,
     "team_name": "MAGA DOGE"
   },
-  "position": "P"
+  "position": "OF"
 }

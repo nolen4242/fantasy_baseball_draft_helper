@@ -1,14 +1,14 @@
 {
   "player": {
-    "player_id": "alejandro_kirk",
-    "name": "Alejandro Kirk",
-    "position": "C",
-    "team": "TOR",
+    "player_id": "isaac_paredes",
+    "name": "Isaac Paredes",
+    "position": "3B",
+    "team": "HOU",
     "age": null,
-    "projected_home_runs": 14.0,
-    "projected_obp": 0.354,
-    "projected_runs": 54.0,
-    "projected_rbi": 56.0,
+    "projected_home_runs": 18.0,
+    "projected_obp": 0.348,
+    "projected_runs": 53.0,
+    "projected_rbi": 54.0,
     "projected_stolen_bases": 1.0,
     "projected_wins": null,
     "projected_quality_starts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 193.0
+    "adp": 197.3
   },
   "pick_info": {
     "pick_number": 190,
     "round": 15,
     "team_name": "Trex"
   },
-  "position": "C"
+  "position": "3B"
 }

@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "jorge_polanco",
-    "name": "Jorge Polanco",
-    "position": "2B",
-    "team": "SEA",
+    "player_id": "lenyn_sosa_1b,2b",
+    "name": "Lenyn Sosa 1B,2B",
+    "position": "OF",
+    "team": "CHW",
     "age": null,
-    "projected_home_runs": 19.0,
-    "projected_obp": 0.329,
-    "projected_runs": 58.0,
-    "projected_rbi": 61.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 234.8
+    "adp": null
   },
   "pick_info": {
     "pick_number": 224,
     "round": 18,
     "team_name": "MAGA DOGE"
   },
-  "position": "2B"
+  "position": "OF"
 }

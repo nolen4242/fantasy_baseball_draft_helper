@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "george_springer",
-    "name": "George Springer",
-    "position": "OF",
-    "team": "TOR",
+    "player_id": "trea_turner",
+    "name": "Trea Turner",
+    "position": "SS",
+    "team": "PHI",
     "age": null,
-    "projected_home_runs": 26.0,
-    "projected_obp": 0.342,
-    "projected_runs": 86.0,
-    "projected_rbi": 73.0,
-    "projected_stolen_bases": 13.0,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.332,
+    "projected_runs": 76.0,
+    "projected_rbi": 63.0,
+    "projected_stolen_bases": 24.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 69.8
+    "adp": 48.5
   },
   "pick_info": {
     "pick_number": 55,
     "round": 5,
     "team_name": "Long Balls"
   },
-  "position": "OF"
+  "position": "SS"
 }

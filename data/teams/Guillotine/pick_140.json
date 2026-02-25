@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "ryan_helsley",
-    "name": "Ryan Helsley",
-    "position": "P",
+    "player_id": "jackson_holliday",
+    "name": "Jackson Holliday",
+    "position": "2B",
     "team": "BAL",
     "age": null,
-    "projected_home_runs": null,
-    "projected_obp": null,
-    "projected_runs": null,
-    "projected_rbi": null,
-    "projected_stolen_bases": null,
-    "projected_wins": 3.0,
-    "projected_quality_starts": 0.0,
-    "projected_strikeouts": 75.66222222222223,
-    "projected_era": 3.46,
-    "projected_whip": 1.328888888888889,
-    "projected_saves": 25.0,
+    "projected_home_runs": 14.0,
+    "projected_obp": 0.334,
+    "projected_runs": 65.0,
+    "projected_rbi": 47.0,
+    "projected_stolen_bases": 14.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 155.0
+    "adp": 145.0
   },
   "pick_info": {
     "pick_number": 140,
     "round": 11,
     "team_name": "Guillotine"
   },
-  "position": "P"
+  "position": "2B"
 }

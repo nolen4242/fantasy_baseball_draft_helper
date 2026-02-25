@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "andres_gimenez",
-    "name": "Andres Gimenez",
-    "position": "2B",
-    "team": "TOR",
+    "player_id": "albert_suarez",
+    "name": "Albert Suarez",
+    "position": "P",
+    "team": "BAL",
     "age": null,
-    "projected_home_runs": 12.0,
-    "projected_obp": 0.311,
-    "projected_runs": 60.0,
-    "projected_rbi": 55.0,
-    "projected_stolen_bases": 18.0,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 243.0
+    "adp": null
   },
   "pick_info": {
     "pick_number": 229,
     "round": 18,
     "team_name": "Gashouse Gang"
   },
-  "position": "2B"
+  "position": "P"
 }

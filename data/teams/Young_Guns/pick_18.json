@@ -1,32 +1,32 @@
 {
   "player": {
-    "player_id": "cal_raleigh",
-    "name": "Cal Raleigh",
-    "position": "C",
-    "team": "SEA",
+    "player_id": "paul_skenes",
+    "name": "Paul Skenes",
+    "position": "P",
+    "team": "PIT",
     "age": null,
-    "projected_home_runs": 38.0,
-    "projected_obp": 0.331,
-    "projected_runs": 88.0,
-    "projected_rbi": 91.0,
-    "projected_stolen_bases": 8.0,
-    "projected_wins": null,
-    "projected_quality_starts": null,
-    "projected_strikeouts": null,
-    "projected_era": null,
-    "projected_whip": null,
-    "projected_saves": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 13.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 236.89555555555555,
+    "projected_era": 2.91,
+    "projected_whip": 1.21,
+    "projected_saves": 0.0,
     "projected_holds": null,
     "drafted": false,
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 21.8
+    "adp": 14.5
   },
   "pick_info": {
     "pick_number": 18,
     "round": 2,
     "team_name": "Young Guns"
   },
-  "position": "C"
+  "position": "P"
 }

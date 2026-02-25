@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "chandler_simpson",
-    "name": "Chandler Simpson",
-    "position": "OF",
-    "team": "TB",
+    "player_id": "adley_rutschman",
+    "name": "Adley Rutschman",
+    "position": "C",
+    "team": "BAL",
     "age": null,
-    "projected_home_runs": 2.0,
-    "projected_obp": 0.329,
-    "projected_runs": 51.0,
-    "projected_rbi": 30.0,
-    "projected_stolen_bases": 39.0,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.342,
+    "projected_runs": 64.0,
+    "projected_rbi": 61.0,
+    "projected_stolen_bases": 1.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,12 +21,12 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 146.0
+    "adp": 147.0
   },
   "pick_info": {
     "pick_number": 132,
     "round": 11,
     "team_name": "Dawg"
   },
-  "position": "OF"
+  "position": "C"
 }

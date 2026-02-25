@@ -1,15 +1,15 @@
 {
   "player": {
-    "player_id": "junior_caminero",
-    "name": "Junior Caminero",
+    "player_id": "jose_ramirez",
+    "name": "Jose Ramirez",
     "position": "3B",
-    "team": "TB",
+    "team": "CLE",
     "age": null,
-    "projected_home_runs": 34.0,
-    "projected_obp": 0.33,
-    "projected_runs": 73.0,
-    "projected_rbi": 92.0,
-    "projected_stolen_bases": 5.0,
+    "projected_home_runs": 27.0,
+    "projected_obp": 0.348,
+    "projected_runs": 82.0,
+    "projected_rbi": 87.0,
+    "projected_stolen_bases": 30.0,
     "projected_wins": null,
     "projected_quality_starts": null,
     "projected_strikeouts": null,
@@ -21,7 +21,7 @@
     "drafted_by_team": null,
     "draft_round": null,
     "draft_pick": null,
-    "adp": 19.0
+    "adp": 8.3
   },
   "pick_info": {
     "pick_number": 20,
