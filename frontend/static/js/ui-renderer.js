@@ -166,6 +166,18 @@ export class UIRenderer {
             return matchesSearch && matchesPosition;
         });
         container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete, categoryNeeds, compareSelection)).join('');
+        // Attach click-to-detail listeners (more reliable than inline onclick)
+        container.querySelectorAll('.player-card').forEach(card => {
+            const pid = card.dataset.playerId;
+            if (pid) {
+                card.addEventListener('click', (e) => {
+                    const target = e.target;
+                    if (target.closest('.draft-btn') || target.closest('.compare-check'))
+                        return;
+                    window.showPlayerDetails(pid);
+                });
+            }
+        });
     }
     renderPlayerCard(player, onDraft, draftComplete = false, categoryNeeds = null, compareSelection = []) {
         const stats = this.getPlayerStats(player);
@@ -176,7 +188,7 @@ export class UIRenderer {
         const catDots = this.renderCategoryDots(player, categoryNeeds);
         const isChecked = compareSelection.includes(player.player_id) ? 'checked' : '';
         return `
-            <div class="player-card" data-player-id="${player.player_id}" onclick="window.showPlayerDetails('${player.player_id}')">
+            <div class="player-card" data-player-id="${player.player_id}">
                 <div class="player-header">
                     <span class="player-name">${player.name}</span>
                     <div class="player-header-right">

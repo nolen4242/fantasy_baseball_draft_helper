@@ -177,6 +177,18 @@ export class UIRenderer {
         });
 
         container.innerHTML = filtered.map(player => this.renderPlayerCard(player, onDraft, draftComplete, categoryNeeds, compareSelection)).join('');
+
+        // Attach click-to-detail listeners (more reliable than inline onclick)
+        container.querySelectorAll('.player-card').forEach(card => {
+            const pid = (card as HTMLElement).dataset.playerId;
+            if (pid) {
+                card.addEventListener('click', (e) => {
+                    const target = e.target as HTMLElement;
+                    if (target.closest('.draft-btn') || target.closest('.compare-check')) return;
+                    (window as any).showPlayerDetails(pid);
+                });
+            }
+        });
     }
 
     private renderPlayerCard(player: Player, onDraft: (player: Player) => void, draftComplete: boolean = false, categoryNeeds: CategoryNeed[] | null = null, compareSelection: string[] = []): string {
@@ -188,7 +200,7 @@ export class UIRenderer {
         const catDots = this.renderCategoryDots(player, categoryNeeds);
         const isChecked = compareSelection.includes(player.player_id) ? 'checked' : '';
         return `
-            <div class="player-card" data-player-id="${player.player_id}" onclick="window.showPlayerDetails('${player.player_id}')">
+            <div class="player-card" data-player-id="${player.player_id}">
                 <div class="player-header">
                     <span class="player-name">${player.name}</span>
                     <div class="player-header-right">
