@@ -639,64 +639,6 @@ export class UIRenderer {
         container.innerHTML = html;
     }
 
-    // ── Feature 1: Player Detail Modal ──────────────
-    renderPlayerModal(player: Player, onDraft: () => void, draftComplete: boolean): void {
-        let existing = document.getElementById('player-detail-modal');
-        if (existing) existing.remove();
-
-        const isHitter = !['SP', 'RP', 'P'].includes(player.position);
-        const adpDisplay = player.adp ? `<span class="adp-badge">ADP: ${player.adp.toFixed(1)}</span>` : '';
-        const eligBadges = this.renderEligibilityBadges(player.position);
-        let statsHtml = '';
-        if (isHitter) {
-            statsHtml = `
-                <tr><td>HR</td><td>${player.projected_home_runs ?? '-'}</td></tr>
-                <tr><td>OBP</td><td>${player.projected_obp != null ? player.projected_obp.toFixed(3) : '-'}</td></tr>
-                <tr><td>R</td><td>${player.projected_runs ?? '-'}</td></tr>
-                <tr><td>RBI</td><td>${player.projected_rbi ?? '-'}</td></tr>
-                <tr><td>SB</td><td>${player.projected_stolen_bases ?? '-'}</td></tr>`;
-        } else {
-            statsHtml = `
-                <tr><td>W</td><td>${player.projected_wins ?? '-'}</td></tr>
-                <tr><td>QS</td><td>${player.projected_quality_starts ?? '-'}</td></tr>
-                <tr><td>K</td><td>${player.projected_strikeouts ?? '-'}</td></tr>
-                <tr><td>ERA</td><td>${player.projected_era != null ? player.projected_era.toFixed(2) : '-'}</td></tr>
-                <tr><td>WHIP</td><td>${player.projected_whip != null ? player.projected_whip.toFixed(2) : '-'}</td></tr>
-                <tr><td>SV</td><td>${player.projected_saves ?? '-'}</td></tr>
-                <tr><td>HD</td><td>${player.projected_holds ?? '-'}</td></tr>`;
-        }
-
-        const draftBtnClass = draftComplete ? 'btn-primary draft-btn-disabled' : 'btn-primary';
-        const draftBtnDisabled = draftComplete ? 'disabled' : '';
-
-        const modal = document.createElement('div');
-        modal.id = 'player-detail-modal';
-        modal.className = 'modal';
-        modal.onclick = (e) => { if (e.target === modal) (window as any).closePlayerModal(); };
-        modal.innerHTML = `
-            <div class="modal-content player-modal-content">
-                <button class="modal-close-btn" onclick="window.closePlayerModal()">×</button>
-                <div class="player-modal-header">
-                    <h2>${player.name}</h2>
-                    <div class="player-modal-meta">
-                        <span class="player-position">${player.position}</span>
-                        ${adpDisplay}
-                        <span class="player-modal-team">${player.team}</span>
-                    </div>
-                    ${eligBadges}
-                </div>
-                <table class="player-modal-stats">
-                    <thead><tr><th>Stat</th><th>Projected</th></tr></thead>
-                    <tbody>${statsHtml}</tbody>
-                </table>
-                <button class="${draftBtnClass}" onclick="window.draftPlayer('${player.player_id}'); window.closePlayerModal();" ${draftBtnDisabled}>
-                    ${draftComplete ? 'Draft Complete' : `Draft ${player.name}`}
-                </button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
-
     // ── Feature 4: Comparison Modal ─────────────────
     renderCompareModal(players: Player[]): void {
         let existing = document.getElementById('compare-modal');
