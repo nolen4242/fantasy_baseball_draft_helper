@@ -1,0 +1,241 @@
+# Fantasy Baseball Draft Helper - Cursor Rules
+
+## Project Overview
+
+A **Fantasy Baseball Draft Helper** for the **Bob Uecker Imaginary Baseball League**. AI-powered draft recommendations using position scarcity, category balance, ADP analysis, and opponent modeling. Includes leaderboard, draft board, trade analyzer, Monte Carlo win probability, and category-by-category rankings.
+
+## League Configuration
+
+- **Teams**: 13 teams, 21 active players per team
+- **Scoring**: Rotisserie (roto) — highest total points wins
+- **Points per category**: 13 (1st) down to 1 (13th), ties split
+- **Position requirements**: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
+- **Batting categories**: HR, OBP, R, RBI, SB
+- **Pitching categories**: ERA, K, SHOLDS (Saves + Holds×0.5), WHIP, WQS (Wins + Quality Starts)
+- **Draft order**: Rounds 1-5 fixed order (Runtime Terror picks 1st), Round 6+ snake
+
+## Tech Stack
+
+### Backend (Python 3.12)
+- **Framework**: Flask 3.x with flask-cors
+- **Data Processing**: pandas, numpy
+- **Machine Learning**: scikit-learn
+- **Data Models**: Python dataclasses
+- **Testing**: pytest
+
+### Frontend
+- **Language**: TypeScript (compiled to ES2020 JavaScript)
+- **Framework**: Vanilla JS (no framework dependencies)
+- **Build**: `npm run build` (runs `tsc`)
+- **Styling**: CSS with custom properties, CSS Grid/Flexbox
+- **Typography**: Google Fonts — Barlow Condensed (headings) + Barlow (body)
+- **Color scheme**: Deep Space Blue (#173753), Turf Green (#157145), Banana Cream (#FDE74C), Air Force Blue (#6A8EAE), Jungle Green (#57A773)
+
+### Data Storage
+- **Player data**: CSV files in `data/batters/` and `data/pitchers/`
+- **ADP data**: `data/adp.csv`
+- **Team rosters**: JSON files in `data/teams/{TeamName}/`
+- **Draft states**: Auto-saved JSON in `data/teams/`
+
+## Directory Structure
+
+```
+/workspace
+├── src/                           # Python backend source
+│   ├── api/app.py                # Flask app with all API endpoints
+│   ├── models/
+│   │   ├── player.py             # Player dataclass
+│   │   └── draft.py              # DraftState & DraftPick dataclasses
+│   └── services/
+│       ├── data_loader.py        # CSV loading
+│       ├── draft_service.py      # Draft state management
+│       ├── draft_order.py        # Snake draft order (13 teams)
+│       ├── recommendation_engine.py  # AI recommendation scoring
+│       ├── standings_calculator.py   # Roto standings with tie handling
+│       ├── master_player_dict.py # Merged player data (CBS + Steamer + ADP)
+│       ├── team_service.py       # Position-based roster management
+│       ├── ml_trainer.py         # ML model training
+│       ├── draft_simulator.py    # Draft simulation for training data
+│       └── cleanup_service.py    # Test data cleanup
+├── frontend/
+│   ├── src/                      # TypeScript source
+│   │   ├── app.ts               # Main app, event wiring, refresh logic
+│   │   ├── api.ts               # API client (all fetch calls)
+│   │   ├── ui-renderer.ts       # All HTML rendering methods
+│   │   ├── types.ts             # TypeScript interfaces
+│   │   └── draft-manager.ts     # Draft management helpers
+│   ├── templates/index.html     # Main HTML (Jinja2)
+│   └── static/
+│       ├── css/style.css        # All styles (CSS variables)
+│       └── js/                  # Compiled JS output
+├── data/
+│   ├── adp.csv                  # Average Draft Position
+│   ├── batters/                 # CBS + Steamer batter CSVs + master JSON
+│   ├── pitchers/                # CBS + Steamer pitcher CSVs + master JSON
+│   └── teams/                   # Per-team roster JSONs + draft state files
+├── scripts/
+│   ├── run_drafts.py            # Batch draft simulation (10+ drafts)
+│   ├── add_positions.py         # Utility: add positions to CSV
+│   └── cleanup_test_data.py     # Utility: clean test data
+├── tests/
+│   ├── conftest.py              # pytest fixtures (auto-cleanup)
+│   └── __init__.py
+├── requirements.txt             # Python deps
+├── package.json                 # Node deps (TypeScript only)
+├── tsconfig.json                # TypeScript config
+└── run.py                       # Entry point (port 5001)
+```
+
+## API Endpoints
+
+### Core Draft
+- `POST /api/players/load-cbs` — Load CBS player data
+- `POST /api/players/load-steamer` — Load and merge Steamer projections
+- `GET /api/players` — All players sorted by ADP
+- `POST /api/draft/create` — Create new draft
+- `GET /api/draft/current` — Current draft state
+- `POST /api/draft/pick` — Make a draft pick
+- `POST /api/draft/revert` — Undo a single pick
+- `POST /api/draft/restart` — Clear all picks and rosters
+- `GET /api/draft/available` — Available (undrafted) players
+- `GET /api/draft/my-team` — My team roster with position structure
+- `GET /api/recommendations` — AI recommendations (top 10)
+
+### Auto-Draft
+- `POST /api/draft/auto-draft/toggle` — Enable/disable auto-draft
+- `GET /api/draft/auto-draft/status` — Auto-draft on/off state
+- `POST /api/draft/auto-draft/pick` — Make auto-draft pick for a team
+
+### Analytics & Features
+- `GET /api/standings` — Roto standings (batting/pitching/total points, per-category points)
+- `GET /api/draft/board` — Draft board (all picks by round × team)
+- `GET /api/player/<id>/eligible-positions` — Eligible roster slots
+- `GET /api/team/category-needs` — Category need analysis (critical/moderate/good/strong)
+- `GET/POST /api/draft/strategy` — Draft strategy preset
+- `POST /api/draft/batch-revert` — Undo all picks back to a specific pick number
+- `POST /api/trade/analyze` — Trade impact analysis (before/after standings)
+- `GET /api/draft/win-probability` — Monte Carlo win probability simulation
+- `GET /api/draft/recap` — Draft summary with A-F grades
+- `POST /api/ml/train` — Train ML models on simulated data
+
+## Recommendation Engine
+
+The AI recommendation system (`src/services/recommendation_engine.py`) scores each available player with 8 components:
+
+1. **Position Scarcity** (0.2 hitters / 0.1 pitchers) — How rare this position is among available players
+2. **Team Needs** (0.25 / 0.15) — Unfilled roster slots, hitter/pitcher balance, MI/CI/U eligibility
+3. **Projected Value** (0.2) — Stat-based value (HR×2.5, OBP×500, SB×5.0, SV×5.0, ERA×25, WHIP×50, K×0.4, W/QS×3.0)
+4. **Relative Advantage** (0.2 / 0.1) — Category improvement vs opponents, blocking value, opponent strategy adaptation
+5. **ADP Value** (dominant) — Heavy penalties for reaching; bonuses for value picks. Stricter early, looser late.
+6. **Pitcher ADP Penalty** — Extra penalty for pitchers drafted 5+ picks ahead of ADP
+7. **Pitcher Count Cap** — Penalties at 7+ and 9+ pitchers
+7b. **Closer Need Bonus** — +60/+40/+20 for 1st/2nd/3rd closer after picks 80/130/180
+8. **Category Balance** — +30 bonus per weak category (rank 9+) improved by this player
+
+### Auto-Draft (Other Teams)
+- Get top 10 AI recommendations for the team
+- Filter available players within ±15 picks of current ADP
+- AI recommendations get 2× weight in pool, others 1×
+- Random selection from weighted pool
+
+### Runtime Terror Advantage
+- Always picks the #1 scored player (deterministic)
+- Other teams pick randomly from weighted pool (probabilistic)
+- RT picks 1st in rounds 1-5 (first pick advantage)
+- Result: ~90% win rate in simulations
+
+## Standings Calculator
+
+File: `src/services/standings_calculator.py`
+
+- Real roto scoring: 13 pts (1st) down to 1 pt (13th) per category
+- **Tie handling**: Tied teams split points equally
+- **Zero handling**: When all teams tied at same value (e.g., 0), award 0 points (prevents phantom points)
+- **Rate stats**: OBP/ERA/WHIP averaged only over players WITH data
+- **Player deduplication**: `_build_team_rosters_players()` helper prevents double-counting (e.g., Ohtani as both DH and P)
+- Returns: category_totals, category_points, batting_points, pitching_points, total_points, final_rankings
+
+## Frontend Features
+
+### Main Panels
+- **Available Players** — Searchable/filterable player cards with eligibility badges, category need dots, compare checkboxes
+- **My Team** — Position-based roster with drag-and-drop
+- **Recent Picks** — Last 20 picks with single-revert (×) and batch-revert ("Revert to here")
+- **Other Teams** — Team cards with player counts
+
+### Status Bar
+- Current pick / Next up / Recommended player (clickable for details)
+- Win Probability display (Monte Carlo %)
+- Strategy dropdown (Balanced / Stars & Scrubs / Pitching Heavy / Hitting Heavy)
+- Auto-Draft toggle
+- Restart Draft button
+
+### Bottom Tabs
+- **Leaderboard** — Full roto standings (Rank, Team, Bat, Pitch, Total, Behind + per-category points)
+- **Draft Board** — Round × Team grid of all picks
+- **Category Rankings** — Dropdown to view any category (Team, value, Pts, Dif)
+- **Trade** — Trade analyzer with team selection and before/after impact
+- **Recap** — Draft grades (A-F), best picks, biggest reaches, clipboard export
+
+### Modals
+- **Player Detail** — Click any card or recommended player; shows full stats + Draft button
+- **Player Comparison** — Select 2-3 players via checkboxes; side-by-side stat comparison
+
+## Player Model
+
+```python
+@dataclass
+class Player:
+    player_id: str
+    name: str
+    position: str  # "C", "1B", "2B", "3B", "SS", "OF", "DH", "SP", "RP", "P"
+    team: str
+    age: Optional[int]
+    # Batting: projected_home_runs, projected_obp, projected_runs, projected_rbi, projected_stolen_bases
+    # Pitching: projected_wins, projected_quality_starts, projected_strikeouts, projected_era, projected_whip, projected_saves, projected_holds
+    adp: Optional[float]  # Average Draft Position
+    drafted: bool
+    drafted_by_team: Optional[str]
+```
+
+## Running the Application
+
+```bash
+pip install -r requirements.txt   # Python deps
+npm install                        # TypeScript compiler
+npm run build                      # Compile TS → JS
+python run.py                      # Start on http://localhost:5001
+```
+
+## Draft Simulation
+
+```bash
+python scripts/run_drafts.py 10    # Run 10 full auto-drafts, compare results
+```
+
+## Common Tasks
+
+### Modifying Recommendations
+1. Edit `src/services/recommendation_engine.py`
+2. Adjust weights in `_calculate_player_value()`
+3. Test with `python scripts/run_drafts.py 10`
+
+### Adding an API Endpoint
+1. Add route to `src/api/app.py` (before `if __name__` line)
+2. Use `_build_team_rosters_players()` for roster lookups (handles dedup)
+3. Add API method in `frontend/src/api.ts`
+4. Add UI in `frontend/src/ui-renderer.ts`
+5. Run `npm run build`
+
+### Frontend Changes
+1. Edit TypeScript in `frontend/src/`
+2. Run `npm run build`
+3. Flask auto-reloads templates; refresh browser for JS/CSS
+
+## Key Gotchas
+
+- **Ohtani dedup**: Shohei Ohtani exists as both DH and P in the data with the same `player_id`. Always use `_build_team_rosters_players()` for roster lookups.
+- **Standings zeros**: When all teams are tied at 0 in a category, 0 points are awarded (not the tie-split average).
+- **Port 5001**: App runs on 5001, not the Flask default 5000.
+- **Holds data**: The holds column is empty for all players — SHOLDS is effectively just Saves.
+- **Auto-draft scope**: Auto-draft only picks for OTHER teams, never the user's team.
