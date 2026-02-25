@@ -295,6 +295,23 @@ class RecommendationEngine:
                     score -= 40
                     reasoning_parts.append("Have 7+ pitchers")
         
+        # 7b. Closer need: ensure RT drafts 2-3 closers for SHOLDS category
+        player_saves = player.projected_saves or 0
+        if player_saves >= 10:
+            current_pick = len(draft_state.picks) + 1
+            closers_on_team = sum(
+                1 for p in my_team if (p.projected_saves or 0) >= 10
+            )
+            if closers_on_team == 0 and current_pick >= 80:
+                score += 60
+                reasoning_parts.append(f"Need closer for SHOLDS ({int(player_saves)} SV)")
+            elif closers_on_team == 1 and current_pick >= 130:
+                score += 40
+                reasoning_parts.append(f"2nd closer for SHOLDS ({int(player_saves)} SV)")
+            elif closers_on_team == 2 and current_pick >= 180:
+                score += 20
+                reasoning_parts.append(f"3rd closer for SHOLDS ({int(player_saves)} SV)")
+
         # 8. Category balance bonus: reward picks that improve weak categories
         if all_team_rosters and len(my_team) >= 5:
             my_totals = self.standings_calculator._calculate_team_totals(my_team)
