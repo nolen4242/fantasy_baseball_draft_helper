@@ -106,6 +106,14 @@ class StandingsCalculator:
             for team, totals in category_totals.items()
         }
 
+        # If every team has the same value (e.g. all 0), award 0 points
+        # instead of splitting — avoids phantom points before picks are made
+        unique_vals = set(team_values.values())
+        if len(unique_vals) <= 1:
+            points = {t: 0.0 for t in team_values}
+            sorted_teams = list(team_values.keys())
+            return points, sorted_teams
+
         # Sort: for lower-is-better, ascending; otherwise descending
         sorted_teams = sorted(
             team_values.keys(),

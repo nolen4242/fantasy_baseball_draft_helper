@@ -35,6 +35,22 @@ all_players: list[Player] = []
 # Initialize recommendation engine (will be updated when players are loaded)
 recommendation_engine = RecommendationEngine(draft_service, all_players)
 
+
+def _build_team_rosters_players() -> dict:
+    """Build {team_name: [Player]} from current draft, deduplicating by player_id."""
+    result = {}
+    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
+        seen = set()
+        players = []
+        for pid in player_ids:
+            if pid not in seen:
+                seen.add(pid)
+                player = next((p for p in all_players if p.player_id == pid), None)
+                if player:
+                    players.append(player)
+        result[team_name] = players
+    return result
+
 # Draft strategy setting
 draft_strategy = 'balanced'
 
@@ -816,10 +832,7 @@ def get_standings():
     from src.services.standings_calculator import StandingsCalculator
     calc = StandingsCalculator()
 
-    team_rosters_players = {}
-    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
-        players = [p for p in all_players if p.player_id in player_ids]
-        team_rosters_players[team_name] = players
+    team_rosters_players = _build_team_rosters_players()
 
     standings = calc.calculate_standings(team_rosters_players)
 
@@ -895,10 +908,7 @@ def get_category_needs():
     from src.services.standings_calculator import StandingsCalculator
     calc = StandingsCalculator()
 
-    team_rosters_players = {}
-    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
-        players = [p for p in all_players if p.player_id in player_ids]
-        team_rosters_players[team_name] = players
+    team_rosters_players = _build_team_rosters_players()
 
     standings = calc.calculate_standings(team_rosters_players)
 
@@ -1015,10 +1025,7 @@ def analyze_trade():
     from src.services.standings_calculator import StandingsCalculator
     calc = StandingsCalculator()
 
-    team_rosters_players = {}
-    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
-        players = [p for p in all_players if p.player_id in player_ids]
-        team_rosters_players[team_name] = players
+    team_rosters_players = _build_team_rosters_players()
 
     before = calc.calculate_standings(team_rosters_players)
 
@@ -1089,9 +1096,7 @@ def get_win_probability():
     current_picks_count = len(draft.picks)
 
     if current_picks_count >= total_picks:
-        team_rosters_players = {}
-        for tn, pids in draft.team_rosters.items():
-            team_rosters_players[tn] = [p for p in all_players if p.player_id in pids]
+        team_rosters_players = _build_team_rosters_players()
         standings = calc.calculate_standings(team_rosters_players)
         winner = standings['final_rankings'][0] if standings['final_rankings'] else None
         probs = {tn: 0.0 for tn in draft.team_rosters}
@@ -1135,7 +1140,13 @@ def get_win_probability():
         team_rosters_players = {}
         player_map = {p.player_id: p for p in all_players}
         for tn, pids in sim_rosters.items():
-            team_rosters_players[tn] = [player_map[pid] for pid in pids if pid in player_map]
+            seen_sim = set()
+            deduped = []
+            for pid in pids:
+                if pid not in seen_sim and pid in player_map:
+                    seen_sim.add(pid)
+                    deduped.append(player_map[pid])
+            team_rosters_players[tn] = deduped
 
         standings = calc.calculate_standings(team_rosters_players)
         if standings['final_rankings']:
@@ -1163,9 +1174,7 @@ def get_draft_recap():
     calc = StandingsCalculator()
     draft = draft_service.current_draft
 
-    team_rosters_players = {}
-    for tn, pids in draft.team_rosters.items():
-        team_rosters_players[tn] = [p for p in all_players if p.player_id in pids]
+    team_rosters_players = _build_team_rosters_players()
 
     standings = calc.calculate_standings(team_rosters_players)
 

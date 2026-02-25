@@ -51,9 +51,6 @@ class App {
     }
 
     private initializeEventListeners(): void {
-        // Load data buttons (optional - for manual reload)
-        document.getElementById('load-cbs-btn')?.addEventListener('click', () => this.loadCBSData());
-        document.getElementById('load-steamer-btn')?.addEventListener('click', () => this.loadSteamerFiles());
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
         document.getElementById('auto-draft-toggle-btn')?.addEventListener('click', () => this.toggleAutoDraft());
         
