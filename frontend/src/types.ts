@@ -71,3 +71,29 @@ export interface PlayerEntry {
     stats?: any;
 }
 
+export interface CategoryNeed {
+    category: string;
+    value: number;
+    rank: number;
+    need: 'critical' | 'moderate' | 'good' | 'strong';
+}
+
+export interface TradeAnalysis {
+    before_standings: { team_a_rank: number; team_a_points: number; team_b_rank: number; team_b_points: number };
+    after_standings: { team_a_rank: number; team_a_points: number; team_b_rank: number; team_b_points: number };
+    category_impact: { [cat: string]: { team_a_before: number; team_a_after: number; team_b_before: number; team_b_after: number } };
+}
+
+export interface DraftRecap {
+    teams: Array<{
+        team_name: string;
+        player_count: number;
+        batting_points: number;
+        pitching_points: number;
+        total_points: number;
+        grade: string;
+        best_pick: { player_name: string; adp: number; pick_number: number } | null;
+        biggest_reach: { player_name: string; adp: number; pick_number: number } | null;
+    }>;
+}
+
