@@ -172,8 +172,19 @@ class App {
     async refreshCategoryNeeds() {
         try {
             const data = await this.api.getCategoryNeeds();
-            if (data.success) {
-                this.categoryNeeds = data.categories || [];
+            if (data.success && data.categories) {
+                const cats = data.categories;
+                if (Array.isArray(cats)) {
+                    this.categoryNeeds = cats;
+                }
+                else {
+                    this.categoryNeeds = Object.entries(cats).map(([category, info]) => ({
+                        category,
+                        value: info.value,
+                        rank: info.rank,
+                        need: info.need,
+                    }));
+                }
             }
         }
         catch (e) { /* category needs may not be available yet */ }

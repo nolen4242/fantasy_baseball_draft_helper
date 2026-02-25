@@ -850,11 +850,32 @@ export class UIRenderer {
         const container = document.getElementById('recap-content');
         if (!container)
             return;
-        if (!recap || !recap.success || !recap.teams || recap.teams.length === 0) {
+        if (!recap || !recap.success || !recap.teams) {
             container.innerHTML = '<p class="muted-text">No recap available yet…</p>';
             return;
         }
-        const teams = recap.teams;
+        let teams;
+        if (Array.isArray(recap.teams)) {
+            teams = recap.teams;
+        }
+        else {
+            const grades = recap.grades || {};
+            teams = Object.entries(recap.teams).map(([teamName, info]) => ({
+                team_name: teamName,
+                player_count: info.player_count || 0,
+                batting_points: info.batting_points || 0,
+                pitching_points: info.pitching_points || 0,
+                total_points: info.total_points || 0,
+                grade: grades[teamName] || 'C',
+                best_pick: info.best_pick || null,
+                biggest_reach: info.biggest_reach || null,
+            }));
+            teams.sort((a, b) => b.total_points - a.total_points);
+        }
+        if (teams.length === 0) {
+            container.innerHTML = '<p class="muted-text">No recap available yet…</p>';
+            return;
+        }
         let rows = teams.map(t => {
             const bestPick = t.best_pick ? `${t.best_pick.player_name} (#${t.best_pick.pick_number})` : '-';
             const reach = t.biggest_reach ? `${t.biggest_reach.player_name} (#${t.biggest_reach.pick_number})` : '-';
