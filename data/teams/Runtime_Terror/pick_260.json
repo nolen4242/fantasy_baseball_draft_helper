@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "sean_manaea",
+    "name": "Sean Manaea",
+    "position": "P",
+    "team": "NYM",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 148.83444444444444,
+    "projected_era": 4.02,
+    "projected_whip": 1.2844444444444445,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 263.5
+  },
+  "pick_info": {
+    "pick_number": 260,
+    "round": 20,
+    "team_name": "Runtime Terror"
+  },
+  "position": "P"
+}

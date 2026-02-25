@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "mark_vientos",
+    "name": "Mark Vientos",
+    "position": "3B",
+    "team": "NYM",
+    "age": null,
+    "projected_home_runs": 28.0,
+    "projected_obp": 0.311,
+    "projected_runs": 72.0,
+    "projected_rbi": 85.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 145.8
+  },
+  "pick_info": {
+    "pick_number": 183,
+    "round": 15,
+    "team_name": "Runtime Terror"
+  },
+  "position": "3B"
+}

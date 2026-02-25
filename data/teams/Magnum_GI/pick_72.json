@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "sonny_gray",
+    "name": "Sonny Gray",
+    "position": "P",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 189.55133333333333,
+    "projected_era": 3.68,
+    "projected_whip": 1.2077777777777778,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 84.8
+  },
+  "pick_info": {
+    "pick_number": 72,
+    "round": 6,
+    "team_name": "Magnum GI"
+  },
+  "position": "P"
+}

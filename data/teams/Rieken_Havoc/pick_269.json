@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "giancarlo_stanton",
+    "name": "Giancarlo Stanton",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 23.0,
+    "projected_obp": 0.306,
+    "projected_runs": 49.0,
+    "projected_rbi": 60.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 267.0
+  },
+  "pick_info": {
+    "pick_number": 269,
+    "round": 21,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "bryson_stott",
+    "name": "Bryson Stott",
+    "position": "2B",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 14.0,
+    "projected_obp": 0.327,
+    "projected_runs": 71.0,
+    "projected_rbi": 55.0,
+    "projected_stolen_bases": 24.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 185.8
+  },
+  "pick_info": {
+    "pick_number": 172,
+    "round": 14,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "2B"
+}

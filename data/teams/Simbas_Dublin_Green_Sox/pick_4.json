@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "paul_skenes",
+    "name": "Paul Skenes",
+    "position": "P",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 13.0,
+    "projected_quality_starts": 20.8,
+    "projected_strikeouts": 236.89555555555555,
+    "projected_era": 2.91,
+    "projected_whip": 1.21,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 14.5
+  },
+  "pick_info": {
+    "pick_number": 4,
+    "round": 1,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "P"
+}

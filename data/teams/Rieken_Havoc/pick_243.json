@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "colton_cowser",
+    "name": "Colton Cowser",
+    "position": "OF",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.313,
+    "projected_runs": 51.0,
+    "projected_rbi": 53.0,
+    "projected_stolen_bases": 11.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 255.0
+  },
+  "pick_info": {
+    "pick_number": 243,
+    "round": 19,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

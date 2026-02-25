@@ -699,24 +699,20 @@ def make_auto_draft_pick():
         use_ml=use_ml
     )
     
-    # Create a weighted pool of players
-    # AI recommended players get higher weight (3x), others get 1x
+    # Create a weighted pool of ADP-appropriate players
+    # AI recommended players get moderate weight boost (2x), others get 1x
     weighted_pool = []
     
-    # Add AI recommended players with higher weight
     ai_recommended_ids = {rec['player'].player_id for rec in recommendations}
     for player in adp_range_players:
-        # Check if player has available slot
         from src.services.team_service import TeamService
         team_service = TeamService()
         if not team_service.has_available_slot_for_player(team_name, player):
-            continue  # Skip players that can't be placed
+            continue
         
         if player.player_id in ai_recommended_ids:
-            # AI recommended - add 3 times for higher chance
-            weighted_pool.extend([player] * 3)
+            weighted_pool.extend([player] * 2)
         else:
-            # Not AI recommended - add once
             weighted_pool.append(player)
     
     if not weighted_pool:
@@ -803,6 +799,70 @@ def train_ml_models():
             'success': False,
             'message': f'Error training models: {str(e)}'
         }), 500
+
+
+@app.route('/api/standings', methods=['GET'])
+def get_standings():
+    """Get current standings/leaderboard based on projected stats."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+
+    from src.services.standings_calculator import StandingsCalculator
+    calc = StandingsCalculator()
+
+    team_rosters_players = {}
+    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
+        players = [p for p in all_players if p.player_id in player_ids]
+        team_rosters_players[team_name] = players
+
+    standings = calc.calculate_standings(team_rosters_players)
+
+    serializable_totals = {}
+    for team_name, totals in standings['category_totals'].items():
+        serializable_totals[team_name] = {k: round(float(v), 3) for k, v in totals.items()}
+
+    return jsonify({
+        'success': True,
+        'category_totals': serializable_totals,
+        'category_rankings': standings['category_rankings'],
+        'total_points': standings['total_points'],
+        'final_rankings': standings['final_rankings']
+    })
+
+
+@app.route('/api/draft/board', methods=['GET'])
+def get_draft_board():
+    """Get draft board — every pick organized by round and pick-in-round."""
+    if not draft_service.current_draft:
+        return jsonify({
+            'success': False,
+            'message': 'No active draft'
+        }), 400
+
+    draft = draft_service.current_draft
+    board = []
+    for pick in draft.picks:
+        player = next((p for p in all_players if p.player_id == pick.player_id), None)
+        board.append({
+            'pick_number': pick.pick_number,
+            'round': pick.round,
+            'team_name': pick.team_name,
+            'player_id': pick.player_id,
+            'player_name': player.name if player else pick.player_id,
+            'position': player.position if player else '',
+        })
+
+    return jsonify({
+        'success': True,
+        'board': board,
+        'total_teams': draft.total_teams,
+        'roster_size': draft.roster_size,
+        'picks_made': len(draft.picks),
+        'total_picks': draft.total_teams * draft.roster_size,
+    })
 
 
 if __name__ == '__main__':

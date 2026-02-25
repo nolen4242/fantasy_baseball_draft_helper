@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "bryce_miller",
+    "name": "Bryce Miller",
+    "position": "P",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.0,
+    "projected_quality_starts": 16.900000000000002,
+    "projected_strikeouts": 127.19999999999999,
+    "projected_era": 4.19,
+    "projected_whip": 1.2466666666666668,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 215.0
+  },
+  "pick_info": {
+    "pick_number": 227,
+    "round": 18,
+    "team_name": "Trex"
+  },
+  "position": "P"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "tony_santillan",
+    "name": "Tony Santillan",
+    "position": "P",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 280.0
+  },
+  "pick_info": {
+    "pick_number": 268,
+    "round": 21,
+    "team_name": "Trex"
+  },
+  "position": "P"
+}

@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "mike_moustakas",
+    "name": "Mike Moustakas",
+    "position": "3B",
+    "team": "CHW",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": null
+  },
+  "pick_info": {
+    "pick_number": 255,
+    "round": 20,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "3B"
+}

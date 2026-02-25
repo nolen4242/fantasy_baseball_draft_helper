@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "joe_ryan",
+    "name": "Joe Ryan",
+    "position": "P",
+    "team": "MIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 20.150000000000002,
+    "projected_strikeouts": 198.89366666666666,
+    "projected_era": 3.81,
+    "projected_whip": 1.1866666666666665,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 60.5
+  },
+  "pick_info": {
+    "pick_number": 49,
+    "round": 4,
+    "team_name": "Guillotine"
+  },
+  "position": "P"
+}

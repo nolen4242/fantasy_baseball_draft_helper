@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "wyatt_langford",
+    "name": "Wyatt Langford",
+    "position": "OF",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": 22.0,
+    "projected_obp": 0.349,
+    "projected_runs": 78.0,
+    "projected_rbi": 68.0,
+    "projected_stolen_bases": 19.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 51.5
+  },
+  "pick_info": {
+    "pick_number": 52,
+    "round": 4,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "OF"
+}

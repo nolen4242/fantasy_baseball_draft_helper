@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "marcell_ozuna",
+    "name": "Marcell Ozuna",
+    "position": "DH",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": 22.0,
+    "projected_obp": 0.336,
+    "projected_runs": 60.0,
+    "projected_rbi": 64.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 229.0
+  },
+  "pick_info": {
+    "pick_number": 216,
+    "round": 17,
+    "team_name": "Trex"
+  },
+  "position": "DH"
+}

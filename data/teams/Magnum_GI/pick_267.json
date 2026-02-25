@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "bryan_abreu",
+    "name": "Bryan Abreu",
+    "position": "P",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": 0.0,
+    "projected_strikeouts": 88.32444444444444,
+    "projected_era": 3.24,
+    "projected_whip": 1.3511111111111112,
+    "projected_saves": 3.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 270.0
+  },
+  "pick_info": {
+    "pick_number": 267,
+    "round": 21,
+    "team_name": "Magnum GI"
+  },
+  "position": "P"
+}

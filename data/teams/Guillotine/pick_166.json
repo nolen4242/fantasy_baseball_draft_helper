@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "lawrence_butler",
+    "name": "Lawrence Butler",
+    "position": "OF",
+    "team": "ATH",
+    "age": null,
+    "projected_home_runs": 19.0,
+    "projected_obp": 0.313,
+    "projected_runs": 60.0,
+    "projected_rbi": 57.0,
+    "projected_stolen_bases": 16.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 158.0
+  },
+  "pick_info": {
+    "pick_number": 166,
+    "round": 13,
+    "team_name": "Guillotine"
+  },
+  "position": "OF"
+}

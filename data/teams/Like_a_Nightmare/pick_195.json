@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "alejandro_kirk",
+    "name": "Alejandro Kirk",
+    "position": "C",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 14.0,
+    "projected_obp": 0.354,
+    "projected_runs": 54.0,
+    "projected_rbi": 56.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 193.0
+  },
+  "pick_info": {
+    "pick_number": 195,
+    "round": 15,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "C"
+}

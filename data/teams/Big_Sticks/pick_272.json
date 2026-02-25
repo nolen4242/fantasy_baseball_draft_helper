@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "josh_bell",
+    "name": "Josh Bell",
+    "position": "1B",
+    "team": "WAS",
+    "age": null,
+    "projected_home_runs": 18.0,
+    "projected_obp": 0.332,
+    "projected_runs": 56.0,
+    "projected_rbi": 60.0,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 285.0
+  },
+  "pick_info": {
+    "pick_number": 272,
+    "round": 21,
+    "team_name": "Big Sticks"
+  },
+  "position": "1B"
+}

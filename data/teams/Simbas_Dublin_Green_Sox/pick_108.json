@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "ian_happ",
+    "name": "Ian Happ",
+    "position": "OF",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": 21.0,
+    "projected_obp": 0.338,
+    "projected_runs": 78.0,
+    "projected_rbi": 72.0,
+    "projected_stolen_bases": 8.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 122.8
+  },
+  "pick_info": {
+    "pick_number": 108,
+    "round": 9,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "OF"
+}

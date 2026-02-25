@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "austin_wells",
+    "name": "Austin Wells",
+    "position": "C",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.302,
+    "projected_runs": 48.0,
+    "projected_rbi": 50.0,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 225.0
+  },
+  "pick_info": {
+    "pick_number": 233,
+    "round": 18,
+    "team_name": "Dawg"
+  },
+  "position": "C"
+}

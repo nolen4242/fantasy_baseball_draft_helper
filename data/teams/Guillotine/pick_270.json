@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "jp_crawford",
+    "name": "J.P. Crawford",
+    "position": "SS",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 10.0,
+    "projected_obp": 0.336,
+    "projected_runs": 55.0,
+    "projected_rbi": 47.0,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 260.3
+  },
+  "pick_info": {
+    "pick_number": 270,
+    "round": 21,
+    "team_name": "Guillotine"
+  },
+  "position": "SS"
+}

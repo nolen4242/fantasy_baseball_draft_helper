@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "christian_walker",
+    "name": "Christian Walker",
+    "position": "1B",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.304,
+    "projected_runs": 66.0,
+    "projected_rbi": 74.0,
+    "projected_stolen_bases": 3.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 154.0
+  },
+  "pick_info": {
+    "pick_number": 148,
+    "round": 12,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "1B"
+}

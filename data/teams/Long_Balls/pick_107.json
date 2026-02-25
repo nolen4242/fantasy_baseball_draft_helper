@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "michael_king",
+    "name": "Michael King",
+    "position": "P",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.85,
+    "projected_strikeouts": 163.02222222222224,
+    "projected_era": 3.86,
+    "projected_whip": 1.2877777777777777,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 121.3
+  },
+  "pick_info": {
+    "pick_number": 107,
+    "round": 9,
+    "team_name": "Long Balls"
+  },
+  "position": "P"
+}

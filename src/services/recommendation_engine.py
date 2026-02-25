@@ -256,15 +256,15 @@ class RecommendationEngine:
         )
         score += adp_score
         
-        # Extra ADP penalty for pitchers - they should stay reasonably close to ADP
+        # ADP penalty for pitchers drafted significantly ahead of value
         if is_pitcher and player.adp:
             current_pick = len(draft_state.picks) + 1
             adp_diff = player.adp - current_pick
-            if adp_diff > 5:  # Pitcher ADP is 5+ picks away
+            if adp_diff > 5:
                 extra_penalty = -50 - ((adp_diff - 5) * 10)
                 score += extra_penalty
                 reasoning_parts.append(f"Pitcher ADP penalty: {adp_diff} picks early")
-            elif adp_diff > 3:  # 3-5 picks early gets a small penalty
+            elif adp_diff > 3:
                 extra_penalty = -20
                 score += extra_penalty
                 reasoning_parts.append(f"Pitcher slightly early: {adp_diff} picks")
@@ -272,32 +272,62 @@ class RecommendationEngine:
         if adp_reasoning:
             reasoning_parts.append(adp_reasoning)
         
-        # 7. Final check: If we have enough pitchers and this is a pitcher, reduce score
-        # Apply penalty earlier (at 7+ pitchers, not just 9+)
+        # 7. Final check: If we have enough pitchers, reduce score
         if is_pitcher:
             pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
             current_pick = len(draft_state.picks) + 1
             
-            if pitcher_count >= 9:  # Already have enough pitchers
-                # Heavy penalty unless ADP is exceptional (way below current pick)
+            if pitcher_count >= 9:
                 if player.adp and player.adp > current_pick + 10:
-                    score -= 200  # Even heavier penalty
+                    score -= 200
                     reasoning_parts.append("Already have enough pitchers")
                 elif player.adp and player.adp <= current_pick - 20:
-                    # Exceptional value - allow it but reduce bonus
                     score -= 50
                     reasoning_parts.append("Exceptional pitcher value, but roster full")
                 else:
                     score -= 150
                     reasoning_parts.append("Roster has enough pitchers")
-            elif pitcher_count >= 7:  # Getting close to enough
-                # Moderate penalty to discourage more pitchers
+            elif pitcher_count >= 7:
                 if player.adp and player.adp > current_pick + 5:
                     score -= 80
                     reasoning_parts.append("Have 7+ pitchers - prioritize hitters")
                 else:
                     score -= 40
                     reasoning_parts.append("Have 7+ pitchers")
+        
+        # 8. Category balance bonus: reward picks that improve weak categories
+        if all_team_rosters and len(my_team) >= 5:
+            my_totals = self.standings_calculator._calculate_team_totals(my_team)
+            projected = self.standings_calculator._calculate_team_totals(my_team + [player])
+            cats_to_check = (
+                self.standings_calculator.BATTING_CATEGORIES
+                + self.standings_calculator.PITCHING_CATEGORIES
+            )
+            for cat in cats_to_check:
+                my_val = my_totals.get(cat, 0)
+                proj_val = projected.get(cat, 0)
+                # Count opponents beating us in this category
+                opponents_better = 0
+                for opp_name, opp_roster in all_team_rosters.items():
+                    if opp_name == team_name:
+                        continue
+                    opp_val = self.standings_calculator._calculate_team_totals(opp_roster).get(cat, 0)
+                    if cat in ['ERA', 'WHIP']:
+                        if opp_val > 0 and opp_val < my_val:
+                            opponents_better += 1
+                    else:
+                        if opp_val > my_val:
+                            opponents_better += 1
+                # If we're losing badly in a category and this player helps, big bonus
+                if opponents_better >= 8:
+                    improved = False
+                    if cat in ['ERA', 'WHIP']:
+                        improved = proj_val < my_val
+                    else:
+                        improved = proj_val > my_val
+                    if improved:
+                        score += 30
+                        reasoning_parts.append(f"Improves weak {cat} (rank {opponents_better+1})")
         
         # Add ML score
         score += ml_score
@@ -861,27 +891,23 @@ class RecommendationEngine:
             if player.projected_rbi:
                 value += player.projected_rbi * 0.6
             if player.projected_stolen_bases:
-                value += player.projected_stolen_bases * 3.5  # SB are scarce and valuable
+                value += player.projected_stolen_bases * 5.0  # SB are scarce and valuable in roto
         else:
             # Pitching categories: ERA, K, SHOLDS, WHIP, WQS
             if player.projected_wins:
-                value += player.projected_wins * 2.0
+                value += player.projected_wins * 3.0  # Wins contribute to WQS
             if player.projected_quality_starts:
-                value += player.projected_quality_starts * 2.0  # WQS = Wins + QS
+                value += player.projected_quality_starts * 3.0  # QS contribute to WQS
             if player.projected_strikeouts:
-                value += player.projected_strikeouts * 0.25  # K are valuable
+                value += player.projected_strikeouts * 0.4  # K are a counting stat category
             if player.projected_saves:
-                value += player.projected_saves * 3.0
+                value += player.projected_saves * 5.0  # Saves drive SHOLDS category
             if player.projected_holds:
-                # SHOLDS = Saves + Holds x0.5
-                value += player.projected_holds * 1.5
+                value += player.projected_holds * 2.5  # SHOLDS = Saves + Holds x0.5
             if player.projected_era:
-                # Lower ERA is better (typical range 2.50-5.00)
-                # Invert: better ERA = higher value
-                value += max(0, (5.0 - player.projected_era) * 15)
+                value += max(0, (5.0 - player.projected_era) * 25)
             if player.projected_whip:
-                # Lower WHIP is better (typical range 1.00-1.50)
-                value += max(0, (1.5 - player.projected_whip) * 30)
+                value += max(0, (1.5 - player.projected_whip) * 50)
         
         # Compare to available players at same position
         position_peers = [p for p in available_players if p.position == player.position]
@@ -901,22 +927,22 @@ class RecommendationEngine:
                     if peer.projected_rbi:
                         peer_val += peer.projected_rbi * 0.6
                     if peer.projected_stolen_bases:
-                        peer_val += peer.projected_stolen_bases * 3.5
+                        peer_val += peer.projected_stolen_bases * 5.0
                 else:
                     if peer.projected_wins:
-                        peer_val += peer.projected_wins * 2.0
+                        peer_val += peer.projected_wins * 3.0
                     if peer.projected_quality_starts:
-                        peer_val += peer.projected_quality_starts * 2.0
+                        peer_val += peer.projected_quality_starts * 3.0
                     if peer.projected_strikeouts:
-                        peer_val += peer.projected_strikeouts * 0.25
+                        peer_val += peer.projected_strikeouts * 0.4
                     if peer.projected_saves:
-                        peer_val += peer.projected_saves * 3.0
+                        peer_val += peer.projected_saves * 5.0
                     if peer.projected_holds:
-                        peer_val += peer.projected_holds * 1.5
+                        peer_val += peer.projected_holds * 2.5
                     if peer.projected_era:
-                        peer_val += max(0, (5.0 - peer.projected_era) * 15)
+                        peer_val += max(0, (5.0 - peer.projected_era) * 25)
                     if peer.projected_whip:
-                        peer_val += max(0, (1.5 - peer.projected_whip) * 30)
+                        peer_val += max(0, (1.5 - peer.projected_whip) * 50)
                 
                 peer_values.append(peer_val)
             

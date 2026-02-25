@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "sal_frelick",
+    "name": "Sal Frelick",
+    "position": "OF",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": 8.0,
+    "projected_obp": 0.337,
+    "projected_runs": 51.0,
+    "projected_rbi": 46.0,
+    "projected_stolen_bases": 13.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 229.0
+  },
+  "pick_info": {
+    "pick_number": 229,
+    "round": 18,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "OF"
+}

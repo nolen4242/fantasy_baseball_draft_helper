@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "brandon_lowe",
+    "name": "Brandon Lowe",
+    "position": "2B",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": 24.0,
+    "projected_obp": 0.309,
+    "projected_runs": 61.0,
+    "projected_rbi": 67.0,
+    "projected_stolen_bases": 4.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 176.0
+  },
+  "pick_info": {
+    "pick_number": 178,
+    "round": 14,
+    "team_name": "Young Guns"
+  },
+  "position": "2B"
+}

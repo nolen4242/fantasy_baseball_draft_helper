@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "jack_leiter",
+    "name": "Jack Leiter",
+    "position": "P",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 18.85,
+    "projected_strikeouts": 156.00577777777778,
+    "projected_era": 4.45,
+    "projected_whip": 1.3644444444444443,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 241.3
+  },
+  "pick_info": {
+    "pick_number": 250,
+    "round": 20,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "P"
+}

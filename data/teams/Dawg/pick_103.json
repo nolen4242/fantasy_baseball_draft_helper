@@ -1,0 +1,32 @@
+{
+  "player": {
+    "player_id": "willson_contreras",
+    "name": "Willson Contreras",
+    "position": "1B",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.333,
+    "projected_runs": 53.0,
+    "projected_rbi": 57.0,
+    "projected_stolen_bases": 3.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 215.7
+  },
+  "pick_info": {
+    "pick_number": 103,
+    "round": 8,
+    "team_name": "Dawg"
+  },
+  "position": "1B"
+}
