@@ -35,6 +35,9 @@ all_players: list[Player] = []
 # Initialize recommendation engine (will be updated when players are loaded)
 recommendation_engine = RecommendationEngine(draft_service, all_players)
 
+# Draft strategy setting
+draft_strategy = 'balanced'
+
 
 @app.route('/')
 def index():
@@ -869,6 +872,378 @@ def get_draft_board():
         'roster_size': draft.roster_size,
         'picks_made': len(draft.picks),
         'total_picks': draft.total_teams * draft.roster_size,
+    })
+
+
+@app.route('/api/player/<player_id>/eligible-positions', methods=['GET'])
+def get_eligible_positions(player_id):
+    player = next((p for p in all_players if p.player_id == player_id), None)
+    if not player:
+        return jsonify({'success': False, 'message': 'Player not found'}), 404
+    from src.services.team_service import TeamService
+    ts = TeamService()
+    positions = ts._determine_eligible_positions(player)
+    return jsonify({'success': True, 'player_id': player_id, 'eligible_positions': positions})
+
+
+@app.route('/api/team/category-needs', methods=['GET'])
+def get_category_needs():
+    """Return how the user's team ranks in each category relative to all teams."""
+    if not draft_service.current_draft:
+        return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    from src.services.standings_calculator import StandingsCalculator
+    calc = StandingsCalculator()
+
+    team_rosters_players = {}
+    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
+        players = [p for p in all_players if p.player_id in player_ids]
+        team_rosters_players[team_name] = players
+
+    standings = calc.calculate_standings(team_rosters_players)
+
+    my_team = draft_service.current_draft.my_team_name
+    all_categories = calc.BATTING_CATEGORIES + calc.PITCHING_CATEGORIES
+    category_details = {}
+
+    for cat in all_categories:
+        my_value = standings['category_totals'].get(my_team, {}).get(cat, 0.0)
+        rankings_list = standings['category_rankings'].get(cat, [])
+        try:
+            rank = rankings_list.index(my_team) + 1
+        except ValueError:
+            rank = len(rankings_list) + 1
+
+        if rank >= 10:
+            need = 'critical'
+        elif rank >= 7:
+            need = 'moderate'
+        elif rank >= 4:
+            need = 'good'
+        else:
+            need = 'strong'
+
+        category_details[cat] = {
+            'value': round(float(my_value), 3),
+            'rank': rank,
+            'need': need,
+        }
+
+    sorted_needs = sorted(category_details.keys(), key=lambda c: -category_details[c]['rank'])
+
+    return jsonify({
+        'success': True,
+        'team_name': my_team,
+        'categories': category_details,
+        'needs_sorted': sorted_needs,
+    })
+
+
+@app.route('/api/draft/batch-revert', methods=['POST'])
+def batch_revert():
+    """Revert all picks from the most recent back to pick N (inclusive)."""
+    if not draft_service.current_draft:
+        return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    data = request.json or {}
+    revert_to = data.get('revert_to_pick')
+    if revert_to is None:
+        return jsonify({'success': False, 'message': 'revert_to_pick is required'}), 400
+
+    revert_to = int(revert_to)
+    picks = draft_service.current_draft.picks
+    if not picks:
+        return jsonify({'success': False, 'message': 'No picks to revert'}), 400
+
+    last_pick = picks[-1].pick_number
+    if revert_to < 1 or revert_to > last_pick:
+        return jsonify({
+            'success': False,
+            'message': f'revert_to_pick must be between 1 and {last_pick}'
+        }), 400
+
+    reverted = []
+    for pick_num in range(last_pick, revert_to - 1, -1):
+        ok = draft_service.revert_pick(pick_num)
+        if ok:
+            reverted.append(pick_num)
+
+    return jsonify({
+        'success': True,
+        'reverted_picks': reverted,
+        'draft': draft_service.current_draft.to_dict(),
+    })
+
+
+@app.route('/api/draft/strategy', methods=['GET'])
+def get_draft_strategy():
+    """Return the current draft strategy."""
+    return jsonify({'success': True, 'strategy': draft_strategy})
+
+
+@app.route('/api/draft/strategy', methods=['POST'])
+def set_draft_strategy():
+    """Set the draft strategy."""
+    global draft_strategy
+    data = request.json or {}
+    strategy = data.get('strategy')
+    valid = {'balanced', 'stars_and_scrubs', 'pitching_heavy', 'hitting_heavy'}
+    if strategy not in valid:
+        return jsonify({
+            'success': False,
+            'message': f'Invalid strategy. Must be one of: {", ".join(sorted(valid))}'
+        }), 400
+    draft_strategy = strategy
+    return jsonify({'success': True, 'strategy': draft_strategy})
+
+
+@app.route('/api/trade/analyze', methods=['POST'])
+def analyze_trade():
+    """Analyze a hypothetical trade between two teams."""
+    if not draft_service.current_draft:
+        return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    data = request.json or {}
+    team_a_name = data.get('team_a')
+    team_b_name = data.get('team_b')
+    players_from_a = data.get('players_from_a', [])
+    players_from_b = data.get('players_from_b', [])
+
+    if not team_a_name or not team_b_name:
+        return jsonify({'success': False, 'message': 'team_a and team_b are required'}), 400
+
+    from src.services.standings_calculator import StandingsCalculator
+    calc = StandingsCalculator()
+
+    team_rosters_players = {}
+    for team_name, player_ids in draft_service.current_draft.team_rosters.items():
+        players = [p for p in all_players if p.player_id in player_ids]
+        team_rosters_players[team_name] = players
+
+    before = calc.calculate_standings(team_rosters_players)
+
+    before_a_rank = before['final_rankings'].index(team_a_name) + 1 if team_a_name in before['final_rankings'] else None
+    before_b_rank = before['final_rankings'].index(team_b_name) + 1 if team_b_name in before['final_rankings'] else None
+    before_a_pts = round(float(before['total_points'].get(team_a_name, 0)), 1)
+    before_b_pts = round(float(before['total_points'].get(team_b_name, 0)), 1)
+
+    a_player_objs = [p for p in all_players if p.player_id in players_from_a]
+    b_player_objs = [p for p in all_players if p.player_id in players_from_b]
+
+    after_rosters = {}
+    for tn, roster in team_rosters_players.items():
+        after_rosters[tn] = list(roster)
+
+    after_rosters[team_a_name] = [p for p in after_rosters.get(team_a_name, []) if p.player_id not in players_from_a] + b_player_objs
+    after_rosters[team_b_name] = [p for p in after_rosters.get(team_b_name, []) if p.player_id not in players_from_b] + a_player_objs
+
+    after = calc.calculate_standings(after_rosters)
+
+    after_a_rank = after['final_rankings'].index(team_a_name) + 1 if team_a_name in after['final_rankings'] else None
+    after_b_rank = after['final_rankings'].index(team_b_name) + 1 if team_b_name in after['final_rankings'] else None
+    after_a_pts = round(float(after['total_points'].get(team_a_name, 0)), 1)
+    after_b_pts = round(float(after['total_points'].get(team_b_name, 0)), 1)
+
+    all_categories = calc.BATTING_CATEGORIES + calc.PITCHING_CATEGORIES
+    category_impact = {}
+    for cat in all_categories:
+        category_impact[cat] = {
+            'team_a_before': round(float(before['category_totals'].get(team_a_name, {}).get(cat, 0)), 3),
+            'team_a_after': round(float(after['category_totals'].get(team_a_name, {}).get(cat, 0)), 3),
+            'team_b_before': round(float(before['category_totals'].get(team_b_name, {}).get(cat, 0)), 3),
+            'team_b_after': round(float(after['category_totals'].get(team_b_name, {}).get(cat, 0)), 3),
+        }
+
+    return jsonify({
+        'success': True,
+        'before_standings': {
+            'team_a_rank': before_a_rank,
+            'team_a_points': before_a_pts,
+            'team_b_rank': before_b_rank,
+            'team_b_points': before_b_pts,
+        },
+        'after_standings': {
+            'team_a_rank': after_a_rank,
+            'team_a_points': after_a_pts,
+            'team_b_rank': after_b_rank,
+            'team_b_points': after_b_pts,
+        },
+        'category_impact': category_impact,
+    })
+
+
+@app.route('/api/draft/win-probability', methods=['GET'])
+def get_win_probability():
+    """Run a Monte Carlo simulation to estimate each team's win probability."""
+    if not draft_service.current_draft:
+        return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    iterations = min(int(request.args.get('iterations', 100)), 500)
+    draft = draft_service.current_draft
+
+    from src.services.standings_calculator import StandingsCalculator
+    import copy
+
+    calc = StandingsCalculator()
+    total_picks = draft.total_teams * draft.roster_size
+    current_picks_count = len(draft.picks)
+
+    if current_picks_count >= total_picks:
+        team_rosters_players = {}
+        for tn, pids in draft.team_rosters.items():
+            team_rosters_players[tn] = [p for p in all_players if p.player_id in pids]
+        standings = calc.calculate_standings(team_rosters_players)
+        winner = standings['final_rankings'][0] if standings['final_rankings'] else None
+        probs = {tn: 0.0 for tn in draft.team_rosters}
+        if winner:
+            probs[winner] = 1.0
+        return jsonify({
+            'success': True,
+            'win_probability': probs,
+            'my_team_probability': probs.get(draft.my_team_name, 0.0),
+            'iterations': 1,
+        })
+
+    available = draft_service.get_available_players(all_players)
+    available_sorted = sorted(available, key=lambda p: (p.adp is None, p.adp or float('inf')))
+
+    win_counts = {tn: 0 for tn in draft.team_rosters}
+
+    for _ in range(iterations):
+        sim_rosters = {tn: list(pids) for tn, pids in draft.team_rosters.items()}
+        sim_available_ids = {p.player_id for p in available_sorted}
+        sim_pool = list(available_sorted)
+
+        for pick_idx in range(current_picks_count + 1, total_picks + 1):
+            team_for_pick = DraftOrder.get_team_for_pick(pick_idx, draft.total_teams)
+            if len(sim_rosters.get(team_for_pick, [])) >= draft.roster_size:
+                continue
+            if not sim_pool:
+                break
+
+            if team_for_pick == draft.my_team_name:
+                chosen = sim_pool[0]
+            else:
+                candidates = [p for p in sim_pool if p.adp is not None and abs(p.adp - pick_idx) <= 15]
+                if not candidates:
+                    candidates = sim_pool[:20] if len(sim_pool) >= 20 else sim_pool
+                chosen = random.choice(candidates)
+
+            sim_rosters[team_for_pick].append(chosen.player_id)
+            sim_pool.remove(chosen)
+
+        team_rosters_players = {}
+        player_map = {p.player_id: p for p in all_players}
+        for tn, pids in sim_rosters.items():
+            team_rosters_players[tn] = [player_map[pid] for pid in pids if pid in player_map]
+
+        standings = calc.calculate_standings(team_rosters_players)
+        if standings['final_rankings']:
+            winner = standings['final_rankings'][0]
+            if winner in win_counts:
+                win_counts[winner] += 1
+
+    probs = {tn: round(count / iterations, 4) for tn, count in win_counts.items()}
+
+    return jsonify({
+        'success': True,
+        'win_probability': probs,
+        'my_team_probability': probs.get(draft.my_team_name, 0.0),
+        'iterations': iterations,
+    })
+
+
+@app.route('/api/draft/recap', methods=['GET'])
+def get_draft_recap():
+    """Return a draft summary with picks by team, grades, and notable picks."""
+    if not draft_service.current_draft:
+        return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    from src.services.standings_calculator import StandingsCalculator
+    calc = StandingsCalculator()
+    draft = draft_service.current_draft
+
+    team_rosters_players = {}
+    for tn, pids in draft.team_rosters.items():
+        team_rosters_players[tn] = [p for p in all_players if p.player_id in pids]
+
+    standings = calc.calculate_standings(team_rosters_players)
+
+    teams_recap = {}
+    for tn, pids in draft.team_rosters.items():
+        team_picks = [pk for pk in draft.picks if pk.team_name == tn]
+        players = team_rosters_players.get(tn, [])
+
+        best_pick = None
+        best_value = float('-inf')
+        biggest_reach = None
+        biggest_reach_value = float('-inf')
+
+        for pk in team_picks:
+            player = next((p for p in all_players if p.player_id == pk.player_id), None)
+            if player and player.adp is not None:
+                value_diff = player.adp - pk.pick_number
+                if value_diff > best_value:
+                    best_value = value_diff
+                    best_pick = {
+                        'player_name': player.name,
+                        'player_id': player.player_id,
+                        'pick_number': pk.pick_number,
+                        'adp': player.adp,
+                        'value': round(value_diff, 1),
+                    }
+                reach_diff = pk.pick_number - player.adp
+                if reach_diff > biggest_reach_value:
+                    biggest_reach_value = reach_diff
+                    biggest_reach = {
+                        'player_name': player.name,
+                        'player_id': player.player_id,
+                        'pick_number': pk.pick_number,
+                        'adp': player.adp,
+                        'reach': round(reach_diff, 1),
+                    }
+
+        teams_recap[tn] = {
+            'player_count': len(pids),
+            'batting_points': round(float(standings['batting_points'].get(tn, 0)), 1),
+            'pitching_points': round(float(standings['pitching_points'].get(tn, 0)), 1),
+            'total_points': round(float(standings['total_points'].get(tn, 0)), 1),
+            'best_pick': best_pick,
+            'biggest_reach': biggest_reach,
+            'picks': [
+                {
+                    'pick_number': pk.pick_number,
+                    'round': pk.round,
+                    'player_id': pk.player_id,
+                    'player_name': next((p.name for p in all_players if p.player_id == pk.player_id), pk.player_id),
+                }
+                for pk in team_picks
+            ],
+        }
+
+    point_values = [info['total_points'] for info in teams_recap.values()]
+    avg_points = sum(point_values) / len(point_values) if point_values else 0
+
+    grades = {}
+    for tn, info in teams_recap.items():
+        diff = info['total_points'] - avg_points
+        if diff >= avg_points * 0.15:
+            grade = 'A'
+        elif diff >= avg_points * 0.05:
+            grade = 'B'
+        elif diff >= -avg_points * 0.05:
+            grade = 'C'
+        elif diff >= -avg_points * 0.15:
+            grade = 'D'
+        else:
+            grade = 'F'
+        grades[tn] = grade
+
+    return jsonify({
+        'success': True,
+        'teams': teams_recap,
+        'grades': grades,
+        'average_points': round(avg_points, 1),
     })
 
 
