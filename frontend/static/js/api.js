@@ -166,5 +166,53 @@ export class ApiClient {
         const response = await fetch(`${API_BASE}/api/draft/board`);
         return response.json();
     }
+    async getEligiblePositions(playerId) {
+        const response = await fetch(`${API_BASE}/api/player/${playerId}/eligible-positions`);
+        return response.json();
+    }
+    async getCategoryNeeds() {
+        const response = await fetch(`${API_BASE}/api/team/category-needs`);
+        return response.json();
+    }
+    async batchRevert(revertToPick) {
+        const response = await fetch(`${API_BASE}/api/draft/batch-revert`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ revert_to_pick: revertToPick })
+        });
+        const data = await response.json();
+        if (!data.success)
+            throw new Error(data.message || 'Failed to batch revert');
+        return data.draft;
+    }
+    async setStrategy(strategy) {
+        const response = await fetch(`${API_BASE}/api/draft/strategy`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ strategy })
+        });
+        return response.json();
+    }
+    async getStrategy() {
+        const response = await fetch(`${API_BASE}/api/draft/strategy`);
+        return response.json();
+    }
+    async analyzeTrade(teamA, teamB, playersFromA, playersFromB) {
+        const response = await fetch(`${API_BASE}/api/trade/analyze`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ team_a: teamA, team_b: teamB, players_from_a: playersFromA, players_from_b: playersFromB })
+        });
+        return response.json();
+    }
+    async getWinProbability(iterations) {
+        const url = iterations ? `${API_BASE}/api/draft/win-probability?iterations=${iterations}` : `${API_BASE}/api/draft/win-probability`;
+        const response = await fetch(url);
+        return response.json();
+    }
+    async getDraftRecap() {
+        const response = await fetch(`${API_BASE}/api/draft/recap`);
+        return response.json();
+    }
 }
 //# sourceMappingURL=api.js.map

@@ -1,4 +1,4 @@
-import { Player, DraftState, Recommendation, TeamRoster } from './types.js';
+import { Player, DraftState, Recommendation, TeamRoster, CategoryNeed } from './types.js';
 
 const API_BASE = '';
 
@@ -238,6 +238,61 @@ export class ApiClient {
         total_picks: number;
     }> {
         const response = await fetch(`${API_BASE}/api/draft/board`);
+        return response.json();
+    }
+
+    async getEligiblePositions(playerId: string): Promise<{ eligible_positions: string[] }> {
+        const response = await fetch(`${API_BASE}/api/player/${playerId}/eligible-positions`);
+        return response.json();
+    }
+
+    async getCategoryNeeds(): Promise<{ success: boolean; categories: CategoryNeed[]; sorted_needs: string[] }> {
+        const response = await fetch(`${API_BASE}/api/team/category-needs`);
+        return response.json();
+    }
+
+    async batchRevert(revertToPick: number): Promise<DraftState> {
+        const response = await fetch(`${API_BASE}/api/draft/batch-revert`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ revert_to_pick: revertToPick })
+        });
+        const data = await response.json();
+        if (!data.success) throw new Error(data.message || 'Failed to batch revert');
+        return data.draft;
+    }
+
+    async setStrategy(strategy: string): Promise<{ success: boolean; strategy: string }> {
+        const response = await fetch(`${API_BASE}/api/draft/strategy`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ strategy })
+        });
+        return response.json();
+    }
+
+    async getStrategy(): Promise<{ strategy: string }> {
+        const response = await fetch(`${API_BASE}/api/draft/strategy`);
+        return response.json();
+    }
+
+    async analyzeTrade(teamA: string, teamB: string, playersFromA: string[], playersFromB: string[]): Promise<any> {
+        const response = await fetch(`${API_BASE}/api/trade/analyze`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ team_a: teamA, team_b: teamB, players_from_a: playersFromA, players_from_b: playersFromB })
+        });
+        return response.json();
+    }
+
+    async getWinProbability(iterations?: number): Promise<{ success: boolean; probabilities: { [team: string]: number }; my_team_probability: number }> {
+        const url = iterations ? `${API_BASE}/api/draft/win-probability?iterations=${iterations}` : `${API_BASE}/api/draft/win-probability`;
+        const response = await fetch(url);
+        return response.json();
+    }
+
+    async getDraftRecap(): Promise<any> {
+        const response = await fetch(`${API_BASE}/api/draft/recap`);
         return response.json();
     }
 }
