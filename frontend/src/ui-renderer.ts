@@ -84,7 +84,7 @@ export class UIRenderer {
             currentRoundEl.textContent = `All ${totalPicks} picks made`;
             nextPickEl.textContent = '-';
             progressEl.textContent = `Draft Complete: ${picksMade}/${totalPicks} picks`;
-            progressEl.style.color = '#32cd32';
+            progressEl.style.color = '#157145';
             progressEl.style.fontWeight = '700';
         } else {
             currentPickEl.textContent = currentTeam;
@@ -115,7 +115,7 @@ export class UIRenderer {
         if (!container) return;
 
         if (draftComplete) {
-            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #32cd32; font-weight: 700;">Draft Complete - All Roster Spots Filled</div>';
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #157145; font-weight: 700;">Draft Complete - All Roster Spots Filled</div>';
             return;
         }
 
