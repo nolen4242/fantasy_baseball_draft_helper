@@ -401,5 +401,66 @@ export class UIRenderer {
         }
         return stats.map(s => `<span class="stat">${s}</span>`).join('');
     }
+    renderStandings(data, myTeam) {
+        const container = document.getElementById('standings-content');
+        if (!container)
+            return;
+        const battingCats = ['HR', 'OBP', 'R', 'RBI', 'SB'];
+        const pitchingCats = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS'];
+        const allCats = [...battingCats, ...pitchingCats];
+        let html = '<table class="standings-table"><thead><tr><th>Rank</th><th>Team</th><th>Pts</th>';
+        for (const cat of allCats)
+            html += `<th>${cat}</th>`;
+        html += '</tr></thead><tbody>';
+        for (let i = 0; i < data.final_rankings.length; i++) {
+            const team = data.final_rankings[i];
+            const isMyTeam = team === myTeam;
+            const rowClass = isMyTeam ? 'standings-row-mine' : '';
+            html += `<tr class="${rowClass}"><td>${i + 1}</td><td>${team}</td><td>${data.total_points[team]}</td>`;
+            for (const cat of allCats) {
+                const rank = data.category_rankings[cat].indexOf(team) + 1;
+                const val = data.category_totals[team]?.[cat] ?? 0;
+                const cls = rank <= 3 ? 'cat-top' : rank >= 11 ? 'cat-bot' : '';
+                html += `<td class="${cls}" title="${val.toFixed(2)}">${rank}</td>`;
+            }
+            html += '</tr>';
+        }
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+    renderDraftBoard(data, teams, myTeam) {
+        const container = document.getElementById('draftboard-content');
+        if (!container)
+            return;
+        let html = '<div class="draftboard-scroll"><table class="draftboard-table"><thead><tr><th>Rd</th>';
+        for (const t of teams) {
+            const cls = t === myTeam ? 'db-mine' : '';
+            const short = t.length > 12 ? t.substring(0, 11) + '…' : t;
+            html += `<th class="${cls}">${short}</th>`;
+        }
+        html += '</tr></thead><tbody>';
+        const picksByRound = {};
+        for (const p of data.board) {
+            if (!picksByRound[p.round])
+                picksByRound[p.round] = {};
+            picksByRound[p.round][p.team_name] = { player_name: p.player_name, position: p.position };
+        }
+        for (let r = 1; r <= data.roster_size; r++) {
+            html += `<tr><td class="db-round">${r}</td>`;
+            for (const t of teams) {
+                const pick = picksByRound[r]?.[t];
+                const cls = t === myTeam ? 'db-mine-cell' : '';
+                if (pick) {
+                    html += `<td class="${cls}"><span class="db-name">${pick.player_name}</span><span class="db-pos">${pick.position}</span></td>`;
+                }
+                else {
+                    html += `<td class="${cls} db-empty">—</td>`;
+                }
+            }
+            html += '</tr>';
+        }
+        html += '</tbody></table></div>';
+        container.innerHTML = html;
+    }
 }
 //# sourceMappingURL=ui-renderer.js.map

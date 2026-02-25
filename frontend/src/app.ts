@@ -143,8 +143,35 @@ class App {
             this.refreshAvailablePlayers(),
             this.refreshMyTeam(),
             this.refreshRecentPicks(),
-            this.refreshOtherTeams()
+            this.refreshOtherTeams(),
+            this.refreshStandings(),
+            this.refreshDraftBoard()
         ]);
+    }
+
+    private async refreshStandings(): Promise<void> {
+        if (!this.currentDraft) return;
+        try {
+            const data = await this.api.getStandings();
+            if (data.success) {
+                this.renderer.renderStandings(data, this.currentDraft.my_team_name);
+            }
+        } catch (e) { /* standings panel hidden until draft progresses */ }
+    }
+
+    private async refreshDraftBoard(): Promise<void> {
+        if (!this.currentDraft) return;
+        try {
+            const data = await this.api.getDraftBoard();
+            if (data.success) {
+                const teams = [
+                    "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
+                    "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
+                    "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+                ];
+                this.renderer.renderDraftBoard(data, teams, this.currentDraft.my_team_name);
+            }
+        } catch (e) { /* draft board panel hidden until draft starts */ }
     }
 
     private async refreshPlayers(): Promise<void> {

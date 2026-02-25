@@ -158,5 +158,13 @@ export class ApiClient {
         }
         return data;
     }
+    async getStandings() {
+        const response = await fetch(`${API_BASE}/api/standings`);
+        return response.json();
+    }
+    async getDraftBoard() {
+        const response = await fetch(`${API_BASE}/api/draft/board`);
+        return response.json();
+    }
 }
 //# sourceMappingURL=api.js.map

@@ -95,8 +95,37 @@
                 <div id="other-teams-list" class="teams-list"></div>
             </div>
         </div>
+
+        <!-- Bottom Panels: Leaderboard + Draft Board -->
+        <div class="bottom-panels">
+            <div class="bottom-tabs">
+                <button class="bottom-tab active" data-tab="standings">Leaderboard</button>
+                <button class="bottom-tab" data-tab="draftboard">Draft Board</button>
+            </div>
+            <div id="standings-panel" class="bottom-panel active">
+                <div id="standings-content" class="standings-content">
+                    <p class="muted-text">Draft some players to see standings…</p>
+                </div>
+            </div>
+            <div id="draftboard-panel" class="bottom-panel">
+                <div id="draftboard-content" class="draftboard-content">
+                    <p class="muted-text">Draft picks will appear here…</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        document.querySelectorAll('.bottom-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.bottom-tab').forEach(function(t) { t.classList.remove('active'); });
+                document.querySelectorAll('.bottom-panel').forEach(function(p) { p.classList.remove('active'); });
+                tab.classList.add('active');
+                var panel = document.getElementById(tab.getAttribute('data-tab') + '-panel');
+                if (panel) panel.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>

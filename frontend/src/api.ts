@@ -207,5 +207,35 @@ export class ApiClient {
         }
         return data;
     }
+
+    async getStandings(): Promise<{
+        success: boolean;
+        category_totals: { [team: string]: { [cat: string]: number } };
+        category_rankings: { [cat: string]: string[] };
+        total_points: { [team: string]: number };
+        final_rankings: string[];
+    }> {
+        const response = await fetch(`${API_BASE}/api/standings`);
+        return response.json();
+    }
+
+    async getDraftBoard(): Promise<{
+        success: boolean;
+        board: Array<{
+            pick_number: number;
+            round: number;
+            team_name: string;
+            player_id: string;
+            player_name: string;
+            position: string;
+        }>;
+        total_teams: number;
+        roster_size: number;
+        picks_made: number;
+        total_picks: number;
+    }> {
+        const response = await fetch(`${API_BASE}/api/draft/board`);
+        return response.json();
+    }
 }
 
