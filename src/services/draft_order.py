@@ -5,8 +5,8 @@ from typing import List
 class DraftOrder:
     """Manages draft order for Bob Uecker League."""
     
-    # Team order for rounds 1-5 (no snake)
-    ROUNDS_1_5_ORDER = [
+    # Base draft order (Runtime Terror picks 1st)
+    TEAM_ORDER = [
         "Runtime Terror",
         "Dawg",
         "Long Balls",
@@ -21,37 +21,31 @@ class DraftOrder:
         "Big Sticks",
         "Like a Nightmare"
     ]
-    
-    # Starting round 6, it snakes (reverses each round)
-    
+
+    # Rounds 1-4: fixed order. Round 5+: snake (direction flips each round).
+    # Round 5 = first snake round (reverse), Round 6 = normal, Round 7 = reverse, etc.
+    FIXED_ROUNDS = 4
+
+    # Keep legacy alias so existing code that references ROUNDS_1_5_ORDER still works
+    ROUNDS_1_5_ORDER = TEAM_ORDER
+
     @classmethod
     def get_team_for_pick(cls, pick_number: int, total_teams: int = 13) -> str:
-        """
-        Get the team name for a given pick number.
-        
-        Args:
-            pick_number: The pick number (1-indexed)
-            total_teams: Total number of teams (default 13)
-        
-        Returns:
-            Team name for that pick
-        """
+        """Get the team name for a given pick number (1-indexed)."""
         round_number = ((pick_number - 1) // total_teams) + 1
         pick_in_round = ((pick_number - 1) % total_teams) + 1
-        
-        # Rounds 1-5: use standard order
-        if round_number <= 5:
-            return cls.ROUNDS_1_5_ORDER[pick_in_round - 1]
-        
-        # Round 6+: snake draft (alternate direction each round)
-        is_odd_round = (round_number - 5) % 2 == 1  # Round 6 is "odd" in snake terms
-        
-        if is_odd_round:
-            # Odd snake rounds: reverse order (Simba's first)
-            return cls.ROUNDS_1_5_ORDER[total_teams - pick_in_round]
+
+        if round_number <= cls.FIXED_ROUNDS:
+            return cls.TEAM_ORDER[pick_in_round - 1]
+
+        # Snake rounds: first snake round is reverse, then alternates
+        snake_index = round_number - cls.FIXED_ROUNDS  # 1-based
+        if snake_index % 2 == 1:
+            # Odd snake rounds (5, 7, 9, …): reverse order
+            return cls.TEAM_ORDER[total_teams - pick_in_round]
         else:
-            # Even snake rounds: normal order (Gashouse Gang first)
-            return cls.ROUNDS_1_5_ORDER[pick_in_round - 1]
+            # Even snake rounds (6, 8, 10, …): normal order
+            return cls.TEAM_ORDER[pick_in_round - 1]
     
     @classmethod
     def get_all_teams(cls) -> List[str]:

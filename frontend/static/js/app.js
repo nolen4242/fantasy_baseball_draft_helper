@@ -263,35 +263,22 @@ class App {
         const pickNumber = this.currentDraft.picks.length + 1;
         const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
         const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
-        // Bob Uecker League: Rounds 1-5 no snake, Round 6+ snakes
+        // Bob Uecker League: Rounds 1-4 fixed, Round 5+ snakes
         const teamOrder = [
-            "Runtime Terror",
-            "Dawg",
-            "Long Balls",
-            "Simba's Dublin Green Sox",
-            "Young Guns",
-            "Gashouse Gang",
-            "Magnum GI",
-            "Trex",
-            "Rieken Havoc",
-            "Guillotine",
-            "MAGA DOGE",
-            "Big Sticks",
-            "Like a Nightmare"
+            "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
+            "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
+            "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
         ];
+        const FIXED_ROUNDS = 4;
         let currentTeam;
-        if (round <= 5) {
+        if (round <= FIXED_ROUNDS) {
             currentTeam = teamOrder[pickInRound - 1];
         }
         else {
-            const snakeRound = round - 5;
-            const isOddSnakeRound = snakeRound % 2 === 1;
-            if (isOddSnakeRound) {
-                currentTeam = teamOrder[this.currentDraft.total_teams - pickInRound];
-            }
-            else {
-                currentTeam = teamOrder[pickInRound - 1];
-            }
+            const snakeIdx = round - FIXED_ROUNDS;
+            currentTeam = snakeIdx % 2 === 1
+                ? teamOrder[this.currentDraft.total_teams - pickInRound]
+                : teamOrder[pickInRound - 1];
         }
         // Only auto-draft if it's not the user's team
         if (currentTeam !== this.currentDraft.my_team_name) {

@@ -12,7 +12,7 @@ A **Fantasy Baseball Draft Helper** for the **Bob Uecker Imaginary Baseball Leag
 - **Position requirements**: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
 - **Batting categories**: HR, OBP, R, RBI, SB
 - **Pitching categories**: ERA, K, SHOLDS (Saves + Holds×0.5), WHIP, WQS (Wins + Quality Starts)
-- **Draft order**: Rounds 1-5 fixed order (Runtime Terror picks 1st), Round 6+ snake
+- **Draft order**: Rounds 1-4 fixed order (Runtime Terror picks 1st), Round 5+ snake
 
 ## Tech Stack
 
