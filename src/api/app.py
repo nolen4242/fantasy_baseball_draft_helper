@@ -856,6 +856,117 @@ def get_standings():
     })
 
 
+@app.route('/api/player/<player_id>/analysis', methods=['GET'])
+def get_player_analysis(player_id):
+    """Get draft analysis (pros/cons/reasoning) for a specific player."""
+    if not draft_service.current_draft:
+        return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    player = next((p for p in all_players if p.player_id == player_id), None)
+    if not player:
+        return jsonify({'success': False, 'message': 'Player not found'}), 404
+
+    recommendation_engine.all_players = all_players
+    available = draft_service.get_available_players(all_players)
+    my_team = draft_service.get_my_team_players(all_players)
+
+    recs = recommendation_engine.get_recommendations(
+        available_players=available,
+        my_team=my_team,
+        draft_state=draft_service.current_draft,
+        top_n=200,
+        use_ml=False,
+    )
+
+    rec = next((r for r in recs if r['player'].player_id == player_id), None)
+
+    current_pick = len(draft_service.current_draft.picks) + 1
+    adp = player.adp
+    is_hitter = player.position not in ('SP', 'RP', 'P')
+
+    pros = []
+    cons = []
+
+    if rec:
+        score = rec['score']
+        reasoning = rec['reasoning']
+        rank_in_recs = next((i + 1 for i, r in enumerate(recs) if r['player'].player_id == player_id), None)
+        if rank_in_recs and rank_in_recs <= 3:
+            pros.append(f'Ranked #{rank_in_recs} recommendation right now')
+        elif rank_in_recs and rank_in_recs <= 10:
+            pros.append(f'Top 10 recommendation (#{rank_in_recs})')
+        elif rank_in_recs:
+            cons.append(f'Ranked #{rank_in_recs} of {len(recs)} available — better options exist')
+    else:
+        score = 0
+        reasoning = 'Not in current recommendation pool'
+        cons.append('Not currently recommended')
+
+    if adp:
+        adp_diff = adp - current_pick
+        if adp_diff > 15:
+            cons.append(f'Major reach: ADP {adp:.1f} is {adp_diff:.0f} picks away — will likely still be available later')
+        elif adp_diff > 5:
+            cons.append(f'Slight reach: ADP {adp:.1f} is {adp_diff:.0f} picks ahead of current pick {current_pick}')
+        elif adp_diff < -10:
+            pros.append(f'Great value: ADP {adp:.1f} — should have gone {-adp_diff:.0f} picks ago')
+        elif adp_diff < -3:
+            pros.append(f'Good value: ADP {adp:.1f} at pick {current_pick}')
+        else:
+            pros.append(f'Right on ADP value ({adp:.1f} at pick {current_pick})')
+
+    from src.services.team_service import TeamService
+    ts = TeamService()
+    eligible = ts._determine_eligible_positions(player)
+    has_slot = ts.has_available_slot_for_player(draft_service.current_draft.my_team_name, player)
+    if has_slot:
+        pros.append(f'Fills an open roster slot ({", ".join(eligible[:3])})')
+    else:
+        cons.append('No open roster slot for this player')
+
+    hitter_count = sum(1 for p in my_team if p.position not in ('SP', 'RP', 'P'))
+    pitcher_count = len(my_team) - hitter_count
+    if is_hitter and hitter_count >= 11:
+        cons.append(f'Already have {hitter_count} hitters (need 11)')
+    if not is_hitter and pitcher_count >= 9:
+        cons.append(f'Already have {pitcher_count} pitchers (need 9)')
+
+    if is_hitter:
+        cats = {'HR': player.projected_home_runs, 'SB': player.projected_stolen_bases,
+                'OBP': player.projected_obp, 'R': player.projected_runs, 'RBI': player.projected_rbi}
+        strong = [c for c, v in cats.items() if v and v > 0]
+        if player.projected_home_runs and player.projected_home_runs >= 30:
+            pros.append(f'Elite power ({int(player.projected_home_runs)} HR)')
+        if player.projected_stolen_bases and player.projected_stolen_bases >= 20:
+            pros.append(f'Speed threat ({int(player.projected_stolen_bases)} SB)')
+        if player.projected_obp and player.projected_obp >= 0.370:
+            pros.append(f'Elite OBP ({player.projected_obp:.3f})')
+        if player.projected_obp and player.projected_obp < 0.300:
+            cons.append(f'Low OBP ({player.projected_obp:.3f})')
+    else:
+        if player.projected_era and player.projected_era <= 3.00:
+            pros.append(f'Ace-level ERA ({player.projected_era:.2f})')
+        if player.projected_era and player.projected_era >= 4.00:
+            cons.append(f'High ERA ({player.projected_era:.2f})')
+        if player.projected_strikeouts and player.projected_strikeouts >= 200:
+            pros.append(f'Elite strikeout arm ({int(player.projected_strikeouts)} K)')
+        if player.projected_saves and player.projected_saves >= 25:
+            pros.append(f'Closer with {int(player.projected_saves)} projected saves')
+        if player.projected_whip and player.projected_whip <= 1.10:
+            pros.append(f'Elite WHIP ({player.projected_whip:.2f})')
+        if player.projected_whip and player.projected_whip >= 1.30:
+            cons.append(f'High WHIP ({player.projected_whip:.2f})')
+
+    return jsonify({
+        'success': True,
+        'player_id': player_id,
+        'score': round(score, 1),
+        'reasoning': reasoning,
+        'pros': pros,
+        'cons': cons,
+    })
+
+
 @app.route('/api/draft/board', methods=['GET'])
 def get_draft_board():
     """Get draft board — every pick organized by round and pick-in-round."""

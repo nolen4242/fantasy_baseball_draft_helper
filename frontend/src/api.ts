@@ -241,6 +241,13 @@ export class ApiClient {
         return response.json();
     }
 
+    async getPlayerAnalysis(playerId: string): Promise<{
+        success: boolean; score: number; reasoning: string; pros: string[]; cons: string[];
+    }> {
+        const response = await fetch(`${API_BASE}/api/player/${playerId}/analysis`);
+        return response.json();
+    }
+
     async getEligiblePositions(playerId: string): Promise<{ eligible_positions: string[] }> {
         const response = await fetch(`${API_BASE}/api/player/${playerId}/eligible-positions`);
         return response.json();

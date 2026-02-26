@@ -166,6 +166,10 @@ export class ApiClient {
         const response = await fetch(`${API_BASE}/api/draft/board`);
         return response.json();
     }
+    async getPlayerAnalysis(playerId) {
+        const response = await fetch(`${API_BASE}/api/player/${playerId}/analysis`);
+        return response.json();
+    }
     async getEligiblePositions(playerId) {
         const response = await fetch(`${API_BASE}/api/player/${playerId}/eligible-positions`);
         return response.json();

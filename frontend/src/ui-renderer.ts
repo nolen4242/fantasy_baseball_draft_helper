@@ -554,9 +554,41 @@ export class UIRenderer {
                     </div>
                 </div>
                 <table class="player-modal-stats">${statsHtml}</table>
+                <div id="player-modal-analysis" class="player-analysis-section">
+                    <div class="analysis-loading">Loading draft analysis…</div>
+                </div>
                 ${draftBtnHtml}
             </div>`;
         document.body.appendChild(modal);
+    }
+
+    updatePlayerModalAnalysis(analysis: { score: number; reasoning: string; pros: string[]; cons: string[] }): void {
+        const container = document.getElementById('player-modal-analysis');
+        if (!container) return;
+
+        let html = `<div class="analysis-header">Draft Analysis <span class="analysis-score">Score: ${analysis.score}</span></div>`;
+
+        if (analysis.pros.length > 0) {
+            html += '<div class="analysis-pros">';
+            for (const pro of analysis.pros) {
+                html += `<div class="analysis-item analysis-pro">+ ${pro}</div>`;
+            }
+            html += '</div>';
+        }
+
+        if (analysis.cons.length > 0) {
+            html += '<div class="analysis-cons">';
+            for (const con of analysis.cons) {
+                html += `<div class="analysis-item analysis-con">- ${con}</div>`;
+            }
+            html += '</div>';
+        }
+
+        if (analysis.reasoning) {
+            html += `<div class="analysis-reasoning">${analysis.reasoning}</div>`;
+        }
+
+        container.innerHTML = html;
     }
 
     renderStandings(data: {

@@ -29,6 +29,7 @@ class App {
         window.closePlayerModal = () => this.closePlayerModal();
         window.toggleCompare = (playerId) => this.toggleCompare(playerId);
         window.openCompare = () => this.openCompare();
+        window.resetCompare = () => this.resetCompare();
         window.batchRevertTo = (pickNumber) => this.batchRevertTo(pickNumber);
         window.openTradeAnalyzer = () => this.analyzeTradeAction();
         window.updateTradeBPlayers = () => this.updateTradeBPlayers();
@@ -407,12 +408,19 @@ class App {
         this.renderer.renderOtherTeams(teams, (teamName) => this.showTeamDetails(teamName));
     }
     // ── Feature 1: Player Detail Modal ──────────────
-    showPlayerDetails(playerId) {
+    async showPlayerDetails(playerId) {
         const player = this.allPlayers.find(p => p.player_id === playerId);
         if (!player)
             return;
         const draftComplete = this.currentDraft?.is_complete || false;
         this.renderer.renderPlayerModal(player, () => this.draftPlayerById(playerId), draftComplete);
+        try {
+            const analysis = await this.api.getPlayerAnalysis(playerId);
+            if (analysis.success) {
+                this.renderer.updatePlayerModalAnalysis(analysis);
+            }
+        }
+        catch (e) { /* analysis is optional enhancement */ }
     }
     closePlayerModal() {
         const modal = document.getElementById('player-detail-modal');
@@ -434,23 +442,43 @@ class App {
         this.refreshCompareButton();
     }
     refreshCompareButton() {
-        let btn = document.getElementById('compare-floating-btn');
-        if (this.compareSelection.length >= 2) {
-            if (!btn) {
-                btn = document.createElement('button');
+        let container = document.getElementById('compare-floating-container');
+        if (this.compareSelection.length >= 1) {
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'compare-floating-container';
+                container.className = 'compare-floating-container';
+                const btn = document.createElement('button');
                 btn.id = 'compare-floating-btn';
                 btn.className = 'compare-floating-btn';
-                btn.textContent = 'Compare Selected';
                 btn.onclick = () => this.openCompare();
-                document.body.appendChild(btn);
+                container.appendChild(btn);
+                const resetBtn = document.createElement('button');
+                resetBtn.className = 'compare-reset-btn';
+                resetBtn.textContent = 'Reset';
+                resetBtn.onclick = () => this.resetCompare();
+                container.appendChild(resetBtn);
+                document.body.appendChild(container);
             }
-            btn.textContent = `Compare Selected (${this.compareSelection.length})`;
-            btn.style.display = 'block';
+            const btn = document.getElementById('compare-floating-btn');
+            if (btn) {
+                btn.textContent = `Compare (${this.compareSelection.length})`;
+                btn.disabled = this.compareSelection.length < 2;
+            }
+            container.style.display = 'flex';
         }
         else {
-            if (btn)
-                btn.style.display = 'none';
+            if (container)
+                container.style.display = 'none';
         }
+    }
+    resetCompare() {
+        this.compareSelection = [];
+        this.refreshCompareButton();
+        this.refreshAvailablePlayers();
+        const modal = document.getElementById('compare-modal');
+        if (modal)
+            modal.remove();
     }
     openCompare() {
         const players = this.compareSelection
