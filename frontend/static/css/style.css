@@ -1150,30 +1150,7 @@ body {
     accent-color: var(--air-force-blue);
 }
 
-.compare-floating-btn {
-    position: fixed;
-    bottom: 340px;
-    right: 24px;
-    background: var(--deep-space-blue);
-    color: var(--text-on-dark);
-    border: none;
-    padding: 12px 24px;
-    border-radius: var(--radius-pill);
-    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: var(--shadow-lg);
-    z-index: 500;
-    transition: background var(--transition-fast), transform var(--transition-fast);
-}
-
-.compare-floating-btn:hover {
-    background: var(--deep-space-blue-light);
-    transform: translateY(-2px);
-}
+/* old compare-floating-btn rules removed — see .compare-floating-container below */
 
 /* ── Comparison Modal ───────────────────────────── */
 
@@ -1682,9 +1659,8 @@ body {
 
 .compare-floating-container {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 325px;
+    right: 20px;
     z-index: 1500;
     display: flex;
     gap: 8px;
@@ -1733,4 +1709,33 @@ body {
 
 .compare-reset-btn:hover {
     background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Compare Analysis Grid ───────────────────────── */
+
+.compare-analysis-section {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+}
+
+.compare-analysis-grid {
+    display: flex;
+    gap: 16px;
+}
+
+.compare-analysis-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.compare-analysis-name {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--deep-space-blue);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

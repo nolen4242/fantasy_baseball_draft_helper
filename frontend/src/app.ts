@@ -497,12 +497,21 @@ class App {
         if (modal) modal.remove();
     }
 
-    private openCompare(): void {
+    private async openCompare(): Promise<void> {
         const players = this.compareSelection
             .map(id => this.allPlayers.find(p => p.player_id === id))
             .filter((p): p is Player => p !== undefined);
         if (players.length < 2) return;
         this.renderer.renderCompareModal(players);
+        // Fetch analysis for each player and update the modal
+        const analyses: { [id: string]: { pros: string[]; cons: string[]; score: number } } = {};
+        await Promise.all(players.map(async p => {
+            try {
+                const a = await this.api.getPlayerAnalysis(p.player_id);
+                if (a.success) analyses[p.player_id] = { pros: a.pros, cons: a.cons, score: a.score };
+            } catch (e) { /* optional */ }
+        }));
+        this.renderer.updateCompareAnalysis(players, analyses);
     }
 
     // ── Feature 6: Batch Revert ─────────────────────

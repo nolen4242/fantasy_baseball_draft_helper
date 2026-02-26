@@ -720,9 +720,36 @@ export class UIRenderer {
                     <thead><tr>${headerCols}</tr></thead>
                     <tbody>${rows}</tbody>
                 </table>
+                <div id="compare-analysis-section" class="compare-analysis-section">
+                    <div class="analysis-loading">Loading analysis…</div>
+                </div>
             </div>
         `;
         document.body.appendChild(modal);
+    }
+
+    updateCompareAnalysis(players: Player[], analyses: { [id: string]: { pros: string[]; cons: string[]; score: number } }): void {
+        const container = document.getElementById('compare-analysis-section');
+        if (!container) return;
+
+        if (Object.keys(analyses).length === 0) {
+            container.innerHTML = '';
+            return;
+        }
+
+        let html = '<div class="compare-analysis-grid">';
+        for (const p of players) {
+            const a = analyses[p.player_id];
+            html += '<div class="compare-analysis-col">';
+            html += `<div class="compare-analysis-name">${p.name} <span class="analysis-score">Score: ${a ? a.score : '—'}</span></div>`;
+            if (a) {
+                for (const pro of a.pros) html += `<div class="analysis-item analysis-pro">+ ${pro}</div>`;
+                for (const con of a.cons) html += `<div class="analysis-item analysis-con">- ${con}</div>`;
+            }
+            html += '</div>';
+        }
+        html += '</div>';
+        container.innerHTML = html;
     }
 
     // ── Feature 7: Category Rankings Table ──────────
