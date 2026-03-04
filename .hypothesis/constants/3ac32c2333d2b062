@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/zscore_calculator.py
+# hypothesis_version: 6.141.1
+
+[0.0, 1e-09, 0.5, 'ERA', 'HR', 'K', 'OBP', 'P', 'R', 'RBI', 'RP', 'SB', 'SHOLDS', 'SP', 'WHIP', 'WQS', 'composite', 'projected_era', 'projected_home_runs', 'projected_obp', 'projected_rbi', 'projected_runs', 'projected_strikeouts', 'projected_whip']

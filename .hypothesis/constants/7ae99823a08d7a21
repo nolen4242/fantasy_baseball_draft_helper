@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/team_service.py
+# hypothesis_version: 6.141.1
+
+['1B', '2B', '3B', 'BENCH', 'C', 'CI', 'MI', 'OF', 'P', 'RP', 'SP', 'SS', 'U', 'all_players', 'data', 'name', 'overflow', 'pick_info', 'pick_number', 'player', 'player_id', 'position', 'positions', 'projected_era', 'projected_holds', 'projected_home_runs', 'projected_obp', 'projected_rbi', 'projected_runs', 'projected_saves', 'projected_strikeouts', 'projected_whip', 'projected_wins', 'r', 'roster.json', 'round', 'stats', 'team', 'team_name', 'teams', 'utf-8', 'w']

@@ -297,13 +297,12 @@ class App {
                 : teamOrder[pickInRound - 1];
         }
         
-        // Only auto-draft if it's not the user's team
-        if (currentTeam !== this.currentDraft.my_team_name) {
+        // Only auto-draft if it's not the user's team AND auto-draft is enabled
+        if (currentTeam !== this.currentDraft.my_team_name && this.autoDraftEnabled) {
             try {
                 // Check if this team's roster is full
                 const teamRosterSize = this.currentDraft.team_rosters[currentTeam]?.length || 0;
                 if (teamRosterSize >= this.currentDraft.roster_size) {
-                    // Team roster is full, skip auto-draft
                     return;
                 }
                 
@@ -312,26 +311,49 @@ class App {
                 this.currentDraft = result.draft;
                 console.log(`Auto-drafted ${result.picked_player.name} for ${currentTeam}. Reasoning: ${result.reasoning}`);
                 
-                // Check if draft is now complete
                 if (result.draft_complete) {
                     console.log('Draft Complete! All roster spots filled.');
                 }
                 
-                // Refresh everything after auto-draft
                 await this.refreshAll();
                 
-                // If draft not complete, continue auto-drafting
                 if (!result.draft_complete && this.autoDraftEnabled) {
                     setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
                 }
             } catch (error) {
                 console.error('Error making auto-draft pick:', error);
-                // If error is about roster being full or draft complete, that's okay
-                const errorMessage = error instanceof Error ? error.message : '';
-                if (!errorMessage.includes('full') && !errorMessage.includes('complete')) {
-                    // Only log unexpected errors
+                // Skip this team and try the next pick instead of stopping
+                // This prevents getting stuck when a team has no valid candidates
+                const nextPick = this.currentDraft!.picks.length + 1;
+                const totalPicks = this.currentDraft!.total_teams * this.currentDraft!.roster_size;
+                if (nextPick <= totalPicks && this.autoDraftEnabled) {
+                    console.log(`Skipping stuck pick for ${currentTeam}, moving on...`);
+                    setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
                 }
             }
+        }
+    }
+    private getCurrentPickTeam(): string | null {
+        if (!this.currentDraft) return null;
+
+        const pickNumber = this.currentDraft.picks.length + 1;
+        const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
+        const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
+
+        const teamOrder = [
+            "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
+            "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
+            "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+        ];
+        const FIXED_ROUNDS = 4;
+
+        if (round <= FIXED_ROUNDS) {
+            return teamOrder[pickInRound - 1];
+        } else {
+            const snakeIdx = round - FIXED_ROUNDS;
+            return snakeIdx % 2 === 1
+                ? teamOrder[this.currentDraft.total_teams - pickInRound]
+                : teamOrder[pickInRound - 1];
         }
     }
     
@@ -365,10 +387,21 @@ class App {
     }
 
     private async refreshAvailablePlayers(): Promise<void> {
-        const available = await this.api.getAvailablePlayers();
-        const draftComplete = this.currentDraft?.is_complete || false;
-        this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player), draftComplete, this.categoryNeeds, this.compareSelection);
-    }
+            const available = await this.api.getAvailablePlayers();
+            const draftComplete = this.currentDraft?.is_complete || false;
+            this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player), draftComplete, this.categoryNeeds, this.compareSelection);
+
+            // Update draft buttons to show which team is picking
+            if (!draftComplete && this.currentDraft) {
+                const currentTeam = this.getCurrentPickTeam();
+                const isMyTurn = currentTeam === this.currentDraft.my_team_name;
+                if (!isMyTurn && currentTeam) {
+                    document.querySelectorAll('.draft-btn:not(.draft-btn-disabled)').forEach(btn => {
+                        btn.textContent = `Draft → ${currentTeam}`;
+                    });
+                }
+            }
+        }
 
     private async refreshMyTeam(): Promise<void> {
         if (!this.currentDraft) return;
@@ -603,25 +636,20 @@ class App {
             return;
         }
 
-        // Note: We allow drafting even if draft is marked complete, as long as required positions aren't filled
-        // The backend will check if the team can actually draft more players
-
         try {
-            // If no draft exists, the backend will auto-create one
-            const teamName = this.currentDraft?.my_team_name || 'Runtime Terror';
+            // Determine whose turn it is — assign pick to that team
+            const teamName = this.getCurrentPickTeam() || this.currentDraft.my_team_name;
             const result = await this.api.makePick(player.player_id, teamName);
             this.currentDraft = result;
             
-            // Check if draft is now complete
             if (result.is_complete) {
                 alert('Draft Complete! All roster spots have been filled.');
             }
             
             await this.refreshAll();
             
-            // After user picks, check if auto-draft should trigger for next team
-            if (this.autoDraftEnabled && !result.is_complete) {
-                // Small delay to ensure state is updated
+            // After picking, trigger auto-draft if enabled
+            if (!result.is_complete && this.autoDraftEnabled) {
                 setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
             }
         } catch (error) {

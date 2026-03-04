@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/savant_adjuster.py
+# hypothesis_version: 6.141.1
+
+[-2.0, 0.0, 0.02, 0.05, 0.1, 0.315, 1.0, 1.5, 2.0, 8.0, 10.0, 27.0, 88.5, 'P', 'RP', 'SP', 'barrel_rate', 'exit_velo', 'sprint_speed', 'xwoba']

@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/standings_calculator.py
+# hypothesis_version: 6.141.1
+
+[0.0, 0.5, 'ERA', 'HD', 'HR', 'K', 'OBP', 'P', 'QS', 'R', 'RBI', 'RP', 'SB', 'SHOLDS', 'SP', 'SV', 'W', 'WHIP', 'WQS', 'batting_points', 'category_points', 'category_rankings', 'category_totals', 'final_rankings', 'pitching_points', 'total_points']

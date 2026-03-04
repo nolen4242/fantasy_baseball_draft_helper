@@ -1,0 +1,20 @@
+we need 5 years of historical standard stats for both pitchers and batters 
+we need 5 years of advanced stats for both hitters and pitchers 
+
+we need current adp from nfbc
+
+we need every projection system for both hitters and pitchers
+
+we need to load all data sources into one. it will be hard to do name matching
+accross multiple sources. research on seeing if we can limit the amount of sources
+we end up pulling from. 
+
+look into deleting a player from getting recomended (due to injury or other) 
+
+why is win probability to high, tests to see if it's right (pick bad players) 
+
+the auto draft feature needs to be a little more realistic - acuna is available at pick 117
+
+if i dont have any stats in a category, i should get zero points for it. 
+example - i likely wont draft a closer or reliver early, but having no holds shouldnt
+give me a tie for the category with other teams (other teams are tied with 5.5 poitns)

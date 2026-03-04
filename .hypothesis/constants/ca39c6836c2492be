@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/models/player.py
+# hypothesis_version: 6.141.1
+
+['adp', 'age', 'draft_pick', 'draft_round', 'drafted', 'drafted_by_team', 'name', 'player_id', 'position', 'projected_era', 'projected_holds', 'projected_home_runs', 'projected_obp', 'projected_rbi', 'projected_runs', 'projected_saves', 'projected_strikeouts', 'projected_whip', 'projected_wins', 'team']

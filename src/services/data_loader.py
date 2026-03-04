@@ -195,6 +195,14 @@ class DataLoader:
                         normalized_row.get('hd')  # CBS uses 'HD'
                     )
                     
+                    # Innings Pitched
+                    projected_innings_pitched = self._safe_float(
+                        normalized_row.get('projected_innings_pitched') or
+                        normalized_row.get('ip') or
+                        normalized_row.get('inns') or  # CBS uses 'INNs'
+                        normalized_row.get('innings_pitched')
+                    )
+                    
                     # Auto-assign positions based on stats
                     if not position:
                         # Check if it's a pitcher (has pitching stats)
@@ -228,6 +236,7 @@ class DataLoader:
                         projected_whip=projected_whip,
                         projected_saves=projected_saves,
                         projected_holds=projected_holds,
+                        projected_innings_pitched=projected_innings_pitched,
                     )
                     players.append(player)
                 except Exception as e:

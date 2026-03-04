@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/player_loader.py
+# hypothesis_version: 6.141.1
+
+['CF', 'DH', 'LF', 'OF', 'RF', 'U', 'adp', 'blended', 'cbs_adp', 'name', 'nfbc_adp', 'player_id', 'position', 'projected_era', 'projected_holds', 'projected_home_runs', 'projected_obp', 'projected_rbi', 'projected_runs', 'projected_saves', 'projected_strikeouts', 'projected_whip', 'projected_wins', 'r', 'savant_history', 'team']

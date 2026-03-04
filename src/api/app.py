@@ -10,12 +10,10 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from src.services.data_loader import DataLoader
 from src.services.draft_service import DraftService
 from src.services.recommendation_engine import RecommendationEngine
 from src.services.draft_order import DraftOrder
-from src.services.master_player_dict import MasterPlayerDict
-from src.services.ml_trainer import MLTrainer
+from src.services.player_loader import PlayerLoader
 from src.models.player import Player
 from src.models.draft import DraftState
 
@@ -25,15 +23,14 @@ app = Flask(__name__,
 CORS(app)
 
 # Initialize services
-data_loader = DataLoader()
 draft_service = DraftService()
-master_player_dict = MasterPlayerDict()
 
-# Global state (in production, use a database)
-all_players: list[Player] = []
+# Load players from master_players.json at startup
+loader = PlayerLoader()
+all_players, savant_data = loader.load()
 
-# Initialize recommendation engine (will be updated when players are loaded)
-recommendation_engine = RecommendationEngine(draft_service, all_players)
+# Initialize recommendation engine with loaded players and savant data
+recommendation_engine = RecommendationEngine(draft_service, all_players, savant_data)
 
 
 def _build_team_rosters_players() -> dict:
@@ -63,134 +60,53 @@ def index():
 
 @app.route('/api/players/load', methods=['POST'])
 def load_players():
-    """Load players from CSV file."""
-    global all_players
-    filename = request.json.get('filename', 'steamer-batters.csv')
-    file_type = request.json.get('file_type', 'batters')  # 'batters' or 'pitchers'
-    all_players = data_loader.load_players_from_csv(filename, file_type=file_type)
-    
-    # Check how many players have positions
+    """No-op — players are pre-loaded from master_players.json at startup."""
     players_with_positions = sum(1 for p in all_players if p.position)
-    warning = None
-    if players_with_positions < len(all_players):
-        warning = f'Warning: {len(all_players) - players_with_positions} players are missing position data. Positions are needed for recommendations.'
-    
     return jsonify({
         'success': True,
         'count': len(all_players),
         'players_with_positions': players_with_positions,
         'message': f'Loaded {len(all_players)} players',
-        'warning': warning
+        'warning': None
     })
 
 
 @app.route('/api/players/load-steamer', methods=['POST'])
 def load_steamer_files():
-    """Load both Steamer hitter and pitcher files and merge projections into master dictionary."""
-    global all_players
-    
-    hitter_file = request.json.get('hitter_file', 'steamer-batters.csv')
-    pitcher_file = request.json.get('pitcher_file', 'steamer-pitchers.csv')
-    
-    # Load Steamer projections
-    hitters = data_loader.load_players_from_csv(hitter_file, file_type='batters')
-    pitchers = data_loader.load_players_from_csv(pitcher_file, file_type='pitchers')
-    
-    # Merge Steamer projections into master dictionary
-    master_player_dict.merge_steamer_projections(hitters, player_type='batters')
-    master_player_dict.merge_steamer_projections(pitchers, player_type='pitchers')
-    
-    # Load and merge ADP data
-    master_player_dict.load_adp_data()
-    
-    # Get players with merged projections (CBS base + Steamer projections + ADP)
-    all_players = (
-        master_player_dict.get_players_with_projections(player_type='batters') +
-        master_player_dict.get_players_with_projections(player_type='pitchers')
-    )
-    
-    # Update recommendation engine with new players
-    recommendation_engine.all_players = all_players
-    
-    # If no CBS data loaded yet, use Steamer directly
-    if not all_players:
-        all_players = hitters + pitchers
-    
+    """No-op — players are pre-loaded from master_players.json at startup."""
+    hitters_count = sum(1 for p in all_players if p.position not in ('SP', 'RP', 'P'))
+    pitchers_count = sum(1 for p in all_players if p.position in ('SP', 'RP', 'P'))
     players_with_positions = sum(1 for p in all_players if p.position)
-    hitters_count = len(hitters)
-    pitchers_count = len(pitchers)
-    
-    warning = None
-    if players_with_positions < len(all_players):
-        warning = f'Warning: {len(all_players) - players_with_positions} players are missing position data. Positions are needed for recommendations.'
-    
     return jsonify({
         'success': True,
         'count': len(all_players),
         'hitters': hitters_count,
         'pitchers': pitchers_count,
         'players_with_positions': players_with_positions,
-        'message': f'Merged Steamer projections: {hitters_count} hitters and {pitchers_count} pitchers. {len(all_players)} players available with projections.',
-        'warning': warning
+        'message': f'Players already loaded from master database: {hitters_count} hitters and {pitchers_count} pitchers.',
+        'warning': None
     })
 
 
 @app.route('/api/players/load-cbs', methods=['POST'])
 def load_cbs_data():
-    """Load CBS data (source of truth for available players) and merge with projections."""
-    global all_players
-    
-    hitter_file = request.json.get('hitter_file', 'cbs-batter-2025.csv')
-    pitcher_file = request.json.get('pitcher_file', 'cbs-pitchers-2025.csv')
-    
-    # Load CBS data
-    hitters = data_loader.load_players_from_csv(hitter_file, file_type='batters')
-    pitchers = data_loader.load_players_from_csv(pitcher_file, file_type='pitchers')
-    
-    # Merge CBS data into master dictionary (source of truth for available players)
-    master_player_dict.merge_cbs_data(hitters, player_type='batters')
-    master_player_dict.merge_cbs_data(pitchers, player_type='pitchers')
-    
-    # Load and merge ADP data
-    master_player_dict.load_adp_data()
-    
-    # Get players with merged projections (CBS base + any existing projections + ADP)
-    all_players = (
-        master_player_dict.get_players_with_projections(player_type='batters') +
-        master_player_dict.get_players_with_projections(player_type='pitchers')
-    )
-    
-    # Update recommendation engine with new players
-    recommendation_engine.all_players = all_players
-    
+    """No-op — players are pre-loaded from master_players.json at startup."""
+    hitters_count = sum(1 for p in all_players if p.position not in ('SP', 'RP', 'P'))
+    pitchers_count = sum(1 for p in all_players if p.position in ('SP', 'RP', 'P'))
     players_with_positions = sum(1 for p in all_players if p.position)
-    
     return jsonify({
         'success': True,
         'count': len(all_players),
-        'hitters': len(hitters),
-        'pitchers': len(pitchers),
+        'hitters': hitters_count,
+        'pitchers': pitchers_count,
         'players_with_positions': players_with_positions,
-        'message': f'Loaded CBS data: {len(hitters)} hitters and {len(pitchers)} pitchers. {len(all_players)} total players available to draft.'
+        'message': f'Players already loaded from master database: {hitters_count} hitters and {pitchers_count} pitchers. {len(all_players)} total players available to draft.'
     })
 
 
 @app.route('/api/players', methods=['GET'])
 def get_players():
-    """Get all players from master dictionary (CBS base + merged projections), sorted by ADP."""
-    global all_players
-    
-    # Try to get players from master dictionary if available
-    try:
-        merged_players = (
-            master_player_dict.get_players_with_projections(player_type='batters') +
-            master_player_dict.get_players_with_projections(player_type='pitchers')
-        )
-        if merged_players:
-            all_players = merged_players
-    except:
-        pass  # Fall back to all_players if master dict not available
-    
+    """Get all players sorted by ADP."""
     # Sort by ADP (lower is better, None values go to end)
     sorted_players = sorted(
         all_players,
@@ -592,14 +508,11 @@ def get_recommendations():
     available = draft_service.get_available_players(all_players)
     my_team = draft_service.get_my_team_players(all_players)
     
-    use_ml = request.args.get('use_ml', 'true').lower() == 'true'
-    
     recommendations = recommendation_engine.get_recommendations(
         available_players=available,
         my_team=my_team,
         draft_state=draft_service.current_draft,
-        top_n=10,
-        use_ml=use_ml
+        top_n=10
     )
     
     return jsonify({
@@ -708,14 +621,12 @@ def make_auto_draft_pick():
         adp_range_players = available
     
     # Get AI recommendations for this team (get top 10 to have a good pool)
-    use_ml = request.args.get('use_ml', 'true').lower() == 'true'
     recommendations = recommendation_engine.get_recommendations_for_team(
         available_players=available,
         team_players=team_players,
         draft_state=draft_service.current_draft,
         team_name=team_name,
-        top_n=10,
-        use_ml=use_ml
+        top_n=10
     )
     
     # Create a weighted pool of ADP-appropriate players
@@ -733,6 +644,13 @@ def make_auto_draft_pick():
             weighted_pool.extend([player] * 2)
         else:
             weighted_pool.append(player)
+    
+    if not weighted_pool:
+        # Fallback: late-round picks shouldn't be picky about ADP range.
+        # Try all available players that have a valid slot.
+        for player in available:
+            if team_service.has_available_slot_for_player(team_name, player):
+                weighted_pool.append(player)
     
     if not weighted_pool:
         return jsonify({
@@ -771,53 +689,6 @@ def make_auto_draft_pick():
         'success': False,
         'message': 'Failed to make auto-draft pick - roster may be full or draft complete'
     }), 400
-
-
-@app.route('/api/ml/train', methods=['POST'])
-def train_ml_models():
-    """Train ML models on simulated draft data."""
-    if not all_players:
-        return jsonify({
-            'success': False,
-            'message': 'No players loaded. Load CBS and Steamer data first.'
-        }), 400
-    
-    num_simulations = request.json.get('num_simulations', 1000) if request.json else 1000
-    strategies = request.json.get('strategies', ['adp', 'category', 'random']) if request.json else ['adp', 'category', 'random']
-    
-    try:
-        trainer = MLTrainer()
-        
-        # Generate training data
-        training_data = trainer.generate_training_data(
-            all_players=all_players,
-            num_simulations=num_simulations,
-            strategies=strategies
-        )
-        
-        # Train models
-        results = trainer.train_models(training_data)
-        
-        # Update recommendation engine
-        recommendation_engine.ml_trainer = trainer
-        recommendation_engine._ml_models_loaded = True
-        
-        return jsonify({
-            'success': True,
-            'message': f'Models trained on {len(training_data)} samples',
-            'train_score': results['train_score'],
-            'test_score': results['test_score'],
-            'top_features': dict(sorted(
-                results['feature_importance'].items(),
-                key=lambda x: x[1],
-                reverse=True
-            )[:10])
-        })
-    except Exception as e:
-        return jsonify({
-            'success': False,
-            'message': f'Error training models: {str(e)}'
-        }), 500
 
 
 @app.route('/api/standings', methods=['GET'])
@@ -875,7 +746,6 @@ def get_player_analysis(player_id):
         my_team=my_team,
         draft_state=draft_service.current_draft,
         top_n=200,
-        use_ml=False,
     )
 
     rec = next((r for r in recs if r['player'].player_id == player_id), None)
@@ -1192,15 +1062,21 @@ def analyze_trade():
 
 @app.route('/api/draft/win-probability', methods=['GET'])
 def get_win_probability():
-    """Run a Monte Carlo simulation to estimate each team's win probability."""
+    """Run a Monte Carlo simulation to estimate each team's win probability.
+
+    The RNG is seeded from the current draft state (pick count + drafted
+    player IDs) so that the same draft position always produces the same
+    result.  The number only changes when a new pick is made.
+    """
     if not draft_service.current_draft:
         return jsonify({'success': False, 'message': 'No active draft'}), 400
+
+    import hashlib
 
     iterations = min(int(request.args.get('iterations', 100)), 500)
     draft = draft_service.current_draft
 
     from src.services.standings_calculator import StandingsCalculator
-    import copy
 
     calc = StandingsCalculator()
     total_picks = draft.total_teams * draft.roster_size
@@ -1220,6 +1096,13 @@ def get_win_probability():
             'iterations': 1,
         })
 
+    # Seed RNG from draft state so same position = same result on refresh
+    state_str = str(current_picks_count) + "|" + ",".join(
+        p.player_id for p in draft.picks
+    )
+    seed = int(hashlib.md5(state_str.encode()).hexdigest()[:8], 16)
+    sim_rng = random.Random(seed)
+
     available = draft_service.get_available_players(all_players)
     available_sorted = sorted(available, key=lambda p: (p.adp is None, p.adp or float('inf')))
 
@@ -1227,7 +1110,6 @@ def get_win_probability():
 
     for _ in range(iterations):
         sim_rosters = {tn: list(pids) for tn, pids in draft.team_rosters.items()}
-        sim_available_ids = {p.player_id for p in available_sorted}
         sim_pool = list(available_sorted)
 
         for pick_idx in range(current_picks_count + 1, total_picks + 1):
@@ -1237,13 +1119,29 @@ def get_win_probability():
             if not sim_pool:
                 break
 
+            # All teams use ADP-aware selection.
+            candidates = []
+            for p in sim_pool:
+                if p.adp is None:
+                    continue
+                diff = p.adp - pick_idx
+                if abs(diff) <= 15:
+                    candidates.append(p)
+                elif diff < -10:
+                    candidates.append(p)
+
+            if not candidates:
+                # Fallback: use top available players regardless of ADP
+                candidates = sim_pool[:20] if len(sim_pool) >= 20 else list(sim_pool)
+
+            if not candidates:
+                continue  # No players left at all, skip this pick
+
             if team_for_pick == draft.my_team_name:
-                chosen = sim_pool[0]
+                top_candidates = sorted(candidates, key=lambda p: (p.adp is None, p.adp or float('inf')))[:3]
+                chosen = sim_rng.choice(top_candidates)
             else:
-                candidates = [p for p in sim_pool if p.adp is not None and abs(p.adp - pick_idx) <= 15]
-                if not candidates:
-                    candidates = sim_pool[:20] if len(sim_pool) >= 20 else sim_pool
-                chosen = random.choice(candidates)
+                chosen = sim_rng.choice(candidates)
 
             sim_rosters[team_for_pick].append(chosen.player_id)
             sim_pool.remove(chosen)

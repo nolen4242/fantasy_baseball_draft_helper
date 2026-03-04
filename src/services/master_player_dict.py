@@ -108,6 +108,7 @@ class MasterPlayerDict:
                     'projected_whip': player.projected_whip,
                     'projected_saves': player.projected_saves,
                     'projected_holds': player.projected_holds,
+                    'projected_innings_pitched': player.projected_innings_pitched,
                 }
             
             # Update primary name if this is a better match
@@ -159,54 +160,74 @@ class MasterPlayerDict:
         return master_dict
     
     def load_adp_data(self):
-        """Load ADP data from CSV and merge into master dictionaries."""
-        adp_file = self.data_dir / "adp.csv"
-        
-        if not adp_file.exists():
-            return
-        
-        # Load ADP data into a dictionary keyed by normalized name
+        """Load ADP data and merge into master dictionaries.
+
+        Supports two formats:
+        - NFBC TSV (adp_nfbc.tsv): Tab-separated, 'Player' column as 'Last, First', 'ADP' column
+        - Legacy CSV (adp.csv): Comma-separated, 'Player Name' as 'First Last (TEAM)', 'AVG.' column
+
+        Prefers NFBC if available, falls back to legacy CSV.
+        """
+        nfbc_file = self.data_dir / "adp_nfbc.tsv"
+        legacy_file = self.data_dir / "adp.csv"
+
         adp_dict = {}
-        
-        with open(adp_file, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                player_name = row.get('Player Name', '').strip()
-                if not player_name:
-                    continue
-                
-                # Parse name and team from format like "Aaron Judge (NYY)"
-                name = player_name
-                team = None
-                if '(' in player_name and ')' in player_name:
-                    parts = player_name.rsplit('(', 1)
-                    name = parts[0].strip()
-                    team = parts[1].rstrip(')').strip()
-                
-                # Get ADP value (AVG. column)
-                adp_str = row.get('AVG.', '').strip()
-                try:
-                    adp = float(adp_str) if adp_str else None
-                except (ValueError, TypeError):
-                    adp = None
-                
-                if adp is not None:
+
+        if nfbc_file.exists():
+            # NFBC TSV format: "Last, First" in Player column, ADP column
+            with open(nfbc_file, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f, delimiter='\t')
+                for row in reader:
+                    name_raw = row.get('Player', '').strip()
+                    adp_str = row.get('ADP', '').strip()
+                    if not name_raw or not adp_str:
+                        continue
+                    # Convert "Last, First" to "First Last"
+                    if ',' in name_raw:
+                        parts = name_raw.split(',', 1)
+                        name = f'{parts[1].strip()} {parts[0].strip()}'
+                    else:
+                        name = name_raw
+                    try:
+                        adp = float(adp_str)
+                    except (ValueError, TypeError):
+                        continue
                     normalized_name = self.normalize_player_name(name)
                     adp_dict[normalized_name] = adp
-        
+        elif legacy_file.exists():
+            # Legacy CSV format: "First Last (TEAM)" in Player Name column
+            with open(legacy_file, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    player_name = row.get('Player Name', '').strip()
+                    if not player_name:
+                        continue
+                    name = player_name
+                    if '(' in player_name and ')' in player_name:
+                        parts = player_name.rsplit('(', 1)
+                        name = parts[0].strip()
+                    adp_str = row.get('AVG.', '').strip()
+                    try:
+                        adp = float(adp_str) if adp_str else None
+                    except (ValueError, TypeError):
+                        adp = None
+                    if adp is not None:
+                        normalized_name = self.normalize_player_name(name)
+                        adp_dict[normalized_name] = adp
+        else:
+            return
+
         # Merge ADP into both batters and pitchers master dictionaries
         for player_type in ['batters', 'pitchers']:
             master_dict = self.load_master_dict(player_type)
             updated = False
-            
             for normalized_name, player_data in master_dict.items():
                 if normalized_name in adp_dict:
                     player_data['adp'] = adp_dict[normalized_name]
                     updated = True
-            
             if updated:
                 self.save_master_dict(master_dict, player_type)
-        
+
         # Apply custom ADP overrides for specific players/positions
         self._apply_adp_overrides()
     
@@ -225,67 +246,70 @@ class MasterPlayerDict:
     
     def get_players_with_projections(self, player_type: str = "batters") -> List[Player]:
         """
-        Get list of players with merged projections.
-        Uses CBS data as base, merges in projections.
-        
-        Args:
-            player_type: "batters" or "pitchers"
-        
-        Returns:
-            List of Player objects with merged data
+        Get list of players with blended consensus projections.
+        Averages across all available projection sources (Steamer, ATC, Depth Charts, etc.).
+        Uses CBS data as base for player identity/availability.
         """
         master_dict = self.load_master_dict(player_type)
         players = []
-        
+
+        if player_type == "batters":
+            stat_keys = [
+                'projected_home_runs', 'projected_obp', 'projected_runs',
+                'projected_rbi', 'projected_stolen_bases',
+            ]
+        else:
+            stat_keys = [
+                'projected_wins', 'projected_quality_starts', 'projected_strikeouts',
+                'projected_era', 'projected_whip', 'projected_saves',
+                'projected_holds', 'projected_innings_pitched',
+            ]
+
         for normalized_name, player_data in master_dict.items():
-            # Start with CBS data as base
             cbs_data = player_data.get('cbs_data', {})
             if not cbs_data:
-                continue  # Skip if no CBS data (not available to draft)
-            
-            # Get best available projections (prefer Steamer for now)
+                continue
+
             projections = player_data.get('projections', {})
-            steamer = projections.get('steamer', {})
-            
-            # Get ADP if available
+            if not projections:
+                continue
+
+            # Blend stats across all available projection sources
+            blended = {}
+            for stat in stat_keys:
+                values = []
+                for source_data in projections.values():
+                    val = source_data.get(stat)
+                    if val is not None:
+                        values.append(val)
+                blended[stat] = sum(values) / len(values) if values else None
+
+            # Get position/team from first available source
+            position = cbs_data.get('position') or ''
+            team = cbs_data.get('team') or ''
+            age = cbs_data.get('age')
+            if not position or not team:
+                for source_data in projections.values():
+                    if not position:
+                        position = source_data.get('position') or ''
+                    if not team:
+                        team = source_data.get('team') or ''
+                    if not age:
+                        age = source_data.get('age')
+
             adp = player_data.get('adp')
-            
-            # Merge data: CBS base + Steamer projections
-            # Only use relevant stats based on player type
-            if player_type == "batters":
-                player = Player(
-                    player_id=cbs_data.get('player_id', normalized_name),
-                    name=cbs_data.get('name', player_data['name']),
-                    position=cbs_data.get('position') or steamer.get('position') or '',
-                    team=cbs_data.get('team') or steamer.get('team') or '',
-                    age=cbs_data.get('age') or steamer.get('age'),
-                    # Batting stats only
-                    projected_home_runs=steamer.get('projected_home_runs'),
-                    projected_obp=steamer.get('projected_obp'),
-                    projected_runs=steamer.get('projected_runs'),
-                    projected_rbi=steamer.get('projected_rbi'),
-                    projected_stolen_bases=steamer.get('projected_stolen_bases'),
-                    adp=adp,
-                )
-            else:
-                player = Player(
-                    player_id=cbs_data.get('player_id', normalized_name),
-                    name=cbs_data.get('name', player_data['name']),
-                    position=cbs_data.get('position') or steamer.get('position') or '',
-                    team=cbs_data.get('team') or steamer.get('team') or '',
-                    age=cbs_data.get('age') or steamer.get('age'),
-                    # Pitching stats only
-                    projected_wins=steamer.get('projected_wins'),
-                    projected_quality_starts=steamer.get('projected_quality_starts'),
-                    projected_strikeouts=steamer.get('projected_strikeouts'),
-                    projected_era=steamer.get('projected_era'),
-                    projected_whip=steamer.get('projected_whip'),
-                    projected_saves=steamer.get('projected_saves'),
-                    projected_holds=steamer.get('projected_holds'),
-                    adp=adp,
-                )
+
+            player = Player(
+                player_id=cbs_data.get('player_id', normalized_name),
+                name=cbs_data.get('name', player_data['name']),
+                position=position,
+                team=team,
+                age=age,
+                adp=adp,
+                **blended,
+            )
             players.append(player)
-        
+
         return players
     
     def merge_future_projections(self, players: List[Player], projection_source: str, player_type: str = "batters"):
@@ -340,6 +364,7 @@ class MasterPlayerDict:
                     'projected_whip': player.projected_whip,
                     'projected_saves': player.projected_saves,
                     'projected_holds': player.projected_holds,
+                    'projected_innings_pitched': player.projected_innings_pitched,
                 }
         
         self.save_master_dict(master_dict, player_type)

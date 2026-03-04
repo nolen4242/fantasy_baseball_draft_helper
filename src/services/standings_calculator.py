@@ -143,15 +143,49 @@ class StandingsCalculator:
     # ------------------------------------------------------------------
 
     def _calculate_team_totals(self, roster: List[Player]) -> Dict[str, float]:
-        """Calculate category totals for a single team."""
+        """Calculate category totals for a single team.
+
+        Only the top 11 hitters and top 9 pitchers (by projected value)
+        count toward stats.  Any extras are treated as bench and excluded,
+        matching the real league rule that bench players don't accumulate
+        category stats.
+        """
         totals: Dict[str, float] = {
             'HR': 0.0, 'OBP': 0.0, 'R': 0.0, 'RBI': 0.0, 'SB': 0.0,
             'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0, 'HD': 0.0,
             'ERA': 0.0, 'WHIP': 0.0,
         }
 
-        hitters = [p for p in roster if p.position not in ('SP', 'RP', 'P')]
-        pitchers = [p for p in roster if p.position in ('SP', 'RP', 'P')]
+        MAX_ACTIVE_HITTERS = 11
+        MAX_ACTIVE_PITCHERS = 9
+
+        all_hitters = [p for p in roster if p.position not in ('SP', 'RP', 'P')]
+        all_pitchers = [p for p in roster if p.position in ('SP', 'RP', 'P')]
+
+        # Rank hitters by composite counting value (HR + R + RBI + SB + OBP*200)
+        def _hitter_value(h: Player) -> float:
+            return (
+                (h.projected_home_runs or 0)
+                + (h.projected_runs or 0)
+                + (h.projected_rbi or 0)
+                + (h.projected_stolen_bases or 0)
+                + (h.projected_obp or 0) * 200
+            )
+
+        # Rank pitchers by composite value (W + QS + K/10 + SV + HD*0.5 - ERA - WHIP)
+        def _pitcher_value(p: Player) -> float:
+            return (
+                (p.projected_wins or 0)
+                + (p.projected_quality_starts or 0)
+                + (p.projected_strikeouts or 0) / 10.0
+                + (p.projected_saves or 0)
+                + (p.projected_holds or 0) * 0.5
+                - (p.projected_era or 0)
+                - (p.projected_whip or 0)
+            )
+
+        hitters = sorted(all_hitters, key=_hitter_value, reverse=True)[:MAX_ACTIVE_HITTERS]
+        pitchers = sorted(all_pitchers, key=_pitcher_value, reverse=True)[:MAX_ACTIVE_PITCHERS]
 
         # -- Batting counting stats --
         for h in hitters:

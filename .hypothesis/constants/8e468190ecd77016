@@ -1,0 +1,4 @@
+# file: /Users/nolen/PycharmProjects/fantasy_baseball_draft_helper/src/services/recommendation_engine.py
+# hypothesis_version: 6.141.1
+
+[-10.0, -6.0, -5.0, -3.0, 0.0, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 8.0, 10.0, 12.5, 15.0, 20.0, 25.0, 30.0, 35.0, 60.0, 80.0, 100.0, 100, 130, 150, 180, 200, 300, ' (C scarce)', ' | ', ', ', '1B', '2B', '3B', 'C', 'CI', 'Can fill CI slot', 'Can fill MI slot', 'Can fill U slot', 'Depth pick', 'ERA', 'Have 7+ pitchers', 'Have enough hitters', 'Have enough pitchers', 'MI', 'No ADP data', 'OF', 'P', 'RP', 'SP', 'SS', 'Solid pick', 'U', 'WHIP', 'adp_value', 'category_balance', 'category_rankings', 'category_totals', 'composite', 'inf', 'large reach', 'mid', 'moderate reach', 'pitcher_caps', 'player', 'position_scarcity', 'reasoning', 'relative_advantage', 'savant', 'score', 'small reach', 'strong', 'team_needs', 'var', 'weak', 'zscore']

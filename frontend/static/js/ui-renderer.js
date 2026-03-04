@@ -75,6 +75,7 @@ export class UIRenderer {
         const nextRound = Math.floor((nextPickNumber - 1) / draft.total_teams) + 1;
         const nextPickInRound = ((nextPickNumber - 1) % draft.total_teams) + 1;
         const nextTeam = getTeamForRoundPick(nextRound, nextPickInRound);
+        const isMyTurn = currentTeam === draft.my_team_name;
         if (isComplete) {
             currentPickEl.textContent = 'DRAFT COMPLETE';
             currentRoundEl.textContent = `All ${totalPicks} picks made`;
@@ -82,9 +83,13 @@ export class UIRenderer {
             progressEl.textContent = `Draft Complete: ${picksMade}/${totalPicks} picks`;
             progressEl.style.color = '#157145';
             progressEl.style.fontWeight = '700';
+            currentPickEl.style.color = '';
+            currentPickEl.style.fontWeight = '';
         }
         else {
-            currentPickEl.textContent = currentTeam;
+            currentPickEl.textContent = isMyTurn ? `⭐ ${currentTeam} (YOU)` : currentTeam;
+            currentPickEl.style.color = isMyTurn ? '#157145' : '#c0392b';
+            currentPickEl.style.fontWeight = '700';
             currentRoundEl.textContent = `Round ${round}, Pick ${pickInRound}`;
             nextPickEl.textContent = nextTeam;
             progressEl.textContent = `Pick ${pickNumber} of ${totalPicks}`;

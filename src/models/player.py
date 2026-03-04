@@ -27,6 +27,7 @@ class Player:
     projected_whip: Optional[float] = None
     projected_saves: Optional[float] = None
     projected_holds: Optional[float] = None
+    projected_innings_pitched: Optional[float] = None
     
     # Draft status
     drafted: bool = False
@@ -57,6 +58,7 @@ class Player:
             'projected_whip': self.projected_whip,
             'projected_saves': self.projected_saves,
             'projected_holds': self.projected_holds,
+            'projected_innings_pitched': self.projected_innings_pitched,
             'drafted': self.drafted,
             'drafted_by_team': self.drafted_by_team,
             'draft_round': self.draft_round,
