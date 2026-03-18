@@ -705,10 +705,10 @@ def make_auto_draft_pick():
     
     # Add AI recommended players with higher weight
     ai_recommended_ids = {rec['player'].player_id for rec in recommendations}
+    from src.services.team_service import TeamService
+    team_service = TeamService()
     for player in adp_range_players:
         # Check if player has available slot
-        from src.services.team_service import TeamService
-        team_service = TeamService()
         if not team_service.has_available_slot_for_player(team_name, player):
             continue  # Skip players that can't be placed
         
@@ -720,9 +720,15 @@ def make_auto_draft_pick():
             weighted_pool.append(player)
     
     if not weighted_pool:
+        # Fallback: if ADP window yields no valid options, use any valid-slot player.
+        for player in available:
+            if team_service.has_available_slot_for_player(team_name, player):
+                weighted_pool.append(player)
+    
+    if not weighted_pool:
         return jsonify({
             'success': False,
-            'message': 'No suitable players available within ADP range'
+            'message': 'No suitable players available'
         }), 400
     
     # Randomly select from weighted pool
