@@ -23,7 +23,28 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "ronald_acuna",
+        "name": "Ronald Acuna Jr.",
+        "position": "OF",
+        "team": "ATL",
+        "pick_number": 4,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 30.0,
+          "projected_obp": 0.3887,
+          "projected_runs": 110.3333,
+          "projected_rbi": 82.0,
+          "projected_stolen_bases": 25.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
@@ -32,10 +53,94 @@
       null
     ],
     "P": [
-      null,
-      null,
-      null,
-      null,
+      {
+        "player_id": "yoshinobu_yamamoto",
+        "name": "Yoshinobu Yamamoto",
+        "position": "SP",
+        "team": "LAD",
+        "pick_number": 17,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.6667,
+          "projected_quality_starts": 16.9,
+          "projected_strikeouts": 166.8076,
+          "projected_era": 3.36,
+          "projected_whip": 1.2378,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "chris_sale",
+        "name": "Chris Sale",
+        "position": "SP",
+        "team": "ATL",
+        "pick_number": 30,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.6667,
+          "projected_quality_starts": 17.55,
+          "projected_strikeouts": 199.0913,
+          "projected_era": 3.1767,
+          "projected_whip": 1.2093,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "max_fried",
+        "name": "Max Fried",
+        "position": "SP",
+        "team": "NYY",
+        "pick_number": 43,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 13.6667,
+          "projected_quality_starts": 19.7167,
+          "projected_strikeouts": 174.9139,
+          "projected_era": 3.3067,
+          "projected_whip": 1.233,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "freddy_peralta",
+        "name": "Freddy Peralta",
+        "position": "SP",
+        "team": "NYM",
+        "pick_number": 62,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.3333,
+          "projected_quality_starts": 18.6333,
+          "projected_strikeouts": 180.8338,
+          "projected_era": 3.7967,
+          "projected_whip": 1.3148,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "ronald_acuna",
+      "name": "Ronald Acuna Jr.",
+      "position": "OF",
+      "team": "ATL",
+      "pick_number": 4,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.3887,
+        "projected_runs": 110.3333,
+        "projected_rbi": 82.0,
+        "projected_stolen_bases": 25.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "yoshinobu_yamamoto",
+      "name": "Yoshinobu Yamamoto",
+      "position": "SP",
+      "team": "LAD",
+      "pick_number": 17,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.6667,
+        "projected_quality_starts": 16.9,
+        "projected_strikeouts": 166.8076,
+        "projected_era": 3.36,
+        "projected_whip": 1.2378,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "chris_sale",
+      "name": "Chris Sale",
+      "position": "SP",
+      "team": "ATL",
+      "pick_number": 30,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.6667,
+        "projected_quality_starts": 17.55,
+        "projected_strikeouts": 199.0913,
+        "projected_era": 3.1767,
+        "projected_whip": 1.2093,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "max_fried",
+      "name": "Max Fried",
+      "position": "SP",
+      "team": "NYY",
+      "pick_number": 43,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 13.6667,
+        "projected_quality_starts": 19.7167,
+        "projected_strikeouts": 174.9139,
+        "projected_era": 3.3067,
+        "projected_whip": 1.233,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "freddy_peralta",
+      "name": "Freddy Peralta",
+      "position": "SP",
+      "team": "NYM",
+      "pick_number": 62,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.3333,
+        "projected_quality_starts": 18.6333,
+        "projected_strikeouts": 180.8338,
+        "projected_era": 3.7967,
+        "projected_whip": 1.3148,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

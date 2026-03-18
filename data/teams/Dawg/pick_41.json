@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jacob_degrom",
+    "name": "Jacob deGrom",
+    "position": "SP",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.6667,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 187.9858,
+    "projected_era": 3.4833,
+    "projected_whip": 1.1748,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 165.8,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 51.37
+  },
+  "pick_info": {
+    "pick_number": 41,
+    "round": 4,
+    "team_name": "Dawg"
+  },
+  "position": "SP"
+}

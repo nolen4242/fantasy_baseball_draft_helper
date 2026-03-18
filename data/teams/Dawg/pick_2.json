@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "shohei_ohtani",
+    "name": "Shohei Ohtani",
+    "position": "U",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": 46.0,
+    "projected_obp": 0.384,
+    "projected_runs": 123.6667,
+    "projected_rbi": 108.6667,
+    "projected_stolen_bases": 24.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 1.18
+  },
+  "pick_info": {
+    "pick_number": 2,
+    "round": 1,
+    "team_name": "Dawg"
+  },
+  "position": "U"
+}

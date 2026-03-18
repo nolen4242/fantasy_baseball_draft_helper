@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jose_ramirez",
+    "name": "Jose Ramirez",
+    "position": "3B",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": 28.0,
+    "projected_obp": 0.3473,
+    "projected_runs": 90.0,
+    "projected_rbi": 91.0,
+    "projected_stolen_bases": 31.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 5.35
+  },
+  "pick_info": {
+    "pick_number": 8,
+    "round": 1,
+    "team_name": "Trex"
+  },
+  "position": "3B"
+}

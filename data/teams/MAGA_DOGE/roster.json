@@ -5,13 +5,55 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "freddie_freeman",
+        "name": "Freddie Freeman",
+        "position": "1B",
+        "team": "LAD",
+        "pick_number": 55,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 23.3333,
+          "projected_obp": 0.3633,
+          "projected_runs": 87.3333,
+          "projected_rbi": 89.6667,
+          "projected_stolen_bases": 7.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
     ],
     "3B": [
-      null
+      {
+        "player_id": "junior_caminero",
+        "name": "Junior Caminero",
+        "position": "3B",
+        "team": "TB",
+        "pick_number": 11,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 35.6667,
+          "projected_obp": 0.323,
+          "projected_runs": 81.3333,
+          "projected_rbi": 102.3333,
+          "projected_stolen_bases": 5.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
       null
@@ -23,16 +65,79 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "james_wood",
+        "name": "James Wood",
+        "position": "OF",
+        "team": "WAS",
+        "pick_number": 24,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 24.6667,
+          "projected_obp": 0.351,
+          "projected_runs": 81.6667,
+          "projected_rbi": 75.0,
+          "projected_stolen_bases": 15.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
     ],
     "U": [
-      null
+      {
+        "player_id": "brent_rooker",
+        "name": "Brent Rooker",
+        "position": "U",
+        "team": "ATH",
+        "pick_number": 37,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 32.3333,
+          "projected_obp": 0.3387,
+          "projected_runs": 86.0,
+          "projected_rbi": 97.6667,
+          "projected_stolen_bases": 5.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
+      {
+        "player_id": "logan_gilbert",
+        "name": "Logan Gilbert",
+        "position": "SP",
+        "team": "SEA",
+        "pick_number": 50,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.3333,
+          "projected_quality_starts": 18.6333,
+          "projected_strikeouts": 181.02,
+          "projected_era": 3.4133,
+          "projected_whip": 1.1759,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "junior_caminero",
+      "name": "Junior Caminero",
+      "position": "3B",
+      "team": "TB",
+      "pick_number": 11,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 35.6667,
+        "projected_obp": 0.323,
+        "projected_runs": 81.3333,
+        "projected_rbi": 102.3333,
+        "projected_stolen_bases": 5.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "james_wood",
+      "name": "James Wood",
+      "position": "OF",
+      "team": "WAS",
+      "pick_number": 24,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 24.6667,
+        "projected_obp": 0.351,
+        "projected_runs": 81.6667,
+        "projected_rbi": 75.0,
+        "projected_stolen_bases": 15.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "brent_rooker",
+      "name": "Brent Rooker",
+      "position": "U",
+      "team": "ATH",
+      "pick_number": 37,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 32.3333,
+        "projected_obp": 0.3387,
+        "projected_runs": 86.0,
+        "projected_rbi": 97.6667,
+        "projected_stolen_bases": 5.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "logan_gilbert",
+      "name": "Logan Gilbert",
+      "position": "SP",
+      "team": "SEA",
+      "pick_number": 50,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.3333,
+        "projected_quality_starts": 18.6333,
+        "projected_strikeouts": 181.02,
+        "projected_era": 3.4133,
+        "projected_whip": 1.1759,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "freddie_freeman",
+      "name": "Freddie Freeman",
+      "position": "1B",
+      "team": "LAD",
+      "pick_number": 55,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 23.3333,
+        "projected_obp": 0.3633,
+        "projected_runs": 87.3333,
+        "projected_rbi": 89.6667,
+        "projected_stolen_bases": 7.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

@@ -5,7 +5,28 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "vladimir_guerrero",
+        "name": "Vladimir Guerrero Jr.",
+        "position": "1B",
+        "team": "TOR",
+        "pick_number": 28,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 31.6667,
+          "projected_obp": 0.3803,
+          "projected_runs": 95.3333,
+          "projected_rbi": 99.6667,
+          "projected_stolen_bases": 5.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -14,7 +35,28 @@
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "cj_abrams",
+        "name": "C.J. Abrams",
+        "position": "SS",
+        "team": "WAS",
+        "pick_number": 64,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 19.0,
+          "projected_obp": 0.313,
+          "projected_runs": 81.6667,
+          "projected_rbi": 66.0,
+          "projected_stolen_bases": 29.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
       null
@@ -29,11 +71,74 @@
       null
     ],
     "U": [
-      null
+      {
+        "player_id": "shohei_ohtani",
+        "name": "Shohei Ohtani",
+        "position": "U",
+        "team": "LAD",
+        "pick_number": 2,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 46.0,
+          "projected_obp": 0.384,
+          "projected_runs": 123.6667,
+          "projected_rbi": 108.6667,
+          "projected_stolen_bases": 24.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "garrett_crochet",
+        "name": "Garrett Crochet",
+        "position": "RP",
+        "team": "BOS",
+        "pick_number": 15,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 14.3333,
+          "projected_quality_starts": 20.15,
+          "projected_strikeouts": 234.8439,
+          "projected_era": 2.99,
+          "projected_whip": 1.2044,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "jacob_degrom",
+        "name": "Jacob deGrom",
+        "position": "SP",
+        "team": "TEX",
+        "pick_number": 41,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.6667,
+          "projected_quality_starts": 18.2,
+          "projected_strikeouts": 187.9858,
+          "projected_era": 3.4833,
+          "projected_whip": 1.1748,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "shohei_ohtani",
+      "name": "Shohei Ohtani",
+      "position": "U",
+      "team": "LAD",
+      "pick_number": 2,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 46.0,
+        "projected_obp": 0.384,
+        "projected_runs": 123.6667,
+        "projected_rbi": 108.6667,
+        "projected_stolen_bases": 24.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "garrett_crochet",
+      "name": "Garrett Crochet",
+      "position": "RP",
+      "team": "BOS",
+      "pick_number": 15,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 14.3333,
+        "projected_quality_starts": 20.15,
+        "projected_strikeouts": 234.8439,
+        "projected_era": 2.99,
+        "projected_whip": 1.2044,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "vladimir_guerrero",
+      "name": "Vladimir Guerrero Jr.",
+      "position": "1B",
+      "team": "TOR",
+      "pick_number": 28,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 31.6667,
+        "projected_obp": 0.3803,
+        "projected_runs": 95.3333,
+        "projected_rbi": 99.6667,
+        "projected_stolen_bases": 5.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "jacob_degrom",
+      "name": "Jacob deGrom",
+      "position": "SP",
+      "team": "TEX",
+      "pick_number": 41,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.6667,
+        "projected_quality_starts": 18.2,
+        "projected_strikeouts": 187.9858,
+        "projected_era": 3.4833,
+        "projected_whip": 1.1748,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "cj_abrams",
+      "name": "C.J. Abrams",
+      "position": "SS",
+      "team": "WAS",
+      "pick_number": 64,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 19.0,
+        "projected_obp": 0.313,
+        "projected_runs": 81.6667,
+        "projected_rbi": 66.0,
+        "projected_stolen_bases": 29.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

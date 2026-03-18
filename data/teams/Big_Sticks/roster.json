@@ -2,10 +2,52 @@
   "team_name": "Big Sticks",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "william_contreras",
+        "name": "William Contreras",
+        "position": "C",
+        "team": "MIL",
+        "pick_number": 54,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 19.6667,
+          "projected_obp": 0.3567,
+          "projected_runs": 76.6667,
+          "projected_rbi": 75.6667,
+          "projected_stolen_bases": 6.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
-      null
+      {
+        "player_id": "matt_olson",
+        "name": "Matt Olson",
+        "position": "1B",
+        "team": "ATL",
+        "pick_number": 38,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 30.6667,
+          "projected_obp": 0.3453,
+          "projected_runs": 89.3333,
+          "projected_rbi": 95.0,
+          "projected_stolen_bases": 1.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -23,9 +65,72 @@
       null
     ],
     "OF": [
-      null,
-      null,
-      null,
+      {
+        "player_id": "kyle_schwarber",
+        "name": "Kyle Schwarber",
+        "position": "OF",
+        "team": "PHI",
+        "pick_number": 12,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 41.6667,
+          "projected_obp": 0.3507,
+          "projected_runs": 99.0,
+          "projected_rbi": 99.6667,
+          "projected_stolen_bases": 6.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "fernando_tatis",
+        "name": "Fernando Tatis Jr.",
+        "position": "OF",
+        "team": "SD",
+        "pick_number": 25,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 28.6667,
+          "projected_obp": 0.3577,
+          "projected_runs": 95.3333,
+          "projected_rbi": 84.6667,
+          "projected_stolen_bases": 24.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "roman_anthony",
+        "name": "Roman Anthony",
+        "position": "OF",
+        "team": "BOS",
+        "pick_number": 51,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 17.6667,
+          "projected_obp": 0.364,
+          "projected_runs": 83.0,
+          "projected_rbi": 63.0,
+          "projected_stolen_bases": 9.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null
     ],
     "U": [
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "kyle_schwarber",
+      "name": "Kyle Schwarber",
+      "position": "OF",
+      "team": "PHI",
+      "pick_number": 12,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 41.6667,
+        "projected_obp": 0.3507,
+        "projected_runs": 99.0,
+        "projected_rbi": 99.6667,
+        "projected_stolen_bases": 6.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "fernando_tatis",
+      "name": "Fernando Tatis Jr.",
+      "position": "OF",
+      "team": "SD",
+      "pick_number": 25,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 28.6667,
+        "projected_obp": 0.3577,
+        "projected_runs": 95.3333,
+        "projected_rbi": 84.6667,
+        "projected_stolen_bases": 24.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "matt_olson",
+      "name": "Matt Olson",
+      "position": "1B",
+      "team": "ATL",
+      "pick_number": 38,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 30.6667,
+        "projected_obp": 0.3453,
+        "projected_runs": 89.3333,
+        "projected_rbi": 95.0,
+        "projected_stolen_bases": 1.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "roman_anthony",
+      "name": "Roman Anthony",
+      "position": "OF",
+      "team": "BOS",
+      "pick_number": 51,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 17.6667,
+        "projected_obp": 0.364,
+        "projected_runs": 83.0,
+        "projected_rbi": 63.0,
+        "projected_stolen_bases": 9.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "william_contreras",
+      "name": "William Contreras",
+      "position": "C",
+      "team": "MIL",
+      "pick_number": 54,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 19.6667,
+        "projected_obp": 0.3567,
+        "projected_runs": 76.6667,
+        "projected_rbi": 75.6667,
+        "projected_stolen_bases": 6.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

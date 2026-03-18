@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "corbin_carroll",
+    "name": "Corbin Carroll",
+    "position": "OF",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 26.3333,
+    "projected_obp": 0.346,
+    "projected_runs": 95.6667,
+    "projected_rbi": 83.3333,
+    "projected_stolen_bases": 32.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 9.43
+  },
+  "pick_info": {
+    "pick_number": 10,
+    "round": 1,
+    "team_name": "Guillotine"
+  },
+  "position": "OF"
+}

@@ -23,16 +23,100 @@
       null
     ],
     "OF": [
-      null,
-      null,
-      null,
+      {
+        "player_id": "aaron_judge",
+        "name": "Aaron Judge",
+        "position": "OF",
+        "team": "NYY",
+        "pick_number": 1,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 44.0,
+          "projected_obp": 0.4183,
+          "projected_runs": 109.0,
+          "projected_rbi": 108.3333,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "juan_soto",
+        "name": "Juan Soto",
+        "position": "OF",
+        "team": "NYM",
+        "pick_number": 14,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 36.6667,
+          "projected_obp": 0.411,
+          "projected_runs": 109.0,
+          "projected_rbi": 96.6667,
+          "projected_stolen_bases": 21.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "pete_crow_armstrong",
+        "name": "Pete Crow-Armstrong",
+        "position": "OF",
+        "team": "CHC",
+        "pick_number": 40,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 23.0,
+          "projected_obp": 0.3,
+          "projected_runs": 78.3333,
+          "projected_rbi": 79.3333,
+          "projected_stolen_bases": 31.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null
     ],
     "U": [
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "tarik_skubal",
+        "name": "Tarik Skubal",
+        "position": "SP",
+        "team": "DET",
+        "pick_number": 27,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 14.0,
+          "projected_quality_starts": 20.15,
+          "projected_strikeouts": 238.2007,
+          "projected_era": 2.73,
+          "projected_whip": 1.1519,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +130,94 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "aaron_judge",
+      "name": "Aaron Judge",
+      "position": "OF",
+      "team": "NYY",
+      "pick_number": 1,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 44.0,
+        "projected_obp": 0.4183,
+        "projected_runs": 109.0,
+        "projected_rbi": 108.3333,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "juan_soto",
+      "name": "Juan Soto",
+      "position": "OF",
+      "team": "NYM",
+      "pick_number": 14,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 36.6667,
+        "projected_obp": 0.411,
+        "projected_runs": 109.0,
+        "projected_rbi": 96.6667,
+        "projected_stolen_bases": 21.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "tarik_skubal",
+      "name": "Tarik Skubal",
+      "position": "SP",
+      "team": "DET",
+      "pick_number": 27,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 14.0,
+        "projected_quality_starts": 20.15,
+        "projected_strikeouts": 238.2007,
+        "projected_era": 2.73,
+        "projected_whip": 1.1519,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "pete_crow_armstrong",
+      "name": "Pete Crow-Armstrong",
+      "position": "OF",
+      "team": "CHC",
+      "pick_number": 40,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 23.0,
+        "projected_obp": 0.3,
+        "projected_runs": 78.3333,
+        "projected_rbi": 79.3333,
+        "projected_stolen_bases": 31.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "junior_caminero",
+    "name": "Junior Caminero",
+    "position": "3B",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": 35.6667,
+    "projected_obp": 0.323,
+    "projected_runs": 81.3333,
+    "projected_rbi": 102.3333,
+    "projected_stolen_bases": 5.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 15.17
+  },
+  "pick_info": {
+    "pick_number": 11,
+    "round": 1,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "3B"
+}

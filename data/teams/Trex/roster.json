@@ -5,13 +5,55 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "pete_alonso",
+        "name": "Pete Alonso",
+        "position": "1B",
+        "team": "BAL",
+        "pick_number": 21,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 36.3333,
+          "projected_obp": 0.3377,
+          "projected_runs": 87.3333,
+          "projected_rbi": 104.6667,
+          "projected_stolen_bases": 2.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
     ],
     "3B": [
-      null
+      {
+        "player_id": "jose_ramirez",
+        "name": "Jose Ramirez",
+        "position": "3B",
+        "team": "CLE",
+        "pick_number": 8,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 28.0,
+          "projected_obp": 0.3473,
+          "projected_runs": 90.0,
+          "projected_rbi": 91.0,
+          "projected_stolen_bases": 31.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
       null
@@ -20,7 +62,28 @@
       null
     ],
     "CI": [
-      null
+      {
+        "player_id": "ben_rice",
+        "name": "Ben Rice",
+        "position": "1B",
+        "team": "NYY",
+        "pick_number": 58,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 25.6667,
+          "projected_obp": 0.3313,
+          "projected_runs": 70.3333,
+          "projected_rbi": 74.0,
+          "projected_stolen_bases": 4.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "OF": [
       null,
@@ -32,8 +95,50 @@
       null
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "edwin_diaz",
+        "name": "Edwin Diaz",
+        "position": "RP",
+        "team": "LAD",
+        "pick_number": 34,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.6667,
+          "projected_quality_starts": null,
+          "projected_strikeouts": 90.4126,
+          "projected_era": 3.0167,
+          "projected_whip": 1.2978,
+          "projected_saves": 36.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "logan_webb",
+        "name": "Logan Webb",
+        "position": "SP",
+        "team": "SF",
+        "pick_number": 47,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 13.6667,
+          "projected_quality_starts": 20.3667,
+          "projected_strikeouts": 186.6982,
+          "projected_era": 3.27,
+          "projected_whip": 1.1741,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "jose_ramirez",
+      "name": "Jose Ramirez",
+      "position": "3B",
+      "team": "CLE",
+      "pick_number": 8,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 28.0,
+        "projected_obp": 0.3473,
+        "projected_runs": 90.0,
+        "projected_rbi": 91.0,
+        "projected_stolen_bases": 31.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "pete_alonso",
+      "name": "Pete Alonso",
+      "position": "1B",
+      "team": "BAL",
+      "pick_number": 21,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 36.3333,
+        "projected_obp": 0.3377,
+        "projected_runs": 87.3333,
+        "projected_rbi": 104.6667,
+        "projected_stolen_bases": 2.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "edwin_diaz",
+      "name": "Edwin Diaz",
+      "position": "RP",
+      "team": "LAD",
+      "pick_number": 34,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.6667,
+        "projected_quality_starts": null,
+        "projected_strikeouts": 90.4126,
+        "projected_era": 3.0167,
+        "projected_whip": 1.2978,
+        "projected_saves": 36.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "logan_webb",
+      "name": "Logan Webb",
+      "position": "SP",
+      "team": "SF",
+      "pick_number": 47,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 13.6667,
+        "projected_quality_starts": 20.3667,
+        "projected_strikeouts": 186.6982,
+        "projected_era": 3.27,
+        "projected_whip": 1.1741,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ben_rice",
+      "name": "Ben Rice",
+      "position": "1B",
+      "team": "NYY",
+      "pick_number": 58,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 25.6667,
+        "projected_obp": 0.3313,
+        "projected_runs": 70.3333,
+        "projected_rbi": 74.0,
+        "projected_stolen_bases": 4.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

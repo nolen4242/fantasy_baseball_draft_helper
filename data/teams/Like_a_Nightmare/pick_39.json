@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "bryan_woo",
+    "name": "Bryan Woo",
+    "position": "SP",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 12.6667,
+    "projected_quality_starts": 20.15,
+    "projected_strikeouts": 192.4722,
+    "projected_era": 3.4833,
+    "projected_whip": 1.1622,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 191.0,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 43.06
+  },
+  "pick_info": {
+    "pick_number": 39,
+    "round": 3,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "SP"
+}

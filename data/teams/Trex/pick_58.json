@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ben_rice",
+    "name": "Ben Rice",
+    "position": "1B",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 25.6667,
+    "projected_obp": 0.3313,
+    "projected_runs": 70.3333,
+    "projected_rbi": 74.0,
+    "projected_stolen_bases": 4.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 53.48
+  },
+  "pick_info": {
+    "pick_number": 58,
+    "round": 5,
+    "team_name": "Trex"
+  },
+  "position": "1B"
+}

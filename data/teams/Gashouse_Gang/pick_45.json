@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "andres_munoz",
+    "name": "Andres Munoz",
+    "position": "RP",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 79.9467,
+    "projected_era": 2.8967,
+    "projected_whip": 1.3407,
+    "projected_saves": 30.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 63.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 43.36
+  },
+  "pick_info": {
+    "pick_number": 45,
+    "round": 4,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "RP"
+}

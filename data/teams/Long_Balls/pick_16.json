@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "bobby_witt",
+    "name": "Bobby Witt",
+    "position": "SS",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": 28.3333,
+    "projected_obp": 0.3473,
+    "projected_runs": 101.0,
+    "projected_rbi": 92.0,
+    "projected_stolen_bases": 32.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 3.19
+  },
+  "pick_info": {
+    "pick_number": 16,
+    "round": 2,
+    "team_name": "Long Balls"
+  },
+  "position": "SS"
+}

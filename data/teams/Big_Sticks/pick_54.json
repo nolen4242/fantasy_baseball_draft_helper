@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "william_contreras",
+    "name": "William Contreras",
+    "position": "C",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": 19.6667,
+    "projected_obp": 0.3567,
+    "projected_runs": 76.6667,
+    "projected_rbi": 75.6667,
+    "projected_stolen_bases": 6.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 52.53
+  },
+  "pick_info": {
+    "pick_number": 54,
+    "round": 5,
+    "team_name": "Big Sticks"
+  },
+  "position": "C"
+}

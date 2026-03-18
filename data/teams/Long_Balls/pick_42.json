@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "cade_smith",
+    "name": "Cade Smith",
+    "position": "RP",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 5.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 89.0156,
+    "projected_era": 2.92,
+    "projected_whip": 1.2504,
+    "projected_saves": 30.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 69.3667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 48.46
+  },
+  "pick_info": {
+    "pick_number": 42,
+    "round": 4,
+    "team_name": "Long Balls"
+  },
+  "position": "RP"
+}

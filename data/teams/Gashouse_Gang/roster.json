@@ -14,7 +14,28 @@
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "trea_turner",
+        "name": "Trea Turner",
+        "position": "SS",
+        "team": "PHI",
+        "pick_number": 19,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 18.3333,
+          "projected_obp": 0.333,
+          "projected_runs": 89.3333,
+          "projected_rbi": 69.6667,
+          "projected_stolen_bases": 27.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
       null
@@ -23,8 +44,50 @@
       null
     ],
     "OF": [
-      null,
-      null,
+      {
+        "player_id": "julio_rodriguez",
+        "name": "Julio Rodriguez",
+        "position": "OF",
+        "team": "SEA",
+        "pick_number": 6,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 30.0,
+          "projected_obp": 0.332,
+          "projected_runs": 91.3333,
+          "projected_rbi": 94.3333,
+          "projected_stolen_bases": 25.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "riley_greene",
+        "name": "Riley Greene",
+        "position": "OF",
+        "team": "DET",
+        "pick_number": 60,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 27.3333,
+          "projected_obp": 0.3303,
+          "projected_runs": 79.6667,
+          "projected_rbi": 89.3333,
+          "projected_stolen_bases": 3.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null
     ],
@@ -32,8 +95,50 @@
       null
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "jhoan_duran",
+        "name": "Jhoan Duran",
+        "position": "RP",
+        "team": "PHI",
+        "pick_number": 32,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 5.3333,
+          "projected_quality_starts": null,
+          "projected_strikeouts": 81.273,
+          "projected_era": 2.7767,
+          "projected_whip": 1.2596,
+          "projected_saves": 30.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "andres_munoz",
+        "name": "Andres Munoz",
+        "position": "RP",
+        "team": "SEA",
+        "pick_number": 45,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.0,
+          "projected_quality_starts": null,
+          "projected_strikeouts": 79.9467,
+          "projected_era": 2.8967,
+          "projected_whip": 1.3407,
+          "projected_saves": 30.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "julio_rodriguez",
+      "name": "Julio Rodriguez",
+      "position": "OF",
+      "team": "SEA",
+      "pick_number": 6,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.332,
+        "projected_runs": 91.3333,
+        "projected_rbi": 94.3333,
+        "projected_stolen_bases": 25.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "trea_turner",
+      "name": "Trea Turner",
+      "position": "SS",
+      "team": "PHI",
+      "pick_number": 19,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 18.3333,
+        "projected_obp": 0.333,
+        "projected_runs": 89.3333,
+        "projected_rbi": 69.6667,
+        "projected_stolen_bases": 27.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "jhoan_duran",
+      "name": "Jhoan Duran",
+      "position": "RP",
+      "team": "PHI",
+      "pick_number": 32,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 5.3333,
+        "projected_quality_starts": null,
+        "projected_strikeouts": 81.273,
+        "projected_era": 2.7767,
+        "projected_whip": 1.2596,
+        "projected_saves": 30.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "andres_munoz",
+      "name": "Andres Munoz",
+      "position": "RP",
+      "team": "SEA",
+      "pick_number": 45,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.0,
+        "projected_quality_starts": null,
+        "projected_strikeouts": 79.9467,
+        "projected_era": 2.8967,
+        "projected_whip": 1.3407,
+        "projected_saves": 30.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "riley_greene",
+      "name": "Riley Greene",
+      "position": "OF",
+      "team": "DET",
+      "pick_number": 60,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 27.3333,
+        "projected_obp": 0.3303,
+        "projected_runs": 79.6667,
+        "projected_rbi": 89.3333,
+        "projected_stolen_bases": 3.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

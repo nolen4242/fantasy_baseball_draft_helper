@@ -4,23 +4,549 @@
   "total_teams": 13,
   "roster_size": 21,
   "my_team_name": "Runtime Terror",
-  "current_pick": 1,
-  "current_round": 1,
-  "picks": [],
+  "current_pick": 13,
+  "current_round": 5,
+  "picks": [
+    {
+      "pick_number": 1,
+      "round": 1,
+      "team_name": "Runtime Terror",
+      "player_id": "aaron_judge",
+      "timestamp": "2026-03-04T21:23:16.922935"
+    },
+    {
+      "pick_number": 2,
+      "round": 1,
+      "team_name": "Dawg",
+      "player_id": "shohei_ohtani",
+      "timestamp": "2026-03-04T21:23:18.658155"
+    },
+    {
+      "pick_number": 3,
+      "round": 1,
+      "team_name": "Long Balls",
+      "player_id": "elly_de_la_cruz",
+      "timestamp": "2026-03-04T21:23:19.050396"
+    },
+    {
+      "pick_number": 4,
+      "round": 1,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "ronald_acuna",
+      "timestamp": "2026-03-04T21:23:19.318573"
+    },
+    {
+      "pick_number": 5,
+      "round": 1,
+      "team_name": "Young Guns",
+      "player_id": "kyle_tucker",
+      "timestamp": "2026-03-04T21:23:19.652030"
+    },
+    {
+      "pick_number": 6,
+      "round": 1,
+      "team_name": "Gashouse Gang",
+      "player_id": "julio_rodriguez",
+      "timestamp": "2026-03-04T21:23:19.937846"
+    },
+    {
+      "pick_number": 7,
+      "round": 1,
+      "team_name": "Magnum GI",
+      "player_id": "cal_raleigh",
+      "timestamp": "2026-03-04T21:23:20.206371"
+    },
+    {
+      "pick_number": 8,
+      "round": 1,
+      "team_name": "Trex",
+      "player_id": "jose_ramirez",
+      "timestamp": "2026-03-04T21:23:20.494030"
+    },
+    {
+      "pick_number": 9,
+      "round": 1,
+      "team_name": "Rieken Havoc",
+      "player_id": "jazz_chisholm",
+      "timestamp": "2026-03-04T21:23:20.782527"
+    },
+    {
+      "pick_number": 10,
+      "round": 1,
+      "team_name": "Guillotine",
+      "player_id": "corbin_carroll",
+      "timestamp": "2026-03-04T21:23:21.070873"
+    },
+    {
+      "pick_number": 11,
+      "round": 1,
+      "team_name": "MAGA DOGE",
+      "player_id": "junior_caminero",
+      "timestamp": "2026-03-04T21:23:21.419191"
+    },
+    {
+      "pick_number": 12,
+      "round": 1,
+      "team_name": "Big Sticks",
+      "player_id": "kyle_schwarber",
+      "timestamp": "2026-03-04T21:23:21.962188"
+    },
+    {
+      "pick_number": 13,
+      "round": 1,
+      "team_name": "Like a Nightmare",
+      "player_id": "jackson_chourio",
+      "timestamp": "2026-03-04T21:23:23.455995"
+    },
+    {
+      "pick_number": 14,
+      "round": 2,
+      "team_name": "Runtime Terror",
+      "player_id": "juan_soto",
+      "timestamp": "2026-03-04T21:23:37.247107"
+    },
+    {
+      "pick_number": 15,
+      "round": 2,
+      "team_name": "Dawg",
+      "player_id": "garrett_crochet",
+      "timestamp": "2026-03-04T21:23:39.135888"
+    },
+    {
+      "pick_number": 16,
+      "round": 2,
+      "team_name": "Long Balls",
+      "player_id": "bobby_witt",
+      "timestamp": "2026-03-04T21:23:39.662641"
+    },
+    {
+      "pick_number": 17,
+      "round": 2,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "yoshinobu_yamamoto",
+      "timestamp": "2026-03-04T21:23:40.022949"
+    },
+    {
+      "pick_number": 18,
+      "round": 2,
+      "team_name": "Young Guns",
+      "player_id": "paul_skenes",
+      "timestamp": "2026-03-04T21:23:40.370914"
+    },
+    {
+      "pick_number": 19,
+      "round": 2,
+      "team_name": "Gashouse Gang",
+      "player_id": "trea_turner",
+      "timestamp": "2026-03-04T21:23:40.718153"
+    },
+    {
+      "pick_number": 20,
+      "round": 2,
+      "team_name": "Magnum GI",
+      "player_id": "gunnar_henderson",
+      "timestamp": "2026-03-04T21:23:41.073831"
+    },
+    {
+      "pick_number": 21,
+      "round": 2,
+      "team_name": "Trex",
+      "player_id": "pete_alonso",
+      "timestamp": "2026-03-04T21:23:41.461147"
+    },
+    {
+      "pick_number": 22,
+      "round": 2,
+      "team_name": "Rieken Havoc",
+      "player_id": "francisco_lindor",
+      "timestamp": "2026-03-04T21:23:41.829031"
+    },
+    {
+      "pick_number": 23,
+      "round": 2,
+      "team_name": "Guillotine",
+      "player_id": "nick_kurtz",
+      "timestamp": "2026-03-04T21:23:42.295124"
+    },
+    {
+      "pick_number": 24,
+      "round": 2,
+      "team_name": "MAGA DOGE",
+      "player_id": "james_wood",
+      "timestamp": "2026-03-04T21:23:43.809750"
+    },
+    {
+      "pick_number": 25,
+      "round": 2,
+      "team_name": "Big Sticks",
+      "player_id": "fernando_tatis",
+      "timestamp": "2026-03-04T21:23:44.123344"
+    },
+    {
+      "pick_number": 26,
+      "round": 2,
+      "team_name": "Like a Nightmare",
+      "player_id": "zach_neto",
+      "timestamp": "2026-03-04T21:23:44.444177"
+    },
+    {
+      "pick_number": 27,
+      "round": 3,
+      "team_name": "Runtime Terror",
+      "player_id": "tarik_skubal",
+      "timestamp": "2026-03-06T09:29:52.653411"
+    },
+    {
+      "pick_number": 28,
+      "round": 3,
+      "team_name": "Dawg",
+      "player_id": "vladimir_guerrero",
+      "timestamp": "2026-03-06T09:29:54.114186"
+    },
+    {
+      "pick_number": 29,
+      "round": 3,
+      "team_name": "Long Balls",
+      "player_id": "manny_machado",
+      "timestamp": "2026-03-06T09:29:54.483730"
+    },
+    {
+      "pick_number": 30,
+      "round": 3,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "chris_sale",
+      "timestamp": "2026-03-06T09:29:54.810642"
+    },
+    {
+      "pick_number": 31,
+      "round": 3,
+      "team_name": "Young Guns",
+      "player_id": "ketel_marte",
+      "timestamp": "2026-03-06T09:29:55.204516"
+    },
+    {
+      "pick_number": 32,
+      "round": 3,
+      "team_name": "Gashouse Gang",
+      "player_id": "jhoan_duran",
+      "timestamp": "2026-03-06T09:29:55.496780"
+    },
+    {
+      "pick_number": 33,
+      "round": 3,
+      "team_name": "Magnum GI",
+      "player_id": "mason_miller",
+      "timestamp": "2026-03-06T09:29:55.758341"
+    },
+    {
+      "pick_number": 34,
+      "round": 3,
+      "team_name": "Trex",
+      "player_id": "edwin_diaz",
+      "timestamp": "2026-03-06T09:29:56.051063"
+    },
+    {
+      "pick_number": 35,
+      "round": 3,
+      "team_name": "Rieken Havoc",
+      "player_id": "wyatt_langford",
+      "timestamp": "2026-03-06T09:29:56.364936"
+    },
+    {
+      "pick_number": 36,
+      "round": 3,
+      "team_name": "Guillotine",
+      "player_id": "hunter_greene",
+      "timestamp": "2026-03-06T09:29:56.669953"
+    },
+    {
+      "pick_number": 37,
+      "round": 3,
+      "team_name": "MAGA DOGE",
+      "player_id": "brent_rooker",
+      "timestamp": "2026-03-06T09:29:56.951417"
+    },
+    {
+      "pick_number": 38,
+      "round": 3,
+      "team_name": "Big Sticks",
+      "player_id": "matt_olson",
+      "timestamp": "2026-03-06T09:29:57.228790"
+    },
+    {
+      "pick_number": 39,
+      "round": 3,
+      "team_name": "Like a Nightmare",
+      "player_id": "bryan_woo",
+      "timestamp": "2026-03-06T09:29:57.574857"
+    },
+    {
+      "pick_number": 40,
+      "round": 4,
+      "team_name": "Runtime Terror",
+      "player_id": "pete_crow_armstrong",
+      "timestamp": "2026-03-06T09:31:19.151135"
+    },
+    {
+      "pick_number": 41,
+      "round": 4,
+      "team_name": "Dawg",
+      "player_id": "jacob_degrom",
+      "timestamp": "2026-03-06T09:31:20.630491"
+    },
+    {
+      "pick_number": 42,
+      "round": 4,
+      "team_name": "Long Balls",
+      "player_id": "cade_smith",
+      "timestamp": "2026-03-06T09:31:20.925503"
+    },
+    {
+      "pick_number": 43,
+      "round": 4,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "max_fried",
+      "timestamp": "2026-03-06T09:31:21.196702"
+    },
+    {
+      "pick_number": 44,
+      "round": 4,
+      "team_name": "Young Guns",
+      "player_id": "rafael_devers",
+      "timestamp": "2026-03-06T09:31:21.479018"
+    },
+    {
+      "pick_number": 45,
+      "round": 4,
+      "team_name": "Gashouse Gang",
+      "player_id": "andres_munoz",
+      "timestamp": "2026-03-06T09:31:21.758027"
+    },
+    {
+      "pick_number": 46,
+      "round": 4,
+      "team_name": "Magnum GI",
+      "player_id": "leo_de_vries",
+      "timestamp": "2026-03-06T09:31:22.041915"
+    },
+    {
+      "pick_number": 47,
+      "round": 4,
+      "team_name": "Trex",
+      "player_id": "logan_webb",
+      "timestamp": "2026-03-06T09:31:22.322352"
+    },
+    {
+      "pick_number": 48,
+      "round": 4,
+      "team_name": "Rieken Havoc",
+      "player_id": "hunter_brown",
+      "timestamp": "2026-03-06T09:31:22.601048"
+    },
+    {
+      "pick_number": 49,
+      "round": 4,
+      "team_name": "Guillotine",
+      "player_id": "shea_langeliers",
+      "timestamp": "2026-03-06T09:31:22.884796"
+    },
+    {
+      "pick_number": 50,
+      "round": 4,
+      "team_name": "MAGA DOGE",
+      "player_id": "logan_gilbert",
+      "timestamp": "2026-03-06T09:31:23.170100"
+    },
+    {
+      "pick_number": 51,
+      "round": 4,
+      "team_name": "Big Sticks",
+      "player_id": "roman_anthony",
+      "timestamp": "2026-03-06T09:31:23.458161"
+    },
+    {
+      "pick_number": 52,
+      "round": 4,
+      "team_name": "Like a Nightmare",
+      "player_id": "yordan_alvarez",
+      "timestamp": "2026-03-06T09:31:23.880420"
+    },
+    {
+      "pick_number": 53,
+      "round": 5,
+      "team_name": "Like a Nightmare",
+      "player_id": "hunter_goodman",
+      "timestamp": "2026-03-06T09:31:24.161283"
+    },
+    {
+      "pick_number": 54,
+      "round": 5,
+      "team_name": "Big Sticks",
+      "player_id": "william_contreras",
+      "timestamp": "2026-03-06T09:31:24.425485"
+    },
+    {
+      "pick_number": 55,
+      "round": 5,
+      "team_name": "MAGA DOGE",
+      "player_id": "freddie_freeman",
+      "timestamp": "2026-03-06T09:31:25.698377"
+    },
+    {
+      "pick_number": 56,
+      "round": 5,
+      "team_name": "Guillotine",
+      "player_id": "david_bednar",
+      "timestamp": "2026-03-06T09:31:25.972661"
+    },
+    {
+      "pick_number": 57,
+      "round": 5,
+      "team_name": "Rieken Havoc",
+      "player_id": "bryce_harper",
+      "timestamp": "2026-03-06T09:31:26.260561"
+    },
+    {
+      "pick_number": 58,
+      "round": 5,
+      "team_name": "Trex",
+      "player_id": "ben_rice",
+      "timestamp": "2026-03-06T09:31:26.570720"
+    },
+    {
+      "pick_number": 59,
+      "round": 5,
+      "team_name": "Magnum GI",
+      "player_id": "george_kirby",
+      "timestamp": "2026-03-06T09:31:26.858906"
+    },
+    {
+      "pick_number": 60,
+      "round": 5,
+      "team_name": "Gashouse Gang",
+      "player_id": "riley_greene",
+      "timestamp": "2026-03-06T09:31:27.152017"
+    },
+    {
+      "pick_number": 61,
+      "round": 5,
+      "team_name": "Young Guns",
+      "player_id": "joe_ryan",
+      "timestamp": "2026-03-06T09:31:27.448112"
+    },
+    {
+      "pick_number": 62,
+      "round": 5,
+      "team_name": "Simba's Dublin Green Sox",
+      "player_id": "freddy_peralta",
+      "timestamp": "2026-03-06T09:31:27.868606"
+    },
+    {
+      "pick_number": 63,
+      "round": 5,
+      "team_name": "Long Balls",
+      "player_id": "brice_turang",
+      "timestamp": "2026-03-06T09:31:28.167875"
+    },
+    {
+      "pick_number": 64,
+      "round": 5,
+      "team_name": "Dawg",
+      "player_id": "cj_abrams",
+      "timestamp": "2026-03-06T09:31:28.446015"
+    }
+  ],
   "team_rosters": {
-    "Runtime Terror": [],
-    "Dawg": [],
-    "Long Balls": [],
-    "Simba's Dublin Green Sox": [],
-    "Young Guns": [],
-    "Gashouse Gang": [],
-    "Magnum GI": [],
-    "Trex": [],
-    "Rieken Havoc": [],
-    "Guillotine": [],
-    "MAGA DOGE": [],
-    "Big Sticks": [],
-    "Like a Nightmare": []
+    "Runtime Terror": [
+      "aaron_judge",
+      "juan_soto",
+      "tarik_skubal",
+      "pete_crow_armstrong"
+    ],
+    "Dawg": [
+      "shohei_ohtani",
+      "garrett_crochet",
+      "vladimir_guerrero",
+      "jacob_degrom",
+      "cj_abrams"
+    ],
+    "Long Balls": [
+      "elly_de_la_cruz",
+      "bobby_witt",
+      "manny_machado",
+      "cade_smith",
+      "brice_turang"
+    ],
+    "Simba's Dublin Green Sox": [
+      "ronald_acuna",
+      "yoshinobu_yamamoto",
+      "chris_sale",
+      "max_fried",
+      "freddy_peralta"
+    ],
+    "Young Guns": [
+      "kyle_tucker",
+      "paul_skenes",
+      "ketel_marte",
+      "rafael_devers",
+      "joe_ryan"
+    ],
+    "Gashouse Gang": [
+      "julio_rodriguez",
+      "trea_turner",
+      "jhoan_duran",
+      "andres_munoz",
+      "riley_greene"
+    ],
+    "Magnum GI": [
+      "cal_raleigh",
+      "gunnar_henderson",
+      "mason_miller",
+      "leo_de_vries",
+      "george_kirby"
+    ],
+    "Trex": [
+      "jose_ramirez",
+      "pete_alonso",
+      "edwin_diaz",
+      "logan_webb",
+      "ben_rice"
+    ],
+    "Rieken Havoc": [
+      "jazz_chisholm",
+      "francisco_lindor",
+      "wyatt_langford",
+      "hunter_brown",
+      "bryce_harper"
+    ],
+    "Guillotine": [
+      "corbin_carroll",
+      "nick_kurtz",
+      "hunter_greene",
+      "shea_langeliers",
+      "david_bednar"
+    ],
+    "MAGA DOGE": [
+      "junior_caminero",
+      "james_wood",
+      "brent_rooker",
+      "logan_gilbert",
+      "freddie_freeman"
+    ],
+    "Big Sticks": [
+      "kyle_schwarber",
+      "fernando_tatis",
+      "matt_olson",
+      "roman_anthony",
+      "william_contreras"
+    ],
+    "Like a Nightmare": [
+      "jackson_chourio",
+      "zach_neto",
+      "bryan_woo",
+      "yordan_alvarez",
+      "hunter_goodman"
+    ]
   },
   "is_complete": false
 }

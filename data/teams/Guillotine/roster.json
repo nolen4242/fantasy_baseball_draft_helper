@@ -2,10 +2,52 @@
   "team_name": "Guillotine",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "shea_langeliers",
+        "name": "Shea Langeliers",
+        "position": "C",
+        "team": "ATH",
+        "pick_number": 49,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 28.0,
+          "projected_obp": 0.312,
+          "projected_runs": 69.3333,
+          "projected_rbi": 76.6667,
+          "projected_stolen_bases": 5.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
-      null
+      {
+        "player_id": "nick_kurtz",
+        "name": "Nick Kurtz",
+        "position": "1B",
+        "team": "ATH",
+        "pick_number": 23,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 34.6667,
+          "projected_obp": 0.3463,
+          "projected_runs": 89.6667,
+          "projected_rbi": 88.3333,
+          "projected_stolen_bases": 3.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
       null
@@ -23,7 +65,28 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "corbin_carroll",
+        "name": "Corbin Carroll",
+        "position": "OF",
+        "team": "ARI",
+        "pick_number": 10,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 26.3333,
+          "projected_obp": 0.346,
+          "projected_runs": 95.6667,
+          "projected_rbi": 83.3333,
+          "projected_stolen_bases": 32.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
@@ -32,8 +95,50 @@
       null
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "hunter_greene",
+        "name": "Hunter Greene",
+        "position": "SP",
+        "team": "CIN",
+        "pick_number": 36,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.6667,
+          "projected_quality_starts": 19.5,
+          "projected_strikeouts": 210.4921,
+          "projected_era": 3.7667,
+          "projected_whip": 1.2711,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "david_bednar",
+        "name": "David Bednar",
+        "position": "RP",
+        "team": "NYY",
+        "pick_number": 56,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 4.3333,
+          "projected_quality_starts": null,
+          "projected_strikeouts": 77.2926,
+          "projected_era": 3.28,
+          "projected_whip": 1.2796,
+          "projected_saves": 32.6667,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "corbin_carroll",
+      "name": "Corbin Carroll",
+      "position": "OF",
+      "team": "ARI",
+      "pick_number": 10,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 26.3333,
+        "projected_obp": 0.346,
+        "projected_runs": 95.6667,
+        "projected_rbi": 83.3333,
+        "projected_stolen_bases": 32.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "nick_kurtz",
+      "name": "Nick Kurtz",
+      "position": "1B",
+      "team": "ATH",
+      "pick_number": 23,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 34.6667,
+        "projected_obp": 0.3463,
+        "projected_runs": 89.6667,
+        "projected_rbi": 88.3333,
+        "projected_stolen_bases": 3.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "hunter_greene",
+      "name": "Hunter Greene",
+      "position": "SP",
+      "team": "CIN",
+      "pick_number": 36,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.6667,
+        "projected_quality_starts": 19.5,
+        "projected_strikeouts": 210.4921,
+        "projected_era": 3.7667,
+        "projected_whip": 1.2711,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "shea_langeliers",
+      "name": "Shea Langeliers",
+      "position": "C",
+      "team": "ATH",
+      "pick_number": 49,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 28.0,
+        "projected_obp": 0.312,
+        "projected_runs": 69.3333,
+        "projected_rbi": 76.6667,
+        "projected_stolen_bases": 5.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "david_bednar",
+      "name": "David Bednar",
+      "position": "RP",
+      "team": "NYY",
+      "pick_number": 56,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 4.3333,
+        "projected_quality_starts": null,
+        "projected_strikeouts": 77.2926,
+        "projected_era": 3.28,
+        "projected_whip": 1.2796,
+        "projected_saves": 32.6667,
+        "projected_holds": null
+      }
+    }
+  ]
 }

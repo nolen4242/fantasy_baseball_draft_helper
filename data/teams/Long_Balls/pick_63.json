@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "brice_turang",
+    "name": "Brice Turang",
+    "position": "2B",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": 14.3333,
+    "projected_obp": 0.3283,
+    "projected_runs": 80.0,
+    "projected_rbi": 65.3333,
+    "projected_stolen_bases": 27.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 57.58
+  },
+  "pick_info": {
+    "pick_number": 63,
+    "round": 5,
+    "team_name": "Long Balls"
+  },
+  "position": "2B"
+}

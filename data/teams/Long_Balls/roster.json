@@ -8,16 +8,100 @@
       null
     ],
     "2B": [
-      null
+      {
+        "player_id": "brice_turang",
+        "name": "Brice Turang",
+        "position": "2B",
+        "team": "MIL",
+        "pick_number": 63,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 14.3333,
+          "projected_obp": 0.3283,
+          "projected_runs": 80.0,
+          "projected_rbi": 65.3333,
+          "projected_stolen_bases": 27.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
-      null
+      {
+        "player_id": "manny_machado",
+        "name": "Manny Machado",
+        "position": "3B",
+        "team": "SD",
+        "pick_number": 29,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 26.0,
+          "projected_obp": 0.3257,
+          "projected_runs": 77.6667,
+          "projected_rbi": 87.6667,
+          "projected_stolen_bases": 9.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
-      null
+      {
+        "player_id": "elly_de_la_cruz",
+        "name": "Elly De La Cruz",
+        "position": "SS",
+        "team": "CIN",
+        "pick_number": 3,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 23.6667,
+          "projected_obp": 0.337,
+          "projected_runs": 90.6667,
+          "projected_rbi": 82.6667,
+          "projected_stolen_bases": 40.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "bobby_witt",
+        "name": "Bobby Witt",
+        "position": "SS",
+        "team": "KC",
+        "pick_number": 16,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 28.3333,
+          "projected_obp": 0.3473,
+          "projected_runs": 101.0,
+          "projected_rbi": 92.0,
+          "projected_stolen_bases": 32.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
       null
@@ -32,7 +116,28 @@
       null
     ],
     "P": [
-      null,
+      {
+        "player_id": "cade_smith",
+        "name": "Cade Smith",
+        "position": "RP",
+        "team": "CLE",
+        "pick_number": 42,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 5.0,
+          "projected_quality_starts": null,
+          "projected_strikeouts": 89.0156,
+          "projected_era": 2.92,
+          "projected_whip": 1.2504,
+          "projected_saves": 30.6667,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "elly_de_la_cruz",
+      "name": "Elly De La Cruz",
+      "position": "SS",
+      "team": "CIN",
+      "pick_number": 3,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 23.6667,
+        "projected_obp": 0.337,
+        "projected_runs": 90.6667,
+        "projected_rbi": 82.6667,
+        "projected_stolen_bases": 40.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "bobby_witt",
+      "name": "Bobby Witt",
+      "position": "SS",
+      "team": "KC",
+      "pick_number": 16,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 28.3333,
+        "projected_obp": 0.3473,
+        "projected_runs": 101.0,
+        "projected_rbi": 92.0,
+        "projected_stolen_bases": 32.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "manny_machado",
+      "name": "Manny Machado",
+      "position": "3B",
+      "team": "SD",
+      "pick_number": 29,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 26.0,
+        "projected_obp": 0.3257,
+        "projected_runs": 77.6667,
+        "projected_rbi": 87.6667,
+        "projected_stolen_bases": 9.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "cade_smith",
+      "name": "Cade Smith",
+      "position": "RP",
+      "team": "CLE",
+      "pick_number": 42,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 5.0,
+        "projected_quality_starts": null,
+        "projected_strikeouts": 89.0156,
+        "projected_era": 2.92,
+        "projected_whip": 1.2504,
+        "projected_saves": 30.6667,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "brice_turang",
+      "name": "Brice Turang",
+      "position": "2B",
+      "team": "MIL",
+      "pick_number": 63,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 14.3333,
+        "projected_obp": 0.3283,
+        "projected_runs": 80.0,
+        "projected_rbi": 65.3333,
+        "projected_stolen_bases": 27.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

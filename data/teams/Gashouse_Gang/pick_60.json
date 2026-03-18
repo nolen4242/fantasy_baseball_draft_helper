@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "riley_greene",
+    "name": "Riley Greene",
+    "position": "OF",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": 27.3333,
+    "projected_obp": 0.3303,
+    "projected_runs": 79.6667,
+    "projected_rbi": 89.3333,
+    "projected_stolen_bases": 3.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 73.34
+  },
+  "pick_info": {
+    "pick_number": 60,
+    "round": 5,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "OF"
+}

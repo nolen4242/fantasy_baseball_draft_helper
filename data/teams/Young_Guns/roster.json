@@ -8,10 +8,52 @@
       null
     ],
     "2B": [
-      null
+      {
+        "player_id": "ketel_marte",
+        "name": "Ketel Marte",
+        "position": "2B",
+        "team": "ARI",
+        "pick_number": 31,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 27.3333,
+          "projected_obp": 0.3613,
+          "projected_runs": 91.0,
+          "projected_rbi": 84.0,
+          "projected_stolen_bases": 5.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
-      null
+      {
+        "player_id": "rafael_devers",
+        "name": "Rafael Devers",
+        "position": "3B",
+        "team": "SF",
+        "pick_number": 44,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 30.0,
+          "projected_obp": 0.35,
+          "projected_runs": 89.3333,
+          "projected_rbi": 88.0,
+          "projected_stolen_bases": 2.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
       null
@@ -23,7 +65,28 @@
       null
     ],
     "OF": [
-      null,
+      {
+        "player_id": "kyle_tucker",
+        "name": "Kyle Tucker",
+        "position": "OF",
+        "team": "LAD",
+        "pick_number": 5,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 30.0,
+          "projected_obp": 0.3707,
+          "projected_runs": 95.0,
+          "projected_rbi": 88.3333,
+          "projected_stolen_bases": 21.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null
@@ -32,8 +95,50 @@
       null
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "paul_skenes",
+        "name": "Paul Skenes",
+        "position": "SP",
+        "team": "PIT",
+        "pick_number": 18,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 13.0,
+          "projected_quality_starts": 20.3667,
+          "projected_strikeouts": 226.877,
+          "projected_era": 2.84,
+          "projected_whip": 1.2033,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "joe_ryan",
+        "name": "Joe Ryan",
+        "position": "SP",
+        "team": "MIN",
+        "pick_number": 61,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 18.6333,
+          "projected_strikeouts": 185.2853,
+          "projected_era": 3.8067,
+          "projected_whip": 1.1807,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "kyle_tucker",
+      "name": "Kyle Tucker",
+      "position": "OF",
+      "team": "LAD",
+      "pick_number": 5,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.3707,
+        "projected_runs": 95.0,
+        "projected_rbi": 88.3333,
+        "projected_stolen_bases": 21.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "paul_skenes",
+      "name": "Paul Skenes",
+      "position": "SP",
+      "team": "PIT",
+      "pick_number": 18,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 13.0,
+        "projected_quality_starts": 20.3667,
+        "projected_strikeouts": 226.877,
+        "projected_era": 2.84,
+        "projected_whip": 1.2033,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ketel_marte",
+      "name": "Ketel Marte",
+      "position": "2B",
+      "team": "ARI",
+      "pick_number": 31,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 27.3333,
+        "projected_obp": 0.3613,
+        "projected_runs": 91.0,
+        "projected_rbi": 84.0,
+        "projected_stolen_bases": 5.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "rafael_devers",
+      "name": "Rafael Devers",
+      "position": "3B",
+      "team": "SF",
+      "pick_number": 44,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 30.0,
+        "projected_obp": 0.35,
+        "projected_runs": 89.3333,
+        "projected_rbi": 88.0,
+        "projected_stolen_bases": 2.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "joe_ryan",
+      "name": "Joe Ryan",
+      "position": "SP",
+      "team": "MIN",
+      "pick_number": 61,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 18.6333,
+        "projected_strikeouts": 185.2853,
+        "projected_era": 3.8067,
+        "projected_whip": 1.1807,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

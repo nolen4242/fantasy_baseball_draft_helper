@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "trea_turner",
+    "name": "Trea Turner",
+    "position": "SS",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 18.3333,
+    "projected_obp": 0.333,
+    "projected_runs": 89.3333,
+    "projected_rbi": 69.6667,
+    "projected_stolen_bases": 27.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 26.78
+  },
+  "pick_info": {
+    "pick_number": 19,
+    "round": 2,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "SS"
+}

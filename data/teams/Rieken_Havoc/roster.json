@@ -14,7 +14,28 @@
       null
     ],
     "SS": [
-      null
+      {
+        "player_id": "francisco_lindor",
+        "name": "Francisco Lindor",
+        "position": "SS",
+        "team": "NYM",
+        "pick_number": 22,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 25.3333,
+          "projected_obp": 0.336,
+          "projected_runs": 91.3333,
+          "projected_rbi": 74.3333,
+          "projected_stolen_bases": 22.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
       null
@@ -23,16 +44,100 @@
       null
     ],
     "OF": [
-      null,
-      null,
+      {
+        "player_id": "jazz_chisholm",
+        "name": "Jazz Chisholm",
+        "position": "OF",
+        "team": "NYY",
+        "pick_number": 9,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 27.3333,
+          "projected_obp": 0.3173,
+          "projected_runs": 75.6667,
+          "projected_rbi": 78.0,
+          "projected_stolen_bases": 30.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "wyatt_langford",
+        "name": "Wyatt Langford",
+        "position": "OF",
+        "team": "TEX",
+        "pick_number": 35,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 23.6667,
+          "projected_obp": 0.3477,
+          "projected_runs": 84.0,
+          "projected_rbi": 74.3333,
+          "projected_stolen_bases": 21.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
       null,
       null
     ],
     "U": [
-      null
+      {
+        "player_id": "bryce_harper",
+        "name": "Bryce Harper",
+        "position": "U",
+        "team": "PHI",
+        "pick_number": 57,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 27.3333,
+          "projected_obp": 0.366,
+          "projected_runs": 85.3333,
+          "projected_rbi": 88.6667,
+          "projected_stolen_bases": 9.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
+      {
+        "player_id": "hunter_brown",
+        "name": "Hunter Brown",
+        "position": "SP",
+        "team": "HOU",
+        "pick_number": 48,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 12.3333,
+          "projected_quality_starts": 19.7167,
+          "projected_strikeouts": 196.5401,
+          "projected_era": 3.49,
+          "projected_whip": 1.2733,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "jazz_chisholm",
+      "name": "Jazz Chisholm",
+      "position": "OF",
+      "team": "NYY",
+      "pick_number": 9,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 27.3333,
+        "projected_obp": 0.3173,
+        "projected_runs": 75.6667,
+        "projected_rbi": 78.0,
+        "projected_stolen_bases": 30.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "francisco_lindor",
+      "name": "Francisco Lindor",
+      "position": "SS",
+      "team": "NYM",
+      "pick_number": 22,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 25.3333,
+        "projected_obp": 0.336,
+        "projected_runs": 91.3333,
+        "projected_rbi": 74.3333,
+        "projected_stolen_bases": 22.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "wyatt_langford",
+      "name": "Wyatt Langford",
+      "position": "OF",
+      "team": "TEX",
+      "pick_number": 35,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 23.6667,
+        "projected_obp": 0.3477,
+        "projected_runs": 84.0,
+        "projected_rbi": 74.3333,
+        "projected_stolen_bases": 21.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "hunter_brown",
+      "name": "Hunter Brown",
+      "position": "SP",
+      "team": "HOU",
+      "pick_number": 48,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 12.3333,
+        "projected_quality_starts": 19.7167,
+        "projected_strikeouts": 196.5401,
+        "projected_era": 3.49,
+        "projected_whip": 1.2733,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "bryce_harper",
+      "name": "Bryce Harper",
+      "position": "U",
+      "team": "PHI",
+      "pick_number": 57,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 27.3333,
+        "projected_obp": 0.366,
+        "projected_runs": 85.3333,
+        "projected_rbi": 88.6667,
+        "projected_stolen_bases": 9.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    }
+  ]
 }

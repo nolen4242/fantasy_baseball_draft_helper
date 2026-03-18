@@ -2,7 +2,28 @@
   "team_name": "Magnum GI",
   "positions": {
     "C": [
-      null
+      {
+        "player_id": "cal_raleigh",
+        "name": "Cal Raleigh",
+        "position": "C",
+        "team": "SEA",
+        "pick_number": 7,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 39.0,
+          "projected_obp": 0.3297,
+          "projected_runs": 87.3333,
+          "projected_rbi": 98.3333,
+          "projected_stolen_bases": 8.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "1B": [
       null
@@ -11,10 +32,52 @@
       null
     ],
     "3B": [
-      null
+      {
+        "player_id": "gunnar_henderson",
+        "name": "Gunnar Henderson",
+        "position": "3B",
+        "team": "BAL",
+        "pick_number": 20,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 27.6667,
+          "projected_obp": 0.3533,
+          "projected_runs": 100.0,
+          "projected_rbi": 85.0,
+          "projected_stolen_bases": 23.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
-      null
+      {
+        "player_id": "leo_de_vries",
+        "name": "Leo De Vries",
+        "position": "SS",
+        "team": "ATH",
+        "pick_number": 46,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
       null
@@ -32,8 +95,50 @@
       null
     ],
     "P": [
-      null,
-      null,
+      {
+        "player_id": "mason_miller",
+        "name": "Mason Miller",
+        "position": "SP",
+        "team": "SD",
+        "pick_number": 33,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 3.6667,
+          "projected_quality_starts": null,
+          "projected_strikeouts": 103.0615,
+          "projected_era": 2.4333,
+          "projected_whip": 1.3226,
+          "projected_saves": 32.3333,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "george_kirby",
+        "name": "George Kirby",
+        "position": "SP",
+        "team": "SEA",
+        "pick_number": 59,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 12.0,
+          "projected_quality_starts": 19.5,
+          "projected_strikeouts": 167.9447,
+          "projected_era": 3.55,
+          "projected_whip": 1.1337,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
       null,
       null,
       null,
@@ -46,5 +151,116 @@
       null
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "cal_raleigh",
+      "name": "Cal Raleigh",
+      "position": "C",
+      "team": "SEA",
+      "pick_number": 7,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 39.0,
+        "projected_obp": 0.3297,
+        "projected_runs": 87.3333,
+        "projected_rbi": 98.3333,
+        "projected_stolen_bases": 8.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "gunnar_henderson",
+      "name": "Gunnar Henderson",
+      "position": "3B",
+      "team": "BAL",
+      "pick_number": 20,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 27.6667,
+        "projected_obp": 0.3533,
+        "projected_runs": 100.0,
+        "projected_rbi": 85.0,
+        "projected_stolen_bases": 23.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "mason_miller",
+      "name": "Mason Miller",
+      "position": "SP",
+      "team": "SD",
+      "pick_number": 33,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 3.6667,
+        "projected_quality_starts": null,
+        "projected_strikeouts": 103.0615,
+        "projected_era": 2.4333,
+        "projected_whip": 1.3226,
+        "projected_saves": 32.3333,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "leo_de_vries",
+      "name": "Leo De Vries",
+      "position": "SS",
+      "team": "ATH",
+      "pick_number": 46,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "george_kirby",
+      "name": "George Kirby",
+      "position": "SP",
+      "team": "SEA",
+      "pick_number": 59,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 12.0,
+        "projected_quality_starts": 19.5,
+        "projected_strikeouts": 167.9447,
+        "projected_era": 3.55,
+        "projected_whip": 1.1337,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

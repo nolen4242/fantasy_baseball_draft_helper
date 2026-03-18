@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "manny_machado",
+    "name": "Manny Machado",
+    "position": "3B",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.3257,
+    "projected_runs": 77.6667,
+    "projected_rbi": 87.6667,
+    "projected_stolen_bases": 9.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 36.93
+  },
+  "pick_info": {
+    "pick_number": 29,
+    "round": 3,
+    "team_name": "Long Balls"
+  },
+  "position": "3B"
+}

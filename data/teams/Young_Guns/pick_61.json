@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "joe_ryan",
+    "name": "Joe Ryan",
+    "position": "SP",
+    "team": "MIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 18.6333,
+    "projected_strikeouts": 185.2853,
+    "projected_era": 3.8067,
+    "projected_whip": 1.1807,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 169.0667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 73.26
+  },
+  "pick_info": {
+    "pick_number": 61,
+    "round": 5,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}
