@@ -160,7 +160,7 @@ export class UIRenderer {
 
         if (header) header.textContent = teamName;
 
-        // Bob Uecker League positions: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
+        // Bob Uecker League positions: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 2 BENCH
         const positions = [
             { pos: 'C', count: 1 },
             { pos: '1B', count: 1 },
@@ -172,7 +172,7 @@ export class UIRenderer {
             { pos: 'OF', count: 4 },
             { pos: 'U', count: 1 },
             { pos: 'P', count: 9 },
-            { pos: 'BENCH', count: 1 }
+            { pos: 'BENCH', count: 2 }
         ];
 
         let html = '<div class="position-slots">';

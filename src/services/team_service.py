@@ -22,7 +22,7 @@ class TeamService:
         'OF': 4,  # Outfielders
         'U': 1,   # Utility (any offensive position)
         'P': 9,   # Pitchers (any combination of SP/RP)
-        'BENCH': 1  # Bench/Reserve (any player - hitter or pitcher)
+        'BENCH': 2  # Reserve spots (any player - hitter or pitcher)
     }
     
     def __init__(self, teams_dir: str = None):

@@ -412,7 +412,7 @@ class RecommendationEngine:
         
         # Calculate category improvements
         category_improvements = {}
-        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV', 'HD']:
+        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV']:
             improvement = my_projected_totals[category] - my_totals[category]
             category_improvements[category] = improvement
         
@@ -442,7 +442,7 @@ class RecommendationEngine:
             }
         
         # Find categories where I'm behind and this player helps
-        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV', 'HD']:
+        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV']:
             my_value = my_totals[category]
             improvement = category_improvements.get(category, 0)
             
@@ -676,14 +676,14 @@ class RecommendationEngine:
         Prevents redundant picks and considers dynamic roster state.
         """
         # Bob Uecker League position requirements:
-        # 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 1 BENCH
+        # 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 2 BENCH
         position_requirements = {
             'C': 1, '1B': 1, '2B': 1, '3B': 1, 'SS': 1,
             'MI': 1,  # Middle Infielder (2B or SS)
             'CI': 1,  # Corner Infielder (1B or 3B)
             'OF': 4, 'U': 1,  # Utility (any offensive position)
             'SP': 9, 'RP': 9, 'P': 9,  # Any combination of pitchers
-            'BENCH': 1  # Bench/Reserve (any player)
+            'BENCH': 2  # Reserve spots (any player)
         }
         
         # Count current players at each position on my team
@@ -712,15 +712,19 @@ class RecommendationEngine:
         if required > 0:
             position_count = position_counts.get(player_pos, 0)
             
-            # If we already have enough, this is redundant
+            # If we already have enough, this is likely depth.
+            # With 2 reserve spots, allow up to two extras before hard blocking.
             if position_count >= required:
-                # Allow 1 extra for depth, but penalize heavily after that
-                if position_count > required + 1:
+                max_depth_for_position = required + 2
+                if position_count > max_depth_for_position:
                     need_score -= 200  # Heavy penalty for redundant pick
                     reasoning_parts.append(f"REDUNDANT: Already have {position_count} {player_pos} (need {required})")
                     return need_score, " | ".join(reasoning_parts)
+                elif position_count == max_depth_for_position:
+                    need_score -= 40  # At reserve depth cap
+                    reasoning_parts.append(f"At reserve depth cap: {position_count} {player_pos}")
                 elif position_count == required + 1:
-                    need_score -= 50  # Light penalty for depth
+                    need_score -= 10  # Light penalty for first depth layer
                     reasoning_parts.append(f"Depth pick: {position_count} {player_pos} (need {required})")
             else:
                 # We need this position
@@ -728,9 +732,11 @@ class RecommendationEngine:
                 reasoning_parts.append(f"Fills {player_pos} need ({position_count}/{required})")
         
         # Balance hitters vs pitchers dynamically
-        # Need 11 hitters (C, 1B, 2B, 3B, SS, MI, CI, 4 OF, U) and 9 pitchers
-        total_hitters_needed = 11
+        # Need 12 hitters (C, 1B, 2B, 3B, SS, MI, CI, 4 OF, U) and 9 pitchers.
+        # Remaining slots are flexible reserve spots.
+        total_hitters_needed = 12
         total_pitchers_needed = 9
+        reserve_spots = max(0, draft_state.roster_size - (total_hitters_needed + total_pitchers_needed))
         
         # Calculate how many picks remain
         picks_remaining = (draft_state.total_teams * draft_state.roster_size) - len(draft_state.picks)
@@ -740,8 +746,10 @@ class RecommendationEngine:
         hitters_needed = total_hitters_needed - hitter_count
         pitchers_needed = total_pitchers_needed - pitcher_count
         
-        # If we're way off balance, prioritize correcting it
-        # CRITICAL: Need to balance hitters and pitchers throughout draft
+        reserves_filled = max(0, len(my_team) - (total_hitters_needed + total_pitchers_needed))
+        reserve_spots_remaining = max(0, reserve_spots - reserves_filled)
+
+        # If we're way off balance, prioritize correcting it.
         if is_hitter:
             if hitters_needed > 0:
                 # Need hitters - bonus based on how many we need
@@ -751,6 +759,9 @@ class RecommendationEngine:
                     reasoning_parts.append(f"URGENT: Need {hitters_needed} more hitters")
                 elif hitters_needed > 3:
                     need_score += 30  # Moderate urgency
+            elif reserve_spots_remaining > 0:
+                need_score -= 10
+                reasoning_parts.append("Reserve hitter depth")
             else:
                 need_score -= 60  # Don't need more hitters
                 reasoning_parts.append("Have enough hitters")
@@ -765,6 +776,9 @@ class RecommendationEngine:
                 elif pitchers_needed > 4:
                     need_score += 15  # Moderate urgency (reduced from 25)
                     reasoning_parts.append(f"Need {pitchers_needed} more pitchers")
+            elif reserve_spots_remaining > 0:
+                need_score -= 20
+                reasoning_parts.append("Reserve pitcher depth")
             else:
                 need_score -= 100  # Don't need more pitchers (stronger penalty)
                 reasoning_parts.append("Have enough pitchers")
@@ -842,7 +856,7 @@ class RecommendationEngine:
         """
         Analyze projected statistical value based on Bob Uecker League categories.
         Batting: HR, OBP, R, RBI, SB
-        Pitching: ERA, K, SHOLDS (Saves + Holds x0.5), WHIP, WQS (Wins + Quality Starts)
+        Pitching: ERA, K, SV, WHIP, WQS (Wins + Quality Starts)
         """
         value = 0.0
         
@@ -863,7 +877,7 @@ class RecommendationEngine:
             if player.projected_stolen_bases:
                 value += player.projected_stolen_bases * 3.5  # SB are scarce and valuable
         else:
-            # Pitching categories: ERA, K, SHOLDS, WHIP, WQS
+            # Pitching categories: ERA, K, SV, WHIP, WQS
             if player.projected_wins:
                 value += player.projected_wins * 2.0
             if player.projected_quality_starts:
@@ -872,9 +886,6 @@ class RecommendationEngine:
                 value += player.projected_strikeouts * 0.25  # K are valuable
             if player.projected_saves:
                 value += player.projected_saves * 3.0
-            if player.projected_holds:
-                # SHOLDS = Saves + Holds x0.5
-                value += player.projected_holds * 1.5
             if player.projected_era:
                 # Lower ERA is better (typical range 2.50-5.00)
                 # Invert: better ERA = higher value
@@ -911,8 +922,6 @@ class RecommendationEngine:
                         peer_val += peer.projected_strikeouts * 0.25
                     if peer.projected_saves:
                         peer_val += peer.projected_saves * 3.0
-                    if peer.projected_holds:
-                        peer_val += peer.projected_holds * 1.5
                     if peer.projected_era:
                         peer_val += max(0, (5.0 - peer.projected_era) * 15)
                     if peer.projected_whip:

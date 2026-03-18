@@ -9,7 +9,7 @@ class StandingsCalculator:
     
     # Bob Uecker League categories
     BATTING_CATEGORIES = ['HR', 'OBP', 'R', 'RBI', 'SB']
-    PITCHING_CATEGORIES = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']
+    PITCHING_CATEGORIES = ['ERA', 'K', 'SV', 'WHIP', 'WQS']
     
     def calculate_standings(self, team_rosters: Dict[str, List[Player]]) -> Dict:
         """
@@ -61,7 +61,7 @@ class StandingsCalculator:
         """Calculate category totals for a single team."""
         totals = {
             'HR': 0.0, 'OBP': 0.0, 'R': 0.0, 'RBI': 0.0, 'SB': 0.0,
-            'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0, 'HD': 0.0,
+            'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0,
             'ERA': 0.0, 'WHIP': 0.0, 'IP': 0.0
         }
         
@@ -93,13 +93,9 @@ class StandingsCalculator:
             totals['QS'] += pitcher.projected_quality_starts or 0
             totals['K'] += pitcher.projected_strikeouts or 0
             totals['SV'] += pitcher.projected_saves or 0
-            totals['HD'] += pitcher.projected_holds or 0
         
         # WQS = Wins + Quality Starts
         totals['WQS'] = totals['W'] + totals['QS']
-        
-        # SHOLDS = Saves + (Holds * 0.5)
-        totals['SHOLDS'] = totals['SV'] + (totals['HD'] * 0.5)
         
         # ERA and WHIP are averaged (weighted by innings, but we'll use simple average)
         if pitchers:

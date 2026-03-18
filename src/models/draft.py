@@ -53,7 +53,7 @@ class DraftState:
         """
         Check if draft is complete (all teams have filled rosters AND all required positions).
         Verifies:
-        1. All teams have roster_size players (21)
+        1. All teams have roster_size players
         2. All teams have all required positions filled
         3. Total picks equals total_teams * roster_size
         """
@@ -84,9 +84,9 @@ class DraftState:
             
             positions = roster['positions']
             
-            # Check each required position (excluding BENCH as it's optional)
+            # Check each required position (excluding reserve spots)
             for pos, required_count in required_positions.items():
-                if pos == 'BENCH':  # Skip bench - it's optional
+                if pos == 'BENCH':  # Skip reserve slots - these are flexible depth spots
                     continue
                 
                 # Count filled slots for this position

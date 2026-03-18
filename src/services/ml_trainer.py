@@ -130,7 +130,7 @@ class MLTrainer:
             'player_qs': player.projected_quality_starts or 0,
             'player_k': player.projected_strikeouts or 0,
             'player_sv': player.projected_saves or 0,
-            'player_hd': player.projected_holds or 0,
+            'player_hd': 0.0,
             'player_era': player.projected_era or 5.0,
             'player_whip': player.projected_whip or 1.5,
             'is_hitter': 1 if player.position not in ['SP', 'RP', 'P'] else 0,
@@ -140,7 +140,7 @@ class MLTrainer:
         # Draft context
         features['pick_number'] = pick_number
         features['round'] = round_num
-        features['picks_remaining'] = (13 * 21) - pick_number
+        features['picks_remaining'] = (13 * 23) - pick_number
         
         # Team state
         features['roster_size'] = len(roster_before)
@@ -166,7 +166,7 @@ class MLTrainer:
         features['current_qs'] = totals_before['QS']
         features['current_k'] = totals_before['K']
         features['current_sv'] = totals_before['SV']
-        features['current_hd'] = totals_before['HD']
+        features['current_hd'] = 0.0
         features['current_era'] = totals_before['ERA']
         features['current_whip'] = totals_before['WHIP']
         

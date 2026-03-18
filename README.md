@@ -3,7 +3,7 @@
 A local web application to help you dominate your fantasy baseball draft with AI-powered recommendations.
 
 **Configured for: Bob Uecker Imaginary Baseball League**
-- 13 teams, 21 active players per team
+- 13 teams, 23 total players per team (21 active + 2 reserve)
 - Rotisserie scoring
 - Position requirements: 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P
 
@@ -123,7 +123,7 @@ Each recommendation includes:
 ### Bob Uecker League Scoring Categories
 
 **Batting:** HR, OBP, R, RBI, SB  
-**Pitching:** ERA, K, SHOLDS (Saves + Holds x0.5), WHIP, WQS (Wins + Quality Starts)
+**Pitching:** ERA, K, SV, WHIP, WQS (Wins + Quality Starts)
 
 The recommendation engine weights these categories appropriately when calculating player value.
 
@@ -153,7 +153,7 @@ Your player projection CSV should have these columns (flexible naming):
 - `projected_era` (or `era`)
 - `projected_whip` (or `whip`)
 - `projected_saves` (or `sv`)
-- `projected_holds` (or `hld`/`holds`)
+- `projected_holds` (or `hld`/`holds`) - optional, not used in scoring
 
 See `data/players/example_projections.csv` for a sample format.
 

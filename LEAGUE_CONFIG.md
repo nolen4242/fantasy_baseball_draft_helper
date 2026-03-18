@@ -6,7 +6,7 @@ This application is configured specifically for the **Bob Uecker Imaginary Baseb
 
 - **Teams:** 13
 - **Active Roster Size:** 21 players
-- **Reserve:** 1 spot
+- **Reserve:** 2 spots
 - **Scoring:** Rotisserie
 
 ## Position Requirements
@@ -23,7 +23,7 @@ Each active roster must contain:
 - 1 U (Utility - any offensive position)
 - 9 P (Pitchers - any combination of SP/RP)
 
-**Total:** 11 position players + 9 pitchers = 20 active + 1 reserve = 21 total
+**Total:** 12 position players + 9 pitchers = 21 active + 2 reserve = 23 total
 
 ## Scoring Categories
 
@@ -37,7 +37,7 @@ Each active roster must contain:
 ### Pitching (5 categories)
 1. **ERA** - Earned Run Average (lower is better)
 2. **K** - Strikeouts
-3. **SHOLDS** - Saves + Holds (Holds count as 0.5)
+3. **SV** - Saves
 4. **WHIP** - Walks + Hits per Inning Pitched (lower is better)
 5. **WQS** - Wins + Quality Starts
 
@@ -57,7 +57,7 @@ Each active roster must contain:
 
 ## Draft Settings
 
-- **Draft Type:** Snake draft (21 rounds)
+- **Draft Type:** Snake draft (23 rounds)
 - **Draft Order:** Based on previous season standings (6th-last place picks first, then 5th-1st place)
 - **New Teams:** Pick after 1st place team
 
@@ -79,7 +79,7 @@ When importing player projections, the following column names are supported:
 - `projected_era` or `era`
 - `projected_whip` or `whip`
 - `projected_saves` or `sv`
-- `projected_holds` or `hld` or `holds`
+- `projected_holds` or `hld` or `holds` (optional; not used in scoring)
 
 The recommendation engine will use these categories to calculate player value and provide draft recommendations.
 

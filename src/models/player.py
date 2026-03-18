@@ -19,7 +19,7 @@ class Player:
     projected_runs: Optional[float] = None
     projected_rbi: Optional[float] = None
     projected_stolen_bases: Optional[float] = None
-    # Pitching: ERA, K, SHOLDS (Saves + Holds x0.5), WHIP, WQS (Wins + Quality Starts)
+    # Pitching: ERA, K, SV, WHIP, WQS (Wins + Quality Starts)
     projected_wins: Optional[float] = None
     projected_quality_starts: Optional[float] = None  # QS
     projected_strikeouts: Optional[float] = None

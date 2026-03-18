@@ -58,7 +58,7 @@ class App {
                 draft_id: 'draft_' + new Date().getTime(),
                 league_name: 'Bob Uecker League',
                 total_teams: 13,
-                roster_size: 21,
+                roster_size: 23,
                 my_team_name: 'Runtime Terror' // Default to first team
             });
         }

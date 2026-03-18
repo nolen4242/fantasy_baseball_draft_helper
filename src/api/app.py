@@ -199,7 +199,7 @@ def create_draft():
         draft_id=data.get('draft_id', f"draft_{int(__import__('time').time())}"),
         league_name=data.get('league_name', 'Bob Uecker League'),
         total_teams=data.get('total_teams', 13),
-        roster_size=data.get('roster_size', 21),
+        roster_size=data.get('roster_size', 23),
         my_team_name=my_team_name
     )
     return jsonify({
@@ -254,7 +254,7 @@ def make_pick():
             draft_id=f"draft_{int(time.time())}",
             league_name='Bob Uecker League',
             total_teams=13,
-            roster_size=21,
+            roster_size=23,
             my_team_name=default_team_name
         )
     

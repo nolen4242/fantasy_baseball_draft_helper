@@ -9,7 +9,7 @@ from src.services.draft_order import DraftOrder
 class DraftSimulator:
     """Simulates fantasy baseball drafts to generate training data."""
     
-    def __init__(self, all_players: List[Player], total_teams: int = 13, roster_size: int = 21):
+    def __init__(self, all_players: List[Player], total_teams: int = 13, roster_size: int = 23):
         self.all_players = all_players
         self.total_teams = total_teams
         self.roster_size = roster_size
@@ -111,7 +111,7 @@ class DraftSimulator:
         """Calculate total category stats for a roster."""
         totals = {
             'HR': 0.0, 'OBP': 0.0, 'R': 0.0, 'RBI': 0.0, 'SB': 0.0,
-            'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0, 'HD': 0.0,
+            'W': 0.0, 'QS': 0.0, 'K': 0.0, 'SV': 0.0,
             'ERA': 0.0, 'WHIP': 0.0, 'IP': 0.0
         }
         
@@ -136,7 +136,6 @@ class DraftSimulator:
                 totals['QS'] += player.projected_quality_starts or 0
                 totals['K'] += player.projected_strikeouts or 0
                 totals['SV'] += player.projected_saves or 0
-                totals['HD'] += player.projected_holds or 0
                 # ERA and WHIP are averaged, not summed
                 if player.projected_era:
                     totals['ERA'] += player.projected_era
@@ -170,7 +169,6 @@ class DraftSimulator:
             value += (player.projected_quality_starts or 0) * 2.0
             value += (player.projected_strikeouts or 0) * 0.25
             value += (player.projected_saves or 0) * 3.0
-            value += (player.projected_holds or 0) * 1.5
             if player.projected_era:
                 value += max(0, (5.0 - player.projected_era) * 15)
             if player.projected_whip:

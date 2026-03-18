@@ -130,7 +130,7 @@ class DataLoader:
                         normalized_row.get('sb')
                     )
                     
-                    # Pitching stats (Bob Uecker League: ERA, K, SHOLDS, WHIP, WQS)
+                    # Pitching stats (Bob Uecker League: ERA, K, SV, WHIP, WQS)
                     projected_wins = self._safe_float(
                         normalized_row.get('projected_wins') or 
                         normalized_row.get('w')
