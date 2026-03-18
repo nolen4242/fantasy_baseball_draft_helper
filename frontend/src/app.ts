@@ -10,6 +10,9 @@ class App {
     private allPlayers: Player[] = [];
     private currentDraft: DraftState | null = null;
     private autoDraftEnabled: boolean = false;
+    private currentRecommendations: Recommendation[] = [];
+    private recommendationIndex: number = 0;
+    private recommendationContextKey: string = '';
 
     constructor() {
         this.api = new ApiClient();
@@ -44,6 +47,7 @@ class App {
         document.getElementById('load-steamer-btn')?.addEventListener('click', () => this.loadSteamerFiles());
         document.getElementById('restart-draft-btn')?.addEventListener('click', () => this.restartDraft());
         document.getElementById('auto-draft-toggle-btn')?.addEventListener('click', () => this.toggleAutoDraft());
+        document.getElementById('skip-recommendation-btn')?.addEventListener('click', () => this.skipRecommendation());
         
         // Search and filter
         document.getElementById('player-search')?.addEventListener('input', () => this.filterPlayers());
@@ -154,18 +158,25 @@ class App {
     private async refreshDraftStatus(): Promise<void> {
         if (!this.currentDraft) return;
         
-        // Get top recommendation
-        let topRecommendation = null;
+        // Get recommendations for current draft state
         try {
-            const recommendations = await this.api.getRecommendations();
-            if (recommendations && recommendations.length > 0) {
-                topRecommendation = recommendations[0];
-            }
+            this.currentRecommendations = await this.api.getRecommendations();
         } catch (error) {
             console.error('Error fetching recommendations:', error);
+            this.currentRecommendations = [];
         }
         
-        this.renderer.updateDraftStatusBar(this.currentDraft, topRecommendation);
+        const contextKey = this.getRecommendationContextKey();
+        if (contextKey !== this.recommendationContextKey) {
+            this.recommendationIndex = 0;
+            this.recommendationContextKey = contextKey;
+        }
+        
+        if (this.recommendationIndex >= this.currentRecommendations.length) {
+            this.recommendationIndex = 0;
+        }
+        
+        this.updateRecommendationDisplay();
         
         // Check if auto-draft should trigger
         if (this.autoDraftEnabled) {
@@ -281,6 +292,51 @@ class App {
                 btn.classList.remove('btn-active');
             }
         }
+    }
+
+    private getRecommendationContextKey(): string {
+        if (!this.currentDraft) return '';
+        return `${this.currentDraft.picks.length}:${this.currentDraft.is_complete ? 'complete' : 'active'}`;
+    }
+
+    private updateRecommendationDisplay(): void {
+        if (!this.currentDraft) return;
+        const recommendation = this.currentRecommendations[this.recommendationIndex] || null;
+        this.renderer.updateDraftStatusBar(this.currentDraft, recommendation);
+        this.updateRecommendationControls();
+    }
+
+    private updateRecommendationControls(): void {
+        const skipBtn = document.getElementById('skip-recommendation-btn') as HTMLButtonElement | null;
+        const rankEl = document.getElementById('recommended-player-rank');
+        
+        const totalRecommendations = this.currentRecommendations.length;
+        const isDraftComplete = this.currentDraft?.is_complete || false;
+        const hasNextRecommendation = this.recommendationIndex < totalRecommendations - 1;
+
+        if (skipBtn) {
+            skipBtn.disabled = isDraftComplete || !hasNextRecommendation;
+            skipBtn.textContent = hasNextRecommendation ? 'Skip Rec' : 'No More Rec';
+        }
+
+        if (rankEl) {
+            if (isDraftComplete || totalRecommendations === 0) {
+                rankEl.textContent = '';
+            } else {
+                rankEl.textContent = `#${this.recommendationIndex + 1}/${totalRecommendations}`;
+            }
+        }
+    }
+
+    private skipRecommendation(): void {
+        if (!this.currentDraft || this.currentDraft.is_complete) return;
+        if (this.recommendationIndex >= this.currentRecommendations.length - 1) {
+            this.updateRecommendationControls();
+            return;
+        }
+
+        this.recommendationIndex += 1;
+        this.updateRecommendationDisplay();
     }
 
     private async refreshAvailablePlayers(): Promise<void> {

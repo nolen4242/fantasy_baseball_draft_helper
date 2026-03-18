@@ -156,6 +156,26 @@ body {
     font-weight: 600;
 }
 
+.recommended-rank {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.btn-small.btn-skip-recommendation {
+    background: rgba(50, 205, 50, 0.2);
+    border: 1px solid rgba(50, 205, 50, 0.4);
+}
+
+.btn-small.btn-skip-recommendation:hover {
+    background: rgba(50, 205, 50, 0.35);
+}
+
+.btn-small.btn-skip-recommendation:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
 .draft-progress {
     font-size: 14px;
     color: #ffffff;
