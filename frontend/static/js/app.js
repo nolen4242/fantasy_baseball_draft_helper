@@ -170,42 +170,11 @@ class App {
         if (this.currentDraft.is_complete) {
             return;
         }
-        // Determine whose turn it is
-        const pickNumber = this.currentDraft.picks.length + 1;
-        const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
-        const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
-        // Bob Uecker League: Rounds 1-5 no snake, Round 6+ snakes
-        const teamOrder = [
-            "Runtime Terror",
-            "Dawg",
-            "Long Balls",
-            "Simba's Dublin Green Sox",
-            "Young Guns",
-            "Gashouse Gang",
-            "Magnum GI",
-            "Trex",
-            "Rieken Havoc",
-            "Guillotine",
-            "MAGA DOGE",
-            "Big Sticks",
-            "Like a Nightmare"
-        ];
-        let currentTeam;
-        if (round <= 5) {
-            currentTeam = teamOrder[pickInRound - 1];
-        }
-        else {
-            const snakeRound = round - 5;
-            const isOddSnakeRound = snakeRound % 2 === 1;
-            if (isOddSnakeRound) {
-                currentTeam = teamOrder[this.currentDraft.total_teams - pickInRound];
-            }
-            else {
-                currentTeam = teamOrder[pickInRound - 1];
-            }
-        }
-        // Only auto-draft if it's not the user's team
-        if (currentTeam !== this.currentDraft.my_team_name) {
+        const currentTeam = this.getCurrentPickTeam();
+        if (!currentTeam)
+            return;
+        // Only auto-draft if it's not the user's team AND auto-draft is enabled
+        if (currentTeam !== this.currentDraft.my_team_name && this.autoDraftEnabled) {
             try {
                 // Check if this team's roster is full
                 const teamRosterSize = this.currentDraft.team_rosters[currentTeam]?.length || 0;
@@ -230,17 +199,46 @@ class App {
             }
             catch (error) {
                 console.error('Error making auto-draft pick:', error);
-                // If error is about roster being full or draft complete, that's okay
-                const errorMessage = error instanceof Error ? error.message : '';
-                const isExpectedStop = errorMessage.includes('full') ||
-                    errorMessage.includes('complete') ||
-                    errorMessage.includes('No suitable players');
-                if (!isExpectedStop && this.autoDraftEnabled) {
-                    // Retry briefly to avoid getting stuck on transient errors
+                // Skip this stuck pick and continue auto-draft loop.
+                const nextPick = this.currentDraft.picks.length + 1;
+                const totalPicks = this.currentDraft.total_teams * this.currentDraft.roster_size;
+                if (nextPick <= totalPicks && this.autoDraftEnabled) {
+                    console.log(`Skipping stuck pick for ${currentTeam}, moving on...`);
                     setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
                 }
             }
         }
+    }
+    getCurrentPickTeam() {
+        if (!this.currentDraft)
+            return null;
+        const pickNumber = this.currentDraft.picks.length + 1;
+        const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
+        const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
+        // Bob Uecker League: Rounds 1-5 fixed order, Round 6+ snakes
+        const teamOrder = [
+            "Runtime Terror",
+            "Dawg",
+            "Long Balls",
+            "Simba's Dublin Green Sox",
+            "Young Guns",
+            "Gashouse Gang",
+            "Magnum GI",
+            "Trex",
+            "Rieken Havoc",
+            "Guillotine",
+            "MAGA DOGE",
+            "Big Sticks",
+            "Like a Nightmare"
+        ];
+        if (round <= 5) {
+            return teamOrder[pickInRound - 1];
+        }
+        const snakeRound = round - 5;
+        const isOddSnakeRound = snakeRound % 2 === 1;
+        return isOddSnakeRound
+            ? teamOrder[this.currentDraft.total_teams - pickInRound]
+            : teamOrder[pickInRound - 1];
     }
     async toggleAutoDraft() {
         try {
@@ -315,6 +313,16 @@ class App {
         const available = await this.api.getAvailablePlayers();
         const draftComplete = this.currentDraft?.is_complete || false;
         this.renderer.renderAvailablePlayers(available, (player) => this.draftPlayer(player), draftComplete);
+        // Show draft target team on action buttons when it is not your turn.
+        if (!draftComplete && this.currentDraft) {
+            const currentTeam = this.getCurrentPickTeam();
+            const isMyTurn = currentTeam === this.currentDraft.my_team_name;
+            if (!isMyTurn && currentTeam) {
+                document.querySelectorAll('.draft-btn:not(.draft-btn-disabled)').forEach(btn => {
+                    btn.textContent = `Draft → ${currentTeam}`;
+                });
+            }
+        }
     }
     async refreshMyTeam() {
         if (!this.currentDraft)
@@ -371,8 +379,8 @@ class App {
         // Note: We allow drafting even if draft is marked complete, as long as required positions aren't filled
         // The backend will check if the team can actually draft more players
         try {
-            // If no draft exists, the backend will auto-create one
-            const teamName = this.currentDraft?.my_team_name || 'Runtime Terror';
+            // Assign manual pick to whichever team is currently on the clock.
+            const teamName = this.getCurrentPickTeam() || this.currentDraft.my_team_name;
             const result = await this.api.makePick(player.player_id, teamName);
             this.currentDraft = result;
             // Check if draft is now complete
