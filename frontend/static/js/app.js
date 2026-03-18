@@ -232,8 +232,12 @@ class App {
                 console.error('Error making auto-draft pick:', error);
                 // If error is about roster being full or draft complete, that's okay
                 const errorMessage = error instanceof Error ? error.message : '';
-                if (!errorMessage.includes('full') && !errorMessage.includes('complete')) {
-                    // Only log unexpected errors
+                const isExpectedStop = errorMessage.includes('full') ||
+                    errorMessage.includes('complete') ||
+                    errorMessage.includes('No suitable players');
+                if (!isExpectedStop && this.autoDraftEnabled) {
+                    // Retry briefly to avoid getting stuck on transient errors
+                    setTimeout(() => this.checkAndTriggerAutoDraft(), 100);
                 }
             }
         }

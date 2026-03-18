@@ -1,49 +1,67 @@
-"""AI/ML recommendation engine for draft picks."""
+"""Recommendation engine for draft picks — slim compositor that delegates to
+ZScoreCalculator, ReplacementLevelAnalyzer, and SavantAdjuster."""
 from typing import List, Dict, Tuple, Optional
-import numpy as np
 from src.models.player import Player
 from src.models.draft import DraftState
 from src.services.draft_service import DraftService
-from src.services.ml_trainer import MLTrainer
 from src.services.standings_calculator import StandingsCalculator
 from src.services.team_service import TeamService
+from src.services.zscore_calculator import ZScoreCalculator
+from src.services.replacement_level import ReplacementLevelAnalyzer
+from src.services.savant_adjuster import SavantAdjuster
 
 
 class RecommendationEngine:
-    """Provides AI-powered draft recommendations."""
-    
-    def __init__(self, draft_service: DraftService, all_players: List[Player] = None):
+    """Provides draft recommendations using z-score valuation, replacement-level
+    analysis, Savant adjustments, and 6 additional scoring factors."""
+
+    DEFAULT_WEIGHTS = {
+        'zscore': 1.0,
+        'var': 1.0,
+        'savant': 0.5,
+        'position_scarcity': 0.8,
+        'team_needs': 1.0,
+        'relative_advantage': 0.7,
+        'adp_value': 0.9,
+        'pitcher_caps': 1.0,
+        'category_balance': 0.6,
+        'opponent_blocking': 0.35,
+    }
+
+    def __init__(self, draft_service: DraftService, players: List[Player] = None,
+                 savant_data: Dict[str, dict] = None, weights: Dict[str, float] = None):
         self.draft_service = draft_service
-        self.ml_trainer = MLTrainer()
         self.standings_calculator = StandingsCalculator()
         self.team_service = TeamService()
-        self.all_players = all_players or []
-        self._ml_models_loaded = False
-    
+        self.all_players = players or []
+        self.savant_data = savant_data or {}
+        self.zscore_calc = ZScoreCalculator()
+        self.replacement_analyzer = ReplacementLevelAnalyzer()
+        self.savant_adjuster = SavantAdjuster()
+        self.weights = weights or self.DEFAULT_WEIGHTS
+
+    # ------------------------------------------------------------------
+    # Public API
+    # ------------------------------------------------------------------
+
     def get_recommendations(
         self,
         available_players: List[Player],
         my_team: List[Player],
         draft_state: DraftState,
-        top_n: int = 5,
-        use_ml: bool = True
+        top_n: int = 10,
+        use_ml: bool = True,
     ) -> List[Dict]:
-        """
-        Get top N draft recommendations.
-        RECALCULATES EVERY TIME based on current draft state - recommendations
-        update dynamically as picks are made.
-        
-        Args:
-            available_players: List of available players (should be filtered to undrafted)
-            my_team: Current roster
-            draft_state: Current draft state (includes all picks made so far)
-            top_n: Number of recommendations to return
-            use_ml: Whether to use ML models (if available)
-        
-        Returns list of dicts with:
-        - player: Player object
-        - score: recommendation score
-        - reasoning: explanation for the recommendation
+        """Return top_n recommendations sorted by composite score.
+
+        Flow:
+        1. Compute z-scores for available players
+        2. Compute VAR for available players
+        3. Get all team rosters
+        4. Filter to players with available roster slots
+        5. Score each candidate via _score_player()
+        6. Sort by score descending
+        7. Return top min(max(top_n, 10), 30) recommendations
         """
         return self.get_recommendations_for_team(
             available_players=available_players,
@@ -51,498 +69,647 @@ class RecommendationEngine:
             draft_state=draft_state,
             team_name=draft_state.my_team_name,
             top_n=top_n,
-            use_ml=use_ml
         )
-    
+
     def get_recommendations_for_team(
         self,
         available_players: List[Player],
         team_players: List[Player],
         draft_state: DraftState,
         team_name: str,
-        top_n: int = 5,
-        use_ml: bool = True
+        top_n: int = 10,
+        use_ml: bool = True,
     ) -> List[Dict]:
-        """
-        Get top N draft recommendations for a specific team.
-        RECALCULATES EVERY TIME based on current draft state - recommendations
-        update dynamically as picks are made.
-        
+        """Get top N draft recommendations for a specific team.
+
+        Computes z-scores and VAR for the undrafted pool, then scores each
+        candidate via _score_player().
+
         Args:
-            available_players: List of available players (should be filtered to undrafted)
-            team_players: Current roster for the team
-            draft_state: Current draft state (includes all picks made so far)
-            team_name: Name of the team to get recommendations for
-            top_n: Number of recommendations to return
-            use_ml: Whether to use ML models (if available)
-        
-        Returns list of dicts with:
-        - player: Player object
-        - score: recommendation score
-        - reasoning: explanation for the recommendation
+            available_players: Undrafted players.
+            team_players: Current roster for the team.
+            draft_state: Current draft state.
+            team_name: Name of the team to get recommendations for.
+            top_n: Number of recommendations to return.
+
+        Returns:
+            List of dicts with 'player', 'score', 'reasoning' keys.
         """
         if not available_players:
             return []
-        
-        # Try to load ML models if not already loaded
-        if use_ml and not self._ml_models_loaded:
-            self._ml_models_loaded = self.ml_trainer.load_models()
-        
-        # Get all team rosters for opponent analysis
+
+        # 1. Compute z-scores for available players
+        zscores = self.zscore_calc.calculate(available_players)
+
+        # 2. Compute VAR for available players
+        var_scores = self.replacement_analyzer.analyze(available_players, zscores)
+
+        # 3. Get all team rosters for opponent analysis
         all_team_rosters = self._get_all_team_rosters(draft_state)
-        
-        recommendations = []
-        
+
+        # 4. Filter to players with available roster slots
         # Sort available players by ADP first to prioritize evaluation
         sorted_available = sorted(
             available_players,
             key=lambda p: (p.adp is None, p.adp or float('inf'))
         )
-        
-        # Evaluate more players (top 200) to ensure we catch pitchers
-        # But also ensure we evaluate at least some pitchers even if they're lower ADP
-        pitchers = [p for p in sorted_available if p.position in ['SP', 'RP', 'P']]
-        hitters = [p for p in sorted_available if p.position not in ['SP', 'RP', 'P']]
-        
+
         # Evaluate top 150 by ADP
         players_to_evaluate = sorted_available[:150]
-        
+
         # Also include top 20 pitchers even if they're not in top 150
+        pitchers = [p for p in sorted_available if p.position in ['SP', 'RP', 'P']]
         top_pitchers = pitchers[:20]
         for pitcher in top_pitchers:
             if pitcher not in players_to_evaluate:
                 players_to_evaluate.append(pitcher)
-        
+
         # Filter out players that don't have available roster slots
         players_with_slots = []
         for player in players_to_evaluate:
             if self.team_service.has_available_slot_for_player(team_name, player):
                 players_with_slots.append(player)
-        
+
         # If we don't have enough players with available slots, expand search
         if len(players_with_slots) < top_n * 2:
-            # Expand to more players and filter again
-            expanded_evaluate = sorted_available[:300]  # Check top 300
+            expanded_evaluate = sorted_available[:300]
             for player in expanded_evaluate:
                 if player not in players_to_evaluate:
                     if self.team_service.has_available_slot_for_player(team_name, player):
                         players_with_slots.append(player)
-                        if len(players_with_slots) >= top_n * 3:  # Get at least 3x top_n options
+                        if len(players_with_slots) >= top_n * 3:
                             break
-        
-        # If no players have available slots, return empty recommendations
+
         if not players_with_slots:
             return []
-        
+
+        # 5. Score each candidate via _score_player()
+        recommendations = []
         for player in players_with_slots:
-            score, reasoning = self._calculate_player_value(
-                player, team_players, available_players, draft_state, all_team_rosters, use_ml, team_name
-            )
-            recommendations.append({
-                'player': player,
-                'score': score,
-                'reasoning': reasoning
-            })
-        
-        # Sort by score (highest first)
+            try:
+                score, reasoning = self._score_player(
+                    player, team_players, available_players, draft_state,
+                    all_team_rosters, zscores, var_scores, team_name
+                )
+                recommendations.append({
+                    'player': player,
+                    'score': score,
+                    'reasoning': reasoning,
+                })
+            except Exception:
+                # Skip players that cause scoring errors
+                continue
+
+        # 6. Sort by score descending
         recommendations.sort(key=lambda x: x['score'], reverse=True)
-        
-        return recommendations[:top_n]
-    
+
+        # 7. Return top recommendations
+        # Default range is 10-30, but allow larger requests (e.g. for player analysis)
+        count = max(top_n, 10)
+        return recommendations[:count]
+
+    # ------------------------------------------------------------------
+    # Core scoring
+    # ------------------------------------------------------------------
+
+    def _score_player(
+        self,
+        player: Player,
+        my_team: List[Player],
+        available_players: List[Player],
+        draft_state: DraftState,
+        all_team_rosters: Dict[str, List[Player]],
+        zscores: Dict[str, Dict[str, float]],
+        var_scores: Dict[str, float],
+        team_name: str,
+    ) -> Tuple[float, str]:
+        """Compute composite score from 10 weighted factors.
+
+        Each raw factor is normalized to roughly -10..+10 before weighting
+        so that no single component dominates the composite.
+
+        Returns:
+            (total_score, reasoning_string)
+        """
+        w = self.weights
+        score = 0.0
+        reasoning_parts = []
+
+        # 1. Z-score component (already in z-score scale, ~-5 to +10)
+        player_zscores = zscores.get(player.player_id, {})
+        composite_z = player_zscores.get('composite', 0.0)
+        z_component = composite_z * w.get('zscore', 1.0)
+        score += z_component
+        reasoning_parts.append(f"Z: {composite_z:.2f}")
+
+        # 2. VAR component (already in z-score scale, ~-5 to +10)
+        var_value = var_scores.get(player.player_id, 0.0)
+        var_component = var_value * w.get('var', 1.0)
+        score += var_component
+        best_pos = player.position
+        reasoning_parts.append(f"VAR: {var_value:.2f} ({best_pos})")
+
+        # 3. Savant component (already small, ~-3 to +3)
+        savant_adj, savant_signal = self.savant_adjuster.adjust(
+            player, self.savant_data.get(player.player_id)
+        )
+        savant_component = savant_adj * w.get('savant', 0.5)
+        score += savant_component
+        if savant_signal:
+            reasoning_parts.append(f"Savant: {savant_adj:+.1f} ({savant_signal})")
+        else:
+            reasoning_parts.append(f"Savant: {savant_adj:+.1f}")
+
+        # 4. Position scarcity — normalize from 0..125 to 0..10
+        scarcity_raw, scarcity_reason = self._score_position_scarcity(
+            player, my_team, available_players, draft_state, all_team_rosters
+        )
+        scarcity_norm = max(min(scarcity_raw / 12.5, 10.0), -5.0)
+        scarcity_component = scarcity_norm * w.get('position_scarcity', 0.8)
+        score += scarcity_component
+        if scarcity_reason:
+            reasoning_parts.append(f"Scarcity: {scarcity_norm:+.1f} ({scarcity_reason})")
+
+        # 5. Team needs — normalize from -200..615 to -10..+10
+        needs_raw, needs_reason = self._score_team_needs(
+            player, my_team, draft_state, available_players
+        )
+        needs_norm = max(min(needs_raw / 60.0, 10.0), -10.0)
+        needs_component = needs_norm * w.get('team_needs', 1.0)
+        score += needs_component
+        if needs_reason:
+            reasoning_parts.append(f"Needs: {needs_norm:+.1f} ({needs_reason})")
+
+        # 6. Relative advantage — normalize from 0..80 to 0..10
+        relative_raw, relative_reason = self._score_relative_advantage(
+            player, my_team, all_team_rosters, draft_state, team_name
+        )
+        relative_norm = max(min(relative_raw / 8.0, 10.0), -5.0)
+        relative_component = relative_norm * w.get('relative_advantage', 0.7)
+        score += relative_component
+        if relative_reason:
+            reasoning_parts.append(f"Advantage: {relative_norm:+.1f} ({relative_reason})")
+
+        # 7. ADP value — normalize from -45..230 to -10..+10
+        adp_raw, adp_reason = self._score_adp_value(
+            player, draft_state
+        )
+        adp_norm = max(min(adp_raw / 20.0, 10.0), -10.0)
+        adp_component = adp_norm * w.get('adp_value', 0.9)
+        score += adp_component
+        if adp_reason:
+            reasoning_parts.append(f"ADP: {adp_norm:+.1f} ({adp_reason})")
+
+        # 8. Pitcher caps — normalize from -150..60 to -10..+5
+        pitcher_cap_raw, pitcher_cap_reason = self._score_pitcher_caps(
+            player, my_team, draft_state
+        )
+        pitcher_cap_norm = max(min(pitcher_cap_raw / 15.0, 5.0), -10.0)
+        pitcher_cap_component = pitcher_cap_norm * w.get('pitcher_caps', 1.0)
+        score += pitcher_cap_component
+        if pitcher_cap_reason:
+            reasoning_parts.append(f"PitcherCap: {pitcher_cap_norm:+.1f} ({pitcher_cap_reason})")
+
+        # 9. Category balance — normalize from 0..300 to 0..10
+        balance_raw, balance_reason = self._score_category_balance(
+            player, my_team, all_team_rosters, team_name
+        )
+        balance_norm = max(min(balance_raw / 30.0, 10.0), 0.0)
+        balance_component = balance_norm * w.get('category_balance', 0.6)
+        score += balance_component
+        if balance_reason:
+            reasoning_parts.append(f"Balance: {balance_norm:+.1f} ({balance_reason})")
+
+        # 10. Opponent blocking — normalize from 0..80 to 0..10
+        blocking_raw, blocking_reason = self._score_opponent_blocking(
+            player, my_team, all_team_rosters, draft_state, team_name
+        )
+        blocking_norm = max(min(blocking_raw / 8.0, 10.0), 0.0)
+        blocking_component = blocking_norm * w.get('opponent_blocking', 0.35)
+        score += blocking_component
+        if blocking_reason:
+            reasoning_parts.append(f"Block: {blocking_norm:+.1f} ({blocking_reason})")
+
+        reasoning = " | ".join(reasoning_parts) if reasoning_parts else "Solid pick"
+        return score, reasoning
+
+    # ------------------------------------------------------------------
+    # Roster helpers
+    # ------------------------------------------------------------------
+
     def _get_all_team_rosters(self, draft_state: DraftState) -> Dict[str, List[Player]]:
         """Get all team rosters as Player objects."""
         all_rosters = {}
-        
         for team_name, player_ids in draft_state.team_rosters.items():
             players = [
                 p for p in self.all_players
                 if p.player_id in player_ids
             ]
             all_rosters[team_name] = players
-        
         return all_rosters
-    
-    def _calculate_player_value(
+
+    # ------------------------------------------------------------------
+    # Scoring factors (stubs — will be refactored in tasks 6.2–6.7)
+    # ------------------------------------------------------------------
+
+    def _score_pitcher_caps(
         self,
         player: Player,
         my_team: List[Player],
-        available_players: List[Player],
         draft_state: DraftState,
-        all_team_rosters: Dict[str, List[Player]],
-        use_ml: bool = True,
-        team_name: Optional[str] = None
     ) -> Tuple[float, str]:
+        """Pitcher roster limits and saves needs.
+
+        Applies two adjustments for pitchers:
+        1. Roster cap penalties: -40 at 7+ pitchers, -150 at 9+ pitchers
+        2. Closer bonuses: tiered by closer count and draft pick thresholds.
         """
-        Calculate a value score for a player.
-        
-        Args:
-            team_name: Optional team name. If None, uses draft_state.my_team_name
-        
-        Returns (score, reasoning)
-        """
-        if team_name is None:
-            team_name = draft_state.my_team_name
-        
+        is_pitcher = player.position in ['SP', 'RP', 'P']
+        if not is_pitcher:
+            return 0.0, ""
+
+        pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
+        current_pick = len(draft_state.picks) + 1
         score = 0.0
         reasoning_parts = []
-        
-        # Determine if player is a pitcher (used multiple times)
-        is_pitcher = player.position in ['SP', 'RP', 'P']
-        
-        # 1. ML-based value prediction (if available)
-        ml_score = 0.0
-        if use_ml and self._ml_models_loaded:
-            try:
-                pick_number = len(draft_state.picks) + 1
-                round_num = draft_state.current_round
-                ml_value = self.ml_trainer.predict_player_value(
-                    player, my_team, available_players, pick_number, round_num, all_team_rosters
-                )
-                ml_score = ml_value * 10  # Scale ML prediction
-                if ml_score > 0:
-                    reasoning_parts.append(f"ML value: {ml_score:.1f}")
-            except Exception as e:
-                # Fall back to rule-based if ML fails
-                pass
-        
-        # 2. Position scarcity analysis (dynamic, considers what's been drafted)
-        position_score, pos_reasoning = self._analyze_position_scarcity(
-            player, my_team, available_players, draft_state, all_team_rosters
-        )
-        # Moderate weight - ADP is important but scarcity matters too
-        if is_pitcher:
-            score += position_score * 0.1  # Slightly reduced for pitchers
-        else:
-            score += position_score * 0.2  # Moderate weight
-        if pos_reasoning:
-            reasoning_parts.append(pos_reasoning)
-        
-        # 3. Team needs analysis (prevents redundant picks, balances hitters/pitchers)
-        needs_score, needs_reasoning = self._analyze_team_needs(
-            player, my_team, draft_state, available_players
-        )
-        # Moderate weight - needs matter but ADP is still important
-        if is_pitcher:
-            score += needs_score * 0.15  # Moderate weight for pitchers
-        else:
-            score += needs_score * 0.25  # Standard weight
-        if needs_reasoning:
-            reasoning_parts.append(needs_reasoning)
-        
-        # 4. Projected value analysis
-        value_score, value_reasoning = self._analyze_projected_value(
-            player, available_players
-        )
-        # Scale value score to be more reasonable (divide by 10 to normalize)
-        score += (value_score / 10) * 0.2  # Standard weight
-        if value_reasoning:
-            reasoning_parts.append(value_reasoning)
-        
-        # 5. Relative advantage (vs opponents, considers strategies)
-        relative_score, relative_reasoning = self._analyze_relative_advantage(
-            player, my_team, all_team_rosters, draft_state, available_players, team_name
-        )
-        # Moderate weight
-        if is_pitcher:
-            score += relative_score * 0.1  # Slightly reduced for pitchers
-        else:
-            score += relative_score * 0.2  # Moderate weight
-        if relative_reasoning:
-            reasoning_parts.append(relative_reasoning)
-        
-        # 6. ADP-based value adjustment (CRITICAL: penalize high ADP players early)
-        adp_score, adp_reasoning = self._analyze_adp_value(
-            player, draft_state, available_players
-        )
-        score += adp_score
-        
-        # Extra ADP penalty for pitchers - they should stay reasonably close to ADP
-        if is_pitcher and player.adp:
-            current_pick = len(draft_state.picks) + 1
-            adp_diff = player.adp - current_pick
-            if adp_diff > 5:  # Pitcher ADP is 5+ picks away
-                extra_penalty = -50 - ((adp_diff - 5) * 10)
-                score += extra_penalty
-                reasoning_parts.append(f"Pitcher ADP penalty: {adp_diff} picks early")
-            elif adp_diff > 3:  # 3-5 picks early gets a small penalty
-                extra_penalty = -20
-                score += extra_penalty
-                reasoning_parts.append(f"Pitcher slightly early: {adp_diff} picks")
-        
-        if adp_reasoning:
-            reasoning_parts.append(adp_reasoning)
-        
-        # 7. Final check: If we have enough pitchers and this is a pitcher, reduce score
-        # Apply penalty earlier (at 7+ pitchers, not just 9+)
-        if is_pitcher:
-            pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
-            current_pick = len(draft_state.picks) + 1
-            
-            if pitcher_count >= 9:  # Already have enough pitchers
-                # Heavy penalty unless ADP is exceptional (way below current pick)
-                if player.adp and player.adp > current_pick + 10:
-                    score -= 200  # Even heavier penalty
-                    reasoning_parts.append("Already have enough pitchers")
-                elif player.adp and player.adp <= current_pick - 20:
-                    # Exceptional value - allow it but reduce bonus
-                    score -= 50
-                    reasoning_parts.append("Exceptional pitcher value, but roster full")
-                else:
-                    score -= 150
-                    reasoning_parts.append("Roster has enough pitchers")
-            elif pitcher_count >= 7:  # Getting close to enough
-                # Moderate penalty to discourage more pitchers
-                if player.adp and player.adp > current_pick + 5:
-                    score -= 80
-                    reasoning_parts.append("Have 7+ pitchers - prioritize hitters")
-                else:
-                    score -= 40
-                    reasoning_parts.append("Have 7+ pitchers")
-        
-        # Add ML score
-        score += ml_score
-        
-        reasoning = " | ".join(reasoning_parts) if reasoning_parts else "Solid pick"
-        
+
+        # Roster cap penalties
+        if pitcher_count >= 9:
+            score -= 150
+            reasoning_parts.append("Roster has enough pitchers")
+        elif pitcher_count >= 7:
+            score -= 40
+            reasoning_parts.append("Have 7+ pitchers")
+
+        # Closer bonus (saves)
+        player_saves = player.projected_saves or 0
+        if player_saves >= 10:
+            closers_on_team = sum(
+                1 for p in my_team if (p.projected_saves or 0) >= 10
+            )
+            if closers_on_team == 0 and current_pick >= 60:
+                score += 100
+                reasoning_parts.append(f"NEED closer ({int(player_saves)} SV)")
+            elif closers_on_team == 1 and current_pick >= 100:
+                score += 60
+                reasoning_parts.append(f"2nd closer ({int(player_saves)} SV)")
+            elif closers_on_team == 2 and current_pick >= 160:
+                score += 30
+                reasoning_parts.append(f"3rd closer ({int(player_saves)} SV)")
+
+        reasoning = " | ".join(reasoning_parts) if reasoning_parts else ""
         return score, reasoning
-    
-    def _analyze_adp_value(
+
+    def _score_category_balance(
+        self,
+        player: Player,
+        my_team: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        team_name: str,
+    ) -> Tuple[float, str]:
+        """Category balance bonus with anti-punt protection.
+
+        Two tiers of protection:
+        1. Standard balance (5+ players, losing to 8+ opponents): +30 per weak cat
+        2. Anti-punt floor (8+ players): if bottom-3 in any category, strong
+           boost (+50) for players improving it.  If already bottom-3 in one
+           category, double the boost for a second weak category to prevent
+           double-punting.
+
+        Rate categories (ERA, WHIP) are handled as lower-is-better.
+        """
+        if not all_team_rosters or len(my_team) < 5:
+            return 0.0, ""
+
+        score = 0.0
+        reasoning_parts = []
+
+        my_totals = self.standings_calculator._calculate_team_totals(my_team)
+        projected = self.standings_calculator._calculate_team_totals(my_team + [player])
+
+        # Pre-compute opponent totals once
+        opponent_totals: Dict[str, Dict[str, float]] = {}
+        for opp_name, opp_roster in all_team_rosters.items():
+            if opp_name == team_name:
+                continue
+            opponent_totals[opp_name] = self.standings_calculator._calculate_team_totals(opp_roster)
+
+        cats_to_check = (
+            self.standings_calculator.BATTING_CATEGORIES
+            + self.standings_calculator.PITCHING_CATEGORIES
+        )
+
+        # Track how many categories we're bottom-3 in (for anti-punt)
+        bottom3_cats = []
+        cat_opponents_better: Dict[str, int] = {}
+
+        for cat in cats_to_check:
+            my_val = my_totals.get(cat, 0)
+            lower_is_better = cat in ('ERA', 'WHIP')
+
+            opponents_better = 0
+            for opp_totals in opponent_totals.values():
+                opp_val = opp_totals.get(cat, 0)
+                if lower_is_better:
+                    if opp_val > 0 and opp_val < my_val:
+                        opponents_better += 1
+                else:
+                    if opp_val > my_val:
+                        opponents_better += 1
+
+            cat_opponents_better[cat] = opponents_better
+
+            # Track bottom-3 categories (10+ opponents better = rank 11-13)
+            if opponents_better >= 10:
+                bottom3_cats.append(cat)
+
+            # Standard balance: losing to 8+ opponents
+            if opponents_better >= 8:
+                proj_val = projected.get(cat, 0)
+                if lower_is_better:
+                    improved = proj_val < my_val
+                else:
+                    improved = proj_val > my_val
+                if improved:
+                    score += 30
+                    reasoning_parts.append(f"Improves weak {cat} (rank {opponents_better + 1})")
+
+        # --- Anti-punt floor (8+ players) ---
+        if len(my_team) >= 8 and bottom3_cats:
+            already_punting_one = len(bottom3_cats) >= 1
+
+            for cat in bottom3_cats:
+                my_val = my_totals.get(cat, 0)
+                proj_val = projected.get(cat, 0)
+                lower_is_better = cat in ('ERA', 'WHIP')
+
+                if lower_is_better:
+                    improved = proj_val < my_val
+                else:
+                    improved = proj_val > my_val
+
+                if improved:
+                    # Base anti-punt boost
+                    boost = 50
+
+                    # If we're already bottom-3 in another category, double
+                    # the boost for this one to prevent double-punting
+                    if already_punting_one and len(bottom3_cats) >= 2:
+                        boost = 100
+
+                    score += boost
+                    reasoning_parts.append(
+                        f"ANTI-PUNT {cat} (rank {cat_opponents_better[cat] + 1}, +{boost})"
+                    )
+
+        reasoning = " | ".join(reasoning_parts) if reasoning_parts else ""
+        return score, reasoning
+
+    # ------------------------------------------------------------------
+    # Scoring factor methods
+    # ------------------------------------------------------------------
+
+    def _score_adp_value(
         self,
         player: Player,
         draft_state: DraftState,
-        available_players: List[Player]
     ) -> Tuple[float, str]:
+        """Score ADP value — reward steals, penalize reaches.
+
+        A player still available past their ADP is a value pick (they fell).
+        A player picked before their ADP is a reach.
+
+        gap = current_pick - ADP
+          positive gap → player has fallen past ADP (value / steal)
+          negative gap → picking before ADP (reach)
+
+        Value scoring uses a relevance window (~3 rounds).
+        Players whose ADP is far beyond the current pick get diminishing
+        credit — a guy at ADP 154 isn't a "value" at pick 1.
+
+        Tiered reach penalties:
+          1-3 picks early  → small penalty  (-1 per pick)
+          4-9 picks early  → moderate penalty (-2 per pick beyond 3)
+          10+ picks early  → large penalty  (-3 per pick beyond 9)
+
+        Returns (0.0, "No ADP data") when ADP is None.
         """
-        Analyze ADP value - heavily penalize high ADP players when picking early.
-        This prevents recommending players way above their ADP.
-        """
+        import math
+
         current_pick = len(draft_state.picks) + 1
         player_adp = player.adp
-        
+
         if player_adp is None:
-            # No ADP - slight penalty, but not huge
-            return -20, "No ADP data"
-        
-        # Calculate ADP difference (how far off are we?)
-        adp_difference = current_pick - player_adp
-        
-        # If we're picking way before their ADP, that's good (negative difference = good)
-        # If we're picking way after their ADP, that's bad (positive difference = bad)
-        
-        # Early picks (1-50): Moderate ADP enforcement - stay reasonably close to ADP
-        if current_pick <= 50:
-            if player_adp > current_pick + 15:
-                # Way too early for this player
-                penalty = -400 - ((player_adp - current_pick) * 8)
-                return penalty, f"ADP {player_adp} - WAY TOO EARLY (pick {current_pick})"
-            elif player_adp > current_pick + 8:
-                # Too early - moderate penalty
-                penalty = -150 - ((player_adp - current_pick) * 5)
-                return penalty, f"ADP {player_adp} - too early (pick {current_pick})"
-            elif player_adp > current_pick + 5:
-                # Slightly early - light penalty
-                penalty = -50 - ((player_adp - current_pick) * 5)
-                return penalty, f"ADP {player_adp} - slightly early (pick {current_pick})"
-            elif player_adp < current_pick - 10:
-                # Great value - picking someone who should have gone earlier
-                bonus = 50 + ((current_pick - player_adp) * 2)
-                return bonus, f"ADP {player_adp} - great value!"
-            elif player_adp <= current_pick + 5 and player_adp >= current_pick - 8:
-                # Reasonable range (±5 ahead, -8 behind)
-                return 0, f"ADP {player_adp} - at value"
+            return 0.0, "No ADP data"
+
+        # How far the player has fallen past their ADP
+        # Positive = fallen (value), negative = reaching
+        fallen = current_pick - player_adp
+
+        if fallen > 0:
+            # Player has fallen past their ADP — value pick / steal
+            value_score = fallen * 1.5
+            if fallen >= 20:
+                label = f"ADP {player_adp:.0f} - steal, fallen {fallen:.0f} picks"
             else:
-                # Outside reasonable range
-                return -20, f"ADP {player_adp} - outside optimal range"
-        
-        # Mid picks (51-150): Moderate penalties - stay reasonably close to ADP
-        elif current_pick <= 150:
-            if player_adp > current_pick + 20:
-                penalty = -250 - ((player_adp - current_pick) * 5)
-                return penalty, f"ADP {player_adp} - too early (pick {current_pick})"
-            elif player_adp > current_pick + 10:
-                penalty = -100 - ((player_adp - current_pick) * 4)
-                return penalty, f"ADP {player_adp} - early (pick {current_pick})"
-            elif player_adp > current_pick + 5:
-                penalty = -40 - ((player_adp - current_pick) * 3)
-                return penalty, f"ADP {player_adp} - slightly early (pick {current_pick})"
-            elif player_adp < current_pick - 20:
-                bonus = 30 + ((current_pick - player_adp) * 1.5)
-                return bonus, f"ADP {player_adp} - good value"
-            elif player_adp <= current_pick + 5 and player_adp >= current_pick - 10:
-                return 0, f"ADP {player_adp} - at value"
-            else:
-                return -20, f"ADP {player_adp} - outside optimal range"
-        
-        # Late picks (151+): Less strict
+                label = f"ADP {player_adp:.0f} - value, fallen {fallen:.0f} picks"
+            return value_score, label
+
+        if fallen == 0:
+            return 0.0, f"ADP {player_adp:.0f} - right at ADP (pick {current_pick})"
+
+        # Negative fallen = reaching (picking before ADP)
+        reach = abs(fallen)  # how many picks early we'd be taking them
+
+        # Relevance window: players whose ADP is far ahead aren't really
+        # "reaches" — they're just not relevant yet
+        window = max(draft_state.total_teams * 3, 20)
+
+        if reach <= 3:
+            penalty = -reach * 1.0
+            label = f"ADP {player_adp:.0f} - small reach, {reach:.0f} picks early"
+        elif reach <= 9:
+            penalty = -3.0 + -((reach - 3) * 2.0)
+            label = f"ADP {player_adp:.0f} - moderate reach, {reach:.0f} picks early"
+        elif reach <= window:
+            penalty = -3.0 + -12.0 + -((reach - 9) * 3.0)
+            label = f"ADP {player_adp:.0f} - large reach, {reach:.0f} picks early"
         else:
-            if player_adp > current_pick + 50:
-                penalty = -100
-                return penalty, f"ADP {player_adp} - early"
-            elif player_adp < current_pick - 30:
-                bonus = 20
-                return bonus, f"ADP {player_adp} - value"
-            else:
-                return 0, f"ADP {player_adp}"
-    
-    def _analyze_relative_advantage(
+            # Beyond the window — not really a reach, just not relevant yet
+            base_penalty = -3.0 + -12.0 + -((window - 9) * 3.0)
+            excess = reach - window
+            decay_penalty = math.log1p(excess) * -0.5
+            penalty = base_penalty + decay_penalty
+            label = f"ADP {player_adp:.0f} - available later (pick {current_pick})"
+
+        return penalty, label
+
+    def _score_relative_advantage(
         self,
         player: Player,
         my_team: List[Player],
         all_team_rosters: Dict[str, List[Player]],
         draft_state: DraftState,
-        available_players: List[Player],
-        team_name: Optional[str] = None
+        team_name: Optional[str] = None,
     ) -> Tuple[float, str]:
-        """
-        Analyze how much this player helps you vs. opponents.
-        Considers opponent strategies and adapts recommendations.
+        """Score how much this player improves weak categories relative to opponents.
+
+        Uses StandingsCalculator to rank my team across all 10 scoring categories
+        against the other 12 teams, then applies tiered bonuses:
+          - Bottom-third (ranks 9-13): larger bonus
+          - Middle (ranks 5-8): moderate bonus
+          - Top-third (ranks 1-4): smaller bonus
         """
         if team_name is None:
             team_name = draft_state.my_team_name
-        
+
+        if not all_team_rosters or team_name not in all_team_rosters:
+            return 0.0, ""
+
         score = 0.0
         reasoning_parts = []
-        
-        # Calculate my current category totals
-        my_totals = self.standings_calculator._calculate_team_totals(my_team)
-        
-        # Calculate projected totals if I draft this player
-        my_projected_roster = my_team + [player]
-        my_projected_totals = self.standings_calculator._calculate_team_totals(my_projected_roster)
-        
-        # Calculate category improvements
-        category_improvements = {}
-        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV']:
-            improvement = my_projected_totals[category] - my_totals[category]
-            category_improvements[category] = improvement
-        
-        # For OBP, ERA, WHIP - calculate improvement differently
-        if player.position not in ['SP', 'RP', 'P']:
-            if my_totals['OBP'] > 0:
-                obp_improvement = my_projected_totals['OBP'] - my_totals['OBP']
-                category_improvements['OBP'] = obp_improvement
-        
-        # Calculate opponent category totals and strategies
-        opponent_totals = {}
-        opponent_strategies = {}  # Track if opponents are going heavy hitter/pitcher
-        
-        for other_team_name, roster in all_team_rosters.items():
-            if other_team_name == team_name:
-                continue
-            totals = self.standings_calculator._calculate_team_totals(roster)
-            opponent_totals[team_name] = totals
-            
-            # Analyze opponent strategy
-            opponent_hitters = sum(1 for p in roster if p.position not in ['SP', 'RP', 'P'])
-            opponent_pitchers = len(roster) - opponent_hitters
-            opponent_strategies[team_name] = {
-                'hitters': opponent_hitters,
-                'pitchers': opponent_pitchers,
-                'ratio': opponent_hitters / max(1, opponent_pitchers)
-            }
-        
-        # Find categories where I'm behind and this player helps
-        for category in ['HR', 'R', 'RBI', 'SB', 'W', 'QS', 'K', 'SV']:
-            my_value = my_totals[category]
-            improvement = category_improvements.get(category, 0)
-            
-            if improvement > 0:
-                # Count how many opponents are ahead of me
-                opponents_ahead = sum(
-                    1 for totals in opponent_totals.values()
-                    if totals[category] > my_value
-                )
-                
-                # This player helps me catch up
-                if opponents_ahead > 0:
-                    score += improvement * (opponents_ahead * 3)
-                    reasoning_parts.append(f"+{improvement:.1f} {category} (catch {opponents_ahead} teams)")
-        
-        # Analyze opponent strategies and adapt
-        # If many opponents are going heavy pitchers, maybe prioritize hitters (or vice versa)
-        avg_opponent_hitter_ratio = np.mean([s['ratio'] for s in opponent_strategies.values()]) if opponent_strategies else 1.0
-        my_hitter_ratio = (len(my_team) - sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])) / max(1, sum(1 for p in my_team if p.position in ['SP', 'RP', 'P']))
-        
-        is_hitter = player.position not in ['SP', 'RP', 'P']
-        is_pitcher = player.position in ['SP', 'RP', 'P']
-        
-        # Count total pitchers/hitters drafted by all teams
-        total_pitchers_drafted = sum(
-            sum(1 for p in roster if p.position in ['SP', 'RP', 'P'])
-            for roster in all_team_rosters.values()
+
+        # Build rosters dict with my current team and projected team
+        rosters_current = dict(all_team_rosters)
+        rosters_current[team_name] = my_team
+
+        rosters_projected = dict(all_team_rosters)
+        rosters_projected[team_name] = my_team + [player]
+
+        # Use StandingsCalculator to get category totals and rankings
+        standings_current = self.standings_calculator.calculate_standings(rosters_current)
+        standings_projected = self.standings_calculator.calculate_standings(rosters_projected)
+
+        current_totals = standings_current['category_totals'].get(team_name, {})
+        projected_totals = standings_projected['category_totals'].get(team_name, {})
+
+        all_categories = (
+            self.standings_calculator.BATTING_CATEGORIES
+            + self.standings_calculator.PITCHING_CATEGORIES
         )
-        total_hitters_drafted = sum(
-            sum(1 for p in roster if p.position not in ['SP', 'RP', 'P'])
-            for roster in all_team_rosters.values()
-        )
-        
-        # If opponents are going heavy pitchers, hitters become more valuable
-        if avg_opponent_hitter_ratio < 0.8 and is_hitter:
-            score += 30
-            reasoning_parts.append(f"Opponents heavy on pitchers ({total_pitchers_drafted} pitchers drafted) - hitters valuable")
-        # If opponents are going heavy hitters, pitchers become more valuable (but very conservatively)
-        elif avg_opponent_hitter_ratio > 1.5 and is_pitcher:
-            my_pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
-            # Only give bonus if we actually need pitchers (have fewer than 5)
-            if my_pitcher_count < 5:
-                score += 15  # Further reduced from 20
-                reasoning_parts.append(f"Opponents heavy on hitters - pitchers valuable")
+        num_teams = len(all_team_rosters)
+
+        for cat in all_categories:
+            # Get my current rank in this category (1 = best)
+            current_rank = self.standings_calculator._get_team_rank(
+                team_name, cat, standings_current['category_rankings']
+            )
+
+            current_val = current_totals.get(cat, 0.0)
+            projected_val = projected_totals.get(cat, 0.0)
+
+            # Determine if the player improves this category
+            if cat in self.standings_calculator.LOWER_IS_BETTER:
+                improves = projected_val < current_val
             else:
-                score -= 20  # Penalty if we already have enough pitchers
-                reasoning_parts.append("Have enough pitchers despite opponent strategy")
-        
-        # Early draft: Very conservative about pitcher runs
-        current_pick = len(draft_state.picks) + 1
-        my_pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
-        if is_pitcher and current_pick <= 100 and my_pitcher_count < 4:  # Only if we have < 4
-            if total_pitchers_drafted > 60:  # Even higher threshold
-                score += 15  # Reduced from 20
-                reasoning_parts.append(f"Pitcher run happening ({total_pitchers_drafted} drafted) - consider value")
-            # Remove the "undervalued" bonus - don't encourage early pitcher picks
-        
-        # Blocking value - prevent opponents from getting this player
-        # Check which opponents need this position
-        position_needed_by_opponents = 0
-        critical_opponents = []
-        
-        for other_team_name, roster in all_team_rosters.items():
-            if other_team_name == team_name:
+                improves = projected_val > current_val
+
+            if not improves:
                 continue
-            
-            # Count how many players opponent has at this position
-            opponent_count = sum(1 for p in roster if p.position == player.position)
-            my_count = sum(1 for p in my_team if p.position == player.position)
-            
-            # Check if opponent needs this position more than I do
-            position_requirements = {'C': 1, '1B': 1, '2B': 1, '3B': 1, 'SS': 1, 'OF': 4, 'P': 9}
-            required = position_requirements.get(player.position, 1)
-            
-            if opponent_count < required and opponent_count < my_count:
-                position_needed_by_opponents += 1
-                critical_opponents.append(other_team_name)
-        
-        if position_needed_by_opponents > 0:
-            block_score = position_needed_by_opponents * 15
-            score += block_score
-            reasoning_parts.append(f"Blocks {position_needed_by_opponents} opponent(s) from {player.position}")
-        
-        # Consider what's been drafted - if many players at this position are gone, it's more valuable
-        drafted_at_position = sum(
-            1 for team_roster in all_team_rosters.values()
-            for p in team_roster
-            if p.position == player.position
-        )
-        
-        # If this is a top player and many at this position are gone, higher value
-        if player.adp and player.adp < 50 and drafted_at_position > 5:
-            score += 15
-            reasoning_parts.append(f"Top {player.position} - {drafted_at_position} already drafted")
-        
-        reasoning = " | ".join(reasoning_parts) if reasoning_parts else ""
-        
+
+            # Tiered bonus based on current rank
+            if current_rank >= 9:
+                # Bottom-third (9th-13th): larger bonus — most room to gain roto points
+                bonus = 8.0
+                tier = "weak"
+            elif current_rank >= 5:
+                # Middle (5th-8th): moderate bonus
+                bonus = 4.0
+                tier = "mid"
+            else:
+                # Top-third (1st-4th): smaller bonus — diminishing returns
+                bonus = 1.5
+                tier = "strong"
+
+            score += bonus
+            reasoning_parts.append(f"boosts {cat} (rank {current_rank}, {tier})")
+
+        reasoning = ", ".join(reasoning_parts) if reasoning_parts else ""
         return score, reasoning
-    
-    def _analyze_position_scarcity(
+
+    def _score_opponent_blocking(
+        self,
+        player: Player,
+        my_team: List[Player],
+        all_team_rosters: Dict[str, List[Player]],
+        draft_state: DraftState,
+        team_name: str,
+    ) -> Tuple[float, str]:
+        """Score the blocking/hate-draft value of taking this player.
+
+        Only activates after pick 100 when team compositions are clearer.
+        Checks if any opponent would get a disproportionate benefit from
+        this player — specifically if an opponent is already top-3 in a
+        category and this player would extend their lead.
+
+        Kept as a tiebreaker (low weight) so we don't hate-draft players
+        we don't need at the expense of our own team building.
+        """
+        current_pick = len(draft_state.picks) + 1
+        if current_pick < 100 or not all_team_rosters:
+            return 0.0, ""
+
+        score = 0.0
+        reasoning_parts = []
+
+        all_categories = (
+            self.standings_calculator.BATTING_CATEGORIES
+            + self.standings_calculator.PITCHING_CATEGORIES
+        )
+
+        # Get current standings
+        standings = self.standings_calculator.calculate_standings(all_team_rosters)
+        category_rankings = standings['category_rankings']
+        category_totals = standings['category_totals']
+
+        for cat in all_categories:
+            ranked_teams = category_rankings.get(cat, [])
+            if len(ranked_teams) < 3:
+                continue
+
+            lower_is_better = cat in self.standings_calculator.LOWER_IS_BETTER
+
+            # Check top-3 opponents (not us)
+            for opp_name in ranked_teams[:3]:
+                if opp_name == team_name:
+                    continue
+
+                opp_roster = all_team_rosters.get(opp_name, [])
+                opp_totals = category_totals.get(opp_name, {})
+                opp_val = opp_totals.get(cat, 0)
+
+                # Would this player significantly help this opponent?
+                projected_opp = self.standings_calculator._calculate_team_totals(
+                    opp_roster + [player]
+                )
+                proj_val = projected_opp.get(cat, 0)
+
+                if lower_is_better:
+                    helps_opponent = proj_val < opp_val
+                else:
+                    helps_opponent = proj_val > opp_val
+
+                if helps_opponent:
+                    # Opponent is already top-3 and this player extends their lead
+                    opp_rank = ranked_teams.index(opp_name) + 1
+                    if opp_rank == 1:
+                        bonus = 20
+                    elif opp_rank == 2:
+                        bonus = 15
+                    else:
+                        bonus = 10
+                    score += bonus
+                    reasoning_parts.append(f"blocks {opp_name} {cat} (rank {opp_rank})")
+
+        # Cap the total blocking score to prevent it from dominating
+        score = min(score, 80.0)
+
+        reasoning = ", ".join(reasoning_parts[:3]) if reasoning_parts else ""
+        if len(reasoning_parts) > 3:
+            reasoning += f" +{len(reasoning_parts) - 3} more"
+        return score, reasoning
+
+    def _score_position_scarcity(
         self,
         player: Player,
         my_team: List[Player],
@@ -550,399 +717,271 @@ class RecommendationEngine:
         draft_state: DraftState,
         all_team_rosters: Dict[str, List[Player]]
     ) -> Tuple[float, str]:
-        """
-        Analyze position scarcity dynamically based on what's been drafted.
-        Considers top-heavy vs deep positions.
-        UPDATES IN REAL-TIME as picks are made.
+        """Score position scarcity based on above-average supply vs demand.
+
+        Uses ADP as a proxy for player quality (lower ADP = above-average).
+        Compares the count of above-average remaining players to the number
+        of teams still needing that position.
+
+        Returns:
+            (scarcity_score, reasoning_string)
         """
         player_pos = player.position
-        current_pick = len(draft_state.picks) + 1
-        
-        # Count how many players at this position have been drafted BY ALL TEAMS
-        drafted_at_position = sum(
-            1 for team_roster in all_team_rosters.values()
-            for p in team_roster
-            if p.position == player_pos
-        )
-        
-        # Count available players at this position
-        available_at_position = sum(1 for p in available_players if p.position == player_pos)
-        
-        # Count total players at this position (drafted + available)
-        total_at_position = drafted_at_position + available_at_position
-        
-        if total_at_position == 0:
+        is_pitcher = player_pos in ('SP', 'RP', 'P')
+
+        # --- Flex-aware eligible pool ---
+        FLEX_ELIGIBLE = {
+            'MI': {'2B', 'SS'},
+            'CI': {'1B', '3B'},
+            'U': {'C', '1B', '2B', '3B', 'SS', 'OF'},
+        }
+
+        if player_pos in FLEX_ELIGIBLE:
+            eligible_positions = FLEX_ELIGIBLE[player_pos]
+            pool = [p for p in available_players if p.position in eligible_positions or p.position == player_pos]
+        elif is_pitcher:
+            pool = [p for p in available_players if p.position in ('SP', 'RP', 'P')]
+        else:
+            pool = [p for p in available_players if p.position == player_pos]
+
+        if not pool:
             return 0.0, ""
-        
-        # Calculate what % of this position has been drafted
-        drafted_percentage = drafted_at_position / total_at_position if total_at_position > 0 else 0
-        
-        # Calculate how many teams still need this position
+
+        # --- Count above-average players (ADP heuristic: ADP exists and < 300) ---
+        above_avg_count = sum(
+            1 for p in pool
+            if p.adp is not None and p.adp < 300
+        )
+
+        # --- Count teams still needing this position ---
         position_requirements = {
-            'C': 1, '1B': 1, '2B': 1, '3B': 1, 'SS': 1, 'OF': 4, 'P': 9, 'SP': 9, 'RP': 9
+            'C': 1, '1B': 1, '2B': 1, '3B': 1, 'SS': 1,
+            'MI': 1, 'CI': 1, 'OF': 4, 'U': 1, 'P': 9, 'SP': 9, 'RP': 9,
         }
         required_per_team = position_requirements.get(player_pos, 1)
-        total_needed = draft_state.total_teams * required_per_team
-        
-        # How many slots are still open?
-        slots_filled = drafted_at_position
-        slots_remaining = max(0, total_needed - slots_filled)
-        
-        # Calculate scarcity score
-        if slots_remaining > 0:
-            scarcity_ratio = available_at_position / slots_remaining
+
+        teams_needing = 0
+        for team_name, roster in all_team_rosters.items():
+            if player_pos in FLEX_ELIGIBLE:
+                eligible_positions = FLEX_ELIGIBLE[player_pos]
+                filled = sum(1 for p in roster if p.position in eligible_positions or p.position == player_pos)
+            elif is_pitcher:
+                filled = sum(1 for p in roster if p.position in ('SP', 'RP', 'P'))
+            else:
+                filled = sum(1 for p in roster if p.position == player_pos)
+            if filled < required_per_team:
+                teams_needing += 1
+
+        # --- Compute scarcity score ---
+        if teams_needing == 0:
+            # All teams filled — low scarcity
+            scarcity_score = 5.0
+            reasoning = f"{player_pos}: all teams filled"
+        elif above_avg_count == 0:
+            # No above-avg players left — high scarcity
+            scarcity_score = 100.0
+            reasoning = f"{player_pos}: no above-avg left, {teams_needing} teams need"
         else:
-            scarcity_ratio = 0.1  # Very scarce if no slots left
-        
-        # Top-heavy positions (C, SS) are more valuable early
-        # Deep positions (OF, P) can wait
-        top_heavy_positions = ['C', 'SS', '2B', '3B']
-        is_top_heavy = player_pos in top_heavy_positions
-        is_pitcher = player_pos in ['SP', 'RP', 'P']
-        
-        # Calculate tier-based scarcity
-        if is_top_heavy:
-            # Check how many elite players (top 20% by ADP) are left
-            position_players = [p for p in available_players if p.position == player_pos]
-            if position_players:
-                sorted_by_adp = sorted(
-                    position_players,
-                    key=lambda p: (p.adp is None, p.adp or float('inf'))
-                )
-                elite_threshold = max(1, len(position_players) // 5)  # Top 20%
-                elite_remaining = len([p for p in sorted_by_adp[:elite_threshold] if p.adp and p.adp < 100])
-                
-                # If this is an elite player and few elite remain, high scarcity
-                if player.adp and player.adp < 100 and elite_remaining < 3:
-                    scarcity_score = 150
-                    reasoning = f"Elite {player_pos} - {elite_remaining} elite left, {drafted_at_position} drafted"
-                elif player.adp and player.adp < 100:
-                    scarcity_score = 100
-                    reasoning = f"Elite {player_pos} - {elite_remaining} elite left"
-                else:
-                    scarcity_score = 50
-                    reasoning = f"Mid-tier {player_pos}"
+            # Ratio: fewer above-avg players per needing team = more scarce
+            ratio = above_avg_count / teams_needing
+            if ratio < 0.5:
+                scarcity_score = 80.0
+            elif ratio < 1.0:
+                scarcity_score = 60.0
+            elif ratio < 2.0:
+                scarcity_score = 35.0
             else:
-                scarcity_score = 0
-                reasoning = ""
-        elif is_pitcher:
-            # Pitchers: Very conservative scarcity scoring
-            # Pitchers are deep, so scarcity is less important
-            if drafted_at_position > 70:  # Very many pitchers already taken
-                scarcity_score = 50  # Further reduced from 70
-                reasoning = f"Pitcher scarcity: {drafted_at_position} drafted, {available_at_position} left"
-            elif drafted_at_position > 50:
-                scarcity_score = 35  # Further reduced from 50
-                reasoning = f"Pitcher: {drafted_at_position} drafted, {available_at_position} left"
-            elif scarcity_ratio < 0.8:  # Only if truly scarce
-                scarcity_score = 25  # Further reduced from 40
-                reasoning = f"Pitcher: {available_at_position} left for {slots_remaining} slots"
-            else:
-                scarcity_score = 15  # Further reduced from 25
-                reasoning = f"Pitcher: Deep pool"
-        else:
-            # Deep positions (OF) - scarcity based on remaining slots
-            if scarcity_ratio < 0.5:
-                scarcity_score = 80
-                reasoning = f"Scarce {player_pos} - {available_at_position} left for {slots_remaining} slots"
-            elif scarcity_ratio < 1.0:
-                scarcity_score = 50
-                reasoning = f"Moderate {player_pos} availability"
-            else:
-                scarcity_score = 20
-                reasoning = f"Deep {player_pos} pool"
-        
-        # Penalize if position is over-drafted (too many already taken)
-        if drafted_percentage > 0.8:
-            scarcity_score *= 0.5  # Reduce score if position is mostly gone
-            reasoning += " (position mostly drafted)"
-        
-        # Bonus: If this position is being heavily drafted by others, it's more valuable
-        if drafted_at_position > 5 and current_pick < 50:
-            scarcity_score += 20
-            reasoning += f" (hot position: {drafted_at_position} taken)"
-        
+                scarcity_score = 15.0
+            reasoning = f"{player_pos}: {above_avg_count} above-avg, {teams_needing} teams need"
+
+        # --- Catcher inherent scarcity bonus ---
+        if player_pos == 'C':
+            scarcity_score += 25.0
+            reasoning += " (C scarce)"
+
         return scarcity_score, reasoning
-    
-    def _analyze_team_needs(
+
+    def _score_team_needs(
         self,
         player: Player,
         my_team: List[Player],
         draft_state: DraftState,
         available_players: List[Player]
     ) -> Tuple[float, str]:
+        """Score how well this player fills a team roster need.
+
+        Checks roster against required slots:
+          - 12 hitter slots: C, 1B, 2B, 3B, SS, MI, CI, 4×OF, U
+          - 9 pitcher slots (SP/RP/P)
+
+        Flex eligibility:
+          - MI accepts 2B or SS
+          - CI accepts 1B or 3B
+          - U accepts any hitter
+
+        Returns:
+            (score, reasoning_string)
         """
-        Analyze if this player fills a team need - Bob Uecker League rules.
-        Prevents redundant picks and considers dynamic roster state.
-        """
-        # Bob Uecker League position requirements:
-        # 1 C, 1 1B, 1 2B, 1 3B, 1 SS, 1 MI, 1 CI, 4 OF, 1 U, 9 P, 2 BENCH
-        position_requirements = {
+        # Required roster slots
+        HITTER_SLOTS = {
             'C': 1, '1B': 1, '2B': 1, '3B': 1, 'SS': 1,
-            'MI': 1,  # Middle Infielder (2B or SS)
-            'CI': 1,  # Corner Infielder (1B or 3B)
-            'OF': 4, 'U': 1,  # Utility (any offensive position)
-            'SP': 9, 'RP': 9, 'P': 9,  # Any combination of pitchers
-            'BENCH': 2  # Reserve spots (any player)
+            'MI': 1, 'CI': 1, 'OF': 4, 'U': 1,
         }
-        
-        # Count current players at each position on my team
-        position_counts = {}
-        for pos in ['C', '1B', '2B', '3B', 'SS', 'MI', 'CI', 'OF', 'U', 'SP', 'RP', 'P']:
-            position_counts[pos] = sum(1 for p in my_team if p.position == pos)
-        
-        # Count players that can fill flexible positions
-        mi_eligible_count = sum(1 for p in my_team if p.position in ['2B', 'SS'])
-        ci_eligible_count = sum(1 for p in my_team if p.position in ['1B', '3B'])
-        u_eligible_count = sum(1 for p in my_team if p.position not in ['SP', 'RP', 'P'])
-        pitcher_count = sum(1 for p in my_team if p.position in ['SP', 'RP', 'P'])
-        hitter_count = len(my_team) - pitcher_count
-        
+        TOTAL_HITTER_SLOTS = sum(HITTER_SLOTS.values())
+        TOTAL_PITCHER_SLOTS = 9
+
+        # Flex eligibility mapping
+        FLEX_ELIGIBLE = {
+            'MI': {'2B', 'SS'},
+            'CI': {'1B', '3B'},
+            'U': {'C', '1B', '2B', '3B', 'SS', 'OF'},  # any hitter
+        }
+
+        PITCHER_POSITIONS = {'SP', 'RP', 'P'}
+
         player_pos = player.position
-        is_hitter = player_pos not in ['SP', 'RP', 'P']
-        is_pitcher = player_pos in ['SP', 'RP', 'P']
-        
-        # Calculate need score
+        is_pitcher = player_pos in PITCHER_POSITIONS
+        is_hitter = not is_pitcher
+
+        # --- Count current roster composition ---
+        # Direct position counts
+        position_counts = {}
+        for pos in list(HITTER_SLOTS.keys()) + ['SP', 'RP', 'P']:
+            position_counts[pos] = 0
+        for p in my_team:
+            if p.position in position_counts:
+                position_counts[p.position] = position_counts.get(p.position, 0) + 1
+
+        pitcher_count = sum(1 for p in my_team if p.position in PITCHER_POSITIONS)
+        hitter_count = len(my_team) - pitcher_count
+
+        # Track which flex slots are effectively filled
+        # A flex slot is filled if we have enough eligible players to cover
+        # both the primary slot AND the flex slot
+        mi_eligible = sum(1 for p in my_team if p.position in FLEX_ELIGIBLE['MI'])
+        ci_eligible = sum(1 for p in my_team if p.position in FLEX_ELIGIBLE['CI'])
+        u_eligible = sum(1 for p in my_team if p.position not in PITCHER_POSITIONS)
+
+        # Determine unfilled slots
+        # Primary slots filled directly
+        unfilled_primary = {}
+        for pos, required in HITTER_SLOTS.items():
+            if pos in ('MI', 'CI', 'U'):
+                continue  # handle flex separately
+            filled = min(position_counts.get(pos, 0), required)
+            unfilled_primary[pos] = required - filled
+
+        # Flex slot analysis:
+        # MI is filled if we have more 2B/SS players than 2B+SS primary slots need
+        slots_2b = HITTER_SLOTS['2B']  # 1
+        slots_ss = HITTER_SLOTS['SS']  # 1
+        mi_primary_used = min(position_counts.get('2B', 0), slots_2b) + min(position_counts.get('SS', 0), slots_ss)
+        mi_surplus = mi_eligible - mi_primary_used
+        mi_filled = mi_surplus >= 1
+
+        # CI is filled if we have more 1B/3B players than 1B+3B primary slots need
+        slots_1b = HITTER_SLOTS['1B']  # 1
+        slots_3b = HITTER_SLOTS['3B']  # 1
+        ci_primary_used = min(position_counts.get('1B', 0), slots_1b) + min(position_counts.get('3B', 0), slots_3b)
+        ci_surplus = ci_eligible - ci_primary_used
+        ci_filled = ci_surplus >= 1
+
+        # U is filled if we have more hitters than all other hitter slots need
+        other_hitter_slots_needed = sum(v for k, v in HITTER_SLOTS.items() if k != 'U')
+        u_filled = u_eligible > other_hitter_slots_needed
+
         need_score = 0.0
         reasoning_parts = []
-        
-        # CRITICAL: Prevent redundant position picks
-        # If we already have enough at this position, heavily penalize
-        required = position_requirements.get(player_pos, 0)
-        if required > 0:
-            position_count = position_counts.get(player_pos, 0)
-            
-            # If we already have enough, this is likely depth.
-            # With 2 reserve spots, allow up to two extras before hard blocking.
-            if position_count >= required:
-                max_depth_for_position = required + 2
-                if position_count > max_depth_for_position:
-                    need_score -= 200  # Heavy penalty for redundant pick
-                    reasoning_parts.append(f"REDUNDANT: Already have {position_count} {player_pos} (need {required})")
-                    return need_score, " | ".join(reasoning_parts)
-                elif position_count == max_depth_for_position:
-                    need_score -= 40  # At reserve depth cap
-                    reasoning_parts.append(f"At reserve depth cap: {position_count} {player_pos}")
-                elif position_count == required + 1:
-                    need_score -= 10  # Light penalty for first depth layer
-                    reasoning_parts.append(f"Depth pick: {position_count} {player_pos} (need {required})")
-            else:
-                # We need this position
-                need_score += (required - position_count) * 80
-                reasoning_parts.append(f"Fills {player_pos} need ({position_count}/{required})")
-        
-        # Balance hitters vs pitchers dynamically
-        # Need 12 hitters (C, 1B, 2B, 3B, SS, MI, CI, 4 OF, U) and 9 pitchers.
-        # Remaining slots are flexible reserve spots.
-        total_hitters_needed = 12
-        total_pitchers_needed = 9
-        reserve_spots = max(0, draft_state.roster_size - (total_hitters_needed + total_pitchers_needed))
-        
-        # Calculate how many picks remain
-        picks_remaining = (draft_state.total_teams * draft_state.roster_size) - len(draft_state.picks)
-        my_picks_remaining = draft_state.roster_size - len(my_team)
-        
-        # Calculate ideal hitter/pitcher balance
-        hitters_needed = total_hitters_needed - hitter_count
-        pitchers_needed = total_pitchers_needed - pitcher_count
-        
-        reserves_filled = max(0, len(my_team) - (total_hitters_needed + total_pitchers_needed))
-        reserve_spots_remaining = max(0, reserve_spots - reserves_filled)
 
-        # If we're way off balance, prioritize correcting it.
         if is_hitter:
-            if hitters_needed > 0:
-                # Need hitters - bonus based on how many we need
-                need_score += hitters_needed * 20
-                if hitters_needed > my_picks_remaining / 2:
-                    need_score += 50  # Urgent need
-                    reasoning_parts.append(f"URGENT: Need {hitters_needed} more hitters")
-                elif hitters_needed > 3:
-                    need_score += 30  # Moderate urgency
-            elif reserve_spots_remaining > 0:
-                need_score -= 10
-                reasoning_parts.append("Reserve hitter depth")
-            else:
-                need_score -= 60  # Don't need more hitters
-                reasoning_parts.append("Have enough hitters")
-        
-        if is_pitcher:
-            if pitchers_needed > 0:
-                # Need pitchers - conservative bonus
-                need_score += pitchers_needed * 10  # Further reduced from 15
-                if pitchers_needed > my_picks_remaining / 2:
-                    need_score += 25  # Urgent need (reduced from 40)
-                    reasoning_parts.append(f"URGENT: Need {pitchers_needed} more pitchers")
-                elif pitchers_needed > 4:
-                    need_score += 15  # Moderate urgency (reduced from 25)
-                    reasoning_parts.append(f"Need {pitchers_needed} more pitchers")
-            elif reserve_spots_remaining > 0:
-                need_score -= 20
-                reasoning_parts.append("Reserve pitcher depth")
-            else:
-                need_score -= 100  # Don't need more pitchers (stronger penalty)
-                reasoning_parts.append("Have enough pitchers")
-        
-        # Early draft: Encourage getting first pitcher in rounds 2-4 if good value
-        current_pick = len(draft_state.picks) + 1
-        if current_pick <= 100:
-            # Rounds 2-4 (picks ~14-52): Encourage first pitcher if reasonably near ADP
-            if is_pitcher and pitcher_count == 0:
-                if current_pick >= 14 and current_pick <= 52:
-                    # Check if pitcher is at or reasonably near ADP
-                    if player.adp:
-                        adp_diff = player.adp - current_pick
-                        if adp_diff <= 5 and adp_diff >= -5:  # Within 5 picks of ADP
-                            need_score += 25  # Bonus for good value first pitcher
-                            reasoning_parts.append(f"First pitcher - good value (ADP {player.adp})")
-                        elif adp_diff > 5 and adp_diff <= 8:
-                            need_score += 10  # Small bonus if slightly early
-                            reasoning_parts.append(f"First pitcher - slightly early (ADP {player.adp})")
-                elif current_pick > 52 and current_pick <= 80:
-                    # Mid-draft: moderate bonus for first pitcher
-                    need_score += 20
-                    reasoning_parts.append("No pitchers yet - consider drafting")
-                elif current_pick > 80:
-                    # Late: stronger bonus
-                    need_score += 30
-                    reasoning_parts.append("No pitchers yet - consider drafting")
-        
-        # MI eligibility (need 1 MI, can be 2B or SS)
-        can_fill_mi = player_pos in ['2B', 'SS']
-        if can_fill_mi:
-            # Check if we need MI slot
-            # Need: 1 dedicated 2B, 1 dedicated SS, AND 1 MI
-            has_2b = position_counts.get('2B', 0) > 0
-            has_ss = position_counts.get('SS', 0) > 0
-            
-            if has_2b and has_ss and mi_eligible_count >= 2:
-                # Can fill MI slot
+            # Check if player fills an unfilled primary position
+            primary_unfilled = unfilled_primary.get(player_pos, 0)
+            if primary_unfilled > 0:
+                need_score += primary_unfilled * 80
+                reasoning_parts.append(f"Fills {player_pos} need ({position_counts.get(player_pos, 0)}/{HITTER_SLOTS.get(player_pos, 0)})")
+            elif player_pos in HITTER_SLOTS and primary_unfilled <= 0:
+                # Position is maxed — negative adjustment (Req 7.3)
+                current = position_counts.get(player_pos, 0)
+                required = HITTER_SLOTS.get(player_pos, 0)
+                if current > required:
+                    need_score -= 200
+                    reasoning_parts.append(f"REDUNDANT: Already have {current} {player_pos} (need {required})")
+                    return need_score, " | ".join(reasoning_parts)
+                elif current == required:
+                    # Exactly at max — mild negative unless flex helps
+                    need_score -= 50
+                    reasoning_parts.append(f"Maxed {player_pos}: {current}/{required}")
+
+            # Flex eligibility bonuses (Req 7.4)
+            # MI: 2B/SS can fill MI
+            if player_pos in FLEX_ELIGIBLE['MI'] and not mi_filled:
                 need_score += 40
                 reasoning_parts.append("Can fill MI slot")
-            elif not has_2b or not has_ss:
-                # Still need dedicated 2B or SS first
-                need_score += 20
-                reasoning_parts.append("Building MI eligibility")
-        
-        # CI eligibility (need 1 CI, can be 1B or 3B)
-        can_fill_ci = player_pos in ['1B', '3B']
-        if can_fill_ci:
-            has_1b = position_counts.get('1B', 0) > 0
-            has_3b = position_counts.get('3B', 0) > 0
-            
-            if has_1b and has_3b and ci_eligible_count >= 2:
+
+            # CI: 1B/3B can fill CI
+            if player_pos in FLEX_ELIGIBLE['CI'] and not ci_filled:
                 need_score += 40
                 reasoning_parts.append("Can fill CI slot")
-            elif not has_1b or not has_3b:
-                need_score += 20
-                reasoning_parts.append("Building CI eligibility")
-        
-        # U eligibility (need 1 U, can be any offensive player)
-        can_fill_u = is_hitter
-        if can_fill_u and hitter_count > 0 and u_eligible_count > 0:
-            # Can fill U slot if we have hitters
-            need_score += 25
-            reasoning_parts.append("Can fill U slot")
-        
-        reasoning = " | ".join(reasoning_parts) if reasoning_parts else "Depth pick"
-        
-        return need_score, reasoning
-    
-    def _analyze_projected_value(
-        self,
-        player: Player,
-        available_players: List[Player]
-    ) -> Tuple[float, str]:
-        """
-        Analyze projected statistical value based on Bob Uecker League categories.
-        Batting: HR, OBP, R, RBI, SB
-        Pitching: ERA, K, SV, WHIP, WQS (Wins + Quality Starts)
-        """
-        value = 0.0
-        
-        # Determine if player is a hitter or pitcher
-        is_hitter = player.position not in ['SP', 'RP', 'P']
-        
-        if is_hitter:
-            # Batting categories: HR, OBP, R, RBI, SB
-            if player.projected_home_runs:
-                value += player.projected_home_runs * 2.5  # HR are valuable
-            if player.projected_obp:
-                # OBP typically ranges 0.300-0.400, scale appropriately
-                value += (player.projected_obp - 0.300) * 500  # Higher OBP = better
-            if player.projected_runs:
-                value += player.projected_runs * 0.6
-            if player.projected_rbi:
-                value += player.projected_rbi * 0.6
-            if player.projected_stolen_bases:
-                value += player.projected_stolen_bases * 3.5  # SB are scarce and valuable
-        else:
-            # Pitching categories: ERA, K, SV, WHIP, WQS
-            if player.projected_wins:
-                value += player.projected_wins * 2.0
-            if player.projected_quality_starts:
-                value += player.projected_quality_starts * 2.0  # WQS = Wins + QS
-            if player.projected_strikeouts:
-                value += player.projected_strikeouts * 0.25  # K are valuable
-            if player.projected_saves:
-                value += player.projected_saves * 3.0
-            if player.projected_era:
-                # Lower ERA is better (typical range 2.50-5.00)
-                # Invert: better ERA = higher value
-                value += max(0, (5.0 - player.projected_era) * 15)
-            if player.projected_whip:
-                # Lower WHIP is better (typical range 1.00-1.50)
-                value += max(0, (1.5 - player.projected_whip) * 30)
-        
-        # Compare to available players at same position
-        position_peers = [p for p in available_players if p.position == player.position]
-        if position_peers:
-            peer_values = []
-            for peer in position_peers:
-                peer_val = 0.0
-                peer_is_hitter = peer.position not in ['SP', 'RP', 'P']
-                
-                if peer_is_hitter:
-                    if peer.projected_home_runs:
-                        peer_val += peer.projected_home_runs * 2.5
-                    if peer.projected_obp:
-                        peer_val += (peer.projected_obp - 0.300) * 500
-                    if peer.projected_runs:
-                        peer_val += peer.projected_runs * 0.6
-                    if peer.projected_rbi:
-                        peer_val += peer.projected_rbi * 0.6
-                    if peer.projected_stolen_bases:
-                        peer_val += peer.projected_stolen_bases * 3.5
-                else:
-                    if peer.projected_wins:
-                        peer_val += peer.projected_wins * 2.0
-                    if peer.projected_quality_starts:
-                        peer_val += peer.projected_quality_starts * 2.0
-                    if peer.projected_strikeouts:
-                        peer_val += peer.projected_strikeouts * 0.25
-                    if peer.projected_saves:
-                        peer_val += peer.projected_saves * 3.0
-                    if peer.projected_era:
-                        peer_val += max(0, (5.0 - peer.projected_era) * 15)
-                    if peer.projected_whip:
-                        peer_val += max(0, (1.5 - peer.projected_whip) * 30)
-                
-                peer_values.append(peer_val)
-            
-            if peer_values:
-                percentile = (sum(1 for v in peer_values if v < value) / len(peer_values)) * 100
-                if percentile >= 85:
-                    reasoning = f"Elite {player.position} (top {100-percentile:.0f}%)"
-                elif percentile >= 70:
-                    reasoning = f"Top tier {player.position} (top {100-percentile:.0f}%)"
-                elif percentile >= 50:
-                    reasoning = f"Solid {player.position} value"
-                else:
-                    reasoning = f"Average {player.position} value"
-            else:
-                reasoning = "Good projected value"
-        else:
-            reasoning = "Good projected value"
-        
-        return value, reasoning
 
+            # U: any hitter can fill U
+            if not u_filled:
+                need_score += 25
+                reasoning_parts.append("Can fill U slot")
+
+            # Overall hitter need
+            hitters_needed = TOTAL_HITTER_SLOTS - hitter_count
+            if hitters_needed > 0:
+                need_score += hitters_needed * 20
+                my_picks_remaining = draft_state.roster_size - len(my_team)
+                if my_picks_remaining > 0 and hitters_needed > my_picks_remaining / 2:
+                    need_score += 50
+                    reasoning_parts.append(f"URGENT: Need {hitters_needed} more hitters")
+            else:
+                need_score -= 60
+                reasoning_parts.append("Have enough hitters")
+
+        if is_pitcher:
+            pitchers_needed = TOTAL_PITCHER_SLOTS - pitcher_count
+
+            # Req 7.5: Baseline positive score while team has < 9 pitchers
+            # Scale comparable to hitter needs so pitchers aren't systematically
+            # undervalued. Pitchers are 9/21 active slots — use similar per-slot
+            # bonuses as hitters (hitters get ~80 per primary slot + 20 per overall).
+            if pitcher_count < TOTAL_PITCHER_SLOTS:
+                need_score += pitchers_needed * 40
+                if pitchers_needed > 4:
+                    need_score += 30
+                    reasoning_parts.append(f"Need {pitchers_needed} more pitchers")
+                else:
+                    reasoning_parts.append(f"Pitcher need ({pitcher_count}/{TOTAL_PITCHER_SLOTS})")
+
+                my_picks_remaining = draft_state.roster_size - len(my_team)
+                if my_picks_remaining > 0 and pitchers_needed > my_picks_remaining / 2:
+                    need_score += 50
+                    reasoning_parts.append(f"URGENT: Need {pitchers_needed} more pitchers")
+            else:
+                # Maxed pitchers — negative adjustment (Req 7.3)
+                need_score -= 100
+                reasoning_parts.append("Have enough pitchers")
+
+        # --- Bench-only penalty: don't fill reserve-only picks before active slots ---
+        # A player is "bench-only" if all active slots for their type are full.
+        # Bench players don't count for stats, so drafting them early is wasteful.
+        current_round = (len(draft_state.picks) // draft_state.total_teams) + 1
+        active_rounds = TOTAL_HITTER_SLOTS + TOTAL_PITCHER_SLOTS
+
+        if is_hitter and hitter_count >= TOTAL_HITTER_SLOTS:
+            if current_round <= active_rounds:
+                need_score -= 300
+                reasoning_parts.append("BENCH ONLY — save for reserve rounds")
+            else:
+                reasoning_parts.append("Reserve hitter")
+        elif is_pitcher and pitcher_count >= TOTAL_PITCHER_SLOTS:
+            if current_round <= active_rounds:
+                need_score -= 300
+                reasoning_parts.append("BENCH ONLY — save for reserve rounds")
+            else:
+                reasoning_parts.append("Reserve pitcher")
+
+        reasoning = " | ".join(reasoning_parts) if reasoning_parts else "Depth pick"
+        return need_score, reasoning
