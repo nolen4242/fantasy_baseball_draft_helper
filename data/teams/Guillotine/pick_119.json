@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ryan_pepiot",
+    "name": "Ryan Pepiot",
+    "position": "RP",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.6667,
+    "projected_quality_starts": 19.9333,
+    "projected_strikeouts": 175.504,
+    "projected_era": 4.0333,
+    "projected_whip": 1.2996,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 169.8,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 144.2
+  },
+  "pick_info": {
+    "pick_number": 119,
+    "round": 10,
+    "team_name": "Guillotine"
+  },
+  "position": "RP"
+}

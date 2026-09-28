@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "matthew_liberatore",
+    "name": "Matthew Liberatore",
+    "position": "SP",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.3333,
+    "projected_quality_starts": 17.9833,
+    "projected_strikeouts": 124.639,
+    "projected_era": 4.3067,
+    "projected_whip": 1.2681,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 151.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 541.41
+  },
+  "pick_info": {
+    "pick_number": 286,
+    "round": 22,
+    "team_name": "Runtime Terror"
+  },
+  "position": "SP"
+}

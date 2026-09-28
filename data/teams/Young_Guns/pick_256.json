@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "isaac_paredes",
+    "name": "Isaac Paredes",
+    "position": "3B",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 20.0,
+    "projected_obp": 0.3453,
+    "projected_runs": 60.6667,
+    "projected_rbi": 62.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 200.75
+  },
+  "pick_info": {
+    "pick_number": 256,
+    "round": 20,
+    "team_name": "Young Guns"
+  },
+  "position": "3B"
+}

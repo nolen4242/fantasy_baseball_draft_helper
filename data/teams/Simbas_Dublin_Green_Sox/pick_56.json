@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "josh_naylor",
+    "name": "Josh Naylor",
+    "position": "1B",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 22.6667,
+    "projected_obp": 0.3297,
+    "projected_runs": 72.6667,
+    "projected_rbi": 86.0,
+    "projected_stolen_bases": 16.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 64.68
+  },
+  "pick_info": {
+    "pick_number": 56,
+    "round": 5,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "1B"
+}

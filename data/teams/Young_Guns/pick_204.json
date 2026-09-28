@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "gerrit_cole",
+    "name": "Gerrit Cole",
+    "position": "SP",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.6667,
+    "projected_quality_starts": 13.8667,
+    "projected_strikeouts": 127.8322,
+    "projected_era": 3.9233,
+    "projected_whip": 1.2381,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 126.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 287.21
+  },
+  "pick_info": {
+    "pick_number": 204,
+    "round": 16,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}

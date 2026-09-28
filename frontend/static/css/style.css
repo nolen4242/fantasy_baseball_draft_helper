@@ -315,6 +315,21 @@ body {
     background: var(--turf-green-light);
 }
 
+.btn-skip-rec {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    margin-left: 6px;
+    background: rgba(192, 57, 43, 0.15);
+    border: 1px solid rgba(192, 57, 43, 0.4);
+    color: #c0392b;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.btn-skip-rec:hover {
+    background: rgba(192, 57, 43, 0.3);
+}
+
 /* ── Main Layout ─────────────────────────────────── */
 
 .main-layout {

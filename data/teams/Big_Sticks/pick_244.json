@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "victor_scott",
+    "name": "Victor Scott II",
+    "position": "OF",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": 7.6667,
+    "projected_obp": 0.2957,
+    "projected_runs": 55.0,
+    "projected_rbi": 42.0,
+    "projected_stolen_bases": 32.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 359.15
+  },
+  "pick_info": {
+    "pick_number": 244,
+    "round": 19,
+    "team_name": "Big Sticks"
+  },
+  "position": "OF"
+}

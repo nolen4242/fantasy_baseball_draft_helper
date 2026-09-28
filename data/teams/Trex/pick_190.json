@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "seranthony_dominguez",
+    "name": "Seranthony Dominguez",
+    "position": "RP",
+    "team": "CHW",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 68.8702,
+    "projected_era": 3.8933,
+    "projected_whip": 1.4096,
+    "projected_saves": 20.3333,
+    "projected_holds": null,
+    "projected_innings_pitched": 61.7,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 445.01
+  },
+  "pick_info": {
+    "pick_number": 190,
+    "round": 15,
+    "team_name": "Trex"
+  },
+  "position": "RP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "brandon_woodruff",
+    "name": "Brandon Woodruff",
+    "position": "SP",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 17.55,
+    "projected_strikeouts": 160.6873,
+    "projected_era": 3.7767,
+    "projected_whip": 1.2159,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 152.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 124.67
+  },
+  "pick_info": {
+    "pick_number": 126,
+    "round": 10,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "chad_patrick",
+    "name": "Chad Patrick",
+    "position": "SP",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.3333,
+    "projected_quality_starts": 16.4667,
+    "projected_strikeouts": 128.206,
+    "projected_era": 4.4067,
+    "projected_whip": 1.273,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 138.4333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 411.29
+  },
+  "pick_info": {
+    "pick_number": 257,
+    "round": 20,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "SP"
+}

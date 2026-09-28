@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "trey_yesavage",
+    "name": "Trey Yesavage",
+    "position": "SP",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.3333,
+    "projected_quality_starts": 15.8167,
+    "projected_strikeouts": 155.886,
+    "projected_era": 3.79,
+    "projected_whip": 1.3574,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 141.0667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 159.65
+  },
+  "pick_info": {
+    "pick_number": 146,
+    "round": 12,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SP"
+}

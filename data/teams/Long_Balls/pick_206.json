@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "addison_barger",
+    "name": "Addison Barger",
+    "position": "SS",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 18.0,
+    "projected_obp": 0.313,
+    "projected_runs": 57.6667,
+    "projected_rbi": 63.3333,
+    "projected_stolen_bases": 3.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 191.39
+  },
+  "pick_info": {
+    "pick_number": 206,
+    "round": 16,
+    "team_name": "Long Balls"
+  },
+  "position": "SS"
+}

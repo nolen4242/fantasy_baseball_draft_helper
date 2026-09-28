@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "max_fried",
+    "name": "Max Fried",
+    "position": "SP",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 13.6667,
+    "projected_quality_starts": 19.7167,
+    "projected_strikeouts": 174.9139,
+    "projected_era": 3.3067,
+    "projected_whip": 1.233,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 185.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 57.82
+  },
+  "pick_info": {
+    "pick_number": 51,
+    "round": 4,
+    "team_name": "Dawg"
+  },
+  "position": "SP"
+}

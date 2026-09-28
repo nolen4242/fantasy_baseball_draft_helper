@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jose_caballero",
+    "name": "Jose Caballero",
+    "position": "2B",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 6.0,
+    "projected_obp": 0.3157,
+    "projected_runs": 38.3333,
+    "projected_rbi": 28.0,
+    "projected_stolen_bases": 31.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 216.34
+  },
+  "pick_info": {
+    "pick_number": 194,
+    "round": 15,
+    "team_name": "Guillotine"
+  },
+  "position": "2B"
+}

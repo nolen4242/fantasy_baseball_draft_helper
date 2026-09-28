@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ceddanne_rafaela",
+    "name": "Ceddanne Rafaela",
+    "position": "OF",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": 16.3333,
+    "projected_obp": 0.2983,
+    "projected_runs": 68.3333,
+    "projected_rbi": 66.6667,
+    "projected_stolen_bases": 19.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 133.93
+  },
+  "pick_info": {
+    "pick_number": 179,
+    "round": 14,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "OF"
+}

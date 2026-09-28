@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "colson_montgomery",
+    "name": "Colson Montgomery",
+    "position": "SS",
+    "team": "CHW",
+    "age": null,
+    "projected_home_runs": 24.3333,
+    "projected_obp": 0.2967,
+    "projected_runs": 63.0,
+    "projected_rbi": 74.3333,
+    "projected_stolen_bases": 2.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 217.78
+  },
+  "pick_info": {
+    "pick_number": 234,
+    "round": 18,
+    "team_name": "Runtime Terror"
+  },
+  "position": "SS"
+}

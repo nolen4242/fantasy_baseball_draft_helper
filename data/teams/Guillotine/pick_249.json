@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "justin_steele",
+    "name": "Justin Steele",
+    "position": "SP",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 5.0,
+    "projected_quality_starts": 9.3167,
+    "projected_strikeouts": 74.274,
+    "projected_era": 3.6167,
+    "projected_whip": 1.2196,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 78.7,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 470.49
+  },
+  "pick_info": {
+    "pick_number": 249,
+    "round": 20,
+    "team_name": "Guillotine"
+  },
+  "position": "SP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "robert_suarez",
+    "name": "Robert Suarez",
+    "position": "RP",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 70.5726,
+    "projected_era": 3.56,
+    "projected_whip": 1.2537,
+    "projected_saves": 9.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 66.6667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 178.99
+  },
+  "pick_info": {
+    "pick_number": 197,
+    "round": 16,
+    "team_name": "Guillotine"
+  },
+  "position": "RP"
+}

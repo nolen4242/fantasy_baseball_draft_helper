@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "framber_valdez",
+    "name": "Framber Valdez",
+    "position": "SP",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 12.6667,
+    "projected_quality_starts": 19.7167,
+    "projected_strikeouts": 176.5394,
+    "projected_era": 3.4467,
+    "projected_whip": 1.2733,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 190.3667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 95.39
+  },
+  "pick_info": {
+    "pick_number": 71,
+    "round": 6,
+    "team_name": "Trex"
+  },
+  "position": "SP"
+}

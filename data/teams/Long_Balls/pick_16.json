@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "nick_kurtz",
+    "name": "Nick Kurtz",
+    "position": "1B",
+    "team": "ATH",
+    "age": null,
+    "projected_home_runs": 34.6667,
+    "projected_obp": 0.3463,
+    "projected_runs": 89.6667,
+    "projected_rbi": 88.3333,
+    "projected_stolen_bases": 3.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 18.48
+  },
+  "pick_info": {
+    "pick_number": 16,
+    "round": 2,
+    "team_name": "Long Balls"
+  },
+  "position": "1B"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "kris_bubic",
+    "name": "Kris Bubic",
+    "position": "SP",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.3333,
+    "projected_quality_starts": 15.6,
+    "projected_strikeouts": 138.1543,
+    "projected_era": 3.8033,
+    "projected_whip": 1.2815,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 143.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 218.72
+  },
+  "pick_info": {
+    "pick_number": 150,
+    "round": 12,
+    "team_name": "Magnum GI"
+  },
+  "position": "SP"
+}

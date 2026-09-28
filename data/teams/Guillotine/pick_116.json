@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "nick_lodolo",
+    "name": "Nick Lodolo",
+    "position": "SP",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.0,
+    "projected_quality_starts": 17.9833,
+    "projected_strikeouts": 154.7955,
+    "projected_era": 4.0633,
+    "projected_whip": 1.2148,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 152.0333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 137.03
+  },
+  "pick_info": {
+    "pick_number": 116,
+    "round": 9,
+    "team_name": "Guillotine"
+  },
+  "position": "SP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "max_muncy",
+    "name": "Max Muncy",
+    "position": "SS",
+    "team": "ATH",
+    "age": null,
+    "projected_home_runs": 8.6667,
+    "projected_obp": 0.2953,
+    "projected_runs": 32.0,
+    "projected_rbi": 34.3333,
+    "projected_stolen_bases": 2.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 589.78
+  },
+  "pick_info": {
+    "pick_number": 220,
+    "round": 17,
+    "team_name": "Guillotine"
+  },
+  "position": "SS"
+}

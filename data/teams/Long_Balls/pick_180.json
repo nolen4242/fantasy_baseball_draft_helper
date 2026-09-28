@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jacob_wilson",
+    "name": "Jacob Wilson",
+    "position": "SS",
+    "team": "ATH",
+    "age": null,
+    "projected_home_runs": 12.0,
+    "projected_obp": 0.343,
+    "projected_runs": 67.6667,
+    "projected_rbi": 65.6667,
+    "projected_stolen_bases": 5.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 170.91
+  },
+  "pick_info": {
+    "pick_number": 180,
+    "round": 14,
+    "team_name": "Long Balls"
+  },
+  "position": "SS"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "alec_bohm",
+    "name": "Alec Bohm",
+    "position": "3B",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 14.6667,
+    "projected_obp": 0.328,
+    "projected_runs": 65.0,
+    "projected_rbi": 71.6667,
+    "projected_stolen_bases": 3.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 256.52
+  },
+  "pick_info": {
+    "pick_number": 261,
+    "round": 21,
+    "team_name": "Runtime Terror"
+  },
+  "position": "3B"
+}

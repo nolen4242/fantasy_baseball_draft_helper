@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "nick_pivetta",
+    "name": "Nick Pivetta",
+    "position": "RP",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.6333,
+    "projected_strikeouts": 187.8527,
+    "projected_era": 3.9367,
+    "projected_whip": 1.2481,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 171.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 96.03
+  },
+  "pick_info": {
+    "pick_number": 100,
+    "round": 8,
+    "team_name": "Young Guns"
+  },
+  "position": "RP"
+}

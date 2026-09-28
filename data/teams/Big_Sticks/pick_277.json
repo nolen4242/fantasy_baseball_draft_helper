@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "mitch_keller",
+    "name": "Mitch Keller",
+    "position": "SP",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.6667,
+    "projected_quality_starts": 19.9333,
+    "projected_strikeouts": 153.389,
+    "projected_era": 4.2867,
+    "projected_whip": 1.2467,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 176.4667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 426.63
+  },
+  "pick_info": {
+    "pick_number": 277,
+    "round": 22,
+    "team_name": "Big Sticks"
+  },
+  "position": "SP"
+}

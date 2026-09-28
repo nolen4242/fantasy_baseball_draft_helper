@@ -12,7 +12,7 @@ class ZScoreCalculator:
     """Computes z-scores for fantasy baseball scoring categories."""
 
     BATTING_CATEGORIES = ['HR', 'OBP', 'R', 'RBI', 'SB']
-    PITCHING_CATEGORIES = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']
+    PITCHING_CATEGORIES = ['ERA', 'K', 'SV', 'WHIP', 'WQS']
     INVERTED_CATEGORIES = {'ERA', 'WHIP'}  # lower is better
 
     PITCHER_POSITIONS = {'SP', 'RP', 'P'}
@@ -113,7 +113,7 @@ class ZScoreCalculator:
         """Extract a player's raw value for a scoring category.
 
         Handles derived categories:
-            SHOLDS = projected_saves + (projected_holds * 0.5)
+            SV = projected_saves (direct)
             WQS = projected_wins + projected_quality_starts
 
         Args:
@@ -134,12 +134,11 @@ class ZScoreCalculator:
             'WHIP': 'projected_whip',
         }
 
-        if category == 'SHOLDS':
+        if category == 'SV':
             saves = player.projected_saves
-            holds = player.projected_holds
-            if saves is None or holds is None:
+            if saves is None:
                 return None
-            return saves + (holds * 0.5)
+            return saves
 
         if category == 'WQS':
             wins = player.projected_wins

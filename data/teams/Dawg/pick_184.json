@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "bryan_abreu",
+    "name": "Bryan Abreu",
+    "position": "RP",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 89.6357,
+    "projected_era": 3.1133,
+    "projected_whip": 1.3567,
+    "projected_saves": 6.3333,
+    "projected_holds": null,
+    "projected_innings_pitched": 67.7,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 268.67
+  },
+  "pick_info": {
+    "pick_number": 184,
+    "round": 15,
+    "team_name": "Dawg"
+  },
+  "position": "RP"
+}

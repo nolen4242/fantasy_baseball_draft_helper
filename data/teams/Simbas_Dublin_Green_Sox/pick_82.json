@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "david_bednar",
+    "name": "David Bednar",
+    "position": "RP",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 77.2926,
+    "projected_era": 3.28,
+    "projected_whip": 1.2796,
+    "projected_saves": 32.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 63.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 64.72
+  },
+  "pick_info": {
+    "pick_number": 82,
+    "round": 7,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "RP"
+}

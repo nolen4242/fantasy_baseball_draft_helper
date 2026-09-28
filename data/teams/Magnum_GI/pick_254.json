@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "grant_holmes",
+    "name": "Grant Holmes",
+    "position": "RP",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.3333,
+    "projected_quality_starts": 12.35,
+    "projected_strikeouts": 120.6399,
+    "projected_era": 4.2067,
+    "projected_whip": 1.3267,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 123.7,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 573.01
+  },
+  "pick_info": {
+    "pick_number": 254,
+    "round": 20,
+    "team_name": "Magnum GI"
+  },
+  "position": "RP"
+}

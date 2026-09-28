@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jeff_hoffman",
+    "name": "Jeff Hoffman",
+    "position": "RP",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 75.53,
+    "projected_era": 3.46,
+    "projected_whip": 1.3059,
+    "projected_saves": 26.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 62.6667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 125.16
+  },
+  "pick_info": {
+    "pick_number": 115,
+    "round": 9,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "RP"
+}

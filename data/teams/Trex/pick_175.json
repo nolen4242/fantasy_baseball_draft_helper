@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "konnor_griffin",
+    "name": "Konnor Griffin",
+    "position": "SS",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": 10.3333,
+    "projected_obp": 0.3203,
+    "projected_runs": 55.0,
+    "projected_rbi": 47.6667,
+    "projected_stolen_bases": 19.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 216.77
+  },
+  "pick_info": {
+    "pick_number": 175,
+    "round": 14,
+    "team_name": "Trex"
+  },
+  "position": "SS"
+}

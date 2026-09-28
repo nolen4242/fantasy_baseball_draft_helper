@@ -788,7 +788,7 @@ def _build_rosters_for_rank(team_name, category, target_rank, num_teams=13):
     all_team_rosters = {}
 
     # Batting categories: HR, OBP, R, RBI, SB
-    # Pitching categories: ERA, K, SHOLDS, WHIP, WQS
+    # Pitching categories: ERA, K, SV, WHIP, WQS
     # We need to create rosters that produce specific category totals.
 
     for t in range(num_teams):
@@ -846,7 +846,7 @@ def _build_rosters_for_rank(team_name, category, target_rank, num_teams=13):
                                     projected_era=3.50, projected_whip=1.20,
                                     projected_wins=val / 2, projected_quality_starts=val / 2,
                                     projected_saves=0.0, projected_holds=0.0)]
-        elif category == 'SHOLDS':
+        elif category == 'SV':
             val = float((num_teams - rank + 1) * 5)
             roster = [_make_pitcher(f"p_{tname}", projected_strikeouts=100.0,
                                     projected_era=3.50, projected_whip=1.20,
@@ -877,7 +877,7 @@ def _build_rosters_for_rank(team_name, category, target_rank, num_teams=13):
 
 @given(
     category=st.sampled_from(['HR', 'OBP', 'R', 'RBI', 'SB',
-                              'ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']),
+                              'ERA', 'K', 'SV', 'WHIP', 'WQS']),
     bottom_rank=st.integers(min_value=9, max_value=13),
     top_rank=st.integers(min_value=1, max_value=4),
 )
@@ -896,7 +896,7 @@ def test_relative_advantage_bottom_third_bonus_exceeds_top_third(
     draft_state = _make_draft_state(current_pick=50)
 
     # Create a player that improves the target category
-    is_pitching = category in ('ERA', 'K', 'SHOLDS', 'WHIP', 'WQS')
+    is_pitching = category in ('ERA', 'K', 'SV', 'WHIP', 'WQS')
     if is_pitching:
         if category == 'ERA':
             # Lower ERA improves the category
@@ -919,11 +919,11 @@ def test_relative_advantage_bottom_third_bonus_exceeds_top_third(
                                    projected_strikeouts=100.0, projected_wins=20.0,
                                    projected_quality_starts=20.0, projected_saves=0.0,
                                    projected_holds=0.0)
-        else:  # SHOLDS
+        else:  # SV
             player = _make_pitcher("improver", projected_era=3.50, projected_whip=1.20,
                                    projected_strikeouts=100.0, projected_wins=5.0,
                                    projected_quality_starts=5.0, projected_saves=40.0,
-                                   projected_holds=10.0)
+                                   projected_holds=0.0)
     else:
         if category == 'HR':
             player = _make_hitter("improver", projected_home_runs=50.0)

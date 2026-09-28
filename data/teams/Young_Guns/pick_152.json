@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "shane_mcclanahan",
+    "name": "Shane McClanahan",
+    "position": "SP",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.6667,
+    "projected_quality_starts": 14.7333,
+    "projected_strikeouts": 144.5721,
+    "projected_era": 3.43,
+    "projected_whip": 1.237,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 133.0667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 243.53
+  },
+  "pick_info": {
+    "pick_number": 152,
+    "round": 12,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}

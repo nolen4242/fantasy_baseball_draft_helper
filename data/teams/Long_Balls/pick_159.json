@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "sal_stewart",
+    "name": "Sal Stewart",
+    "position": "1B",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.33,
+    "projected_runs": 58.3333,
+    "projected_rbi": 62.0,
+    "projected_stolen_bases": 7.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 206.4
+  },
+  "pick_info": {
+    "pick_number": 159,
+    "round": 13,
+    "team_name": "Long Balls"
+  },
+  "position": "1B"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "salvador_perez",
+    "name": "Salvador Perez",
+    "position": "C",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": 26.6667,
+    "projected_obp": 0.3007,
+    "projected_runs": 64.6667,
+    "projected_rbi": 86.6667,
+    "projected_stolen_bases": 0.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 94.23
+  },
+  "pick_info": {
+    "pick_number": 114,
+    "round": 9,
+    "team_name": "Big Sticks"
+  },
+  "position": "C"
+}

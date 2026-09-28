@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jordan_lawlar",
+    "name": "Jordan Lawlar",
+    "position": "SS",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 8.0,
+    "projected_obp": 0.3107,
+    "projected_runs": 42.6667,
+    "projected_rbi": 38.0,
+    "projected_stolen_bases": 12.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 392.57
+  },
+  "pick_info": {
+    "pick_number": 284,
+    "round": 22,
+    "team_name": "Long Balls"
+  },
+  "position": "SS"
+}

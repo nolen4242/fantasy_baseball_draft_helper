@@ -8,7 +8,7 @@ class StandingsCalculator:
 
     Scoring rules (Bob Uecker Imaginary Baseball League, 13 teams):
       - 10 categories: 5 batting + 5 pitching
-      - Counting stats (highest wins): HR, R, RBI, SB, K, WQS, SHOLDS
+      - Counting stats (highest wins): HR, R, RBI, SB, K, WQS, SV
       - Rate stats: OBP (highest wins), ERA (lowest wins), WHIP (lowest wins)
       - Points per category: 13 for 1st, 12 for 2nd … 1 for 13th
       - Ties split the points equally
@@ -16,7 +16,7 @@ class StandingsCalculator:
     """
 
     BATTING_CATEGORIES = ['HR', 'OBP', 'R', 'RBI', 'SB']
-    PITCHING_CATEGORIES = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS']
+    PITCHING_CATEGORIES = ['ERA', 'K', 'SV', 'WHIP', 'WQS']
 
     # Categories where LOWER value is better
     LOWER_IS_BETTER = {'ERA', 'WHIP'}
@@ -207,7 +207,6 @@ class StandingsCalculator:
             totals['HD'] += p.projected_holds or 0
 
         totals['WQS'] = totals['W'] + totals['QS']
-        totals['SHOLDS'] = totals['SV'] + (totals['HD'] * 0.5)
 
         # ERA / WHIP: average only over pitchers that have the data
         era_values = [p.projected_era for p in pitchers if p.projected_era]

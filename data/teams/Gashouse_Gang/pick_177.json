@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "matthew_boyd",
+    "name": "Matthew Boyd",
+    "position": "SP",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.6667,
+    "projected_quality_starts": 18.4167,
+    "projected_strikeouts": 149.4829,
+    "projected_era": 3.9067,
+    "projected_whip": 1.2356,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 166.0667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 233.23
+  },
+  "pick_info": {
+    "pick_number": 177,
+    "round": 14,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "SP"
+}

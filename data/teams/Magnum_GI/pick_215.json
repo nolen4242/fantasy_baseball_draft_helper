@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "riley_obrien",
+    "name": "Riley O'Brien",
+    "position": "RP",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 64.014,
+    "projected_era": 3.67,
+    "projected_whip": 1.3859,
+    "projected_saves": 16.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 62.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 292.97
+  },
+  "pick_info": {
+    "pick_number": 215,
+    "round": 17,
+    "team_name": "Magnum GI"
+  },
+  "position": "RP"
+}

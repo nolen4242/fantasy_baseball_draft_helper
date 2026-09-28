@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "tyler_glasnow",
+    "name": "Tyler Glasnow",
+    "position": "SP",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.6667,
+    "projected_quality_starts": 15.1667,
+    "projected_strikeouts": 155.461,
+    "projected_era": 3.6533,
+    "projected_whip": 1.3144,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 133.1333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 125.22
+  },
+  "pick_info": {
+    "pick_number": 72,
+    "round": 6,
+    "team_name": "Magnum GI"
+  },
+  "position": "SP"
+}

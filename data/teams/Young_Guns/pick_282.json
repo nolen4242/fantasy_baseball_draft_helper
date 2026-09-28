@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "andrew_painter",
+    "name": "Andrew Painter",
+    "position": "SP",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 5.3333,
+    "projected_quality_starts": 11.4833,
+    "projected_strikeouts": 86.4216,
+    "projected_era": 4.6867,
+    "projected_whip": 1.3211,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 104.8,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 404.98
+  },
+  "pick_info": {
+    "pick_number": 282,
+    "round": 22,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}

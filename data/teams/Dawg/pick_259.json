@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "joey_cantillo",
+    "name": "Joey Cantillo",
+    "position": "SP",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.6667,
+    "projected_quality_starts": 13.2167,
+    "projected_strikeouts": 145.588,
+    "projected_era": 3.88,
+    "projected_whip": 1.3774,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 139.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 299.26
+  },
+  "pick_info": {
+    "pick_number": 259,
+    "round": 20,
+    "team_name": "Dawg"
+  },
+  "position": "SP"
+}

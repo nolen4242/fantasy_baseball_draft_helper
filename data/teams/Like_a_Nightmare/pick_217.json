@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "dylan_crews",
+    "name": "Dylan Crews",
+    "position": "OF",
+    "team": "WAS",
+    "age": null,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.3053,
+    "projected_runs": 66.0,
+    "projected_rbi": 63.6667,
+    "projected_stolen_bases": 24.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 164.7
+  },
+  "pick_info": {
+    "pick_number": 217,
+    "round": 17,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "OF"
+}

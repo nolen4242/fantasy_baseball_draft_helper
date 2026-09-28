@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "cody_bellinger",
+    "name": "Cody Bellinger",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 23.6667,
+    "projected_obp": 0.3247,
+    "projected_runs": 77.3333,
+    "projected_rbi": 83.0,
+    "projected_stolen_bases": 10.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 78.98
+  },
+  "pick_info": {
+    "pick_number": 66,
+    "round": 6,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

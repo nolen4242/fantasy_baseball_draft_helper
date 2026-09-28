@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "cole_ragans",
+    "name": "Cole Ragans",
+    "position": "RP",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.0,
+    "projected_quality_starts": 18.2,
+    "projected_strikeouts": 199.9691,
+    "projected_era": 3.38,
+    "projected_whip": 1.3007,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 162.0333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 55.86
+  },
+  "pick_info": {
+    "pick_number": 49,
+    "round": 4,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "RP"
+}

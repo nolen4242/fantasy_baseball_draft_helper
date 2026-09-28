@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jeremiah_estrada",
+    "name": "Jeremiah Estrada",
+    "position": "RP",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 91.6656,
+    "projected_era": 3.2967,
+    "projected_whip": 1.3459,
+    "projected_saves": 1.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 68.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 441.61
+  },
+  "pick_info": {
+    "pick_number": 262,
+    "round": 21,
+    "team_name": "Dawg"
+  },
+  "position": "RP"
+}

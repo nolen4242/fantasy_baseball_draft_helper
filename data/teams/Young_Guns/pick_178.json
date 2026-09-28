@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "shota_imanaga",
+    "name": "Shota Imanaga",
+    "position": "RP",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.3333,
+    "projected_quality_starts": 16.9,
+    "projected_strikeouts": 137.4669,
+    "projected_era": 4.0567,
+    "projected_whip": 1.163,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 151.0667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 174.74
+  },
+  "pick_info": {
+    "pick_number": 178,
+    "round": 14,
+    "team_name": "Young Guns"
+  },
+  "position": "RP"
+}

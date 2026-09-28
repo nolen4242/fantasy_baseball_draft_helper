@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "grant_taylor",
+    "name": "Grant Taylor",
+    "position": "RP",
+    "team": "CHW",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.6667,
+    "projected_quality_starts": 1.7333,
+    "projected_strikeouts": 102.453,
+    "projected_era": 3.4233,
+    "projected_whip": 1.3233,
+    "projected_saves": 5.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 88.7667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 395.13
+  },
+  "pick_info": {
+    "pick_number": 236,
+    "round": 19,
+    "team_name": "Dawg"
+  },
+  "position": "RP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "hunter_brown",
+    "name": "Hunter Brown",
+    "position": "SP",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 12.3333,
+    "projected_quality_starts": 19.7167,
+    "projected_strikeouts": 196.5401,
+    "projected_era": 3.49,
+    "projected_whip": 1.2733,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 181.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 38.82
+  },
+  "pick_info": {
+    "pick_number": 36,
+    "round": 3,
+    "team_name": "Big Sticks"
+  },
+  "position": "SP"
+}

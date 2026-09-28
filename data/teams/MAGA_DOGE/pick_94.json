@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ryan_helsley",
+    "name": "Ryan Helsley",
+    "position": "RP",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 73.6351,
+    "projected_era": 3.4667,
+    "projected_whip": 1.3193,
+    "projected_saves": 26.3333,
+    "projected_holds": null,
+    "projected_innings_pitched": 63.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 106.99
+  },
+  "pick_info": {
+    "pick_number": 94,
+    "round": 8,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "RP"
+}

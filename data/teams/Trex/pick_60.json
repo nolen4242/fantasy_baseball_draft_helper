@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "george_kirby",
+    "name": "George Kirby",
+    "position": "SP",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 12.0,
+    "projected_quality_starts": 19.5,
+    "projected_strikeouts": 167.9447,
+    "projected_era": 3.55,
+    "projected_whip": 1.1337,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 171.7,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 72.25
+  },
+  "pick_info": {
+    "pick_number": 60,
+    "round": 5,
+    "team_name": "Trex"
+  },
+  "position": "SP"
+}

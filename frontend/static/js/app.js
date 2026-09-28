@@ -10,6 +10,9 @@ class App {
         this.categoryNeeds = null;
         this.winProbability = 0;
         this.winProbLastFetch = 0;
+        this.skippedPlayerIds = new Set();
+        this.allRecommendations = [];
+        this.suppressAutoDraft = false;
         this.api = new ApiClient();
         this.renderer = new UIRenderer(this.api);
         this.draftManager = new DraftManager(this.api, this.renderer);
@@ -34,6 +37,7 @@ class App {
         window.openTradeAnalyzer = () => this.analyzeTradeAction();
         window.updateTradeBPlayers = () => this.updateTradeBPlayers();
         window.exportRecap = () => this.exportRecap();
+        window.skipRecommendation = () => this.skipRecommendation();
     }
     async draftPlayerById(playerId) {
         const player = this.allPlayers.find(p => p.player_id === playerId);
@@ -161,7 +165,7 @@ class App {
             const teams = [
                 "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
                 "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
-                "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+                "Like a Nightmare", "Big Sticks", "MAGA DOGE", "Guillotine", "Rieken Havoc"
             ];
             this.renderer.renderTradeAnalyzer(this.currentDraft.my_team_name, teams, result.players, this.currentDraft, this.allPlayers);
         }
@@ -222,7 +226,7 @@ class App {
                 const teams = [
                     "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
                     "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
-                    "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+                    "Like a Nightmare", "Big Sticks", "MAGA DOGE", "Guillotine", "Rieken Havoc"
                 ];
                 this.renderer.renderDraftBoard(data, teams, this.currentDraft.my_team_name);
             }
@@ -235,21 +239,37 @@ class App {
     async refreshDraftStatus() {
         if (!this.currentDraft)
             return;
-        // Get top recommendation
+        // Get recommendations and filter out skipped players
         let topRecommendation = null;
         try {
             const recommendations = await this.api.getRecommendations();
             if (recommendations && recommendations.length > 0) {
-                topRecommendation = recommendations[0];
+                this.allRecommendations = recommendations;
+                const filtered = recommendations.filter((r) => !this.skippedPlayerIds.has(r.player.player_id));
+                if (filtered.length > 0) {
+                    topRecommendation = filtered[0];
+                }
             }
         }
         catch (error) {
             console.error('Error fetching recommendations:', error);
         }
         this.renderer.updateDraftStatusBar(this.currentDraft, topRecommendation);
-        // Check if auto-draft should trigger
-        if (this.autoDraftEnabled) {
+        // Check if auto-draft should trigger (suppressed after reverts)
+        if (this.autoDraftEnabled && !this.suppressAutoDraft) {
             await this.checkAndTriggerAutoDraft();
+        }
+    }
+    skipRecommendation() {
+        // Find the current top non-skipped recommendation and skip it
+        const current = this.allRecommendations.find((r) => !this.skippedPlayerIds.has(r.player.player_id));
+        if (current) {
+            this.skippedPlayerIds.add(current.player.player_id);
+            // Re-render the status bar with the next recommendation (no API call needed)
+            const next = this.allRecommendations.find((r) => !this.skippedPlayerIds.has(r.player.player_id));
+            if (this.currentDraft) {
+                this.renderer.updateDraftStatusBar(this.currentDraft, next || null);
+            }
         }
     }
     async checkAndTriggerAutoDraft() {
@@ -263,13 +283,13 @@ class App {
         const pickNumber = this.currentDraft.picks.length + 1;
         const round = Math.floor((pickNumber - 1) / this.currentDraft.total_teams) + 1;
         const pickInRound = ((pickNumber - 1) % this.currentDraft.total_teams) + 1;
-        // Bob Uecker League: Rounds 1-4 fixed, Round 5+ snakes
+        // Bob Uecker League: Rounds 1-3 fixed, Round 4+ snakes
         const teamOrder = [
             "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
             "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
-            "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+            "Like a Nightmare", "Big Sticks", "MAGA DOGE", "Guillotine", "Rieken Havoc"
         ];
-        const FIXED_ROUNDS = 4;
+        const FIXED_ROUNDS = 3;
         let currentTeam;
         if (round <= FIXED_ROUNDS) {
             currentTeam = teamOrder[pickInRound - 1];
@@ -322,9 +342,9 @@ class App {
         const teamOrder = [
             "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
             "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
-            "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+            "Like a Nightmare", "Big Sticks", "MAGA DOGE", "Guillotine", "Rieken Havoc"
         ];
-        const FIXED_ROUNDS = 4;
+        const FIXED_ROUNDS = 3;
         if (round <= FIXED_ROUNDS) {
             return teamOrder[pickInRound - 1];
         }
@@ -403,8 +423,10 @@ class App {
             return;
         }
         try {
+            this.suppressAutoDraft = true;
             this.currentDraft = await this.api.revertPick(pickNumber);
             await this.refreshAll();
+            this.suppressAutoDraft = false;
         }
         catch (error) {
             console.error('Error reverting pick:', error);
@@ -525,8 +547,10 @@ class App {
         if (!confirm(`Revert ALL picks from #${latestPick} back to #${pickNumber}? This will undo ${latestPick - pickNumber + 1} picks.`))
             return;
         try {
+            this.suppressAutoDraft = true;
             this.currentDraft = await this.api.batchRevert(pickNumber);
             await this.refreshAll();
+            this.suppressAutoDraft = false;
         }
         catch (error) {
             console.error('Error batch reverting:', error);
@@ -620,6 +644,7 @@ class App {
             const teamName = this.getCurrentPickTeam() || this.currentDraft.my_team_name;
             const result = await this.api.makePick(player.player_id, teamName);
             this.currentDraft = result;
+            this.skippedPlayerIds.clear(); // Reset skips on new pick
             if (result.is_complete) {
                 alert('Draft Complete! All roster spots have been filled.');
             }

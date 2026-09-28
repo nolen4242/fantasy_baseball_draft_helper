@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "gavin_williams",
+    "name": "Gavin Williams",
+    "position": "SP",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 19.5,
+    "projected_strikeouts": 172.6141,
+    "projected_era": 3.9633,
+    "projected_whip": 1.3707,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 169.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 154.54
+  },
+  "pick_info": {
+    "pick_number": 167,
+    "round": 13,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SP"
+}

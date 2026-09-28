@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "xavier_edwards",
+    "name": "Xavier Edwards",
+    "position": "2B",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": 4.6667,
+    "projected_obp": 0.3453,
+    "projected_runs": 69.6667,
+    "projected_rbi": 46.6667,
+    "projected_stolen_bases": 26.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 175.34
+  },
+  "pick_info": {
+    "pick_number": 176,
+    "round": 14,
+    "team_name": "Magnum GI"
+  },
+  "position": "2B"
+}

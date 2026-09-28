@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jackson_merrill",
+    "name": "Jackson Merrill",
+    "position": "SS",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": 23.0,
+    "projected_obp": 0.3207,
+    "projected_runs": 78.3333,
+    "projected_rbi": 80.3333,
+    "projected_stolen_bases": 7.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 69.29
+  },
+  "pick_info": {
+    "pick_number": 61,
+    "round": 5,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "SS"
+}

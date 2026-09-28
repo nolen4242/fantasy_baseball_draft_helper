@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "christian_yelich",
+    "name": "Christian Yelich",
+    "position": "OF",
+    "team": "MIL",
+    "age": null,
+    "projected_home_runs": 18.3333,
+    "projected_obp": 0.344,
+    "projected_runs": 70.6667,
+    "projected_rbi": 71.0,
+    "projected_stolen_bases": 15.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 122.17
+  },
+  "pick_info": {
+    "pick_number": 91,
+    "round": 7,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

@@ -5,46 +5,1038 @@
       null
     ],
     "1B": [
-      null
+      {
+        "player_id": "matt_olson",
+        "name": "Matt Olson",
+        "position": "1B",
+        "team": "ATL",
+        "pick_number": 31,
+        "round": 3,
+        "stats": {
+          "projected_home_runs": 30.6667,
+          "projected_obp": 0.3453,
+          "projected_runs": 89.3333,
+          "projected_rbi": 95.0,
+          "projected_stolen_bases": 1.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "2B": [
-      null
+      {
+        "player_id": "gleyber_torres",
+        "name": "Gleyber Torres",
+        "position": "2B",
+        "team": "DET",
+        "pick_number": 239,
+        "round": 19,
+        "stats": {
+          "projected_home_runs": 18.0,
+          "projected_obp": 0.3453,
+          "projected_runs": 80.6667,
+          "projected_rbi": 68.6667,
+          "projected_stolen_bases": 5.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "3B": [
-      null
+      {
+        "player_id": "austin_riley",
+        "name": "Austin Riley",
+        "position": "3B",
+        "team": "ATL",
+        "pick_number": 57,
+        "round": 5,
+        "stats": {
+          "projected_home_runs": 28.0,
+          "projected_obp": 0.322,
+          "projected_runs": 82.0,
+          "projected_rbi": 87.0,
+          "projected_stolen_bases": 2.6667,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "SS": [
-      null
+      {
+        "player_id": "elly_de_la_cruz",
+        "name": "Elly De La Cruz",
+        "position": "SS",
+        "team": "CIN",
+        "pick_number": 5,
+        "round": 1,
+        "stats": {
+          "projected_home_runs": 23.6667,
+          "projected_obp": 0.337,
+          "projected_runs": 90.6667,
+          "projected_rbi": 82.6667,
+          "projected_stolen_bases": 40.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "MI": [
-      null
+      {
+        "player_id": "otto_lopez",
+        "name": "Otto Lopez",
+        "position": "SS",
+        "team": "MIA",
+        "pick_number": 265,
+        "round": 21,
+        "stats": {
+          "projected_home_runs": 11.3333,
+          "projected_obp": 0.322,
+          "projected_runs": 60.3333,
+          "projected_rbi": 59.0,
+          "projected_stolen_bases": 15.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "CI": [
-      null
+      {
+        "player_id": "ben_rice",
+        "name": "Ben Rice",
+        "position": "1B",
+        "team": "NYY",
+        "pick_number": 83,
+        "round": 7,
+        "stats": {
+          "projected_home_runs": 25.6667,
+          "projected_obp": 0.3313,
+          "projected_runs": 70.3333,
+          "projected_rbi": 74.0,
+          "projected_stolen_bases": 4.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "OF": [
-      null,
-      null,
-      null,
-      null
+      {
+        "player_id": "kyle_schwarber",
+        "name": "Kyle Schwarber",
+        "position": "OF",
+        "team": "PHI",
+        "pick_number": 18,
+        "round": 2,
+        "stats": {
+          "projected_home_runs": 41.6667,
+          "projected_obp": 0.3507,
+          "projected_runs": 99.0,
+          "projected_rbi": 99.6667,
+          "projected_stolen_bases": 6.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "roman_anthony",
+        "name": "Roman Anthony",
+        "position": "OF",
+        "team": "BOS",
+        "pick_number": 48,
+        "round": 4,
+        "stats": {
+          "projected_home_runs": 17.6667,
+          "projected_obp": 0.364,
+          "projected_runs": 83.0,
+          "projected_rbi": 63.0,
+          "projected_stolen_bases": 9.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "riley_greene",
+        "name": "Riley Greene",
+        "position": "OF",
+        "team": "DET",
+        "pick_number": 74,
+        "round": 6,
+        "stats": {
+          "projected_home_runs": 27.3333,
+          "projected_obp": 0.3303,
+          "projected_runs": 79.6667,
+          "projected_rbi": 89.3333,
+          "projected_stolen_bases": 3.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "ian_happ",
+        "name": "Ian Happ",
+        "position": "OF",
+        "team": "CHC",
+        "pick_number": 187,
+        "round": 15,
+        "stats": {
+          "projected_home_runs": 22.0,
+          "projected_obp": 0.34,
+          "projected_runs": 81.0,
+          "projected_rbi": 76.0,
+          "projected_stolen_bases": 8.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "U": [
-      null
+      {
+        "player_id": "trent_grisham",
+        "name": "Trent Grisham",
+        "position": "OF",
+        "team": "NYY",
+        "pick_number": 213,
+        "round": 17,
+        "stats": {
+          "projected_home_runs": 22.3333,
+          "projected_obp": 0.3263,
+          "projected_runs": 69.3333,
+          "projected_rbi": 60.0,
+          "projected_stolen_bases": 5.3333,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      }
     ],
     "P": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      {
+        "player_id": "nick_pivetta",
+        "name": "Nick Pivetta",
+        "position": "RP",
+        "team": "SD",
+        "pick_number": 100,
+        "round": 8,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.0,
+          "projected_quality_starts": 18.6333,
+          "projected_strikeouts": 187.8527,
+          "projected_era": 3.9367,
+          "projected_whip": 1.2481,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "zack_wheeler",
+        "name": "Zack Wheeler",
+        "position": "SP",
+        "team": "PHI",
+        "pick_number": 109,
+        "round": 9,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.3333,
+          "projected_quality_starts": 15.6,
+          "projected_strikeouts": 164.9106,
+          "projected_era": 3.27,
+          "projected_whip": 1.2056,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "brandon_woodruff",
+        "name": "Brandon Woodruff",
+        "position": "SP",
+        "team": "MIL",
+        "pick_number": 126,
+        "round": 10,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 10.0,
+          "projected_quality_starts": 17.55,
+          "projected_strikeouts": 160.6873,
+          "projected_era": 3.7767,
+          "projected_whip": 1.2159,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "blake_snell",
+        "name": "Blake Snell",
+        "position": "SP",
+        "team": "LAD",
+        "pick_number": 135,
+        "round": 11,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 9.6667,
+          "projected_quality_starts": 15.1667,
+          "projected_strikeouts": 165.6406,
+          "projected_era": 3.5133,
+          "projected_whip": 1.3796,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "shane_mcclanahan",
+        "name": "Shane McClanahan",
+        "position": "SP",
+        "team": "TB",
+        "pick_number": 152,
+        "round": 12,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 8.6667,
+          "projected_quality_starts": 14.7333,
+          "projected_strikeouts": 144.5721,
+          "projected_era": 3.43,
+          "projected_whip": 1.237,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "luis_castillo",
+        "name": "Luis Castillo",
+        "position": "SP",
+        "team": "SEA",
+        "pick_number": 161,
+        "round": 13,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 11.0,
+          "projected_quality_starts": 19.5,
+          "projected_strikeouts": 166.0226,
+          "projected_era": 3.86,
+          "projected_whip": 1.2259,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "shota_imanaga",
+        "name": "Shota Imanaga",
+        "position": "RP",
+        "team": "CHC",
+        "pick_number": 178,
+        "round": 14,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 9.3333,
+          "projected_quality_starts": 16.9,
+          "projected_strikeouts": 137.4669,
+          "projected_era": 4.0567,
+          "projected_whip": 1.163,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "gerrit_cole",
+        "name": "Gerrit Cole",
+        "position": "SP",
+        "team": "NYY",
+        "pick_number": 204,
+        "round": 16,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 7.6667,
+          "projected_quality_starts": 13.8667,
+          "projected_strikeouts": 127.8322,
+          "projected_era": 3.9233,
+          "projected_whip": 1.2381,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "shane_bieber",
+        "name": "Shane Bieber",
+        "position": "SP",
+        "team": "TOR",
+        "pick_number": 230,
+        "round": 18,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 7.6667,
+          "projected_quality_starts": 13.0,
+          "projected_strikeouts": 111.0189,
+          "projected_era": 3.7333,
+          "projected_whip": 1.1811,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      }
     ],
     "BENCH": [
-      null
+      {
+        "player_id": "isaac_paredes",
+        "name": "Isaac Paredes",
+        "position": "3B",
+        "team": "HOU",
+        "pick_number": 256,
+        "round": 20,
+        "stats": {
+          "projected_home_runs": 20.0,
+          "projected_obp": 0.3453,
+          "projected_runs": 60.6667,
+          "projected_rbi": 62.0,
+          "projected_stolen_bases": 1.0,
+          "projected_wins": null,
+          "projected_quality_starts": null,
+          "projected_strikeouts": null,
+          "projected_era": null,
+          "projected_whip": null,
+          "projected_saves": null,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "andrew_painter",
+        "name": "Andrew Painter",
+        "position": "SP",
+        "team": "PHI",
+        "pick_number": 282,
+        "round": 22,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 5.3333,
+          "projected_quality_starts": 11.4833,
+          "projected_strikeouts": 86.4216,
+          "projected_era": 4.6867,
+          "projected_whip": 1.3211,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      },
+      {
+        "player_id": "payton_tolle",
+        "name": "Payton Tolle",
+        "position": "SP",
+        "team": "BOS",
+        "pick_number": 291,
+        "round": 23,
+        "stats": {
+          "projected_home_runs": null,
+          "projected_obp": null,
+          "projected_runs": null,
+          "projected_rbi": null,
+          "projected_stolen_bases": null,
+          "projected_wins": 3.0,
+          "projected_quality_starts": 3.4667,
+          "projected_strikeouts": 52.1259,
+          "projected_era": 4.0167,
+          "projected_whip": 1.2785,
+          "projected_saves": 0.0,
+          "projected_holds": null
+        }
+      }
     ]
   },
-  "all_players": []
+  "all_players": [
+    {
+      "player_id": "elly_de_la_cruz",
+      "name": "Elly De La Cruz",
+      "position": "SS",
+      "team": "CIN",
+      "pick_number": 5,
+      "round": 1,
+      "stats": {
+        "projected_home_runs": 23.6667,
+        "projected_obp": 0.337,
+        "projected_runs": 90.6667,
+        "projected_rbi": 82.6667,
+        "projected_stolen_bases": 40.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "kyle_schwarber",
+      "name": "Kyle Schwarber",
+      "position": "OF",
+      "team": "PHI",
+      "pick_number": 18,
+      "round": 2,
+      "stats": {
+        "projected_home_runs": 41.6667,
+        "projected_obp": 0.3507,
+        "projected_runs": 99.0,
+        "projected_rbi": 99.6667,
+        "projected_stolen_bases": 6.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "matt_olson",
+      "name": "Matt Olson",
+      "position": "1B",
+      "team": "ATL",
+      "pick_number": 31,
+      "round": 3,
+      "stats": {
+        "projected_home_runs": 30.6667,
+        "projected_obp": 0.3453,
+        "projected_runs": 89.3333,
+        "projected_rbi": 95.0,
+        "projected_stolen_bases": 1.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "roman_anthony",
+      "name": "Roman Anthony",
+      "position": "OF",
+      "team": "BOS",
+      "pick_number": 48,
+      "round": 4,
+      "stats": {
+        "projected_home_runs": 17.6667,
+        "projected_obp": 0.364,
+        "projected_runs": 83.0,
+        "projected_rbi": 63.0,
+        "projected_stolen_bases": 9.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "austin_riley",
+      "name": "Austin Riley",
+      "position": "3B",
+      "team": "ATL",
+      "pick_number": 57,
+      "round": 5,
+      "stats": {
+        "projected_home_runs": 28.0,
+        "projected_obp": 0.322,
+        "projected_runs": 82.0,
+        "projected_rbi": 87.0,
+        "projected_stolen_bases": 2.6667,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "riley_greene",
+      "name": "Riley Greene",
+      "position": "OF",
+      "team": "DET",
+      "pick_number": 74,
+      "round": 6,
+      "stats": {
+        "projected_home_runs": 27.3333,
+        "projected_obp": 0.3303,
+        "projected_runs": 79.6667,
+        "projected_rbi": 89.3333,
+        "projected_stolen_bases": 3.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ben_rice",
+      "name": "Ben Rice",
+      "position": "1B",
+      "team": "NYY",
+      "pick_number": 83,
+      "round": 7,
+      "stats": {
+        "projected_home_runs": 25.6667,
+        "projected_obp": 0.3313,
+        "projected_runs": 70.3333,
+        "projected_rbi": 74.0,
+        "projected_stolen_bases": 4.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "nick_pivetta",
+      "name": "Nick Pivetta",
+      "position": "RP",
+      "team": "SD",
+      "pick_number": 100,
+      "round": 8,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.0,
+        "projected_quality_starts": 18.6333,
+        "projected_strikeouts": 187.8527,
+        "projected_era": 3.9367,
+        "projected_whip": 1.2481,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "zack_wheeler",
+      "name": "Zack Wheeler",
+      "position": "SP",
+      "team": "PHI",
+      "pick_number": 109,
+      "round": 9,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.3333,
+        "projected_quality_starts": 15.6,
+        "projected_strikeouts": 164.9106,
+        "projected_era": 3.27,
+        "projected_whip": 1.2056,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "brandon_woodruff",
+      "name": "Brandon Woodruff",
+      "position": "SP",
+      "team": "MIL",
+      "pick_number": 126,
+      "round": 10,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 10.0,
+        "projected_quality_starts": 17.55,
+        "projected_strikeouts": 160.6873,
+        "projected_era": 3.7767,
+        "projected_whip": 1.2159,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "blake_snell",
+      "name": "Blake Snell",
+      "position": "SP",
+      "team": "LAD",
+      "pick_number": 135,
+      "round": 11,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 9.6667,
+        "projected_quality_starts": 15.1667,
+        "projected_strikeouts": 165.6406,
+        "projected_era": 3.5133,
+        "projected_whip": 1.3796,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "shane_mcclanahan",
+      "name": "Shane McClanahan",
+      "position": "SP",
+      "team": "TB",
+      "pick_number": 152,
+      "round": 12,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 8.6667,
+        "projected_quality_starts": 14.7333,
+        "projected_strikeouts": 144.5721,
+        "projected_era": 3.43,
+        "projected_whip": 1.237,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "luis_castillo",
+      "name": "Luis Castillo",
+      "position": "SP",
+      "team": "SEA",
+      "pick_number": 161,
+      "round": 13,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 11.0,
+        "projected_quality_starts": 19.5,
+        "projected_strikeouts": 166.0226,
+        "projected_era": 3.86,
+        "projected_whip": 1.2259,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "shota_imanaga",
+      "name": "Shota Imanaga",
+      "position": "RP",
+      "team": "CHC",
+      "pick_number": 178,
+      "round": 14,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 9.3333,
+        "projected_quality_starts": 16.9,
+        "projected_strikeouts": 137.4669,
+        "projected_era": 4.0567,
+        "projected_whip": 1.163,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "ian_happ",
+      "name": "Ian Happ",
+      "position": "OF",
+      "team": "CHC",
+      "pick_number": 187,
+      "round": 15,
+      "stats": {
+        "projected_home_runs": 22.0,
+        "projected_obp": 0.34,
+        "projected_runs": 81.0,
+        "projected_rbi": 76.0,
+        "projected_stolen_bases": 8.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "gerrit_cole",
+      "name": "Gerrit Cole",
+      "position": "SP",
+      "team": "NYY",
+      "pick_number": 204,
+      "round": 16,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 7.6667,
+        "projected_quality_starts": 13.8667,
+        "projected_strikeouts": 127.8322,
+        "projected_era": 3.9233,
+        "projected_whip": 1.2381,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "trent_grisham",
+      "name": "Trent Grisham",
+      "position": "OF",
+      "team": "NYY",
+      "pick_number": 213,
+      "round": 17,
+      "stats": {
+        "projected_home_runs": 22.3333,
+        "projected_obp": 0.3263,
+        "projected_runs": 69.3333,
+        "projected_rbi": 60.0,
+        "projected_stolen_bases": 5.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "shane_bieber",
+      "name": "Shane Bieber",
+      "position": "SP",
+      "team": "TOR",
+      "pick_number": 230,
+      "round": 18,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 7.6667,
+        "projected_quality_starts": 13.0,
+        "projected_strikeouts": 111.0189,
+        "projected_era": 3.7333,
+        "projected_whip": 1.1811,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "gleyber_torres",
+      "name": "Gleyber Torres",
+      "position": "2B",
+      "team": "DET",
+      "pick_number": 239,
+      "round": 19,
+      "stats": {
+        "projected_home_runs": 18.0,
+        "projected_obp": 0.3453,
+        "projected_runs": 80.6667,
+        "projected_rbi": 68.6667,
+        "projected_stolen_bases": 5.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "isaac_paredes",
+      "name": "Isaac Paredes",
+      "position": "3B",
+      "team": "HOU",
+      "pick_number": 256,
+      "round": 20,
+      "stats": {
+        "projected_home_runs": 20.0,
+        "projected_obp": 0.3453,
+        "projected_runs": 60.6667,
+        "projected_rbi": 62.0,
+        "projected_stolen_bases": 1.0,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "otto_lopez",
+      "name": "Otto Lopez",
+      "position": "SS",
+      "team": "MIA",
+      "pick_number": 265,
+      "round": 21,
+      "stats": {
+        "projected_home_runs": 11.3333,
+        "projected_obp": 0.322,
+        "projected_runs": 60.3333,
+        "projected_rbi": 59.0,
+        "projected_stolen_bases": 15.3333,
+        "projected_wins": null,
+        "projected_quality_starts": null,
+        "projected_strikeouts": null,
+        "projected_era": null,
+        "projected_whip": null,
+        "projected_saves": null,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "andrew_painter",
+      "name": "Andrew Painter",
+      "position": "SP",
+      "team": "PHI",
+      "pick_number": 282,
+      "round": 22,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 5.3333,
+        "projected_quality_starts": 11.4833,
+        "projected_strikeouts": 86.4216,
+        "projected_era": 4.6867,
+        "projected_whip": 1.3211,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    },
+    {
+      "player_id": "payton_tolle",
+      "name": "Payton Tolle",
+      "position": "SP",
+      "team": "BOS",
+      "pick_number": 291,
+      "round": 23,
+      "stats": {
+        "projected_home_runs": null,
+        "projected_obp": null,
+        "projected_runs": null,
+        "projected_rbi": null,
+        "projected_stolen_bases": null,
+        "projected_wins": 3.0,
+        "projected_quality_starts": 3.4667,
+        "projected_strikeouts": 52.1259,
+        "projected_era": 4.0167,
+        "projected_whip": 1.2785,
+        "projected_saves": 0.0,
+        "projected_holds": null
+      }
+    }
+  ]
 }

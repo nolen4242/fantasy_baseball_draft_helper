@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "bryan_reynolds",
+    "name": "Bryan Reynolds",
+    "position": "OF",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": 19.0,
+    "projected_obp": 0.3253,
+    "projected_runs": 73.0,
+    "projected_rbi": 74.6667,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 195.52
+  },
+  "pick_info": {
+    "pick_number": 198,
+    "round": 16,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "OF"
+}

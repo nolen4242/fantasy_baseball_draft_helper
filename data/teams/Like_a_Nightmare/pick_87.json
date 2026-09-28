@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "willy_adames",
+    "name": "Willy Adames",
+    "position": "SS",
+    "team": "SF",
+    "age": null,
+    "projected_home_runs": 26.0,
+    "projected_obp": 0.3193,
+    "projected_runs": 81.0,
+    "projected_rbi": 82.6667,
+    "projected_stolen_bases": 11.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 124.51
+  },
+  "pick_info": {
+    "pick_number": 87,
+    "round": 7,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "SS"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "brady_singer",
+    "name": "Brady Singer",
+    "position": "SP",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 19.7167,
+    "projected_strikeouts": 158.6826,
+    "projected_era": 4.3833,
+    "projected_whip": 1.2641,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 169.4667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 349.66
+  },
+  "pick_info": {
+    "pick_number": 292,
+    "round": 23,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "SP"
+}

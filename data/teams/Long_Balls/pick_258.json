@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "grayson_rodriguez",
+    "name": "Grayson Rodriguez",
+    "position": "SP",
+    "team": "LAA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.6667,
+    "projected_quality_starts": 14.5167,
+    "projected_strikeouts": 128.7042,
+    "projected_era": 3.9133,
+    "projected_whip": 1.2807,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 122.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 320.56
+  },
+  "pick_info": {
+    "pick_number": 258,
+    "round": 20,
+    "team_name": "Long Balls"
+  },
+  "position": "SP"
+}

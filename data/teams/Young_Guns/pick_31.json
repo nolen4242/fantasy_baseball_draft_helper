@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "matt_olson",
+    "name": "Matt Olson",
+    "position": "1B",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": 30.6667,
+    "projected_obp": 0.3453,
+    "projected_runs": 89.3333,
+    "projected_rbi": 95.0,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 49.05
+  },
+  "pick_info": {
+    "pick_number": 31,
+    "round": 3,
+    "team_name": "Young Guns"
+  },
+  "position": "1B"
+}

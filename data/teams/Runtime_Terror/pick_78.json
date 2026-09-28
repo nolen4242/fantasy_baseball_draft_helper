@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "aroldis_chapman",
+    "name": "Aroldis Chapman",
+    "position": "RP",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 84.2618,
+    "projected_era": 2.9967,
+    "projected_whip": 1.3889,
+    "projected_saves": 30.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 60.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 66.08
+  },
+  "pick_info": {
+    "pick_number": 78,
+    "round": 6,
+    "team_name": "Runtime Terror"
+  },
+  "position": "RP"
+}

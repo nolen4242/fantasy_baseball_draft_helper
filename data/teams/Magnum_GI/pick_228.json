@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jake_burger",
+    "name": "Jake Burger",
+    "position": "3B",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": 25.3333,
+    "projected_obp": 0.2943,
+    "projected_runs": 63.3333,
+    "projected_rbi": 76.0,
+    "projected_stolen_bases": 2.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 274.15
+  },
+  "pick_info": {
+    "pick_number": 228,
+    "round": 18,
+    "team_name": "Magnum GI"
+  },
+  "position": "3B"
+}

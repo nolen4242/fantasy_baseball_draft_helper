@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ryne_nelson",
+    "name": "Ryne Nelson",
+    "position": "SP",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.3333,
+    "projected_quality_starts": 17.9833,
+    "projected_strikeouts": 134.4604,
+    "projected_era": 4.2067,
+    "projected_whip": 1.2233,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 162.4333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 266.45
+  },
+  "pick_info": {
+    "pick_number": 250,
+    "round": 20,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SP"
+}

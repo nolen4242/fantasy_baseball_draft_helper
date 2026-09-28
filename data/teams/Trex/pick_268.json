@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jasson_dominguez",
+    "name": "Jasson Dominguez",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 4.3333,
+    "projected_obp": 0.3223,
+    "projected_runs": 18.3333,
+    "projected_rbi": 16.3333,
+    "projected_stolen_bases": 6.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 232.65
+  },
+  "pick_info": {
+    "pick_number": 268,
+    "round": 21,
+    "team_name": "Trex"
+  },
+  "position": "OF"
+}

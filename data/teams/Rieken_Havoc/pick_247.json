@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "xander_bogaerts",
+    "name": "Xander Bogaerts",
+    "position": "SS",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": 13.3333,
+    "projected_obp": 0.3303,
+    "projected_runs": 69.6667,
+    "projected_rbi": 58.0,
+    "projected_stolen_bases": 16.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 228.21
+  },
+  "pick_info": {
+    "pick_number": 247,
+    "round": 19,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "SS"
+}

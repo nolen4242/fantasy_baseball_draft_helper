@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "spencer_steer",
+    "name": "Spencer Steer",
+    "position": "1B",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 13.0,
+    "projected_obp": 0.319,
+    "projected_runs": 46.0,
+    "projected_rbi": 48.3333,
+    "projected_stolen_bases": 6.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 259.34
+  },
+  "pick_info": {
+    "pick_number": 297,
+    "round": 23,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "1B"
+}

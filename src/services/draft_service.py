@@ -111,10 +111,12 @@ class DraftService:
                 # Can't check positions, but roster size is full - don't allow more picks
                 return False
         
-        # Create pick
+        # Create pick — derive round from pick number (not tracked counter)
+        pick_number = len(draft.picks) + 1
+        pick_round = ((pick_number - 1) // draft.total_teams) + 1
         pick = DraftPick(
-            pick_number=len(draft.picks) + 1,
-            round=draft.current_round,
+            pick_number=pick_number,
+            round=pick_round,
             team_name=team_name,
             player_id=player_id
         )

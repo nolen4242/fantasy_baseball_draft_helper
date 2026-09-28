@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "matt_mclain",
+    "name": "Matt McLain",
+    "position": "SS",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 17.0,
+    "projected_obp": 0.3157,
+    "projected_runs": 68.0,
+    "projected_rbi": 57.6667,
+    "projected_stolen_bases": 15.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 208.45
+  },
+  "pick_info": {
+    "pick_number": 171,
+    "round": 14,
+    "team_name": "Guillotine"
+  },
+  "position": "SS"
+}

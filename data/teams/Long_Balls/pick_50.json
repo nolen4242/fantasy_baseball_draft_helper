@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "mason_miller",
+    "name": "Mason Miller",
+    "position": "SP",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 103.0615,
+    "projected_era": 2.4333,
+    "projected_whip": 1.3226,
+    "projected_saves": 32.3333,
+    "projected_holds": null,
+    "projected_innings_pitched": 65.3333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 39.0
+  },
+  "pick_info": {
+    "pick_number": 50,
+    "round": 4,
+    "team_name": "Long Balls"
+  },
+  "position": "SP"
+}

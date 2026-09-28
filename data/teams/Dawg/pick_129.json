@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jose_altuve",
+    "name": "Jose Altuve",
+    "position": "2B",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": 20.3333,
+    "projected_obp": 0.3317,
+    "projected_runs": 77.0,
+    "projected_rbi": 71.6667,
+    "projected_stolen_bases": 12.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 112.25
+  },
+  "pick_info": {
+    "pick_number": 129,
+    "round": 10,
+    "team_name": "Dawg"
+  },
+  "position": "2B"
+}

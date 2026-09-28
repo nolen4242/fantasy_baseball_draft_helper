@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "mookie_betts",
+    "name": "Mookie Betts",
+    "position": "OF",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": 22.3333,
+    "projected_obp": 0.354,
+    "projected_runs": 89.3333,
+    "projected_rbi": 83.3333,
+    "projected_stolen_bases": 8.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 53.71
+  },
+  "pick_info": {
+    "pick_number": 21,
+    "round": 2,
+    "team_name": "Trex"
+  },
+  "position": "OF"
+}

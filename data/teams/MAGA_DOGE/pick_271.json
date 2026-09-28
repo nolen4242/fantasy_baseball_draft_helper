@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "nolan_arenado",
+    "name": "Nolan Arenado",
+    "position": "3B",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 16.6667,
+    "projected_obp": 0.3093,
+    "projected_runs": 61.0,
+    "projected_rbi": 70.0,
+    "projected_stolen_bases": 3.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 487.4
+  },
+  "pick_info": {
+    "pick_number": 271,
+    "round": 21,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "3B"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "edward_cabrera",
+    "name": "Edward Cabrera",
+    "position": "SP",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.6667,
+    "projected_quality_starts": 16.4667,
+    "projected_strikeouts": 145.8291,
+    "projected_era": 3.9533,
+    "projected_whip": 1.3426,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 136.7667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 197.93
+  },
+  "pick_info": {
+    "pick_number": 174,
+    "round": 14,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "SP"
+}

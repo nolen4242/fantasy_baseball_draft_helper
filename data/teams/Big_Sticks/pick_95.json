@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "daniel_palencia",
+    "name": "Daniel Palencia",
+    "position": "RP",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 73.4491,
+    "projected_era": 3.6667,
+    "projected_whip": 1.3544,
+    "projected_saves": 29.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 66.0333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 141.61
+  },
+  "pick_info": {
+    "pick_number": 95,
+    "round": 8,
+    "team_name": "Big Sticks"
+  },
+  "position": "RP"
+}

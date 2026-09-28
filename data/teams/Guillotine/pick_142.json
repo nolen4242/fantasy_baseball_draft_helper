@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "jac_caglianone",
+    "name": "Jac Caglianone",
+    "position": "1B",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": 18.3333,
+    "projected_obp": 0.3153,
+    "projected_runs": 53.3333,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 3.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 215.69
+  },
+  "pick_info": {
+    "pick_number": 142,
+    "round": 11,
+    "team_name": "Guillotine"
+  },
+  "position": "1B"
+}

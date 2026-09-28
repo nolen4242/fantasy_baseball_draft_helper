@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "pete_fairbanks",
+    "name": "Pete Fairbanks",
+    "position": "RP",
+    "team": "MIA",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 63.8221,
+    "projected_era": 3.4933,
+    "projected_whip": 1.2989,
+    "projected_saves": 26.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 61.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 130.92
+  },
+  "pick_info": {
+    "pick_number": 139,
+    "round": 11,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "RP"
+}

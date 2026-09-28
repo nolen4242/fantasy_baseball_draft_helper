@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "yandy_diaz",
+    "name": "Yandy Diaz",
+    "position": "1B",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": 19.6667,
+    "projected_obp": 0.3617,
+    "projected_runs": 79.6667,
+    "projected_rbi": 74.6667,
+    "projected_stolen_bases": 2.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 131.36
+  },
+  "pick_info": {
+    "pick_number": 131,
+    "round": 11,
+    "team_name": "Runtime Terror"
+  },
+  "position": "1B"
+}

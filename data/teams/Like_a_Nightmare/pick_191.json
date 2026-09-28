@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "caleb_durbin",
+    "name": "Caleb Durbin",
+    "position": "3B",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": 10.0,
+    "projected_obp": 0.3327,
+    "projected_runs": 60.3333,
+    "projected_rbi": 54.0,
+    "projected_stolen_bases": 20.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 240.74
+  },
+  "pick_info": {
+    "pick_number": 191,
+    "round": 15,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "3B"
+}

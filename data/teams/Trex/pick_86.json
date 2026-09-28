@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "vinnie_pasquantino",
+    "name": "Vinnie Pasquantino",
+    "position": "1B",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": 26.3333,
+    "projected_obp": 0.3297,
+    "projected_runs": 73.6667,
+    "projected_rbi": 89.6667,
+    "projected_stolen_bases": 1.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 82.58
+  },
+  "pick_info": {
+    "pick_number": 86,
+    "round": 7,
+    "team_name": "Trex"
+  },
+  "position": "1B"
+}

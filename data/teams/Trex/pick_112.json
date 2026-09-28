@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "spencer_strider",
+    "name": "Spencer Strider",
+    "position": "SP",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.3333,
+    "projected_quality_starts": 17.7667,
+    "projected_strikeouts": 185.9893,
+    "projected_era": 3.8733,
+    "projected_whip": 1.2996,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 158.6667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 107.29
+  },
+  "pick_info": {
+    "pick_number": 112,
+    "round": 9,
+    "team_name": "Trex"
+  },
+  "position": "SP"
+}

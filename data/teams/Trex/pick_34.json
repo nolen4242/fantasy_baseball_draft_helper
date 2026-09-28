@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "pete_crow_armstrong",
+    "name": "Pete Crow-Armstrong",
+    "position": "OF",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": 23.0,
+    "projected_obp": 0.3,
+    "projected_runs": 78.3333,
+    "projected_rbi": 79.3333,
+    "projected_stolen_bases": 31.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 31.04
+  },
+  "pick_info": {
+    "pick_number": 34,
+    "round": 3,
+    "team_name": "Trex"
+  },
+  "position": "OF"
+}

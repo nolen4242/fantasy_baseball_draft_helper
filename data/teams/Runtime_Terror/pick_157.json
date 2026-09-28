@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "sonny_gray",
+    "name": "Sonny Gray",
+    "position": "SP",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.6667,
+    "projected_quality_starts": 19.5,
+    "projected_strikeouts": 183.4946,
+    "projected_era": 3.74,
+    "projected_whip": 1.2081,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 175.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 131.99
+  },
+  "pick_info": {
+    "pick_number": 157,
+    "round": 13,
+    "team_name": "Runtime Terror"
+  },
+  "position": "SP"
+}

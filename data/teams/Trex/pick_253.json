@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ryan_weathers",
+    "name": "Ryan Weathers",
+    "position": "SP",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.3333,
+    "projected_quality_starts": 12.7833,
+    "projected_strikeouts": 120.6565,
+    "projected_era": 3.9833,
+    "projected_whip": 1.2896,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 125.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 345.49
+  },
+  "pick_info": {
+    "pick_number": 253,
+    "round": 20,
+    "team_name": "Trex"
+  },
+  "position": "SP"
+}

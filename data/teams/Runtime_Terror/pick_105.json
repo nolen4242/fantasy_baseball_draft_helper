@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "griffin_jax",
+    "name": "Griffin Jax",
+    "position": "RP",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 83.6989,
+    "projected_era": 2.9533,
+    "projected_whip": 1.2315,
+    "projected_saves": 12.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 65.6667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 224.77
+  },
+  "pick_info": {
+    "pick_number": 105,
+    "round": 9,
+    "team_name": "Runtime Terror"
+  },
+  "position": "RP"
+}

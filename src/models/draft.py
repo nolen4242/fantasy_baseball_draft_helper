@@ -35,11 +35,10 @@ class DraftState:
             self.team_rosters[pick.team_name] = []
         self.team_rosters[pick.team_name].append(pick.player_id)
         
-        # Update current pick/round
-        self.current_pick += 1
-        if self.current_pick > self.total_teams:
-            self.current_round += 1
-            self.current_pick = 1
+        # Derive current pick/round from total picks (resilient to reverts)
+        next_pick_number = len(self.picks) + 1
+        self.current_round = ((next_pick_number - 1) // self.total_teams) + 1
+        self.current_pick = ((next_pick_number - 1) % self.total_teams) + 1
     
     def get_my_roster(self) -> List[str]:
         """Get list of player IDs on my team."""

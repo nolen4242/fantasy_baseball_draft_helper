@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "robert_garcia",
+    "name": "Robert Garcia",
+    "position": "RP",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 68.2791,
+    "projected_era": 3.5733,
+    "projected_whip": 1.3015,
+    "projected_saves": 19.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 62.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 338.9
+  },
+  "pick_info": {
+    "pick_number": 192,
+    "round": 15,
+    "team_name": "Big Sticks"
+  },
+  "position": "RP"
+}

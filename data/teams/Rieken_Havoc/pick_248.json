@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "daylen_lile",
+    "name": "Daylen Lile",
+    "position": "OF",
+    "team": "WAS",
+    "age": null,
+    "projected_home_runs": 10.6667,
+    "projected_obp": 0.3227,
+    "projected_runs": 61.0,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 13.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 205.8
+  },
+  "pick_info": {
+    "pick_number": 248,
+    "round": 20,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "OF"
+}

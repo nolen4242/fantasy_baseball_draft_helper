@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "ryan_walker",
+    "name": "Ryan Walker",
+    "position": "RP",
+    "team": "SF",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 66.6907,
+    "projected_era": 3.3633,
+    "projected_whip": 1.2574,
+    "projected_saves": 25.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 62.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 196.0
+  },
+  "pick_info": {
+    "pick_number": 148,
+    "round": 12,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "RP"
+}

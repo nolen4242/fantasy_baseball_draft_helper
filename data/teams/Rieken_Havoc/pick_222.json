@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "edwin_uceta",
+    "name": "Edwin Uceta",
+    "position": "RP",
+    "team": "TB",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.3333,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 79.4489,
+    "projected_era": 3.66,
+    "projected_whip": 1.3119,
+    "projected_saves": 12.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 67.3333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 297.03
+  },
+  "pick_info": {
+    "pick_number": 222,
+    "round": 18,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "RP"
+}

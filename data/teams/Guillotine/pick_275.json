@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "will_vest",
+    "name": "Will Vest",
+    "position": "RP",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 68.0275,
+    "projected_era": 3.3033,
+    "projected_whip": 1.2574,
+    "projected_saves": 6.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 66.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 335.36
+  },
+  "pick_info": {
+    "pick_number": 275,
+    "round": 22,
+    "team_name": "Guillotine"
+  },
+  "position": "RP"
+}

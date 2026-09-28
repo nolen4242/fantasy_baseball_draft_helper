@@ -25,6 +25,26 @@ CORS(app)
 # Initialize services
 draft_service = DraftService()
 
+# Auto-load the most recent saved draft on startup (survives reloader restarts)
+import glob as _glob
+_draft_files = sorted(
+    _glob.glob(str(draft_service.data_dir / "draft_*.json")),
+    key=lambda f: os.path.getmtime(f),
+    reverse=True,
+)
+for _df in _draft_files:
+    _draft_id = os.path.splitext(os.path.basename(_df))[0]
+    _loaded = draft_service.load_draft(_draft_id)
+    if _loaded and _loaded.picks:
+        print(f"[startup] Auto-loaded draft {_draft_id} with {len(_loaded.picks)} picks")
+        break
+else:
+    if _draft_files:
+        # Load the most recent even if empty
+        _draft_id = os.path.splitext(os.path.basename(_draft_files[0]))[0]
+        draft_service.load_draft(_draft_id)
+        print(f"[startup] Auto-loaded draft {_draft_id} (no picks yet)")
+
 # Load players from master_players.json at startup
 loader = PlayerLoader()
 all_players, savant_data = loader.load()
@@ -1266,5 +1286,5 @@ def get_draft_recap():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5001, use_reloader=False)
 

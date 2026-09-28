@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "elly_de_la_cruz",
+    "name": "Elly De La Cruz",
+    "position": "SS",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 23.6667,
+    "projected_obp": 0.337,
+    "projected_runs": 90.6667,
+    "projected_rbi": 82.6667,
+    "projected_stolen_bases": 40.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 9.01
+  },
+  "pick_info": {
+    "pick_number": 5,
+    "round": 1,
+    "team_name": "Young Guns"
+  },
+  "position": "SS"
+}

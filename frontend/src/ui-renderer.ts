@@ -34,7 +34,7 @@ export class UIRenderer {
         if (!categoryNeeds || categoryNeeds.length === 0) return '';
         const isHitter = !['SP', 'RP', 'P'].includes(player.position);
         const hitterCats = ['HR', 'OBP', 'R', 'RBI', 'SB'];
-        const pitcherCats = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS'];
+        const pitcherCats = ['ERA', 'K', 'SV', 'WHIP', 'WQS'];
         const relevantCats = isHitter ? hitterCats : pitcherCats;
         const dots = categoryNeeds
             .filter(cn => relevantCats.includes(cn.category) && (cn.need === 'critical' || cn.need === 'moderate'))
@@ -70,9 +70,9 @@ export class UIRenderer {
         const teamOrder = [
             "Runtime Terror", "Dawg", "Long Balls", "Simba's Dublin Green Sox",
             "Young Guns", "Gashouse Gang", "Magnum GI", "Trex",
-            "Rieken Havoc", "Guillotine", "MAGA DOGE", "Big Sticks", "Like a Nightmare"
+            "Like a Nightmare", "Big Sticks", "MAGA DOGE", "Guillotine", "Rieken Havoc"
         ];
-        const FIXED_ROUNDS = 4;
+        const FIXED_ROUNDS = 3;
 
         const getTeamForRoundPick = (r: number, p: number): string => {
             if (r <= FIXED_ROUNDS) return teamOrder[p - 1];
@@ -123,11 +123,29 @@ export class UIRenderer {
                     (window as any).showPlayerDetails(recommendation.player.player_id);
                 };
                 recommendedPositionEl.textContent = recommendation.player.position || '-';
+                
+                // Add skip button if not already present
+                let skipBtn = document.getElementById('skip-rec-btn');
+                if (!skipBtn) {
+                    skipBtn = document.createElement('button');
+                    skipBtn.id = 'skip-rec-btn';
+                    skipBtn.className = 'btn-skip-rec';
+                    skipBtn.textContent = 'Skip';
+                    skipBtn.title = 'Skip this player (injured/unavailable)';
+                    recommendedPlayerEl.parentElement?.appendChild(skipBtn);
+                }
+                skipBtn.style.display = 'inline-block';
+                skipBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    (window as any).skipRecommendation();
+                };
             } else {
                 recommendedPlayerEl.textContent = '-';
                 recommendedPlayerEl.style.cursor = 'default';
                 recommendedPlayerEl.onclick = null;
                 recommendedPositionEl.textContent = '-';
+                const skipBtn = document.getElementById('skip-rec-btn');
+                if (skipBtn) skipBtn.style.display = 'none';
             }
         }
     }
@@ -579,7 +597,7 @@ export class UIRenderer {
         if (!container) return;
 
         const battingCats = ['HR', 'OBP', 'R', 'RBI', 'SB'];
-        const pitchingCats = ['ERA', 'K', 'SHOLDS', 'WHIP', 'WQS'];
+        const pitchingCats = ['ERA', 'K', 'SV', 'WHIP', 'WQS'];
         const allCats = [...battingCats, ...pitchingCats];
         const numTeams = data.final_rankings.length;
         const leader = data.final_rankings[0];

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "randy_arozarena",
+    "name": "Randy Arozarena",
+    "position": "OF",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 22.3333,
+    "projected_obp": 0.329,
+    "projected_runs": 82.0,
+    "projected_rbi": 75.3333,
+    "projected_stolen_bases": 23.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 90.28
+  },
+  "pick_info": {
+    "pick_number": 80,
+    "round": 7,
+    "team_name": "Dawg"
+  },
+  "position": "OF"
+}

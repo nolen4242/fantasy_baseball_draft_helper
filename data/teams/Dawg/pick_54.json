@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "edwin_diaz",
+    "name": "Edwin Diaz",
+    "position": "RP",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 90.4126,
+    "projected_era": 3.0167,
+    "projected_whip": 1.2978,
+    "projected_saves": 36.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 65.3333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 37.93
+  },
+  "pick_info": {
+    "pick_number": 54,
+    "round": 5,
+    "team_name": "Dawg"
+  },
+  "position": "RP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "noelvi_marte",
+    "name": "Noelvi Marte",
+    "position": "3B",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": 16.0,
+    "projected_obp": 0.305,
+    "projected_runs": 58.3333,
+    "projected_rbi": 59.0,
+    "projected_stolen_bases": 13.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 134.39
+  },
+  "pick_info": {
+    "pick_number": 168,
+    "round": 13,
+    "team_name": "Guillotine"
+  },
+  "position": "3B"
+}

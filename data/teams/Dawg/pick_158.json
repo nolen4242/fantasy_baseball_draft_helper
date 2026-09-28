@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "kenley_jansen",
+    "name": "Kenley Jansen",
+    "position": "RP",
+    "team": "DET",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 59.9817,
+    "projected_era": 4.0467,
+    "projected_whip": 1.303,
+    "projected_saves": 22.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 58.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 139.65
+  },
+  "pick_info": {
+    "pick_number": 158,
+    "round": 13,
+    "team_name": "Dawg"
+  },
+  "position": "RP"
+}

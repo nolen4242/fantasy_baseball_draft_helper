@@ -316,12 +316,12 @@ class RecommendationEngine:
         my_team: List[Player],
         draft_state: DraftState,
     ) -> Tuple[float, str]:
-        """Pitcher roster limits and closer/holds needs.
+        """Pitcher roster limits and closer needs.
 
         Applies two adjustments for pitchers:
         1. Roster cap penalties: -40 at 7+ pitchers, -150 at 9+ pitchers
-        2. Closer/holds bonuses: tiered by closer count and draft pick
-           thresholds.  Boosted to prevent SHOLDS punting.
+        2. Closer bonuses: tiered by closer count and draft pick
+           thresholds.  Boosted to prevent SV punting.
         """
         is_pitcher = player.position in ['SP', 'RP', 'P']
         if not is_pitcher:
@@ -340,7 +340,7 @@ class RecommendationEngine:
             score -= 40
             reasoning_parts.append("Have 7+ pitchers")
 
-        # Closer bonus (saves)
+        # Closer bonus (saves only — no holds category in this league)
         player_saves = player.projected_saves or 0
         if player_saves >= 10:
             closers_on_team = sum(
@@ -348,42 +348,16 @@ class RecommendationEngine:
             )
             if closers_on_team == 0 and current_pick >= 60:
                 score += 100
-                reasoning_parts.append(f"NEED closer for SHOLDS ({int(player_saves)} SV)")
+                reasoning_parts.append(f"NEED closer for SV ({int(player_saves)} SV)")
             elif closers_on_team == 1 and current_pick >= 100:
                 score += 60
-                reasoning_parts.append(f"2nd closer for SHOLDS ({int(player_saves)} SV)")
+                reasoning_parts.append(f"2nd closer for SV ({int(player_saves)} SV)")
             elif closers_on_team == 2 and current_pick >= 160:
                 score += 30
-                reasoning_parts.append(f"3rd closer for SHOLDS ({int(player_saves)} SV)")
-
-        # Holds bonus — holders contribute to SHOLDS too
-        player_holds = player.projected_holds or 0
-        if player_holds >= 10:
-            holders_on_team = sum(
-                1 for p in my_team if (p.projected_holds or 0) >= 10
-            )
-            if holders_on_team == 0 and current_pick >= 100:
-                score += 40
-                reasoning_parts.append(f"Holds contributor ({int(player_holds)} HD)")
-            elif holders_on_team == 1 and current_pick >= 160:
-                score += 20
-                reasoning_parts.append(f"2nd holds contributor ({int(player_holds)} HD)")
+                reasoning_parts.append(f"3rd closer for SV ({int(player_saves)} SV)")
 
         reasoning = " | ".join(reasoning_parts) if reasoning_parts else ""
-        return score, reasoning
-
-    def _score_category_balance(
-        self,
-        player: Player,
-        my_team: List[Player],
-        all_team_rosters: Dict[str, List[Player]],
-        team_name: str,
-    ) -> Tuple[float, str]:
-        """Category balance bonus with anti-punt protection.
-
-        Two tiers of protection:
-        1. Standard balance (5+ players, losing to 8+ opponents): +30 per weak cat
-        2. Anti-punt floor (8+ players): if bottom-3 in any category, strong
+        return score, reasoningplayers): if bottom-3 in any category, strong
            boost (+50) for players improving it.  If already bottom-3 in one
            category, double the boost for a second weak category to prevent
            double-punting.

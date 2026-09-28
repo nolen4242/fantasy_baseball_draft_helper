@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "justin_crawford",
+    "name": "Justin Crawford",
+    "position": "OF",
+    "team": "PHI",
+    "age": null,
+    "projected_home_runs": 5.3333,
+    "projected_obp": 0.326,
+    "projected_runs": 47.0,
+    "projected_rbi": 36.0,
+    "projected_stolen_bases": 19.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 328.52
+  },
+  "pick_info": {
+    "pick_number": 276,
+    "round": 22,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "OF"
+}

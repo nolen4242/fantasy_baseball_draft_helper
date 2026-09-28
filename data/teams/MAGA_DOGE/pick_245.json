@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "dustin_may",
+    "name": "Dustin May",
+    "position": "SP",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.3333,
+    "projected_quality_starts": 15.3833,
+    "projected_strikeouts": 134.9974,
+    "projected_era": 4.22,
+    "projected_whip": 1.3126,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 148.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 534.64
+  },
+  "pick_info": {
+    "pick_number": 245,
+    "round": 19,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SP"
+}

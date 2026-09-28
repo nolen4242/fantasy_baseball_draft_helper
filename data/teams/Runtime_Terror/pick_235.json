@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "andrew_abbott",
+    "name": "Andrew Abbott",
+    "position": "SP",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.3333,
+    "projected_quality_starts": 18.6333,
+    "projected_strikeouts": 150.316,
+    "projected_era": 4.27,
+    "projected_whip": 1.2567,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 164.4333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 222.3
+  },
+  "pick_info": {
+    "pick_number": 235,
+    "round": 19,
+    "team_name": "Runtime Terror"
+  },
+  "position": "SP"
+}

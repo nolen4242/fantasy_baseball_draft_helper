@@ -15,16 +15,16 @@ class DraftOrder:
         "Gashouse Gang",
         "Magnum GI",
         "Trex",
-        "Rieken Havoc",
-        "Guillotine",
-        "MAGA DOGE",
+        "Like a Nightmare",
         "Big Sticks",
-        "Like a Nightmare"
+        "MAGA DOGE",
+        "Guillotine",
+        "Rieken Havoc"
     ]
 
-    # Rounds 1-4: fixed order. Round 5+: snake (direction flips each round).
-    # Round 5 = first snake round (reverse), Round 6 = normal, Round 7 = reverse, etc.
-    FIXED_ROUNDS = 4
+    # Rounds 1-3: fixed order. Round 4+: snake (direction flips each round).
+    # Round 4 = first snake round (reverse), Round 5 = normal, Round 6 = reverse, etc.
+    FIXED_ROUNDS = 3
 
     # Keep legacy alias so existing code that references ROUNDS_1_5_ORDER still works
     ROUNDS_1_5_ORDER = TEAM_ORDER

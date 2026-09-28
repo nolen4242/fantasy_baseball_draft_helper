@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "payton_tolle",
+    "name": "Payton Tolle",
+    "position": "SP",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": 3.4667,
+    "projected_strikeouts": 52.1259,
+    "projected_era": 4.0167,
+    "projected_whip": 1.2785,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 50.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 494.99
+  },
+  "pick_info": {
+    "pick_number": 291,
+    "round": 23,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}

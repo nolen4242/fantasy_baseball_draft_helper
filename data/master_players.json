@@ -90590,5 +90590,146 @@
     "cbs_adp": 847.5,
     "nfbc_adp": 750.87,
     "projections": {}
+  },
+  "kirby yates": {
+    "name": "Kirby Yates",
+    "player_id": "kirby_yates",
+    "position": "RP",
+    "team": "",
+    "source": "manual_stub"
+  },
+  "garrett cleavinger": {
+    "name": "Garrett Cleavinger",
+    "player_id": "garrett_cleavinger",
+    "position": "RP",
+    "team": "",
+    "source": "manual_stub"
+  },
+  "dylan moore": {
+    "name": "Dylan Moore",
+    "player_id": "dylan_moore",
+    "position": "2B",
+    "team": "",
+    "source": "manual_stub"
+  },
+  "paul sewald": {
+    "name": "Paul Sewald",
+    "player_id": "paul_sewald",
+    "position": "RP",
+    "team": "",
+    "source": "manual_stub"
+  },
+  "taylor rogers": {
+    "name": "Taylor Rogers",
+    "player_id": "taylor_rogers",
+    "position": "RP",
+    "team": "",
+    "source": "manual_stub"
+  },
+  "shohei_ohtani_pitcher": {
+    "player_id": "shohei_ohtani_pitcher",
+    "name": "Shohei Ohtani",
+    "team": "LAD",
+    "position": "SP",
+    "eligible_positions": [
+      "SP",
+      "P"
+    ],
+    "adp": null,
+    "projected_era": 3.0,
+    "projected_whip": 1.05,
+    "projected_wins": 12,
+    "projected_strikeouts": 180,
+    "projected_saves": 0,
+    "projected_innings_pitched": 150
+  },
+  "cameron_schlittler": {
+    "player_id": "cameron_schlittler",
+    "name": "Cameron Schlittler",
+    "team": "DET",
+    "position": "RP",
+    "eligible_positions": [
+      "RP",
+      "P"
+    ],
+    "adp": null,
+    "projected_era": 3.5,
+    "projected_whip": 1.2,
+    "projected_wins": 3,
+    "projected_strikeouts": 60,
+    "projected_saves": 5,
+    "projected_innings_pitched": 55
+  },
+  "willson_contreras_2": {
+    "player_id": "willson_contreras_2",
+    "name": "Willson Contreras",
+    "team": "BOS",
+    "position": "1B",
+    "eligible_positions": [
+      "1B",
+      "CI",
+      "U"
+    ],
+    "adp": null,
+    "projected_home_runs": 15,
+    "projected_stolen_bases": 1,
+    "projected_runs": 55,
+    "projected_rbi": 60,
+    "projected_obp": 0.33,
+    "projected_batting_average": 0.26
+  },
+  "joshua_lowe": {
+    "player_id": "joshua_lowe",
+    "name": "Joshua Lowe",
+    "team": "TB",
+    "position": "OF",
+    "eligible_positions": [
+      "OF",
+      "U"
+    ],
+    "adp": null,
+    "projected_home_runs": 18,
+    "projected_stolen_bases": 20,
+    "projected_runs": 70,
+    "projected_rbi": 65,
+    "projected_obp": 0.33,
+    "projected_batting_average": 0.255
+  },
+  "max_muncy_2": {
+    "player_id": "max_muncy_2",
+    "name": "Max Muncy",
+    "team": "ATH",
+    "position": "2B",
+    "eligible_positions": [
+      "2B",
+      "3B",
+      "MI",
+      "CI",
+      "U"
+    ],
+    "adp": null,
+    "projected_home_runs": 10,
+    "projected_stolen_bases": 3,
+    "projected_runs": 40,
+    "projected_rbi": 35,
+    "projected_obp": 0.31,
+    "projected_batting_average": 0.24
+  },
+  "jose_ferrer": {
+    "player_id": "jose_ferrer",
+    "name": "Jose Ferrer",
+    "team": "HOU",
+    "position": "RP",
+    "eligible_positions": [
+      "RP",
+      "P"
+    ],
+    "adp": null,
+    "projected_era": 3.8,
+    "projected_whip": 1.25,
+    "projected_wins": 3,
+    "projected_strikeouts": 55,
+    "projected_saves": 2,
+    "projected_innings_pitched": 50
   }
 }

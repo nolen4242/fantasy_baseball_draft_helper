@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "julio_rodriguez",
+    "name": "Julio Rodriguez",
+    "position": "OF",
+    "team": "SEA",
+    "age": null,
+    "projected_home_runs": 30.0,
+    "projected_obp": 0.332,
+    "projected_runs": 91.3333,
+    "projected_rbi": 94.3333,
+    "projected_stolen_bases": 25.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 9.92
+  },
+  "pick_info": {
+    "pick_number": 10,
+    "round": 1,
+    "team_name": "Big Sticks"
+  },
+  "position": "OF"
+}

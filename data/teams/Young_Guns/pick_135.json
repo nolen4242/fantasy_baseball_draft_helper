@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "blake_snell",
+    "name": "Blake Snell",
+    "position": "SP",
+    "team": "LAD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 9.6667,
+    "projected_quality_starts": 15.1667,
+    "projected_strikeouts": 165.6406,
+    "projected_era": 3.5133,
+    "projected_whip": 1.3796,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 134.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 91.45
+  },
+  "pick_info": {
+    "pick_number": 135,
+    "round": 11,
+    "team_name": "Young Guns"
+  },
+  "position": "SP"
+}

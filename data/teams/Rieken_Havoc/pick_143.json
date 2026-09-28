@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "carlos_estevez",
+    "name": "Carlos Estevez",
+    "position": "RP",
+    "team": "KC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 57.688,
+    "projected_era": 4.165,
+    "projected_whip": 1.2994,
+    "projected_saves": 31.5,
+    "projected_holds": null,
+    "projected_innings_pitched": 64.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 96.12
+  },
+  "pick_info": {
+    "pick_number": 143,
+    "round": 11,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "RP"
+}

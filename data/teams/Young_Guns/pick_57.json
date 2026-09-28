@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "austin_riley",
+    "name": "Austin Riley",
+    "position": "3B",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": 28.0,
+    "projected_obp": 0.322,
+    "projected_runs": 82.0,
+    "projected_rbi": 87.0,
+    "projected_stolen_bases": 2.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 70.72
+  },
+  "pick_info": {
+    "pick_number": 57,
+    "round": 5,
+    "team_name": "Young Guns"
+  },
+  "position": "3B"
+}

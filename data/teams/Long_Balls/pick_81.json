@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "dylan_cease",
+    "name": "Dylan Cease",
+    "position": "SP",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.6667,
+    "projected_quality_starts": 20.15,
+    "projected_strikeouts": 211.1807,
+    "projected_era": 3.6067,
+    "projected_whip": 1.3193,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 179.6667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 80.66
+  },
+  "pick_info": {
+    "pick_number": 81,
+    "round": 7,
+    "team_name": "Long Balls"
+  },
+  "position": "SP"
+}

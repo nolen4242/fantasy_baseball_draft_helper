@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "dennis_santana",
+    "name": "Dennis Santana",
+    "position": "RP",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 62.263,
+    "projected_era": 3.8967,
+    "projected_whip": 1.2937,
+    "projected_saves": 25.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 67.0,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 164.69
+  },
+  "pick_info": {
+    "pick_number": 182,
+    "round": 14,
+    "team_name": "Runtime Terror"
+  },
+  "position": "RP"
+}

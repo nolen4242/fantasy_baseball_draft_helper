@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "emilio_pagan",
+    "name": "Emilio Pagan",
+    "position": "RP",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 71.5763,
+    "projected_era": 4.0767,
+    "projected_whip": 1.2893,
+    "projected_saves": 26.6667,
+    "projected_holds": null,
+    "projected_innings_pitched": 65.6667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 133.58
+  },
+  "pick_info": {
+    "pick_number": 134,
+    "round": 11,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "RP"
+}

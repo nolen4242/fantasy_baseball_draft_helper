@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "chase_burns",
+    "name": "Chase Burns",
+    "position": "SP",
+    "team": "CIN",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.6667,
+    "projected_quality_starts": 14.0833,
+    "projected_strikeouts": 143.481,
+    "projected_era": 3.6767,
+    "projected_whip": 1.2511,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 123.7333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 123.07
+  },
+  "pick_info": {
+    "pick_number": 102,
+    "round": 8,
+    "team_name": "Long Balls"
+  },
+  "position": "SP"
+}

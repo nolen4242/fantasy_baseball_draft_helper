@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "willson_contreras",
+    "name": "Willson Contreras",
+    "position": "C",
+    "team": "BOS",
+    "age": null,
+    "projected_home_runs": 21.3333,
+    "projected_obp": 0.3413,
+    "projected_runs": 67.6667,
+    "projected_rbi": 72.6667,
+    "projected_stolen_bases": 4.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 184.48
+  },
+  "pick_info": {
+    "pick_number": 32,
+    "round": 3,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "C"
+}

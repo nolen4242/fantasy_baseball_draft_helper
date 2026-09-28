@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "geraldo_perdomo",
+    "name": "Geraldo Perdomo",
+    "position": "SS",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": 13.3333,
+    "projected_obp": 0.3613,
+    "projected_runs": 87.3333,
+    "projected_rbi": 63.6667,
+    "projected_stolen_bases": 21.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 78.17
+  },
+  "pick_info": {
+    "pick_number": 69,
+    "round": 6,
+    "team_name": "Big Sticks"
+  },
+  "position": "SS"
+}

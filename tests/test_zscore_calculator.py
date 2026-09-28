@@ -187,7 +187,7 @@ def test_inverted_zscores_for_rate_categories(pitcher_a, pitcher_b, others):
 @given(pitcher=pitcher_strategy())
 def test_derived_category_formulas(pitcher):
     """For any pitcher with saves, holds, wins, and quality_starts,
-    SHOLDS = saves + holds×0.5 and WQS = wins + quality_starts.
+    SV = saves (direct) and WQS = wins + quality_starts.
 
     **Validates: Requirements 3.6, 3.7**
     """
@@ -198,11 +198,11 @@ def test_derived_category_formulas(pitcher):
 
     calc = ZScoreCalculator()
 
-    # Verify SHOLDS formula
-    sholds = calc._player_category_value(pitcher, 'SHOLDS')
-    expected_sholds = pitcher.projected_saves + (pitcher.projected_holds * 0.5)
-    assert sholds == pytest.approx(expected_sholds, abs=1e-9), (
-        f"SHOLDS should be {expected_sholds}, got {sholds}"
+    # Verify SV formula (direct saves value)
+    sv = calc._player_category_value(pitcher, 'SV')
+    expected_sv = pitcher.projected_saves
+    assert sv == pytest.approx(expected_sv, abs=1e-9), (
+        f"SV should be {expected_sv}, got {sv}"
     )
 
     # Verify WQS formula
@@ -314,23 +314,23 @@ class TestZeroStddev:
             assert result[pid]["composite"] == pytest.approx(0.0, abs=1e-9)
 
 
-class TestSHOLDSAndWQS:
-    """Verify SHOLDS and WQS derived category formulas with known values.
+class TestSVAndWQS:
+    """Verify SV and WQS category formulas with known values.
 
-    SHOLDS = projected_saves + (projected_holds × 0.5)
+    SV = projected_saves (direct)
     WQS = projected_wins + projected_quality_starts
 
     Validates: Requirements 3.6, 3.7
     """
 
-    def test_sholds_formula(self):
+    def test_sv_formula(self):
         calc = ZScoreCalculator()
         pitcher = Player(player_id="p1", name="Pitcher", position="SP", team="T",
                          projected_saves=20.0, projected_holds=10.0,
                          projected_wins=12.0, projected_quality_starts=18.0,
                          projected_strikeouts=200.0, projected_era=3.50, projected_whip=1.20)
-        # SHOLDS = 20 + (10 * 0.5) = 25.0
-        assert calc._player_category_value(pitcher, "SHOLDS") == pytest.approx(25.0)
+        # SV = 20.0 (direct saves value, holds not counted)
+        assert calc._player_category_value(pitcher, "SV") == pytest.approx(20.0)
 
     def test_wqs_formula(self):
         calc = ZScoreCalculator()
@@ -341,11 +341,11 @@ class TestSHOLDSAndWQS:
         # WQS = 15 + 20 = 35.0
         assert calc._player_category_value(pitcher, "WQS") == pytest.approx(35.0)
 
-    def test_sholds_none_when_missing_holds(self):
+    def test_sv_none_when_missing_saves(self):
         calc = ZScoreCalculator()
         pitcher = Player(player_id="p1", name="Pitcher", position="SP", team="T",
-                         projected_saves=20.0, projected_holds=None)
-        assert calc._player_category_value(pitcher, "SHOLDS") is None
+                         projected_saves=None, projected_holds=10.0)
+        assert calc._player_category_value(pitcher, "SV") is None
 
     def test_wqs_none_when_missing_quality_starts(self):
         calc = ZScoreCalculator()

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "kodai_senga",
+    "name": "Kodai Senga",
+    "position": "SP",
+    "team": "NYM",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 7.6667,
+    "projected_quality_starts": 12.7833,
+    "projected_strikeouts": 123.2311,
+    "projected_era": 3.89,
+    "projected_whip": 1.3756,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 121.7667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 317.88
+  },
+  "pick_info": {
+    "pick_number": 263,
+    "round": 21,
+    "team_name": "Long Balls"
+  },
+  "position": "SP"
+}

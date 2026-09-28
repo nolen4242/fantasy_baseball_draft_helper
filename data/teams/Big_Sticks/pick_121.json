@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "josh_hader",
+    "name": "Josh Hader",
+    "position": "RP",
+    "team": "HOU",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 4.0,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 78.7081,
+    "projected_era": 3.25,
+    "projected_whip": 1.3219,
+    "projected_saves": 28.3333,
+    "projected_holds": null,
+    "projected_innings_pitched": 57.3333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 75.56
+  },
+  "pick_info": {
+    "pick_number": 121,
+    "round": 10,
+    "team_name": "Big Sticks"
+  },
+  "position": "RP"
+}

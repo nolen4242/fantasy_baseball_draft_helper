@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "cade_horton",
+    "name": "Cade Horton",
+    "position": "SP",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 8.3333,
+    "projected_quality_starts": 15.3833,
+    "projected_strikeouts": 112.6374,
+    "projected_era": 4.1267,
+    "projected_whip": 1.2689,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 129.4,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 197.43
+  },
+  "pick_info": {
+    "pick_number": 200,
+    "round": 16,
+    "team_name": "Like a Nightmare"
+  },
+  "position": "SP"
+}

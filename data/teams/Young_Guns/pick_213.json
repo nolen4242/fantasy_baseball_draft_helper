@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "trent_grisham",
+    "name": "Trent Grisham",
+    "position": "OF",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 22.3333,
+    "projected_obp": 0.3263,
+    "projected_runs": 69.3333,
+    "projected_rbi": 60.0,
+    "projected_stolen_bases": 5.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 248.15
+  },
+  "pick_info": {
+    "pick_number": 213,
+    "round": 17,
+    "team_name": "Young Guns"
+  },
+  "position": "OF"
+}

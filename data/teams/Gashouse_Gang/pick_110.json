@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "alex_bregman",
+    "name": "Alex Bregman",
+    "position": "3B",
+    "team": "CHC",
+    "age": null,
+    "projected_home_runs": 23.0,
+    "projected_obp": 0.3407,
+    "projected_runs": 84.0,
+    "projected_rbi": 79.3333,
+    "projected_stolen_bases": 2.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 114.98
+  },
+  "pick_info": {
+    "pick_number": 110,
+    "round": 9,
+    "team_name": "Gashouse Gang"
+  },
+  "position": "3B"
+}

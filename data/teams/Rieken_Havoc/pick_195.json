@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "kazuma_okamoto",
+    "name": "Kazuma Okamoto",
+    "position": "3B",
+    "team": "TOR",
+    "age": null,
+    "projected_home_runs": 23.0,
+    "projected_obp": 0.324,
+    "projected_runs": 63.0,
+    "projected_rbi": 73.6667,
+    "projected_stolen_bases": 2.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 270.91
+  },
+  "pick_info": {
+    "pick_number": 195,
+    "round": 15,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "3B"
+}

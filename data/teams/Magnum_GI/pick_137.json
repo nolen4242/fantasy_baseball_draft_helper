@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "nathan_eovaldi",
+    "name": "Nathan Eovaldi",
+    "position": "SP",
+    "team": "TEX",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.6667,
+    "projected_quality_starts": 17.9833,
+    "projected_strikeouts": 160.7087,
+    "projected_era": 3.6967,
+    "projected_whip": 1.197,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 166.4667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 159.89
+  },
+  "pick_info": {
+    "pick_number": 137,
+    "round": 11,
+    "team_name": "Magnum GI"
+  },
+  "position": "SP"
+}

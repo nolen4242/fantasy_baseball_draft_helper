@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "taylor_ward",
+    "name": "Taylor Ward",
+    "position": "OF",
+    "team": "BAL",
+    "age": null,
+    "projected_home_runs": 26.6667,
+    "projected_obp": 0.327,
+    "projected_runs": 81.3333,
+    "projected_rbi": 83.0,
+    "projected_stolen_bases": 5.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 153.57
+  },
+  "pick_info": {
+    "pick_number": 156,
+    "round": 12,
+    "team_name": "Runtime Terror"
+  },
+  "position": "OF"
+}

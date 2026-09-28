@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "chris_sale",
+    "name": "Chris Sale",
+    "position": "SP",
+    "team": "ATL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 11.6667,
+    "projected_quality_starts": 17.55,
+    "projected_strikeouts": 199.0913,
+    "projected_era": 3.1767,
+    "projected_whip": 1.2093,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 163.0667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 41.13
+  },
+  "pick_info": {
+    "pick_number": 39,
+    "round": 3,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "SP"
+}

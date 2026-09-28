@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "michael_king",
+    "name": "Michael King",
+    "position": "SP",
+    "team": "SD",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.0,
+    "projected_quality_starts": 18.4167,
+    "projected_strikeouts": 168.0563,
+    "projected_era": 3.7367,
+    "projected_whip": 1.2974,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 160.8,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 140.55
+  },
+  "pick_info": {
+    "pick_number": 141,
+    "round": 11,
+    "team_name": "MAGA DOGE"
+  },
+  "position": "SP"
+}

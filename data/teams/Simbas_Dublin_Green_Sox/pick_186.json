@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "tanner_bibee",
+    "name": "Tanner Bibee",
+    "position": "SP",
+    "team": "CLE",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 10.6667,
+    "projected_quality_starts": 19.7167,
+    "projected_strikeouts": 168.4444,
+    "projected_era": 3.9933,
+    "projected_whip": 1.2444,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 179.3333,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 187.95
+  },
+  "pick_info": {
+    "pick_number": 186,
+    "round": 15,
+    "team_name": "Simba's Dublin Green Sox"
+  },
+  "position": "SP"
+}

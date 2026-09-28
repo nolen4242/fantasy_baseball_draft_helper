@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "quinn_mathews",
+    "name": "Quinn Mathews",
+    "position": "SP",
+    "team": "STL",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 2.3333,
+    "projected_quality_starts": 5.2,
+    "projected_strikeouts": 37.0236,
+    "projected_era": 4.33,
+    "projected_whip": 1.4763,
+    "projected_saves": 0.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 42.1,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 653.66
+  },
+  "pick_info": {
+    "pick_number": 299,
+    "round": 23,
+    "team_name": "Rieken Havoc"
+  },
+  "position": "SP"
+}

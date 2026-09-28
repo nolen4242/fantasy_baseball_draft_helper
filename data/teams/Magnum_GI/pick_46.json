@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "brent_rooker",
+    "name": "Brent Rooker",
+    "position": "U",
+    "team": "ATH",
+    "age": null,
+    "projected_home_runs": 32.3333,
+    "projected_obp": 0.3387,
+    "projected_runs": 86.0,
+    "projected_rbi": 97.6667,
+    "projected_stolen_bases": 5.6667,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 51.15
+  },
+  "pick_info": {
+    "pick_number": 46,
+    "round": 4,
+    "team_name": "Magnum GI"
+  },
+  "position": "U"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "kevin_ginkel",
+    "name": "Kevin Ginkel",
+    "position": "RP",
+    "team": "ARI",
+    "age": null,
+    "projected_home_runs": null,
+    "projected_obp": null,
+    "projected_runs": null,
+    "projected_rbi": null,
+    "projected_stolen_bases": null,
+    "projected_wins": 3.6667,
+    "projected_quality_starts": null,
+    "projected_strikeouts": 63.2126,
+    "projected_era": 3.78,
+    "projected_whip": 1.3107,
+    "projected_saves": 13.0,
+    "projected_holds": null,
+    "projected_innings_pitched": 61.3667,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 625.01
+  },
+  "pick_info": {
+    "pick_number": 289,
+    "round": 23,
+    "team_name": "Long Balls"
+  },
+  "position": "RP"
+}

@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "brandon_lowe",
+    "name": "Brandon Lowe",
+    "position": "2B",
+    "team": "PIT",
+    "age": null,
+    "projected_home_runs": 22.6667,
+    "projected_obp": 0.3097,
+    "projected_runs": 67.0,
+    "projected_rbi": 67.6667,
+    "projected_stolen_bases": 4.0,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 172.04
+  },
+  "pick_info": {
+    "pick_number": 147,
+    "round": 12,
+    "team_name": "Big Sticks"
+  },
+  "position": "2B"
+}

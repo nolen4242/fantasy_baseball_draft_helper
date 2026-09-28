@@ -1,0 +1,33 @@
+{
+  "player": {
+    "player_id": "giancarlo_stanton",
+    "name": "Giancarlo Stanton",
+    "position": "U",
+    "team": "NYY",
+    "age": null,
+    "projected_home_runs": 22.6667,
+    "projected_obp": 0.3023,
+    "projected_runs": 46.6667,
+    "projected_rbi": 60.3333,
+    "projected_stolen_bases": 0.3333,
+    "projected_wins": null,
+    "projected_quality_starts": null,
+    "projected_strikeouts": null,
+    "projected_era": null,
+    "projected_whip": null,
+    "projected_saves": null,
+    "projected_holds": null,
+    "projected_innings_pitched": null,
+    "drafted": false,
+    "drafted_by_team": null,
+    "draft_round": null,
+    "draft_pick": null,
+    "adp": 251.68
+  },
+  "pick_info": {
+    "pick_number": 202,
+    "round": 16,
+    "team_name": "Magnum GI"
+  },
+  "position": "U"
+}
